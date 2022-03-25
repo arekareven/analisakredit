@@ -52,38 +52,42 @@ class Collateral extends CI_Controller
         $next = $this->db->query("SELECT * FROM latar_belakang ORDER BY id_lb DESC LIMIT 1");
         foreach ($next->result() as $row) {
             require 'vendor/autoload.php';
-            $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor("C:/xampp/htdocs/minpro/cache/".$row->nama_debitur.date('d-m-y').".docx");
+            $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor("C:/xampp/htdocs/minpro/cache/" . $row->nama_debitur . date('d-m-y') . ".docx");
         }
         $id_lb = $_GET['id_lb'];
         $surat = $this->db->query("SELECT * FROM collateral WHERE id_lb='$id_lb'");
-        $replacements = array();
-        foreach ($surat->result() as $row) {
+        if ($surat == 0) {
+            $templateProcessor->deleteBlock('test');
+        } else {
+            $replacements = array();
+            foreach ($surat->result() as $row) {
 
-            $replacements[] = array(
-                'nopol'    => $row->nopol,
-                'nama_stnk'        => $row->nama_stnk,
-                'alamat'        => $row->alamat,
-                'type'  => $row->type,
-                'jenis'  => $row->jenis,
-                'tahun'     => $row->tahun,
-                'warna'     => $row->warna,
-                'silinder'   => $row->silinder,
-                'no_rangka'          => $row->no_rangka,
-                'no_mesin'      => $row->no_mesin,
-                'no_bpkb'          => $row->no_bpkb,
-                'milik'      => $row->milik,
-                'taksiran'    => number_format($row->taksiran),
-                'nl'    => number_format($row->nl),
-                'hb'    => number_format($row->taksiran * 0.7),
-                'kondisi'    => $row->kondisi
-            );
-        }
-        $templateProcessor->cloneBlock('test', count($replacements), true, false, $replacements);
+                $replacements[] = array(
+                    'nopol'    => $row->nopol,
+                    'nama_stnk'        => $row->nama_stnk,
+                    'alamat'        => $row->alamat,
+                    'type'  => $row->type,
+                    'jenis'  => $row->jenis,
+                    'tahun'     => $row->tahun,
+                    'warna'     => $row->warna,
+                    'silinder'   => $row->silinder,
+                    'no_rangka'          => $row->no_rangka,
+                    'no_mesin'      => $row->no_mesin,
+                    'no_bpkb'          => $row->no_bpkb,
+                    'milik'      => $row->milik,
+                    'taksiran'    => number_format($row->taksiran),
+                    'nl'    => number_format($row->nl),
+                    'hb'    => number_format($row->taksiran * 0.7),
+                    'kondisi'    => $row->kondisi
+                );
+            }
+            $templateProcessor->cloneBlock('test', count($replacements), true, false, $replacements);
 
 
-        foreach ($next->result() as $row) {
-            $pathToSave = "C:/xampp/htdocs/minpro/cache/".$row->nama_debitur.date('d-m-y').".docx";
-            $templateProcessor->saveAs($pathToSave);
+            foreach ($next->result() as $row) {
+                $pathToSave = "C:/xampp/htdocs/minpro/cache/" . $row->nama_debitur . date('d-m-y') . ".docx";
+                $templateProcessor->saveAs($pathToSave);
+            }
         }
         redirect('collateral?id_lb=' . $row->id_lb);
     }
@@ -93,49 +97,53 @@ class Collateral extends CI_Controller
         $next = $this->db->query("SELECT * FROM latar_belakang ORDER BY id_lb DESC LIMIT 1");
         foreach ($next->result() as $row) {
             require 'vendor/autoload.php';
-            $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor("C:/xampp/htdocs/minpro/cache/".$row->nama_debitur.date('d-m-y').".docx");
+            $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor("C:/xampp/htdocs/minpro/cache/" . $row->nama_debitur . date('d-m-y') . ".docx");
         }
         $id_lb = $_GET['id_lb'];
         $surat = $this->db->query("SELECT * FROM collateral_tanah WHERE id_lb=$id_lb");
-        $replacements = array();
-        foreach ($surat->result() as $row) {
+        if ($surat == 0) {
+            $templateProcessor->deleteBlock('test2');
+        } else {
+            $replacements = array();
+            foreach ($surat->result() as $row) {
 
-            $replacements[] = array(
-                $total1 = ($row->luas_t * $row->harga_t) + ($row->luas_b * $row->harga_b),
-                $total2 = ($row->luas_t * $row->harga_t2) + ($row->luas_b * $row->harga_b2),
-                'jenis'    => $row->jenis,
-                'nama'        => $row->nama,
-                'alamat'        => $row->alamat,
-                'no_shm'  => $row->no_shm,
-                'lokasi'     => $row->lokasi,
-                'tgl_ukur'     => $row->tgl_ukur,
-                'no_ukur'   => $row->no_ukur,
-                'milik'      => $row->milik,
-                'fisik_jaminan'          => $row->fisik_jaminan,
-                'luas_t'          => $row->luas_t,
-                'luas_b'          => $row->luas_b,
-                'harga_t'          => number_format($row->harga_t),
-                'harga_b'          => number_format($row->harga_b),
-                'harga_t2'          => number_format($row->harga_t2),
-                'harga_b2'          => number_format($row->harga_b2),
-                'ht1'          => number_format($row->luas_t * $row->harga_t),
-                'hb1'          => number_format($row->luas_b * $row->harga_b),
-                'ht2'          => number_format($row->luas_t * $row->harga_t2),
-                'hb2'          => number_format($row->luas_b * $row->harga_b2),
-                't'          => number_format(($row->luas_t * $row->harga_t) + ($row->luas_b * $row->harga_b)),
-                't2'          => number_format(($row->luas_t * $row->harga_t2) + ($row->luas_b * $row->harga_b2)),
-                'tb'    => number_format(($total1 + $total2) * 0.3),
-                'ht'    => number_format($row->ht),
-                'taksasi'    => $row->taksasi,
-                'ut'    => number_format((($total1 + $total2) / 2) * ($row->taksasi / 100)),
-                'pertimbangan'    => $row->pertimbangan
-            );
-        }
-        $templateProcessor->cloneBlock('test2', count($replacements), true, false, $replacements);
+                $replacements[] = array(
+                    $total1 = ($row->luas_t * $row->harga_t) + ($row->luas_b * $row->harga_b),
+                    $total2 = ($row->luas_t * $row->harga_t2) + ($row->luas_b * $row->harga_b2),
+                    'jenis'    => $row->jenis,
+                    'nama'        => $row->nama,
+                    'alamat'        => $row->alamat,
+                    'no_shm'  => $row->no_shm,
+                    'lokasi'     => $row->lokasi,
+                    'tgl_ukur'     => $row->tgl_ukur,
+                    'no_ukur'   => $row->no_ukur,
+                    'milik'      => $row->milik,
+                    'fisik_jaminan'          => $row->fisik_jaminan,
+                    'luas_t'          => $row->luas_t,
+                    'luas_b'          => $row->luas_b,
+                    'harga_t'          => number_format($row->harga_t),
+                    'harga_b'          => number_format($row->harga_b),
+                    'harga_t2'          => number_format($row->harga_t2),
+                    'harga_b2'          => number_format($row->harga_b2),
+                    'ht1'          => number_format($row->luas_t * $row->harga_t),
+                    'hb1'          => number_format($row->luas_b * $row->harga_b),
+                    'ht2'          => number_format($row->luas_t * $row->harga_t2),
+                    'hb2'          => number_format($row->luas_b * $row->harga_b2),
+                    't'          => number_format(($row->luas_t * $row->harga_t) + ($row->luas_b * $row->harga_b)),
+                    't2'          => number_format(($row->luas_t * $row->harga_t2) + ($row->luas_b * $row->harga_b2)),
+                    'tb'    => number_format(($total1 + $total2) * 0.3),
+                    'ht'    => number_format($row->ht),
+                    'taksasi'    => $row->taksasi,
+                    'ut'    => number_format((($total1 + $total2) / 2) * ($row->taksasi / 100)),
+                    'pertimbangan'    => $row->pertimbangan
+                );
+            }
+            $templateProcessor->cloneBlock('test2', count($replacements), true, false, $replacements);
 
-        foreach ($next->result() as $row) {
-            $pathToSave = "C:/xampp/htdocs/minpro/cache/".$row->nama_debitur.date('d-m-y').".docx";
-            $templateProcessor->saveAs($pathToSave);
+            foreach ($next->result() as $row) {
+                $pathToSave = "C:/xampp/htdocs/minpro/cache/" . $row->nama_debitur . date('d-m-y') . ".docx";
+                $templateProcessor->saveAs($pathToSave);
+            }
         }
         redirect('collateral?id_lb=' . $row->id_lb);
     }

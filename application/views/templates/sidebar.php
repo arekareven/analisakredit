@@ -1,10 +1,11 @@
 <!-- Sidebar -->
-<ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion" id="accordionSidebar">
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
         <div class="sidebar-brand-icon rotate-n-14">
-            <i class="fas fa-smoking-ban"></i>
+            <!--<i class="fas fa-smoking-ban"></i>-->
+            <i><img src="<?php echo base_url(); ?>assets/img/profile/eka.png" height="50"/></i>
         </div>
         <div class="sidebar-brand-text mx-3">ADIT <sup>EB</sup></div>
     </a>

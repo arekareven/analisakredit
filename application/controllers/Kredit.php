@@ -21,12 +21,19 @@ class Kredit extends CI_Controller
 		$id_lb = $this->input->post('id_lb');
 		$this->m_kredit->add_data($id_lb);
 	}
+	
+	public function add_rw()
+	{
+		$id_lb = $this->input->post('id_lb');
+		$this->m_kredit->add_data_rw($id_lb);
+	}
 
 	public function next()
 	{
 		$id_lb = $_GET['id_lb'];
 		redirect('character?id_lb=' . $id_lb);
 	}
+	
 	public function lb()
 	{
 		$data['title'] = 'Latar Belakang';

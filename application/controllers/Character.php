@@ -40,6 +40,7 @@ class Character extends CI_Controller
         $this->load->view('kredit/character', $data);
         $this->load->view('templates/footer');
     }
+
     public function add()
     {
         $id_char = $this->input->post('id_char');
@@ -49,7 +50,7 @@ class Character extends CI_Controller
     public function next()
     {
         $id_lb = $_GET['id_lb'];
-        redirect('capacity?id_lb='.$id_lb);
+        redirect('capacity?id_lb=' . $id_lb);
     }
 
     public function templateword()
@@ -57,7 +58,7 @@ class Character extends CI_Controller
         $next = $this->db->query("SELECT * FROM latar_belakang ORDER BY id_lb DESC LIMIT 1");
         foreach ($next->result() as $row) {
             require 'vendor/autoload.php';
-            $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor("C:/xampp/htdocs/minpro/cache/".$row->nama_debitur.date('d-m-y').".docx");
+            $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor("C:/xampp/htdocs/minpro/cache/" . $row->nama_debitur . date('d-m-y') . ".docx");
         }
         $id_char = $_GET['id_char'];
         $surat = $this->db->query("SELECT * FROM karakter WHERE id_char='$id_char'");
@@ -78,10 +79,10 @@ class Character extends CI_Controller
                 'hp3'                => $row->hp3,
             ]);
             foreach ($next->result() as $row) {
-                $pathToSave = "C:/xampp/htdocs/minpro/cache/".$row->nama_debitur.date('d-m-y').".docx";
+                $pathToSave = "C:/xampp/htdocs/minpro/cache/" . $row->nama_debitur . date('d-m-y') . ".docx";
                 $templateProcessor->saveAs($pathToSave);
             }
         }
-        redirect('character/next?id_lb='.$row->id_lb);
+        redirect('character/next?id_lb=' . $row->id_lb);
     }
 }

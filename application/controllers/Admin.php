@@ -1,31 +1,35 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Admin extends CI_Controller {
+class Admin extends CI_Controller
+{
 
-	public function __construct(){
+	public function __construct()
+	{
 		parent::__construct();
 		is_logged_in();
+		$this->load->model('m_admin');
 	}
 
 	public function index()
 	{
-		$data['title']='Dashboard';
-		$data['user'] = $this->db->get_where('user',['email' =>
+		$data['title'] = 'Dashboard';
+		$data['user'] = $this->db->get_where('user', ['email' =>
 		$this->session->userdata('email')])->row_array();
 
-		$this->load->view('templates/header',$data);
-		$this->load->view('templates/sidebar',$data);
-		$this->load->view('templates/topbar',$data);
-		$this->load->view('admin/index',$data);
+		$this->load->view('templates/header', $data);
+		$this->load->view('templates/sidebar', $data);
+		$this->load->view('templates/topbar', $data);
+		$this->load->view('admin/index', $data);
 		$this->load->view('templates/footer');
 	}
 
-	public function role(){
+	public function role()
+	{
 
 		$data['title'] = 'Role';
 		$data['user'] = $this->db->get_where('user', ['email' =>
-		$this->session->userdata('email')])->row_array ();
+		$this->session->userdata('email')])->row_array();
 
 		$data['role'] = $this->db->get('user_role')->result_array();
 
@@ -36,8 +40,24 @@ class Admin extends CI_Controller {
 		$this->load->view('templates/footer');
 	}
 
-	public function roleAccess ($role_id)
-	{	
+	public function user()
+	{
+
+		$data['title'] = 'User';
+		$data['user'] = $this->db->get_where('user', ['email' =>
+		$this->session->userdata('email')])->row_array();
+
+		$data['query'] = $this->m_admin->tampil_data();
+
+		$this->load->view('templates/header', $data);
+		$this->load->view('templates/sidebar', $data);
+		$this->load->view('templates/topbar', $data);
+		$this->load->view('admin/user', $data);
+		$this->load->view('templates/footer');
+	}
+
+	public function roleAccess($role_id)
+	{
 		$data['title'] = 'Role Access';
 		$data['user'] = $this->db->get_where('user', ['email' =>
 		$this->session->userdata('email')])->row_array();
@@ -64,9 +84,9 @@ class Admin extends CI_Controller {
 			'menu_id' => $menu_id
 		];
 
-		$result = $this->db->get_where('user_access_menu', $data); 
+		$result = $this->db->get_where('user_access_menu', $data);
 
-		if($result->num_rows() < 1) {
+		if ($result->num_rows() < 1) {
 			$this->db->insert('user_access_menu', $data);
 		} else {
 			$this->db->delete('user_access_menu', $data);
@@ -74,7 +94,5 @@ class Admin extends CI_Controller {
 
 		$this->session->set_flashdata('message', '<div class="alert alert-success"
 		role="alert">Access Changed!</div>');
-
-   }
-
+	}
 }

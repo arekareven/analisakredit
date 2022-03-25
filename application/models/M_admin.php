@@ -1,26 +1,18 @@
 <?php
 
-class M_analisis extends CI_Model
+class M_admin extends CI_Model
 {
 
     public function __construct()
     {
         parent::__construct();
         $this->load->library(array('session'));
-        $this->load->helper(array('url', 'download'));
+        $this->load->helper(array('url'));
     }
 
     public function tampil_data()
     {
-        $user = $this->db->get_where('user', ['email' =>
-        $this->session->userdata('email')])->row_array();
-        $a = $user['name'];
-        return $this->db->query("SELECT * FROM analisis WHERE nama_ao='$a'");
-    }
-
-    public function data_analis()
-    {
-        return $this->db->get('analis');
+        return $this->db->query("SELECT * FROM user");
     }
 
     function edit_data($data)

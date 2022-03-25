@@ -151,4 +151,28 @@ class M_kredit extends CI_Model
 		$this->db->insert('latar_belakang', $data);
 		redirect('kredit/lb');
 	}
+
+	public function add_data_rw($data)
+	{
+		$plafond			= $_POST['plafond'];
+		$status		= $_POST['status'];
+		$saldo     = $_POST['saldo'];
+		$sejarah      		= $_POST['sejarah'];
+		$data      	= $_POST['data'];
+
+		$total = count($plafond);
+
+		for ($i = 0; $i < $total; $i++) {
+			$x[] = array(
+
+				'plafond'	    	=> $plafond[$i],
+				'status'	    => $status[$i],
+				'saldo'	=> $saldo[$i],
+				'sejarah'	    	=> $sejarah[$i],
+				'data'	    => $data[$i]
+			);
+			$this->db->insert('riwayat_pinjaman', $x[$i]);
+		}
+		redirect('kredit/lb');
+	}
 }

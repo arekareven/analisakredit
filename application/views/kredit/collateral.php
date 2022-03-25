@@ -5,16 +5,16 @@
     <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
 
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#collateral">
-        Collateral Kendarann
+        Collateral Kendaran
     </button>
 
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#collateralTanah">
         Collateral Tanah
     </button>
 
-    <button type="button" class="btn btn-info align-right" href="<?= base_url('collateral/next?id_lb=' . $id_lb); ?>">
-        <i class="fas fa-hand-point-right"></i>
-    </button>
+    <a href="<?= base_url('collateral/next?id_lb=' . $id_lb); ?>" type="button" class="btn btn-info align-right" >
+        Next
+    </a>
     <hr>
 
     <table class="table">
