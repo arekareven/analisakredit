@@ -170,6 +170,6 @@ class M_capital extends CI_Model
             'total_aset'    => $total_aset
         );
         $this->db->insert('capital_a', $data);
-        redirect('capital/next?id_lb=' . $id_lb);
+        redirect('capital/index2?id_lb=' . $id_lb);
     }
 }

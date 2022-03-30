@@ -59,31 +59,6 @@ class M_kredit extends CI_Model
 		$hubungan_keluarga	= $this->input->post('hubungan_keluarga');
 		$alamat_keluarga	= $this->input->post('alamat_keluarga');
 		$hp_keluarga		= $this->input->post('hp_keluarga');
-		$pf1		= $this->input->post('pf1');
-		$pf2		= $this->input->post('pf2');
-		$pf3		= $this->input->post('pf3');
-		$pf4		= $this->input->post('pf4');
-		$pf5		= $this->input->post('pf5');
-		$st1		= $this->input->post('st1');
-		$st2		= $this->input->post('st2');
-		$st3		= $this->input->post('st3');
-		$st4		= $this->input->post('st4');
-		$st5		= $this->input->post('st5');
-		$sd1		= $this->input->post('sd1');
-		$sd2		= $this->input->post('sd2');
-		$sd3		= $this->input->post('sd3');
-		$sd4		= $this->input->post('sd4');
-		$sd5		= $this->input->post('sd5');
-		$sj1		= $this->input->post('sj1');
-		$sj2		= $this->input->post('sj2');
-		$sj3		= $this->input->post('sj3');
-		$sj4		= $this->input->post('sj4');
-		$sj5		= $this->input->post('sj5');
-		$dt1		= $this->input->post('dt1');
-		$dt2		= $this->input->post('dt2');
-		$dt3		= $this->input->post('dt3');
-		$dt4		= $this->input->post('dt4');
-		$dt5		= $this->input->post('dt5');
 
 		$data = array(
 
@@ -121,32 +96,7 @@ class M_kredit extends CI_Model
 			'nama_keluarga'	    => $nama_keluarga,
 			'hubungan_keluarga'	=> $hubungan_keluarga,
 			'alamat_keluarga'	=> $alamat_keluarga,
-			'hp_keluarga'		=> $hp_keluarga,
-			'pf1'				=> $pf1,
-			'pf2'				=> $pf2,
-			'pf3'				=> $pf3,
-			'pf4'				=> $pf4,
-			'pf5'				=> $pf5,
-			'st1'				=> $st1,
-			'st2'				=> $st2,
-			'st3'				=> $st3,
-			'st4'				=> $st4,
-			'st5'				=> $st5,
-			'sd1'				=> $sd1,
-			'sd2'				=> $sd2,
-			'sd3'				=> $sd3,
-			'sd4'				=> $sd4,
-			'sd5'				=> $sd5,
-			'sj1'				=> $sj1,
-			'sj2'				=> $sj2,
-			'sj3'				=> $sj3,
-			'sj4'				=> $sj4,
-			'sj5'				=> $sj5,
-			'dt1'				=> $dt1,
-			'dt2'				=> $dt2,
-			'dt3'				=> $dt3,
-			'dt4'				=> $dt4,
-			'dt5'				=> $dt5,
+			'hp_keluarga'		=> $hp_keluarga
 		);
 		$this->db->insert('latar_belakang', $data);
 		redirect('kredit/lb');
@@ -154,6 +104,7 @@ class M_kredit extends CI_Model
 
 	public function add_data_rw($data)
 	{
+		$id_lb			= $_POST['id_lb'];
 		$plafond			= $_POST['plafond'];
 		$status		= $_POST['status'];
 		$saldo     = $_POST['saldo'];
@@ -165,6 +116,7 @@ class M_kredit extends CI_Model
 		for ($i = 0; $i < $total; $i++) {
 			$x[] = array(
 
+				'id_lb'	    	=> $id_lb[$i],
 				'plafond'	    	=> $plafond[$i],
 				'status'	    => $status[$i],
 				'saldo'	=> $saldo[$i],
@@ -173,6 +125,6 @@ class M_kredit extends CI_Model
 			);
 			$this->db->insert('riwayat_pinjaman', $x[$i]);
 		}
-		redirect('kredit/lb');
+		redirect('kredit/templateword2?id_lb=',$id_lb);
 	}
 }

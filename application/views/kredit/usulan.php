@@ -97,7 +97,7 @@
                             <input type="text" class="form-control" id="waktu" name="waktu">
                         </div>
                         <div class="col-md-6 mb-4">
-                            <label for="bunga" class="form-label">Bunga</label>
+                            <label for="bunga" class="form-label">Bunga (%)</label>
                             <input type="text" class="form-control" id="bunga" name="bunga">
                         </div>
                         <div class="col-md-6 mb-4">
@@ -243,7 +243,7 @@
 
         }
     </script>
-
+<!--
     <script>
         function autofill() {
             var nama = document.getElementById('nama').value;
@@ -263,7 +263,7 @@
 
         }
     </script>
-
+-->
 </div>
 <!-- /.container-fluid -->
 

@@ -26,7 +26,7 @@
                         <td>" . $row->id_char . "</td>
                         <td>" . $row->info_pribadi . "</td>                     
                         <td>" . $row->info_perilaku . "</td>                     
-                        <td><a href='character/templateword?id_char=".$row->id_char."' class ='btn btn-success' title='Next'>Next</a>
+                        <td><a href='templateword?id_char=".$row->id_char."' class ='btn btn-success' title='Next'>Next</a>
                         </td>							
                     </tr>";
             }
@@ -120,5 +120,4 @@
 </div>
 <!-- /.container-fluid -->
 
-</div>
 <!-- End of Main Content -->

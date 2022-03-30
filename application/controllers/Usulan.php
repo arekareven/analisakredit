@@ -142,7 +142,7 @@ class Usulan extends CI_Controller
             $surat = array(
                 'id_analisis'         => $id_analisis,
                 'nama_ao'    => $user['name'],
-                'file'        => "cache/".$row->nama_debitur.date('d-m-y').".docx",
+                'file'        => $row->nama_debitur.date('d-m-y').".docx",
                 'status'         => 'Diserahkan'
             );
             $this->db->insert('analisis', $surat);        

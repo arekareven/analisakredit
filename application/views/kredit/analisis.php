@@ -33,13 +33,13 @@
                 echo "<tr>
                         <td>" . $row->nama_ao . "</td>
                         <td>" . $row->nama . "</td>
-                        <td>" . substr($row->file, 6) . "</td>                     
+                        <td>" . $row->file . "</td>                     
                         <td>" . $row->catatan . "</td>                     
                         <td><a $x>$row->status</a>
                         </td>     
                         <td>  
                             <h5>     
-                            <a href='#' class ='btn btn-warning' data-toggle='modal' data-target='#edit' title='Edit' onClick=\"EditData('" . $row->id_analisis . "','" . $row->catatan . "','" . $row->status . "')\"><i class='fas fa-edit'></i></a>        
+                            <a href='#' class ='btn btn-warning' data-toggle='modal' data-target='#edit' title='Edit' onClick=\"EditData('" . $row->id_analisis . "','" . $row->nama . "','" . $row->file . "')\"><i class='fas fa-edit'></i></a>        
                             <a class ='btn btn-danger' data-toggle='modal' data-target='#hapus' title='Hapus' onClick=\"HapusData('" . $row->id_analisis . "')\"><i class='fas fa-trash'></i></a>
                             <a href='analisis/lakukan_download?file=" . $row->file . "' class ='btn btn-success' title='Download'><i class='fas fa-download'></i></a>
                             </h5>
@@ -50,7 +50,6 @@
         </tbody>
     </table>
 
-
     <div class="modal fade" id="edit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -60,7 +59,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="<?= base_url('analisis/edit'); ?>" method="post">
+                <form action="<?= base_url('analisis/edit'); ?>" method="post" enctype="multipart/form-data">
                     <div class="modal-body">
                         <div class="col-md-4 mb-4">
                             <label for="id_analisis" class="form-label">ID</label>
@@ -77,6 +76,11 @@
                                 ?>
                             </select>
                         </div>
+                        <div class="col-md-8 mb-4">
+                            <label for="file" class="form-label">File</label>
+                            <input type="file" class="form-control" id="file" name="file">
+                            <input type="hidden" class="form-control" id="filelama" name="filelama">
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -91,8 +95,8 @@
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                     <h4 class="modal-title" id="custom-width-modalLabel">Konfirmasi Hapus</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 </div>
                 <form action="<?php echo base_url() . 'analisis/hapus'; ?>" method="post" class="form-horizontal" role="form">
                     <div class="modal-body">
@@ -111,10 +115,10 @@
 
 
     <script type="text/javascript">
-        function EditData(id_analisis, catatan, status) {
+        function EditData(id_analisis, nama, file) {
             document.getElementById('id_analisis').value = id_analisis;
-            document.getElementById('catatan').value = catatan;
-            document.getElementById('status').value = status;
+            document.getElementById('nama').value = nama;
+            document.getElementById('filelama').value = file;
         }
 
         function HapusData(idt) {

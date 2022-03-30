@@ -9,7 +9,7 @@ class Analisis extends CI_Controller
         parent::__construct();
         $this->load->model('m_analisis');
         $this->load->helper('url','download');
-        $this->load->library(array('session'));
+        $this->load->library(array('session'),'upload');
     }
 
     public function index()
@@ -43,7 +43,7 @@ class Analisis extends CI_Controller
 
     public function lakukan_download(){	
         $file = $_GET['file'];			
-		force_download($file,NULL);
+		force_download('cache/'.$file,NULL);
 	}
 
     public function hapus(){

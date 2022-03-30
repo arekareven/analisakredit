@@ -21,7 +21,7 @@ class Kredit extends CI_Controller
 		$id_lb = $this->input->post('id_lb');
 		$this->m_kredit->add_data($id_lb);
 	}
-	
+
 	public function add_rw()
 	{
 		$id_lb = $this->input->post('id_lb');
@@ -33,7 +33,7 @@ class Kredit extends CI_Controller
 		$id_lb = $_GET['id_lb'];
 		redirect('character?id_lb=' . $id_lb);
 	}
-	
+
 	public function lb()
 	{
 		$data['title'] = 'Latar Belakang';
@@ -91,40 +91,47 @@ class Kredit extends CI_Controller
 				'nama_keluarga'	    => $row->nama_keluarga,
 				'hubungan_keluarga'	=> $row->hubungan_keluarga,
 				'alamat_keluarga'	=> $row->alamat_keluarga,
-				'hp_keluarga'		=> $row->hp_keluarga,
-				'pf1'				=> $row->pf1,
-				'pf2'				=> $row->pf2,
-				'pf3'				=> $row->pf3,
-				'pf4'				=> $row->pf4,
-				'pf5'				=> $row->pf5,
-				'st1'				=> $row->st1,
-				'st2'				=> $row->st2,
-				'st3'				=> $row->st3,
-				'st4'				=> $row->st4,
-				'st5'				=> $row->st5,
-				'sd1'				=> $row->sd1,
-				'sd2'				=> $row->sd2,
-				'sd3'				=> $row->sd3,
-				'sd4'				=> $row->sd4,
-				'sd5'				=> $row->sd5,
-				'sj1'				=> $row->sj1,
-				'sj2'				=> $row->sj2,
-				'sj3'				=> $row->sj3,
-				'sj4'				=> $row->sj4,
-				'sj5'				=> $row->sj5,
-				'dt1'				=> $row->dt1,
-				'dt2'				=> $row->dt2,
-				'dt3'				=> $row->dt3,
-				'dt4'				=> $row->dt4,
-				'dt5'				=> $row->dt5,
+				'hp_keluarga'		=> $row->hp_keluarga
 			]);
 
-			$pathToSave = "C:/xampp/htdocs/minpro/cache/".$row->nama_debitur.date('d-m-y').".docx";
+			$pathToSave = "C:/xampp/htdocs/minpro/cache/" . $row->nama_debitur . date('d-m-y') . ".docx";
 			$templateProcessor->saveAs($pathToSave);
 		}
-		redirect('kredit/next?id_lb='.$id_lb);
+		redirect('kredit/next?id_lb=' . $id_lb);
 	}
-	
+
+	public function templateword2()
+	{
+		$id_lb = $_GET['id_lb'];
+		var_dump($id_lb);
+		die;
+		$surat = $this->db->query("SELECT * FROM riwayat_pinjaman WHERE id_lb='$id_lb'");
+		foreach ($surat->result() as $row) {
+			require 'vendor/autoload.php';
+			$templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('Vera.docx');
+
+			$replacements = array();
+			$i = 1;
+			foreach ($surat->result() as $row) {
+
+				$replacements[] = array(
+					'no'    => $i,
+					'plafond'    => $row->plafond,
+					'status'        => $row->status,
+					'saldo'        => $row->saldo,
+					'sejarah'  => $row->sejarah,
+					'data'  => $row->data
+				);
+				$i++;
+			}
+			$templateProcessor->cloneRowAndSetValues('plafond', $replacements);
+
+			$pathToSave = "C:/xampp/htdocs/minpro/cache/" . date('d-m-y') . ".docx";
+			$templateProcessor->saveAs($pathToSave);
+		}
+		redirect('test?id_lb=' . $id_lb);
+	}
+
 	/*
     public function add()
 	{

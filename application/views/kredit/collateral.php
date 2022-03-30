@@ -115,11 +115,11 @@
                             <textarea class="form-control" id="fisik_jaminan" name="fisik_jaminan"></textarea>
                         </div>
                         <div class="col-md-6 mb-4">
-                            <label for="luas_t" class="form-label">Luas Tanah</label>
+                            <label for="luas_t" class="form-label">Luas Tanah (M2)</label>
                             <input type="text" class="form-control" id="luas_t" name="luas_t">
                         </div>
                         <div class="col-md-6 mb-4">
-                            <label for="luas_b" class="form-label">Luas Bangunan</label>
+                            <label for="luas_b" class="form-label">Luas Bangunan (M2)</label>
                             <input type="text" class="form-control" id="luas_b" name="luas_b">
                         </div>
                         <div class="col-md-6 mb-4">
@@ -142,9 +142,9 @@
                             <label for="ht" class="form-label">Nilai HT</label>
                             <textarea class="form-control" id="ht" name="ht"></textarea>
                         </div>
-                        <div class="col-md-12 mb-4">
-                            <label for="taksasi" class="form-label">Taksasi</label>
-                            <textarea class="form-control" id="taksasi" name="taksasi"></textarea>
+                        <div class="col-md-6 mb-4">
+                            <label for="taksasi" class="form-label">Taksasi (%)</label>
+                            <input class="form-control" id="taksasi" name="taksasi">
                         </div>
                         <div class="col-md-12 mb-4">
                             <label for="pertimbangan" class="form-label">Pertimbangan</label>
@@ -177,7 +177,7 @@
                             <input type="hidden" class="form-control" id="id_lb" name="id_lb" value="<?php echo $id_lb; ?>">
                             <input type="text" class="form-control" id="nopol" name="nopol">
                         </div>
-                        <div class="col-md-6 mb-4">
+                        <div class="col-md-12 mb-4">
                             <label for="nama_stnk" class="form-label">Nama di STNK</label>
                             <input type="text" class="form-control" id="nama_stnk" name="nama_stnk">
                         </div>
@@ -217,17 +217,17 @@
                             <label for="no_bpkb" class="form-label">No. BPKB</label>
                             <input type="text" class="form-control" id="no_bpkb" name="no_bpkb">
                         </div>
-                        <div class="col-md-8 mb-4">
+                        <div class="col-md-12 mb-4">
                             <label for="milik" class="form-label">Kepemilikan</label>
                             <input type="text" class="form-control" id="milik" name="milik">
                         </div>
-                        <div class="col-md-12 mb-4">
+                        <div class="col-md-6 mb-4">
                             <label for="taksiran" class="form-label">Taksiran Harga</label>
-                            <textarea class="form-control" id="taksiran" name="taksiran"></textarea>
+                            <input class="form-control" id="taksiran" name="taksiran">
                         </div>
-                        <div class="col-md-12 mb-4">
+                        <div class="col-md-6 mb-4">
                             <label for="nl" class="form-label">NL</label>
-                            <textarea class="form-control" id="nl" name="nl"></textarea>
+                            <input class="form-control" id="nl" name="nl">
                         </div>
                         <div class="col-md-12 mb-4">
                             <label for="kondisi" class="form-label">Kondisi Jaminan</label>
