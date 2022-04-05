@@ -49,12 +49,12 @@ class Collateral extends CI_Controller
 
     public function templateword()
     {
-        $next = $this->db->query("SELECT * FROM latar_belakang ORDER BY id_lb DESC LIMIT 1");
+        $id_lb = $_GET['id_lb'];
+        $next = $this->db->query("SELECT * FROM latar_belakang WHERE id_lb='$id_lb'");
         foreach ($next->result() as $row) {
             require 'vendor/autoload.php';
             $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor("C:/xampp/htdocs/minpro/cache/" . $row->nama_debitur . date('d-m-y') . ".docx");
         }
-        $id_lb = $_GET['id_lb'];
         $surat = $this->db->query("SELECT * FROM collateral WHERE id_lb='$id_lb'");
         if ($surat == 0) {
             $templateProcessor->deleteBlock('test');
@@ -63,6 +63,7 @@ class Collateral extends CI_Controller
             foreach ($surat->result() as $row) {
 
                 $replacements[] = array(
+                    'roda'    => $row->roda,
                     'nopol'    => $row->nopol,
                     'nama_stnk'        => $row->nama_stnk,
                     'alamat'        => $row->alamat,
@@ -83,23 +84,22 @@ class Collateral extends CI_Controller
             }
             $templateProcessor->cloneBlock('test', count($replacements), true, false, $replacements);
 
-
             foreach ($next->result() as $row) {
                 $pathToSave = "C:/xampp/htdocs/minpro/cache/" . $row->nama_debitur . date('d-m-y') . ".docx";
                 $templateProcessor->saveAs($pathToSave);
             }
         }
-        redirect('collateral?id_lb=' . $row->id_lb);
+        redirect('test?id_lb=' . $row->id_lb);
     }
 
     public function templateword2()
     {
-        $next = $this->db->query("SELECT * FROM latar_belakang ORDER BY id_lb DESC LIMIT 1");
+        $id_lb = $_GET['id_lb'];
+        $next = $this->db->query("SELECT * FROM latar_belakang WHERE id_lb='$id_lb'");
         foreach ($next->result() as $row) {
             require 'vendor/autoload.php';
             $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor("C:/xampp/htdocs/minpro/cache/" . $row->nama_debitur . date('d-m-y') . ".docx");
         }
-        $id_lb = $_GET['id_lb'];
         $surat = $this->db->query("SELECT * FROM collateral_tanah WHERE id_lb=$id_lb");
         if ($surat == 0) {
             $templateProcessor->deleteBlock('test2');
@@ -145,6 +145,6 @@ class Collateral extends CI_Controller
                 $templateProcessor->saveAs($pathToSave);
             }
         }
-        redirect('collateral?id_lb=' . $row->id_lb);
+        redirect('test?id_lb=' . $row->id_lb);
     }
 }

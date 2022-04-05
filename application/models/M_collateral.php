@@ -30,6 +30,7 @@ class M_collateral extends CI_Model
     public function add_data($data)
     {
         $id_lb          = $this->input->post('id_lb');
+        $roda          = $this->input->post('roda');
         $nopol     = $this->input->post('nopol');
         $nama_stnk         = $this->input->post('nama_stnk');
         $alamat         = $this->input->post('alamat');
@@ -48,6 +49,7 @@ class M_collateral extends CI_Model
 
         $data = array(
             'id_lb'         => $id_lb,
+            'roda'         => $roda,
             'nopol'    => $nopol,
             'nama_stnk'        => $nama_stnk,
             'alamat'        => $alamat,
@@ -65,7 +67,7 @@ class M_collateral extends CI_Model
             'kondisi'    => $kondisi
         );
         $this->db->insert('collateral', $data);
-        redirect('collateral?id_lb=' . $id_lb);
+        redirect('collateral/templateword?id_lb=' . $id_lb);
     }
 
     public function add_data2($data)
@@ -112,6 +114,7 @@ class M_collateral extends CI_Model
             'pertimbangan'    => $pertimbangan
         );
         $this->db->insert('collateral_tanah', $data);
-        redirect('collateral?id_lb=' . $id_lb);
+        /*redirect('collateral?id_lb=' . $id_lb);*/
+        redirect('collateral/templateword2?id_lb=' . $id_lb);
     }
 }

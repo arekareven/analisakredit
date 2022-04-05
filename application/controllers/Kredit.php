@@ -97,18 +97,19 @@ class Kredit extends CI_Controller
 			$pathToSave = "C:/xampp/htdocs/minpro/cache/" . $row->nama_debitur . date('d-m-y') . ".docx";
 			$templateProcessor->saveAs($pathToSave);
 		}
-		redirect('kredit/next?id_lb=' . $id_lb);
+		redirect('character?id_lb=' . $id_lb);
 	}
 
 	public function templateword2()
 	{
 		$id_lb = $_GET['id_lb'];
-		var_dump($id_lb);
-		die;
+		$next = $this->db->query("SELECT * FROM latar_belakang WHERE id_lb='$id_lb'");
+        foreach ($next->result() as $row) {
+            require 'vendor/autoload.php';
+            $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor("C:/xampp/htdocs/minpro/cache/" . $row->nama_debitur . date('d-m-y') . ".docx");
+        }
 		$surat = $this->db->query("SELECT * FROM riwayat_pinjaman WHERE id_lb='$id_lb'");
 		foreach ($surat->result() as $row) {
-			require 'vendor/autoload.php';
-			$templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('Vera.docx');
 
 			$replacements = array();
 			$i = 1;
@@ -116,7 +117,7 @@ class Kredit extends CI_Controller
 
 				$replacements[] = array(
 					'no'    => $i,
-					'plafond'    => $row->plafond,
+					'plafond'    => number_format($row->plafond),
 					'status'        => $row->status,
 					'saldo'        => $row->saldo,
 					'sejarah'  => $row->sejarah,
@@ -126,11 +127,18 @@ class Kredit extends CI_Controller
 			}
 			$templateProcessor->cloneRowAndSetValues('plafond', $replacements);
 
-			$pathToSave = "C:/xampp/htdocs/minpro/cache/" . date('d-m-y') . ".docx";
-			$templateProcessor->saveAs($pathToSave);
+			foreach ($next->result() as $row) {
+                $pathToSave = "C:/xampp/htdocs/minpro/cache/" . $row->nama_debitur . date('d-m-y') . ".docx";
+                $templateProcessor->saveAs($pathToSave);
+            }
+			redirect('character?id_lb=' . $id_lb);
 		}
-		redirect('test?id_lb=' . $id_lb);
 	}
+
+	public function hapus(){
+        $idt = $this->input->post('idt2');        
+        $this->m_kredit->hapus_data($idt);
+    }
 
 	/*
     public function add()

@@ -66,13 +66,13 @@ class Capital extends CI_Controller
 
     public function templateword()
     {
-        $next = $this->db->query("SELECT * FROM latar_belakang ORDER BY id_lb DESC LIMIT 1");
+        $id_lb = $_GET['id_lb'];
+        $next = $this->db->query("SELECT * FROM latar_belakang WHERE id_lb='$id_lb'");
         foreach ($next->result() as $row) {
             require 'vendor/autoload.php';
             $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor("C:/xampp/htdocs/minpro/cache/".$row->nama_debitur.date('d-m-y').".docx");
         }
-        $id_capi = $_GET['id_capi'];
-        $surat = $this->db->query("SELECT * FROM capital_b WHERE id_capi='$id_capi'");
+        $surat = $this->db->query("SELECT * FROM capital_b WHERE id_lb='$id_lb'");
         foreach ($surat->result() as $row) {
 
             $templateProcessor->setValues([
@@ -111,19 +111,20 @@ class Capital extends CI_Controller
                 $pathToSave = "C:/xampp/htdocs/minpro/cache/".$row->nama_debitur.date('d-m-y').".docx";
                 $templateProcessor->saveAs($pathToSave);
             }
-            redirect('capital/index2?id_lb=' . $row->id_lb);
+            /*redirect('capital/index2?id_lb=' . $row->id_lb);*/
+            redirect('test?id_lb=' . $row->id_lb);
         }
     }
 
     public function templateword2()
     {
-        $next = $this->db->query("SELECT * FROM latar_belakang ORDER BY id_lb DESC LIMIT 1");
+        $id_lb = $_GET['id_lb'];
+        $next = $this->db->query("SELECT * FROM latar_belakang WHERE id_lb='$id_lb'");
         foreach ($next->result() as $row) {
             require 'vendor/autoload.php';
             $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor("C:/xampp/htdocs/minpro/cache/".$row->nama_debitur.date('d-m-y').".docx");
         }
-        $id_capi = $_GET['id_capi'];
-        $surat = $this->db->query("SELECT * FROM capital_a WHERE id_capi='$id_capi'");
+        $surat = $this->db->query("SELECT * FROM capital_a WHERE id_lb='$id_lb'");
         foreach ($surat->result() as $row) {
 
             $templateProcessor->setValues([
@@ -162,7 +163,7 @@ class Capital extends CI_Controller
                 $pathToSave = "C:/xampp/htdocs/minpro/cache/".$row->nama_debitur.date('d-m-y').".docx";
                 $templateProcessor->saveAs($pathToSave);
             }
-            redirect('capital/next?id_lb=' . $row->id_lb);
+            redirect('test?id_lb=' . $row->id_lb);
         }
     }
 }

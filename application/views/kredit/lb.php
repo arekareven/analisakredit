@@ -8,7 +8,7 @@
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#lb">
         Add
     </button>
-<!--
+    <!--
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#rw">
         Riwayat
     </button>
@@ -32,7 +32,8 @@
                         <td>" . 'Rp. ' . number_format($row->plafon) . "</td>
                         <td>" . date('d-m-Y', strtotime($row->tgl_permohonan)) . "</td>                        
                         <td>
-                        <a href='templateword?id_lb=" . $row->id_lb . "' class ='btn btn-success' title='Next'>Next</a>                            
+                        <a href='templateword?id_lb=" . $row->id_lb . "' class ='btn btn-success' title='Next'>Next</a>
+                        <a class='btn btn-danger' data-toggle='modal' data-target='#hapus' onClick=\"HapusData('" . $row->id_lb . "')\">Hapus</a>                                
                         </td>							
                     </tr>";
             }
@@ -58,7 +59,8 @@
                         <td>" . 'Rp. ' . number_format($row->plafon) . "</td>
                         <td>" . date('d-m-Y', strtotime($row->tgl_permohonan)) . "</td>                        
                         <td>
-                        <a href='templateword?id_lb=" . $row->id_lb . "' class ='btn btn-success' title='Next'>Next</a>                            
+                        <a href='templateword?id_lb=" . $row->id_lb . "' class ='btn btn-success' title='Next'>Next</a>   
+                        <a class='btn btn-danger' data-toggle='modal' data-target='#hapus' onClick=\"HapusData('" . $row->id_lb . "')\">Hapus</a>                         
                         </td>							
                     </tr>";
             }
@@ -266,6 +268,28 @@
             </div>
         </div>
     </div>
+
+    <div id="hapus" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="custom-width-modalLabel">Konfirmasi Hapus</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                </div>
+                <form action="<?php echo base_url() . 'kredit/hapus'; ?>" method="post" class="form-horizontal" role="form">
+                    <div class="modal-body">
+                        <p>Apakah anda yakin ingin menghapus?</p>
+                        <div>
+                            <input type="hidden" id="idt2" name="idt2">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">Tidak</button>
+                        <button type="submit" class="btn btn-success waves-effect waves-light">Ya</button>
+                    </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 
     <!-- Modal -->
     <div class="modal fade" id="rw" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

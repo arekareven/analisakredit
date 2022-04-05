@@ -36,7 +36,7 @@ class Analisa extends CI_Controller
     public function lakukan_download()
     {
         $file = $_GET['file'];
-        force_download($file, NULL);
+        force_download('cache/' . $file, NULL);
     }
 
     public function next()

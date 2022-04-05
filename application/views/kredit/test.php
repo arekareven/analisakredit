@@ -4,33 +4,53 @@
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
 
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#rw">
-        Riwayat
-    </button>
-    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#character">
-        Character
-    </button>
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#capacity">
-        Capacity
-    </button>
-    <hr>
-    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#capital">
-        Capital Sebelum
-    </button>
-    <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#capital2">
-        Capital Sesudah
-    </button>
-    <hr>
-    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#condition">
-        Condition
-    </button>
-    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#collateral">
-        Collateral Kendaran
-    </button>
-    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#collateralTanah">
-        Collateral Tanah
-    </button>
-    <hr>
+    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">1</a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">2</a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">3</a>
+        </li>
+    </ul>
+    <div class="tab-content" id="pills-tabContent">
+        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#rw">
+                Riwayat Pinjaman
+            </button>
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#character">
+                Character
+            </button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#capacity">
+                Capacity
+            </button>
+        </div>
+        <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#capital">
+                Capital Sebelum
+            </button>
+            <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#capital2">
+                Capital Sesudah
+            </button>
+            <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#condition">
+                Condition
+            </button>
+        </div>
+        <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#collateralTanah">
+                Collateral Tanah
+            </button>
+            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#collateral">
+                Collateral Kendaran
+            </button>
+        </div>
+    </div>
+
+
+
+
 
     <!-- Modal character -->
     <div class="modal fade" id="character" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -59,7 +79,7 @@
                         </div>
                         <div class="col-md-12 mb-2">
                             <h4>Informasi Karakter</h4>
-                            <hr>
+                            <br>
                         </div>
                         <div class="row">
                             <div class="col-md-3 mb-3">
@@ -180,7 +200,7 @@
                         </div>
                         <div class="col-md-12 mb-2">
                             <h4>Alokasi Dana</h4>
-                            <hr>
+                            <br>
                         </div>
                         <div class="row">
                             <div class="col-md-6 mb-4">
@@ -212,10 +232,6 @@
                                 <input type="number" class="form-control" id="dana3" name="dana3">
                             </div>
                         </div>
-                        <div class="col-md-4 mb-4">
-                            <label for="tgl_npwp" class="form-label">Total</label>
-                            <input type="date" class="form-control" id="tgl_npwp" name="tgl_npwp">
-                        </div>
                         <div class="col-md-12 mb-4">
                             <label for="usaha_realisasi" class="form-label">Usaha Setelah Realisasi</label>
                             <textarea class="form-control" id="usaha_realisasi" name="usaha_realisasi"></textarea>
@@ -244,7 +260,7 @@
                     <div class="modal-body">
                         <div class="col-md-12 mb-2">
                             <h4>Aktiva lancar</h4>
-                            <hr>
+                            <br>
                         </div>
                         <div class="form-group row">
                             <label for="kas" class="col-sm-6 col-form-label">Kas</label>
@@ -328,7 +344,7 @@
                         </div>
                         <div class="col-md-12 mb-2">
                             <h4>Aktiva Tetap</h4>
-                            <hr>
+                            <br>
                         </div>
                         <div class="form-group row">
                             <label for="tanah" class="col-sm-6 col-form-label">Tanah</label>
@@ -362,7 +378,7 @@
                         </div>
                         <div class="col-md-12 mb-2">
                             <h4>Hutang</h4>
-                            <hr>
+                            <br>
                         </div>
                         <div class="form-group row">
                             <label for="hutang_jpk" class="col-sm-6 col-form-label">Hutang Jangka Pendek</label>
@@ -430,7 +446,7 @@
                     <div class="modal-body">
                         <div class="col-md-12 mb-2">
                             <h4>Aktiva lancar</h4>
-                            <hr>
+                            <br>
                         </div>
                         <div class="form-group row">
                             <label for="kas" class="col-sm-6 col-form-label">Kas</label>
@@ -514,7 +530,7 @@
                         </div>
                         <div class="col-md-12 mb-2">
                             <h4>Aktiva Tetap</h4>
-                            <hr>
+                            <br>
                         </div>
                         <div class="form-group row">
                             <label for="tanah" class="col-sm-6 col-form-label">Tanah</label>
@@ -548,7 +564,7 @@
                         </div>
                         <div class="col-md-12 mb-2">
                             <h4>Hutang</h4>
-                            <hr>
+                            <br>
                         </div>
                         <div class="form-group row">
                             <label for="hutang_jpk" class="col-sm-6 col-form-label">Hutang Jangka Pendek</label>
@@ -671,7 +687,7 @@
                             <input type="text" class="form-control" id="nama" name="nama">
                         </div>
                         <div class="col-md-12 mb-4">
-                            <label for="alamat" class="form-label">alamat Pemilik</label>
+                            <label for="alamat" class="form-label">Alamat Pemilik</label>
                             <textarea class="form-control" id="alamat" name="alamat"></textarea>
                         </div>
                         <div class="col-md-8 mb-4">
@@ -699,36 +715,36 @@
                             <textarea class="form-control" id="fisik_jaminan" name="fisik_jaminan"></textarea>
                         </div>
                         <div class="col-md-6 mb-4">
-                            <label for="luas_t" class="form-label">Luas Tanah</label>
+                            <label for="luas_t" class="form-label">Luas Tanah (M2)</label>
                             <input type="text" class="form-control" id="luas_t" name="luas_t">
                         </div>
                         <div class="col-md-6 mb-4">
-                            <label for="luas_b" class="form-label">Luas Bangunan</label>
+                            <label for="luas_b" class="form-label">Luas Bangunan (M2)</label>
                             <input type="text" class="form-control" id="luas_b" name="luas_b">
                         </div>
                         <div class="col-md-6 mb-4">
-                            <label for="harga_t" class="form-label">Harga Tanah SPPT</label>
+                            <label for="harga_t" class="form-label">Harga Tanah SPPT (Rp.)</label>
                             <input type="text" class="form-control" id="harga_t" name="harga_t">
                         </div>
                         <div class="col-md-6 mb-4">
-                            <label for="harga_b" class="form-label">Harga Bangunan SPPT</label>
+                            <label for="harga_b" class="form-label">Harga Bangunan SPPT (Rp.)</label>
                             <input type="text" class="form-control" id="harga_b" name="harga_b">
                         </div>
                         <div class="col-md-6 mb-4">
-                            <label for="harga_t2" class="form-label">Harga Tanah Pasar</label>
+                            <label for="harga_t2" class="form-label">Harga Tanah Pasar (Rp.)</label>
                             <input type="text" class="form-control" id="harga_t2" name="harga_t2">
                         </div>
                         <div class="col-md-6 mb-4">
-                            <label for="harga_b2" class="form-label">Harga Bangunan Pasar</label>
+                            <label for="harga_b2" class="form-label">Harga Bangunan Pasar (Rp.)</label>
                             <input type="text" class="form-control" id="harga_b2" name="harga_b2">
                         </div>
                         <div class="col-md-12 mb-4">
-                            <label for="ht" class="form-label">Nilai HT</label>
-                            <textarea class="form-control" id="ht" name="ht"></textarea>
+                            <label for="ht" class="form-label">Nilai HT (Rp.)</label>
+                            <input type="number" class="form-control" id="ht" name="ht">
                         </div>
                         <div class="col-md-12 mb-4">
-                            <label for="taksasi" class="form-label">Taksasi</label>
-                            <textarea class="form-control" id="taksasi" name="taksasi"></textarea>
+                            <label for="taksasi" class="form-label">Taksasi (%)</label>
+                            <input type="number" class="form-control" id="taksasi" name="taksasi">
                         </div>
                         <div class="col-md-12 mb-4">
                             <label for="pertimbangan" class="form-label">Pertimbangan</label>
@@ -746,6 +762,7 @@
 
     <!-- Modal collateral -->
     <div class="modal fade" id="collateral" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -755,67 +772,83 @@
                     </button>
                 </div>
                 <form action="<?= base_url('collateral/add'); ?>" method="post">
-                    <div class="modal-body">
+                    <div class="modal-body after-add-more2">
+                        <div class="col-md-6 mb-4">
+                            <label for="status" class="form-label">Roda</label>
+                            <select class="form-control" aria-label="Default select example" id="roda" name="roda[]">
+                                <option value=""></option>
+                                <option value="2 (Dua)">2</option>
+                                <option value="4 (Empat)">4</option>
+                                <option value="6 (Enam)">6</option>
+                                <option value="8 (Delapan)">6</option>
+                            </select>
+                        </div>
                         <div class="col-md-6 mb-4">
                             <label for="nopol" class="form-label">Nomor Polisi</label>
-                            <input type="hidden" class="form-control" id="id_lb" name="id_lb" value="<?php echo $id_lb; ?>">
-                            <input type="text" class="form-control" id="nopol" name="nopol">
+                            <input type="hidden" class="form-control" id="id_lb" name="id_lb[]" value="<?php echo $id_lb; ?>">
+                            <input type="text" class="form-control" id="nopol" name="nopol[]">
                         </div>
                         <div class="col-md-6 mb-4">
                             <label for="nama_stnk" class="form-label">Nama di STNK</label>
-                            <input type="text" class="form-control" id="nama_stnk" name="nama_stnk">
+                            <input type="text" class="form-control" id="nama_stnk" name="nama_stnk[]">
                         </div>
                         <div class="col-md-12 mb-4">
                             <label for="alamat" class="form-label">Alamat</label>
-                            <textarea class="form-control" id="alamat" name="alamat"></textarea>
+                            <textarea class="form-control" id="alamat" name="alamat[]"></textarea>
                         </div>
                         <div class="col-md-8 mb-4">
                             <label for="type" class="form-label">Merk / Type</label>
-                            <input type="text" class="form-control" id="type" name="type">
+                            <input type="text" class="form-control" id="type" name="type[]">
                         </div>
                         <div class="col-md-8 mb-4">
                             <label for="jenis" class="form-label">Jenis / Model</label>
-                            <input type="text" class="form-control" id="jenis" name="jenis">
+                            <input type="text" class="form-control" id="jenis" name="jenis[]">
                         </div>
                         <div class="col-md-6 mb-4">
                             <label for="tahun" class="form-label">Tahun</label>
-                            <input type="year" class="form-control" id="tahun" name="tahun">
+                            <input type="year" class="form-control" id="tahun" name="tahun[]">
                         </div>
                         <div class="col-md-8 mb-4">
                             <label for="warna" class="form-label">Warna</label>
-                            <input type="text" class="form-control" id="warna" name="warna">
+                            <input type="text" class="form-control" id="warna" name="warna[]">
                         </div>
                         <div class="col-md-6 mb-4">
                             <label for="silinder" class="form-label">Isi Silinder</label>
-                            <input type="text" class="form-control" id="silinder" name="silinder">
+                            <input type="text" class="form-control" id="silinder" name="silinder[]">
                         </div>
                         <div class="col-md-8 mb-4">
                             <label for="no_rangka" class="form-label">No. Rangka</label>
-                            <input type="text" class="form-control" id="no_rangka" name="no_rangka">
+                            <input type="text" class="form-control" id="no_rangka" name="no_rangka[]">
                         </div>
                         <div class="col-md-6 mb-4">
                             <label for="no_mesin" class="form-label">No. Mesin</label>
-                            <input type="text" class="form-control" id="no_mesin" name="no_mesin">
+                            <input type="text" class="form-control" id="no_mesin" name="no_mesin[]">
                         </div>
                         <div class="col-md-6 mb-4">
                             <label for="no_bpkb" class="form-label">No. BPKB</label>
-                            <input type="text" class="form-control" id="no_bpkb" name="no_bpkb">
+                            <input type="text" class="form-control" id="no_bpkb" name="no_bpkb[]">
                         </div>
                         <div class="col-md-8 mb-4">
                             <label for="milik" class="form-label">Kepemilikan</label>
-                            <input type="text" class="form-control" id="milik" name="milik">
+                            <input type="text" class="form-control" id="milik" name="milik[]">
                         </div>
-                        <div class="col-md-12 mb-4">
+                        <div class="col-md-8 mb-4">
                             <label for="taksiran" class="form-label">Taksiran Harga</label>
-                            <textarea class="form-control" id="taksiran" name="taksiran"></textarea>
+                            <input type="number" class="form-control" id="taksiran" name="taksiran[]">
                         </div>
-                        <div class="col-md-12 mb-4">
+                        <div class="col-md-8 mb-4">
                             <label for="nl" class="form-label">NL</label>
-                            <textarea class="form-control" id="nl" name="nl"></textarea>
+                            <input type="number" class="form-control" id="nl" name="nl[]">
                         </div>
                         <div class="col-md-12 mb-4">
                             <label for="kondisi" class="form-label">Kondisi Jaminan</label>
-                            <textarea class="form-control" id="kondisi" name="kondisi"></textarea>
+                            <textarea class="form-control" id="kondisi" name="kondisi[]"></textarea>
+                        </div>
+                        <div class="col-md-2 mb-3">
+                            <label for="sd5" class="form-label">Tambah data</label>
+                            <button class="btn btn-success add-more2" type="button">
+                                <i class="glyphicon glyphicon-plus"></i> Add
+                            </button>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -823,6 +856,88 @@
                         <button type="submit" class="btn btn-primary">Save changes</button>
                     </div>
                 </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="copy2 invisible">
+        <div class="modal-body2">
+            <div class="col-md-6 mb-4">
+                <label for="status" class="form-label">Roda</label>
+                <select class="form-control" aria-label="Default select example" id="roda" name="roda[]">
+                    <option value=""></option>
+                    <option value="2 (Dua)">2</option>
+                    <option value="4 (Empat)">4</option>
+                    <option value="6 (Enam)">6</option>
+                    <option value="8 (Delapan)">6</option>
+                </select>
+            </div>
+            <div class="col-md-6 mb-4">
+                <label for="nopol" class="form-label">Nomor Polisi</label>
+                <input type="hidden" class="form-control" id="id_lb" name="id_lb[]" value="<?php echo $id_lb; ?>">
+                <input type="text" class="form-control" id="nopol" name="nopol[]">
+            </div>
+            <div class="col-md-6 mb-4">
+                <label for="nama_stnk" class="form-label">Nama di STNK</label>
+                <input type="text" class="form-control" id="nama_stnk" name="nama_stnk[]">
+            </div>
+            <div class="col-md-12 mb-4">
+                <label for="alamat" class="form-label">Alamat</label>
+                <textarea class="form-control" id="alamat" name="alamat[]"></textarea>
+            </div>
+            <div class="col-md-8 mb-4">
+                <label for="type" class="form-label">Merk / Type</label>
+                <input type="text" class="form-control" id="type" name="type[]">
+            </div>
+            <div class="col-md-8 mb-4">
+                <label for="jenis" class="form-label">Jenis / Model</label>
+                <input type="text" class="form-control" id="jenis" name="jenis[]">
+            </div>
+            <div class="col-md-6 mb-4">
+                <label for="tahun" class="form-label">Tahun</label>
+                <input type="year" class="form-control" id="tahun" name="tahun[]">
+            </div>
+            <div class="col-md-8 mb-4">
+                <label for="warna" class="form-label">Warna</label>
+                <input type="text" class="form-control" id="warna" name="warna[]">
+            </div>
+            <div class="col-md-6 mb-4">
+                <label for="silinder" class="form-label">Isi Silinder</label>
+                <input type="text" class="form-control" id="silinder" name="silinder[]">
+            </div>
+            <div class="col-md-8 mb-4">
+                <label for="no_rangka" class="form-label">No. Rangka</label>
+                <input type="text" class="form-control" id="no_rangka" name="no_rangka[]">
+            </div>
+            <div class="col-md-6 mb-4">
+                <label for="no_mesin" class="form-label">No. Mesin</label>
+                <input type="text" class="form-control" id="no_mesin" name="no_mesin[]">
+            </div>
+            <div class="col-md-6 mb-4">
+                <label for="no_bpkb" class="form-label">No. BPKB</label>
+                <input type="text" class="form-control" id="no_bpkb" name="no_bpkb[]">
+            </div>
+            <div class="col-md-8 mb-4">
+                <label for="milik" class="form-label">Kepemilikan</label>
+                <input type="text" class="form-control" id="milik" name="milik[]">
+            </div>
+            <div class="col-md-8 mb-4">
+                <label for="taksiran" class="form-label">Taksiran Harga</label>
+                <input type="number" class="form-control" id="taksiran" name="taksiran[]">
+            </div>
+            <div class="col-md-8 mb-4">
+                <label for="nl" class="form-label">NL</label>
+                <input type="number" class="form-control" id="nl" name="nl[]">
+            </div>
+            <div class="col-md-12 mb-4">
+                <label for="kondisi" class="form-label">Kondisi Jaminan</label>
+                <textarea class="form-control" id="kondisi" name="kondisi[]"></textarea>
+            </div>
+            <div class="col-md-2 mb-4">
+                <label for="sd5" class="form-label">Tambah data</label>
+                <button class="btn btn-danger remove2" type="button">
+                    <i class="glyphicon glyphicon-plus"></i> Remove
+                </button>
             </div>
         </div>
     </div>
@@ -950,6 +1065,19 @@
         });
     </script>
 
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $(".add-more2").click(function() {
+                var html = $(".copy2").html();
+                $(".after-add-more2").after(html);
+            });
+
+            // saat tombol remove dklik control group akan dihapus 
+            $("body").on("click", ".remove2", function() {
+                $(this).parents(".modal-body2").remove();
+            });
+        });
+    </script>
 
 
 

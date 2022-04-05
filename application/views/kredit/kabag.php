@@ -31,7 +31,7 @@
                 }
                 echo "<tr>
                         <td>" . $row->nama_ao . "</td>
-                        <td>" . substr($row->file, 6) . "</td>                     
+                        <td>" . $row->file . "</td>                     
                         <td>" . $row->catatan . "</td>                     
                         <td><a $x>$row->status</a>
                         </td>                     

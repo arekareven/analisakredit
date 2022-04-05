@@ -7,13 +7,15 @@
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#character">
         Add
     </button>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#rw">
+        Riwayat
+    </button>
 
     <hr>
 
     <table class="table">
         <thead class="thead-dark">
             <tr>
-                <th scope="col">Id</th>
                 <th scope="col">Info Pribadi</th>
                 <th scope="col">Info Perilaku</th>
                 <th scope="col">Aksi</th>
@@ -23,7 +25,6 @@
             <?php
             foreach ($query->result() as $row) {
                 echo "<tr>
-                        <td>" . $row->id_char . "</td>
                         <td>" . $row->info_pribadi . "</td>                     
                         <td>" . $row->info_perilaku . "</td>                     
                         <td><a href='templateword?id_char=".$row->id_char."' class ='btn btn-success' title='Next'>Next</a>
@@ -34,6 +35,30 @@
         </tbody>
     </table>
 
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Plafond</th>
+                <th scope="col">Status</th>
+                <th scope="col">Sejarah</th>
+                <th scope="col">Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            foreach ($query2->result() as $row) {
+                echo "<tr>
+                        <td>" . 'Rp. ' . number_format($row->plafond) . "</td>
+                        <td>" . $row->status . "</td>                        
+                        <td>" . $row->sejarah . "</td>                        
+                        <td>
+                        <a href='templateword?id_lb=" . $row->id_lb . "' class ='btn btn-success' title='Next'>Next</a>                            
+                        </td>							
+                    </tr>";
+            }
+            ?>
+        </tbody>
+    </table>
 
     <!-- Modal character -->
     <div class="modal fade" id="character" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -116,8 +141,129 @@
         </div>
     </div>
 
+    <!-- Modal -->
+    <div class="modal fade" id="rw" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Input Data</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="<?= base_url('kredit/add_rw'); ?>" method="post">
+                    <div class="modal-body after-add-more">
+                        <div class="row">
+                            <div class="col-md-2 mb-3">
+                                <label for="plafond" class="form-label">Plafond (Rp.)</label>
+                                <input type="text" class="form-control" id="plafond" name="plafond[]">
+                            </div>
+                            <div class="col-md-2 mb-3">
+                                <label for="status" class="form-label">Status</label>
+                                <select class="form-control" aria-label="Default select example" id="status" name="status[]">
+                                    <option value=""></option>
+                                    <option value="Lunas">Lunas</option>
+                                    <option value="Belum Lunas">Belum Lunas</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2 mb-3">
+                                <label for="saldo" class="form-label">Saldo (Rp.)</label>
+                                <input type="text" class="form-control" id="saldo" name="saldo[]">
+                            </div>
+                            <div class="col-md-2 mb-3">
+                                <label for="sejarah" class="form-label">Sejarah</label>
+                                <select class="form-control" aria-label="Default select example" id="sejarah" name="sejarah[]">
+                                    <option value=""></option>
+                                    <option value="Baik">Baik</option>
+                                    <option value="Tidak Baik">Tidak Baik</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2 mb-3">
+                                <label for="data" class="form-label">Data</label>
+                                <select class="form-control" aria-label="Default select example" id="data" name="data[]">
+                                    <option value=""></option>
+                                    <option value="Terlampir">Terlampir</option>
+                                    <option value="Tidak Terlampir">Tidak Terlampir</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2 mb-3">
+                                <label for="sd5" class="form-label">Tambah data</label>
+                                <button class="btn btn-success add-more" type="button">
+                                    <i class="glyphicon glyphicon-plus"></i> Add
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="copy invisible">
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-md-2 mb-3">
+                    <label for="plafond" class="form-label">Plafond (Rp.)</label>
+                    <input type="text" class="form-control" id="plafond" name="plafond[]">
+                </div>
+                <div class="col-md-2 mb-3">
+                    <label for="status" class="form-label">Status</label>
+                    <select class="form-control" aria-label="Default select example" id="status" name="status[]">
+                        <option value=""></option>
+                        <option value="Lunas">Lunas</option>
+                        <option value="Belum Lunas">Belum Lunas</option>
+                    </select>
+                </div>
+                <div class="col-md-2 mb-3">
+                    <label for="saldo" class="form-label">Saldo (Rp.)</label>
+                    <input type="text" class="form-control" id="saldo" name="saldo[]">
+                </div>
+                <div class="col-md-2 mb-3">
+                    <label for="sejarah" class="form-label">Sejarah</label>
+                    <select class="form-control" aria-label="Default select example" id="sejarah" name="sejarah[]">
+                        <option value=""></option>
+                        <option value="Baik">Baik</option>
+                        <option value="Tidak Baik">Tidak Baik</option>
+                    </select>
+                </div>
+                <div class="col-md-2 mb-3">
+                    <label for="data" class="form-label">Data</label>
+                    <select class="form-control" aria-label="Default select example" id="data" name="data[]">
+                        <option value=""></option>
+                        <option value="Terlampir">Terlampir</option>
+                        <option value="Tidak Terlampir">Tidak Terlampir</option>
+                    </select>
+                </div>
+                <div class="col-md-2 mb-3">
+                    <label for="sd5" class="form-label">Tambah data</label>
+                    <button class="btn btn-danger remove" type="button">
+                        <i class="glyphicon glyphicon-plus"></i> Remove
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $(".add-more").click(function() {
+                var html = $(".copy").html();
+                $(".after-add-more").after(html);
+            });
+
+            // saat tombol remove dklik control group akan dihapus 
+            $("body").on("click", ".remove", function() {
+                $(this).parents(".modal-body").remove();
+            });
+        });
+    </script>
+
 
 </div>
 <!-- /.container-fluid -->
-
+</div>
 <!-- End of Main Content -->

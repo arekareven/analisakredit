@@ -15,10 +15,12 @@ class Character extends CI_Controller
     public function index()
     {
         $data['id_lb'] = $_GET['id_lb'];
+        $id_lb = $_GET['id_lb'];
         $data['title'] = 'Character';
         $data['user'] = $this->db->get_where('user', ['email' =>
         $this->session->userdata('email')])->row_array();
-        $data['query'] = $this->m_character->tampil_data();
+        $data['query'] = $this->m_character->tampil_data($id_lb);
+        $data['query2'] = $this->m_character->tampil_data2($id_lb);
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
@@ -27,25 +29,18 @@ class Character extends CI_Controller
         $this->load->view('templates/footer');
     }
 
-    public function view()
-    {
-        $data['title'] = 'Character';
-        $data['user'] = $this->db->get_where('user', ['email' =>
-        $this->session->userdata('email')])->row_array();
-        $data['query'] = $this->m_character->tampil_data();
-
-        $this->load->view('templates/header', $data);
-        $this->load->view('templates/sidebar', $data);
-        $this->load->view('templates/topbar', $data);
-        $this->load->view('kredit/character', $data);
-        $this->load->view('templates/footer');
-    }
 
     public function add()
     {
         $id_char = $this->input->post('id_char');
         $this->m_character->add_data($id_char);
     }
+
+    public function add_rw()
+	{
+		$id_lb = $this->input->post('id_lb');
+		$this->m_character->add_data_rw($id_lb);
+	}
 
     public function next()
     {
@@ -85,4 +80,34 @@ class Character extends CI_Controller
         }
         redirect('character/next?id_lb=' . $row->id_lb);
     }
+
+    public function templateword2()
+	{
+		$id_lb = $_GET['id_lb'];
+		$surat = $this->db->query("SELECT * FROM riwayat_pinjaman WHERE id_lb='$id_lb'");
+		foreach ($surat->result() as $row) {
+			require 'vendor/autoload.php';
+			$templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('Vera.docx');
+
+			$replacements = array();
+			$i = 1;
+			foreach ($surat->result() as $row) {
+
+				$replacements[] = array(
+					'no'    => $i,
+					'plafond'    => $row->plafond,
+					'status'        => $row->status,
+					'saldo'        => $row->saldo,
+					'sejarah'  => $row->sejarah,
+					'data'  => $row->data
+				);
+				$i++;
+			}
+			$templateProcessor->cloneRowAndSetValues('plafond', $replacements);
+
+			$pathToSave = "C:/xampp/htdocs/minpro/cache/" . date('d-m-y') . ".docx";
+			$templateProcessor->saveAs($pathToSave);
+		}
+		redirect('test?id_lb=' . $id_lb);
+	}
 }

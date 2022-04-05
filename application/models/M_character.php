@@ -17,9 +17,14 @@ class M_character extends CI_Model
         }
     }
 
-    public function tampil_data()
+    public function tampil_data($id_lb)
     {
-        return $this->db->query("SELECT * FROM karakter ORDER BY id_char DESC LIMIT 1");
+        return $this->db->query("SELECT * FROM karakter WHERE id_lb='$id_lb'");
+    }
+
+    public function tampil_data2($id_lb)
+    {
+        return $this->db->query("SELECT * FROM riwayat_pinjaman WHERE id_lb='$id_lb'");
     }
 
     public function add_data($data)
@@ -56,5 +61,31 @@ class M_character extends CI_Model
         );
         $this->db->insert('karakter', $data);
         redirect('character/view');
+    }
+
+    public function add_data_rw($data)
+    {
+        $id_lb            = $_POST['id_lb'];
+        $plafond            = $_POST['plafond'];
+        $status        = $_POST['status'];
+        $saldo     = $_POST['saldo'];
+        $sejarah              = $_POST['sejarah'];
+        $data          = $_POST['data'];
+
+        $total = count($plafond);
+
+        for ($i = 0; $i < $total; $i++) {
+            $x[] = array(
+
+                'id_lb'            => $id_lb[$i],
+                'plafond'            => $plafond[$i],
+                'status'        => $status[$i],
+                'saldo'    => $saldo[$i],
+                'sejarah'            => $sejarah[$i],
+                'data'        => $data[$i]
+            );
+            $this->db->insert('riwayat_pinjaman', $x[$i]);
+        }
+        redirect('character?id_lb=' . $id_lb);
     }
 }

@@ -125,6 +125,13 @@ class M_kredit extends CI_Model
 			);
 			$this->db->insert('riwayat_pinjaman', $x[$i]);
 		}
-		redirect('kredit/templateword2?id_lb=',$id_lb);
+		redirect('kredit/templateword2?id_lb='. $id_lb[0]);
+	}
+
+	function hapus_data($id_lb)
+	{
+		$this->db->where(array('id_lb' => $id_lb));
+		$this->db->delete('latar_belakang');
+		redirect('kredit/lb?=id'.$id_lb);
 	}
 }
