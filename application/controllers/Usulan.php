@@ -58,15 +58,15 @@ class Usulan extends CI_Controller
 
     public function templateword()
     {
-        $next = $this->db->query("SELECT * FROM latar_belakang ORDER BY id_lb DESC LIMIT 1");
+        $id_lb = $_GET['id_lb'];
+        $next = $this->db->query("SELECT * FROM latar_belakang WHERE id_lb='$id_lb'");
         foreach ($next->result() as $row) {
             require 'vendor/autoload.php';
-            $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor("C:/xampp/htdocs/minpro/cache/" . $row->nama_debitur . date('d-m-y') . ".docx");
+            $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor("C:/xampp/htdocs/analisakredit/cache/" . $row->nama_debitur . date('d-m-y') . ".docx");
         }
-        $id_usulan = $_GET['id_usulan'];
         $surat = $this->db->query("SELECT * FROM usulan 
                                             JOIN capital_b ON usulan.id_lb=capital_b.id_lb
-                                            WHERE id_usulan='$id_usulan'");
+                                            WHERE usulan.id_lb='$id_lb'");
         foreach ($surat->result() as $row) {
 
             $hutang = ($row->total_hutang / $row->total_al) * 100;
@@ -136,7 +136,7 @@ class Usulan extends CI_Controller
                 'user'    => $user['name']
             ]);
             foreach ($next->result() as $row) {
-                $pathToSave = "C:/xampp/htdocs/minpro/cache/" . $row->nama_debitur . date('d-m-y') . ".docx";
+                $pathToSave = "C:/xampp/htdocs/analisakredit/cache/" . $row->nama_debitur . date('d-m-y') . ".docx";
                 $templateProcessor->saveAs($pathToSave);
             }
             $surat = array(

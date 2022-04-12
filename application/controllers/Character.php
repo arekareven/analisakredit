@@ -50,13 +50,13 @@ class Character extends CI_Controller
 
     public function templateword()
     {
-        $next = $this->db->query("SELECT * FROM latar_belakang ORDER BY id_lb DESC LIMIT 1");
+        $id_lb = $_GET['id_lb'];
+        $next = $this->db->query("SELECT * FROM latar_belakang WHERE id_lb='$id_lb'");
         foreach ($next->result() as $row) {
             require 'vendor/autoload.php';
-            $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor("C:/xampp/htdocs/minpro/cache/" . $row->nama_debitur . date('d-m-y') . ".docx");
+            $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor("C:/xampp/htdocs/analisakredit/cache/" . $row->nama_debitur . date('d-m-y') . ".docx");
         }
-        $id_char = $_GET['id_char'];
-        $surat = $this->db->query("SELECT * FROM karakter WHERE id_char='$id_char'");
+        $surat = $this->db->query("SELECT * FROM karakter WHERE id_lb='$id_lb'");
         foreach ($surat->result() as $row) {
 
             $templateProcessor->setValues([
@@ -74,13 +74,14 @@ class Character extends CI_Controller
                 'hp3'                => $row->hp3,
             ]);
             foreach ($next->result() as $row) {
-                $pathToSave = "C:/xampp/htdocs/minpro/cache/" . $row->nama_debitur . date('d-m-y') . ".docx";
+                $pathToSave = "C:/xampp/htdocs/analisakredit/cache/" . $row->nama_debitur . date('d-m-y') . ".docx";
                 $templateProcessor->saveAs($pathToSave);
             }
         }
-        redirect('character/next?id_lb=' . $row->id_lb);
+        redirect('test?id_lb=' . $row->id_lb);
     }
 
+    /*
     public function templateword2()
 	{
 		$id_lb = $_GET['id_lb'];
@@ -105,9 +106,10 @@ class Character extends CI_Controller
 			}
 			$templateProcessor->cloneRowAndSetValues('plafond', $replacements);
 
-			$pathToSave = "C:/xampp/htdocs/minpro/cache/" . date('d-m-y') . ".docx";
+			$pathToSave = "C:/xampp/htdocs/analisakredit/cache/" . date('d-m-y') . ".docx";
 			$templateProcessor->saveAs($pathToSave);
 		}
 		redirect('test?id_lb=' . $id_lb);
 	}
+    */
 }

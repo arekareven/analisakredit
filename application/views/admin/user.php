@@ -9,6 +9,10 @@
 
             <?= form_error('menu', '<div class="alert alert-danger" role="alert">', '</div>'); ?>
             <?= $this->session->flashdata('menu'); ?>
+            <p>Keterangan : </p>
+            <p>Role 1 = Admin,   Role 2 = AO</p>
+            <p>Role 3 = Analis,  Role 4 = Approval</p>
+            <p>Role 5 = Tester</p>
             <table class="table table-hover">
                 <thead>
                     <tr>
@@ -21,21 +25,20 @@
                 </thead>
                 <tbody>
                     <?php $i = 1;
-                    foreach ($query->result() as $row){
+                    foreach ($query->result() as $row) {
                         echo
                         "<tr>
-                            <th scope='row'></th>
+                            <th scope='row'>".$i."</th>
                             <td>" . $row->name . "</td>
                             <td>" . $row->role_id . "</td>
                             <td>
-                            <a href='#' class='badge badge-success' data-toggle='modal' data-target='#edit' title='Edit' onClick=\"EditData('" . $row->id . "','" . $row->name . "','" . $row->email . "','" . $row->role_id . "','" . $row->is_active . "')\">edit</a>
-                            <a class ='btn btn-danger' data-toggle='modal' data-target='#hapus' title='Hapus' onClick=\"HapusData('" . $row->id . "','" . $row->name . "','" . $row->email . "','" . $row->role_id . "','" . $row->is_active . "')\"><i class='fas fa-trash'></i></a>
-                        </td>
+                                <a class='badge badge-success' data-toggle='modal' data-target='#edit' title='Edit' onClick=\"EditData('" . $row->id . "','" . $row->name . "','" . $row->email . "','" . $row->role_id . "','" . $row->is_active . "')\">edit</a>
+                                <a class ='btn btn-danger' data-toggle='modal' data-target='#hapus' title='Hapus' onClick=\"HapusData('" . $row->id . "','" . $row->name . "','" . $row->email . "','" . $row->role_id . "','" . $row->is_active . "')\"><i class='fas fa-trash'></i></a>
+                            </td>
                         </tr>"
-                       
-                    .$i++;
+                          ;$i++;
                     }
-                        ?>
+                    ?>
                 </tbody>
             </table>
 
@@ -57,10 +60,11 @@
                 <h5 class="modal-title" id="modalNewRoleLabel">Add New Role</h5>
                 <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="<?= base_url('admin/role'); ?>" method="POST">
+            <form action="<?= base_url('admin/edit_role'); ?>" method="POST">
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="name" class="form-label">Nama</label>
+                        <input type="hidden" class="form-control" id="id" name="id">
                         <input type="text" class="form-control" id="name" name="name">
                     </div>
                     <div class="form-group">
@@ -86,15 +90,15 @@
 </div>
 
 <script type="text/javascript">
-        function EditData(id, name, email,password,role_id,is_active) {
-            document.getElementById('id').value = id;
-            document.getElementById('name').value = name;
-            document.getElementById('email').value = email;
-            document.getElementById('role_id').value = role_id;
-            document.getElementById('is_active').value = is_active;
-        }
+    function EditData(id, name, email, role_id, is_active) {
+        document.getElementById('id').value = id;
+        document.getElementById('name').value = name;
+        document.getElementById('email').value = email;
+        document.getElementById('role_id').value = role_id;
+        document.getElementById('is_active').value = is_active;
+    }
 
-        function HapusData(idt) {
-            document.getElementById('idt2').value = idt;
-        }
-    </script>
+    function HapusData(idt) {
+        document.getElementById('idt2').value = idt;
+    }
+</script>

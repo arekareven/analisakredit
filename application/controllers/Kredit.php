@@ -94,20 +94,20 @@ class Kredit extends CI_Controller
 				'hp_keluarga'		=> $row->hp_keluarga
 			]);
 
-			$pathToSave = "C:/xampp/htdocs/minpro/cache/" . $row->nama_debitur . date('d-m-y') . ".docx";
+			$pathToSave = "C:/xampp/htdocs/analisakredit/cache/" . $row->nama_debitur . date('d-m-y') . ".docx";
 			$templateProcessor->saveAs($pathToSave);
 		}
-		redirect('character?id_lb=' . $id_lb);
+		redirect('test?id_lb=' . $id_lb);
 	}
 
 	public function templateword2()
 	{
 		$id_lb = $_GET['id_lb'];
 		$next = $this->db->query("SELECT * FROM latar_belakang WHERE id_lb='$id_lb'");
-        foreach ($next->result() as $row) {
-            require 'vendor/autoload.php';
-            $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor("C:/xampp/htdocs/minpro/cache/" . $row->nama_debitur . date('d-m-y') . ".docx");
-        }
+		foreach ($next->result() as $row) {
+			require 'vendor/autoload.php';
+			$templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor("C:/xampp/htdocs/analisakredit/cache/" . $row->nama_debitur . date('d-m-y') . ".docx");
+		}
 		$surat = $this->db->query("SELECT * FROM riwayat_pinjaman WHERE id_lb='$id_lb'");
 		foreach ($surat->result() as $row) {
 
@@ -128,17 +128,18 @@ class Kredit extends CI_Controller
 			$templateProcessor->cloneRowAndSetValues('plafond', $replacements);
 
 			foreach ($next->result() as $row) {
-                $pathToSave = "C:/xampp/htdocs/minpro/cache/" . $row->nama_debitur . date('d-m-y') . ".docx";
-                $templateProcessor->saveAs($pathToSave);
-            }
-			redirect('character?id_lb=' . $id_lb);
+				$pathToSave = "C:/xampp/htdocs/analisakredit/cache/" . $row->nama_debitur . date('d-m-y') . ".docx";
+				$templateProcessor->saveAs($pathToSave);
+			}
+			redirect('test?id_lb=' . $id_lb);
 		}
 	}
 
-	public function hapus(){
-        $idt = $this->input->post('idt2');        
-        $this->m_kredit->hapus_data($idt);
-    }
+	public function hapus()
+	{
+		$idt = $this->input->post('idt2');
+		$this->m_kredit->hapus_data($idt);
+	}
 
 	/*
     public function add()

@@ -45,7 +45,7 @@ class Condition extends CI_Controller
         $next = $this->db->query("SELECT * FROM latar_belakang WHERE id_lb='$id_lb'");
         foreach ($next->result() as $row) {
             require 'vendor/autoload.php';
-            $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor("C:/xampp/htdocs/minpro/cache/".$row->nama_debitur.date('d-m-y').".docx");
+            $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor("C:/xampp/htdocs/analisakredit/cache/".$row->nama_debitur.date('d-m-y').".docx");
         }
         $surat = $this->db->query("SELECT * FROM `condition` WHERE id_lb='$id_lb'");
         foreach ($surat->result() as $row) {
@@ -57,7 +57,7 @@ class Condition extends CI_Controller
                 'ancaman'  => $row->ancaman
             ]);
             foreach ($next->result() as $row) {
-                $pathToSave = "C:/xampp/htdocs/minpro/cache/".$row->nama_debitur.date('d-m-y').".docx";
+                $pathToSave = "C:/xampp/htdocs/analisakredit/cache/".$row->nama_debitur.date('d-m-y').".docx";
                 $templateProcessor->saveAs($pathToSave);
             }
             redirect('test?id_lb=' . $row->id_lb);

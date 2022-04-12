@@ -20,4 +20,4 @@
 
 </head>
 
-<body background="<?= base_url('assets/img/q.jpg'); ?>">
+<body class="bg-gradient-dark">

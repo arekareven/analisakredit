@@ -15,31 +15,37 @@
 -->
     <hr>
 
-    <table class="table">
-        <thead class="thead-dark">
-            <tr>
-                <th scope="col">Nama</th>
-                <th scope="col">Plafond</th>
-                <th scope="col">Tgl</th>
-                <th scope="col">Aksi</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-            foreach ($query->result() as $row) {
-                echo "<tr>
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Nama</th>
+                            <th scope="col">Plafond</th>
+                            <th scope="col">Tgl</th>
+                            <th scope="col">Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        foreach ($query->result() as $row) {
+                            echo "<tr>
                         <td>" . $row->nama_debitur . "</td>
                         <td>" . 'Rp. ' . number_format($row->plafon) . "</td>
                         <td>" . date('d-m-Y', strtotime($row->tgl_permohonan)) . "</td>                        
                         <td>
-                        <a href='templateword?id_lb=" . $row->id_lb . "' class ='btn btn-success' title='Next'>Next</a>
-                        <a class='btn btn-danger' data-toggle='modal' data-target='#hapus' onClick=\"HapusData('" . $row->id_lb . "')\">Hapus</a>                                
+                        <a href='templateword?id_lb=" . $row->id_lb . "' class ='btn btn-success btn-circle' title='Next'><i class='fas fa-check'></i></a>
+                        <a class='btn btn-danger btn-circle' data-toggle='modal' data-target='#hapus' onClick=\"HapusData('" . $row->id_lb . "')\"><i class='fas fa-trash'></i></a>                                
                         </td>							
                     </tr>";
-            }
-            ?>
-        </tbody>
-    </table>
+                        }
+                        ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 
     <!--
     <table class="table">

@@ -76,7 +76,7 @@
                             <label for="tgl_mulai" class="form-label">Tanggal Mulai Usaha</label>
                             <input type="date" class="form-control" id="tgl_mulai" name="tgl_mulai">
                         </div>
-                        <div class="col-md-8 mb-4">
+                        <div class=" col-md-8 mb-4">
                             <label for="tgl_nasabah" class="form-label">Jadi Nasabah Sejak</label>
                             <input type="date" class="form-control" id="tgl_nasabah" name="tgl_nasabah">
                         </div>

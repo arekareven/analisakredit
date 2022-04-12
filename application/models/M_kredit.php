@@ -19,7 +19,8 @@ class M_kredit extends CI_Model
 
 	public function tampil_data()
 	{
-		return $this->db->query("SELECT * FROM latar_belakang ORDER BY id_lb DESC LIMIT 1");
+		/*return $this->db->query("SELECT * FROM latar_belakang ORDER BY id_lb DESC LIMIT 1");*/
+		return $this->db->query("SELECT * FROM latar_belakang ORDER BY id_lb DESC");
 	}
 
 	public function add_data($data)

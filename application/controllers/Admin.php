@@ -26,7 +26,6 @@ class Admin extends CI_Controller
 
 	public function role()
 	{
-
 		$data['title'] = 'Role';
 		$data['user'] = $this->db->get_where('user', ['email' =>
 		$this->session->userdata('email')])->row_array();
@@ -42,7 +41,6 @@ class Admin extends CI_Controller
 
 	public function user()
 	{
-
 		$data['title'] = 'User';
 		$data['user'] = $this->db->get_where('user', ['email' =>
 		$this->session->userdata('email')])->row_array();
@@ -94,5 +92,11 @@ class Admin extends CI_Controller
 
 		$this->session->set_flashdata('message', '<div class="alert alert-success"
 		role="alert">Access Changed!</div>');
+	}
+
+	public function edit_role()
+	{
+		$id = $this->input->post('id');
+		$this->m_admin->ubah_data($id);
 	}
 }

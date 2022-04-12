@@ -9,4 +9,9 @@ class M_test extends CI_Model
         $this->load->library(array('session'));
         $this->load->helper(array('url'));
     }
+
+    public function data_select()
+    {
+        return $this->db->get('notaris');
+    }
 }

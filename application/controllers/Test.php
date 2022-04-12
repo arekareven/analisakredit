@@ -15,7 +15,8 @@ class Test extends CI_Controller
         $data['id_lb'] = $_GET['id_lb'];
         $data['title'] = 'Dashboard';
         $data['user'] = $this->db->get_where('user', ['email' =>
-        $this->session->userdata('email')])->row_array();
+        $this->session->userdata('email')])->row_array();        
+        $data['select'] = $this->m_test->data_select();
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);

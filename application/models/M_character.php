@@ -60,7 +60,7 @@ class M_character extends CI_Model
             'hp3'                => $hp3,
         );
         $this->db->insert('karakter', $data);
-        redirect('character/view');
+        redirect('character/templateword?id_lb=' . $id_lb);
     }
 
     public function add_data_rw($data)

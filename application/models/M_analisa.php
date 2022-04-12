@@ -15,7 +15,10 @@ class M_analisa extends CI_Model
         $user = $this->db->get_where('user', ['email' =>
         $this->session->userdata('email')])->row_array();
         $a = $user['name'];
-        return $this->db->query("SELECT * FROM analisis WHERE nama='$a'");
+        return $this->db->query("SELECT * FROM analisis WHERE nama='$a' ORDER BY id_analisis DESC");
+        /*
+        return $this->db->query("SELECT * FROM analisis WHERE nama='$a' AND status='Ditinjau'");
+        */
     }
 
     function edit_data($data)

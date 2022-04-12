@@ -53,7 +53,7 @@ class Collateral extends CI_Controller
         $next = $this->db->query("SELECT * FROM latar_belakang WHERE id_lb='$id_lb'");
         foreach ($next->result() as $row) {
             require 'vendor/autoload.php';
-            $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor("C:/xampp/htdocs/minpro/cache/" . $row->nama_debitur . date('d-m-y') . ".docx");
+            $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor("C:/xampp/htdocs/analisakredit/cache/" . $row->nama_debitur . date('d-m-y') . ".docx");
         }
         $surat = $this->db->query("SELECT * FROM collateral WHERE id_lb='$id_lb'");
         if ($surat == 0) {
@@ -85,7 +85,7 @@ class Collateral extends CI_Controller
             $templateProcessor->cloneBlock('test', count($replacements), true, false, $replacements);
 
             foreach ($next->result() as $row) {
-                $pathToSave = "C:/xampp/htdocs/minpro/cache/" . $row->nama_debitur . date('d-m-y') . ".docx";
+                $pathToSave = "C:/xampp/htdocs/analisakredit/cache/" . $row->nama_debitur . date('d-m-y') . ".docx";
                 $templateProcessor->saveAs($pathToSave);
             }
         }
@@ -98,7 +98,7 @@ class Collateral extends CI_Controller
         $next = $this->db->query("SELECT * FROM latar_belakang WHERE id_lb='$id_lb'");
         foreach ($next->result() as $row) {
             require 'vendor/autoload.php';
-            $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor("C:/xampp/htdocs/minpro/cache/" . $row->nama_debitur . date('d-m-y') . ".docx");
+            $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor("C:/xampp/htdocs/analisakredit/cache/" . $row->nama_debitur . date('d-m-y') . ".docx");
         }
         $surat = $this->db->query("SELECT * FROM collateral_tanah WHERE id_lb=$id_lb");
         if ($surat == 0) {
@@ -141,7 +141,7 @@ class Collateral extends CI_Controller
             $templateProcessor->cloneBlock('test2', count($replacements), true, false, $replacements);
 
             foreach ($next->result() as $row) {
-                $pathToSave = "C:/xampp/htdocs/minpro/cache/" . $row->nama_debitur . date('d-m-y') . ".docx";
+                $pathToSave = "C:/xampp/htdocs/analisakredit/cache/" . $row->nama_debitur . date('d-m-y') . ".docx";
                 $templateProcessor->saveAs($pathToSave);
             }
         }

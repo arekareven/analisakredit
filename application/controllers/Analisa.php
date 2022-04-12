@@ -26,7 +26,6 @@ class Analisa extends CI_Controller
         $this->load->view('templates/footer');
     }
 
-
     public function edit()
     {
         $id_analisis = $this->input->post('id_analisis');

@@ -15,7 +15,7 @@ class M_kabag extends CI_Model
         $user = $this->db->get_where('user', ['email' =>
         $this->session->userdata('email')])->row_array();
         $a = $user['name'];
-        return $this->db->query("SELECT * FROM analisis");
+        return $this->db->query("SELECT * FROM analisis ORDER BY id_analisis DESC");
     }
 
     function edit_data($data)
