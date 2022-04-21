@@ -53,7 +53,6 @@
     </div>
     -->
 
-
     <table class="table table-bordered" width="100%" cellspacing="0">
         <thead class="thead-dark">
             <tr>
@@ -65,59 +64,159 @@
         <tbody>
             <tr>
                 <td>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#rw">
+                    <button type="button" class="btn btn-success btn-icon-split" data-toggle="modal" data-target="#rw">
+                        <span class="icon text-white-50">
+                            <i class="fas fa-arrow-down"></i>
+                        </span>
+                        <span class="text">Riwayat Pinjaman</span>
+                    </button>
+                    <!--
+                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#rw">
                         Riwayat Pinjaman
                     </button>
-
+                    -->
                 </td>
                 <td>
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#character">
+                    <button type="button" class="btn btn-info btn-icon-split" data-toggle="modal" data-target="#cashflow1">
+                        <span class="icon text-white-50">
+                            <i class="fas fa-arrow-down"></i>
+                        </span>
+                        <span class="text">Cashflow Sebelum</span>
+                    </button>
+                    <!--
+                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#character">
                         Character
                     </button>
+                    -->
                 </td>
                 <td>
-                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#capacity">
+                    <button type="button" class="btn btn-warning btn-icon-split" data-toggle="modal" data-target="#collateralTanah">
+                        <span class="icon text-white-50">
+                            <i class="fas fa-arrow-down"></i>
+                        </span>
+                        <span class="text">Collateral Tanah</span>
+                    </button>
+                    <!--
+                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#capacity">
                         Capacity
                     </button>
+                    -->
                 </td>
             </tr>
             <tr>
                 <td>
-                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#capital">
+                    <button type="button" class="btn btn-success btn-icon-split" data-toggle="modal" data-target="#character">
+                        <span class="icon text-white-50">
+                            <i class="fas fa-arrow-down"></i>
+                        </span>
+                        <span class="text">Character</span>
+                    </button>
+                    <!--
+                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#capital">
                         Capital Sebelum
                     </button>
+                    -->
                 </td>
                 <td>
-                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#capital2">
+                    <button type="button" class="btn btn-info btn-icon-split" data-toggle="modal" data-target="#cashflow2">
+                        <span class="icon text-white-50">
+                            <i class="fas fa-arrow-down"></i>
+                        </span>
+                        <span class="text">Cashflow Sesudah</span>
+                    </button>
+                    <!--
+                    <button type="button" class="btn btn-info btn-icon-split" data-toggle="modal" data-target="#capital2">
+                        <span class="icon text-white-50">
+                            <i class="fas fa-arrow-down"></i>
+                        </span>
+                        <span class="text">Capital Sesudah</span>
+                    </button>
+                    -->
+                    <!--
+                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#cashflow1">
+                        Cashflow Sebelum
+                    </button>
+                    -->
+                </td>
+                <td>
+                    <button type="button" class="btn btn-warning btn-icon-split" data-toggle="modal" data-target="#collateral">
+                        <span class="icon text-white-50">
+                            <i class="fas fa-arrow-down"></i>
+                        </span>
+                        <span class="text">Collateral Kendaran</span>
+                    </button>
+                    <!--
+                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#capital2">
                         Capital Sesudah
                     </button>
+                    -->
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button type="button" class="btn btn-success btn-icon-split" data-toggle="modal" data-target="#capacity">
+                        <span class="icon text-white-50">
+                            <i class="fas fa-arrow-down"></i>
+                        </span>
+                        <span class="text">Capacity</span>
+                    </button>
+                    <!--
+                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#cashflow2">
+                        Cashflow Sesudah
+                    </button>
+                    -->
                 </td>
                 <td>
+                    <button type="button" class="btn btn-info btn-icon-split" data-toggle="modal" data-target="#condition">
+                        <span class="icon text-white-50">
+                            <i class="fas fa-arrow-down"></i>
+                        </span>
+                        <span class="text">Condition</span>
+                    </button>
+                    <!--
                     <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#condition">
                         Condition
                     </button>
+                    -->
+                </td>
+                <td>
+                    <button type="button" class="btn btn-warning btn-icon-split" data-toggle="modal" data-target="#usulan">
+                        <span class="icon text-white-50">
+                            <i class="fas fa-arrow-down"></i>
+                        </span>
+                        <span class="text">Usulan Kredit</span>
+                    </button>
+                    <!--
+                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#collateralTanah">
+                        Collateral Tanah
+                    </button>
+                    -->
                 </td>
             </tr>
             <tr>
                 <td>
-                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#collateralTanah">
-                        Collateral Tanah
+                    <button type="button" class="btn btn-success btn-icon-split" data-toggle="modal" data-target="#capital">
+                        <span class="icon text-white-50">
+                            <i class="fas fa-arrow-down"></i>
+                        </span>
+                        <span class="text">Capital Sebelum</span>
                     </button>
-                </td>
-                <td>
-                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#collateral">
+                    <!--
+                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#collateral">
                         Collateral Kendaran
                     </button>
+                    -->
                 </td>
                 <td>
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#usulan">
+                    <!--
+                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#usulan">
                         Usulan Kredit
                     </button>
+                    -->
                 </td>
             </tr>
         </tbody>
     </table>
-
 
 
     <!-- Modal -->
@@ -125,7 +224,7 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Input Data</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Riwayat Pinjaman</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -133,43 +232,10 @@
                 <form action="<?= base_url('kredit/add_rw'); ?>" method="post">
                     <div class="modal-body after-add-more">
                         <div class="row">
-                            <div class="col-md-2 mb-3">
-                                <label for="plafond" class="form-label">Plafond (Rp.)</label>
-                                <input type="hidden" class="form-control" id="id_lb" name="id_lb[]" value="<?php echo $id_lb; ?>">
-                                <input type="text" class="form-control" id="plafond" name="plafond[]">
-                            </div>
-                            <div class="col-md-2 mb-3">
-                                <label for="status" class="form-label">Status</label>
-                                <select class="form-control" aria-label="Default select example" id="status" name="status[]">
-                                    <option value=""></option>
-                                    <option value="Lunas">Lunas</option>
-                                    <option value="Belum Lunas">Belum Lunas</option>
-                                </select>
-                            </div>
-                            <div class="col-md-2 mb-3">
-                                <label for="saldo" class="form-label">Saldo (Rp.)</label>
-                                <input type="text" class="form-control" id="saldo" name="saldo[]">
-                            </div>
-                            <div class="col-md-2 mb-3">
-                                <label for="sejarah" class="form-label">Sejarah</label>
-                                <select class="form-control" aria-label="Default select example" id="sejarah" name="sejarah[]">
-                                    <option value=""></option>
-                                    <option value="Baik">Baik</option>
-                                    <option value="Tidak Baik">Tidak Baik</option>
-                                </select>
-                            </div>
-                            <div class="col-md-2 mb-3">
-                                <label for="data" class="form-label">Data</label>
-                                <select class="form-control" aria-label="Default select example" id="data" name="data[]">
-                                    <option value=""></option>
-                                    <option value="Terlampir">Terlampir</option>
-                                    <option value="Tidak Terlampir">Tidak Terlampir</option>
-                                </select>
-                            </div>
-                            <div class="col-md-2 mb-3">
-                                <label for="sd5" class="form-label">Tambah data</label>
+                            <div class="col-md-1 mb-3">
+                                <label for="sd5" class="form-label">Tambah</label>
                                 <button class="btn btn-success add-more" type="button">
-                                    <i class="glyphicon glyphicon-plus"></i> Add
+                                    <i class="fas fa-plus"></i>
                                 </button>
                             </div>
                         </div>
@@ -186,7 +252,7 @@
     <div class="copy invisible">
         <div class="modal-body">
             <div class="row">
-                <div class="col-md-2 mb-3">
+                <div class="col-md-3 mb-3">
                     <label for="plafond" class="form-label">Plafond (Rp.)</label>
                     <input type="text" class="form-control" id="plafond" name="plafond[]">
                     <input type="hidden" class="form-control" id="id_lb" name="id_lb[]" value="<?php echo $id_lb; ?>">
@@ -219,10 +285,10 @@
                         <option value="Tidak Terlampir">Tidak Terlampir</option>
                     </select>
                 </div>
-                <div class="col-md-2 mb-3">
-                    <label for="sd5" class="form-label">Tambah data</label>
+                <div class="col-md-1 mb-3">
+                    <label for="sd5" class="form-label">Hapus</label>
                     <button class="btn btn-danger remove" type="button">
-                        <i class="glyphicon glyphicon-plus"></i> Remove
+                        <i class="fas fa-trash"></i>
                     </button>
                 </div>
             </div>
@@ -234,7 +300,7 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Character</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -254,9 +320,8 @@
                             <label for="info_keluarga" class="form-label">Informasi Keluarga</label>
                             <textarea class="form-control" id="info_keluarga" name="info_keluarga"></textarea>
                         </div>
-                        <div class="col-md-12 mb-2">
-                            <h4>Informasi Karakter</h4>
-                            <br>
+                        <div class="col-md-12 mb-3">
+                            <h5>Informasi Karakter</h5>
                         </div>
                         <div class="row">
                             <div class="col-md-3 mb-3">
@@ -315,7 +380,7 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Input Data</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Capacity</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -371,13 +436,12 @@
                             <label for="tgl_npwp" class="form-label">Tgl NPWP</label>
                             <input type="date" class="form-control" id="tgl_npwp" name="tgl_npwp">
                         </div>
-                        <div class="col-md-12 mb-4">
+                        <div class="col-md-12 mb-5">
                             <label for="usaha_skrg" class="form-label">Usaha Saat Ini</label>
                             <textarea class="form-control" id="usaha_skrg" name="usaha_skrg"></textarea>
                         </div>
-                        <div class="col-md-12 mb-2">
-                            <h4>Alokasi Dana</h4>
-                            <br>
+                        <div class="col-md-12 mb-3">
+                            <h5>Alokasi Dana</h5>
                         </div>
                         <div class="row">
                             <div class="col-md-6 mb-4">
@@ -428,16 +492,15 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Input Data</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Capital</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <form action="<?= base_url('capital/add'); ?>" method="post">
                     <div class="modal-body">
-                        <div class="col-md-12 mb-2">
-                            <h4>Aktiva lancar</h4>
-                            <br>
+                        <div class="col-md-12 mb-3">
+                            <h5>Aktiva lancar</h5>
                         </div>
                         <div class="form-group row">
                             <label for="kas" class="col-sm-6 col-form-label">Kas</label>
@@ -513,15 +576,14 @@
                                 <input type="number" class="form-control" id="operasional" name="operasional">
                             </div>
                         </div>
-                        <div class="form-group row mb-4">
+                        <div class="form-group row mb-5">
                             <label for="lain" class="col-sm-6 col-form-label">Lain-lain</label>
                             <div class="col-sm-6">
                                 <input type="number" class="form-control" id="lain" name="lain">
                             </div>
                         </div>
-                        <div class="col-md-12 mb-2">
-                            <h4>Aktiva Tetap</h4>
-                            <br>
+                        <div class="col-md-12 mb-3">
+                            <h5>Aktiva Tetap</h5>
                         </div>
                         <div class="form-group row">
                             <label for="tanah" class="col-sm-6 col-form-label">Tanah</label>
@@ -547,15 +609,14 @@
                                 <input type="number" class="form-control" id="inventaris" name="inventaris">
                             </div>
                         </div>
-                        <div class="form-group row mb-4">
+                        <div class="form-group row mb-5">
                             <label for="lain2" class="col-sm-6 col-form-label">Lain-lain</label>
                             <div class="col-sm-6">
                                 <input type="number" class="form-control" id="lain2" name="lain2">
                             </div>
                         </div>
-                        <div class="col-md-12 mb-2">
-                            <h4>Hutang</h4>
-                            <br>
+                        <div class="col-md-12 mb-3">
+                            <h5>Hutang</h5>
                         </div>
                         <div class="form-group row">
                             <label for="hutang_jpk" class="col-sm-6 col-form-label">Hutang Jangka Pendek</label>
@@ -605,6 +666,135 @@
                         <button type="submit" class="btn btn-primary">Save changes</button>
                     </div>
                 </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="cashflow1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Cashflow Sebelum</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="<?= base_url('cashflow/add'); ?>" method="post">
+                    <div class="modal-body after-add-more_cf">
+                        <div class="row">
+                            <div class="col-md-1 mb-3">
+                                <label for="sd5" class="form-label">Tambah</label>
+                                <button class="btn btn-success add-more_cf" type="button">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="copy_cf invisible">
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-md-1 mb-3">
+                    <label for="no" class="form-label">No</label>
+                    <input type="text" class="form-control" id="no" name="no[]">
+                    <input type="hidden" class="form-control" id="id_lb" name="id_lb[]" value="<?php echo $id_lb; ?>">
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="keterangan" class="form-label">Keterangan</label>
+                    <input type="text" class="form-control" id="keterangan" name="keterangan[]">
+                </div>
+                <div class="col-md-2 mb-3">
+                    <label for="pemasukan" class="form-label">Pemasukan(Rp.)</label>
+                    <input type="text" class="form-control" id="pemasukan" name="pemasukan[]">
+                </div>
+                <div class="col-md-2 mb-3">
+                    <label for="pengeluaran" class="form-label">Pengeluaran(Rp.)</label>
+                    <input type="text" class="form-control" id="pengeluaran" name="pengeluaran[]">
+                </div>
+                <div class="col-md-2 mb-3">
+                    <label for="saldo" class="form-label">Saldo(Rp.)</label>
+                    <input type="text" class="form-control" id="saldo" name="saldo[]">
+                </div>
+                <div class="col-md-1 mb-3">
+                    <label for="sd5" class="form-label">Hapus</label>
+                    <button class="btn btn-danger remove_cf" type="button">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="cashflow2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Cashflow Sesudah</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="<?= base_url('cashflow/add2'); ?>" method="post">
+                    <div class="modal-body after-add-more_cf2">
+                        <div class="row">
+
+                            <div class="col-md-1 mb-3">
+                                <label for="sd5" class="form-label">Tambah</label>
+                                <button class="btn btn-success add-more_cf2" type="button">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="copy_cf2 invisible">
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-md-1 mb-3">
+                    <label for="no" class="form-label">No</label>
+                    <input type="text" class="form-control" id="no" name="no[]">
+                    <input type="hidden" class="form-control" id="id_lb" name="id_lb[]" value="<?php echo $id_lb; ?>">
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="keterangan" class="form-label">Keterangan</label>
+                    <input type="text" class="form-control" id="keterangan" name="keterangan[]">
+                </div>
+                <div class="col-md-2 mb-3">
+                    <label for="pemasukan" class="form-label">Pemasukan(Rp.)</label>
+                    <input type="text" class="form-control" id="pemasukan" name="pemasukan[]">
+                </div>
+                <div class="col-md-2 mb-3">
+                    <label for="pengeluaran" class="form-label">Pengeluaran(Rp.)</label>
+                    <input type="text" class="form-control" id="pengeluaran" name="pengeluaran[]">
+                </div>
+                <div class="col-md-2 mb-3">
+                    <label for="saldo" class="form-label">Saldo(Rp.)</label>
+                    <input type="text" class="form-control" id="saldo" name="saldo[]">
+                </div>
+                <div class="col-md-1 mb-3">
+                    <label for="sd5" class="form-label">Hapus</label>
+                    <button class="btn btn-danger remove_cf2" type="button">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
             </div>
         </div>
     </div>
@@ -844,7 +1034,7 @@
 
     <!-- Modal collateral Tanah -->
     <div class="modal fade" id="collateralTanah" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Input Data</h5>
@@ -854,83 +1044,10 @@
                 </div>
                 <form action="<?= base_url('collateral/add2'); ?>" method="post">
                     <div class="modal-body after-add-more3">
-                        <div class="col-md-8 mb-4">
-                            <label for="jenis" class="form-label">Jenis</label>
-                            <input type="hidden" class="form-control" id="id_lb" name="id_lb[]" value="<?php echo $id_lb; ?>">
-                            <input type="text" class="form-control" id="jenis" name="jenis[]">
-                        </div>
-                        <div class="col-md-8 mb-4">
-                            <label for="nama" class="form-label">Nama Pemilik</label>
-                            <input type="text" class="form-control" id="nama" name="nama[]">
-                        </div>
-                        <div class="col-md-12 mb-4">
-                            <label for="alamat" class="form-label">Alamat Pemilik</label>
-                            <textarea class="form-control" id="alamat" name="alamat[]"></textarea>
-                        </div>
-                        <div class="col-md-8 mb-4">
-                            <label for="no_shm" class="form-label">No. SHM</label>
-                            <input type="text" class="form-control" id="no_shm" name="no_shm[]">
-                        </div>
-                        <div class="col-md-12 mb-4">
-                            <label for="lokasi" class="form-label">Lokasi Jaminan</label>
-                            <textarea class="form-control" id="lokasi" name="lokasi[]"></textarea>
-                        </div>
-                        <div class="col-md-6 mb-4">
-                            <label for="tgl_ukur" class="form-label">Tgl Surat Ukur</label>
-                            <input type="date" class="form-control" id="tgl_ukur" name="tgl_ukur[]">
-                        </div>
-                        <div class="col-md-6 mb-4">
-                            <label for="no_ukur" class="form-label">No. Surat Ukur</label>
-                            <input type="text" class="form-control" id="no_ukur" name="no_ukur[]">
-                        </div>
-                        <div class="col-md-12 mb-4">
-                            <label for="milik" class="form-label">Kepemilikan</label>
-                            <input type="text" class="form-control" id="milik" name="milik[]">
-                        </div>
-                        <div class="col-md-12 mb-4">
-                            <label for="fisik_jaminan" class="form-label">Fisik Jaminan</label>
-                            <textarea class="form-control" id="fisik_jaminan" name="fisik_jaminan[]"></textarea>
-                        </div>
-                        <div class="col-md-6 mb-4">
-                            <label for="luas_t" class="form-label">Luas Tanah (M2)</label>
-                            <input type="text" class="form-control" id="luas_t" name="luas_t[]">
-                        </div>
-                        <div class="col-md-6 mb-4">
-                            <label for="luas_b" class="form-label">Luas Bangunan (M2)</label>
-                            <input type="text" class="form-control" id="luas_b" name="luas_b[]">
-                        </div>
-                        <div class="col-md-6 mb-4">
-                            <label for="harga_t" class="form-label">Harga Tanah SPPT (Rp.)</label>
-                            <input type="text" class="form-control" id="harga_t" name="harga_t[]">
-                        </div>
-                        <div class="col-md-6 mb-4">
-                            <label for="harga_b" class="form-label">Harga Bangunan SPPT (Rp.)</label>
-                            <input type="text" class="form-control" id="harga_b" name="harga_b[]">
-                        </div>
-                        <div class="col-md-6 mb-4">
-                            <label for="harga_t2" class="form-label">Harga Tanah Pasar (Rp.)</label>
-                            <input type="text" class="form-control" id="harga_t2" name="harga_t2[]">
-                        </div>
-                        <div class="col-md-6 mb-4">
-                            <label for="harga_b2" class="form-label">Harga Bangunan Pasar (Rp.)</label>
-                            <input type="text" class="form-control" id="harga_b2" name="harga_b2[]">
-                        </div>
-                        <div class="col-md-6 mb-4">
-                            <label for="ht" class="form-label">Nilai HT (Rp.)</label>
-                            <input type="number" class="form-control" id="ht" name="ht[]">
-                        </div>
-                        <div class="col-md-6 mb-4">
-                            <label for="taksasi" class="form-label">Taksasi (%)</label>
-                            <input type="number" class="form-control" id="taksasi" name="taksasi[]">
-                        </div>
-                        <div class="col-md-12 mb-4">
-                            <label for="pertimbangan" class="form-label">Pertimbangan</label>
-                            <textarea class="form-control" id="pertimbangan" name="pertimbangan[]"></textarea>
-                        </div>
-                        <div class="col-md-2 mb-3">
-                            <label for="sd5" class="form-label">Tambah data</label>
+                        <div class="col-md-1 mb-3">
+                            <label for="sd5" class="form-label">Tambah</label>
                             <button class="btn btn-success add-more3" type="button">
-                                <i class="glyphicon glyphicon-plus"></i> Add
+                                <i class="fas fa-plus"></i>
                             </button>
                         </div>
                     </div>
@@ -944,84 +1061,94 @@
     </div>
 
     <div class="copy3 invisible">
-        <div class="modal-body3">
-            <div class="col-md-8 mb-4">
-                <label for="jenis" class="form-label">Jenis</label>
-                <input type="hidden" class="form-control" id="id_lb" name="id_lb[]" value="<?php echo $id_lb; ?>">
-                <input type="text" class="form-control" id="jenis" name="jenis[]">
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <label for="jenis" class="form-label">Jenis</label>
+                    <input type="hidden" class="form-control" id="id_lb" name="id_lb[]" value="<?php echo $id_lb; ?>">
+                    <input type="text" class="form-control" id="jenis" name="jenis[]">
+                </div>
+                <div class="col-md-4 mb-4">
+                    <label for="nama" class="form-label">Nama Pemilik</label>
+                    <input type="text" class="form-control" id="nama" name="nama[]">
+                </div>
+                <div class="col-md-4 mb-4">
+                    <label for="no_shm" class="form-label">No. SHM</label>
+                    <input type="text" class="form-control" id="no_shm" name="no_shm[]">
+                </div>
             </div>
-            <div class="col-md-8 mb-4">
-                <label for="nama" class="form-label">Nama Pemilik</label>
-                <input type="text" class="form-control" id="nama" name="nama[]">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <label for="luas_t" class="form-label">Luas Tanah (M2)</label>
+                    <input type="text" class="form-control" id="luas_t" name="luas_t[]">
+                </div>
+                <div class="col-md-4 mb-4">
+                    <label for="luas_b" class="form-label">Luas Bangunan (M2)</label>
+                    <input type="text" class="form-control" id="luas_b" name="luas_b[]">
+                </div>
+                <div class="col-md-4 mb-4">
+                    <label for="harga_t" class="form-label">Harga Tanah SPPT (Rp.)</label>
+                    <input type="text" class="form-control" id="harga_t" name="harga_t[]">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <label for="harga_b" class="form-label">Harga Bangunan SPPT (Rp.)</label>
+                    <input type="text" class="form-control" id="harga_b" name="harga_b[]">
+                </div>
+                <div class="col-md-4 mb-4">
+                    <label for="harga_t2" class="form-label">Harga Tanah Pasar (Rp.)</label>
+                    <input type="text" class="form-control" id="harga_t2" name="harga_t2[]">
+                </div>
+                <div class="col-md-4 mb-4">
+                    <label for="harga_b2" class="form-label">Harga Bangunan Pasar (Rp.)</label>
+                    <input type="text" class="form-control" id="harga_b2" name="harga_b2[]">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <label for="tgl_ukur" class="form-label">Tgl Surat Ukur</label>
+                    <input type="date" class="form-control" id="tgl_ukur" name="tgl_ukur[]">
+                </div>
+                <div class="col-md-4 mb-4">
+                    <label for="no_ukur" class="form-label">No. Surat Ukur</label>
+                    <input type="text" class="form-control" id="no_ukur" name="no_ukur[]">
+                </div>
+                <div class="col-md-4 mb-4">
+                    <label for="milik" class="form-label">Kepemilikan</label>
+                    <input type="text" class="form-control" id="milik" name="milik[]">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <label for="ht" class="form-label">Nilai HT (Rp.)</label>
+                    <input type="number" class="form-control" id="ht" name="ht[]">
+                </div>
+                <div class="col-md-4 mb-4">
+                    <label for="taksasi" class="form-label">Taksasi (%)</label>
+                    <input type="number" class="form-control" id="taksasi" name="taksasi[]">
+                </div>
             </div>
             <div class="col-md-12 mb-4">
                 <label for="alamat" class="form-label">Alamat Pemilik</label>
                 <textarea class="form-control" id="alamat" name="alamat[]"></textarea>
             </div>
-            <div class="col-md-8 mb-4">
-                <label for="no_shm" class="form-label">No. SHM</label>
-                <input type="text" class="form-control" id="no_shm" name="no_shm[]">
-            </div>
             <div class="col-md-12 mb-4">
                 <label for="lokasi" class="form-label">Lokasi Jaminan</label>
                 <textarea class="form-control" id="lokasi" name="lokasi[]"></textarea>
-            </div>
-            <div class="col-md-6 mb-4">
-                <label for="tgl_ukur" class="form-label">Tgl Surat Ukur</label>
-                <input type="date" class="form-control" id="tgl_ukur" name="tgl_ukur[]">
-            </div>
-            <div class="col-md-6 mb-4">
-                <label for="no_ukur" class="form-label">No. Surat Ukur</label>
-                <input type="text" class="form-control" id="no_ukur" name="no_ukur[]">
-            </div>
-            <div class="col-md-6 mb-4">
-                <label for="milik" class="form-label">Kepemilikan</label>
-                <input type="text" class="form-control" id="milik" name="milik[]">
             </div>
             <div class="col-md-12 mb-4">
                 <label for="fisik_jaminan" class="form-label">Fisik Jaminan</label>
                 <textarea class="form-control" id="fisik_jaminan" name="fisik_jaminan[]"></textarea>
             </div>
-            <div class="col-md-6 mb-4">
-                <label for="luas_t" class="form-label">Luas Tanah (M2)</label>
-                <input type="text" class="form-control" id="luas_t" name="luas_t[]">
-            </div>
-            <div class="col-md-6 mb-4">
-                <label for="luas_b" class="form-label">Luas Bangunan (M2)</label>
-                <input type="text" class="form-control" id="luas_b" name="luas_b[]">
-            </div>
-            <div class="col-md-6 mb-4">
-                <label for="harga_t" class="form-label">Harga Tanah SPPT (Rp.)</label>
-                <input type="text" class="form-control" id="harga_t" name="harga_t[]">
-            </div>
-            <div class="col-md-6 mb-4">
-                <label for="harga_b" class="form-label">Harga Bangunan SPPT (Rp.)</label>
-                <input type="text" class="form-control" id="harga_b" name="harga_b[]">
-            </div>
-            <div class="col-md-6 mb-4">
-                <label for="harga_t2" class="form-label">Harga Tanah Pasar (Rp.)</label>
-                <input type="text" class="form-control" id="harga_t2" name="harga_t2[]">
-            </div>
-            <div class="col-md-6 mb-4">
-                <label for="harga_b2" class="form-label">Harga Bangunan Pasar (Rp.)</label>
-                <input type="text" class="form-control" id="harga_b2" name="harga_b2[]">
-            </div>
-            <div class="col-md-6 mb-4">
-                <label for="ht" class="form-label">Nilai HT (Rp.)</label>
-                <input type="number" class="form-control" id="ht" name="ht[]">
-            </div>
-            <div class="col-md-6 mb-4">
-                <label for="taksasi" class="form-label">Taksasi (%)</label>
-                <input type="number" class="form-control" id="taksasi" name="taksasi[]">
-            </div>
             <div class="col-md-12 mb-4">
                 <label for="pertimbangan" class="form-label">Pertimbangan</label>
                 <textarea class="form-control" id="pertimbangan" name="pertimbangan[]"></textarea>
             </div>
-            <div class="col-md-2 mb-3">
-                <label for="sd5" class="form-label">Tambah data</label>
+            <div class="col-md-1 mb-3">
+                <label for="sd5" class="form-label">Hapus</label>
                 <button class="btn btn-danger remove3" type="button">
-                    <i class="glyphicon glyphicon-plus"></i> Remove
+                    <i class="fas fa-trash"></i>
                 </button>
             </div>
         </div>
@@ -1030,7 +1157,7 @@
     <!-- Modal collateral Kendaraan-->
     <div class="modal fade" id="collateral" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Input Data</h5>
@@ -1040,81 +1167,10 @@
                 </div>
                 <form action="<?= base_url('collateral/add'); ?>" method="post">
                     <div class="modal-body after-add-more2">
-                        <div class="col-md-6 mb-4">
-                            <label for="status" class="form-label">Roda</label>
-                            <select class="form-control" aria-label="Default select example" id="roda" name="roda[]">
-                                <option value=""></option>
-                                <option value="2 (Dua)">2</option>
-                                <option value="4 (Empat)">4</option>
-                                <option value="6 (Enam)">6</option>
-                                <option value="8 (Delapan)">6</option>
-                            </select>
-                        </div>
-                        <div class="col-md-6 mb-4">
-                            <label for="nopol" class="form-label">Nomor Polisi</label>
-                            <input type="hidden" class="form-control" id="id_lb" name="id_lb[]" value="<?php echo $id_lb; ?>">
-                            <input type="text" class="form-control" id="nopol" name="nopol[]">
-                        </div>
-                        <div class="col-md-6 mb-4">
-                            <label for="nama_stnk" class="form-label">Nama di STNK</label>
-                            <input type="text" class="form-control" id="nama_stnk" name="nama_stnk[]">
-                        </div>
-                        <div class="col-md-12 mb-4">
-                            <label for="alamat" class="form-label">Alamat</label>
-                            <textarea class="form-control" id="alamat" name="alamat[]"></textarea>
-                        </div>
-                        <div class="col-md-8 mb-4">
-                            <label for="type" class="form-label">Merk / Type</label>
-                            <input type="text" class="form-control" id="type" name="type[]">
-                        </div>
-                        <div class="col-md-8 mb-4">
-                            <label for="jenis" class="form-label">Jenis / Model</label>
-                            <input type="text" class="form-control" id="jenis" name="jenis[]">
-                        </div>
-                        <div class="col-md-6 mb-4">
-                            <label for="tahun" class="form-label">Tahun</label>
-                            <input type="year" class="form-control" id="tahun" name="tahun[]">
-                        </div>
-                        <div class="col-md-8 mb-4">
-                            <label for="warna" class="form-label">Warna</label>
-                            <input type="text" class="form-control" id="warna" name="warna[]">
-                        </div>
-                        <div class="col-md-6 mb-4">
-                            <label for="silinder" class="form-label">Isi Silinder</label>
-                            <input type="text" class="form-control" id="silinder" name="silinder[]">
-                        </div>
-                        <div class="col-md-8 mb-4">
-                            <label for="no_rangka" class="form-label">No. Rangka</label>
-                            <input type="text" class="form-control" id="no_rangka" name="no_rangka[]">
-                        </div>
-                        <div class="col-md-6 mb-4">
-                            <label for="no_mesin" class="form-label">No. Mesin</label>
-                            <input type="text" class="form-control" id="no_mesin" name="no_mesin[]">
-                        </div>
-                        <div class="col-md-6 mb-4">
-                            <label for="no_bpkb" class="form-label">No. BPKB</label>
-                            <input type="text" class="form-control" id="no_bpkb" name="no_bpkb[]">
-                        </div>
-                        <div class="col-md-8 mb-4">
-                            <label for="milik" class="form-label">Kepemilikan</label>
-                            <input type="text" class="form-control" id="milik" name="milik[]">
-                        </div>
-                        <div class="col-md-8 mb-4">
-                            <label for="taksiran" class="form-label">Taksiran Harga</label>
-                            <input type="number" class="form-control" id="taksiran" name="taksiran[]">
-                        </div>
-                        <div class="col-md-8 mb-4">
-                            <label for="nl" class="form-label">NL</label>
-                            <input type="number" class="form-control" id="nl" name="nl[]">
-                        </div>
-                        <div class="col-md-12 mb-4">
-                            <label for="kondisi" class="form-label">Kondisi Jaminan</label>
-                            <textarea class="form-control" id="kondisi" name="kondisi[]"></textarea>
-                        </div>
-                        <div class="col-md-2 mb-3">
-                            <label for="sd5" class="form-label">Tambah data</label>
+                        <div class="col-md-1 mb-3">
+                            <label for="sd5" class="form-label">Tambah</label>
                             <button class="btn btn-success add-more2" type="button">
-                                <i class="glyphicon glyphicon-plus"></i> Add
+                                <i class="fas fa-plus"></i>
                             </button>
                         </div>
                     </div>
@@ -1128,82 +1184,90 @@
     </div>
 
     <div class="copy2 invisible">
-        <div class="modal-body2">
-            <div class="col-md-6 mb-4">
-                <label for="status" class="form-label">Roda</label>
-                <select class="form-control" aria-label="Default select example" id="roda" name="roda[]">
-                    <option value=""></option>
-                    <option value="2 (Dua)">2</option>
-                    <option value="4 (Empat)">4</option>
-                    <option value="6 (Enam)">6</option>
-                    <option value="8 (Delapan)">6</option>
-                </select>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-md-3 mb-4">
+                    <label for="status" class="form-label">Roda</label>
+                    <select class="form-control" aria-label="Default select example" id="roda" name="roda[]">
+                        <option value=""></option>
+                        <option value="2 (Dua)">2</option>
+                        <option value="4 (Empat)">4</option>
+                        <option value="6 (Enam)">6</option>
+                        <option value="8 (Delapan)">8</option>
+                    </select>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <label for="nopol" class="form-label">Nomor Polisi</label>
+                    <input type="hidden" class="form-control" id="id_lb" name="id_lb[]" value="<?php echo $id_lb; ?>">
+                    <input type="text" class="form-control" id="nopol" name="nopol[]">
+                </div>
+                <div class="col-md-3 mb-4">
+                    <label for="nama_stnk" class="form-label">Nama di STNK</label>
+                    <input type="text" class="form-control" id="nama_stnk" name="nama_stnk[]">
+                </div>
+                <div class="col-md-3 mb-4">
+                    <label for="tahun" class="form-label">Tahun</label>
+                    <input type="year" class="form-control" id="tahun" name="tahun[]">
+                </div>
             </div>
-            <div class="col-md-6 mb-4">
-                <label for="nopol" class="form-label">Nomor Polisi</label>
-                <input type="hidden" class="form-control" id="id_lb" name="id_lb[]" value="<?php echo $id_lb; ?>">
-                <input type="text" class="form-control" id="nopol" name="nopol[]">
+            <div class="row">
+                <div class="col-md-3 mb-4">
+                    <label for="silinder" class="form-label">Isi Silinder</label>
+                    <input type="text" class="form-control" id="silinder" name="silinder[]">
+                </div>
+                <div class="col-md-3 mb-4">
+                    <label for="no_rangka" class="form-label">No. Rangka</label>
+                    <input type="text" class="form-control" id="no_rangka" name="no_rangka[]">
+                </div>
+                <div class="col-md-3 mb-4">
+                    <label for="no_mesin" class="form-label">No. Mesin</label>
+                    <input type="text" class="form-control" id="no_mesin" name="no_mesin[]">
+                </div>
+                <div class="col-md-3 mb-4">
+                    <label for="no_bpkb" class="form-label">No. BPKB</label>
+                    <input type="text" class="form-control" id="no_bpkb" name="no_bpkb[]">
+                </div>
             </div>
-            <div class="col-md-6 mb-4">
-                <label for="nama_stnk" class="form-label">Nama di STNK</label>
-                <input type="text" class="form-control" id="nama_stnk" name="nama_stnk[]">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <label for="type" class="form-label">Merk / Type</label>
+                    <input type="text" class="form-control" id="type" name="type[]">
+                </div>
+                <div class="col-md-4 mb-4">
+                    <label for="jenis" class="form-label">Jenis / Model</label>
+                    <input type="text" class="form-control" id="jenis" name="jenis[]">
+                </div>
+                <div class="col-md-4 mb-4">
+                    <label for="warna" class="form-label">Warna</label>
+                    <input type="text" class="form-control" id="warna" name="warna[]">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <label for="taksiran" class="form-label">Taksiran Harga</label>
+                    <input type="number" class="form-control" id="taksiran" name="taksiran[]">
+                </div>
+                <div class="col-md-4 mb-4">
+                    <label for="nl" class="form-label">NL</label>
+                    <input type="number" class="form-control" id="nl" name="nl[]">
+                </div>
+                <div class="col-md-4 mb-4">
+                    <label for="milik" class="form-label">Kepemilikan</label>
+                    <input type="text" class="form-control" id="milik" name="milik[]">
+                </div>
             </div>
             <div class="col-md-12 mb-4">
                 <label for="alamat" class="form-label">Alamat</label>
                 <textarea class="form-control" id="alamat" name="alamat[]"></textarea>
             </div>
-            <div class="col-md-8 mb-4">
-                <label for="type" class="form-label">Merk / Type</label>
-                <input type="text" class="form-control" id="type" name="type[]">
-            </div>
-            <div class="col-md-8 mb-4">
-                <label for="jenis" class="form-label">Jenis / Model</label>
-                <input type="text" class="form-control" id="jenis" name="jenis[]">
-            </div>
-            <div class="col-md-6 mb-4">
-                <label for="tahun" class="form-label">Tahun</label>
-                <input type="year" class="form-control" id="tahun" name="tahun[]">
-            </div>
-            <div class="col-md-8 mb-4">
-                <label for="warna" class="form-label">Warna</label>
-                <input type="text" class="form-control" id="warna" name="warna[]">
-            </div>
-            <div class="col-md-6 mb-4">
-                <label for="silinder" class="form-label">Isi Silinder</label>
-                <input type="text" class="form-control" id="silinder" name="silinder[]">
-            </div>
-            <div class="col-md-8 mb-4">
-                <label for="no_rangka" class="form-label">No. Rangka</label>
-                <input type="text" class="form-control" id="no_rangka" name="no_rangka[]">
-            </div>
-            <div class="col-md-6 mb-4">
-                <label for="no_mesin" class="form-label">No. Mesin</label>
-                <input type="text" class="form-control" id="no_mesin" name="no_mesin[]">
-            </div>
-            <div class="col-md-6 mb-4">
-                <label for="no_bpkb" class="form-label">No. BPKB</label>
-                <input type="text" class="form-control" id="no_bpkb" name="no_bpkb[]">
-            </div>
-            <div class="col-md-8 mb-4">
-                <label for="milik" class="form-label">Kepemilikan</label>
-                <input type="text" class="form-control" id="milik" name="milik[]">
-            </div>
-            <div class="col-md-8 mb-4">
-                <label for="taksiran" class="form-label">Taksiran Harga</label>
-                <input type="number" class="form-control" id="taksiran" name="taksiran[]">
-            </div>
-            <div class="col-md-8 mb-4">
-                <label for="nl" class="form-label">NL</label>
-                <input type="number" class="form-control" id="nl" name="nl[]">
-            </div>
             <div class="col-md-12 mb-4">
                 <label for="kondisi" class="form-label">Kondisi Jaminan</label>
                 <textarea class="form-control" id="kondisi" name="kondisi[]"></textarea>
             </div>
-            <div class="col-md-2 mb-4">
-                <label for="sd5" class="form-label">Tambah data</label>
+            <div class="col-md-1 mb-4">
+                <label for="sd5" class="form-label">Hapus</label>
                 <button class="btn btn-danger remove2" type="button">
-                    <i class="glyphicon glyphicon-plus"></i> Remove
+                    <i class="fas fa-trash"></i>
                 </button>
             </div>
         </div>
@@ -1211,103 +1275,120 @@
 
     <!-- Modal usulan -->
     <div class="modal fade" id="usulan" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Input Data</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Usulan Kredit</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <form action="<?= base_url('usulan/add'); ?>" method="post">
                     <div class="modal-body">
-                        <div class="col-md-6 mb-4">
-                            <label for="character" class="form-label">Character</label>
-                            <input type="hidden" class="form-control" id="id_lb" name="id_lb" value="<?php echo $id_lb; ?>">
-                            <input type="text" class="form-control" id="character" name="character">
+                        <div class="row">
+                            <div class="col-md-3 mb-4">
+                                <label for="character" class="form-label">Character</label>
+                                <input type="hidden" class="form-control" id="id_lb" name="id_lb" value="<?php echo $id_lb; ?>">
+                                <input type="text" class="form-control" id="character" name="character">
+                            </div>
+                            <div class="col-md-3 mb-4">
+                                <label for="capacity" class="form-label">Capacity</label>
+                                <input type="text" class="form-control" id="capacity" name="capacity">
+                            </div>
+                            <div class="col-md-3 mb-4">
+                                <label for="capital" class="form-label">Capital</label>
+                                <input type="text" class="form-control" id="capital" name="capital">
+                            </div>
+                            <div class="col-md-3 mb-4">
+                                <label for="coe" class="form-label">Condition of Economy</label>
+                                <input type="text" class="form-control" id="coe" name="coe">
+                            </div>
                         </div>
-                        <div class="col-md-6 mb-4">
-                            <label for="capacity" class="form-label">Capacity</label>
-                            <input type="text" class="form-control" id="capacity" name="capacity">
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-3 mb-4">
+                                <label for="collateral" class="form-label">Collateral</label>
+                                <input type="text" class="form-control" id="collateral" name="collateral">
+                            </div>
+                            <div class="col-md-3 mb-4">
+                                <label for="plafond" class="form-label">Plafond</label>
+                                <input type="text" class="form-control" id="plafond" name="plafond">
+                            </div>
+                            <div class="col-md-3 mb-4">
+                                <label for="sifat" class="form-label">Sifat Kredit</label>
+                                <input type="text" class="form-control" id="sifat" name="sifat">
+                            </div>
+                            <div class="col-md-3 mb-4">
+                                <label for="jenis" class="form-label">Jenis Kredit</label>
+                                <input type="text" class="form-control" id="jenis" name="jenis">
+                            </div>
                         </div>
-                        <div class="col-md-6 mb-4">
-                            <label for="capital" class="form-label">Capital</label>
-                            <input type="text" class="form-control" id="capital" name="capital">
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-4 mb-4">
+                                <label for="tujuan" class="form-label">Tujuan Kredit</label>
+                                <input type="text" class="form-control" id="tujuan" name="tujuan">
+                            </div>
+                            <div class="col-md-4 mb-4">
+                                <label for="sektor" class="form-label">Sektor Kredit</label>
+                                <input type="text" class="form-control" id="sektor" name="sektor">
+                            </div>
+                            <div class="col-md-4 mb-4">
+                                <label for="waktu" class="form-label">Jangka Waktu</label>
+                                <input type="text" class="form-control" id="waktu" name="waktu">
+                            </div>
                         </div>
-                        <div class="col-md-6 mb-4">
-                            <label for="coe" class="form-label">Condition of Economy</label>
-                            <input type="text" class="form-control" id="coe" name="coe">
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-4 mb-4">
+                                <label for="bunga" class="form-label">Bunga (%)</label>
+                                <input type="text" class="form-control" id="bunga" name="bunga">
+                            </div>
+                            <div class="col-md-4 mb-4">
+                                <label for="angsuran" class="form-label">Angsuran</label>
+                                <input type="text" class="form-control" id="angsuran" name="angsuran">
+                            </div>
+                            <div class="col-md-4 mb-4">
+                                <label for="denda" class="form-label">Denda 0.2 % per Hari</label>
+                                <input type="text" class="form-control" id="denda" name="denda">
+                            </div>
                         </div>
-                        <div class="col-md-6 mb-4">
-                            <label for="collateral" class="form-label">Collateral</label>
-                            <input type="text" class="form-control" id="collateral" name="collateral">
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-4 mb-4">
+                                <label for="realisasi" class="form-label">Tanggal Ralisasi</label>
+                                <input type="date" class="form-control" id="realisasi" name="realisasi">
+                            </div>
+                            <div class="col-md-4 mb-4">
+                                <label for="tanggungan" class="form-label">Hak Tanggungan</label>
+                                <input type="text" class="form-control" id="tanggungan" name="tanggungan">
+                            </div>
+                            <div class="col-md-4 mb-4">
+                                <label for="likuidasi" class="form-label">Nilai Likuidasi</label>
+                                <input type="text" class="form-control" id="likuidasi" name="likuidasi">
+                            </div>
                         </div>
-                        <div class="col-md-6 mb-4">
-                            <label for="plafond" class="form-label">Plafond</label>
-                            <input type="text" class="form-control" id="plafond" name="plafond">
-                        </div>
-                        <div class="col-md-6 mb-4">
-                            <label for="sifat" class="form-label">Sifat Kredit</label>
-                            <input type="text" class="form-control" id="sifat" name="sifat">
-                        </div>
-                        <div class="col-md-6 mb-4">
-                            <label for="jenis" class="form-label">Jenis Kredit</label>
-                            <input type="text" class="form-control" id="jenis" name="jenis">
-                        </div>
-                        <div class="col-md-6 mb-4">
-                            <label for="tujuan" class="form-label">Tujuan Kredit</label>
-                            <input type="text" class="form-control" id="tujuan" name="tujuan">
-                        </div>
-                        <div class="col-md-6 mb-4">
-                            <label for="sektor" class="form-label">Sektor Kredit</label>
-                            <input type="text" class="form-control" id="sektor" name="sektor">
-                        </div>
-                        <div class="col-md-6 mb-4">
-                            <label for="waktu" class="form-label">Jangka Waktu</label>
-                            <input type="text" class="form-control" id="waktu" name="waktu">
-                        </div>
-                        <div class="col-md-6 mb-4">
-                            <label for="bunga" class="form-label">Bunga (%)</label>
-                            <input type="text" class="form-control" id="bunga" name="bunga">
-                        </div>
-                        <div class="col-md-6 mb-4">
-                            <label for="angsuran" class="form-label">Angsuran</label>
-                            <input type="text" class="form-control" id="angsuran" name="angsuran">
-                        </div>
-                        <div class="col-md-6 mb-4">
-                            <label for="denda" class="form-label">Denda Keterlambatan 0.2 % per Hari</label>
-                            <input type="text" class="form-control" id="denda" name="denda">
-                        </div>
-                        <div class="col-md-6 mb-4">
-                            <label for="realisasi" class="form-label">Tanggal Ralisasi</label>
-                            <input type="date" class="form-control" id="realisasi" name="realisasi">
-                        </div>
-                        <div class="col-md-6 mb-4">
-                            <label for="tanggungan" class="form-label">Hak Tanggungan</label>
-                            <input type="text" class="form-control" id="tanggungan" name="tanggungan">
-                        </div>
-                        <div class="col-md-6 mb-4">
-                            <label for="likuidasi" class="form-label">Nilai Likuidasi</label>
-                            <input type="text" class="form-control" id="likuidasi" name="likuidasi">
-                        </div>
-                        <div class="col-md-6 mb-4">
-                            <label for="lainnya" class="form-label">Nilai Lainnya</label>
-                            <input type="text" class="form-control" id="lainnya" name="lainnya">
-                        </div>
-                        <div class="col-md-6 mb-4">
-                            <label for="jaminan" class="form-label">Jaminan</label>
-                            <input type="text" class="form-control" id="jaminan" name="jaminan">
-                        </div>
-                        <div class="col-md-6 mb-4">
-                            <label for="notaris" class="form-label">Notaris</label>
-                            <select class="custom-select" id="notaris" name="notaris" onchange="autofill()">
-                                <option value="">-- Pilih Notaris --</option>
-                                <?php
-                                foreach ($select->result() as $row) {
-                                    echo "<option name='notaris' value='$row->notaris'>$row->notaris</option>";
-                                }
-                                ?>
-                            </select>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-4 mb-4">
+                                <label for="lainnya" class="form-label">Nilai Lainnya</label>
+                                <input type="text" class="form-control" id="lainnya" name="lainnya">
+                            </div>
+                            <div class="col-md-4 mb-4">
+                                <label for="jaminan" class="form-label">Jaminan</label>
+                                <input type="text" class="form-control" id="jaminan" name="jaminan">
+                            </div>
+                            <div class="col-md-4 mb-4">
+                                <label for="notaris" class="form-label">Notaris</label>
+                                <select class="custom-select" id="notaris" name="notaris" onchange="autofill()">
+                                    <option value="">-- Pilih Notaris --</option>
+                                    <?php
+                                    foreach ($select->result() as $row) {
+                                        echo "<option name='notaris' value='$row->notaris'>$row->notaris</option>";
+                                    }
+                                    ?>
+                                </select>
+                            </div>
                         </div>
                         <div class="col-md-6 mb-4">
                             <input type="hidden" class="form-control" id="provisi" name="provisi">
@@ -1343,7 +1424,7 @@
         $(document).ready(function() {
             $(".add-more").click(function() {
                 var html = $(".copy").html();
-                $(".after-add-more").after(html);
+                $(".after-add-more").before(html);
             });
 
             // saat tombol remove dklik control group akan dihapus 
@@ -1355,14 +1436,42 @@
 
     <script type="text/javascript">
         $(document).ready(function() {
+            $(".add-more_cf").click(function() {
+                var html = $(".copy_cf").html();
+                $(".after-add-more_cf").before(html);
+            });
+
+            // saat tombol remove dklik control group akan dihapus 
+            $("body").on("click", ".remove_cf", function() {
+                $(this).parents(".modal-body").remove();
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $(".add-more_cf2").click(function() {
+                var html = $(".copy_cf2").html();
+                $(".after-add-more_cf2").before(html);
+            });
+
+            // saat tombol remove dklik control group akan dihapus 
+            $("body").on("click", ".remove_cf2", function() {
+                $(this).parents(".modal-body").remove();
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
             $(".add-more2").click(function() {
                 var html = $(".copy2").html();
-                $(".after-add-more2").after(html);
+                $(".after-add-more2").before(html);
             });
 
             // saat tombol remove dklik control group akan dihapus 
             $("body").on("click", ".remove2", function() {
-                $(this).parents(".modal-body2").remove();
+                $(this).parents(".modal-body").remove();
             });
         });
     </script>
@@ -1371,12 +1480,12 @@
         $(document).ready(function() {
             $(".add-more3").click(function() {
                 var html = $(".copy3").html();
-                $(".after-add-more3").after(html);
+                $(".after-add-more3").before(html);
             });
 
             // saat tombol remove dklik control group akan dihapus 
             $("body").on("click", ".remove3", function() {
-                $(this).parents(".modal-body3").remove();
+                $(this).parents(".modal-body").remove();
             });
         });
     </script>

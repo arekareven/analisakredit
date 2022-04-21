@@ -5,42 +5,47 @@
     <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
 
     <div class="row">
-        <div class="col-lg-6">
+        <div class="col-lg-10">
 
             <?= form_error('menu', '<div class="alert alert-danger" role="alert">', '</div>'); ?>
             <?= $this->session->flashdata('menu'); ?>
             <p>Keterangan : </p>
-            <p>Role 1 = Admin,   Role 2 = AO</p>
-            <p>Role 3 = Analis,  Role 4 = Approval</p>
+            <p>Role 1 = Admin, Role 2 = AO</p>
+            <p>Role 3 = Analis, Role 4 = Approval</p>
             <p>Role 5 = Tester</p>
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Nama</th>
-                        <th scope="col">Role</th>
-                        <th scope="col">Action</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php $i = 1;
-                    foreach ($query->result() as $row) {
-                        echo
-                        "<tr>
-                            <th scope='row'>".$i."</th>
+            <div class="card shadow mb-4">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover" id="dataTable" width="100%" cellspacing="0">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Nama</th>
+                                    <th scope="col">Role</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php $i = 1;
+                                foreach ($query->result() as $row) {
+                                    echo
+                                    "<tr>
+                            <th scope='row'>" . $i . "</th>
                             <td>" . $row->name . "</td>
                             <td>" . $row->role_id . "</td>
                             <td>
-                                <a class='badge badge-success' data-toggle='modal' data-target='#edit' title='Edit' onClick=\"EditData('" . $row->id . "','" . $row->name . "','" . $row->email . "','" . $row->role_id . "','" . $row->is_active . "')\">edit</a>
-                                <a class ='btn btn-danger' data-toggle='modal' data-target='#hapus' title='Hapus' onClick=\"HapusData('" . $row->id . "','" . $row->name . "','" . $row->email . "','" . $row->role_id . "','" . $row->is_active . "')\"><i class='fas fa-trash'></i></a>
+                                <a class='btn btn-success btn-circle' data-toggle='modal' data-target='#edit' title='Edit' onClick=\"EditData('" . $row->id . "','" . $row->name . "','" . $row->email . "','" . $row->role_id . "','" . $row->is_active . "')\"><i class='fas fa-edit'></i></a>
+                                <a class ='btn btn-danger btn-circle' data-toggle='modal' data-target='#hapus' title='Hapus' onClick=\"HapusData('" . $row->id . "','" . $row->name . "','" . $row->email . "','" . $row->role_id . "','" . $row->is_active . "')\"><i class='fas fa-trash'></i></a>
                             </td>
-                        </tr>"
-                          ;$i++;
-                    }
-                    ?>
-                </tbody>
-            </table>
+                        </tr>";
+                                    $i++;
+                                }
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
 
 
         </div>
