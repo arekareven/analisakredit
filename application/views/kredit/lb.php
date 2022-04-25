@@ -91,7 +91,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Latar Belakang</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -125,7 +125,18 @@
                         </div>
                         <div class="col-md-8 mb-3">
                             <label for="sifat_kredit" class="form-label">Sifat Kredit</label>
-                            <input type="text" class="form-control" id="sifat_kredit" name="sifat_kredit">
+                            <select class="form-control" aria-label="Default select example" id="sifat_kredit" name="sifat_kredit">
+                                <option value="Pokok bunga tiap bulan">Pokok bunga tiap bulan</option>
+                                <option value="Pokok tiap 3 bulan bunga tiap bulan">Pokok tiap 3 bulan bunga tiap bulan</option>
+                                <option value="Pokok tiap 4 bulan bunga tiap bulan">Pokok tiap 4 bulan bunga tiap bulan</option>
+                                <option value="Pokok tiap 6 bulan bunga tiap bulan">Pokok tiap 6 bulan bunga tiap bulan</option>
+                                <option value="Pokok tiap 12 bulan bunga tiap bulan">Pokok tiap 12 bulan bunga tiap bulan</option>
+                                <option value="Pokok terakhir bunga tiap bulan">Pokok terakhir bunga tiap bulan</option>
+                                <option value="Pokok bunga terakhir">Pokok bunga terakhir</option>
+                                <option value="Musiman">Musiman</option>
+                                <option value="Anuitas">Anuitas</option>
+                                <option value="Efektif">Efektif</option>
+                            </select>
                         </div>
                         <div class="col-md-8 mb-3">
                             <label for="suku_bunga" class="form-label">Suku Bunga</label>
@@ -133,11 +144,20 @@
                         </div>
                         <div class="col-md-8 mb-3">
                             <label for="jenis_permohonan" class="form-label">Jenis Permohonan</label>
-                            <input type="text" class="form-control" id="jenis_permohonan" name="jenis_permohonan">
+                            <select class="form-control" aria-label="Default select example" id="jenis_permohonan" name="jenis_permohonan">
+                                <option value="Baru">Baru</option>
+                                <option value="Ulangan">Ulangan</option>
+                                <option value="Tambahan">Tambahan</option>
+                                <option value="Perpanjangan">Perpanjangan</option>
+                            </select>
                         </div>
                         <div class="col-md-8 mb-3">
                             <label for="tujuan_permohonan" class="form-label">Tujuan Penggunaan</label>
-                            <input type="text" class="form-control" id="tujuan_permohonan" name="tujuan_permohonan">
+                            <select class="form-control" aria-label="Default select example" id="tujuan_permohonan" name="tujuan_permohonan">
+                                <option value="Modal Kerja">Modal Kerja</option>
+                                <option value="Investasi">Investasi</option>
+                                <option value="Konsumsi">Konsumsi</option>
+                            </select>
                         </div>
                         <div class="col-md-12 mb-5">
                             <label for="ket_penggunaan" class="form-label">Keterangan Penggunaan</label>
@@ -153,7 +173,12 @@
                         </div>
                         <div class="col-md-8 mb-3">
                             <label for="status_kawin" class="form-label">Status Perkawinan</label>
-                            <input type="text" class="form-control" id="status_kawin" name="status_kawin">
+                            <select class="form-control" aria-label="Default select example" id="status_kawin" name="status_kawin">
+                                <option value="Tidak Menikah">Tidak Menikah</option>
+                                <option value="Menikah">Menikah</option>
+                                <option value="Duda">Duda</option>
+                                <option value="Janda">Janda</option>
+                            </select>
                         </div>
                         <div class="col-md-8 mb-3">
                             <label for="ttl_nasabah" class="form-label">Tempat, tgl lahir</label>
@@ -177,7 +202,13 @@
                         </div>
                         <div class="col-md-8 mb-3">
                             <label for="status_tt" class="form-label">Status Tempat Tinggal</label>
-                            <input type="text" class="form-control" id="status_tt" name="status_tt">
+                            <select class="form-control" aria-label="Default select example" id="status_tt" name="status_tt">
+                                <option value="Milik Sendiri">Milik Sendiri</option>
+                                <option value="Milik Keluarga/Ortu">Milik Keluarga/Ortu</option>
+                                <option value="Instansi">Instansi</option>
+                                <option value="Kontrak">Kontrak</option>
+                                <option value="Kredit">Kredit</option>
+                            </select>
                         </div>
                         <div class="col-md-8 mb-3">
                             <label for="pekerjaan_nasabah" class="form-label">Pekerjaan</label>
@@ -193,8 +224,10 @@
                                 <option value="SD">SD</option>
                                 <option value="SMP">SMP</option>
                                 <option value="SMA">SMA</option>
+                                <option value="Diploma">Diploma</option>
                                 <option value="S1">S1</option>
                                 <option value="S2">S2</option>
+                                <option value="S3">S3</option>
                             </select>
                         </div>
                         <div class="col-md-8 mb-3">
@@ -254,7 +287,14 @@
                         </div>
                         <div class="col-md-8 mb-3">
                             <label for="hubungan_keluarga" class="form-label">Hubungan Keluarga</label>
-                            <input type="text" class="form-control" id="hubungan_keluarga" name="hubungan_keluarga">
+                            <select class="form-control" aria-label="Default select example" id="hubungan_keluarga" name="hubungan_keluarga">
+                                <option value="Anak Kandung">Anak Kandung</option>
+                                <option value="Saudara Kandung">Saudara Kandung</option>
+                                <option value="Orang Tua">Orang Tua</option>
+                                <option value="Saudara Tidak Sekandung">Saudara Tidak Sekandung</option>
+                                <option value="Rekan Kerja">Rekan Kerja</option>
+                                <option value="Tetangga">Tetangga</option>
+                            </select>
                         </div>
                         <div class="col-md-12 mb-3">
                             <label for="alamat_keluarga" class="form-label">Alamat Rumah</label>

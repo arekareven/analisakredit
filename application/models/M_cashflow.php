@@ -52,6 +52,9 @@ class M_cashflow extends CI_Model
         $pengeluaran              = $_POST['pengeluaran'];
         $saldo          = $_POST['saldo'];
 
+        var_dump($id_lb,$no,$keterangan,$pemasukan,$pengeluaran,$saldo);
+        die;
+
         $total = count($keterangan);
 
         for ($i = 0; $i < $total; $i++) {

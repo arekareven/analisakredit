@@ -387,93 +387,106 @@
                 </div>
                 <form action="<?= base_url('capacity/add'); ?>" method="post">
                     <div class="modal-body">
-                        <div class="col-md-4 mb-4">
+                        <div class="col-md-4 mb-3">
                             <label for="nama_usaha" class="form-label">Nama Bidang Usaha</label>
                             <input type="hidden" class="form-control" id="id_lb" name="id_lb" value="<?php echo $id_lb; ?>">
                             <input type="text" class="form-control" id="nama_usaha" name="nama_usaha">
                         </div>
-                        <div class="col-md-4 mb-4">
+                        <div class="col-md-4 mb-3">
                             <label for="sektor" class="form-label">Sektor Usaha</label>
-                            <input type="text" class="form-control" id="sektor" name="sektor">
+                            <select class="form-control" aria-label="Default select example" id="sektor" name="sektor">
+                                <option value="Industri">Industri</option>
+                                <option value="Jasa">Jasa</option>
+                                <option value="Kontraktor">Kontraktor</option>
+                                <option value="Pegawai">Pegawai</option>
+                                <option value="Perdagangan">Perdagangan</option>
+                                <option value="Pertanian">Pertanian</option>
+                            </select>
                         </div>
-                        <div class="col-md-4 mb-4">
+                        <div class="col-md-4 mb-3">
                             <label for="bidang" class="form-label">Bidang Usaha</label>
                             <input type="text" class="form-control" id="bidang" name="bidang">
                         </div>
-                        <div class="col-md-12 mb-4">
+                        <div class="col-md-12 mb-3">
                             <label for="alamat_usaha" class="form-label">Alamat Usaha</label>
                             <textarea class="form-control" id="alamat_usaha" name="alamat_usaha"></textarea>
                         </div>
-                        <div class="col-md-4 mb-4">
+                        <div class="col-md-4 mb-3">
                             <label for="status_usaha" class="form-label">Status Tempat Usaha</label>
-                            <input type="text" class="form-control" id="status_usaha" name="status_usaha">
+                            <select class="form-control" aria-label="Default select example" id="status_usaha" name="status_usaha">
+                                <option value="Milik Sendiri">Milik Sendiri</option>
+                                <option value="Milik Keluarga/Ortu">Milik Keluarga/Ortu</option>
+                                <option value="Instansi">Instansi</option>
+                                <option value="Kontrak">Kontrak</option>
+                                <option value="Kredit">Kredit</option>
+                            </select>
                         </div>
-                        <div class="col-md-4 mb-4">
+                        <div class="col-md-4 mb-3">
                             <label for="tlp_usaha" class="form-label">No. Tlp Usaha</label>
                             <input type="text" class="form-control" id="tlp_usaha" name="tlp_usaha">
                         </div>
-                        <div class="col-md-4 mb-4">
+                        <div class="col-md-4 mb-3">
                             <label for="tgl_mulai" class="form-label">Tanggal Mulai Usaha</label>
                             <input type="date" class="form-control" id="tgl_mulai" name="tgl_mulai">
                         </div>
-                        <div class="col-md-4 mb-4">
+                        <div class="col-md-4 mb-3">
                             <label for="tgl_nasabah" class="form-label">Jadi Nasabah Sejak</label>
                             <input type="date" class="form-control" id="tgl_nasabah" name="tgl_nasabah">
                         </div>
-                        <div class="col-md-4 mb-4">
+                        <div class="col-md-4 mb-3">
                             <label for="akta" class="form-label">No. Akta</label>
                             <input type="text" class="form-control" id="akta" name="akta">
                         </div>
-                        <div class="col-md-4 mb-4">
+                        <div class="col-md-4 mb-3">
                             <label for="tgl_akta" class="form-label">Tanggal Akta</label>
                             <input type="date" class="form-control" id="tgl_akta" name="tgl_akta">
                         </div>
-                        <div class="col-md-4 mb-4">
+                        <div class="col-md-4 mb-3">
                             <label for="npwp" class="form-label">NPWP</label>
                             <input type="text" class="form-control" id="npwp" name="npwp">
                         </div>
-                        <div class="col-md-4 mb-4">
+                        <div class="col-md-4 mb-5">
                             <label for="tgl_npwp" class="form-label">Tgl NPWP</label>
                             <input type="date" class="form-control" id="tgl_npwp" name="tgl_npwp">
-                        </div>
-                        <div class="col-md-12 mb-5">
-                            <label for="usaha_skrg" class="form-label">Usaha Saat Ini</label>
-                            <textarea class="form-control" id="usaha_skrg" name="usaha_skrg"></textarea>
                         </div>
                         <div class="col-md-12 mb-3">
                             <h5>Alokasi Dana</h5>
                         </div>
                         <div class="row">
-                            <div class="col-md-6 mb-4">
+                            <div class="col-md-6 mb-3">
                                 <label for="alokasi1" class="form-label">Penggunaan</label>
                                 <input type="text" class="form-control" id="alokasi1" name="alokasi1">
                             </div>
-                            <div class="col-md-4 mb-4">
+                            <div class="col-md-4 mb-3">
                                 <label for="dana1" class="form-label">Dana</label>
                                 <input type="number" class="form-control" id="dana1" name="dana1">
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6 mb-4">
+                            <div class="col-md-6 mb-3">
                                 <label for="alokasi2" class="form-label">Penggunaan</label>
                                 <input type="text" class="form-control" id="alokasi2" name="alokasi2">
                             </div>
-                            <div class="col-md-4 mb-4">
+                            <div class="col-md-4 mb-3">
                                 <label for="dana2" class="form-label">Dana</label>
                                 <input type="number" class="form-control" id="dana2" name="dana2">
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6 mb-4">
+                            <div class="col-md-6 mb-3">
                                 <label for="alokasi3" class="form-label">Penggunaan</label>
                                 <input type="text" class="form-control" id="alokasi3" name="alokasi3">
                             </div>
-                            <div class="col-md-4 mb-4">
+                            <div class="col-md-4 mb-5">
                                 <label for="dana3" class="form-label">Dana</label>
                                 <input type="number" class="form-control" id="dana3" name="dana3">
                             </div>
                         </div>
-                        <div class="col-md-12 mb-4">
+                        <div class="col-md-12 mb-3">
+                            <label for="usaha_skrg" class="form-label">Usaha Saat Ini</label>
+                            <textarea class="form-control" id="usaha_skrg" name="usaha_skrg"></textarea>
+                        </div>
+                        <div class="col-md-12 mb-3">
                             <label for="usaha_realisasi" class="form-label">Usaha Setelah Realisasi</label>
                             <textarea class="form-control" id="usaha_realisasi" name="usaha_realisasi"></textarea>
                         </div>
@@ -642,24 +655,14 @@
                                 <input type="number" class="form-control" id="hutang_dagang" name="hutang_dagang">
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <label for="laba_rugi" class="col-sm-6 col-form-label">Laba / Rugi</label>
-                            <div class="col-sm-6">
-                                <input type="number" class="form-control" id="laba_rugi" name="laba_rugi">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="modal" class="col-sm-6 col-form-label">Modal Usaha</label>
-                            <div class="col-sm-6">
-                                <input type="number" class="form-control" id="modal" name="modal">
-                            </div>
-                        </div>
+                        <!--
                         <div class="form-group row">
                             <label for="harta" class="col-sm-6 col-form-label">Harta</label>
                             <div class="col-sm-6">
                                 <input type="number" class="form-control" id="harta" name="harta">
                             </div>
                         </div>
+                        -->
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

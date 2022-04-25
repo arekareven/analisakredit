@@ -57,10 +57,6 @@ class M_capital extends CI_Model
         $hutang_lain     = $this->input->post('hutang_lain');
         $hutang_dagang     = $this->input->post('hutang_dagang');
         $total_hutang     = $hutang_jpk + $hutang_jpg + $hutang_lain + $hutang_dagang;
-        $laba_rugi     = $this->input->post('laba_rugi');
-        $modal     = $this->input->post('modal');
-        $harta     = $this->input->post('harta');
-        $total_kjb     = $total_hutang + $laba_rugi + $modal + $harta;
         $total_aset     = $total_al + $total_at;
 
         $data = array(
@@ -90,10 +86,6 @@ class M_capital extends CI_Model
             'hutang_lain'    => $hutang_lain,
             'hutang_dagang'    => $hutang_dagang,
             'total_hutang'    => $total_hutang,
-            'laba_rugi'    => $laba_rugi,
-            'modal'    => $modal,
-            'harta'    => $harta,
-            'total_kjb'    => $total_kjb,
             'total_aset'    => $total_aset
         );
         $this->db->insert('capital_b', $data);
