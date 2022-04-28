@@ -15,7 +15,7 @@ class Dummy extends CI_Controller
         $data['title'] = 'DUMMY';
         $data['user'] = $this->db->get_where('user', ['email' =>
         $this->session->userdata('email')])->row_array();
-        $data['select'] = $this->m_dummy->data_select();
+        $data['query'] = $this->m_dummy->tampil_data();
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
@@ -24,37 +24,106 @@ class Dummy extends CI_Controller
         $this->load->view('templates/footer');
     }
 
+    public function bismillah()
+    {
+        $data['title'] = 'DUMMY';
+        $data['user'] = $this->db->get_where('user', ['email' =>
+        $this->session->userdata('email')])->row_array();
+
+        $this->load->view('dummy/bismillah', $data);
+    }
+
+    public function add()
+    {
+        $this->m_dummy->add_data();
+    }
+
+    public function dummy()
+    {
+        $saldo = $_GET['saldo'];
+        $surat = $this->db->query("SELECT * FROM dummy WHERE saldo='$saldo'");
+
+
+        foreach ($surat->result() as $row) {
+            $total[] = $row->pemasukan;
+        }
+        $sum = array_sum($total);
+        var_dump($sum);
+        die;
+    }
+
+
     public function templateword()
     {
+        /*
+        $saldo ini adalah data dummy dari $id_lb
+        */
+        $saldo = $_GET['saldo'];
         require 'vendor/autoload.php';
         $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor("C:/xampp/htdocs/analisakredit/uji.docx");
 
-        $no            = $_POST['no'];
-        $keterangan    = $_POST['keterangan'];
-        $pemasukan     = $_POST['pemasukan'];
-        $pengeluaran   = $_POST['pengeluaran'];
-        $saldo         = $_POST['saldo'];
+        $surat = $this->db->query("SELECT * FROM dummy WHERE saldo='$saldo'");
 
-        if ($saldo == "") {
-            $saldo = 0;
+        foreach ($surat->result() as $row) {
+            $total[] = $row->pemasukan;
         }
+        $sum = array_sum($total);
 
-        $total = count($keterangan);
+        foreach ($surat->result() as $row) {
 
-        for ($i = 0; $i < $total; $i++) {
-            $data[] = array(
+            $replacements = array();
+            foreach ($surat->result() as $row) {
 
-                'no'            => $no[$i],
-                'keterangan'    => $keterangan[$i],
-                'pemasukan'     => number_format($pemasukan[$i]),
-                'pengeluaran'   => number_format($pengeluaran[$i]),
-                'saldo'         => number_format($saldo[$i])
+                $replacements[] = array(
+                    'keterangan'    => $row->keterangan,
+                    'pemasukan'        => number_format($row->pemasukan),
+                    'pengeluaran'        => number_format($row->pengeluaran),
+                    'total'  => number_format($sum)
+                );
+            }
+            $templateProcessor->cloneRowAndSetValues('keterangan', $replacements);
+
+            $pathToSave = "C:/xampp/htdocs/analisakredit/cache/uji.docx";
+            $templateProcessor->saveAs($pathToSave);
+            redirect('dummy');
+        }
+    }
+
+    public function templateword2()
+    {
+        $saldo = $_GET['saldo'];
+        require 'vendor/autoload.php';
+        $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor("C:/xampp/htdocs/analisakredit/uji.docx");
+
+        $surat = $this->db->query("SELECT * FROM dummy WHERE saldo='$saldo'");
+
+        /*
+        foreach ($surat->result() as $row) {
+            $total[] = $row->pemasukan;
+        }
+        $sum = array_sum($total);
+        */
+
+        $replacements = array();
+        $no = 1;
+        foreach ($surat->result() as $row) {
+            $total[] = $row->pemasukan;
+            $sum = array_sum($total);
+
+            $replacements[] = array(
+                'no'    => $no,
+                'keterangan'    => $row->keterangan,
+                'pemasukan'        => number_format($row->pemasukan),
+                'pengeluaran'        => number_format($row->pengeluaran),
+                'total'  => number_format($sum)
             );
+            $no++;
         }
-        $templateProcessor->cloneRowAndSetValues('no', $data);
+        $templateProcessor->cloneBlock('test', count($replacements), true, false, $replacements);
 
         $pathToSave = "C:/xampp/htdocs/analisakredit/cache/uji.docx";
         $templateProcessor->saveAs($pathToSave);
+
         redirect('dummy');
     }
 }
