@@ -529,8 +529,6 @@
         </div>
     </div>
 
-
-
     <div class="modal fade" id="bismillah" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -886,7 +884,7 @@
                         <td>" . $row->keterangan . "</td>
                         <td>" . 'Rp. ' . number_format($row->pemasukan) . "</td>                      
                         <td>
-                        <a href='dummy/templateword2?saldo=" . $row->saldo . "' class ='btn btn-success btn-circle' title='Next'><i class='fas fa-check'></i></a>
+                        <a href='dummy/templateword_cap?id_lb=" . $row->id_lb . "' class ='btn btn-success btn-circle' title='Next'><i class='fas fa-check'></i></a>
                         <a class='btn btn-danger btn-circle' data-toggle='modal' data-target='#hapus' onClick=\"HapusData('" . $row->id_cf . "')\"><i class='fas fa-trash'></i></a>                                
                         </td>							
                     </tr>";

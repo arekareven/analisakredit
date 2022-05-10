@@ -12,8 +12,13 @@ class M_dummy extends CI_Model
 
 	public function tampil_data()
 	{
-		return $this->db->query("SELECT * FROM bismillah WHERE no1='I' OR no1='II' OR no1='III' OR no1='IV'");
+		return $this->db->query("SELECT * FROM dummy");
 	}
+
+	/*public function tampil_data()
+	{
+		return $this->db->query("SELECT * FROM bismillah WHERE no1='I' OR no1='II' OR no1='III' OR no1='IV'");
+	}*/
 
 	public function tampil_data2()
 	{

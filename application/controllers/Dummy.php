@@ -21,7 +21,7 @@ class Dummy extends CI_Controller
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);
-        $this->load->view('dummy/dummy', $data);
+        $this->load->view('dummy/dummyori', $data);
         $this->load->view('templates/footer');
     }
 
@@ -118,15 +118,9 @@ class Dummy extends CI_Controller
         $replacements = array();
         $i = 1;
         foreach ($surat->result() as $row) {
-            $total[] = $row->pemasukan;
-            $sum = array_sum($total);
 
             $replacements[] = array(
-                'no'    => $i,
-                'keterangan'    => $row->keterangan,
-                'pemasukan'        => number_format($row->pemasukan),
-                'pengeluaran'        => number_format($row->pengeluaran),
-                'total'  => number_format($sum)
+                'no'    => $row->dari
             );
             $i++;
         }
@@ -149,6 +143,8 @@ class Dummy extends CI_Controller
         $replacements = array();
         $i = 1;
         foreach ($surat->result() as $row) {
+            $a[] = $row->pemasukan2 + $row->pemasukan3 + $row->pemasukan4 + $row->pemasukan5;
+            $b[] = $row->pengeluaran2 + $row->pengeluaran3 + $row->pengeluaran4 + $row->pengeluaran5;
 
             $replacements[] = array(
                 'no1'        => $row->no1,
@@ -172,16 +168,17 @@ class Dummy extends CI_Controller
                 'pengeluaran5'        => number_format($row->pengeluaran5),
                 'saldo6'        => number_format($row->saldo6),
             );
-
-            $templateProcessor->setValues([
-                'kekuatan'    => $row->kekuatan,
-                'kelemahan'        => $row->kelemahan,
-                'peluang'        => $row->peluang,
-                'ancaman'  => $row->ancaman
-            ]);
-
             $i++;
         }
+        $jumlah_pemasukan    = array_sum($a);
+        $jumlah_pengeluaran    = array_sum($b);
+
+        $templateProcessor->setValues([
+            'a'    => number_format($jumlah_pemasukan),
+            'b'        => number_format($jumlah_pengeluaran),
+            'c'        => number_format($jumlah_pemasukan - $jumlah_pengeluaran)
+        ]);
+
         $templateProcessor->cloneBlock('bismillah', count($replacements), true, false, $replacements);
 
         $pathToSave = "C:/xampp/htdocs/analisakredit/cache/uji.docx";
@@ -195,7 +192,7 @@ class Dummy extends CI_Controller
     {
         $id_lb = $_GET['id_lb'];
         require 'vendor/autoload.php';
-        $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor("C:/xampp/htdocs/analisakredit/cache/uji.docx");
+        $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor("C:/xampp/htdocs/analisakredit/uji.docx");
 
         $surat = $this->db->query("SELECT * FROM bismillah WHERE id_lb='$id_lb' AND no1='V' OR no1='VI' OR no1='VII' OR no1='VIII'");
 
@@ -231,7 +228,79 @@ class Dummy extends CI_Controller
 
         $pathToSave = "C:/xampp/htdocs/analisakredit/cache/uji.docx";
         $templateProcessor->saveAs($pathToSave);
+        /*$templateProcessor->saveAs('php://output');*/
 
         redirect('dummy');
+    }
+
+
+
+    /* asumsi capital setelah kredit */
+    public function templateword_cap()
+    {
+        $id_lb = $_GET['id_lb'];
+        require 'vendor/autoload.php';
+        $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor("C:/xampp/htdocs/analisakredit/uji.docx");
+
+        $surat = $this->db->query("SELECT * FROM capital_b
+                                        JOIN dummy ON capital_b.id_lb=dummy.id_lb 
+                                        WHERE capital_b.id_lb='$id_lb'");
+        $a = $this->kas($id_lb);
+        foreach ($surat->result() as $row) {
+            $kas = $row->kas + $a;
+
+            $templateProcessor->setValues([
+                'kas'    => number_format($kas),
+                'tabungan'        => number_format($tabungan),
+                'deposito'        => number_format($row->deposito),
+                'piutang'  => number_format($row->piutang),
+                'peralatan'  => number_format($row->peralatan),
+                'barang'     => number_format($row->barang),
+                'barang2'     => number_format($row->barang2),
+                'barang3'     => number_format($row->barang3),
+                'sewa'     => number_format($row->sewa),
+                'lahan'   => number_format($row->lahan),
+                'gedung'          => number_format($row->gedung),
+                'operasional'      => number_format($row->operasional),
+                'lain'          => number_format($row->lain),
+                'total_al'      => number_format($row->total_al),
+                'tanah'    => number_format($row->tanah),
+                'bangunan'    => number_format($row->bangunan),
+                'kendaraan'    => number_format($row->kendaraan),
+                'inventaris'    => number_format($row->inventaris),
+                'lain2'    => number_format($row->lain2),
+                'total_at'    => number_format($row->total_at),
+                'hutang_jpk'    => number_format($row->hutang_jpk),
+                'hutang_jpg'    => number_format($row->hutang_jpg),
+                'hutang_lain'    => number_format($row->hutang_lain),
+                'hutang_dagang'    => number_format($row->hutang_dagang),
+                'total_hutang'    => number_format($row->total_hutang),
+                'modal'    => number_format($row->modal),
+                'harta'    => number_format($row->harta),
+                'total_kjb'    => number_format($row->total_kjb),
+                'total_aset'    => number_format($row->total_aset)
+            ]);
+
+            $pathToSave = "C:/xampp/htdocs/analisakredit/cache/uji.docx";
+            $templateProcessor->saveAs($pathToSave);
+            redirect('dummy');
+        }
+    }
+
+    public function kas($id_lb)
+    {
+        $surat = $this->db->query("SELECT * FROM dummy WHERE id_lb='$id_lb'");
+
+        foreach ($surat->result() as $row) {
+            if ($row->untuk = 1) {
+
+                $jumlah[] = $row->pengeluaran;
+                $jumlah2[] = $row->pemasukan;
+            }
+        }
+        $jumlah_pengeluaran = array_sum($jumlah);
+        $jumlah_pemasukan = array_sum($jumlah2);
+        $a = $jumlah_pemasukan - $jumlah_pengeluaran;
+        return $a;
     }
 }
