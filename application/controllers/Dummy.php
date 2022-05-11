@@ -21,7 +21,7 @@ class Dummy extends CI_Controller
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);
-        $this->load->view('dummy/dummyori', $data);
+        $this->load->view('dummy/dummy', $data);
         $this->load->view('templates/footer');
     }
 
@@ -172,6 +172,9 @@ class Dummy extends CI_Controller
         }
         $jumlah_pemasukan    = array_sum($a);
         $jumlah_pengeluaran    = array_sum($b);
+        $total = $jumlah_pemasukan-$jumlah_pengeluaran;
+
+        return $total;
 
         $templateProcessor->setValues([
             'a'    => number_format($jumlah_pemasukan),
@@ -192,7 +195,7 @@ class Dummy extends CI_Controller
     {
         $id_lb = $_GET['id_lb'];
         require 'vendor/autoload.php';
-        $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor("C:/xampp/htdocs/analisakredit/uji.docx");
+        $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor("C:/xampp/htdocs/analisakredit/cache/uji.docx");
 
         $surat = $this->db->query("SELECT * FROM bismillah WHERE id_lb='$id_lb' AND no1='V' OR no1='VI' OR no1='VII' OR no1='VIII'");
 
@@ -228,6 +231,7 @@ class Dummy extends CI_Controller
 
         $pathToSave = "C:/xampp/htdocs/analisakredit/cache/uji.docx";
         $templateProcessor->saveAs($pathToSave);
+        force_download('C:/xampp/htdocs/analisakredit/cache/uji.docx', NULL);
         /*$templateProcessor->saveAs('php://output');*/
 
         redirect('dummy');
@@ -247,7 +251,6 @@ class Dummy extends CI_Controller
                                         WHERE capital_b.id_lb='$id_lb'");
         $a = $this->kas($id_lb);
         foreach ($surat->result() as $row) {
-            $kas = $row->kas + $a;
 
             $templateProcessor->setValues([
                 'kas'    => number_format($kas),
@@ -287,20 +290,69 @@ class Dummy extends CI_Controller
         }
     }
 
-    public function kas($id_lb)
+    public function kas()
     {
-        $surat = $this->db->query("SELECT * FROM dummy WHERE id_lb='$id_lb'");
 
-        foreach ($surat->result() as $row) {
-            if ($row->untuk = 1) {
+        $result = $this->db->query('SELECT id_lb,keterangan,dari,untuk, SUM(pemasukan) AS pemasukan, SUM(pengeluaran) AS pengeluaran
+		FROM dummy 
+		GROUP BY id_lb, dari, untuk');
 
-                $jumlah[] = $row->pengeluaran;
-                $jumlah2[] = $row->pemasukan;
+        echo '<table>
+		<thead>
+			<tr>
+				<th>Keterangan</th>
+				<th>Pemasukan</th>
+				<th>Pengeluaran</th>
+				<th>TOTAL</th>
+			</tr>
+		</thead>
+		<tbody>';
+		
+        $subtotal_plg = $subtotal_thn = $total = 0;
+        foreach ($result as $key => $row)
+        {
+            $subtotal_plg += $row['pemasukan'];
+            $subtotal_thn += $row['pemasukan'];
+            echo '<tr>
+                    <td>'.$row['keterangan'].'</td>
+                    <td>'.$row['pemasukan'].'</td>
+                    <td>'.$row['pengeluaran'].'</td>
+                    <td class="right">'.number_format($row['pemasukan']).'</td>
+                </tr>';
+            
+            // SUB TOTAL per id_pelanggan
+            if (@$result[$key+1]['dari'] != $row['dari']) {
+                echo '<tr class="subtotal">
+                    <td></td>
+                    <td>SUB TOTAL</td>
+                    <td></td>
+                    <td class="right">'.number_format($subtotal_plg).'</td>
+                </tr>';
+                $subtotal_plg = 0;
             }
+            
+            // SUB TOTAL per thn_br
+            if (@$result[$key+1]['id_lb'] != $row['id_lb']) {
+                echo '<tr class="subtotal">
+                    <td></td>
+                    <td>SUB TOTAL ' . $row['id_lb'] . '</td>
+                    <td></td>
+                    <td class="right">'.number_format($subtotal_thn).'</td>
+                </tr>';
+                $subtotal_thn = 0;
+            } 
+            $total += $row['pemasukan'];
         }
-        $jumlah_pengeluaran = array_sum($jumlah);
-        $jumlah_pemasukan = array_sum($jumlah2);
-        $a = $jumlah_pemasukan - $jumlah_pengeluaran;
-        return $a;
+
+        echo '<tr class="total">
+                <td></td>
+                <td>GRAND TOTAL</td>
+                <td></td>
+                <td class="right"> ' .number_format($total) . '</td>
+            </tr>
+            </tbody>
+        </table>';
+
+        
     }
 }

@@ -18,6 +18,7 @@
     </button>
     <hr>
 
+    <!-- table pemasukan -->
     <div class="card shadow mb-4">
         <div class="card-body">
             <div class="table-responsive">
@@ -48,6 +49,7 @@
         </div>
     </div>
 
+    <!-- table pengeluaran -->
     <div class="card shadow mb-4">
         <div class="card-body">
             <div class="table-responsive">
@@ -82,7 +84,7 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Bismillah</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Pemasukan</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -729,7 +731,7 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Bismillah</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Pengeluaran</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
