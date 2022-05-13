@@ -51,6 +51,7 @@ class Kredit extends CI_Controller
 	public function templateword()
 	{
 		$id_lb = $_GET['id_lb'];
+		/*
 		$surat = $this->db->query("SELECT * FROM latar_belakang WHERE id_lb='$id_lb'");
 		foreach ($surat->result() as $row) {
 			require 'vendor/autoload.php';
@@ -97,6 +98,7 @@ class Kredit extends CI_Controller
 			$pathToSave = "C:/xampp/htdocs/analisakredit/cache/" . $row->nama_debitur . date('d-m-y') . ".docx";
 			$templateProcessor->saveAs($pathToSave);
 		}
+		*/
 		redirect('test?id_lb=' . $id_lb);
 	}
 

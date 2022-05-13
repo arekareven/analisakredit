@@ -142,9 +142,11 @@ class Dummy extends CI_Controller
 
         $replacements = array();
         $i = 1;
+
         foreach ($surat->result() as $row) {
             $a[] = $row->pemasukan2 + $row->pemasukan3 + $row->pemasukan4 + $row->pemasukan5;
             $b[] = $row->pengeluaran2 + $row->pengeluaran3 + $row->pengeluaran4 + $row->pengeluaran5;
+
 
             $replacements[] = array(
                 'no1'        => $row->no1,
@@ -169,12 +171,11 @@ class Dummy extends CI_Controller
                 'saldo6'        => number_format($row->saldo6),
             );
             $i++;
+            
         }
         $jumlah_pemasukan    = array_sum($a);
         $jumlah_pengeluaran    = array_sum($b);
-        $total = $jumlah_pemasukan-$jumlah_pengeluaran;
-
-        return $total;
+        $total = $jumlah_pemasukan - $jumlah_pengeluaran;
 
         $templateProcessor->setValues([
             'a'    => number_format($jumlah_pemasukan),
@@ -307,40 +308,39 @@ class Dummy extends CI_Controller
 			</tr>
 		</thead>
 		<tbody>';
-		
+
         $subtotal_plg = $subtotal_thn = $total = 0;
-        foreach ($result as $key => $row)
-        {
+        foreach ($result as $key => $row) {
             $subtotal_plg += $row['pemasukan'];
             $subtotal_thn += $row['pemasukan'];
             echo '<tr>
-                    <td>'.$row['keterangan'].'</td>
-                    <td>'.$row['pemasukan'].'</td>
-                    <td>'.$row['pengeluaran'].'</td>
-                    <td class="right">'.number_format($row['pemasukan']).'</td>
+                    <td>' . $row['keterangan'] . '</td>
+                    <td>' . $row['pemasukan'] . '</td>
+                    <td>' . $row['pengeluaran'] . '</td>
+                    <td class="right">' . number_format($row['pemasukan']) . '</td>
                 </tr>';
-            
+
             // SUB TOTAL per id_pelanggan
-            if (@$result[$key+1]['dari'] != $row['dari']) {
+            if (@$result[$key + 1]['dari'] != $row['dari']) {
                 echo '<tr class="subtotal">
                     <td></td>
                     <td>SUB TOTAL</td>
                     <td></td>
-                    <td class="right">'.number_format($subtotal_plg).'</td>
+                    <td class="right">' . number_format($subtotal_plg) . '</td>
                 </tr>';
                 $subtotal_plg = 0;
             }
-            
+
             // SUB TOTAL per thn_br
-            if (@$result[$key+1]['id_lb'] != $row['id_lb']) {
+            if (@$result[$key + 1]['id_lb'] != $row['id_lb']) {
                 echo '<tr class="subtotal">
                     <td></td>
                     <td>SUB TOTAL ' . $row['id_lb'] . '</td>
                     <td></td>
-                    <td class="right">'.number_format($subtotal_thn).'</td>
+                    <td class="right">' . number_format($subtotal_thn) . '</td>
                 </tr>';
                 $subtotal_thn = 0;
-            } 
+            }
             $total += $row['pemasukan'];
         }
 
@@ -348,11 +348,9 @@ class Dummy extends CI_Controller
                 <td></td>
                 <td>GRAND TOTAL</td>
                 <td></td>
-                <td class="right"> ' .number_format($total) . '</td>
+                <td class="right"> ' . number_format($total) . '</td>
             </tr>
             </tbody>
         </table>';
-
-        
     }
 }

@@ -72,9 +72,8 @@ class Capital extends CI_Controller
             require 'vendor/autoload.php';
             $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor("C:/xampp/htdocs/analisakredit/cache/".$row->nama_debitur.date('d-m-y').".docx");
         }
-        $surat = $this->db->query("SELECT * FROM capital_b
-                                            JOIN cashflow_b ON capital_b.id_lb=caahflow_b.id_lb 
-                                            WHERE capital_b.id_lb='$id_lb'");
+        $surat = $this->db->query("SELECT * FROM capital_b 
+                                            WHERE id_lb='$id_lb'");
         foreach ($surat->result() as $row) {
 
             $templateProcessor->setValues([

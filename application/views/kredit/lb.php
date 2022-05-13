@@ -35,7 +35,7 @@
                         <td>" . 'Rp. ' . number_format($row->plafon) . "</td>
                         <td>" . date('d-m-Y', strtotime($row->tgl_permohonan)) . "</td>                        
                         <td>
-                        <a href='templateword?id_lb=" . $row->id_lb . "' class ='btn btn-success btn-circle' title='Next'><i class='fas fa-check'></i></a>
+                        <a href='templateword?id_lb=" . $row->id_lb . "' class ='btn btn-success' title='Next'>Next</i></a>
                         <a class='btn btn-danger btn-circle' data-toggle='modal' data-target='#hapus' onClick=\"HapusData('" . $row->id_lb . "')\"><i class='fas fa-trash'></i></a>                                
                         </td>							
                     </tr>";
@@ -88,7 +88,7 @@
 
     <!-- Modal LB-->
     <div class="modal fade" id="lb" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Latar Belakang</h5>
@@ -188,11 +188,11 @@
                             <label for="ktp" class="form-label">No. KTP</label>
                             <input type="text" class="form-control" id="ktp" name="ktp">
                         </div>
-                        <div class="col-md-12 mb-4">
+                        <div class="col-md-12 mb-3">
                             <label for="alamat_ktp_nasabah" class="form-label">Alamat Sesuai KTP</label>
                             <textarea class="form-control" id="alamat_ktp_nasabah" name="alamat_ktp_nasabah"></textarea>
                         </div>
-                        <div class="col-md-12 mb-4">
+                        <div class="col-md-12 mb-3">
                             <label for="domisili_nasabah" class="form-label">Alamat Sesuai Domisili</label>
                             <textarea class="form-control" id="domisili_nasabah" name="domisili_nasabah"></textarea>
                         </div>
@@ -261,11 +261,11 @@
                             <label for="ttl_pasangan" class="form-label">Tempat, tgl lahir</label>
                             <input type="text" class="form-control" id="ttl_pasangan" name="ttl_pasangan">
                         </div>
-                        <div class="col-md-12 mb-4">
+                        <div class="col-md-12 mb-3">
                             <label for="alamat_ktp_pasangan" class="form-label">Alamat Sesuai KTP</label>
                             <textarea class="form-control" id="alamat_ktp_pasangan" name="alamat_ktp_pasangan"></textarea>
                         </div>
-                        <div class="col-md-12 mb-4">
+                        <div class="col-md-12 mb-3">
                             <label for="domisili_pasangan" class="form-label">Alamat Sesuai Domisili</label>
                             <textarea class="form-control" id="domisili_pasangan" name="domisili_pasangan"></textarea>
                         </div>
