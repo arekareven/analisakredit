@@ -673,30 +673,62 @@
         </div>
     </div>
 
-    <!-- Modal -->
     <div class="modal fade" id="cashflow1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Cashflow Sebelum</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Pendapatan</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="<?= base_url('cashflow/add'); ?>" method="post">
-                    <div class="modal-body after-add-more_cf">
-                        <div class="row">
-                            <div class="col-md-1 mb-3">
-                                <label for="sd5" class="form-label">Tambah</label>
-                                <button class="btn btn-success add-more_cf" type="button">
-                                    <i class="fas fa-plus"></i>
-                                </button>
-                            </div>
+                <form id="cashflow">
+                    <div class="modal-body">
+                        <div class="col-md-8 mb-4">
+                            <label for="dari" class="form-label">Pendapatan dari</label>
+                            <select class="form-control" aria-label="Default select example" id="kode_perkiraan" name="kode_perkiraan" onchange="return nama_p();">
+                                <option value=""></option>
+                                <option value="4.1.1">Pendapatan Usaha 1</option>
+                                <option value="4.1.2">Pendapatan Usaha 2</option>
+                                <option value="4.1.3">Pendapatan Usaha 3</option>
+                                <option value="4.1.4">Pendapatan Lain / Gaji</option>
+                            </select>
+                        </div>
+                        <div class="col-md-8 mb-4">
+                            <label for="nopol" class="form-label">Untuk</label>
+                            <select class="form-control" aria-label="Default select example" id="kode_perkiraan2" name="kode_perkiraan2" onchange="return nama_p2();">
+                                <option value=""></option>
+                                <option value="1.1.1">Kas</option>
+                                <option value="1.1.2">Tabungan</option>
+                                <option value="1.1.3">Deposito</option>
+                                <option value="1.1.4">Piutang</option>
+                                <option value="1.1.5">Peralatan</option>
+                                <option value="1.1.6">Persediaan Barang Usaha 1</option>
+                                <option value="1.1.12">Persediaan Barang Usaha 2</option>
+                                <option value="1.1.13">Persediaan Barang Usaha 3</option>
+                                <option value="1.1.7">Sewa Dibayar Dimuka</option>
+                                <option value="1.1.8">Lahan Garap</option>
+                                <option value="1.1.9">Gedung / Ruko</option>
+                                <option value="1.1.10">Kendaraan Operasional</option>
+                                <option value="1.1.11">Lain - Lain</option>
+                            </select>
+                        </div>
+                        <div class="col-md-12 mb-4">
+                            <label for="keterangan" class="form-label">Keterangan</label>
+                            <input type="text" class="form-control" id="keterangan" name="keterangan">
+                            <input type="hidden" class="form-control" id="id_lb" name="id_lb" value="<?php echo $id_lb; ?>">
+                            <input type="hidden" class="form-control" id="nama_perkiraan" name="nama_perkiraan">
+                            <input type="hidden" class="form-control" id="nama_perkiraan2" name="nama_perkiraan2">
+                            <input type="hidden" class="form-control" id="jenis" name="jenis" value="pendapatan">
+                        </div>
+                        <div class="col-md-8 mb-4">
+                            <label for="nama_stnk" class="form-label">Sebesar</label>
+                            <input type="number" class="form-control" id="saldo" name="saldo">
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Save changes</button>
+                        <button type="button" id="simpan" class="btn btn-primary">Save changes</button>
                     </div>
                 </form>
             </div>
@@ -1422,6 +1454,9 @@
     </div>
 
 
+    <script src="<?php echo base_url(); ?>assets/ajax.js"></script>
+    <script src="<?php echo base_url(); ?>assets/bootstrap.js"></script>
+    <script src="<?php echo base_url(); ?>assets/jquery.min.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function() {
@@ -1453,20 +1488,6 @@
 
     <script type="text/javascript">
         $(document).ready(function() {
-            $(".add-more_cf2").click(function() {
-                var html = $(".copy_cf2").html();
-                $(".after-add-more_cf2").before(html);
-            });
-
-            // saat tombol remove dklik control group akan dihapus 
-            $("body").on("click", ".remove_cf2", function() {
-                $(this).parents(".modal-body").remove();
-            });
-        });
-    </script>
-
-    <script type="text/javascript">
-        $(document).ready(function() {
             $(".add-more2").click(function() {
                 var html = $(".copy2").html();
                 $(".after-add-more2").before(html);
@@ -1474,6 +1495,20 @@
 
             // saat tombol remove dklik control group akan dihapus 
             $("body").on("click", ".remove2", function() {
+                $(this).parents(".modal-body").remove();
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $(".add-more_cf2").click(function() {
+                var html = $(".copy_cf2").html();
+                $(".after-add-more_cf2").before(html);
+            });
+
+            // saat tombol remove dklik control group akan dihapus 
+            $("body").on("click", ".remove_cf2", function() {
                 $(this).parents(".modal-body").remove();
             });
         });
@@ -1493,7 +1528,6 @@
         });
     </script>
 
-    <script src="<?php echo base_url(); ?>assets/ajax.js"></script>
     <script>
         function autofill() {
             var notaris = document.getElementById('notaris').value;
@@ -1530,6 +1564,64 @@
         }
     </script>
 
+    <script>
+        function nama_p() {
+            var kode_perkiraan = document.getElementById('kode_perkiraan').value;
+            $.ajax({
+                url: "<?php echo base_url(); ?>test/cari",
+                data: '&kode_perkiraan=' + kode_perkiraan,
+                success: function(data) {
+                    var hasil = JSON.parse(data);
+
+                    $.each(hasil, function(key, val) {
+
+                        document.getElementById('kode_perkiraan').value = val.kode_perkiraan;
+                        document.getElementById('nama_perkiraan').value = val.nama_perkiraan;
+
+                    });
+                }
+            });
+
+        }
+    </script>
+
+    <script>
+        function nama_p2() {
+            var kode_perkiraan2 = document.getElementById('kode_perkiraan2').value;
+            $.ajax({
+                url: "<?php echo base_url(); ?>test/cari",
+                data: '&kode_perkiraan=' + kode_perkiraan2,
+                success: function(data) {
+                    var hasil = JSON.parse(data);
+
+                    $.each(hasil, function(key, val) {
+
+                        document.getElementById('kode_perkiraan2').value = val.kode_perkiraan;
+                        document.getElementById('nama_perkiraan2').value = val.nama_perkiraan;
+
+                    });
+                }
+            });
+
+        }
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#simpan').on('click', function() {
+                var cashflow = $('#cashflow').serialize();
+                $.ajax({
+                    url: "<?php echo base_url(); ?>test/add",
+                    type: "POST",
+                    data: cashflow,
+                    dataType: "JSON",
+                    success: function(data) {
+                        console.log(data)
+                    }
+                })
+            })
+        });
+    </script>
 
 
 </div>

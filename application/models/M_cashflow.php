@@ -17,6 +17,25 @@ class M_cashflow extends CI_Model
         }
     }
 
+    function cari($id)
+    {
+        $query = $this->db->get_where('perkiraan', array('kode_perkiraan' => $id));
+        return $query;
+    }
+
+    public function add_data()
+    {
+        $id_cf = $this->input->post('id_cf');
+        $id_lb = $this->input->post('id_lb');
+        $kode_perkiraan = $this->input->post('kode_perkiraan');
+        $nama_perkiraan = $this->input->post('nama_perkiraan');
+        $keterangan = $this->input->post('keterangan');
+        $saldo = $this->input->post('saldo');
+        var_dump($id_cf, $id_lb, $kode_perkiraan, $nama_perkiraan, $keterangan, $saldo);
+        die;
+    }
+
+    /*
     public function add_data($data)
     {
         $id_lb            = $_POST['id_lb'];
@@ -42,6 +61,8 @@ class M_cashflow extends CI_Model
         }
         redirect('cashflow/templateword?id_lb=' . $id_lb[0]);
     }
+    */
+
 
     public function add_data2($data)
     {
@@ -52,7 +73,7 @@ class M_cashflow extends CI_Model
         $pengeluaran              = $_POST['pengeluaran'];
         $saldo          = $_POST['saldo'];
 
-        var_dump($id_lb,$no,$keterangan,$pemasukan,$pengeluaran,$saldo);
+        var_dump($id_lb, $no, $keterangan, $pemasukan, $pengeluaran, $saldo);
         die;
 
         $total = count($keterangan);
