@@ -4,54 +4,9 @@
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
 
-    <!--
-    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-        <li class="nav-item" role="presentation">
-            <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">1</a>
-        </li>
-        <li class="nav-item" role="presentation">
-            <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">2</a>
-        </li>
-        <li class="nav-item" role="presentation">
-            <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">3</a>
-        </li>
-    </ul>
-    <div class="tab-content" id="pills-tabContent">
-        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#rw">
-                Riwayat Pinjaman
-            </button>
-            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#character">
-                Character
-            </button>
-            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#capacity">
-                Capacity
-            </button>
-        </div>
-        <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#capital">
-                Capital Sebelum
-            </button>
-            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#capital2">
-                Capital Sesudah
-            </button>
-            <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#condition">
-                Condition
-            </button>
-        </div>
-        <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#collateralTanah">
-                Collateral Tanah
-            </button>
-            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#collateral">
-                Collateral Kendaran
-            </button>
-            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#usulan">
-                Usulan Kredit
-            </button>
-        </div>
-    </div>
-    -->
+
+
+
 
     <table class="table table-bordered" width="100%" cellspacing="0">
         <thead class="thead-dark">
@@ -677,60 +632,126 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Pendapatan</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Cashflow</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form id="cashflow">
-                    <div class="modal-body">
-                        <div class="col-md-8 mb-4">
-                            <label for="dari" class="form-label">Pendapatan dari</label>
-                            <select class="form-control" aria-label="Default select example" id="kode_perkiraan" name="kode_perkiraan" onchange="return nama_p();">
-                                <option value=""></option>
-                                <option value="4.1.1">Pendapatan Usaha 1</option>
-                                <option value="4.1.2">Pendapatan Usaha 2</option>
-                                <option value="4.1.3">Pendapatan Usaha 3</option>
-                                <option value="4.1.4">Pendapatan Lain / Gaji</option>
-                            </select>
+                <div class="modal-body">
+                    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Pendapatan</a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Pengeluaran</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="pills-tabContent">
+                        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                            <form id="cashflow">
+                                <div class="modal-body">
+                                    <div class="col-md-8 mb-4">
+                                        <label for="dari" class="form-label">Pendapatan dari</label>
+                                        <select class="form-control" aria-label="Default select example" id="kode_perkiraan" name="kode_perkiraan" onchange="return nama_p();">
+                                            <option value=""></option>
+                                            <option value="4.1.1">Pendapatan Usaha 1</option>
+                                            <option value="4.1.2">Pendapatan Usaha 2</option>
+                                            <option value="4.1.3">Pendapatan Usaha 3</option>
+                                            <option value="4.1.4">Pendapatan Lain / Gaji</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-8 mb-4">
+                                        <label for="nopol" class="form-label">Untuk</label>
+                                        <select class="form-control" aria-label="Default select example" id="kode_perkiraan2" name="kode_perkiraan2" onchange="return nama_p2();">
+                                            <option value=""></option>
+                                            <option value="1.1.1">Kas</option>
+                                            <option value="1.1.2">Tabungan</option>
+                                            <option value="1.1.3">Deposito</option>
+                                            <option value="1.1.4">Piutang</option>
+                                            <option value="1.1.5">Peralatan</option>
+                                            <option value="1.1.6">Persediaan Barang Usaha 1</option>
+                                            <option value="1.1.12">Persediaan Barang Usaha 2</option>
+                                            <option value="1.1.13">Persediaan Barang Usaha 3</option>
+                                            <option value="1.1.7">Sewa Dibayar Dimuka</option>
+                                            <option value="1.1.8">Lahan Garap</option>
+                                            <option value="1.1.9">Gedung / Ruko</option>
+                                            <option value="1.1.10">Kendaraan Operasional</option>
+                                            <option value="1.1.11">Lain - Lain</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-12 mb-4">
+                                        <label for="keterangan" class="form-label">Keterangan</label>
+                                        <input type="text" class="form-control" id="keterangan" name="keterangan">
+                                        <input type="hidden" class="form-control" id="id_lb" name="id_lb" value="<?php echo $id_lb; ?>">
+                                        <input type="hidden" class="form-control" id="nama_perkiraan" name="nama_perkiraan">
+                                        <input type="hidden" class="form-control" id="nama_perkiraan2" name="nama_perkiraan2">
+                                        <input type="hidden" class="form-control" id="jenis" name="jenis" value="pendapatan">
+                                    </div>
+                                    <div class="col-md-8 mb-4">
+                                        <label for="nama_stnk" class="form-label">Sebesar</label>
+                                        <input type="number" class="form-control" id="saldo" name="saldo">
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" id="simpan" class="btn btn-primary">Save changes</button>
+                                </div>
+                            </form>
                         </div>
-                        <div class="col-md-8 mb-4">
-                            <label for="nopol" class="form-label">Untuk</label>
-                            <select class="form-control" aria-label="Default select example" id="kode_perkiraan2" name="kode_perkiraan2" onchange="return nama_p2();">
-                                <option value=""></option>
-                                <option value="1.1.1">Kas</option>
-                                <option value="1.1.2">Tabungan</option>
-                                <option value="1.1.3">Deposito</option>
-                                <option value="1.1.4">Piutang</option>
-                                <option value="1.1.5">Peralatan</option>
-                                <option value="1.1.6">Persediaan Barang Usaha 1</option>
-                                <option value="1.1.12">Persediaan Barang Usaha 2</option>
-                                <option value="1.1.13">Persediaan Barang Usaha 3</option>
-                                <option value="1.1.7">Sewa Dibayar Dimuka</option>
-                                <option value="1.1.8">Lahan Garap</option>
-                                <option value="1.1.9">Gedung / Ruko</option>
-                                <option value="1.1.10">Kendaraan Operasional</option>
-                                <option value="1.1.11">Lain - Lain</option>
-                            </select>
-                        </div>
-                        <div class="col-md-12 mb-4">
-                            <label for="keterangan" class="form-label">Keterangan</label>
-                            <input type="text" class="form-control" id="keterangan" name="keterangan">
-                            <input type="hidden" class="form-control" id="id_lb" name="id_lb" value="<?php echo $id_lb; ?>">
-                            <input type="hidden" class="form-control" id="nama_perkiraan" name="nama_perkiraan">
-                            <input type="hidden" class="form-control" id="nama_perkiraan2" name="nama_perkiraan2">
-                            <input type="hidden" class="form-control" id="jenis" name="jenis" value="pendapatan">
-                        </div>
-                        <div class="col-md-8 mb-4">
-                            <label for="nama_stnk" class="form-label">Sebesar</label>
-                            <input type="number" class="form-control" id="saldo" name="saldo">
+                        <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                            <form id="cashflowp">
+                                <div class="modal-body">
+                                    <div class="col-md-8 mb-4">
+                                        <label for="dari" class="form-label">Menggunakan uang dari</label>
+                                        <select class="form-control" aria-label="Default select example" id="kode_perkiraanp" name="kode_perkiraanp" onchange="return perkiraan();">
+                                            <option value=""></option>
+                                            <option value="1.1.1">Kas</option>
+                                            <option value="1.1.2">Tabungan</option>
+                                            <option value="1.1.3">Deposito</option>
+                                            <option value="1.1.4">Piutang</option>
+                                            <option value="1.1.5">Peralatan</option>
+                                            <option value="1.1.6">Persediaan Barang Usaha 1</option>
+                                            <option value="1.1.12">Persediaan Barang Usaha 2</option>
+                                            <option value="1.1.13">Persediaan Barang Usaha 3</option>
+                                            <option value="1.1.7">Sewa Dibayar Dimuka</option>
+                                            <option value="1.1.8">Lahan Garap</option>
+                                            <option value="1.1.9">Gedung / Ruko</option>
+                                            <option value="1.1.10">Kendaraan Operasional</option>
+                                            <option value="1.1.11">Lain - Lain</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-8 mb-4">
+                                        <label for="nopol" class="form-label">Untuk</label>
+                                        <select class="form-control" aria-label="Default select example" id="kode_perkiraanp2" name="kode_perkiraanp2" onchange="return perkiraan2();">
+                                            <option value=""></option>
+                                            <?php
+                                            foreach ($perkiraan->result() as $row) {
+                                                echo "<option value='$row->kode_perkiraan'>$row->nama_perkiraan</option>";
+                                            }
+                                            ?>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-12 mb-4">
+                                        <label for="keterangan" class="form-label">Keterangan</label>
+                                        <input type="text" class="form-control" id="keteranganp" name="keteranganp">
+                                        <input type="hidden" class="form-control" id="id_lb" name="id_lb" value="<?php echo $id_lb; ?>">
+                                        <input type="hidden" class="form-control" id="nama_perkiraanp" name="nama_perkiraanp">
+                                        <input type="hidden" class="form-control" id="nama_perkiraanp2" name="nama_perkiraanp2">
+                                        <input type="hidden" class="form-control" id="jenisp" name="jenisp" value="pengeluaran">
+                                    </div>
+                                    <div class="col-md-8 mb-4">
+                                        <label for="nama_stnk" class="form-label">Sebesar</label>
+                                        <input type="number" class="form-control" id="saldop" name="saldop">
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" id="simpanp" class="btn btn-primary">Save changes</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" id="simpan" class="btn btn-primary">Save changes</button>
-                    </div>
-                </form>
+                </div>
             </div>
         </div>
     </div>
@@ -1606,12 +1627,71 @@
         }
     </script>
 
+    <script>
+        function perkiraan() {
+            var kode_perkiraanp = document.getElementById('kode_perkiraanp').value;
+            $.ajax({
+                url: "<?php echo base_url(); ?>test/cari",
+                data: '&kode_perkiraan=' + kode_perkiraanp,
+                success: function(data) {
+                    var hasil = JSON.parse(data);
+
+                    $.each(hasil, function(key, val) {
+
+                        document.getElementById('kode_perkiraanp').value = val.kode_perkiraan;
+                        document.getElementById('nama_perkiraanp').value = val.nama_perkiraan;
+
+                    });
+                }
+            });
+
+        }
+    </script>
+
+    <script>
+        function perkiraan2() {
+            var kode_perkiraanp2 = document.getElementById('kode_perkiraanp2').value;
+            $.ajax({
+                url: "<?php echo base_url(); ?>test/cari",
+                data: '&kode_perkiraan=' + kode_perkiraanp2,
+                success: function(data) {
+                    var hasil = JSON.parse(data);
+
+                    $.each(hasil, function(key, val) {
+
+                        document.getElementById('kode_perkiraanp2').value = val.kode_perkiraan;
+                        document.getElementById('nama_perkiraanp2').value = val.nama_perkiraan;
+
+                    });
+                }
+            });
+
+        }
+    </script>
+
     <script type="text/javascript">
         $(document).ready(function() {
             $('#simpan').on('click', function() {
                 var cashflow = $('#cashflow').serialize();
                 $.ajax({
                     url: "<?php echo base_url(); ?>test/add",
+                    type: "POST",
+                    data: cashflow,
+                    dataType: "JSON",
+                    success: function(data) {
+                        console.log(data)
+                    }
+                })
+            })
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#simpanp').on('click', function() {
+                var cashflow = $('#cashflowp').serialize();
+                $.ajax({
+                    url: "<?php echo base_url(); ?>test/add2",
                     type: "POST",
                     data: cashflow,
                     dataType: "JSON",

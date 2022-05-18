@@ -38,4 +38,10 @@ class Test extends CI_Controller
         $id_cf = $this->input->post('id_cf');
         $this->m_test->add_data($id_cf);
     }
+
+    public function add2()
+    {
+        $id_cf = $this->input->post('id_cf');
+        $this->m_test->add_data2($id_cf);
+    }
 }
