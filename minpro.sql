@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 09 Mei 2022 pada 11.46
--- Versi Server: 10.1.29-MariaDB
+-- Generation Time: May 18, 2022 at 10:55 AM
+-- Server version: 10.1.29-MariaDB
 -- PHP Version: 7.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -25,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `analis`
+-- Table structure for table `analis`
 --
 
 CREATE TABLE `analis` (
@@ -34,7 +34,7 @@ CREATE TABLE `analis` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `analis`
+-- Dumping data for table `analis`
 --
 
 INSERT INTO `analis` (`nama`, `email`) VALUES
@@ -45,7 +45,7 @@ INSERT INTO `analis` (`nama`, `email`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `analisis`
+-- Table structure for table `analisis`
 --
 
 CREATE TABLE `analisis` (
@@ -58,18 +58,16 @@ CREATE TABLE `analisis` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `analisis`
+-- Dumping data for table `analisis`
 --
 
 INSERT INTO `analisis` (`id_analisis`, `nama`, `nama_ao`, `file`, `catatan`, `status`) VALUES
-(1, 'Vera Fernanda', 'Fatia Larasati', 'Yuliati29-03-22.docx', 'Lengkapi berkasnya.', 'Ditolak'),
-(2, 'Vera Fernanda', 'Fatia Larasati', 'Yuliati06-04-22.docx', '', 'Diterima'),
-(3, 'Vera Fernanda', 'Fatia Larasati', 'Vera11-04-22.docx', 'Cukup, Rapikan.', 'Diterima');
+(1, 'Vera Fernanda', 'Fatia Larasati', 'Agus Siswanto13-05-22.docx', '', 'Diserahkan');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `bismillah`
+-- Table structure for table `bismillah`
 --
 
 CREATE TABLE `bismillah` (
@@ -98,18 +96,19 @@ CREATE TABLE `bismillah` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `bismillah`
+-- Dumping data for table `bismillah`
 --
 
 INSERT INTO `bismillah` (`id`, `id_lb`, `no1`, `no2`, `no3`, `no4`, `no5`, `keterangan1`, `keterangan2`, `keterangan3`, `keterangan4`, `keterangan5`, `keterangan6`, `pemasukan2`, `pemasukan3`, `pemasukan4`, `pemasukan5`, `pengeluaran2`, `pengeluaran3`, `pengeluaran4`, `pengeluaran5`, `saldo6`) VALUES
 (2, 101, 'I', '', '1', '2', '', 'USAHA 1', 'Pendapatan usaha ', 'Pembelian stok', 'Biaya susut', '', 'SURPLUS USAHA 1', '360000000', '0', '0', '0', '0', '240000000', '25000000', '0', '95000000'),
 (3, 101, 'II', '', '1', '2', '3', 'USAHA 2', 'Pendapatan usaha travel', 'Biaya perawatan', 'Biaya ganti ban', 'Biaya lain lain', 'SURPLUS USAHA 2', '56000000', '0', '0', '0', '0', '4000000', '6000000', '2000000', '44000000'),
-(4, 101, 'V', '', '', '', '', 'BIAYA LAIN LAIN', 'Biaya hidup', 'Biaya Pendidikan', 'Biaya listrik', 'Biaya lain', 'JUMLAH BIAYA LAIN LAIN', '0', '0', '0', '0', '2500000', '350000', '500000', '1000000', '-4350000');
+(4, 101, 'V', '', '', '', '', 'BIAYA LAIN LAIN', 'Biaya hidup', 'Biaya Pendidikan', 'Biaya listrik', 'Biaya lain', 'JUMLAH BIAYA LAIN LAIN', '0', '0', '0', '0', '2500000', '350000', '500000', '1000000', '4350000'),
+(5, 0, 'VI', '1', '2', '3', '4', 'BIAYA ANGSURAN HUTANG', 'Angsuran BRI', '', '', '', 'JUMLAH ANGSURAN HUTANG', '0', '0', '0', '0', '1266000', '0', '0', '0', '1266000');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `capacity`
+-- Table structure for table `capacity`
 --
 
 CREATE TABLE `capacity` (
@@ -139,17 +138,16 @@ CREATE TABLE `capacity` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `capacity`
+-- Dumping data for table `capacity`
 --
 
 INSERT INTO `capacity` (`id_cap`, `id_lb`, `nama_usaha`, `sektor`, `bidang`, `alamat_usaha`, `status_usaha`, `tlp_usaha`, `tgl_mulai`, `tgl_nasabah`, `akta`, `tgl_akta`, `npwp`, `tgl_npwp`, `usaha_skrg`, `alokasi1`, `alokasi2`, `alokasi3`, `dana1`, `dana2`, `dana3`, `total`, `usaha_realisasi`) VALUES
-(1, 6, 'Dagang ayam pedagang', 'perdagangan', 'Pedagang ayam potong', 'Pasar gorang gareng Kecamatan Kawedanan', 'milik sendiri', '0', '2015-02-14', '2018-02-14', '-', '0000-00-00', '-', '0000-00-00', 'Saat ini calon debitur memiliki usaha perdagangan ayam', 'Pembelian stok ayam', 'Pembelian 1 unit isuzu', 'Pelunasan pinjaman bank mandiri', '180735885', '450000000', '269264115', '900000000', 'Setelah memperoleh kredit dari BPR Ekadharma guna pembelian....'),
-(2, 7, 'Dagang ayam pedagang', 'perdagangan', 'Pedagang ayam potong', 'Pasar gorang gareng', 'milik sendiri', '0', '2022-04-01', '2022-04-02', '-', '0000-00-00', '-', '0000-00-00', 'Saat ini calon debitur ........', 'Pembelian stok ayam', 'Pembelian 1 unnit isuzu', 'Pelunasan pinjaman bank mandiri', '12000000', '10000000', '3000000', '25000000', 'Setelah memperoleh .....');
+(2, 9, 'Dagang ayam pedaging', 'Perdagangan', 'Pedagang ayam potong', 'Pasar gorang gareng', 'Milik Sendiri', '0812345789', '2022-05-26', '2022-05-07', '-', '2022-05-17', '-', '0000-00-00', 'Usaha saat ini .......................', 'Pembelian stok ayam', 'Pembelian 1 unnit isuzu', 'Pelunasan pinjaman bank mandiri', '1200000', '2300000', '16000000', '19500000', 'Usaha setelah realisasi ............................');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `capital_a`
+-- Table structure for table `capital_a`
 --
 
 CREATE TABLE `capital_a` (
@@ -187,18 +185,10 @@ CREATE TABLE `capital_a` (
   `total_kjb` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data untuk tabel `capital_a`
---
-
-INSERT INTO `capital_a` (`id_capi`, `id_lb`, `kas`, `tabungan`, `deposito`, `piutang`, `peralatan`, `barang`, `barang2`, `barang3`, `sewa`, `lahan`, `gedung`, `operasional`, `lain`, `total_al`, `tanah`, `bangunan`, `kendaraan`, `inventaris`, `lain2`, `total_at`, `total_aset`, `hutang_jpk`, `hutang_jpg`, `hutang_lain`, `hutang_dagang`, `total_hutang`, `laba_rugi`, `modal`, `harta`, `total_kjb`) VALUES
-(1, 6, '139219885', '18000000', '0', '250000000', '50000000', '195000000', '450000000', '0', '0', '450000000', '60000000', '1250000000', '0', '2862219885', '100000000', '250000000', '150000000', '0', '0', '500000000', '3362219885', '0', '900000000', '21422162', '0', '921422162', '214034500', '1726763223', '500000000', '3362219885'),
-(2, 7, '5000000', '12000000', '1000000', '0', '1000000', '0', '0', '0', '20000', '2000000', '0', '0', '0', '21020000', '3000000', '1700000', '0', '0', '0', '4700000', '25720000', '0', '0', '0', '71000000', '71000000', '98000000', '0', '600000000', '769000000');
-
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `capital_b`
+-- Table structure for table `capital_b`
 --
 
 CREATE TABLE `capital_b` (
@@ -237,17 +227,16 @@ CREATE TABLE `capital_b` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `capital_b`
+-- Dumping data for table `capital_b`
 --
 
 INSERT INTO `capital_b` (`id_capi`, `id_lb`, `kas`, `tabungan`, `deposito`, `piutang`, `peralatan`, `barang`, `barang2`, `barang3`, `sewa`, `lahan`, `gedung`, `operasional`, `lain`, `total_al`, `tanah`, `bangunan`, `kendaraan`, `inventaris`, `lain2`, `total_at`, `total_aset`, `hutang_jpk`, `hutang_jpg`, `hutang_lain`, `hutang_dagang`, `total_hutang`, `laba_rugi`, `modal`, `harta`, `total_kjb`) VALUES
-(2, 6, '5000000', '18000000', '0', '250000000', '50000000', '15000000', '0', '0', '0', '450000000', '60000000', '1250000000', '0', '2098000000', '100000000', '250000000', '150000000', '0', '0', '500000000', '2598000000', '0', '0', '291952277', '0', '291952277', '80550500', '1725497223', '500000000', '2598000000'),
-(3, 7, '5000000', '12000000', '0', '0', '0', '3000000', '0', '0', '0', '11000000', '13000000', '0', '0', '44000000', '45000000', '32000000', '0', '0', '0', '77000000', '121000000', '0', '0', '5000000', '0', '5000000', '78000000', '45000000', '300000000', '428000000');
+(4, 9, '2000000', '800000', '0', '0', '10000000', '2000000', '1000000', '0', '5000000', '0', '0', '3000000', '', '23800000', '150000000', '50000000', '5000000', '0', '0', '205000000', '228800000', '10416434', '0', '0', '0', '10416434', NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `cashflow_a`
+-- Table structure for table `cashflow_a`
 --
 
 CREATE TABLE `cashflow_a` (
@@ -260,36 +249,71 @@ CREATE TABLE `cashflow_a` (
   `saldo` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data untuk tabel `cashflow_a`
---
-
-INSERT INTO `cashflow_a` (`id_cf`, `id_lb`, `no`, `keterangan`, `pemasukan`, `pengeluaran`, `saldo`) VALUES
-(1, 6, 'I', 'USAHA 1', '0', '0', '0'),
-(2, 6, '', 'SURPLUSUSAHA 1', '0', '0', '0'),
-(3, 6, 'II', 'USAHA 2', '0', '0', '0'),
-(4, 6, '', 'SURPLUSUSAHA 2', '0', '0', '0');
-
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `cashflow_b`
+-- Table structure for table `cashflow_b`
 --
 
 CREATE TABLE `cashflow_b` (
   `id_cf` int(11) NOT NULL,
   `id_lb` int(11) NOT NULL,
-  `no` varchar(5) DEFAULT NULL,
+  `kode_perkiraan` varchar(10) DEFAULT NULL,
+  `nama_perkiraan` varchar(128) DEFAULT NULL,
   `keterangan` varchar(128) DEFAULT NULL,
-  `pemasukan` varchar(20) DEFAULT NULL,
-  `pengeluaran` varchar(20) DEFAULT NULL,
-  `saldo` varchar(20) DEFAULT NULL
+  `saldo` varchar(20) DEFAULT NULL,
+  `kode_jenis` char(1) DEFAULT NULL,
+  `jenis` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cashflow_b`
+--
+
+INSERT INTO `cashflow_b` (`id_cf`, `id_lb`, `kode_perkiraan`, `nama_perkiraan`, `keterangan`, `saldo`, `kode_jenis`, `jenis`) VALUES
+(36, 9, '4.1.1', 'Pendapatan Usaha (Omset) 1', 'Pembelian ...', '12450000', 'K', 'pendapatan'),
+(37, 9, '1.1.1', 'Kas', 'Pembelian ...', '12450000', 'D', 'pendapatan'),
+(38, 9, '4.1.2', 'Pendapatan Usaha (Omset) 2', 'Pembelian ayam pedaging', '560000', 'K', 'pendapatan'),
+(39, 9, '1.1.1', 'Kas', 'Pembelian ayam pedaging', '560000', 'D', 'pendapatan'),
+(42, 9, '4.1.3', 'Pendapatan Usaha (Omset) 3', 'Pembelian peralatan', '635', 'K', 'pendapatan'),
+(43, 9, '1.1.6', 'Persediaan Barang Usaha 1', 'Pembelian peralatan', '635', 'D', 'pendapatan'),
+(44, 9, '1.1.1', '', 'Biaya pendidikan', '1222', 'K', 'pengeluaran'),
+(45, 9, '5.4.1', '', 'Biaya pendidikan', '1222', 'D', 'pengeluaran'),
+(46, 9, '1.1.1', '', 'Biaya pendidikan', '1222', 'K', 'pengeluaran'),
+(47, 9, '5.4.1', '', 'Biaya pendidikan', '1222', 'D', 'pengeluaran'),
+(48, 9, '1.1.1', '', 'Biaya pendidikan', '1222', 'K', 'pengeluaran'),
+(49, 9, '5.4.1', '', 'Biaya pendidikan', '1222', 'D', 'pengeluaran'),
+(50, 9, '1.1.1', '', 'Biaya pendidikan', '1222', 'K', 'pengeluaran'),
+(51, 9, '5.4.1', '', 'Biaya pendidikan', '1222', 'D', 'pengeluaran'),
+(52, 9, '1.1.1', '', 'Biaya pendidikan', '1222', 'K', 'pengeluaran'),
+(53, 9, '5.4.1', '', 'Biaya pendidikan', '1222', 'D', 'pengeluaran'),
+(54, 9, '1.1.1', '', 'Biaya pendidikan', '1222', 'K', 'pengeluaran'),
+(55, 9, '5.4.1', '', 'Biaya pendidikan', '1222', 'D', 'pengeluaran'),
+(56, 9, '1.1.1', '', 'Biaya pendidikan', '1222', 'K', 'pengeluaran'),
+(57, 9, '5.4.1', '', 'Biaya pendidikan', '1222', 'D', 'pengeluaran'),
+(58, 9, '1.1.1', '', 'Biaya pendidikan', '1222', 'K', 'pengeluaran'),
+(59, 9, '5.4.1', '', 'Biaya pendidikan', '1222', 'D', 'pengeluaran'),
+(60, 9, '1.1.1', '', 'Biaya pendidikan', '1222', 'K', 'pengeluaran'),
+(61, 9, '5.4.1', '', 'Biaya pendidikan', '1222', 'D', 'pengeluaran'),
+(62, 9, '1.1.1', '', 'Biaya pendidikan', '1222', 'K', 'pengeluaran'),
+(63, 9, '5.4.1', '', 'Biaya pendidikan', '1222', 'D', 'pengeluaran'),
+(64, 9, '1.1.1', '', 'Biaya pendidikan', '1222', 'K', 'pengeluaran'),
+(65, 9, '5.4.1', '', 'Biaya pendidikan', '1222', 'D', 'pengeluaran'),
+(66, 9, '1.1.1', '', 'Biaya pendidikan', '1222', 'K', 'pengeluaran'),
+(67, 9, '5.4.1', '', 'Biaya pendidikan', '1222', 'D', 'pengeluaran'),
+(68, 9, '1.1.1', '', 'Biaya pendidikan', '1222', 'K', 'pengeluaran'),
+(69, 9, '5.4.1', '', 'Biaya pendidikan', '1222', 'D', 'pengeluaran'),
+(70, 9, '1.1.1', '', 'Biaya pendidikan', '1222', 'K', 'pengeluaran'),
+(71, 9, '5.4.1', '', 'Biaya pendidikan', '1222', 'D', 'pengeluaran'),
+(72, 9, '1.1.1', '', 'Biaya pendidikan', '1222', 'K', 'pengeluaran'),
+(73, 9, '5.4.1', '', 'Biaya pendidikan', '1222', 'D', 'pengeluaran'),
+(74, 9, '4.1.4', 'Pendapatan Lain / Gaji', 'Biaya pendidikan', '78000000', 'K', 'pendapatan'),
+(75, 9, '1.1.8', 'Lahan Garap', 'Biaya pendidikan', '78000000', 'D', 'pendapatan');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `collateral`
+-- Table structure for table `collateral`
 --
 
 CREATE TABLE `collateral` (
@@ -314,19 +338,16 @@ CREATE TABLE `collateral` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `collateral`
+-- Dumping data for table `collateral`
 --
 
 INSERT INTO `collateral` (`id_col`, `id_lb`, `roda`, `nopol`, `nama_stnk`, `alamat`, `type`, `jenis`, `tahun`, `warna`, `silinder`, `no_rangka`, `no_mesin`, `no_bpkb`, `milik`, `taksiran`, `nl`, `kondisi`) VALUES
-(1, 6, '4 (Empat)', 'AE 7359 NA', 'Yuliati', 'Desa Simbatan Rt/Rw 03/03', 'Isuzu ', 'Mobil', 2014, 'Putih', '2771 cc', 'MHCNKR', 'M055107', 'O-05769918', 'Milik sendiri', '225000000', '150000000', 'baik'),
-(2, 6, '4 (Empat)', 'AE 1391 NC', 'Markun', 'Desa Kuwonharjo', 'Honda Jazz', 'Mobil penumpang', 2013, 'Putih', '1496 cc', 'MHRG', 'L15a777', 'N-03487', 'Milik sendiri', '150000000', '135000000', 'Baik dan terawat'),
-(3, 7, '2 (Dua)', 'AE 7359 NA', 'Yuliati', 'Kec Nguntoronadi', 'Isuzu ', 'Motor yyy', 2014, 'Putih', '2771 cc', 'MHCNKR', 'M055107', 'O-05769918', 'Milik sendiri', '56000000', '32000000', 'Baik'),
-(4, 7, '6 (Enam)', 'AE 7359 NA', 'Yuliati', 'Kec Takeran', 'Isuzu ', 'Bus', 2014, 'Putih', '2771 cc', 'MHCNKR', 'M055107', 'O-05769918', 'Milik sendiri', '321000000', '31000000', 'Baik');
+(1, 9, '4 (Empat)', 'AE 7359 NA', 'Yuliati', 'Desa Simbatan Kec Nguntoronadi', 'Isuzu / NKR55', 'Mobil Bus', 2014, 'Putih Hijau Kuning', '2771 cc', 'MHCNCKR46545', 'M098799', '085568745', 'Milik Sendiri', '225000000', '150000000', 'Keadaan baik dan terawat');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `collateral_tanah`
+-- Table structure for table `collateral_tanah`
 --
 
 CREATE TABLE `collateral_tanah` (
@@ -353,19 +374,16 @@ CREATE TABLE `collateral_tanah` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `collateral_tanah`
+-- Dumping data for table `collateral_tanah`
 --
 
 INSERT INTO `collateral_tanah` (`id_col2`, `id_lb`, `jenis`, `nama`, `alamat`, `no_shm`, `lokasi`, `tgl_ukur`, `no_ukur`, `luas_t`, `luas_b`, `milik`, `fisik_jaminan`, `taksasi`, `pertimbangan`, `harga_t`, `harga_b`, `harga_t2`, `harga_b2`, `ht`) VALUES
-(1, 6, 'non Pertanian', '1. Supriyadi 2. Lilik Sukarsih', 'Desa Sawojajar Rt/Rw 07/02', '1519', 'Kelurahan Demangan, kecamatan taman, Kota Madiun', '1997-06-02', '1306', '1470', '70', 'Jaminan milik sendiri an sendiri', 'Sebidang tanah pekarangan dengan kondisi saat ini di gunakan sebagai bengkel', '84', 'Karakter baik kemampuan ada jaminan cukup', '243000', '429000', '2000000', '1000000', '1650000000'),
-(2, 6, 'Pertanian', 'Yatno', 'Desa sebelah', '789456', 'Desa seberang', '2022-04-01', '789445', '78', '55', 'Milik sendiri', 'Baik', '8', 'prospek menjanjikan', '12000', '1000', '12500', '1300', '15000'),
-(3, 6, 'Non Pertanian', 'yanto', 'Desa sana', '456123', 'Desa sini', NULL, NULL, '88', '44', NULL, NULL, '6', 'mantap lah', '5000', '2500', '8000', '6400', '51000'),
-(5, 7, 'Pertanian', 'Yatno', 'Desa sawojajar', '789456', 'Kelurahan Demangan', '2022-04-04', '789445', '78', '55', 'Milik sendiri', 'Sebidang tanah pekaranagn', '78', 'Baik', '12000', '1000', '12500', '1300', '3000000');
+(1, 9, 'Non pertanian', 'Supriyadi', 'Desa sawojajar Kecamatan Takeran', '1519', 'Kelurahan Demangan', '2022-03-10', '1306', '1470', '70', 'Milik Sendiri', 'Sebidang tanah pekarangan ..........', '84', 'Karakter debitur baik, kemampuan ada, jaminan mencukupi', '243000', '429000', '2000000', '1000000', '1650000000');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `condition`
+-- Table structure for table `condition`
 --
 
 CREATE TABLE `condition` (
@@ -378,21 +396,21 @@ CREATE TABLE `condition` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `condition`
+-- Dumping data for table `condition`
 --
 
 INSERT INTO `condition` (`id_con`, `id_lb`, `kekuatan`, `kelemahan`, `peluang`, `ancaman`) VALUES
-(1, 6, 'Usaha dagang ayam pedaging memiliki kekuatan usaha yang baik dimana ayam pedaging merupakan lauk pauk masyarakat pada umumnya', 'Adanya pesaing usaha sejenis yang dapat berpengaruh di pendapatan jika berpindahnya pelanggan yang biasa membeli dagangan', 'Usaha calon debitur memiliki lokasi yang strategis di jalan masuk pasar', 'jika berpindahnya pelanggan yang biasa membeli dagangan tersebut ke tempat usaha sejenis'),
-(2, 7, 'Usaha dagang ayam pedaging memiliki kekuatan usaha......', 'Adanya pesaing usaha sejenis yang dapat berpengaruh .......', 'Usaha calon debitur memiliki lokasi yang strategis', 'Jika berpindahnya pelanggan yang biasa');
+(1, 9, 'Usaha dagang ayam pedaging memiliki kekuatan usaha yamg baik ........................', 'Adanya pesaing usaha sejenis ..........................', 'Lokasi yang strategis di pertigaan pasar ................................', 'Berpindahnya pelanggan ke usaha pesaing yang sejenis ............................');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `dummy`
+-- Table structure for table `dummy`
 --
 
 CREATE TABLE `dummy` (
   `id_cf` int(11) NOT NULL,
+  `id_lb` int(11) NOT NULL,
   `dari` int(11) DEFAULT NULL,
   `untuk` int(11) DEFAULT NULL,
   `keterangan` varchar(128) DEFAULT NULL,
@@ -402,19 +420,19 @@ CREATE TABLE `dummy` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `dummy`
+-- Dumping data for table `dummy`
 --
 
-INSERT INTO `dummy` (`id_cf`, `dari`, `untuk`, `keterangan`, `pemasukan`, `pengeluaran`, `saldo`) VALUES
-(1, 1, 1, 'Pendapatan usaha daging ayam pedaging', '270000000', NULL, '5'),
-(3, 2, 1, 'Pendapatan usaha jasa travel', '42000000', NULL, '5'),
-(4, 1, 1, 'Pembelian stok dagangan ayam pedaging', NULL, '12000', '5'),
-(5, 1, 1, 'Susut bobot', NULL, '3000', '5');
+INSERT INTO `dummy` (`id_cf`, `id_lb`, `dari`, `untuk`, `keterangan`, `pemasukan`, `pengeluaran`, `saldo`) VALUES
+(1, 7, 1, 1, 'Pendapatan usaha daging ayam pedaging', '270000000', NULL, '5'),
+(3, 7, 2, 1, 'Pendapatan usaha jasa travel', '42000000', NULL, '5'),
+(4, 7, 1, 2, 'Pembelian stok dagangan ayam pedaging', NULL, '12000', '5'),
+(5, 7, 1, 2, 'Susut bobot', NULL, '3000', '5');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `karakter`
+-- Table structure for table `karakter`
 --
 
 CREATE TABLE `karakter` (
@@ -435,17 +453,16 @@ CREATE TABLE `karakter` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `karakter`
+-- Dumping data for table `karakter`
 --
 
 INSERT INTO `karakter` (`id_char`, `info_pribadi`, `info_perilaku`, `info_keluarga`, `nm1`, `nm2`, `nm3`, `al1`, `al2`, `al3`, `hp1`, `hp2`, `hp3`, `id_lb`) VALUES
-(1, 'bermoral, jujur, tepat jani,tanggung jawab,sabar', 'tekun,kreatif,tenang', 'harmonis,baik', 'Jhoni', 'Ariyanto', 'Joko', 'Desa Simbatan Rt/Rw 03/03 Kecamatan nguntoronadi', 'Desa Simbatan Rt/Rw 03/03 Kecamatan nguntoronadi', 'Desa Simbatan Rt/Rw 03/03 Kecamatan nguntoronadi', '085696311313', '081553368114', '085336327954', 6),
-(4, '- Bermoral\r\n- Jujur\r\n- Sabar', '- Tekun\r\n- Kreatif\r\n- Tenang', '- Harmonis\r\n- relasi banyak', 'Jhoni', 'Ariyanto', 'Joko', 'Rt/Rw 05/04, Dsn. Kedungglagah 1, Ds. Sidorejo\r\nKec. Geneng', 'Rt/Rw 05/04, Dsn. Kedungglagah 1, Ds. Sidorejo\r\nKec. Geneng', 'Rt/Rw 05/04, Dsn. Kedungglagah 1, Ds. Sidorejo\r\nKec. Geneng', '085696311313', '081553368114', '085336327954', 7);
+(6, 'Bemoral baik dlll..............', 'Tekun,tenang,kreatif dll ........................', 'Keluarga harmonis,relasi banyak ...................', 'Jhoni', 'Ariyanto', 'Joko', 'Rt/Rw 05/04, Dsn. Kedungglagah 1, Ds. Sidorejo\r\nKec. Geneng', 'Rt/Rw 05/04, Dsn. Kedungglagah 1, Ds. Sidorejo\r\nKec. Geneng', 'Rt/Rw 05/04, Dsn. Kedungglagah 1, Ds. Sidorejo\r\nKec. Geneng', '085696311313', '081553368114', '085336327954', 9);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `latar_belakang`
+-- Table structure for table `latar_belakang`
 --
 
 CREATE TABLE `latar_belakang` (
@@ -513,17 +530,16 @@ CREATE TABLE `latar_belakang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `latar_belakang`
+-- Dumping data for table `latar_belakang`
 --
 
 INSERT INTO `latar_belakang` (`id_lb`, `cif_bank`, `tgl_analisa`, `tgl_permohonan`, `plafon`, `jangka_waktu`, `sifat_kredit`, `suku_bunga`, `jenis_permohonan`, `tujuan_permohonan`, `ket_penggunaan`, `nama_debitur`, `status_kawin`, `ttl_nasabah`, `ktp`, `alamat_ktp_nasabah`, `domisili_nasabah`, `hp_nasabah`, `status_tt`, `pekerjaan_nasabah`, `tanggungan`, `pendidikan`, `jenis_kelamin`, `masa_laku`, `telp_kantor`, `lama_tinggal`, `nama_pasangan`, `ttl_pasangan`, `alamat_ktp_pasangan`, `domisili_pasangan`, `pekerjaan_pasangan`, `hp_pasangan`, `nama_keluarga`, `hubungan_keluarga`, `alamat_keluarga`, `hp_keluarga`, `pf1`, `pf2`, `pf3`, `pf4`, `pf5`, `st1`, `st2`, `st3`, `st4`, `st5`, `sd1`, `sd2`, `sd3`, `sd4`, `sd5`, `sj1`, `sj2`, `sj3`, `sj4`, `sj5`, `dt1`, `dt2`, `dt3`, `dt4`, `dt5`) VALUES
-(6, '0000167', '2022-02-14', '2022-02-14', '1000000000', '120 Bulan', 'Pokok Bunga tiap Bulan', '12 % Pertahun', 'Ulangan', 'modal kerja', 'Pembelian mobil isuzu microbus th 2019', 'Yuliati', 'Menikah', 'Magetan, 03-11-1984', '3520174311840001', 'Desa Simbatan Rt/Rw 03/03 Kecamatan Nguntoronadi kabupaten Magetan', 'Desa Simbatan Rt/Rw 03/03 Kecamatan Nguntoronadi kabupaten Magetan', '081335339875', 'Milik Sendiri', 'Wiraswasta', '2 Orang', 'SMA', 'Perempuan', 'Seumur Hidup', '0', '15 Tahun', 'Wardi', 'Magetan, 27-11-1979', 'Desa Simbatan Rt/Rw 03/03 Kecamatan Nguntoronadi kabupaten Magetan', 'Desa Simbatan Rt/Rw 03/03 Kecamatan Nguntoronadi kabupaten Magetan', 'Perdagangan', '0', 'Yoyok', 'Saudara Tidak Sekandung', 'Desa Simbatan Rt/Rw 03/03 Kecamatan Nguntoronadi kabupaten Magetan', '085807277785', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(7, '0000168', '2022-04-11', '2022-04-11', '1000000000', '120 Bulan', 'Pokok Bunga tiap Bulan', '12 % Pertahun', 'Ulangan', 'modal kerja', 'Pembelian kendaraan', 'Vera', 'Menikah', 'Magetan, 03-11-1984', '3520174311840002', 'Rt/Rw 05/04, Dsn. Kedungglagah 1, Ds. Sidorejo\r\nKec. Geneng', 'Rt/Rw 05/04, Dsn. Kedungglagah 1, Ds. Sidorejo\r\nKec. Geneng', '081335339875', 'Milik Sendiri', 'Wiraswasta', '3 Orang', 'S1', 'Perempuan', 'Seumur Hidup', '0', '5 Tahun', 'Wardi', 'Magetan, 27-11-1979', 'Rt/Rw 05/04, Dsn. Kedungglagah 1, Ds. Sidorejo\r\nKec. Geneng', 'Rt/Rw 05/04, Dsn. Kedungglagah 1, Ds. Sidorejo\r\nKec. Geneng', 'Perdagangan', '0', 'Muhammad Hasan', 'Saudara Tidak Sekandung', 'Rt/Rw 05/04, Dsn. Kedungglagah 1, Ds. Sidorejo\r\nKec. Geneng', '085807277785', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(9, '75', '2022-05-08', '2022-05-07', '50000000', '24 Bulan', 'Pokok bunga tiap bulan', '11.88% Pertahun', 'Baru', 'Modal Kerja', 'Modal usaha dagang Kentaki ayam', 'Agus Siswanto', 'Menikah', 'Magetan, 03-11-1984', '3520174311840002', 'Desa Jungke Rt/Rw 07/02', 'Desa Jungke Rt/Rw 07/02', '0812134456789', 'Milik Sendiri', 'Wiraswasta', '2 Orang', 'SMA', 'Laki-laki', 'Seumur Hidup', '0', '12 Tahun', 'Damiasih', 'Magetan, 27-11-1979', 'desa jungke', 'desa jungke', 'Ibu Rumah Tangga', '08123456789', 'Bela', 'Saudara Tidak Sekandung', 'Desa Jungke', '085807277785', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `notaris`
+-- Table structure for table `notaris`
 --
 
 CREATE TABLE `notaris` (
@@ -547,7 +563,7 @@ CREATE TABLE `notaris` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `notaris`
+-- Dumping data for table `notaris`
 --
 
 INSERT INTO `notaris` (`notaris`, `provisi`, `administrasi`, `asuransi`, `materai`, `apht`, `skmht`, `titipan`, `fiduciare`, `legalisasi`, `lain`, `roya`, `proses`, `sertifikat`, `akta`, `pendaftaran`, `plotting`) VALUES
@@ -557,7 +573,83 @@ INSERT INTO `notaris` (`notaris`, `provisi`, `administrasi`, `asuransi`, `matera
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `riwayat_pinjaman`
+-- Table structure for table `perkiraan`
+--
+
+CREATE TABLE `perkiraan` (
+  `kode_perkiraan` varchar(6) NOT NULL,
+  `nama_perkiraan` varchar(45) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `perkiraan`
+--
+
+INSERT INTO `perkiraan` (`kode_perkiraan`, `nama_perkiraan`) VALUES
+('1', 'Harta'),
+('1.1', 'Harta Lancar'),
+('1.1.1', 'Kas'),
+('1.1.10', 'Kendaraan Operasional'),
+('1.1.11', 'Lain - lain'),
+('1.1.12', 'Persediaan Barang Usaha 2'),
+('1.1.13', 'Persediaan Barang Usaha 3'),
+('1.1.2', 'Tabungan'),
+('1.1.3', 'Deposito'),
+('1.1.4', 'Piutang'),
+('1.1.5', 'Peralatan'),
+('1.1.6', 'Persediaan Barang Usaha 1'),
+('1.1.7', 'Sewa dibayar di muka'),
+('1.1.8', 'Lahan Garap'),
+('1.1.9', 'Gedung / Ruko'),
+('1.2', 'Harta Tetap'),
+('1.2.1', 'Tanah'),
+('1.2.2', 'Bangunan'),
+('1.2.3', 'Kendaraan Pribadi'),
+('1.2.4', 'Inventaris'),
+('1.2.5', 'Lain - lain'),
+('2', 'Hutang'),
+('2.1', 'Hutang'),
+('2.1.1', 'Hutang Jangka Pendek'),
+('2.1.2', 'Hutang Jangka Panjang'),
+('2.1.3', 'Hutang Dagang'),
+('2.1.4', 'Hutang Lain'),
+('3', 'Modal'),
+('3.1', 'Modal'),
+('3.1.1', 'Modal'),
+('4', 'Pendapatan'),
+('4.1', 'Pendapatan'),
+('4.1.1', 'Pendapatan Usaha (Omset) 1'),
+('4.1.2', 'Pendapatan Usaha (Omset) 2'),
+('4.1.3', 'Pendapatan Usaha (Omset) 3'),
+('4.1.4', 'Pendapatan Lain / Gaji'),
+('5', 'Biaya'),
+('5.1', 'Harga Pokok Pembelian'),
+('5.1.1', 'Harga Pokok Pembelian 1'),
+('5.1.2', 'Biaya Pemeliharaan Usaha 1'),
+('5.1.3', 'Biaya Operasional Usaha 1'),
+('5.1.4', 'Biaya Gaji Karyawan Usaha 1'),
+('5.1.5', 'Biaya Lain - lain Usaha 1'),
+('5.2.1', 'Harga Pokok Pembelian 2'),
+('5.2.2', 'Biaya Pemeliharaan Usaha 2'),
+('5.2.3', 'Biaya Operasional Usaha 2'),
+('5.2.4', 'Biaya Gaji Karyawan Usaha 2'),
+('5.2.5', 'Biaya Lain - lain Usaha 2'),
+('5.3.1', 'Harga Pokok Pembelian Usaha 3'),
+('5.3.2', 'Biaya Pemeliharaan Usaha 3'),
+('5.3.3', 'Biaya Operasional Usaha 3'),
+('5.3.4', 'Biaya Gaji Karyawan Usaha 3'),
+('5.3.5', 'Biaya Lain - lain Usaha 3'),
+('5.4', 'Biaya Lain - lain (umum)'),
+('5.4.1', 'Biaya Lain - lain (umum)'),
+('5.5', 'Biaya Angsuran Hutang'),
+('5.5.1', 'Biaya Angsuran di BPR EKA DHARMA BHINARAHARJA'),
+('5.5.3', 'Biaya Angsuran Hutang Dagang'),
+('5.5.4', 'Biaya Angsuran Hutang Lain');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `riwayat_pinjaman`
 --
 
 CREATE TABLE `riwayat_pinjaman` (
@@ -571,23 +663,19 @@ CREATE TABLE `riwayat_pinjaman` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `riwayat_pinjaman`
+-- Dumping data for table `riwayat_pinjaman`
 --
 
 INSERT INTO `riwayat_pinjaman` (`id_rp`, `id_lb`, `plafond`, `status`, `saldo`, `sejarah`, `data`) VALUES
-(18, 6, '40000000', 'Lunas', '0', 'Baik', 'Terlampir'),
-(19, 6, '150000000', 'Lunas', '0', 'Baik', 'Terlampir'),
-(20, 7, '40000000', 'Lunas', '0', 'Baik', 'Terlampir'),
-(21, 7, '13000000', 'Lunas', '0', 'Baik', 'Terlampir'),
-(22, 7, '25000000', 'Lunas', '0', 'Baik', 'Terlampir'),
-(23, 7, '40000000', 'Lunas', '0', 'Baik', 'Terlampir'),
-(24, 7, '25000000', 'Lunas', '0', 'Baik', 'Terlampir'),
-(25, 7, '13000000', 'Lunas', '0', 'Baik', 'Terlampir');
+(1, 9, '40000000', 'Lunas', '0', 'Baik', 'Terlampir'),
+(2, 9, '150000000', 'Lunas', '0', 'Baik', 'Terlampir'),
+(3, 9, '40000000', 'Lunas', '0', 'Baik', 'Terlampir'),
+(4, 9, '150000000', 'Lunas', '0', 'Baik', 'Terlampir');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user`
+-- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
@@ -602,7 +690,7 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `user`
+-- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id`, `name`, `email`, `image`, `password`, `role_id`, `is_active`, `date_created`) VALUES
@@ -615,7 +703,7 @@ INSERT INTO `user` (`id`, `name`, `email`, `image`, `password`, `role_id`, `is_a
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user_access_menu`
+-- Table structure for table `user_access_menu`
 --
 
 CREATE TABLE `user_access_menu` (
@@ -625,7 +713,7 @@ CREATE TABLE `user_access_menu` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `user_access_menu`
+-- Dumping data for table `user_access_menu`
 --
 
 INSERT INTO `user_access_menu` (`id`, `role_id`, `menu_id`) VALUES
@@ -647,7 +735,7 @@ INSERT INTO `user_access_menu` (`id`, `role_id`, `menu_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user_menu`
+-- Table structure for table `user_menu`
 --
 
 CREATE TABLE `user_menu` (
@@ -656,7 +744,7 @@ CREATE TABLE `user_menu` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `user_menu`
+-- Dumping data for table `user_menu`
 --
 
 INSERT INTO `user_menu` (`id`, `menu`) VALUES
@@ -672,7 +760,7 @@ INSERT INTO `user_menu` (`id`, `menu`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user_role`
+-- Table structure for table `user_role`
 --
 
 CREATE TABLE `user_role` (
@@ -681,7 +769,7 @@ CREATE TABLE `user_role` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `user_role`
+-- Dumping data for table `user_role`
 --
 
 INSERT INTO `user_role` (`id`, `role`) VALUES
@@ -694,7 +782,7 @@ INSERT INTO `user_role` (`id`, `role`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user_sub_menu`
+-- Table structure for table `user_sub_menu`
 --
 
 CREATE TABLE `user_sub_menu` (
@@ -707,7 +795,7 @@ CREATE TABLE `user_sub_menu` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `user_sub_menu`
+-- Dumping data for table `user_sub_menu`
 --
 
 INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_active`) VALUES
@@ -735,7 +823,7 @@ INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_active
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `usulan`
+-- Table structure for table `usulan`
 --
 
 CREATE TABLE `usulan` (
@@ -782,12 +870,11 @@ CREATE TABLE `usulan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `usulan`
+-- Dumping data for table `usulan`
 --
 
 INSERT INTO `usulan` (`id_usulan`, `id_lb`, `character`, `capacity`, `capital`, `kel_hutang`, `kel_angsuran`, `coe`, `collateral`, `plafond`, `sifat`, `jenis`, `tujuan`, `sektor`, `waktu`, `bunga`, `angsuran`, `denda`, `realisasi`, `tanggungan`, `likuidasi`, `lainnya`, `jaminan`, `notaris`, `provisi`, `administrasi`, `asuransi`, `materai`, `apht`, `skmht`, `titipan`, `fiduciare`, `legalisasi`, `lain`, `roya`, `proses`, `sertifikat`, `akta`, `pendaftaran`, `plotting`) VALUES
-(1, 6, 'Baik', 'Baik', 'Baik', NULL, NULL, 'Baik', 'Cukup', '700000000', 'Pokok Bunga tiap bulan', 'Ulangan', 'Modal Kerja', 'perdagangan', '96 bulan', '12.5', '14583333', '29167', '2022-04-01', '150000000', '800000000', '0', 'Bus Merk Isuzu', 'Bambang Riyanto, SH. M.Kn.', '5250000', '5250000', '0', '10000', '1920000', '100000', '0', '1270000', '500000', '', '0', '400000', '150000', '', '50000', '0'),
-(2, 7, 'Baik', 'Baik', 'Baik', NULL, NULL, 'Baik', 'Cukup', '700000000', 'Pokok Bunga tiap bulan', 'Ulangan', 'Modal Kerja', 'perdagangan', '96 bulan', '12.5', '14583333', '29167', '2022-04-12', '150000000', '800000000', '0', 'Bus Merk Isuzu', 'Eka Sari Sulistyowati, SH. M.Kn.', '1150000', '1150000', '0', '18000', '1920000', '100000', '0', '0', '500000', '', '1000000', '280000', '250000', '', '400000', '0');
+(1, 9, 'Baik', 'Baik', 'Baik', NULL, NULL, 'Baik', 'Cukup', '700000000', 'Pokok Bunga tiap Bulan', 'Ulangan', 'Modal Kerja', 'Perdagangan', '96 Bulan', '12', '14286332', '29123', '2022-05-11', '150000000', '800000000', '0', 'Bus Merk isizu', 'Bambang Riyanto, SH. M.Kn.', '5250000', '5250000', '0', '10000', '1920000', '100000', '0', '1270000', '500000', '', '0', '400000', '150000', '', '50000', '0');
 
 --
 -- Indexes for dumped tables
@@ -893,6 +980,12 @@ ALTER TABLE `notaris`
   ADD PRIMARY KEY (`notaris`);
 
 --
+-- Indexes for table `perkiraan`
+--
+ALTER TABLE `perkiraan`
+  ADD PRIMARY KEY (`kode_perkiraan`);
+
+--
 -- Indexes for table `riwayat_pinjaman`
 --
 ALTER TABLE `riwayat_pinjaman`
@@ -945,13 +1038,13 @@ ALTER TABLE `usulan`
 -- AUTO_INCREMENT for table `analisis`
 --
 ALTER TABLE `analisis`
-  MODIFY `id_analisis` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_analisis` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `bismillah`
 --
 ALTER TABLE `bismillah`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `capacity`
@@ -963,43 +1056,43 @@ ALTER TABLE `capacity`
 -- AUTO_INCREMENT for table `capital_a`
 --
 ALTER TABLE `capital_a`
-  MODIFY `id_capi` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_capi` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `capital_b`
 --
 ALTER TABLE `capital_b`
-  MODIFY `id_capi` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_capi` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `cashflow_a`
 --
 ALTER TABLE `cashflow_a`
-  MODIFY `id_cf` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_cf` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `cashflow_b`
 --
 ALTER TABLE `cashflow_b`
-  MODIFY `id_cf` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_cf` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
 
 --
 -- AUTO_INCREMENT for table `collateral`
 --
 ALTER TABLE `collateral`
-  MODIFY `id_col` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_col` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `collateral_tanah`
 --
 ALTER TABLE `collateral_tanah`
-  MODIFY `id_col2` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_col2` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `condition`
 --
 ALTER TABLE `condition`
-  MODIFY `id_con` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_con` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `dummy`
@@ -1011,19 +1104,19 @@ ALTER TABLE `dummy`
 -- AUTO_INCREMENT for table `karakter`
 --
 ALTER TABLE `karakter`
-  MODIFY `id_char` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_char` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `latar_belakang`
 --
 ALTER TABLE `latar_belakang`
-  MODIFY `id_lb` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_lb` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `riwayat_pinjaman`
 --
 ALTER TABLE `riwayat_pinjaman`
-  MODIFY `id_rp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id_rp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `user`
@@ -1059,74 +1152,74 @@ ALTER TABLE `user_sub_menu`
 -- AUTO_INCREMENT for table `usulan`
 --
 ALTER TABLE `usulan`
-  MODIFY `id_usulan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_usulan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+-- Constraints for dumped tables
 --
 
 --
--- Ketidakleluasaan untuk tabel `capacity`
+-- Constraints for table `capacity`
 --
 ALTER TABLE `capacity`
   ADD CONSTRAINT `capacity_ibfk_1` FOREIGN KEY (`id_lb`) REFERENCES `latar_belakang` (`id_lb`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `capital_a`
+-- Constraints for table `capital_a`
 --
 ALTER TABLE `capital_a`
   ADD CONSTRAINT `capital_a_ibfk_1` FOREIGN KEY (`id_lb`) REFERENCES `latar_belakang` (`id_lb`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `capital_b`
+-- Constraints for table `capital_b`
 --
 ALTER TABLE `capital_b`
   ADD CONSTRAINT `capital_b_ibfk_1` FOREIGN KEY (`id_lb`) REFERENCES `latar_belakang` (`id_lb`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `cashflow_a`
+-- Constraints for table `cashflow_a`
 --
 ALTER TABLE `cashflow_a`
   ADD CONSTRAINT `cashflow_a_ibfk_1` FOREIGN KEY (`id_lb`) REFERENCES `latar_belakang` (`id_lb`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `cashflow_b`
+-- Constraints for table `cashflow_b`
 --
 ALTER TABLE `cashflow_b`
   ADD CONSTRAINT `cashflow_b_ibfk_1` FOREIGN KEY (`id_lb`) REFERENCES `latar_belakang` (`id_lb`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `collateral`
+-- Constraints for table `collateral`
 --
 ALTER TABLE `collateral`
   ADD CONSTRAINT `collateral_ibfk_1` FOREIGN KEY (`id_lb`) REFERENCES `latar_belakang` (`id_lb`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `collateral_tanah`
+-- Constraints for table `collateral_tanah`
 --
 ALTER TABLE `collateral_tanah`
   ADD CONSTRAINT `collateral_tanah_ibfk_1` FOREIGN KEY (`id_lb`) REFERENCES `latar_belakang` (`id_lb`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `condition`
+-- Constraints for table `condition`
 --
 ALTER TABLE `condition`
   ADD CONSTRAINT `condition_ibfk_1` FOREIGN KEY (`id_lb`) REFERENCES `latar_belakang` (`id_lb`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `karakter`
+-- Constraints for table `karakter`
 --
 ALTER TABLE `karakter`
   ADD CONSTRAINT `karakter_ibfk_1` FOREIGN KEY (`id_lb`) REFERENCES `latar_belakang` (`id_lb`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `riwayat_pinjaman`
+-- Constraints for table `riwayat_pinjaman`
 --
 ALTER TABLE `riwayat_pinjaman`
   ADD CONSTRAINT `riwayat_pinjaman_ibfk_1` FOREIGN KEY (`id_lb`) REFERENCES `latar_belakang` (`id_lb`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `usulan`
+-- Constraints for table `usulan`
 --
 ALTER TABLE `usulan`
   ADD CONSTRAINT `usulan_ibfk_1` FOREIGN KEY (`id_lb`) REFERENCES `latar_belakang` (`id_lb`) ON DELETE CASCADE ON UPDATE CASCADE,
