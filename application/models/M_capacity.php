@@ -72,7 +72,7 @@ class M_capacity extends CI_Model
             'usaha_realisasi'    => $usaha_realisasi,
         );
         $this->db->insert('capacity', $data);
-        /*redirect('capacity?id_lb=' . $id_lb);*/
-        redirect('capacity/templateword?id_lb=' . $id_lb);
+        /*redirect('capacity?id_lb=' . $id_lb);
+        redirect('capacity/templateword?id_lb=' . $id_lb);*/
     }
 }

@@ -89,8 +89,8 @@ class M_capital extends CI_Model
             'total_aset'    => $total_aset
         );
         $this->db->insert('capital_b', $data);
-        /*redirect('capital?id_lb=' . $id_lb);*/
-        redirect('capital/templateword?id_lb=' . $id_lb);
+        /*redirect('capital?id_lb=' . $id_lb);
+        redirect('capital/templateword?id_lb=' . $id_lb);*/
     }
 
     public function add_data2($data)

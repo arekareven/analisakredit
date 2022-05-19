@@ -103,6 +103,29 @@ class M_kredit extends CI_Model
 		redirect('kredit/lb');
 	}
 
+
+	public function add_data_rw($x)
+	{
+		$id_lb			= $this->input->post('id_lb');
+		$plafond			= $this->input->post('plafond');
+		$status		= $this->input->post('status');
+		$saldo     = $this->input->post('saldo');
+		$sejarah      		= $this->input->post('sejarah');
+		$data      	= $this->input->post('data');
+
+		$x = array(
+
+			'id_lb'	    	=> $id_lb,
+			'plafond'	    	=> $plafond,
+			'status'	    => $status,
+			'saldo'	=> $saldo,
+			'sejarah'	    	=> $sejarah,
+			'data'	    => $data
+		);
+		$this->db->insert('riwayat_pinjaman', $x);
+	}
+
+	/* penambahan data dengan perulangan
 	public function add_data_rw($data)
 	{
 		$id_lb			= $_POST['id_lb'];
@@ -128,11 +151,12 @@ class M_kredit extends CI_Model
 		}
 		redirect('kredit/templateword2?id_lb='. $id_lb[0]);
 	}
+	*/
 
 	function hapus_data($id_lb)
 	{
 		$this->db->where(array('id_lb' => $id_lb));
 		$this->db->delete('latar_belakang');
-		redirect('kredit/lb?=id'.$id_lb);
+		redirect('kredit/lb?=id' . $id_lb);
 	}
 }

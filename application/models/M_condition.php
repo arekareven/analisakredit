@@ -38,7 +38,7 @@ class M_condition extends CI_Model
             'ancaman'        => $ancaman,
         );
         $this->db->insert('condition', $data);
-        /*redirect('condition?id_lb=' . $id_lb);*/
-        redirect('condition/templateword?id_lb=' . $id_lb);
+        /*redirect('condition?id_lb=' . $id_lb);
+        redirect('condition/templateword?id_lb=' . $id_lb);*/
     }
 }

@@ -118,7 +118,6 @@ class M_usulan extends CI_Model
             'plotting'    => $plotting
         );
         $this->db->insert('usulan', $data);
-        redirect('usulan/templateword?id_lb=' . $id_lb);
     }
 
     /*

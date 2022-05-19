@@ -22,7 +22,23 @@ class Test extends CI_Controller
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);
-        $this->load->view('kredit/test', $data);
+        $this->load->view('kredit/dummy', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function edit()
+    {
+        $data['id_lb'] = $_GET['id_lb'];
+        $data['title'] = 'Dashboard';
+        $data['user'] = $this->db->get_where('user', ['email' =>
+        $this->session->userdata('email')])->row_array();
+        $data['select'] = $this->m_test->data_select();
+        $data['perkiraan'] = $this->m_test->data_perkiraan();
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('kredit/edit', $data);
         $this->load->view('templates/footer');
     }
 

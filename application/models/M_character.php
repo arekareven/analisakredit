@@ -44,7 +44,6 @@ class M_character extends CI_Model
         $hp3        = $this->input->post('hp3');
 
         $data = array(
-
             'id_lb'            => $id_lb,
             'info_pribadi'            => $info_pribadi,
             'info_perilaku'        => $info_perilaku,
@@ -60,7 +59,6 @@ class M_character extends CI_Model
             'hp3'                => $hp3,
         );
         $this->db->insert('karakter', $data);
-        redirect('character/templateword?id_lb=' . $id_lb);
     }
 
     public function add_data_rw($data)
