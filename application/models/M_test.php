@@ -19,6 +19,41 @@ class M_test extends CI_Model
     {
         return $this->db->query("SELECT * FROM perkiraan WHERE LENGTH(kode_perkiraan) > 3");
     }
+    
+    public function edit_rw($id_lb)
+    {
+        return $this->db->query("SELECT * FROM riwayat_pinjaman WHERE id_lb=$id_lb");
+    }
+
+    public function edit_capa($id_lb)
+    {
+        return $this->db->query("SELECT * FROM capacity WHERE id_lb=$id_lb");
+    }
+
+    public function edit_capi($id_lb)
+    {
+        return $this->db->query("SELECT * FROM capital_b WHERE id_lb=$id_lb");
+    }
+
+    public function edit_cash($id_lb)
+    {
+        return $this->db->query("SELECT * FROM cashflow_b WHERE id_lb=$id_lb");
+    }
+
+    public function edit_collt($id_lb)
+    {
+        return $this->db->query("SELECT * FROM collateral_tanah WHERE id_lb=$id_lb");
+    }
+
+    public function edit_collk($id_lb)
+    {
+        return $this->db->query("SELECT * FROM collateral WHERE id_lb=$id_lb");
+    }
+
+    public function edit_usulan($id_lb)
+    {
+        return $this->db->query("SELECT * FROM usulan WHERE id_lb=$id_lb");
+    }
 
     function cari($id)
     {

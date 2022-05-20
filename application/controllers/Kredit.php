@@ -31,7 +31,7 @@ class Kredit extends CI_Controller
 	public function next()
 	{
 		$id_lb = $_GET['id_lb'];
-		redirect('character?id_lb=' . $id_lb);
+		redirect('test/edit?id_lb=' . $id_lb);
 	}
 
 	public function lb()
