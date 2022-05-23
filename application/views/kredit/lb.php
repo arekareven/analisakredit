@@ -38,6 +38,7 @@
                         <a href='templateword?id_lb=" . $row->id_lb . "' class ='btn btn-success btn-circle' title='Next'>Next</i></a>
                         <a class='btn btn-danger btn-circle' data-toggle='modal' data-target='#hapus' onClick=\"HapusData('" . $row->id_lb . "')\"><i class='fas fa-trash'></i></a>                                 
                         <a href='next?id_lb=" . $row->id_lb . "' class ='btn btn-warning btn-circle' title='Next'>Edit</i></a>                               
+                        <a href='cetak?id_lb=" . $row->id_lb . "' class ='btn btn-warning btn-circle' title='Next' target='_blank'>Cetak</i></a>                               
                         </td>							
                     </tr>";
                         }

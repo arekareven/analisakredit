@@ -36,6 +36,7 @@ class Test extends CI_Controller
         $data['select'] = $this->m_test->data_select();
         $data['perkiraan'] = $this->m_test->data_perkiraan();
         $data['rw'] = $this->m_test->edit_rw($id_lb);
+        $data['character'] = $this->m_test->edit_char($id_lb);
         $data['capacity'] = $this->m_test->edit_capa($id_lb);
         $data['capital'] = $this->m_test->edit_capi($id_lb);
         $data['cashflow'] = $this->m_test->edit_cash($id_lb);
@@ -68,4 +69,10 @@ class Test extends CI_Controller
         $id_cf = $this->input->post('id_cf');
         $this->m_test->add_data2($id_cf);
     }
+
+    public function cetak_char()
+	{
+		$id_char = $_GET['id_char'];
+		redirect('pdf_char?id_char=' . $id_char);
+	}
 }

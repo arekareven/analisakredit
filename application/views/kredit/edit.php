@@ -27,6 +27,7 @@
                             <?php
                             foreach ($rw->result() as $row) {
                             ?>
+                                <a href="cetak_rp?id_rp=<?php echo $row->id_rp; ?>" class="btn btn-warning" title='Cetak' target='_blank'>Cetak</a>
                                 <form id="rp">
                                     <div class="form-group">
                                         <div class="row">
@@ -75,7 +76,7 @@
                         </div>
                         <div class="tab-pane fade" id="v-pills-character" role="tabpanel" aria-labelledby="v-pills-character-tab">
                             <?php
-                            foreach ($capital->result() as $row) {
+                            foreach ($character->result() as $row) {
                             ?>
                                 <form id="character">
                                     <div class="modal-body">

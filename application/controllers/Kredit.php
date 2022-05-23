@@ -34,6 +34,12 @@ class Kredit extends CI_Controller
 		redirect('test/edit?id_lb=' . $id_lb);
 	}
 
+	public function cetak()
+	{
+		$id_lb = $_GET['id_lb'];
+		redirect('pdf_lb?id_lb=' . $id_lb);
+	}
+
 	public function lb()
 	{
 		$data['title'] = 'Latar Belakang';

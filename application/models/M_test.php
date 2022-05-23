@@ -25,6 +25,11 @@ class M_test extends CI_Model
         return $this->db->query("SELECT * FROM riwayat_pinjaman WHERE id_lb=$id_lb");
     }
 
+    public function edit_char($id_lb)
+    {
+        return $this->db->query("SELECT * FROM karakter WHERE id_lb=$id_lb");
+    }
+
     public function edit_capa($id_lb)
     {
         return $this->db->query("SELECT * FROM capacity WHERE id_lb=$id_lb");
