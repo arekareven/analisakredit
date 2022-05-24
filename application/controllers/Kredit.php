@@ -28,6 +28,12 @@ class Kredit extends CI_Controller
 		$this->m_kredit->add_data_rw($id_lb);
 	}
 
+	public function to_rp()
+	{
+		$id_lb = $_GET['id_lb'];
+		redirect('test?id_lb=' . $id_lb);
+	}
+
 	public function next()
 	{
 		$id_lb = $_GET['id_lb'];

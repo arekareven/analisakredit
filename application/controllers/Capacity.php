@@ -42,11 +42,8 @@ class Capacity extends CI_Controller
     public function templateword()
     {
         $id_lb = $_GET['id_lb'];
-        $next = $this->db->query("SELECT * FROM latar_belakang WHERE id_lb='$id_lb'");
-        foreach ($next->result() as $row) {
-            require 'vendor/autoload.php';
-            $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor("C:/xampp/htdocs/analisakredit/cache/" . $row->nama_debitur . date('d-m-y') . ".docx");
-        }
+        require 'vendor/autoload.php';
+        $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor("C:/xampp/htdocs/analisakredit/capacity.docx");
         $surat = $this->db->query("SELECT * FROM capacity WHERE id_lb='$id_lb'");
         foreach ($surat->result() as $row) {
 
@@ -73,12 +70,13 @@ class Capacity extends CI_Controller
                 'total'    => number_format($row->total),
                 'usaha_realisasi'    => $row->usaha_realisasi,
             ]);
+            $next = $this->db->query("SELECT * FROM latar_belakang WHERE id_lb='$id_lb'");
             foreach ($next->result() as $row) {
                 $pathToSave = "C:/xampp/htdocs/analisakredit/cache/" . $row->nama_debitur . date('d-m-y') . ".docx";
                 $templateProcessor->saveAs($pathToSave);
             }
             /*redirect('capacity/next?id_lb=' . $row->id_lb);*/
-            redirect('test?id_lb=' . $row->id_lb);
         }
+        redirect('test?id_lb=' . $row->id_lb);
     }
 }

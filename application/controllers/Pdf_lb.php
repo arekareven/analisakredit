@@ -15,6 +15,8 @@ class Pdf_lb extends CI_Controller
         $pdf->SetAutoPageBreak(false);
         // membuat halaman baru
         $pdf->AddPage();
+        // margin
+        $pdf->SetMargins(20, 20, 20);
         // setting jenis font yang akan digunakan
         $pdf->SetFont('Times', 'B', 16);
         // mencetak string 

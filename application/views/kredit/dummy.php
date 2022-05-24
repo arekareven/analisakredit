@@ -19,6 +19,7 @@
                         <a class="nav-link" id="v-pills-collateralt-tab" data-toggle="pill" href="#v-pills-collateralt" role="tab" aria-controls="v-pills-collateralt" aria-selected="false">Collateral Tanah</a>
                         <a class="nav-link" id="v-pills-collateralk-tab" data-toggle="pill" href="#v-pills-collateralk" role="tab" aria-controls="v-pills-collateralk" aria-selected="false">Collateral Kendaraan</a>
                         <a class="nav-link" id="v-pills-usulan-tab" data-toggle="pill" href="#v-pills-usulan" role="tab" aria-controls="v-pills-usulan" aria-selected="false">Usulan</a>
+                        <a class="nav-link" id="v-pills-cetak-tab" data-toggle="pill" href="#v-pills-cetak" role="tab" aria-controls="v-pills-cetak" aria-selected="false">Cetak</a>
                     </div>
                 </div>
                 <div class="col-9">
@@ -861,6 +862,33 @@
                                     <button type="button" id="btn_usulan" class="btn btn-primary">Save changes</button>
                                 </div>
                             </form>
+                        </div>
+
+                        <div class="tab-pane fade" id="v-pills-cetak" role="tabpanel" aria-labelledby="v-pills-cetak-tab">
+                            <div class="modal-body">
+                                <div class="row">
+                                    <a href="pdf_lb?id_lb=<?php echo $id_lb; ?>" class="btn btn-primary" target="_blank">LB</i></a>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <a href="pdf_char?id_lb=<?php echo $id_lb; ?>" class="btn btn-primary" target="_blank">Character</i></a>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <a href="capacity/templateword?id_lb=<?php echo $id_lb; ?>" class="btn btn-primary">Capacity</i></a>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <a href="pdf_capi?id_lb=<?php echo $id_lb; ?>" class="btn btn-primary" target="_blank">Capital</i></a>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <a href="pdf_coe?id_lb=<?php echo $id_lb; ?>" class="btn btn-primary" target="_blank">Condition</i></a>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

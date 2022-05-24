@@ -35,21 +35,21 @@
                         <td>" . 'Rp. ' . number_format($row->plafon) . "</td>
                         <td>" . date('d-m-Y', strtotime($row->tgl_permohonan)) . "</td>                        
                         <td>
-                        <a href='templateword?id_lb=" . $row->id_lb . "' class ='btn btn-success btn-circle' title='Next'>Next</i></a>
+                        <a href='next?id_lb=" . $row->id_lb . "' class ='btn btn-warning btn-circle' title='Next'><i class='fas fa-edit'></i></a>                               
                         <a class='btn btn-danger btn-circle' data-toggle='modal' data-target='#hapus' onClick=\"HapusData('" . $row->id_lb . "')\"><i class='fas fa-trash'></i></a>                                 
-                        <a href='next?id_lb=" . $row->id_lb . "' class ='btn btn-warning btn-circle' title='Next'>Edit</i></a>                               
-                        <a href='cetak?id_lb=" . $row->id_lb . "' class ='btn btn-warning btn-circle' title='Next' target='_blank'>Cetak</i></a>                               
+                        <a href='to_rp?id_lb=" . $row->id_lb . "' class ='btn btn-success btn-circle' title='Next'><i class='fas fa-arrow-right'></i></a>
                         </td>							
-                    </tr>";
-                        }
-                        ?>
+                        </tr>";
+                    }
+                    ?>
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
-
+    
     <!--
+        <a href='cetak?id_lb=" . $row->id_lb . "' class ='btn btn-warning btn-circle' title='Next' target='_blank'>Cetak</i></a>                               
     <table class="table">
         <thead class="thead-dark">
             <tr>
