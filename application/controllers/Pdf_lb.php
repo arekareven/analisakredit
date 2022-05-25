@@ -16,7 +16,7 @@ class Pdf_lb extends CI_Controller
         // membuat halaman baru
         $pdf->AddPage();
         // margin
-        $pdf->SetMargins(20, 20, 20);
+        $pdf->SetMargins(10, 10, 10);
         // setting jenis font yang akan digunakan
         $pdf->SetFont('Times', 'B', 16);
         // mencetak string 
@@ -37,12 +37,12 @@ class Pdf_lb extends CI_Controller
             $pdf->Cell(49, 5.5, 'Tgl Permohonan', 0, 0, '');
             $pdf->SetFont('Times', '', 12);
             $pdf->Cell(5, 5.5, ':', 0, 0, '');
-            $pdf->Cell(0, 5.5, $data->tgl_permohonan, 0, 1);
+            $pdf->Cell(0, 5.5, date('d-m-Y', strtotime($data->tgl_permohonan)), 0, 1);
             $pdf->SetFont('Times', 'B', 12);
             $pdf->Cell(49, 5.5, 'Tgl Analisa', 0, 0, '');
             $pdf->SetFont('Times', '', 12);
             $pdf->Cell(5, 5.5, ':', 0, 0, '');
-            $pdf->Cell(0, 5.5, $data->tgl_analisa, 0, 1);
+            $pdf->Cell(0, 5.5, date('d-m-Y', strtotime($data->tgl_analisa)), 0, 1);
             $pdf->Cell(5, 5.5, '', 0, 1);
 
             $pdf->SetFont('Times', 'B', 12);
@@ -83,7 +83,7 @@ class Pdf_lb extends CI_Controller
             $pdf->Cell(59, 5.5, $data->status_kawin, 0, 0);
             $pdf->Cell(35, 5.5, 'Pendidikan', 0, 0, '');
             $pdf->Cell(5, 5.5, ':', 0, 0, '');
-            $pdf->Cell(0, 5.5, $data->tgl_analisa, 0, 1);
+            $pdf->Cell(0, 5.5, $data->pendidikan, 0, 1);
 
             $pdf->Cell(49, 5.5, 'Tempat, Tgl Lahir', 0, 0, '');
             $pdf->Cell(5, 5.5, ':', 0, 0, '');
@@ -176,6 +176,18 @@ class Pdf_lb extends CI_Controller
             $pdf->Cell(37, 5.5, 'Data', 1, 1, 'C');
             $pdf->SetFont('Times', '', 12);
 
+            $no = 0;
+            $rp = $this->db->get('riwayat_pinjaman')->result();
+            foreach ($rp as $data) {
+                $no++;
+                $pdf->Cell(10, 5.5, $no, 1, 0, 'C');
+                $pdf->Cell(37, 5.5, $data->plafond, 1, 0, 'C');
+                $pdf->Cell(37, 5.5, $data->status, 1, 0, 'C');
+                $pdf->Cell(37, 5.5, $data->saldo, 1, 0, 'C');
+                $pdf->Cell(37, 5.5, $data->sejarah, 1, 0, 'C');
+                $pdf->Cell(37, 5.5, $data->data, 1, 1, 'C');
+
+            }
 
             $pdf->Output();
         }

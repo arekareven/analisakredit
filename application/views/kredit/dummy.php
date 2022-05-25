@@ -13,8 +13,7 @@
                         <a class="nav-link" id="v-pills-character-tab" data-toggle="pill" href="#v-pills-character" role="tab" aria-controls="v-pills-character" aria-selected="false">Character</a>
                         <a class="nav-link" id="v-pills-capacity-tab" data-toggle="pill" href="#v-pills-capacity" role="tab" aria-controls="v-pills-capacity" aria-selected="false">Capacity</a>
                         <a class="nav-link" id="v-pills-capital-tab" data-toggle="pill" href="#v-pills-capital" role="tab" aria-controls="v-pills-capital" aria-selected="false">Capital</a>
-                        <a class="nav-link" id="v-pills-cashflow-tab" data-toggle="pill" href="#v-pills-cashflow" role="tab" aria-controls="v-pills-cashflow" aria-selected="false">Cashflow Awal</a>
-                        <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Cashflow</a>
+                        <a class="nav-link" id="v-pills-cashflow-tab" data-toggle="pill" href="#v-pills-cashflow" role="tab" aria-controls="v-pills-cashflow" aria-selected="false">Cashflow Sesudah</a>
                         <a class="nav-link" id="v-pills-condition-tab" data-toggle="pill" href="#v-pills-condition" role="tab" aria-controls="v-pills-condition" aria-selected="false">Condition</a>
                         <a class="nav-link" id="v-pills-collateralt-tab" data-toggle="pill" href="#v-pills-collateralt" role="tab" aria-controls="v-pills-collateralt" aria-selected="false">Collateral Tanah</a>
                         <a class="nav-link" id="v-pills-collateralk-tab" data-toggle="pill" href="#v-pills-collateralk" role="tab" aria-controls="v-pills-collateralk" aria-selected="false">Collateral Kendaraan</a>
@@ -248,168 +247,171 @@
                             </form>
                         </div>
                         <div class="tab-pane fade" id="v-pills-capital" role="tabpanel" aria-labelledby="v-pills-capital-tab">
-                            <form id="capital">
-                                <div class="modal-body">
-                                    <div class="col-md-12 mb-3">
-                                        <h5>Aktiva lancar</h5>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="kas" class="col-sm-6 col-form-label">Kas</label>
-                                        <div class="col-sm-6">
-                                            <input type="hidden" class="form-control" id="id_lb" name="id_lb" value="<?php echo $id_lb; ?>">
-                                            <input type="hidden" class="form-control" id="type" name="type" value="before">
-                                            <input type="number" class="form-control" id="kas" name="kas">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="tabungan" class="col-sm-6 col-form-label">Tabungan</label>
-                                        <div class="col-sm-6">
-                                            <input type="number" class="form-control" id="tabungan" name="tabungan">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="deposito" class="col-sm-6 col-form-label">Deposito</label>
-                                        <div class="col-sm-6">
-                                            <input type="number" class="form-control" id="deposito" name="deposito">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="piutang" class="col-sm-6 col-form-label">Piutang</label>
-                                        <div class="col-sm-6">
-                                            <input type="number" class="form-control" id="piutang" name="piutang">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="peralatan" class="col-sm-6 col-form-label">Peralatan</label>
-                                        <div class="col-sm-6">
-                                            <input type="number" class="form-control" id="peralatan" name="peralatan">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="barang" class="col-sm-6 col-form-label">Persediaan Barang Usaha 1</label>
-                                        <div class="col-sm-6">
-                                            <input type="number" class="form-control" id="barang" name="barang">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="barang2" class="col-sm-6 col-form-label">Persediaan Barang Usaha 2</label>
-                                        <div class="col-sm-6">
-                                            <input type="number" class="form-control" id="barang2" name="barang2">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="barang3" class="col-sm-6 col-form-label">Persediaan Barang Usaha 3</label>
-                                        <div class="col-sm-6">
-                                            <input type="number" class="form-control" id="barang3" name="barang3">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="sewa" class="col-sm-6 col-form-label">Sewa Dibayar Dimuka</label>
-                                        <div class="col-sm-6">
-                                            <input type="number" class="form-control" id="sewa" name="sewa">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="lahan" class="col-sm-6 col-form-label">Lahan Garap</label>
-                                        <div class="col-sm-6">
-                                            <input type="number" class="form-control" id="lahan" name="lahan">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="gedung" class="col-sm-6 col-form-label">Gedung / Ruko</label>
-                                        <div class="col-sm-6">
-                                            <input type="number" class="form-control" id="gedung" name="gedung">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="operasional" class="col-sm-6 col-form-label">Kendaraan Operasional</label>
-                                        <div class="col-sm-6">
-                                            <input type="number" class="form-control" id="operasional" name="operasional">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row mb-5">
-                                        <label for="lain" class="col-sm-6 col-form-label">Lain-lain</label>
-                                        <div class="col-sm-6">
-                                            <input type="number" class="form-control" id="lain" name="lain">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12 mb-3">
-                                        <h5>Aktiva Tetap</h5>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="tanah" class="col-sm-6 col-form-label">Tanah</label>
-                                        <div class="col-sm-6">
-                                            <input type="number" class="form-control" id="tanah" name="tanah">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="bangunan" class="col-sm-6 col-form-label">Bangunan</label>
-                                        <div class="col-sm-6">
-                                            <input type="number" class="form-control" id="bangunan" name="bangunan">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="kendaraan" class="col-sm-6 col-form-label">Kendaraan</label>
-                                        <div class="col-sm-6">
-                                            <input type="number" class="form-control" id="kendaraan" name="kendaraan">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="inventaris" class="col-sm-6 col-form-label">Inventaris</label>
-                                        <div class="col-sm-6">
-                                            <input type="number" class="form-control" id="inventaris" name="inventaris">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row mb-5">
-                                        <label for="lain2" class="col-sm-6 col-form-label">Lain-lain</label>
-                                        <div class="col-sm-6">
-                                            <input type="number" class="form-control" id="lain2" name="lain2">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12 mb-3">
-                                        <h5>Hutang</h5>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="hutang_jpk" class="col-sm-6 col-form-label">Hutang Jangka Pendek</label>
-                                        <div class="col-sm-6">
-                                            <input type="number" class="form-control" id="hutang_jpk" name="hutang_jpk">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="hutang_jpg" class="col-sm-6 col-form-label">Hutang Jangka Panjang</label>
-                                        <div class="col-sm-6">
-                                            <input type="number" class="form-control" id="hutang_jpg" name="hutang_jpg">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="hutang_lain" class="col-sm-6 col-form-label">Hutang Lain</label>
-                                        <div class="col-sm-6">
-                                            <input type="number" class="form-control" id="hutang_lain" name="hutang_lain">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="hutang_dagang" class="col-sm-6 col-form-label">Hutang Dagang</label>
-                                        <div class="col-sm-6">
-                                            <input type="number" class="form-control" id="hutang_dagang" name="hutang_dagang">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" id="btn_capital" class="btn btn-primary">Save changes</button>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="tab-pane fade" id="v-pills-cashflow" role="tabpanel" aria-labelledby="v-pills-cashflow-tab">
                             <div class="modal-body">
                                 <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                                     <li class="nav-item" role="presentation">
-                                        <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Pendapatan</a>
+                                        <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-capital" role="tab" aria-controls="pills-capital" aria-selected="true">Capital</a>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <a class="nav-link" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Pendapatan</a>
                                     </li>
                                     <li class="nav-item" role="presentation">
                                         <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Pengeluaran</a>
                                     </li>
                                 </ul>
                                 <div class="tab-content" id="pills-tabContent">
+                                    <div class="tab-pane fade show active" id="pills-capital" role="tabpanel" aria-labelledby="pills-capital-tab">
+                                        <form id="capital">
+                                            <div class="modal-body">
+                                                <div class="col-md-12 mb-3">
+                                                    <h5>Aktiva lancar</h5>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="kas" class="col-sm-6 col-form-label">Kas</label>
+                                                    <div class="col-sm-6">
+                                                        <input type="hidden" class="form-control" id="id_lb" name="id_lb" value="<?php echo $id_lb; ?>">
+                                                        <input type="hidden" class="form-control" id="type" name="type" value="before">
+                                                        <input type="number" class="form-control" id="kas" name="kas">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="tabungan" class="col-sm-6 col-form-label">Tabungan</label>
+                                                    <div class="col-sm-6">
+                                                        <input type="number" class="form-control" id="tabungan" name="tabungan">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="deposito" class="col-sm-6 col-form-label">Deposito</label>
+                                                    <div class="col-sm-6">
+                                                        <input type="number" class="form-control" id="deposito" name="deposito">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="piutang" class="col-sm-6 col-form-label">Piutang</label>
+                                                    <div class="col-sm-6">
+                                                        <input type="number" class="form-control" id="piutang" name="piutang">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="peralatan" class="col-sm-6 col-form-label">Peralatan</label>
+                                                    <div class="col-sm-6">
+                                                        <input type="number" class="form-control" id="peralatan" name="peralatan">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="barang" class="col-sm-6 col-form-label">Persediaan Barang Usaha 1</label>
+                                                    <div class="col-sm-6">
+                                                        <input type="number" class="form-control" id="barang" name="barang">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="barang2" class="col-sm-6 col-form-label">Persediaan Barang Usaha 2</label>
+                                                    <div class="col-sm-6">
+                                                        <input type="number" class="form-control" id="barang2" name="barang2">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="barang3" class="col-sm-6 col-form-label">Persediaan Barang Usaha 3</label>
+                                                    <div class="col-sm-6">
+                                                        <input type="number" class="form-control" id="barang3" name="barang3">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="sewa" class="col-sm-6 col-form-label">Sewa Dibayar Dimuka</label>
+                                                    <div class="col-sm-6">
+                                                        <input type="number" class="form-control" id="sewa" name="sewa">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="lahan" class="col-sm-6 col-form-label">Lahan Garap</label>
+                                                    <div class="col-sm-6">
+                                                        <input type="number" class="form-control" id="lahan" name="lahan">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="gedung" class="col-sm-6 col-form-label">Gedung / Ruko</label>
+                                                    <div class="col-sm-6">
+                                                        <input type="number" class="form-control" id="gedung" name="gedung">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="operasional" class="col-sm-6 col-form-label">Kendaraan Operasional</label>
+                                                    <div class="col-sm-6">
+                                                        <input type="number" class="form-control" id="operasional" name="operasional">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row mb-5">
+                                                    <label for="lain" class="col-sm-6 col-form-label">Lain-lain</label>
+                                                    <div class="col-sm-6">
+                                                        <input type="number" class="form-control" id="lain" name="lain">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12 mb-3">
+                                                    <h5>Aktiva Tetap</h5>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="tanah" class="col-sm-6 col-form-label">Tanah</label>
+                                                    <div class="col-sm-6">
+                                                        <input type="number" class="form-control" id="tanah" name="tanah">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="bangunan" class="col-sm-6 col-form-label">Bangunan</label>
+                                                    <div class="col-sm-6">
+                                                        <input type="number" class="form-control" id="bangunan" name="bangunan">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="kendaraan" class="col-sm-6 col-form-label">Kendaraan</label>
+                                                    <div class="col-sm-6">
+                                                        <input type="number" class="form-control" id="kendaraan" name="kendaraan">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="inventaris" class="col-sm-6 col-form-label">Inventaris</label>
+                                                    <div class="col-sm-6">
+                                                        <input type="number" class="form-control" id="inventaris" name="inventaris">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row mb-5">
+                                                    <label for="lain2" class="col-sm-6 col-form-label">Lain-lain</label>
+                                                    <div class="col-sm-6">
+                                                        <input type="number" class="form-control" id="lain2" name="lain2">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12 mb-3">
+                                                    <h5>Hutang</h5>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="hutang_jpk" class="col-sm-6 col-form-label">Hutang Jangka Pendek</label>
+                                                    <div class="col-sm-6">
+                                                        <input type="number" class="form-control" id="hutang_jpk" name="hutang_jpk">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="hutang_jpg" class="col-sm-6 col-form-label">Hutang Jangka Panjang</label>
+                                                    <div class="col-sm-6">
+                                                        <input type="number" class="form-control" id="hutang_jpg" name="hutang_jpg">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="hutang_lain" class="col-sm-6 col-form-label">Hutang Lain</label>
+                                                    <div class="col-sm-6">
+                                                        <input type="number" class="form-control" id="hutang_lain" name="hutang_lain">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="hutang_dagang" class="col-sm-6 col-form-label">Hutang Dagang</label>
+                                                    <div class="col-sm-6">
+                                                        <input type="number" class="form-control" id="hutang_dagang" name="hutang_dagang">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" id="btn_capital" class="btn btn-primary">Save changes</button>
+                                            </div>
+                                        </form>
+                                    </div>
                                     <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                                         <form id="cashflow">
                                             <div class="modal-body">
@@ -514,9 +516,126 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="tab-pane fade" id="v-pills-cashflow" role="tabpanel" aria-labelledby="v-pills-cashflow-tab">
+                            <div class="modal-body">
+                                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Pendapatan</a>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Pengeluaran</a>
+                                    </li>
+                                </ul>
+                                <div class="tab-content" id="pills-tabContent">
+                                    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                                        <form id="cashflow2">
+                                            <div class="modal-body">
+                                                <div class="col-md-8 mb-4">
+                                                    <label for="dari" class="form-label">Pendapatan dari</label>
+                                                    <select class="form-control" aria-label="Default select example" id="kode_perkiraan" name="kode_perkiraan" onchange="return nama_p();">
+                                                        <option value=""></option>
+                                                        <option value="4.1.1">Pendapatan Usaha 1</option>
+                                                        <option value="4.1.2">Pendapatan Usaha 2</option>
+                                                        <option value="4.1.3">Pendapatan Usaha 3</option>
+                                                        <option value="4.1.4">Pendapatan Lain / Gaji</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-8 mb-4">
+                                                    <label for="nopol" class="form-label">Untuk</label>
+                                                    <select class="form-control" aria-label="Default select example" id="kode_perkiraan2" name="kode_perkiraan2" onchange="return nama_p2();">
+                                                        <option value=""></option>
+                                                        <option value="1.1.1">Kas</option>
+                                                        <option value="1.1.2">Tabungan</option>
+                                                        <option value="1.1.3">Deposito</option>
+                                                        <option value="1.1.4">Piutang</option>
+                                                        <option value="1.1.5">Peralatan</option>
+                                                        <option value="1.1.6">Persediaan Barang Usaha 1</option>
+                                                        <option value="1.1.12">Persediaan Barang Usaha 2</option>
+                                                        <option value="1.1.13">Persediaan Barang Usaha 3</option>
+                                                        <option value="1.1.7">Sewa Dibayar Dimuka</option>
+                                                        <option value="1.1.8">Lahan Garap</option>
+                                                        <option value="1.1.9">Gedung / Ruko</option>
+                                                        <option value="1.1.10">Kendaraan Operasional</option>
+                                                        <option value="1.1.11">Lain - Lain</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-12 mb-4">
+                                                    <label for="keterangan" class="form-label">Keterangan</label>
+                                                    <input type="text" class="form-control" id="keterangan" name="keterangan">
+                                                    <input type="hidden" class="form-control" id="id_lb" name="id_lb" value="<?php echo $id_lb; ?>">
+                                                    <input type="hidden" class="form-control" id="nama_perkiraan" name="nama_perkiraan">
+                                                    <input type="hidden" class="form-control" id="nama_perkiraan2" name="nama_perkiraan2">
+                                                    <input type="hidden" class="form-control" id="jenis" name="jenis" value="pendapatan">
+                                                </div>
+                                                <div class="col-md-8 mb-4">
+                                                    <label for="nama_stnk" class="form-label">Sebesar</label>
+                                                    <input type="number" class="form-control" id="saldo" name="saldo">
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" id="simpan2" class="btn btn-primary">Save changes</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                                        <form id="cashflowp2">
+                                            <div class="modal-body">
+                                                <div class="col-md-8 mb-4">
+                                                    <label for="dari" class="form-label">Menggunakan uang dari</label>
+                                                    <select class="form-control" aria-label="Default select example" id="kode_perkiraanp" name="kode_perkiraanp" onchange="return perkiraan();">
+                                                        <option value=""></option>
+                                                        <option value="1.1.1">Kas</option>
+                                                        <option value="1.1.2">Tabungan</option>
+                                                        <option value="1.1.3">Deposito</option>
+                                                        <option value="1.1.4">Piutang</option>
+                                                        <option value="1.1.5">Peralatan</option>
+                                                        <option value="1.1.6">Persediaan Barang Usaha 1</option>
+                                                        <option value="1.1.12">Persediaan Barang Usaha 2</option>
+                                                        <option value="1.1.13">Persediaan Barang Usaha 3</option>
+                                                        <option value="1.1.7">Sewa Dibayar Dimuka</option>
+                                                        <option value="1.1.8">Lahan Garap</option>
+                                                        <option value="1.1.9">Gedung / Ruko</option>
+                                                        <option value="1.1.10">Kendaraan Operasional</option>
+                                                        <option value="1.1.11">Lain - Lain</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-8 mb-4">
+                                                    <label for="nopol" class="form-label">Untuk</label>
+                                                    <select class="form-control" aria-label="Default select example" id="kode_perkiraanp2" name="kode_perkiraanp2" onchange="return perkiraan2();">
+                                                        <option value=""></option>
+                                                        <?php
+                                                        foreach ($perkiraan->result() as $row) {
+                                                            echo "<option value='$row->kode_perkiraan'>$row->nama_perkiraan</option>";
+                                                        }
+                                                        ?>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-12 mb-4">
+                                                    <label for="keterangan" class="form-label">Keterangan</label>
+                                                    <input type="text" class="form-control" id="keteranganp" name="keteranganp">
+                                                    <input type="hidden" class="form-control" id="id_lb" name="id_lb" value="<?php echo $id_lb; ?>">
+                                                    <input type="hidden" class="form-control" id="nama_perkiraanp" name="nama_perkiraanp">
+                                                    <input type="hidden" class="form-control" id="nama_perkiraanp2" name="nama_perkiraanp2">
+                                                    <input type="hidden" class="form-control" id="jenisp" name="jenisp" value="pengeluaran">
+                                                </div>
+                                                <div class="col-md-8 mb-4">
+                                                    <label for="nama_stnk" class="form-label">Sebesar</label>
+                                                    <input type="number" class="form-control" id="saldop" name="saldop">
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" id="simpanp2" class="btn btn-primary">Save changes</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--
                         <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
                             ...
                         </div>
+                        -->
                         <div class="tab-pane fade" id="v-pills-condition" role="tabpanel" aria-labelledby="v-pills-condition-tab">
                             <form id="condition">
                                 <div class="modal-body">
@@ -1105,6 +1224,38 @@
                         }
                     }),
                     document.getElementById("cashflowp").reset();
+            })
+        });
+
+        $(document).ready(function() {
+            $('#simpan2').on('click', function() {
+                var cashflow = $('#cashflow2').serialize();
+                $.ajax({
+                        url: "<?php echo base_url(); ?>cashflow/add",
+                        type: "POST",
+                        data: cashflow,
+                        dataType: "JSON",
+                        success: function(data) {
+                            console.log(data)
+                        }
+                    }),
+                    document.getElementById("cashflow2").reset();
+            })
+        });
+
+        $(document).ready(function() {
+            $('#simpanp2').on('click', function() {
+                var cashflow = $('#cashflowp2').serialize();
+                $.ajax({
+                        url: "<?php echo base_url(); ?>cashflow/add2",
+                        type: "POST",
+                        data: cashflow,
+                        dataType: "JSON",
+                        success: function(data) {
+                            console.log(data)
+                        }
+                    }),
+                    document.getElementById("cashflowp2").reset();
             })
         });
 

@@ -10,8 +10,6 @@ class Pdf_char extends CI_Controller
 
     function index()
     {
-        $title = 'Atas permohonan yang diajukan tersebut, setelah kami lakukan analisa melalui Aspek 6C, hasilnya adalah sebagai berukut :';
-
         $pdf = new FPDF('P', 'mm', 'A4');
         $pdf->SetAutoPageBreak(false);
         // membuat halaman baru
@@ -49,11 +47,23 @@ class Pdf_char extends CI_Controller
             $pdf->Cell(5, 5.5, '', 0, 1);
 
             $pdf->SetFont('Times', 'B', 12);
-            $pdf->Cell(10, 5.5, 'No', 1, 0, 'C');
-            $pdf->Cell(40, 5.5, 'Nama', 1, 0, 'C');
-            $pdf->Cell(80, 5.5, 'Alamat', 1, 0, 'C');
-            $pdf->Cell(40, 5.5, 'Tlp. / HP', 1, 0, 'C');
+            $pdf->Cell(7, 5.5, 'No', 1, 0, 'C');
+            $pdf->Cell(30, 5.5, 'Nama', 1, 0, 'C');
+            $pdf->Cell(90, 5.5, 'Alamat', 1, 0, 'C');
+            $pdf->Cell(40, 5.5, 'Tlp. / HP', 1, 1, 'C');
             $pdf->SetFont('Times', '', 12);
+            $pdf->Cell(7, 5.5, '1', 1, 0, 'C');
+            $pdf->Cell(30, 5.5, $data->nm1, 1, 0, '');
+            $pdf->Cell(90, 5.5, $data->al1);
+            $pdf->Cell(40, 5.5, $data->hp1, 1, 1, '');
+            $pdf->Cell(7, 5.5, '2', 1, 0, 'C');
+            $pdf->Cell(30, 5.5, $data->nm2, 1, 0, '');
+            $pdf->Cell(90, 5.5, $data->al2, 1, 0, '');
+            $pdf->Cell(40, 5.5, $data->hp2, 1, 1, '');
+            $pdf->Cell(7, 5.5, '3', 1, 0, 'C');
+            $pdf->Cell(30, 5.5, $data->nm3, 1, 0, '');
+            $pdf->Cell(90, 5.5, $data->al3, 1, 0, '');
+            $pdf->Cell(40, 5.5, $data->hp3, 1, 1, '');
 
 
             $pdf->Output();

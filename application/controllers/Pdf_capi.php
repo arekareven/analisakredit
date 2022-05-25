@@ -166,15 +166,51 @@ class Pdf_capi extends CI_Controller
             $pdf->Cell(46, 5.5, number_format($data->total_kjb), 0, 1);
             $pdf->Cell(10, 7, '', 0, 1);
 
-            
+
             $pdf->SetFont('Times', 'B', 12);
             $pdf->Cell(79, 5.5, '4. CASH FLOW (sebelum memperoleh kredit)', 0, 1, '');
             $pdf->Cell(7, 5.5, 'No', 1, 0, 'C');
             $pdf->Cell(90, 5.5, 'Keterangan', 1, 0, 'C');
             $pdf->Cell(35, 5.5, 'Pemasukan', 1, 0, 'C');
             $pdf->Cell(35, 5.5, 'Pengeluaran', 1, 0, 'C');
-            $pdf->Cell(35, 5.5, 'Jumlah', 1, 0, 'C');
-            $pdf->SetFont('Times', '', 12);
+            $pdf->Cell(35, 5.5, 'Jumlah', 1, 1, 'C');
+
+            $rp = $this->db->query("SELECT * FROM cashflow_b WHERE kode_perkiraan = '4.1.1'");
+            //tidak sama dengan 0, berarti ada isinya
+            if ($rp->result() > 0) {
+                $pdf->SetFont('Times', '', 12);
+                $pdf->Cell(7, 5.5, 'I', 1, 0, 'C');
+                $pdf->Cell(90, 5.5, 'USAHA 1', 1, 0, '');
+                $pdf->Cell(35, 5.5, '', 1, 0, 'C');
+                $pdf->Cell(35, 5.5, '', 1, 0, 'C');
+                $pdf->Cell(35, 5.5, '', 1, 1, 'C');
+
+                foreach ($rp->result() as $data) {
+                    $pdf->Cell(7, 5.5, '', 1, 0, 'C');
+                    $pdf->Cell(90, 5.5, $data->keterangan, 1, 0, '');
+                    $pdf->Cell(35, 5.5, number_format($data->saldo), 1, 0, 'R');
+                    $pdf->Cell(35, 5.5, '', 1, 0, 'R');
+                    $pdf->Cell(35, 5.5, '', 1, 1, 'R');
+                }
+                $no = 0;
+                $rp = $this->db->query("SELECT * FROM cashflow_b WHERE MID(kode_perkiraan,1,3) = '5.1'");
+                foreach ($rp->result() as $data) {
+                    $no++;
+                    $pdf->Cell(7, 5.5, $no, 1, 0, 'C');
+                    $pdf->Cell(90, 5.5, $data->keterangan, 1, 0, '');
+                    $pdf->Cell(35, 5.5, '', 1, 0, 'R');
+                    $pdf->Cell(35, 5.5, number_format($data->saldo), 1, 0, 'R');
+                    $pdf->Cell(35, 5.5, '', 1, 1, 'R');
+                }
+                $pdf->Cell(7, 5.5, '', 1, 0, 'C');
+                $pdf->Cell(90, 5.5, 'SURPLUS USAHA 1', 1, 0, '');
+                $pdf->Cell(35, 5.5, '', 1, 0, 'C');
+                $pdf->Cell(35, 5.5, '', 1, 0, 'C');
+                $pdf->Cell(35, 5.5, '', 1, 1, 'C');
+            } else {
+                $pdf->SetFont('Times', '', 12);
+            }
+
 
 
             $pdf->Output();
