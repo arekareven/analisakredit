@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 18, 2022 at 10:55 AM
+-- Generation Time: May 25, 2022 at 12:01 PM
 -- Server version: 10.1.29-MariaDB
 -- PHP Version: 7.2.0
 
@@ -231,7 +231,7 @@ CREATE TABLE `capital_b` (
 --
 
 INSERT INTO `capital_b` (`id_capi`, `id_lb`, `kas`, `tabungan`, `deposito`, `piutang`, `peralatan`, `barang`, `barang2`, `barang3`, `sewa`, `lahan`, `gedung`, `operasional`, `lain`, `total_al`, `tanah`, `bangunan`, `kendaraan`, `inventaris`, `lain2`, `total_at`, `total_aset`, `hutang_jpk`, `hutang_jpg`, `hutang_lain`, `hutang_dagang`, `total_hutang`, `laba_rugi`, `modal`, `harta`, `total_kjb`) VALUES
-(4, 9, '2000000', '800000', '0', '0', '10000000', '2000000', '1000000', '0', '5000000', '0', '0', '3000000', '', '23800000', '150000000', '50000000', '5000000', '0', '0', '205000000', '228800000', '10416434', '0', '0', '0', '10416434', NULL, NULL, NULL, NULL);
+(4, 9, '2000000', '800000', '0', '0', '10000000', '2000000', '1000000', '0', '5000000', '0', '0', '3000000', '0', '23800000', '150000000', '50000000', '5000000', '0', '0', '205000000', '228800000', '10416434', '0', '0', '0', '10416434', NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -271,44 +271,16 @@ CREATE TABLE `cashflow_b` (
 --
 
 INSERT INTO `cashflow_b` (`id_cf`, `id_lb`, `kode_perkiraan`, `nama_perkiraan`, `keterangan`, `saldo`, `kode_jenis`, `jenis`) VALUES
-(36, 9, '4.1.1', 'Pendapatan Usaha (Omset) 1', 'Pembelian ...', '12450000', 'K', 'pendapatan'),
-(37, 9, '1.1.1', 'Kas', 'Pembelian ...', '12450000', 'D', 'pendapatan'),
-(38, 9, '4.1.2', 'Pendapatan Usaha (Omset) 2', 'Pembelian ayam pedaging', '560000', 'K', 'pendapatan'),
-(39, 9, '1.1.1', 'Kas', 'Pembelian ayam pedaging', '560000', 'D', 'pendapatan'),
-(42, 9, '4.1.3', 'Pendapatan Usaha (Omset) 3', 'Pembelian peralatan', '635', 'K', 'pendapatan'),
-(43, 9, '1.1.6', 'Persediaan Barang Usaha 1', 'Pembelian peralatan', '635', 'D', 'pendapatan'),
-(44, 9, '1.1.1', '', 'Biaya pendidikan', '1222', 'K', 'pengeluaran'),
-(45, 9, '5.4.1', '', 'Biaya pendidikan', '1222', 'D', 'pengeluaran'),
-(46, 9, '1.1.1', '', 'Biaya pendidikan', '1222', 'K', 'pengeluaran'),
-(47, 9, '5.4.1', '', 'Biaya pendidikan', '1222', 'D', 'pengeluaran'),
-(48, 9, '1.1.1', '', 'Biaya pendidikan', '1222', 'K', 'pengeluaran'),
-(49, 9, '5.4.1', '', 'Biaya pendidikan', '1222', 'D', 'pengeluaran'),
-(50, 9, '1.1.1', '', 'Biaya pendidikan', '1222', 'K', 'pengeluaran'),
-(51, 9, '5.4.1', '', 'Biaya pendidikan', '1222', 'D', 'pengeluaran'),
-(52, 9, '1.1.1', '', 'Biaya pendidikan', '1222', 'K', 'pengeluaran'),
-(53, 9, '5.4.1', '', 'Biaya pendidikan', '1222', 'D', 'pengeluaran'),
-(54, 9, '1.1.1', '', 'Biaya pendidikan', '1222', 'K', 'pengeluaran'),
-(55, 9, '5.4.1', '', 'Biaya pendidikan', '1222', 'D', 'pengeluaran'),
-(56, 9, '1.1.1', '', 'Biaya pendidikan', '1222', 'K', 'pengeluaran'),
-(57, 9, '5.4.1', '', 'Biaya pendidikan', '1222', 'D', 'pengeluaran'),
-(58, 9, '1.1.1', '', 'Biaya pendidikan', '1222', 'K', 'pengeluaran'),
-(59, 9, '5.4.1', '', 'Biaya pendidikan', '1222', 'D', 'pengeluaran'),
-(60, 9, '1.1.1', '', 'Biaya pendidikan', '1222', 'K', 'pengeluaran'),
-(61, 9, '5.4.1', '', 'Biaya pendidikan', '1222', 'D', 'pengeluaran'),
-(62, 9, '1.1.1', '', 'Biaya pendidikan', '1222', 'K', 'pengeluaran'),
-(63, 9, '5.4.1', '', 'Biaya pendidikan', '1222', 'D', 'pengeluaran'),
-(64, 9, '1.1.1', '', 'Biaya pendidikan', '1222', 'K', 'pengeluaran'),
-(65, 9, '5.4.1', '', 'Biaya pendidikan', '1222', 'D', 'pengeluaran'),
-(66, 9, '1.1.1', '', 'Biaya pendidikan', '1222', 'K', 'pengeluaran'),
-(67, 9, '5.4.1', '', 'Biaya pendidikan', '1222', 'D', 'pengeluaran'),
-(68, 9, '1.1.1', '', 'Biaya pendidikan', '1222', 'K', 'pengeluaran'),
-(69, 9, '5.4.1', '', 'Biaya pendidikan', '1222', 'D', 'pengeluaran'),
-(70, 9, '1.1.1', '', 'Biaya pendidikan', '1222', 'K', 'pengeluaran'),
-(71, 9, '5.4.1', '', 'Biaya pendidikan', '1222', 'D', 'pengeluaran'),
-(72, 9, '1.1.1', '', 'Biaya pendidikan', '1222', 'K', 'pengeluaran'),
-(73, 9, '5.4.1', '', 'Biaya pendidikan', '1222', 'D', 'pengeluaran'),
-(74, 9, '4.1.4', 'Pendapatan Lain / Gaji', 'Biaya pendidikan', '78000000', 'K', 'pendapatan'),
-(75, 9, '1.1.8', 'Lahan Garap', 'Biaya pendidikan', '78000000', 'D', 'pendapatan');
+(21, 9, '4.1.1', 'Pendapatan Usaha (Omset) 1', 'pendapatan dari usaha ayam petelur', '61200000', 'K', 'pendapatan'),
+(22, 9, '1.1.1', 'Kas', 'pendapatan dari usaha ayam petelur', '61200000', 'D', 'pendapatan'),
+(23, 9, '4.1.2', 'Pendapatan Usaha (Omset) 2', 'Pendapatan dari usaha toko kelontong', '48000000', 'K', 'pendapatan'),
+(24, 9, '1.1.1', 'Kas', 'Pendapatan dari usaha toko kelontong', '48000000', 'D', 'pendapatan'),
+(25, 9, '1.1.1', 'Kas', 'Pembelian pakan polat 530.000/50kg, jagung', '15000000', 'K', 'pengeluaran'),
+(26, 9, '5.1.2', 'Biaya Pemeliharaan Usaha 1', 'Pembelian pakan polat 530.000/50kg, jagung', '15000000', 'D', 'pengeluaran'),
+(27, 9, '1.1.1', 'Kas', 'Gaji Karyawan', '1500000', 'K', 'pengeluaran'),
+(28, 9, '5.1.4', 'Biaya Gaji Karyawan Usaha 1', 'Gaji Karyawan', '1500000', 'D', 'pengeluaran'),
+(29, 9, '1.1.1', 'Kas', 'Biaya air', '200000', 'K', 'pengeluaran'),
+(30, 9, '5.1.2', 'Biaya Pemeliharaan Usaha 1', 'Biaya air', '200000', 'D', 'pengeluaran');
 
 -- --------------------------------------------------------
 
@@ -342,7 +314,8 @@ CREATE TABLE `collateral` (
 --
 
 INSERT INTO `collateral` (`id_col`, `id_lb`, `roda`, `nopol`, `nama_stnk`, `alamat`, `type`, `jenis`, `tahun`, `warna`, `silinder`, `no_rangka`, `no_mesin`, `no_bpkb`, `milik`, `taksiran`, `nl`, `kondisi`) VALUES
-(1, 9, '4 (Empat)', 'AE 7359 NA', 'Yuliati', 'Desa Simbatan Kec Nguntoronadi', 'Isuzu / NKR55', 'Mobil Bus', 2014, 'Putih Hijau Kuning', '2771 cc', 'MHCNCKR46545', 'M098799', '085568745', 'Milik Sendiri', '225000000', '150000000', 'Keadaan baik dan terawat');
+(1, 9, '4 (Empat)', 'AE 7359 NA', 'Yuliati', 'Desa Simbatan Kec Nguntoronadi', 'Isuzu / NKR55', 'Mobil Bus', 2014, 'Putih Hijau Kuning', '2771 cc', 'MHCNCKR46545', 'M098799', '085568745', 'Milik Sendiri', '225000000', '150000000', 'Keadaan baik dan terawat'),
+(3, 9, '8 (Delapan)', '', 'PT. HELMI HENDRA HARMONI PERKASA', '', '', '', 0000, '', '', '', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -378,7 +351,8 @@ CREATE TABLE `collateral_tanah` (
 --
 
 INSERT INTO `collateral_tanah` (`id_col2`, `id_lb`, `jenis`, `nama`, `alamat`, `no_shm`, `lokasi`, `tgl_ukur`, `no_ukur`, `luas_t`, `luas_b`, `milik`, `fisik_jaminan`, `taksasi`, `pertimbangan`, `harga_t`, `harga_b`, `harga_t2`, `harga_b2`, `ht`) VALUES
-(1, 9, 'Non pertanian', 'Supriyadi', 'Desa sawojajar Kecamatan Takeran', '1519', 'Kelurahan Demangan', '2022-03-10', '1306', '1470', '70', 'Milik Sendiri', 'Sebidang tanah pekarangan ..........', '84', 'Karakter debitur baik, kemampuan ada, jaminan mencukupi', '243000', '429000', '2000000', '1000000', '1650000000');
+(1, 9, 'Non pertanian', 'Supriyadi', 'Desa sawojajar Kecamatan Takeran', '1519', 'Kelurahan Demangan', '2022-03-10', '1306', '1470', '70', 'Milik Sendiri', 'Sebidang tanah pekarangan ..........', '84', 'Karakter debitur baik, kemampuan ada, jaminan mencukupi', '243000', '429000', '2000000', '1000000', '1650000000'),
+(4, 9, 'aaaa', 'fed', '', '1519', '', '0000-00-00', '1306', '', '', 'Milik Sendiri an sendiri', '', '', 'wwwwwww', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -400,7 +374,7 @@ CREATE TABLE `condition` (
 --
 
 INSERT INTO `condition` (`id_con`, `id_lb`, `kekuatan`, `kelemahan`, `peluang`, `ancaman`) VALUES
-(1, 9, 'Usaha dagang ayam pedaging memiliki kekuatan usaha yamg baik ........................', 'Adanya pesaing usaha sejenis ..........................', 'Lokasi yang strategis di pertigaan pasar ................................', 'Berpindahnya pelanggan ke usaha pesaing yang sejenis ............................');
+(3, 9, 'aku dan kamu', 'adalah insan', 'yang tidak', 'bisa dipisahkan');
 
 -- --------------------------------------------------------
 
@@ -437,6 +411,7 @@ INSERT INTO `dummy` (`id_cf`, `id_lb`, `dari`, `untuk`, `keterangan`, `pemasukan
 
 CREATE TABLE `karakter` (
   `id_char` int(10) NOT NULL,
+  `id_lb` int(10) NOT NULL,
   `info_pribadi` text,
   `info_perilaku` varchar(128) DEFAULT NULL,
   `info_keluarga` varchar(128) DEFAULT NULL,
@@ -448,16 +423,15 @@ CREATE TABLE `karakter` (
   `al3` varchar(128) NOT NULL,
   `hp1` varchar(15) NOT NULL,
   `hp2` varchar(15) NOT NULL,
-  `hp3` varchar(15) NOT NULL,
-  `id_lb` int(10) NOT NULL
+  `hp3` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `karakter`
 --
 
-INSERT INTO `karakter` (`id_char`, `info_pribadi`, `info_perilaku`, `info_keluarga`, `nm1`, `nm2`, `nm3`, `al1`, `al2`, `al3`, `hp1`, `hp2`, `hp3`, `id_lb`) VALUES
-(6, 'Bemoral baik dlll..............', 'Tekun,tenang,kreatif dll ........................', 'Keluarga harmonis,relasi banyak ...................', 'Jhoni', 'Ariyanto', 'Joko', 'Rt/Rw 05/04, Dsn. Kedungglagah 1, Ds. Sidorejo\r\nKec. Geneng', 'Rt/Rw 05/04, Dsn. Kedungglagah 1, Ds. Sidorejo\r\nKec. Geneng', 'Rt/Rw 05/04, Dsn. Kedungglagah 1, Ds. Sidorejo\r\nKec. Geneng', '085696311313', '081553368114', '085336327954', 9);
+INSERT INTO `karakter` (`id_char`, `id_lb`, `info_pribadi`, `info_perilaku`, `info_keluarga`, `nm1`, `nm2`, `nm3`, `al1`, `al2`, `al3`, `hp1`, `hp2`, `hp3`) VALUES
+(1, 9, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'Warsito', 'Mbah Madi', 'Pujiono', 'Rt/Rw 05/04, Desa Sidorejo, Kecamatan Geneng', 'Rt/Rw 05/04, Desa Sidorejo, Kecamatan Geneng', 'Rt/Rw 05/04, Desa Sidorejo, Kecamatan Geneng', '123', '312', '432');
 
 -- --------------------------------------------------------
 
@@ -667,10 +641,9 @@ CREATE TABLE `riwayat_pinjaman` (
 --
 
 INSERT INTO `riwayat_pinjaman` (`id_rp`, `id_lb`, `plafond`, `status`, `saldo`, `sejarah`, `data`) VALUES
-(1, 9, '40000000', 'Lunas', '0', 'Baik', 'Terlampir'),
-(2, 9, '150000000', 'Lunas', '0', 'Baik', 'Terlampir'),
-(3, 9, '40000000', 'Lunas', '0', 'Baik', 'Terlampir'),
-(4, 9, '150000000', 'Lunas', '0', 'Baik', 'Terlampir');
+(15, 9, '700000000', 'Lunas', '0', 'Baik', 'Tidak Terlampir'),
+(16, 9, '1', 'Lunas', '0', 'Tidak Baik', 'Terlampir'),
+(17, 9, '2', 'Belum Lunas', '2', 'Baik', 'Terlampir');
 
 -- --------------------------------------------------------
 
@@ -818,7 +791,8 @@ INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_active
 (21, 4, 'Collateral', 'collateral?id_lb=', 'fas fa-fw fa-hand-holding-usd', 0),
 (22, 4, 'Usulan Kredit', 'usulan?id_lb=', 'fas fa-fw fa-credit-card', 0),
 (23, 1, 'User', 'admin/user', 'fas fa-fw fa-file-word', 1),
-(24, 8, 'Testing', 'dummy', 'fas fa-fw fa-vial', 1);
+(24, 8, 'Testing', 'dummy', 'fas fa-fw fa-vial', 1),
+(25, 4, 'Edit', 'test/edit?id_lb=', 'fas fa-fw fa-paperclip', 1);
 
 -- --------------------------------------------------------
 
@@ -874,7 +848,8 @@ CREATE TABLE `usulan` (
 --
 
 INSERT INTO `usulan` (`id_usulan`, `id_lb`, `character`, `capacity`, `capital`, `kel_hutang`, `kel_angsuran`, `coe`, `collateral`, `plafond`, `sifat`, `jenis`, `tujuan`, `sektor`, `waktu`, `bunga`, `angsuran`, `denda`, `realisasi`, `tanggungan`, `likuidasi`, `lainnya`, `jaminan`, `notaris`, `provisi`, `administrasi`, `asuransi`, `materai`, `apht`, `skmht`, `titipan`, `fiduciare`, `legalisasi`, `lain`, `roya`, `proses`, `sertifikat`, `akta`, `pendaftaran`, `plotting`) VALUES
-(1, 9, 'Baik', 'Baik', 'Baik', NULL, NULL, 'Baik', 'Cukup', '700000000', 'Pokok Bunga tiap Bulan', 'Ulangan', 'Modal Kerja', 'Perdagangan', '96 Bulan', '12', '14286332', '29123', '2022-05-11', '150000000', '800000000', '0', 'Bus Merk isizu', 'Bambang Riyanto, SH. M.Kn.', '5250000', '5250000', '0', '10000', '1920000', '100000', '0', '1270000', '500000', '', '0', '400000', '150000', '', '50000', '0');
+(1, 9, 'Baik', 'Baik', 'Baik', NULL, NULL, 'Baik', 'Cukup', '700000000', 'Pokok Bunga tiap Bulan', 'Ulangan', 'Modal Kerja', 'Perdagangan', '96 Bulan', '12', '14286332', '29123', '2022-05-11', '150000000', '800000000', '0', 'Bus Merk isizu', 'Bambang Riyanto, SH. M.Kn.', '5250000', '5250000', '0', '10000', '1920000', '100000', '0', '1270000', '500000', '', '0', '400000', '150000', '', '50000', '0'),
+(2, 9, 'Baik', '', '', NULL, NULL, '', '', '', '', '', '', '', '', '', '', '', '0000-00-00', '', '', '', 'Bus Merk Yamaha', 'Eka Sari Sulistyowati, SH. M.Kn.', '1150000', '1150000', '0', '18000', '1920000', '100000', '0', '0', '500000', '', '1000000', '280000', '250000', '', '400000', '0');
 
 --
 -- Indexes for dumped tables
@@ -965,7 +940,7 @@ ALTER TABLE `dummy`
 --
 ALTER TABLE `karakter`
   ADD PRIMARY KEY (`id_char`),
-  ADD UNIQUE KEY `id_lb` (`id_lb`);
+  ADD KEY `id_lb` (`id_lb`) USING BTREE;
 
 --
 -- Indexes for table `latar_belakang`
@@ -1074,25 +1049,25 @@ ALTER TABLE `cashflow_a`
 -- AUTO_INCREMENT for table `cashflow_b`
 --
 ALTER TABLE `cashflow_b`
-  MODIFY `id_cf` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
+  MODIFY `id_cf` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `collateral`
 --
 ALTER TABLE `collateral`
-  MODIFY `id_col` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_col` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `collateral_tanah`
 --
 ALTER TABLE `collateral_tanah`
-  MODIFY `id_col2` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_col2` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `condition`
 --
 ALTER TABLE `condition`
-  MODIFY `id_con` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_con` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `dummy`
@@ -1104,7 +1079,7 @@ ALTER TABLE `dummy`
 -- AUTO_INCREMENT for table `karakter`
 --
 ALTER TABLE `karakter`
-  MODIFY `id_char` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_char` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `latar_belakang`
@@ -1116,7 +1091,7 @@ ALTER TABLE `latar_belakang`
 -- AUTO_INCREMENT for table `riwayat_pinjaman`
 --
 ALTER TABLE `riwayat_pinjaman`
-  MODIFY `id_rp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_rp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `user`
@@ -1146,13 +1121,13 @@ ALTER TABLE `user_role`
 -- AUTO_INCREMENT for table `user_sub_menu`
 --
 ALTER TABLE `user_sub_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `usulan`
 --
 ALTER TABLE `usulan`
-  MODIFY `id_usulan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_usulan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
