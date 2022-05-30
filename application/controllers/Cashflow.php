@@ -40,6 +40,12 @@ class Cashflow extends CI_Controller
         $this->m_cashflow->add_data2($id_cf);
     }
 
+    public function add_hutang()
+    {
+        $id_cf = $this->input->post('id_cf');
+        $this->m_cashflow->add_data_hutang($id_cf);
+    }
+
     public function templateword()
     {
         $id_lb = $_GET['id_lb'];

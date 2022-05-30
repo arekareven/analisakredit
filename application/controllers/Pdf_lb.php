@@ -50,7 +50,7 @@ class Pdf_lb extends CI_Controller
             $pdf->SetFont('Times', '', 12);
             $pdf->Cell(49, 5.5, 'Plafond Yang Dimohon', 0, 0, '');
             $pdf->Cell(5, 5.5, ':', 0, 0, '');
-            $pdf->Cell(0, 5.5, $data->plafon, 0, 1);
+            $pdf->Cell(0, 5.5,'Rp. '.number_format($data->plafon) , 0, 1);
             $pdf->Cell(49, 5.5, 'Jangka Waktu', 0, 0, '');
             $pdf->Cell(5, 5.5, ':', 0, 0, '');
             $pdf->Cell(0, 5.5, $data->jangka_waktu, 0, 1);

@@ -149,8 +149,8 @@
                             <select class="form-control" aria-label="Default select example" id="jenis_permohonan" name="jenis_permohonan">
                                 <option value="Baru">Baru</option>
                                 <option value="Ulangan">Ulangan</option>
-                                <option value="Tambahan">Tambahan</option>
-                                <option value="Perpanjangan">Perpanjangan</option>
+                                <option value="Top Up">Top Up / Perpanjangan</option>
+                                <option value="Restrukturisasi">Restrukturisasi</option>
                             </select>
                         </div>
                         <div class="col-md-8 mb-3">

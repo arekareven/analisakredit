@@ -64,6 +64,12 @@ class Test extends CI_Controller
         $this->m_test->add_data($id_cf);
     }
 
+    public function add_hutang()
+    {
+        $id_cf = $this->input->post('id_cf');
+        $this->m_test->add_data_hutang($id_cf);
+    }
+
     public function add2()
     {
         $id_cf = $this->input->post('id_cf');

@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
-class Pdf_capi extends CI_Controller
+class Pdf_capi2 extends CI_Controller
 {
     function __construct()
     {
@@ -13,14 +13,14 @@ class Pdf_capi extends CI_Controller
     {
         //kas debit
         $kasd = $this->db->query("SELECT * FROM cashflow_b WHERE nama_perkiraan= 'Kas' && kode_jenis='D'");
-        $kask = $this->db->query("SELECT * FROM cashflow_b WHERE nama_perkiraan= 'Kas' && kode_jenis='K'");
-        if (!empty($kasd->result() or $kask->result())) {
+        if (!empty($kasd->result())) {
             foreach ($kasd->result() as $row) {
                 $array_kasd[] = $row->saldo;
             }
             $sum_kasd = array_sum($array_kasd);
 
             //kas kredit
+            $kask = $this->db->query("SELECT * FROM cashflow_b WHERE nama_perkiraan= 'Kas' && kode_jenis='K'");
             foreach ($kask->result() as $row) {
                 $array_kask[] = $row->saldo;
             }
@@ -31,14 +31,14 @@ class Pdf_capi extends CI_Controller
 
         //tabungan debit
         $tabungand = $this->db->query("SELECT * FROM cashflow_b WHERE nama_perkiraan= 'Tabungan' && kode_jenis='D'");
-        $tabungank = $this->db->query("SELECT * FROM cashflow_b WHERE nama_perkiraan= 'Tabungan' && kode_jenis='K'");
-        if (!empty($tabungand->result() or $tabungank->result())) {
+        if (!empty($tabungand->result())) {
             foreach ($tabungand->result() as $row) {
                 $array_tabungand[] = $row->saldo;
             }
             $sum_tabungand = array_sum($array_tabungand);
 
             //tabungan kredit
+            $tabungank = $this->db->query("SELECT * FROM cashflow_b WHERE nama_perkiraan= 'Tabungan' && kode_jenis='K'");
             foreach ($tabungank->result() as $row) {
                 $array_tabungank[] = $row->saldo;
             }
@@ -49,14 +49,14 @@ class Pdf_capi extends CI_Controller
 
         //deposito debit
         $depositod = $this->db->query("SELECT * FROM cashflow_b WHERE nama_perkiraan= 'Deposito' && kode_jenis='D'");
-        $depositok = $this->db->query("SELECT * FROM cashflow_b WHERE nama_perkiraan= 'Deposito' && kode_jenis='K'");
-        if (!empty($depositod->result() or $depositok->result())) {
+        if (!empty($depositod->result())) {
             foreach ($depositod->result() as $row) {
                 $array_depositod[] = $row->saldo;
             }
             $sum_depositod = array_sum($array_depositod);
 
             //deposito kredit
+            $depositok = $this->db->query("SELECT * FROM cashflow_b WHERE nama_perkiraan= 'Deposito' && kode_jenis='K'");
             foreach ($depositok->result() as $row) {
                 $array_depositok[] = $row->saldo;
             }
@@ -67,14 +67,14 @@ class Pdf_capi extends CI_Controller
 
         //piutang debit
         $piutangd = $this->db->query("SELECT * FROM cashflow_b WHERE nama_perkiraan= 'Piutang' && kode_jenis='D'");
-        $piutangk = $this->db->query("SELECT * FROM cashflow_b WHERE nama_perkiraan= 'Piutang' && kode_jenis='K'");
-        if (!empty($piutangd->result() or $piutangk->result())) {
+        if (!empty($piutangd->result())) {
             foreach ($piutangd->result() as $row) {
                 $array_piutangd[] = $row->saldo;
             }
             $sum_piutangd = array_sum($array_piutangd);
 
             //piutang kredit
+            $piutangk = $this->db->query("SELECT * FROM cashflow_b WHERE nama_perkiraan= 'Piutang' && kode_jenis='K'");
             foreach ($piutangk->result() as $row) {
                 $array_piutangk[] = $row->saldo;
             }
@@ -85,8 +85,7 @@ class Pdf_capi extends CI_Controller
 
         //peralatan debit
         $peralatand = $this->db->query("SELECT * FROM cashflow_b WHERE nama_perkiraan= 'Peralatan' && kode_jenis='D'");
-        $peralatank = $this->db->query("SELECT * FROM cashflow_b WHERE nama_perkiraan= 'Peralatan' && kode_jenis='K'");
-        if (!empty($peralatand->result() or $peralatank->result())) {
+        if (!empty($peralatand->result())) {
 
             foreach ($peralatand->result() as $row) {
                 $array_peralatand[] = $row->saldo;
@@ -94,6 +93,7 @@ class Pdf_capi extends CI_Controller
             $sum_peralatand = array_sum($array_peralatand);
 
             //peralatan kredit
+            $peralatank = $this->db->query("SELECT * FROM cashflow_b WHERE nama_perkiraan= 'Peralatan' && kode_jenis='K'");
             foreach ($peralatank->result() as $row) {
                 $array_peralatank[] = $row->saldo;
             }
@@ -103,65 +103,43 @@ class Pdf_capi extends CI_Controller
             $tot_peralatan = 0;
 
         //barang debit
-        $barangd = $this->db->query("SELECT * FROM cashflow_b WHERE nama_perkiraan= 'Persediaan Barang Usaha 1' && kode_jenis='D'");
-        $barangk = $this->db->query("SELECT * FROM cashflow_b WHERE nama_perkiraan= 'Persediaan Barang Usaha 1' && kode_jenis='K'");
-        if (!empty($barangd->result() or $barangk->result())) {
+        $barangd = $this->db->query("SELECT * FROM cashflow_a WHERE nama_perkiraan= 'Persediaan Barang Usaha 1' && kode_jenis='D'");
+        if (!empty($barangd->result())) {
             foreach ($barangd->result() as $row) {
                 $array_barangd[] = $row->saldo;
             }
             $sum_barangd = array_sum($array_barangd);
-
-            //barang kredit
-            foreach ($barangk->result() as $row) {
-                $array_barangk[] = $row->saldo;
-            }
-            $sum_barangk = array_sum($array_barangk);
-            $tot_barang = $sum_barangd - $sum_barangk;
+            $tot_barang = $sum_barangd;
         } else
             $tot_barang = 0;
 
         //barang2 debit
-        $barang2d = $this->db->query("SELECT * FROM cashflow_b WHERE nama_perkiraan= 'Persediaan Barang Usaha 2' && kode_jenis='D'");
-        $barang2k = $this->db->query("SELECT * FROM cashflow_b WHERE nama_perkiraan= 'Persediaan Barang Usaha 2' && kode_jenis='K'");
-        if (!empty($barang2d->result() or $barang2k->result())) {
+        $barang2d = $this->db->query("SELECT * FROM cashflow_a WHERE nama_perkiraan= 'Persediaan Barang Usaha 2' && kode_jenis='D'");
+        if (!empty($barang2d->result())) {
 
             foreach ($barang2d->result() as $row) {
                 $array_barang2d[] = $row->saldo;
             }
             $sum_barang2d = array_sum($array_barang2d);
-
-            //barang2 kredit
-            foreach ($barang2k->result() as $row) {
-                $array_barang2k[] = $row->saldo;
-            }
-            $sum_barang2k = array_sum($array_barang2k);
-            $tot_barang2 = $sum_barang2d - $sum_barang2k;
+            $tot_barang2 = $sum_barang2d;
         } else
             $tot_barang2 = 0;
 
         //barang3 debit
-        $barang3d = $this->db->query("SELECT * FROM cashflow_b WHERE nama_perkiraan= 'Persediaan Barang Usaha 3' && kode_jenis='D'");
-        $barang3k = $this->db->query("SELECT * FROM cashflow_b WHERE nama_perkiraan= 'Persediaan Barang Usaha 3' && kode_jenis='K'");
-        if (!empty($barang3d->result() or $barang3k->result())) {
+        $barang3d = $this->db->query("SELECT * FROM cashflow_a WHERE nama_perkiraan= 'Persediaan Barang Usaha 3' && kode_jenis='D'");
+        if (!empty($barang3d->result())) {
 
             foreach ($barang3d->result() as $row) {
                 $array_barang3d[] = $row->saldo;
             }
             $sum_barang3d = array_sum($array_barang3d);
-
-            //barang3 kredit
-            foreach ($barang3k->result() as $row) {
-                $array_barang3k[] = $row->saldo;
-            }
-            $sum_barang3k = array_sum($array_barang3k);
-            $tot_barang3 = $sum_barang3d - $sum_barang3k;
+            $tot_barang3 = $sum_barang3d;
         } else
             $tot_barang3 = 0;
 
         //sewa debit
         $sewad = $this->db->query("SELECT * FROM cashflow_b WHERE nama_perkiraan= 'Sewa Dibayar Muka' && kode_jenis='D'");
-        $sewak = $this->db->query("SELECT * FROM cashflow_b WHERE nama_perkiraan= 'Sewa Dibayar Muka' && kode_jenis='K'");
-        if (!empty($sewad->result() or $sewak->result())) {
+        if (!empty($sewad->result())) {
 
             foreach ($sewad->result() as $row) {
                 $array_sewad[] = $row->saldo;
@@ -169,6 +147,7 @@ class Pdf_capi extends CI_Controller
             $sum_sewad = array_sum($array_sewad);
 
             //sewa kredit
+            $sewak = $this->db->query("SELECT * FROM cashflow_b WHERE nama_perkiraan= 'Sewa Dibayar Muka' && kode_jenis='K'");
             foreach ($sewak->result() as $row) {
                 $array_sewak[] = $row->saldo;
             }
@@ -179,8 +158,7 @@ class Pdf_capi extends CI_Controller
 
         //lahan debit
         $lahand = $this->db->query("SELECT * FROM cashflow_b WHERE nama_perkiraan= 'Lahan Garap' && kode_jenis='D'");
-        $lahank = $this->db->query("SELECT * FROM cashflow_b WHERE nama_perkiraan= 'Lahan Garap' && kode_jenis='K'");
-        if (!empty($lahand->result() or $lahank->result())) {
+        if (!empty($lahand->result())) {
 
             foreach ($lahand->result() as $row) {
                 $array_lahand[] = $row->saldo;
@@ -188,6 +166,7 @@ class Pdf_capi extends CI_Controller
             $sum_lahand = array_sum($array_lahand);
 
             //lahan kredit
+            $lahank = $this->db->query("SELECT * FROM cashflow_b WHERE nama_perkiraan= 'Lahan Garap' && kode_jenis='K'");
             foreach ($lahank->result() as $row) {
                 $array_lahank[] = $row->saldo;
             }
@@ -198,8 +177,7 @@ class Pdf_capi extends CI_Controller
 
         //gedung debit
         $gedungd = $this->db->query("SELECT * FROM cashflow_b WHERE nama_perkiraan= 'Gedung / Ruko' && kode_jenis='D'");
-        $gedungk = $this->db->query("SELECT * FROM cashflow_b WHERE nama_perkiraan= 'Gedung / Ruko' && kode_jenis='K'");
-        if (!empty($gedungd->result() or $gedungk->result())) {
+        if (!empty($gedungd->result())) {
 
             foreach ($gedungd->result() as $row) {
                 $array_gedungd[] = $row->saldo;
@@ -207,6 +185,7 @@ class Pdf_capi extends CI_Controller
             $sum_gedungd = array_sum($array_gedungd);
 
             //gedung kredit
+            $gedungk = $this->db->query("SELECT * FROM cashflow_b WHERE nama_perkiraan= 'Gedung / Ruko' && kode_jenis='K'");
             foreach ($gedungk->result() as $row) {
                 $array_gedungk[] = $row->saldo;
             }
@@ -217,8 +196,7 @@ class Pdf_capi extends CI_Controller
 
         //kendaraan debit
         $kendaraand = $this->db->query("SELECT * FROM cashflow_b WHERE nama_perkiraan= 'Kendaraan Operasional' && kode_jenis='D'");
-        $kendaraank = $this->db->query("SELECT * FROM cashflow_b WHERE nama_perkiraan= 'Kendaraan Operasional' && kode_jenis='K'");
-        if (!empty($kendaraand->result() or $kendaraank->result())) {
+        if (!empty($kendaraand->result())) {
 
             foreach ($kendaraand->result() as $row) {
                 $array_kendaraand[] = $row->saldo;
@@ -226,6 +204,7 @@ class Pdf_capi extends CI_Controller
             $sum_kendaraand = array_sum($array_kendaraand);
 
             //kendaraan kredit
+            $kendaraank = $this->db->query("SELECT * FROM cashflow_b WHERE nama_perkiraan= 'Kendaraan Operasional' && kode_jenis='K'");
             foreach ($kendaraank->result() as $row) {
                 $array_kendaraank[] = $row->saldo;
             }
@@ -236,8 +215,7 @@ class Pdf_capi extends CI_Controller
 
         //lain debit
         $laind = $this->db->query("SELECT * FROM cashflow_b WHERE nama_perkiraan= 'Lain - lain' && kode_jenis='D'");
-        $laink = $this->db->query("SELECT * FROM cashflow_b WHERE nama_perkiraan= 'Lain - lain' && kode_jenis='K'");
-        if (!empty($laind->result() or $laink->result())) {
+        if (!empty($laind->result())) {
 
             foreach ($laind->result() as $row) {
                 $array_laind[] = $row->saldo;
@@ -245,6 +223,7 @@ class Pdf_capi extends CI_Controller
             $sum_laind = array_sum($array_laind);
 
             //lain kredit
+            $laink = $this->db->query("SELECT * FROM cashflow_b WHERE nama_perkiraan= 'Lain - lain' && kode_jenis='K'");
             foreach ($laink->result() as $row) {
                 $array_laink[] = $row->saldo;
             }
@@ -331,57 +310,104 @@ class Pdf_capi extends CI_Controller
         $tot_inventaris = 0;
         */
 
+        //hutang debit
+        $hutangd = $this->db->query("SELECT * FROM cashflow_a WHERE nama_perkiraan= 'Hutang Jangka Pendek' && kode_jenis='K'");
+        if (!empty($hutangd->result())) {
+
+            foreach ($hutangd->result() as $row) {
+                $array_hutangd[] = $row->saldo;
+            }
+            $sum_hutangd = array_sum($array_hutangd);
+            $tot_hutang = $sum_hutangd;
+        } else
+            $tot_hutang = 0;
+
+        //hutang debit
+        $hutangd2 = $this->db->query("SELECT * FROM cashflow_a WHERE nama_perkiraan= 'Hutang Jangka Panjang' && kode_jenis='K'");
+        if (!empty($hutangd2->result())) {
+
+            foreach ($hutangd2->result() as $row) {
+                $array_hutangd2[] = $row->saldo;
+            }
+            $sum_hutangd2 = array_sum($array_hutangd2);
+            $tot_hutang = $sum_hutangd2;
+        } else
+            $tot_hutang2 = 0;
+
+        //hutang debit
+        $hutangd3 = $this->db->query("SELECT * FROM cashflow_a WHERE nama_perkiraan= 'Hutang Lain' && kode_jenis='K'");
+        if (!empty($hutangd3->result())) {
+
+            foreach ($hutangd3->result() as $row) {
+                $array_hutangd3[] = $row->saldo;
+            }
+            $sum_hutangd3 = array_sum($array_hutangd3);
+            $tot_hutang = $sum_hutangd3;
+        } else
+            $tot_hutang3 = 0;
+
+        //hutang debit
+        $hutangd4 = $this->db->query("SELECT * FROM cashflow_a WHERE nama_perkiraan= 'Hutang Dagang' && kode_jenis='K'");
+        if (!empty($hutangd4->result())) {
+
+            foreach ($hutangd4->result() as $row) {
+                $array_hutangd4[] = $row->saldo;
+            }
+            $sum_hutangd4 = array_sum($array_hutangd4);
+            $tot_hutang = $sum_hutangd4;
+        } else
+            $tot_hutang4 = 0;
+
 
         //------------------------------------------------------------------------------------------------------------
 
         //Pemasukan
-        $pemasukan = $this->db->query("SELECT * FROM cashflow_b WHERE MID(kode_perkiraan,1,3) = '4.1'");
-        if(!empty($pemasukan->result())){
+        $pemasukan = $this->db->query("SELECT * FROM cashflow_a WHERE MID(kode_perkiraan,1,3) = '4.1'");
+        if (!empty($pemasukan->result())) {
 
             foreach ($pemasukan->result() as $row) {
                 $array_pemasukan[] = $row->saldo;
             }
             $sum_pemasukan = array_sum($array_pemasukan);
-        }else
-        $sum_pemasukan = 0;
-
+        } else
+            $sum_pemasukan = 0;
 
         //Pengeluaran
-        $pengeluaran = $this->db->query("SELECT * FROM cashflow_b WHERE MID(kode_perkiraan,1,3) = '5.1' OR MID(kode_perkiraan,1,3) ='5.2' OR MID(kode_perkiraan,1,3) = '5.3'");
-        if(!empty($pengeluaran->result())){
+        $pengeluaran = $this->db->query("SELECT * FROM cashflow_a WHERE MID(kode_perkiraan,1,3) = '5.1' OR MID(kode_perkiraan,1,3) ='5.2' OR MID(kode_perkiraan,1,3) = '5.3'");
+        if (!empty($pengeluaran->result())) {
 
             foreach ($pengeluaran->result() as $row) {
                 $array_pengeluaran[] = $row->saldo;
             }
             $sum_pengeluaran = array_sum($array_pengeluaran);
-        }else
-        $sum_pengeluaran = 0;
-        $surplus_usaha = $sum_pemasukan - $sum_pengeluaran;
+            $surplus_usaha = $sum_pemasukan - $sum_pengeluaran;
+        } else
+            $sum_pengeluaran = 0;
+        $surplus_usaha = 0;
 
         //Pengeluaran lain, problem = jika tidak ada data pengeluaran lain $array_penegeluaran_lain akan error karena dianggap kosong
-        $pengeluaran_lain = $this->db->query("SELECT * FROM cashflow_b WHERE MID(kode_perkiraan,1,3) = '5.4'");
-        if(!empty($pengeluaran_lain->result())){
+        $pengeluaran_lain = $this->db->query("SELECT * FROM cashflow_a WHERE MID(kode_perkiraan,1,3) = '5.4'");
+        if (!empty($pengeluaran_lain->result())) {
 
             foreach ($pengeluaran_lain->result() as $row) {
                 $array_pengeluaran_lain[] = $row->saldo;
             }
             $sum_pengeluaran_lain = array_sum($array_pengeluaran_lain);
-        }else
-        $sum_pengeluaran_lain = 0;
+        }
 
         //Pengeluaran angsuran, problem = jika tidak ada data pengeluaran angsuran $array_penegeluaran_angsuran akan error karena dianggap kosong
-        $pengeluaran_angsuran = $this->db->query("SELECT * FROM cashflow_b WHERE MID(kode_perkiraan,1,3) = '5.5'");
-        if(!empty($pengeluaran_angsuran->result())){
+        $pengeluaran_angsuran = $this->db->query("SELECT * FROM cashflow_a WHERE MID(kode_perkiraan,1,3) = '5.5'");
+        if (!empty($pengeluaran_angsuran->result())) {
 
             foreach ($pengeluaran_angsuran->result() as $row) {
                 $array_pengeluaran_angsuran[] = $row->saldo;
             }
             $sum_pengeluaran_angsuran = array_sum($array_pengeluaran_angsuran);
-        }else
-        $sum_pengeluaran_angsuran = 0;
 
-        //Rugi laba, problem = jika tidak ada data pengeluaran lain / data pengeluaran angsuran akan error karena dianggap kosong
-        $rugi_laba = $sum_pemasukan - ($sum_pengeluaran + $sum_pengeluaran_lain + $sum_pengeluaran_angsuran);
+            //Rugi laba, problem = jika tidak ada data pengeluaran lain / data pengeluaran angsuran akan error karena dianggap kosong
+            $rugi_laba = $sum_pemasukan - ($sum_pengeluaran + $sum_pengeluaran_lain + $sum_pengeluaran_angsuran);
+        } else
+            $rugi_laba = 0;
 
 
         //PDF CAPITAL
@@ -412,8 +438,12 @@ class Pdf_capi extends CI_Controller
             $hasil_gedung = $data->gedung + $tot_gedung;
             $hasil_kendaraan = $data->operasional + $tot_kendaraan;
             $hasil_lain = $data->lain + $tot_lain;
+            $hasil_hutang = $data->hutang_jpk + $tot_hutang;
+            $hasil_hutang2 = $data->hutang_jpg + $tot_hutang2;
+            $hasil_hutang3 = $data->hutang_lain + $tot_hutang3;
+            $hasil_hutang4 = $data->hutang_dagang + $tot_hutang4;
             $aktiva_lancar = $hasil_kas + $hasil_tabungan + $hasil_deposito + $hasil_piutang + $hasil_peralatan + $hasil_barang +
-                            $hasil_barang2 + $hasil_barang3 + $hasil_sewa + $hasil_lahan + $hasil_gedung + $hasil_kendaraan + $hasil_lain;
+                $hasil_barang2 + $hasil_barang3 + $hasil_sewa + $hasil_lahan + $hasil_gedung + $hasil_kendaraan + $hasil_lain;
             $aktiva_tetap = $data->tanah + $data->bangunan + $data->kendaraan + $data->inventaris + $data->lain2;
             $hutang = $data->hutang_jpk + $data->hutang_jpg + $data->hutang_lain + $data->hutang_dagang;
             $aset = $aktiva_tetap + $aktiva_lancar;
@@ -451,7 +481,7 @@ class Pdf_capi extends CI_Controller
             $pdf->Cell(46, 5.5, number_format($hasil_kas), 0, 0);
             $pdf->Cell(44, 5.5, 'Hutang Jangka Pendek', 0, 0, '');
             $pdf->Cell(10, 5.5, 'Rp.', 0, 0, '');
-            $pdf->Cell(46, 5.5, number_format($data->hutang_jpk), 0, 1);
+            $pdf->Cell(46, 5.5, number_format($hasil_hutang), 0, 1);
             $pdf->Cell(44, 5.5, 'Simp Bank -Tabungan', 0, 0, '');
             $pdf->Cell(10, 5.5, 'Rp.', 0, 0, '');
             $pdf->Cell(46, 5.5, number_format($data->tabungan), 0, 0);
@@ -461,7 +491,7 @@ class Pdf_capi extends CI_Controller
             $pdf->Cell(46, 5.5, number_format($data->deposito), 0, 0, '');
             $pdf->Cell(44, 5.5, 'Hutang Jangka Panjang', 0, 0, '');
             $pdf->Cell(10, 5.5, 'Rp.', 0, 0, '');
-            $pdf->Cell(46, 5.5, number_format($data->hutang_jpg), 0, 1);
+            $pdf->Cell(46, 5.5, number_format($hasil_hutang2), 0, 1);
             $pdf->Cell(44, 5.5, 'Piutang ', 0, 0, '');
             $pdf->Cell(10, 5.5, 'Rp.', 0, 0, '');
             $pdf->Cell(46, 5.5, number_format($data->piutang), 0, 0);
@@ -471,16 +501,16 @@ class Pdf_capi extends CI_Controller
             $pdf->Cell(46, 5.5, number_format($data->peralatan), 0, 0);
             $pdf->Cell(44, 5.5, 'Hutang Lain', 0, 0, '');
             $pdf->Cell(10, 5.5, 'Rp.', 0, 0, '');
-            $pdf->Cell(46, 5.5, number_format($data->hutang_lain), 0, 1);
+            $pdf->Cell(46, 5.5, number_format($hasil_hutang3), 0, 1);
             $pdf->Cell(44, 5.5, 'Persediaan Brg Usaha 1', 0, 0, '');
             $pdf->Cell(10, 5.5, 'Rp.', 0, 0, '');
-            $pdf->Cell(46, 5.5, number_format($data->barang), 0, 0);
+            $pdf->Cell(46, 5.5, number_format($hasil_barang), 0, 0);
             $pdf->Cell(44, 5.5, 'Hutang Dagang', 0, 0, '');
             $pdf->Cell(10, 5.5, 'Rp.', 0, 0, '');
-            $pdf->Cell(46, 5.5, number_format($data->hutang_dagang), 0, 1);
+            $pdf->Cell(46, 5.5, number_format($hasil_hutang4), 0, 1);
             $pdf->Cell(44, 5.5, 'Persediaan Brg Usaha 2', 0, 0, '');
             $pdf->Cell(10, 5.5, 'Rp.', 0, 0, '');
-            $pdf->Cell(46, 5.5, number_format($data->barang2), 0, 0);
+            $pdf->Cell(46, 5.5, number_format($hasil_barang2), 0, 0);
             $pdf->SetFont('Times', 'B', 12);
             $pdf->Cell(66, 5.5, 'Total Hutang', 0, 0, '');
             $pdf->Cell(10, 5.5, 'Rp.', 0, 0, '');
@@ -488,7 +518,7 @@ class Pdf_capi extends CI_Controller
             $pdf->SetFont('Times', '', 12);
             $pdf->Cell(44, 5.5, 'Persediaan Brg Usaha 3', 0, 0, '');
             $pdf->Cell(10, 5.5, 'Rp.', 0, 0, '');
-            $pdf->Cell(46, 5.5, number_format($data->barang3), 0, 1);
+            $pdf->Cell(46, 5.5, number_format($hasil_barang3), 0, 1);
             $pdf->Cell(44, 5.5, 'Sewa Dibayar Muka', 0, 0, '');
             $pdf->Cell(10, 5.5, 'Rp.', 0, 0, '');
             $pdf->Cell(46, 5.5, number_format($data->sewa), 0, 0);
@@ -568,7 +598,7 @@ class Pdf_capi extends CI_Controller
             $pdf->Cell(30, 5.5, 'Jumlah', 1, 1, 'C');
 
             //Cashflow usaha 1
-            $rp = $this->db->query("SELECT * FROM cashflow_b WHERE kode_perkiraan = '4.1.1'");
+            $rp = $this->db->query("SELECT * FROM cashflow_a WHERE kode_perkiraan = '4.1.1'");
             if (!empty($rp->result())) {
                 $pdf->SetFont('Times', '', 12);
                 $pdf->Cell(7, 5.5, '', 1, 0, 'C');
@@ -585,7 +615,7 @@ class Pdf_capi extends CI_Controller
                     $pdf->Cell(30, 5.5, '', 1, 1, 'R');
                 }
                 $no = 0;
-                $rp = $this->db->query("SELECT * FROM cashflow_b WHERE MID(kode_perkiraan,1,3) = '5.1'");
+                $rp = $this->db->query("SELECT * FROM cashflow_a WHERE MID(kode_perkiraan,1,3) = '5.1'");
                 foreach ($rp->result() as $data) {
                     $no++;
                     $pdf->Cell(7, 5.5, $no, 1, 0, 'C');
@@ -603,7 +633,7 @@ class Pdf_capi extends CI_Controller
             }
 
             //Cashflow usaha 2
-            $rp2 = $this->db->query("SELECT * FROM cashflow_b WHERE kode_perkiraan = '4.1.2'");
+            $rp2 = $this->db->query("SELECT * FROM cashflow_a WHERE kode_perkiraan = '4.1.2'");
             if (!empty($rp2->result())) {
                 $pdf->SetFont('Times', '', 12);
                 $pdf->Cell(7, 5.5, '', 1, 0, 'C');
@@ -620,7 +650,7 @@ class Pdf_capi extends CI_Controller
                     $pdf->Cell(30, 5.5, '', 1, 1, 'R');
                 }
                 $no = 0;
-                $rp2 = $this->db->query("SELECT * FROM cashflow_b WHERE MID(kode_perkiraan,1,3) = '5.2'");
+                $rp2 = $this->db->query("SELECT * FROM cashflow_a WHERE MID(kode_perkiraan,1,3) = '5.2'");
                 foreach ($rp2->result() as $data) {
                     $no++;
                     $pdf->Cell(7, 5.5, $no, 1, 0, 'C');
@@ -638,7 +668,7 @@ class Pdf_capi extends CI_Controller
             }
 
             //Cashflow usaha 3
-            $rp3 = $this->db->query("SELECT * FROM cashflow_b WHERE kode_perkiraan = '4.1.3'");
+            $rp3 = $this->db->query("SELECT * FROM cashflow_a WHERE kode_perkiraan = '4.1.3'");
             if (!empty($rp3->result())) {
                 $pdf->Cell(7, 5.5, '', 1, 0, 'C');
                 $pdf->Cell(106, 5.5, 'USAHA 3', 1, 0, '');
@@ -654,7 +684,7 @@ class Pdf_capi extends CI_Controller
                     $pdf->Cell(30, 5.5, '', 1, 1, 'R');
                 }
                 $no = 0;
-                $rp3 = $this->db->query("SELECT * FROM cashflow_b WHERE MID(kode_perkiraan,1,3) = '5.3'");
+                $rp3 = $this->db->query("SELECT * FROM cashflow_a WHERE MID(kode_perkiraan,1,3) = '5.3'");
                 foreach ($rp3->result() as $data) {
                     $no++;
                     $pdf->Cell(7, 5.5, $no, 1, 0, 'C');
@@ -672,6 +702,7 @@ class Pdf_capi extends CI_Controller
             }
 
             //Surplus usaha
+            $pdf->SetFont('Times', '', 12);
             $pdf->Cell(7, 5.5, '', 1, 0, 'C');
             $pdf->Cell(106, 5.5, 'JUMLAH PENDAPATAN DAN PENGELUARAN USAHA', 1, 0, '');
             $pdf->Cell(30, 5.5, number_format($sum_pemasukan), 1, 0, 'R');
@@ -679,7 +710,7 @@ class Pdf_capi extends CI_Controller
             $pdf->Cell(30, 5.5, number_format($surplus_usaha), 1, 1, 'R');
 
             //Cashflow pengeluaran biaya lain
-            $rp4 = $this->db->query("SELECT * FROM cashflow_b WHERE MID(kode_perkiraan,1,3) = '5.4'");
+            $rp4 = $this->db->query("SELECT * FROM cashflow_a WHERE MID(kode_perkiraan,1,3) = '5.4'");
             if (!empty($rp4->result())) {
                 $pdf->SetFont('Times', '', 12);
                 $pdf->Cell(7, 5.5, '', 1, 0, 'C');
@@ -706,7 +737,7 @@ class Pdf_capi extends CI_Controller
             }
 
             //Cashflow pengeluaran angsuran
-            $angsuran = $this->db->query("SELECT * FROM cashflow_b WHERE MID(kode_perkiraan,1,3) = '5.5'");
+            $angsuran = $this->db->query("SELECT * FROM cashflow_a WHERE MID(kode_perkiraan,1,3) = '5.5'");
             if (!empty($angsuran->result())) {
                 $pdf->SetFont('Times', '', 12);
                 $pdf->Cell(7, 5.5, '', 1, 0, 'C');

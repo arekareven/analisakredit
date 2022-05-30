@@ -258,6 +258,9 @@
                                     <li class="nav-item" role="presentation">
                                         <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Pengeluaran</a>
                                     </li>
+                                    <li class="nav-item" role="presentation">
+                                        <a class="nav-link" id="pills-hutang-tab" data-toggle="pill" href="#pills-hutang" role="tab" aria-controls="pills-hutang" aria-selected="false">Hutang</a>
+                                    </li>
                                 </ul>
                                 <div class="tab-content" id="pills-tabContent">
                                     <div class="tab-pane fade show active" id="pills-capital" role="tabpanel" aria-labelledby="pills-capital-tab">
@@ -513,6 +516,65 @@
                                             </div>
                                         </form>
                                     </div>
+                                    <div class="tab-pane fade" id="pills-hutang" role="tabpanel" aria-labelledby="pills-hutang-tab">
+                                        <form id="hutang">
+                                            <div class="modal-body">
+                                                <div class="col-md-8 mb-4">
+                                                    <label for="dari" class="form-label">Akun asal</label>
+                                                    <select class="form-control" aria-label="Default select example" id="kode_perkiraan_hutang" name="kode_perkiraan_hutang" onchange="return hutangp();">
+                                                        <option value=""></option>
+                                                        <option value="2.1.1">Hutang Jangka Pendek</option>
+                                                        <option value="2.1.2">Hutang Jangka Panjang</option>
+                                                        <option value="2.1.3">Hutang Dagang</option>
+                                                        <option value="2.1.4">Hutang Lain</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-8 mb-4">
+                                                    <label for="nopol" class="form-label">Akun untuk</label>
+                                                    <select class="form-control" aria-label="Default select example" id="kode_perkiraan_hutang2" name="kode_perkiraan_hutang2" onchange="return hutangp2();">
+                                                        <option value=""></option>
+                                                        <option value="1.1.1">Kas</option>
+                                                        <option value="1.1.2">Tabungan</option>
+                                                        <option value="1.1.3">Deposito</option>
+                                                        <option value="1.1.4">Piutang</option>
+                                                        <option value="1.1.5">Peralatan</option>
+                                                        <option value="1.1.6">Persediaan Barang Usaha 1</option>
+                                                        <option value="1.1.12">Persediaan Barang Usaha 2</option>
+                                                        <option value="1.1.13">Persediaan Barang Usaha 3</option>
+                                                        <option value="1.1.7">Sewa Dibayar Dimuka</option>
+                                                        <option value="1.1.8">Lahan Garap</option>
+                                                        <option value="1.1.9">Gedung / Ruko</option>
+                                                        <option value="1.1.10">Kendaraan Operasional</option>
+                                                        <option value="1.1.11">Lain - Lain</option>
+                                                        <option value="1.2.1">Tanah</option>
+                                                        <option value="1.2.2">Bangunan</option>
+                                                        <option value="1.2.3">Kendaraan Pribadi</option>
+                                                        <option value="1.2.4">Inventaris</option>
+                                                        <option value="1.2.5">Lain - lain</option>
+                                                        <option value="2.1.1">Hutang Jangka Pendek</option>
+                                                        <option value="2.1.2">Hutang Jangka Panjang</option>
+                                                        <option value="2.1.3">Hutang Dagang</option>
+                                                        <option value="2.1.4">Hutang Lain</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-12 mb-4">
+                                                    <label for="keterangan" class="form-label">Keterangan</label>
+                                                    <input type="text" class="form-control" id="keterangan" name="keterangan">
+                                                    <input type="hidden" class="form-control" id="id_lb" name="id_lb" value="<?php echo $id_lb; ?>">
+                                                    <input type="hidden" class="form-control" id="nama_perkiraan_hutang" name="nama_perkiraan_hutang">
+                                                    <input type="hidden" class="form-control" id="nama_perkiraan_hutang2" name="nama_perkiraan_hutang2">
+                                                    <input type="hidden" class="form-control" id="jenis" name="jenis" value="hutang">
+                                                </div>
+                                                <div class="col-md-8 mb-4">
+                                                    <label class="form-label">Sebesar</label>
+                                                    <input type="number" class="form-control" id="saldo" name="saldo">
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" id="btn_hutang" class="btn btn-primary">Save changes</button>
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -520,19 +582,19 @@
                             <div class="modal-body">
                                 <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                                     <li class="nav-item" role="presentation">
-                                        <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Pendapatan</a>
+                                        <a class="nav-link active" id="pills-home_c-tab" data-toggle="pill" href="#pills-home_c" role="tab" aria-controls="pills-home_c" aria-selected="true">Pendapatan</a>
                                     </li>
                                     <li class="nav-item" role="presentation">
-                                        <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Pengeluaran</a>
+                                        <a class="nav-link" id="pills-profile_c-tab" data-toggle="pill" href="#pills-profile_c" role="tab" aria-controls="pills-profile_c" aria-selected="false">Pengeluaran</a>
                                     </li>
                                 </ul>
                                 <div class="tab-content" id="pills-tabContent">
-                                    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                                    <div class="tab-pane fade show active" id="pills-home_c" role="tabpanel" aria-labelledby="pills-home_c-tab">
                                         <form id="cashflow2">
                                             <div class="modal-body">
                                                 <div class="col-md-8 mb-4">
                                                     <label for="dari" class="form-label">Pendapatan dari</label>
-                                                    <select class="form-control" aria-label="Default select example" id="kode_perkiraan" name="kode_perkiraan" onchange="return nama_p();">
+                                                    <select class="form-control" aria-label="Default select example" id="kode_perkiraan_cp" name="kode_perkiraan_cp" onchange="return c_pendapatan();">
                                                         <option value=""></option>
                                                         <option value="4.1.1">Pendapatan Usaha 1</option>
                                                         <option value="4.1.2">Pendapatan Usaha 2</option>
@@ -542,7 +604,7 @@
                                                 </div>
                                                 <div class="col-md-8 mb-4">
                                                     <label for="nopol" class="form-label">Untuk</label>
-                                                    <select class="form-control" aria-label="Default select example" id="kode_perkiraan2" name="kode_perkiraan2" onchange="return nama_p2();">
+                                                    <select class="form-control" aria-label="Default select example" id="kode_perkiraan_cp2" name="kode_perkiraan_cp2" onchange="return c_pendapatan2();">
                                                         <option value=""></option>
                                                         <option value="1.1.1">Kas</option>
                                                         <option value="1.1.2">Tabungan</option>
@@ -563,8 +625,8 @@
                                                     <label for="keterangan" class="form-label">Keterangan</label>
                                                     <input type="text" class="form-control" id="keterangan" name="keterangan">
                                                     <input type="hidden" class="form-control" id="id_lb" name="id_lb" value="<?php echo $id_lb; ?>">
-                                                    <input type="hidden" class="form-control" id="nama_perkiraan" name="nama_perkiraan">
-                                                    <input type="hidden" class="form-control" id="nama_perkiraan2" name="nama_perkiraan2">
+                                                    <input type="hidden" class="form-control" id="nama_perkiraan_cp" name="nama_perkiraan_cp">
+                                                    <input type="hidden" class="form-control" id="nama_perkiraan_cp2" name="nama_perkiraan_cp2">
                                                     <input type="hidden" class="form-control" id="jenis" name="jenis" value="pendapatan">
                                                 </div>
                                                 <div class="col-md-8 mb-4">
@@ -577,12 +639,12 @@
                                             </div>
                                         </form>
                                     </div>
-                                    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                                    <div class="tab-pane fade" id="pills-profile_c" role="tabpanel" aria-labelledby="pills-profile_c-tab">
                                         <form id="cashflowp2">
                                             <div class="modal-body">
                                                 <div class="col-md-8 mb-4">
                                                     <label for="dari" class="form-label">Menggunakan uang dari</label>
-                                                    <select class="form-control" aria-label="Default select example" id="kode_perkiraanp" name="kode_perkiraanp" onchange="return perkiraan();">
+                                                    <select class="form-control" aria-label="Default select example" id="kode_perkiraanp_cpe" name="kode_perkiraan_cpe" onchange="return c_pengeluaran();">
                                                         <option value=""></option>
                                                         <option value="1.1.1">Kas</option>
                                                         <option value="1.1.2">Tabungan</option>
@@ -601,7 +663,7 @@
                                                 </div>
                                                 <div class="col-md-8 mb-4">
                                                     <label for="nopol" class="form-label">Untuk</label>
-                                                    <select class="form-control" aria-label="Default select example" id="kode_perkiraanp2" name="kode_perkiraanp2" onchange="return perkiraan2();">
+                                                    <select class="form-control" aria-label="Default select example" id="kode_perkiraanp_cpe2" name="kode_perkiraan_cpe2" onchange="return c_pengeluaran2();">
                                                         <option value=""></option>
                                                         <?php
                                                         foreach ($perkiraan->result() as $row) {
@@ -614,8 +676,8 @@
                                                     <label for="keterangan" class="form-label">Keterangan</label>
                                                     <input type="text" class="form-control" id="keteranganp" name="keteranganp">
                                                     <input type="hidden" class="form-control" id="id_lb" name="id_lb" value="<?php echo $id_lb; ?>">
-                                                    <input type="hidden" class="form-control" id="nama_perkiraanp" name="nama_perkiraanp">
-                                                    <input type="hidden" class="form-control" id="nama_perkiraanp2" name="nama_perkiraanp2">
+                                                    <input type="hidden" class="form-control" id="nama_perkiraan_cpe" name="nama_perkiraan_cpe">
+                                                    <input type="hidden" class="form-control" id="nama_perkiraan_cpe2" name="nama_perkiraan_cpe2">
                                                     <input type="hidden" class="form-control" id="jenisp" name="jenisp" value="pengeluaran">
                                                 </div>
                                                 <div class="col-md-8 mb-4">
@@ -982,7 +1044,6 @@
                                 </div>
                             </form>
                         </div>
-
                         <div class="tab-pane fade" id="v-pills-cetak" role="tabpanel" aria-labelledby="v-pills-cetak-tab">
                             <div class="modal-body">
                                 <div class="row">
@@ -999,6 +1060,10 @@
                                 <hr>
                                 <div class="row">
                                     <a href="pdf_capi?id_lb=<?php echo $id_lb; ?>" class="btn btn-primary" target="_blank">Capital</i></a>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <a href="pdf_capi2?id_lb=<?php echo $id_lb; ?>" class="btn btn-primary" target="_blank">Capital Sesudah</i></a>
                                 </div>
                                 <hr>
                                 <div class="row">
@@ -1036,7 +1101,11 @@
         });
     </script>
 
+
     <script>
+        //JS untuk mengambil data perkiraan
+
+        //cashflow pendapatan
         function nama_p() {
             var kode_perkiraan = document.getElementById('kode_perkiraan').value;
             $.ajax({
@@ -1075,6 +1144,46 @@
 
         }
 
+        //cashflow hutang
+        function hutangp() {
+            var kode_perkiraan = document.getElementById('kode_perkiraan_hutang').value;
+            $.ajax({
+                url: "<?php echo base_url(); ?>test/cari",
+                data: '&kode_perkiraan=' + kode_perkiraan,
+                success: function(data) {
+                    var hasil = JSON.parse(data);
+
+                    $.each(hasil, function(key, val) {
+
+                        document.getElementById('kode_perkiraan_hutang').value = val.kode_perkiraan;
+                        document.getElementById('nama_perkiraan_hutang').value = val.nama_perkiraan;
+
+                    });
+                }
+            });
+
+        }
+
+        function hutangp2() {
+            var kode_perkiraan2 = document.getElementById('kode_perkiraan_hutang2').value;
+            $.ajax({
+                url: "<?php echo base_url(); ?>test/cari",
+                data: '&kode_perkiraan=' + kode_perkiraan2,
+                success: function(data) {
+                    var hasil = JSON.parse(data);
+
+                    $.each(hasil, function(key, val) {
+
+                        document.getElementById('kode_perkiraan_hutang2').value = val.kode_perkiraan;
+                        document.getElementById('nama_perkiraan_hutang2').value = val.nama_perkiraan;
+
+                    });
+                }
+            });
+
+        }
+
+        //cashflow pengeluaran
         function perkiraan() {
             var kode_perkiraanp = document.getElementById('kode_perkiraanp').value;
             $.ajax({
@@ -1112,9 +1221,90 @@
             });
 
         }
+
+        //cashflow pendapatan sesudah
+        function c_pendapatan() {
+            var kode_perkiraan = document.getElementById('kode_perkiraan_cp').value;
+            $.ajax({
+                url: "<?php echo base_url(); ?>test/cari",
+                data: '&kode_perkiraan=' + kode_perkiraan,
+                success: function(data) {
+                    var hasil = JSON.parse(data);
+
+                    $.each(hasil, function(key, val) {
+
+                        document.getElementById('kode_perkiraan_cp').value = val.kode_perkiraan;
+                        document.getElementById('nama_perkiraan_cp').value = val.nama_perkiraan;
+
+                    });
+                }
+            });
+
+        }
+
+        function c_pendapatan2() {
+            var kode_perkiraan2 = document.getElementById('kode_perkiraan_cp2').value;
+            $.ajax({
+                url: "<?php echo base_url(); ?>test/cari",
+                data: '&kode_perkiraan=' + kode_perkiraan2,
+                success: function(data) {
+                    var hasil = JSON.parse(data);
+
+                    $.each(hasil, function(key, val) {
+
+                        document.getElementById('kode_perkiraan_cp2').value = val.kode_perkiraan;
+                        document.getElementById('nama_perkiraan_cp2').value = val.nama_perkiraan;
+
+                    });
+                }
+            });
+
+        }
+
+        //cashflow pengeluaran sesudah
+        function c_pengeluaran() {
+            var kode_perkiraan = document.getElementById('kode_perkiraan_cpe').value;
+            $.ajax({
+                url: "<?php echo base_url(); ?>test/cari",
+                data: '&kode_perkiraan=' + kode_perkiraan,
+                success: function(data) {
+                    var hasil = JSON.parse(data);
+
+                    $.each(hasil, function(key, val) {
+
+                        document.getElementById('kode_perkiraan_cpe').value = val.kode_perkiraan;
+                        document.getElementById('nama_perkiraan_cpe').value = val.nama_perkiraan;
+
+                    });
+                }
+            });
+
+        }
+
+        function c_pengeluaran2() {
+            var kode_perkiraan2 = document.getElementById('kode_perkiraan_cpe2').value;
+            $.ajax({
+                url: "<?php echo base_url(); ?>test/cari",
+                data: '&kode_perkiraan=' + kode_perkiraan2,
+                success: function(data) {
+                    var hasil = JSON.parse(data);
+
+                    $.each(hasil, function(key, val) {
+
+                        document.getElementById('kode_perkiraan_cpe2').value = val.kode_perkiraan;
+                        document.getElementById('nama_perkiraan_cpe2').value = val.nama_perkiraan;
+
+                    });
+                }
+            });
+
+        }
     </script>
 
     <script type="text/javascript">
+        //JS untuk menyimpan data ke database dan reset form
+
+        //riwayat
         $(document).ready(function() {
             $('#btn_rp').on('click', function() {
                 var rp = $('#rp').serialize();
@@ -1131,6 +1321,7 @@
             })
         });
 
+        //character
         $(document).ready(function() {
             $('#btn_character').on('click', function() {
                 var character = $('#character').serialize();
@@ -1147,6 +1338,7 @@
             })
         });
 
+        //capacity
         $(document).ready(function() {
             $('#btn_capacity').on('click', function() {
                 var capacity = $('#capacity').serialize();
@@ -1163,6 +1355,7 @@
             })
         });
 
+        //capital
         $(document).ready(function() {
             $('#btn_capital').on('click', function() {
                 var capital = $('#capital').serialize();
@@ -1179,6 +1372,7 @@
             })
         });
 
+        //condition
         $(document).ready(function() {
             $('#btn_condition').on('click', function() {
                 var condition = $('#condition').serialize();
@@ -1195,6 +1389,7 @@
             })
         });
 
+        //cashflow pendapatan
         $(document).ready(function() {
             $('#simpan').on('click', function() {
                 var cashflow = $('#cashflow').serialize();
@@ -1211,6 +1406,7 @@
             })
         });
 
+        //cashflow pengeluaran
         $(document).ready(function() {
             $('#simpanp').on('click', function() {
                 var cashflow = $('#cashflowp').serialize();
@@ -1227,6 +1423,24 @@
             })
         });
 
+        //cashflow hutang
+        $(document).ready(function() {
+            $('#btn_hutang').on('click', function() {
+                var cashflow = $('#hutang').serialize();
+                $.ajax({
+                        url: "<?php echo base_url(); ?>test/add_hutang",
+                        type: "POST",
+                        data: cashflow,
+                        dataType: "JSON",
+                        success: function(data) {
+                            console.log(data)
+                        }
+                    }),
+                    document.getElementById("hutang").reset();
+            })
+        });
+
+        //cashflow pendapatan sesudah
         $(document).ready(function() {
             $('#simpan2').on('click', function() {
                 var cashflow = $('#cashflow2').serialize();
@@ -1243,6 +1457,7 @@
             })
         });
 
+        //cashflow pengeluaran sesudah
         $(document).ready(function() {
             $('#simpanp2').on('click', function() {
                 var cashflow = $('#cashflowp2').serialize();
@@ -1259,6 +1474,7 @@
             })
         });
 
+        //collateral tanah
         $(document).ready(function() {
             $('#btn_collateralt').on('click', function() {
                 var collateralt = $('#collateralt').serialize();
@@ -1275,6 +1491,7 @@
             })
         });
 
+        //collateral kendaraan
         $(document).ready(function() {
             $('#btn_collateralk').on('click', function() {
                 var collateralk = $('#collateralk').serialize();
@@ -1291,6 +1508,7 @@
             })
         });
 
+        //usulan
         $(document).ready(function() {
             $('#btn_usulan').on('click', function() {
                 var usulan = $('#usulan').serialize();
