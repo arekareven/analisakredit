@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 25, 2022 at 12:01 PM
+-- Generation Time: May 27, 2022 at 11:55 AM
 -- Server version: 10.1.29-MariaDB
 -- PHP Version: 7.2.0
 
@@ -280,7 +280,21 @@ INSERT INTO `cashflow_b` (`id_cf`, `id_lb`, `kode_perkiraan`, `nama_perkiraan`, 
 (27, 9, '1.1.1', 'Kas', 'Gaji Karyawan', '1500000', 'K', 'pengeluaran'),
 (28, 9, '5.1.4', 'Biaya Gaji Karyawan Usaha 1', 'Gaji Karyawan', '1500000', 'D', 'pengeluaran'),
 (29, 9, '1.1.1', 'Kas', 'Biaya air', '200000', 'K', 'pengeluaran'),
-(30, 9, '5.1.2', 'Biaya Pemeliharaan Usaha 1', 'Biaya air', '200000', 'D', 'pengeluaran');
+(30, 9, '5.1.2', 'Biaya Pemeliharaan Usaha 1', 'Biaya air', '200000', 'D', 'pengeluaran'),
+(35, 9, '1.1.1', 'Kas', 'Perawatan mesin dan ganti oli', '3000000', 'K', 'pengeluaran'),
+(36, 9, '5.2.2', 'Biaya Pemeliharaan Usaha 2', 'Perawatan mesin dan ganti oli', '3000000', 'D', 'pengeluaran'),
+(37, 9, '1.1.1', 'Kas', 'Ganti ban', '6000000', 'K', 'pengeluaran'),
+(38, 9, '5.2.3', 'Biaya Operasional Usaha 2', 'Ganti ban', '6000000', 'D', 'pengeluaran'),
+(39, 9, '1.1.1', 'Kas', 'Rumah tangga', '2500000', 'K', 'pengeluaran'),
+(40, 9, '5.4.1', 'Biaya Lain - lain (umum)', 'Rumah tangga', '2500000', 'D', 'pengeluaran'),
+(41, 9, '1.1.1', 'Kas', 'Pendidikan', '350000', 'K', 'pengeluaran'),
+(42, 9, '5.4.1', 'Biaya Lain - lain (umum)', 'Pendidikan', '350000', 'D', 'pengeluaran'),
+(43, 9, '1.1.1', 'Kas', 'Listrik,air dan telepon', '500000', 'K', 'pengeluaran'),
+(44, 9, '5.4.1', 'Biaya Lain - lain (umum)', 'Listrik,air dan telepon', '500000', 'D', 'pengeluaran'),
+(45, 9, '1.1.1', 'Kas', 'Angsuran BRI', '1200000', 'K', 'pengeluaran'),
+(46, 9, '5.5.4', 'Biaya Angsuran Hutang Lain', 'Angsuran BRI', '1200000', 'D', 'pengeluaran'),
+(47, 9, '1.1.1', 'Kas', 'Angsuran Mandiri', '6300000', 'K', 'pengeluaran'),
+(48, 9, '5.5.4', 'Biaya Angsuran Hutang Lain', 'Angsuran Mandiri', '6300000', 'D', 'pengeluaran');
 
 -- --------------------------------------------------------
 
@@ -1049,7 +1063,7 @@ ALTER TABLE `cashflow_a`
 -- AUTO_INCREMENT for table `cashflow_b`
 --
 ALTER TABLE `cashflow_b`
-  MODIFY `id_cf` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id_cf` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT for table `collateral`
