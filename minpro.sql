@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 27, 2022 at 11:55 AM
+-- Generation Time: May 30, 2022 at 11:57 AM
 -- Server version: 10.1.29-MariaDB
 -- PHP Version: 7.2.0
 
@@ -242,12 +242,21 @@ INSERT INTO `capital_b` (`id_capi`, `id_lb`, `kas`, `tabungan`, `deposito`, `piu
 CREATE TABLE `cashflow_a` (
   `id_cf` int(11) NOT NULL,
   `id_lb` int(11) NOT NULL,
-  `no` varchar(5) DEFAULT NULL,
+  `kode_perkiraan` varchar(10) DEFAULT NULL,
+  `nama_perkiraan` varchar(128) DEFAULT NULL,
   `keterangan` varchar(128) DEFAULT NULL,
-  `pemasukan` varchar(20) DEFAULT NULL,
-  `pengeluaran` varchar(20) DEFAULT NULL,
-  `saldo` varchar(20) DEFAULT NULL
+  `saldo` varchar(20) DEFAULT NULL,
+  `kode_jenis` char(1) DEFAULT NULL,
+  `jenis` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cashflow_a`
+--
+
+INSERT INTO `cashflow_a` (`id_cf`, `id_lb`, `kode_perkiraan`, `nama_perkiraan`, `keterangan`, `saldo`, `kode_jenis`, `jenis`) VALUES
+(49, 9, '2.1.1', 'Hutang Jangka Pendek', 'Pembelian pakan', '50000000', 'K', 'hutang'),
+(50, 9, '1.1.6', 'Persediaan Barang Usaha 1', 'Pembelian pakan', '50000000', 'D', 'hutang');
 
 -- --------------------------------------------------------
 
@@ -657,7 +666,8 @@ CREATE TABLE `riwayat_pinjaman` (
 INSERT INTO `riwayat_pinjaman` (`id_rp`, `id_lb`, `plafond`, `status`, `saldo`, `sejarah`, `data`) VALUES
 (15, 9, '700000000', 'Lunas', '0', 'Baik', 'Tidak Terlampir'),
 (16, 9, '1', 'Lunas', '0', 'Tidak Baik', 'Terlampir'),
-(17, 9, '2', 'Belum Lunas', '2', 'Baik', 'Terlampir');
+(17, 9, '2', 'Belum Lunas', '2', 'Baik', 'Terlampir'),
+(18, 9, '5000', 'Lunas', '0', 'Baik', 'Terlampir');
 
 -- --------------------------------------------------------
 
@@ -1057,7 +1067,7 @@ ALTER TABLE `capital_b`
 -- AUTO_INCREMENT for table `cashflow_a`
 --
 ALTER TABLE `cashflow_a`
-  MODIFY `id_cf` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_cf` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT for table `cashflow_b`
@@ -1105,7 +1115,7 @@ ALTER TABLE `latar_belakang`
 -- AUTO_INCREMENT for table `riwayat_pinjaman`
 --
 ALTER TABLE `riwayat_pinjaman`
-  MODIFY `id_rp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_rp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `user`
@@ -1164,12 +1174,6 @@ ALTER TABLE `capital_a`
 --
 ALTER TABLE `capital_b`
   ADD CONSTRAINT `capital_b_ibfk_1` FOREIGN KEY (`id_lb`) REFERENCES `latar_belakang` (`id_lb`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `cashflow_a`
---
-ALTER TABLE `cashflow_a`
-  ADD CONSTRAINT `cashflow_a_ibfk_1` FOREIGN KEY (`id_lb`) REFERENCES `latar_belakang` (`id_lb`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `cashflow_b`
