@@ -644,7 +644,7 @@
                                             <div class="modal-body">
                                                 <div class="col-md-8 mb-4">
                                                     <label for="dari" class="form-label">Menggunakan uang dari</label>
-                                                    <select class="form-control" aria-label="Default select example" id="kode_perkiraanp_cpe" name="kode_perkiraan_cpe" onchange="return c_pengeluaran();">
+                                                    <select class="form-control" aria-label="Default select example" id="kode_perkiraan_cpe" name="kode_perkiraan_cpe" onchange="return c_pengeluaran();">
                                                         <option value=""></option>
                                                         <option value="1.1.1">Kas</option>
                                                         <option value="1.1.2">Tabungan</option>
@@ -663,7 +663,7 @@
                                                 </div>
                                                 <div class="col-md-8 mb-4">
                                                     <label for="nopol" class="form-label">Untuk</label>
-                                                    <select class="form-control" aria-label="Default select example" id="kode_perkiraanp_cpe2" name="kode_perkiraan_cpe2" onchange="return c_pengeluaran2();">
+                                                    <select class="form-control" aria-label="Default select example" id="kode_perkiraan_cpe2" name="kode_perkiraan_cpe2" onchange="return c_pengeluaran2();">
                                                         <option value=""></option>
                                                         <?php
                                                         foreach ($perkiraan->result() as $row) {

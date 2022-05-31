@@ -166,4 +166,9 @@ class M_capital extends CI_Model
         /*redirect('capital/index2?id_lb=' . $id_lb);*/
         redirect('capital/templateword2?id_lb=' . $id_lb);
     }
+
+    function cek_nolb($id_lb) {
+		$query = array('id_lb' => $id_lb);
+		return $this->db->get_where('capital_a', $query);
+	}	
 }
