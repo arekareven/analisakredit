@@ -18,7 +18,7 @@
                         <a class="nav-link" id="v-pills-collateralt-tab" data-toggle="pill" href="#v-pills-collateralt" role="tab" aria-controls="v-pills-collateralt" aria-selected="false">Collateral Tanah</a>
                         <a class="nav-link" id="v-pills-collateralk-tab" data-toggle="pill" href="#v-pills-collateralk" role="tab" aria-controls="v-pills-collateralk" aria-selected="false">Collateral Kendaraan</a>
                         <a class="nav-link" id="v-pills-usulan-tab" data-toggle="pill" href="#v-pills-usulan" role="tab" aria-controls="v-pills-usulan" aria-selected="false">Usulan</a>
-                        <a class="nav-link" id="v-pills-cetak-tab" data-toggle="pill" href="#v-pills-cetak" role="tab" aria-controls="v-pills-cetak" aria-selected="false">Cetak</a>
+                        <a class="nav-link" id="v-pills-print-tab" data-toggle="pill" href="#v-pills-print" role="tab" aria-controls="v-pills-print" aria-selected="false">Cetak</a>
                     </div>
                 </div>
                 <div class="col-9">
@@ -250,7 +250,7 @@
                             <div class="modal-body">
                                 <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                                     <li class="nav-item" role="presentation">
-                                        <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-capital" role="tab" aria-controls="pills-capital" aria-selected="true">Capital</a>
+                                        <a class="nav-link active" id="pills-capitall-tab" data-toggle="pill" href="#pills-capitall" role="tab" aria-controls="pills-capitall" aria-selected="true">Capital</a>
                                     </li>
                                     <li class="nav-item" role="presentation">
                                         <a class="nav-link" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Pendapatan</a>
@@ -258,12 +258,9 @@
                                     <li class="nav-item" role="presentation">
                                         <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Pengeluaran</a>
                                     </li>
-                                    <li class="nav-item" role="presentation">
-                                        <a class="nav-link" id="pills-hutang-tab" data-toggle="pill" href="#pills-hutang" role="tab" aria-controls="pills-hutang" aria-selected="false">Hutang</a>
-                                    </li>
                                 </ul>
                                 <div class="tab-content" id="pills-tabContent">
-                                    <div class="tab-pane fade show active" id="pills-capital" role="tabpanel" aria-labelledby="pills-capital-tab">
+                                    <div class="tab-pane fade show active" id="pills-capitall" role="tabpanel" aria-labelledby="pills-capitall-tab">
                                         <form id="capital">
                                             <div class="modal-body">
                                                 <div class="col-md-12 mb-3">
@@ -415,7 +412,7 @@
                                             </div>
                                         </form>
                                     </div>
-                                    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                                    <div class="tab-pane fade show" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                                         <form id="cashflow">
                                             <div class="modal-body">
                                                 <div class="col-md-8 mb-4">
@@ -516,65 +513,6 @@
                                             </div>
                                         </form>
                                     </div>
-                                    <div class="tab-pane fade" id="pills-hutang" role="tabpanel" aria-labelledby="pills-hutang-tab">
-                                        <form id="hutang">
-                                            <div class="modal-body">
-                                                <div class="col-md-8 mb-4">
-                                                    <label for="dari" class="form-label">Akun asal</label>
-                                                    <select class="form-control" aria-label="Default select example" id="kode_perkiraan_hutang" name="kode_perkiraan_hutang" onchange="return hutangp();">
-                                                        <option value=""></option>
-                                                        <option value="2.1.1">Hutang Jangka Pendek</option>
-                                                        <option value="2.1.2">Hutang Jangka Panjang</option>
-                                                        <option value="2.1.3">Hutang Dagang</option>
-                                                        <option value="2.1.4">Hutang Lain</option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-md-8 mb-4">
-                                                    <label for="nopol" class="form-label">Akun untuk</label>
-                                                    <select class="form-control" aria-label="Default select example" id="kode_perkiraan_hutang2" name="kode_perkiraan_hutang2" onchange="return hutangp2();">
-                                                        <option value=""></option>
-                                                        <option value="1.1.1">Kas</option>
-                                                        <option value="1.1.2">Tabungan</option>
-                                                        <option value="1.1.3">Deposito</option>
-                                                        <option value="1.1.4">Piutang</option>
-                                                        <option value="1.1.5">Peralatan</option>
-                                                        <option value="1.1.6">Persediaan Barang Usaha 1</option>
-                                                        <option value="1.1.12">Persediaan Barang Usaha 2</option>
-                                                        <option value="1.1.13">Persediaan Barang Usaha 3</option>
-                                                        <option value="1.1.7">Sewa Dibayar Dimuka</option>
-                                                        <option value="1.1.8">Lahan Garap</option>
-                                                        <option value="1.1.9">Gedung / Ruko</option>
-                                                        <option value="1.1.10">Kendaraan Operasional</option>
-                                                        <option value="1.1.11">Lain - Lain</option>
-                                                        <option value="1.2.1">Tanah</option>
-                                                        <option value="1.2.2">Bangunan</option>
-                                                        <option value="1.2.3">Kendaraan Pribadi</option>
-                                                        <option value="1.2.4">Inventaris</option>
-                                                        <option value="1.2.5">Lain - lain</option>
-                                                        <option value="2.1.1">Hutang Jangka Pendek</option>
-                                                        <option value="2.1.2">Hutang Jangka Panjang</option>
-                                                        <option value="2.1.3">Hutang Dagang</option>
-                                                        <option value="2.1.4">Hutang Lain</option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-md-12 mb-4">
-                                                    <label for="keterangan" class="form-label">Keterangan</label>
-                                                    <input type="text" class="form-control" id="keterangan" name="keterangan">
-                                                    <input type="hidden" class="form-control" id="id_lb" name="id_lb" value="<?php echo $id_lb; ?>">
-                                                    <input type="hidden" class="form-control" id="nama_perkiraan_hutang" name="nama_perkiraan_hutang">
-                                                    <input type="hidden" class="form-control" id="nama_perkiraan_hutang2" name="nama_perkiraan_hutang2">
-                                                    <input type="hidden" class="form-control" id="jenis" name="jenis" value="hutang">
-                                                </div>
-                                                <div class="col-md-8 mb-4">
-                                                    <label class="form-label">Sebesar</label>
-                                                    <input type="number" class="form-control" id="saldo" name="saldo">
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" id="btn_hutang" class="btn btn-primary">Save changes</button>
-                                            </div>
-                                        </form>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -586,6 +524,9 @@
                                     </li>
                                     <li class="nav-item" role="presentation">
                                         <a class="nav-link" id="pills-profile_c-tab" data-toggle="pill" href="#pills-profile_c" role="tab" aria-controls="pills-profile_c" aria-selected="false">Pengeluaran</a>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <a class="nav-link" id="pills-hutang-tab" data-toggle="pill" href="#pills-hutang" role="tab" aria-controls="pills-hutang" aria-selected="false">Hutang</a>
                                     </li>
                                 </ul>
                                 <div class="tab-content" id="pills-tabContent">
@@ -690,6 +631,65 @@
                                             </div>
                                         </form>
                                     </div>
+                                    <div class="tab-pane fade" id="pills-hutang" role="tabpanel" aria-labelledby="pills-hutang-tab">
+                                        <form id="hutang">
+                                            <div class="modal-body">
+                                                <div class="col-md-8 mb-4">
+                                                    <label for="dari" class="form-label">Akun asal</label>
+                                                    <select class="form-control" aria-label="Default select example" id="kode_perkiraan_hutang" name="kode_perkiraan_hutang" onchange="return hutangp();">
+                                                        <option value=""></option>
+                                                        <option value="2.1.1">Hutang Jangka Pendek</option>
+                                                        <option value="2.1.2">Hutang Jangka Panjang</option>
+                                                        <option value="2.1.3">Hutang Dagang</option>
+                                                        <option value="2.1.4">Hutang Lain</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-8 mb-4">
+                                                    <label for="nopol" class="form-label">Akun untuk</label>
+                                                    <select class="form-control" aria-label="Default select example" id="kode_perkiraan_hutang2" name="kode_perkiraan_hutang2" onchange="return hutangp2();">
+                                                        <option value=""></option>
+                                                        <option value="1.1.1">Kas</option>
+                                                        <option value="1.1.2">Tabungan</option>
+                                                        <option value="1.1.3">Deposito</option>
+                                                        <option value="1.1.4">Piutang</option>
+                                                        <option value="1.1.5">Peralatan</option>
+                                                        <option value="1.1.6">Persediaan Barang Usaha 1</option>
+                                                        <option value="1.1.12">Persediaan Barang Usaha 2</option>
+                                                        <option value="1.1.13">Persediaan Barang Usaha 3</option>
+                                                        <option value="1.1.7">Sewa Dibayar Dimuka</option>
+                                                        <option value="1.1.8">Lahan Garap</option>
+                                                        <option value="1.1.9">Gedung / Ruko</option>
+                                                        <option value="1.1.10">Kendaraan Operasional</option>
+                                                        <option value="1.1.11">Lain - Lain</option>
+                                                        <option value="1.2.1">Tanah</option>
+                                                        <option value="1.2.2">Bangunan</option>
+                                                        <option value="1.2.3">Kendaraan Pribadi</option>
+                                                        <option value="1.2.4">Inventaris</option>
+                                                        <option value="1.2.5">Lain - lain</option>
+                                                        <option value="2.1.1">Hutang Jangka Pendek</option>
+                                                        <option value="2.1.2">Hutang Jangka Panjang</option>
+                                                        <option value="2.1.3">Hutang Dagang</option>
+                                                        <option value="2.1.4">Hutang Lain</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-12 mb-4">
+                                                    <label for="keterangan" class="form-label">Keterangan</label>
+                                                    <input type="text" class="form-control" id="keterangan" name="keterangan">
+                                                    <input type="hidden" class="form-control" id="id_lb" name="id_lb" value="<?php echo $id_lb; ?>">
+                                                    <input type="hidden" class="form-control" id="nama_perkiraan_hutang" name="nama_perkiraan_hutang">
+                                                    <input type="hidden" class="form-control" id="nama_perkiraan_hutang2" name="nama_perkiraan_hutang2">
+                                                    <input type="hidden" class="form-control" id="jenis" name="jenis" value="hutang">
+                                                </div>
+                                                <div class="col-md-8 mb-4">
+                                                    <label class="form-label">Sebesar</label>
+                                                    <input type="number" class="form-control" id="saldo" name="saldo">
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" id="btn_hutang" class="btn btn-primary">Save changes</button>
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -756,22 +756,22 @@
                                             <input type="text" class="form-control" id="luas_t" name="luas_t">
                                         </div>
                                         <div class="col-md-4 mb-4">
-                                            <label for="luas_b" class="form-label">Luas Bangunan (M2)</label>
-                                            <input type="text" class="form-control" id="luas_b" name="luas_b">
+                                            <label for="harga_t2" class="form-label">Harga Tanah Pasar (Rp.)</label>
+                                            <input type="text" class="form-control" id="harga_t2" name="harga_t2">
                                         </div>
                                         <div class="col-md-4 mb-4">
-                                            <label for="harga_t" class="form-label">Harga Tanah SPPT (Rp.)</label>
-                                            <input type="text" class="form-control" id="harga_t" name="harga_t">
+                                            <label for="luas_b" class="form-label">Luas Bangunan (M2)</label>
+                                            <input type="text" class="form-control" id="luas_b" name="luas_b">
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-4 mb-4">
-                                            <label for="harga_b" class="form-label">Harga Bangunan SPPT (Rp.)</label>
-                                            <input type="text" class="form-control" id="harga_b" name="harga_b">
+                                            <label for="harga_t" class="form-label">Harga Tanah SPPT (Rp.)</label>
+                                            <input type="text" class="form-control" id="harga_t" name="harga_t">
                                         </div>
                                         <div class="col-md-4 mb-4">
-                                            <label for="harga_t2" class="form-label">Harga Tanah Pasar (Rp.)</label>
-                                            <input type="text" class="form-control" id="harga_t2" name="harga_t2">
+                                            <label for="harga_b" class="form-label">Harga Bangunan SPPT (Rp.)</label>
+                                            <input type="text" class="form-control" id="harga_b" name="harga_b">
                                         </div>
                                         <div class="col-md-4 mb-4">
                                             <label for="harga_b2" class="form-label">Harga Bangunan Pasar (Rp.)</label>
@@ -811,12 +811,12 @@
                                         <textarea class="form-control" id="lokasi" name="lokasi"></textarea>
                                     </div>
                                     <div class="col-md-12 mb-4">
-                                        <label for="fisik_jaminan" class="form-label">Fisik Jaminan</label>
+                                        <label for="fisik_jaminan" class="form-label">Keterangan</label>
                                         <textarea class="form-control" id="fisik_jaminan" name="fisik_jaminan"></textarea>
                                     </div>
                                     <div class="col-md-12 mb-4">
-                                        <label for="pertimbangan" class="form-label">Pertimbangan</label>
-                                        <textarea class="form-control" id="pertimbangan" name="pertimbangan"></textarea>
+                                        <label for="pertimbangan" class="form-label">Usulan</label>
+                                        <textarea class="form-control" id="usulan" name="usulan"></textarea>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
@@ -886,7 +886,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-4 mb-4">
-                                            <label for="taksiran" class="form-label">Taksiran Harga</label>
+                                            <label for="taksiran" class="form-label">Harga Pasaran</label>
                                             <input type="number" class="form-control" id="taksiran" name="taksiran">
                                         </div>
                                         <div class="col-md-4 mb-4">
@@ -903,8 +903,8 @@
                                         <textarea class="form-control" id="alamat" name="alamat"></textarea>
                                     </div>
                                     <div class="col-md-12 mb-4">
-                                        <label for="kondisi" class="form-label">Kondisi Jaminan</label>
-                                        <textarea class="form-control" id="kondisi" name="kondisi"></textarea>
+                                        <label for="kondisi" class="form-label">Usulan</label>
+                                        <textarea class="form-control" id="usulan" name="usulan"></textarea>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
@@ -913,13 +913,13 @@
                             </form>
                         </div>
                         <div class="tab-pane fade" id="v-pills-usulan" role="tabpanel" aria-labelledby="v-pills-usulan-tab">
-                            <form id="usulan">
+                            <form method="post" action="<?php echo base_url('usulan/add'); ?>">
                                 <div class="modal-body">
                                     <div class="row">
                                         <div class="col-md-3 mb-4">
                                             <label for="character" class="form-label">Character</label>
-                                            <input type="hidden" class="form-control" id="id_lb" name="id_lb" value="<?php echo $id_lb; ?>">
                                             <input type="text" class="form-control" id="character" name="character">
+                                            <input type="hidden" class="form-control" id="id_lb" name="id_lb" value="<?php echo $id_lb; ?>">
                                         </div>
                                         <div class="col-md-3 mb-4">
                                             <label for="capacity" class="form-label">Capacity</label>
@@ -940,6 +940,22 @@
                                             <label for="collateral" class="form-label">Collateral</label>
                                             <input type="text" class="form-control" id="collateral" name="collateral">
                                         </div>
+                                        <div class="col-md-4 mb-4">
+                                            <label for="realisasi" class="form-label">Tanggal Ralisasi</label>
+                                            <input type="date" class="form-control" id="realisasi" name="realisasi">
+                                        </div>
+                                        <div class="col-md-4 mb-4">
+                                            <label for="notaris" class="form-label">Notaris</label>
+                                            <select class="custom-select" id="notaris" name="notaris" onchange="autofill()">
+                                                <option value="">-- Pilih Notaris --</option>
+                                                <?php
+                                                foreach ($select->result() as $row) {
+                                                    echo "<option name='notaris' value='$row->notaris'>$row->notaris</option>";
+                                                }
+                                                ?>
+                                            </select>
+                                        </div>
+                                        <!--
                                         <div class="col-md-3 mb-4">
                                             <label for="plafond" class="form-label">Plafond</label>
                                             <input type="text" class="form-control" id="plafond" name="plafond">
@@ -1038,13 +1054,15 @@
                                         <input type="hidden" class="form-control" id="pendaftaran" name="pendaftaran">
                                         <input type="hidden" class="form-control" id="plotting" name="plotting">
                                     </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" id="btn_usulan" class="btn btn-primary">Save changes</button>
+                                            -->
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" id="btn_usulan" class="btn btn-primary">Save changes</button>
+                                    </div>
                                 </div>
                             </form>
                         </div>
-                        <div class="tab-pane fade" id="v-pills-cetak" role="tabpanel" aria-labelledby="v-pills-cetak-tab">
+                        <div class="tab-pane fade" id="v-pills-print" role="tabpanel" aria-labelledby="v-pills-print-tab">
                             <div class="modal-body">
                                 <div class="row">
                                     <a href="pdf_lb?id_lb=<?php echo $id_lb; ?>" class="btn btn-primary" target="_blank">LB</i></a>
@@ -1058,12 +1076,18 @@
                                     <a href="capacity/templateword?id_lb=<?php echo $id_lb; ?>" class="btn btn-primary">Capacity</i></a>
                                 </div>
                                 <hr>
+                                <!--
                                 <div class="row">
-                                    <a href="pdf_capi?id_lb=<?php echo $id_lb; ?>" class="btn btn-primary" target="_blank">Capital</i></a>
+                                    <a href="pdf_capi2?id_lb=<?php echo $id_lb; ?>" class="btn btn-primary" target="_blank">Capital</i></a>
+                                </div>
+                                <hr>
+                                -->
+                                <div class="row">
+                                    <a href="pdf_capiseb?id_lb=<?php echo $id_lb; ?>" class="btn btn-primary" target="_blank">Capital</i></a>
                                 </div>
                                 <hr>
                                 <div class="row">
-                                    <a href="pdf_capi2?id_lb=<?php echo $id_lb; ?>" class="btn btn-primary" target="_blank">Capital Sesudah</i></a>
+                                    <a href="pdf_capiset?id_lb=<?php echo $id_lb; ?>" class="btn btn-primary" target="_blank">Capital Sesudah</i></a>
                                 </div>
                                 <hr>
                                 <div class="row">
@@ -1071,7 +1095,13 @@
                                 </div>
                                 <hr>
                                 <div class="row">
+                                    <a href="pdf_collateral?id_lb=<?php echo $id_lb; ?>" class="btn btn-primary" target="_blank">Collateral</i></a>
                                 </div>
+                                <hr>
+                                <div class="row">
+                                    <a href="pdf_usulan?id_lb=<?php echo $id_lb; ?>" class="btn btn-primary" target="_blank">Usulan</i></a>
+                                </div>
+                                <hr>
                             </div>
                         </div>
                     </div>

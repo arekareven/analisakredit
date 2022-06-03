@@ -30,7 +30,11 @@ class Capital extends CI_Controller
     public function add()
     {
         $id_capi = $this->input->post('id_capi');
-        $this->m_capital->add_data($id_capi);
+        $query = $this->m_capital->cek_id($id_capi)->num_rows();
+        if (empty($query))
+            $this->m_capital->add_data($id_capi);
+        else
+            $this->m_capital->edit_data($id_capi);
     }
 
     public function add2()
@@ -70,7 +74,7 @@ class Capital extends CI_Controller
         $next = $this->db->query("SELECT * FROM latar_belakang WHERE id_lb='$id_lb'");
         foreach ($next->result() as $row) {
             require 'vendor/autoload.php';
-            $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor("C:/xampp/htdocs/analisakredit/cache/".$row->nama_debitur.date('d-m-y').".docx");
+            $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor("C:/xampp/htdocs/analisakredit/cache/" . $row->nama_debitur . date('d-m-y') . ".docx");
         }
         $surat = $this->db->query("SELECT * FROM capital_b 
                                             WHERE id_lb='$id_lb'");
@@ -108,7 +112,7 @@ class Capital extends CI_Controller
                 'total_aset'    => number_format($row->total_aset)
             ]);
             foreach ($next->result() as $row) {
-                $pathToSave = "C:/xampp/htdocs/analisakredit/cache/".$row->nama_debitur.date('d-m-y').".docx";
+                $pathToSave = "C:/xampp/htdocs/analisakredit/cache/" . $row->nama_debitur . date('d-m-y') . ".docx";
                 $templateProcessor->saveAs($pathToSave);
             }
             /*redirect('capital/index2?id_lb=' . $row->id_lb);*/
@@ -122,7 +126,7 @@ class Capital extends CI_Controller
         $next = $this->db->query("SELECT * FROM latar_belakang WHERE id_lb='$id_lb'");
         foreach ($next->result() as $row) {
             require 'vendor/autoload.php';
-            $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor("C:/xampp/htdocs/analisakredit/cache/".$row->nama_debitur.date('d-m-y').".docx");
+            $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor("C:/xampp/htdocs/analisakredit/cache/" . $row->nama_debitur . date('d-m-y') . ".docx");
         }
         $surat = $this->db->query("SELECT * FROM capital_a WHERE id_lb='$id_lb'");
         foreach ($surat->result() as $row) {
@@ -160,7 +164,7 @@ class Capital extends CI_Controller
                 'total_aset_'    => number_format($row->total_aset)
             ]);
             foreach ($next->result() as $row) {
-                $pathToSave = "C:/xampp/htdocs/analisakredit/cache/".$row->nama_debitur.date('d-m-y').".docx";
+                $pathToSave = "C:/xampp/htdocs/analisakredit/cache/" . $row->nama_debitur . date('d-m-y') . ".docx";
                 $templateProcessor->saveAs($pathToSave);
             }
             redirect('test?id_lb=' . $row->id_lb);

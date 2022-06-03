@@ -35,6 +35,7 @@ class Test extends CI_Controller
         $this->session->userdata('email')])->row_array();
         $data['select'] = $this->m_test->data_select();
         $data['perkiraan'] = $this->m_test->data_perkiraan();
+        $data['lb'] = $this->m_test->edit_lb($id_lb);
         $data['rw'] = $this->m_test->edit_rw($id_lb);
         $data['character'] = $this->m_test->edit_char($id_lb);
         $data['capacity'] = $this->m_test->edit_capa($id_lb);
@@ -74,6 +75,12 @@ class Test extends CI_Controller
     {
         $id_cf = $this->input->post('id_cf');
         $this->m_test->add_data2($id_cf);
+    }
+
+    public function add_usulan()
+    {
+        $id_usulan = $this->input->post('id_usulan');
+        $this->m_test->add_data_usulan($id_usulan);
     }
 
     public function cetak_char()

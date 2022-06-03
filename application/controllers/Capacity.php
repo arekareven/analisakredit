@@ -30,7 +30,11 @@ class Capacity extends CI_Controller
     public function add()
     {
         $id_cap = $this->input->post('id_cap');
-        $this->m_capacity->add_data($id_cap);
+        $query = $this->m_capacity->cek_id($id_cap)->num_rows();
+        if (empty($query))
+            $this->m_capacity->add_data($id_cap);
+        else
+            $this->m_capacity->edit_data($id_cap);
     }
 
     public function next()

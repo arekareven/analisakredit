@@ -46,6 +46,9 @@ class M_usulan extends CI_Model
         $capital         = $this->input->post('capital');
         $coe         = $this->input->post('coe');
         $collateral   = $this->input->post('collateral');
+        $realisasi     = $this->input->post('realisasi');
+        $notaris     = $this->input->post('notaris');
+        /*
         $plafond   = $this->input->post('plafond');
         $sifat      = $this->input->post('sifat');
         $jenis      = $this->input->post('jenis');
@@ -55,12 +58,10 @@ class M_usulan extends CI_Model
         $bunga           = $this->input->post('bunga');
         $angsuran       = $this->input->post('angsuran');
         $denda     = $this->input->post('denda');
-        $realisasi     = $this->input->post('realisasi');
         $tanggungan     = $this->input->post('tanggungan');
         $likuidasi     = $this->input->post('likuidasi');
         $lainnya     = $this->input->post('lainnya');
         $jaminan     = $this->input->post('jaminan');
-        $notaris     = $this->input->post('notaris');
         $provisi     = $this->input->post('provisi');
         $administrasi     = $this->input->post('administrasi');
         $asuransi     = $this->input->post('asuransi');
@@ -77,6 +78,7 @@ class M_usulan extends CI_Model
         $akta     = $this->input->post('akta');
         $pendaftaran     = $this->input->post('pendaftaran');
         $plotting     = $this->input->post('plotting');
+        */
 
         $data = array(
             'id_lb'         => $id_lb,
@@ -85,6 +87,9 @@ class M_usulan extends CI_Model
             'capital'        => $capital,
             'coe'        => $coe,
             'collateral'  => $collateral,
+            'realisasi'    => $realisasi,
+            'notaris'    => $notaris
+            /*
             'plafond'  => $plafond,
             'sifat'     => $sifat,
             'jenis'     => $jenis,
@@ -94,12 +99,10 @@ class M_usulan extends CI_Model
             'bunga'          => $bunga,
             'angsuran'      => $angsuran,
             'denda'    => $denda,
-            'realisasi'    => $realisasi,
             'tanggungan'    => $tanggungan,
             'likuidasi'    => $likuidasi,
             'lainnya'    => $lainnya,
             'jaminan'    => $jaminan,
-            'notaris'    => $notaris,
             'provisi'    => $provisi,
             'administrasi'    => $administrasi,
             'asuransi'    => $asuransi,
@@ -116,8 +119,10 @@ class M_usulan extends CI_Model
             'akta'    => $akta,
             'pendaftaran'    => $pendaftaran,
             'plotting'    => $plotting
+            */
         );
         $this->db->insert('usulan', $data);
+        redirect('test?id_lb='.$id_lb);
     }
 
     /*

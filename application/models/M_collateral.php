@@ -45,7 +45,7 @@ class M_collateral extends CI_Model
         $milik       = $this->input->post('milik');
         $taksiran     = $this->input->post('taksiran');
         $nl     = $this->input->post('nl');
-        $kondisi     = $this->input->post('kondisi');
+        $usulan     = $this->input->post('usulan');
 
             $data = array(
                 'id_lb'         => $id_lb,
@@ -64,7 +64,7 @@ class M_collateral extends CI_Model
                 'milik'      => $milik,
                 'taksiran'    => $taksiran,
                 'nl'    => $nl,
-                'kondisi'    => $kondisi
+                'usulan'    => $usulan
             );
             $this->db->insert('collateral', $data);
     }
@@ -89,7 +89,7 @@ class M_collateral extends CI_Model
         $harga_b2           = $this->input->post('harga_b2');
         $ht           = $this->input->post('ht');
         $taksasi           = $this->input->post('taksasi');
-        $pertimbangan     = $this->input->post('pertimbangan');
+        $usulan     = $this->input->post('usulan');
 
             $data = array(
                 'id_lb'         => $id_lb,
@@ -110,7 +110,7 @@ class M_collateral extends CI_Model
                 'harga_b2'          => $harga_b2,
                 'ht'          => $ht,
                 'taksasi'    => $taksasi,
-                'pertimbangan'    => $pertimbangan
+                'usulan'    => $usulan
             );
             $this->db->insert('collateral_tanah', $data);
     }

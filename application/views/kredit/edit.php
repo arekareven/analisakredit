@@ -9,7 +9,8 @@
             <div class="row">
                 <div class="col-3">
                     <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                        <a class="nav-link active" id="v-pills-rw-tab" data-toggle="pill" href="#v-pills-rw" role="tab" aria-controls="v-pills-rw" aria-selected="true">Riwayat Pinjaman</a>
+                        <a class="nav-link active" id="v-pills-lb-tab" data-toggle="pill" href="#v-pills-lb" role="tab" aria-controls="v-pills-lb" aria-selected="true">Latar Belakang</a>
+                        <a class="nav-link" id="v-pills-rw-tab" data-toggle="pill" href="#v-pills-rw" role="tab" aria-controls="v-pills-rw" aria-selected="false">Riwayat Pinjaman</a>
                         <a class="nav-link" id="v-pills-character-tab" data-toggle="pill" href="#v-pills-character" role="tab" aria-controls="v-pills-character" aria-selected="false">Character</a>
                         <a class="nav-link" id="v-pills-capacity-tab" data-toggle="pill" href="#v-pills-capacity" role="tab" aria-controls="v-pills-capacity" aria-selected="false">Capacity</a>
                         <a class="nav-link" id="v-pills-capital-tab" data-toggle="pill" href="#v-pills-capital" role="tab" aria-controls="v-pills-capital" aria-selected="false">Capital</a>
@@ -23,18 +24,235 @@
                 </div>
                 <div class="col-9">
                     <div class="tab-content" id="v-pills-tabContent">
-                        <div class="tab-pane fade show active" id="v-pills-rw" role="tabpanel" aria-labelledby="v-pills-rw-tab">
+                        <div class="tab-pane fade show active" id="v-pills-lb" role="tabpanel" aria-labelledby="v-pills-lb-tab">
+                            <?php
+                            foreach ($lb->result() as $row) {
+                            ?>
+                                <form method="post" action="<?php echo base_url('kredit/add'); ?>">
+                                    <div class="modal-body">
+                                        <div class="col-md-8 mb-3">
+                                            <label for="tgl_permohonan" class="form-label">Tgl Permohonan</label>
+                                            <input type="date" class="form-control" id="tgl_permohonan" name="tgl_permohonan" value="<?php echo $row->tgl_permohonan; ?>">
+                                        </div>
+                                        <div class="col-md-8 mb-5">
+                                            <label for="tgl_analisa" class="form-label">Tgl Analisa</label>
+                                            <input type="date" class="form-control" id="tgl_analisa" name="tgl_analisa" value="<?php echo $row->tgl_analisa; ?>">
+                                        </div>
+                                        <div class="col-md-12 mb-2">
+                                            <h4>1. Data Permohonan</h4>
+                                            <hr>
+                                        </div>
+                                        <div class="col-md-8 mb-3">
+                                            <label for="plafon" class="form-label">Plafond yang dimohon</label>
+                                            <input type="hidden" class="form-control" id="id_lb" name="id_lb" value="<?php echo $row->id_lb; ?>">
+                                            <input type="text" class="form-control" id="plafon" name="plafon" value="<?php echo $row->plafon; ?>">
+                                        </div>
+                                        <div class="col-md-8 mb-3">
+                                            <label for="jangka_waktu" class="form-label">Jangka Waktu (Bulan)</label>
+                                            <input type="text" class="form-control" id="jangka_waktu" name="jangka_waktu" value="<?php echo $row->jangka_waktu; ?>">
+                                        </div>
+                                        <div class="col-md-8 mb-3">
+                                            <label for="sifat_kredit" class="form-label">Sifat Kredit</label>
+                                            <select class="form-control" aria-label="Default select example" id="sifat_kredit" name="sifat_kredit" value="<?php echo $row->sifat_kredit; ?>">
+                                                <option value="Pokok bunga tiap bulan">Pokok bunga tiap bulan</option>
+                                                <option value="Pokok tiap 3 bulan bunga tiap bulan">Pokok tiap 3 bulan bunga tiap bulan</option>
+                                                <option value="Pokok tiap 4 bulan bunga tiap bulan">Pokok tiap 4 bulan bunga tiap bulan</option>
+                                                <option value="Pokok tiap 6 bulan bunga tiap bulan">Pokok tiap 6 bulan bunga tiap bulan</option>
+                                                <option value="Pokok tiap 12 bulan bunga tiap bulan">Pokok tiap 12 bulan bunga tiap bulan</option>
+                                                <option value="Pokok terakhir bunga tiap bulan">Pokok terakhir bunga tiap bulan</option>
+                                                <option value="Pokok bunga terakhir">Pokok bunga terakhir</option>
+                                                <option value="Musiman">Musiman</option>
+                                                <option value="Anuitas">Anuitas</option>
+                                                <option value="Efektif">Efektif</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-8 mb-3">
+                                            <label for="suku_bunga" class="form-label">Suku Bunga</label>
+                                            <input type="text" class="form-control" id="suku_bunga" name="suku_bunga" value="<?php echo $row->suku_bunga; ?>">
+                                        </div>
+                                        <div class="col-md-8 mb-3">
+                                            <label for="jenis_permohonan" class="form-label">Jenis Permohonan</label>
+                                            <select class="form-control" aria-label="Default select example" id="jenis_permohonan" name="jenis_permohonan" value="<?php echo $row->jenis_permohonan; ?>">
+                                                <option value="Baru">Baru</option>
+                                                <option value="Ulangan">Ulangan</option>
+                                                <option value="Top Up">Top Up / Perpanjangan</option>
+                                                <option value="Restrukturisasi">Restrukturisasi</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-8 mb-3">
+                                            <label for="tujuan_permohonan" class="form-label">Tujuan Penggunaan</label>
+                                            <select class="form-control" aria-label="Default select example" id="tujuan_permohonan" name="tujuan_permohonan" value="<?php echo $row->tujuan_permohonan; ?>">
+                                                <option value="Modal Kerja">Modal Kerja</option>
+                                                <option value="Investasi">Investasi</option>
+                                                <option value="Konsumsi">Konsumsi</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-12 mb-5">
+                                            <label for="ket_penggunaan" class="form-label">Keterangan Penggunaan</label>
+                                            <textarea class="form-control" id="ket_penggunaan" name="ket_penggunaan"><?php echo $row->ket_penggunaan; ?></textarea>
+                                        </div>
+                                        <div class="col-md-12 mb-2">
+                                            <h4>2. Data Diri Nasabah</h4>
+                                            <hr>
+                                        </div>
+                                        <div class="col-md-8 mb-3">
+                                            <label for="nama_debitur" class="form-label">Nama Debitur</label>
+                                            <input type="text" class="form-control" id="nama_debitur" name="nama_debitur" value="<?php echo $row->nama_debitur; ?>">
+                                        </div>
+                                        <div class="col-md-8 mb-3">
+                                            <label for="status_kawin" class="form-label">Status Perkawinan</label>
+                                            <select class="form-control" aria-label="Default select example" id="status_kawin" name="status_kawin" value="<?php echo $row->status_kawin; ?>">
+                                                <option value="Tidak Menikah">Tidak Menikah</option>
+                                                <option value="Menikah">Menikah</option>
+                                                <option value="Duda">Duda</option>
+                                                <option value="Janda">Janda</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-8 mb-3">
+                                            <label for="ttl_nasabah" class="form-label">Tempat, tgl lahir</label>
+                                            <input type="text" class="form-control" id="ttl_nasabah" name="ttl_nasabah" value="<?php echo $row->ttl_nasabah; ?>">
+                                        </div>
+                                        <div class="col-md-8 mb-3">
+                                            <label for="ktp" class="form-label">No. KTP</label>
+                                            <input type="text" class="form-control" id="ktp" name="ktp" value="<?php echo $row->ktp; ?>">
+                                        </div>
+                                        <div class="col-md-12 mb-3">
+                                            <label for="alamat_ktp_nasabah" class="form-label">Alamat Sesuai KTP</label>
+                                            <textarea class="form-control" id="alamat_ktp_nasabah" name="alamat_ktp_nasabah"><?php echo $row->alamat_ktp_nasabah; ?></textarea>
+                                        </div>
+                                        <div class="col-md-12 mb-3">
+                                            <label for="domisili_nasabah" class="form-label">Alamat Sesuai Domisili</label>
+                                            <textarea class="form-control" id="domisili_nasabah" name="domisili_nasabah"><?php echo $row->domisili_nasabah; ?></textarea>
+                                        </div>
+                                        <div class="col-md-8 mb-3">
+                                            <label for="hp_nasabah" class="form-label">No. Tlp</label>
+                                            <input type="text" class="form-control" id="hp_nasabah" name="hp_nasabah" value="<?php echo $row->hp_nasabah; ?>">
+                                        </div>
+                                        <div class="col-md-8 mb-3">
+                                            <label for="status_tt" class="form-label">Status Tempat Tinggal</label>
+                                            <select class="form-control" aria-label="Default select example" id="status_tt" name="status_tt" value="<?php echo $row->status_tt; ?>">
+                                                <option value="Milik Sendiri">Milik Sendiri</option>
+                                                <option value="Milik Keluarga/Ortu">Milik Keluarga/Ortu</option>
+                                                <option value="Instansi">Instansi</option>
+                                                <option value="Kontrak">Kontrak</option>
+                                                <option value="Kredit">Kredit</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-8 mb-3">
+                                            <label for="pekerjaan_nasabah" class="form-label">Pekerjaan</label>
+                                            <input type="text" class="form-control" id="pekerjaan_nasabah" name="pekerjaan_nasabah" value="<?php echo $row->pekerjaan_nasabah; ?>">
+                                        </div>
+                                        <div class="col-md-8 mb-3">
+                                            <label for="tanggungan" class="form-label">Tanggungan (Orang)</label>
+                                            <input type="text" class="form-control" id="tanggungan" name="tanggungan" value="<?php echo $row->tanggungan; ?>">
+                                        </div>
+                                        <div class="col-md-8 mb-3">
+                                            <label for="pendidikan" class="form-label">Pendidikan</label>
+                                            <select class="form-control" aria-label="Default select example" id="pendidikan" name="pendidikan" value="<?php echo $row->pendidikan; ?>">
+                                                <option value="SD">SD</option>
+                                                <option value="SMP">SMP</option>
+                                                <option value="SMA">SMA</option>
+                                                <option value="Diploma">Diploma</option>
+                                                <option value="S1">S1</option>
+                                                <option value="S2">S2</option>
+                                                <option value="S3">S3</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-8 mb-3">
+                                            <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
+                                            <select class="form-control" aria-label="Default select example" id="jenis_kelamin" name="jenis_kelamin" value="<?php echo $row->jenis_kelamin; ?>">
+                                                <option value="Laki-laki">Laki-laki</option>
+                                                <option value="Perempuan">Perempuan</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-8 mb-3">
+                                            <label for="masa_laku" class="form-label">Masa Laku</label>
+                                            <input type="text" class="form-control" id="masa_laku" name="masa_laku" value="Seumur Hidup" value="<?php echo $row->masa_laku; ?>">
+                                        </div>
+                                        <div class="col-md-8 mb-3">
+                                            <label for="telp_kantor" class="form-label">No. Tlp Kantor</label>
+                                            <input type="text" class="form-control" id="telp_kantor" name="telp_kantor" value="<?php echo $row->telp_kantor; ?>">
+                                        </div>
+                                        <div class="col-md-8 mb-5">
+                                            <label for="lama_tinggal" class="form-label">Lama Tinggal (Tahun)</label>
+                                            <input type="text" class="form-control" id="lama_tinggal" name="lama_tinggal" value="<?php echo $row->lama_tinggal; ?>">
+                                        </div>
+                                        <div class="col-md-12 mb-2">
+                                            <h4>3. Data Suami/Istri</h4>
+                                            <hr>
+                                        </div>
+                                        <div class="col-md-8 mb-3">
+                                            <label for="nama_pasangan" class="form-label">Nama Istri/Suami</label>
+                                            <input type="text" class="form-control" id="nama_pasangan" name="nama_pasangan" value="<?php echo $row->nama_pasangan; ?>">
+                                        </div>
+                                        <div class="col-md-8 mb-3">
+                                            <label for="ttl_pasangan" class="form-label">Tempat, tgl lahir</label>
+                                            <input type="text" class="form-control" id="ttl_pasangan" name="ttl_pasangan" value="<?php echo $row->ttl_pasangan; ?>">
+                                        </div>
+                                        <div class="col-md-12 mb-3">
+                                            <label for="alamat_ktp_pasangan" class="form-label">Alamat Sesuai KTP</label>
+                                            <textarea class="form-control" id="alamat_ktp_pasangan" name="alamat_ktp_pasangan" ><?php echo $row->alamat_ktp_pasangan; ?></textarea>
+                                        </div>
+                                        <div class="col-md-12 mb-3">
+                                            <label for="domisili_pasangan" class="form-label">Alamat Sesuai Domisili</label>
+                                            <textarea class="form-control" id="domisili_pasangan" name="domisili_pasangan"><?php echo $row->domisili_pasangan; ?></textarea>
+                                        </div>
+                                        <div class="col-md-8 mb-3">
+                                            <label for="pekerjaan_pasangan" class="form-label">Profesi Istri/Suami</label>
+                                            <input type="text" class="form-control" id="pekerjaan_pasangan" name="pekerjaan_pasangan" value="<?php echo $row->pekerjaan_pasangan; ?>">
+                                        </div>
+                                        <div class="col-md-8 mb-5">
+                                            <label for="hp_pasangan" class="form-label">No. Tlp</label>
+                                            <input type="text" class="form-control" id="hp_pasangan" name="hp_pasangan" value="<?php echo $row->hp_pasangan; ?>">
+                                        </div>
+                                        <div class="col-md-12 mb-2">
+                                            <h4>4. Data Emergency Contact</h4>
+                                            <hr>
+                                        </div>
+                                        <div class="col-md-8 mb-3">
+                                            <label for="nama_keluarga" class="form-label">Nama Lengkap</label>
+                                            <input type="text" class="form-control" id="nama_keluarga" name="nama_keluarga" value="<?php echo $row->nama_keluarga; ?>">
+                                        </div>
+                                        <div class="col-md-8 mb-3">
+                                            <label for="hubungan_keluarga" class="form-label">Hubungan Keluarga</label>
+                                            <select class="form-control" aria-label="Default select example" id="hubungan_keluarga" name="hubungan_keluarga" value="<?php echo $row->hubungan_keluarga; ?>">
+                                                <option value="Anak Kandung">Anak Kandung</option>
+                                                <option value="Saudara Kandung">Saudara Kandung</option>
+                                                <option value="Orang Tua">Orang Tua</option>
+                                                <option value="Saudara Tidak Sekandung">Saudara Tidak Sekandung</option>
+                                                <option value="Rekan Kerja">Rekan Kerja</option>
+                                                <option value="Tetangga">Tetangga</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-12 mb-3">
+                                            <label for="alamat_keluarga" class="form-label">Alamat Rumah</label>
+                                            <textarea class="form-control" id="alamat_keluarga" name="alamat_keluarga"> <?php echo $row->alamat_keluarga; ?></textarea>
+                                        </div>
+                                        <div class="col-md-8 mb-5">
+                                            <label for="hp_keluarga" class="form-label">No. Tlp/Hp</label>
+                                            <input type="text" class="form-control" id="hp_keluarga" name="hp_keluarga" value="<?php echo $row->hp_keluarga; ?>">
+                                        </div>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary">Save changes</button>
+                                    </div>
+                                </form>
+                            <?php
+                            }
+                            ?>
+                        </div>
+                        <div class="tab-pane fade" id="v-pills-rw" role="tabpanel" aria-labelledby="v-pills-rw-tab">
                             <?php
                             foreach ($rw->result() as $row) {
                             ?>
-                                <a href="cetak_rp?id_rp=<?php echo $row->id_rp; ?>" class="btn btn-warning" title='Cetak' target='_blank'>Cetak</a>
-                                <form id="rp">
+                                <form method="post" action="<?php echo base_url('kredit/add'); ?>">
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-md-3 mb-3">
                                                 <label for="plafond" class="form-label">Plafond (Rp.)</label>
                                                 <input type="text" class="form-control" id="plafond" name="plafond" value="<?php echo $row->plafond; ?>">
-                                                <input type="hidden" class="form-control" id="id_lb" name="id_lb" value="<?php echo $id_lb; ?>">
                                             </div>
                                             <div class="col-md-2 mb-3">
                                                 <label for="status" class="form-label">Status</label>
@@ -77,21 +295,22 @@
                         <div class="tab-pane fade" id="v-pills-character" role="tabpanel" aria-labelledby="v-pills-character-tab">
                             <?php
                             foreach ($character->result() as $row) {
-                            ?>
-                                <form id="character">
+                            ?> 
+                                <form method="post" action="<?php echo base_url('character/add'); ?>">
                                     <div class="modal-body">
                                         <div class="col-md-12 mb-4">
                                             <label for="info_pribadi" class="form-label">Informasi Pribadi</label>
-                                            <input type="hidden" class="form-control" id="id_lb" name="id_lb" value="<?php echo $id_lb; ?>">
-                                            <textarea class="form-control" id="info_pribadi" name="info_pribadi" value="<?php echo $row->info_pribadi; ?>"></textarea>
+                                            <input type="hidden" class="form-control" id="id_lb" name="id_lb" value="<?php echo $row->id_lb; ?>">
+                                            <input type="hidden" class="form-control" id="id_char" name="id_char" value="<?php echo $row->id_char; ?>">
+                                            <textarea class="form-control" id="info_pribadi" name="info_pribadi" ><?php echo $row->info_pribadi; ?></textarea>
                                         </div>
                                         <div class="col-md-12 mb-4">
                                             <label for="info_perilaku" class="form-label">Informasi Perilaku</label>
-                                            <textarea class="form-control" id="info_perilaku" name="info_perilaku"></textarea>
+                                            <textarea class="form-control" id="info_perilaku" name="info_perilaku"><?php echo $row->info_perilaku; ?></textarea>
                                         </div>
                                         <div class="col-md-12 mb-5">
                                             <label for="info_keluarga" class="form-label">Informasi Keluarga</label>
-                                            <textarea class="form-control" id="info_keluarga" name="info_keluarga"></textarea>
+                                            <textarea class="form-control" id="info_keluarga" name="info_keluarga"><?php echo $row->info_keluarga; ?></textarea>
                                         </div>
                                         <div class="col-md-12 mb-3">
                                             <h5>Informasi Karakter</h5>
@@ -99,48 +318,48 @@
                                         <div class="row">
                                             <div class="col-md-3 mb-3">
                                                 <label for="nm1" class="form-label">Nama</label>
-                                                <input type="text" class="form-control" id="nm1" name="nm1">
+                                                <input type="text" class="form-control" id="nm1" name="nm1" value="<?php echo $row->nm1; ?>">
                                             </div>
                                             <div class="col-md-6 mb-3">
                                                 <label for="al1" class="form-label">Alamat</label>
-                                                <textarea class="form-control" id="al1" name="al1"></textarea>
+                                                <textarea class="form-control" id="al1" name="al1"><?php echo $row->al1; ?></textarea>
                                             </div>
                                             <div class="col-md-3 mb-3">
                                                 <label for="hp1" class="form-label">Tlp./HP</label>
-                                                <input type="text" class="form-control" id="hp1" name="hp1">
+                                                <input type="text" class="form-control" id="hp1" name="hp1" value="<?php echo $row->hp1; ?>">
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-3 mb-3">
                                                 <label for="nm2" class="form-label">Nama</label>
-                                                <input type="text" class="form-control" id="nm2" name="nm2">
+                                                <input type="text" class="form-control" id="nm2" name="nm2" value="<?php echo $row->nm2; ?>">
                                             </div>
                                             <div class="col-md-6 mb-3">
                                                 <label for="al2" class="form-label">Alamat</label>
-                                                <textarea class="form-control" id="al2" name="al2"></textarea>
+                                                <textarea class="form-control" id="al2" name="al2"><?php echo $row->al2; ?></textarea>
                                             </div>
                                             <div class="col-md-3 mb-3">
                                                 <label for="hp2" class="form-label">Tlp. /HP</label>
-                                                <input type="text" class="form-control" id="hp2" name="hp2">
+                                                <input type="text" class="form-control" id="hp2" name="hp2" value="<?php echo $row->hp2; ?>">
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-3 mb-3">
                                                 <label for="nm3" class="form-label">Nama</label>
-                                                <input type="text" class="form-control" id="nm3" name="nm3">
+                                                <input type="text" class="form-control" id="nm3" name="nm3" value="<?php echo $row->nm3; ?>">
                                             </div>
                                             <div class="col-md-6 mb-3">
                                                 <label for="al3" class="form-label">Alamat</label>
-                                                <textarea class="form-control" id="al3" name="al3"></textarea>
+                                                <textarea class="form-control" id="al3" name="al3"><?php echo $row->al3; ?></textarea>
                                             </div>
                                             <div class="col-md-3 mb-3">
                                                 <label for="hp3" class="form-label">Tlp. /HP</label>
-                                                <input type="text" class="form-control" id="hp3" name="hp3">
+                                                <input type="text" class="form-control" id="hp3" name="hp3" value="<?php echo $row->hp3; ?>">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" id="btn_character" class="btn btn-primary">Save changes</button>
+                                        <button type="submit" id="btn_character" class="btn btn-primary">Save changes</button>
                                     </div>
                                 </form>
                             <?php
@@ -151,11 +370,12 @@
                             <?php
                             foreach ($capacity->result() as $row) {
                             ?>
-                                <form id="capacity">
+                                <form method="post" action="<?php echo base_url('capacity/add'); ?>">
                                     <div class="modal-body">
                                         <div class="col-md-4 mb-3">
                                             <label for="nama_usaha" class="form-label">Nama Bidang Usaha</label>
-                                            <input type="hidden" class="form-control" id="id_lb" name="id_lb" value="<?php echo $id_lb; ?>">
+                                            <input type="hidden" class="form-control" id="id_lb" name="id_lb" value="<?php echo $row->id_lb; ?>">
+                                            <input type="hidden" class="form-control" id="id_cap" name="id_cap" value="<?php echo $row->id_cap; ?>">
                                             <input type="text" class="form-control" id="nama_usaha" name="nama_usaha" value="<?php echo $row->nama_usaha; ?>">
                                         </div>
                                         <div class="col-md-4 mb-3">
@@ -175,7 +395,7 @@
                                         </div>
                                         <div class="col-md-12 mb-3">
                                             <label for="alamat_usaha" class="form-label">Alamat Usaha</label>
-                                            <textarea class="form-control" id="alamat_usaha" name="alamat_usaha" value="<?php echo $row->alamat_usaha; ?>"></textarea>
+                                            <textarea class="form-control" id="alamat_usaha" name="alamat_usaha"><?php echo $row->alamat_usaha; ?></textarea>
                                         </div>
                                         <div class="col-md-4 mb-3">
                                             <label for="status_usaha" class="form-label">Status Tempat Usaha</label>
@@ -250,15 +470,15 @@
                                         </div>
                                         <div class="col-md-12 mb-3">
                                             <label for="usaha_skrg" class="form-label">Usaha Saat Ini</label>
-                                            <textarea class="form-control" id="usaha_skrg" name="usaha_skrg" value="<?php echo $row->usaha_skrg; ?>"></textarea>
+                                            <textarea class="form-control" id="usaha_skrg" name="usaha_skrg"><?php echo $row->usaha_skrg; ?></textarea>
                                         </div>
                                         <div class="col-md-12 mb-3">
                                             <label for="usaha_realisasi" class="form-label">Usaha Setelah Realisasi</label>
-                                            <textarea class="form-control" id="usaha_realisasi" name="usaha_realisasi" value="<?php echo $row->usaha_realisasi; ?>"></textarea>
+                                            <textarea class="form-control" id="usaha_realisasi" name="usaha_realisasi"><?php echo $row->usaha_realisasi; ?></textarea>
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" id="btn_capacity" class="btn btn-primary">Save changes</button>
+                                        <button type="submit" id="btn_capacity" class="btn btn-primary">Save changes</button>
                                     </div>
                                 </form>
                             <?php
@@ -269,7 +489,7 @@
                             <?php
                             foreach ($capital->result() as $row) {
                             ?>
-                                <form id="capital">
+                                <form method="post" action="<?php echo base_url('capital/add'); ?>">
                                     <div class="modal-body">
                                         <div class="col-md-12 mb-3">
                                             <h5>Aktiva lancar</h5>
@@ -277,8 +497,8 @@
                                         <div class="form-group row">
                                             <label for="kas" class="col-sm-6 col-form-label">Kas</label>
                                             <div class="col-sm-6">
-                                                <input type="hidden" class="form-control" id="id_lb" name="id_lb" value="<?php echo $id_lb; ?>">
-                                                <input type="hidden" class="form-control" id="type" name="type" value="before">
+                                                <input type="hidden" class="form-control" id="id_lb" name="id_lb" value="<?php echo $row->id_lb; ?>">
+                                                <input type="hidden" class="form-control" id="id_capi" name="id_capi" value="<?php echo $row->id_capi; ?>">
                                                 <input type="number" class="form-control" id="kas" name="kas" value="<?php echo $row->kas; ?>">
                                             </div>
                                         </div>
@@ -416,7 +636,7 @@
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" id="btn_capital" class="btn btn-primary">Save changes</button>
+                                        <button type="submit" id="btn_capital" class="btn btn-primary">Save changes</button>
                                     </div>
                                 </form>
                             <?php
@@ -1219,6 +1439,7 @@
 
         }
     </script>
+
 
 </div>
 

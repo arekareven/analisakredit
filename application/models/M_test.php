@@ -20,6 +20,11 @@ class M_test extends CI_Model
         return $this->db->query("SELECT * FROM perkiraan WHERE LENGTH(kode_perkiraan) > 3");
     }
 
+    public function edit_lb($id_lb)
+    {
+        return $this->db->query("SELECT * FROM latar_belakang WHERE id_lb=$id_lb");
+    }
+
     public function edit_rw($id_lb)
     {
         return $this->db->query("SELECT * FROM riwayat_pinjaman WHERE id_lb=$id_lb");
@@ -184,5 +189,29 @@ class M_test extends CI_Model
 
         $this->db->insert('cashflow_b', $data);
         $this->db->insert('cashflow_b', $data2);
+    }
+
+    public function add_data_usulan($data)
+    {
+        $id_lb          = $this->input->post('id_lb');
+        $character     = $this->input->post('character');
+        $capacity         = $this->input->post('capacity');
+        $capital         = $this->input->post('capital');
+        $coe         = $this->input->post('coe');
+        $collateral   = $this->input->post('collateral');
+        $realisasi     = $this->input->post('realisasi');
+        $notaris     = $this->input->post('notaris');
+
+        $data = array(
+            'id_lb'         => $id_lb,
+            'character'    => $character,
+            'capacity'        => $capacity,
+            'capital'        => $capital,
+            'coe'        => $coe,
+            'collateral'  => $collateral,
+            'realisasi'    => $realisasi,
+            'notaris'    => $notaris
+        );
+        $this->db->insert('usulan', $data);
     }
 }

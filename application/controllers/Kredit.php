@@ -19,7 +19,12 @@ class Kredit extends CI_Controller
 	public function add()
 	{
 		$id_lb = $this->input->post('id_lb');
-		$this->m_kredit->add_data($id_lb);
+
+		$query = $this->m_kredit->cek_id($id_lb)->num_rows();
+        if(empty($query)) 
+			$this->m_kredit->add_data($id_lb);
+        else 
+            $this->m_kredit->edit_data($id_lb);
 	}
 
 	public function add_rw()
@@ -48,10 +53,12 @@ class Kredit extends CI_Controller
 
 	public function lb()
 	{
+		$data['cif'] = $this->m_kredit->get_no_cif();
 		$data['title'] = 'Latar Belakang';
 		$data['user'] = $this->db->get_where('user', ['email' =>
 		$this->session->userdata('email')])->row_array();
-		$data['query'] = $this->m_kredit->tampil_data();
+		$user = $this->session->userdata('email');
+		$data['query'] = $this->m_kredit->tampil_data($user);
 
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/sidebar', $data);

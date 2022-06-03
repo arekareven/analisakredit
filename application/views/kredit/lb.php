@@ -2,7 +2,7 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
+    <h1 class="h3 mb-4 text-gray-800"><?= $title;?></h1>
 
     <!-- Button modal Latar Belakang -->
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#lb">
@@ -103,7 +103,8 @@
                         <div class="col-md-8 mb-3">
                             <label for="cif_bank" class="form-label">CIF Bank</label>
                             <input type="hidden" id="id_lb" name="id_lb">
-                            <input type="number" class="form-control" id="cif_bank" name="cif_bank">
+                            <input type="hidden" id="user" name="user" value="<?php $user['email']; ?>">
+                            <input type="number" class="form-control" id="cif_bank" name="cif_bank" value="<?php echo $cif; ?>" disabled>
                         </div>
                         <div class="col-md-8 mb-3">
                             <label for="tgl_permohonan" class="form-label">Tgl Permohonan</label>
@@ -122,8 +123,8 @@
                             <input type="text" class="form-control" id="plafon" value="" name="plafon">
                         </div>
                         <div class="col-md-8 mb-3">
-                            <label for="jangka_waktu" class="form-label">Jangka Waktu</label>
-                            <input type="text" class="form-control" id="jangka_waktu" value=" Bulan" name="jangka_waktu">
+                            <label for="jangka_waktu" class="form-label">Jangka Waktu (Bulan)</label>
+                            <input type="number" class="form-control" id="jangka_waktu" name="jangka_waktu">
                         </div>
                         <div class="col-md-8 mb-3">
                             <label for="sifat_kredit" class="form-label">Sifat Kredit</label>
@@ -217,8 +218,8 @@
                             <input type="text" class="form-control" id="pekerjaan_nasabah" name="pekerjaan_nasabah">
                         </div>
                         <div class="col-md-8 mb-3">
-                            <label for="tanggungan" class="form-label">Tanggungan</label>
-                            <input type="text" class="form-control" id="tanggungan" name="tanggungan" value=" Orang">
+                            <label for="tanggungan" class="form-label">Tanggungan (Orang)</label>
+                            <input type="number" class="form-control" id="tanggungan" name="tanggungan">
                         </div>
                         <div class="col-md-8 mb-3">
                             <label for="pendidikan" class="form-label">Pendidikan</label>
@@ -248,8 +249,8 @@
                             <input type="text" class="form-control" id="telp_kantor" name="telp_kantor">
                         </div>
                         <div class="col-md-8 mb-5">
-                            <label for="lama_tinggal" class="form-label">Lama Tinggal</label>
-                            <input type="text" class="form-control" id="lama_tinggal" name="lama_tinggal" value=" Tahun">
+                            <label for="lama_tinggal" class="form-label">Lama Tinggal (Tahun)</label>
+                            <input type="number" class="form-control" id="lama_tinggal" name="lama_tinggal">
                         </div>
                         <div class="col-md-12 mb-2">
                             <h4>3. Data Suami/Istri</h4>

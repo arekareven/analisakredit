@@ -33,14 +33,19 @@ class Character extends CI_Controller
     public function add()
     {
         $id_char = $this->input->post('id_char');
-        $this->m_character->add_data($id_char);
+
+        $query = $this->m_character->cek_id($id_char)->num_rows();
+        if (empty($query))
+            $this->m_character->add_data($id_char);
+        else
+            $this->m_character->edit_data($id_char);
     }
 
     public function add_rw()
-	{
-		$id_lb = $this->input->post('id_lb');
-		$this->m_character->add_data_rw($id_lb);
-	}
+    {
+        $id_lb = $this->input->post('id_lb');
+        $this->m_character->add_data_rw($id_lb);
+    }
 
     public function next()
     {

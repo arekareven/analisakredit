@@ -17,6 +17,12 @@ class M_character extends CI_Model
         }
     }
 
+    function cek_id($id_char)
+	{
+		$query = array('id_char' => $id_char);
+		return $this->db->get_where('karakter', $query);
+	}
+
     public function tampil_data($id_lb)
     {
         return $this->db->query("SELECT * FROM karakter WHERE id_lb='$id_lb'");
@@ -59,6 +65,40 @@ class M_character extends CI_Model
             'hp3'                => $hp3,
         );
         $this->db->insert('karakter', $data);
+    }
+
+    public function edit_data($data)
+    {
+        $id_lb  = $this->input->post('id_lb');
+        $info_pribadi  = $this->input->post('info_pribadi');
+        $info_perilaku = $this->input->post('info_perilaku');
+        $info_keluarga = $this->input->post('info_keluarga');
+        $nm1           = $this->input->post('nm1');
+        $nm2           = $this->input->post('nm2');
+        $nm3           = $this->input->post('nm3');
+        $al1        = $this->input->post('al1');
+        $al2        = $this->input->post('al2');
+        $al3        = $this->input->post('al3');
+        $hp1        = $this->input->post('hp1');
+        $hp2        = $this->input->post('hp2');
+        $hp3        = $this->input->post('hp3');
+
+        $data = array(
+            'info_pribadi'            => $info_pribadi,
+            'info_perilaku'        => $info_perilaku,
+            'info_keluarga'    => $info_keluarga,
+            'nm1'                => $nm1,
+            'nm2'                => $nm2,
+            'nm3'                => $nm3,
+            'al1'                => $al1,
+            'al2'                => $al2,
+            'al3'                => $al3,
+            'hp1'                => $hp1,
+            'hp2'                => $hp2,
+            'hp3'                => $hp3,
+        );
+        $this->db->update('karakter', $data);
+        redirect('test/edit?id_lb='.$id_lb);
     }
 
     public function add_data_rw($data)

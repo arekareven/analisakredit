@@ -5,7 +5,7 @@ class Pdf_lb extends CI_Controller
     function __construct()
     {
         parent::__construct();
-		$this->load->model('m_kredit');
+        $this->load->model('m_kredit');
         $this->load->library('Pdf'); // MEMANGGIL LIBRARY YANG KITA BUAT TADI
     }
 
@@ -50,10 +50,10 @@ class Pdf_lb extends CI_Controller
             $pdf->SetFont('Times', '', 12);
             $pdf->Cell(49, 5.5, 'Plafond Yang Dimohon', 0, 0, '');
             $pdf->Cell(5, 5.5, ':', 0, 0, '');
-            $pdf->Cell(0, 5.5,'Rp. '.number_format($data->plafon) , 0, 1);
+            $pdf->Cell(0, 5.5, 'Rp. ' . number_format($data->plafon), 0, 1);
             $pdf->Cell(49, 5.5, 'Jangka Waktu', 0, 0, '');
             $pdf->Cell(5, 5.5, ':', 0, 0, '');
-            $pdf->Cell(0, 5.5, $data->jangka_waktu, 0, 1);
+            $pdf->Cell(0, 5.5, $data->jangka_waktu.' Bulan', 0, 1);
             $pdf->Cell(49, 5.5, 'Sifat Kredit', 0, 0, '');
             $pdf->Cell(5, 5.5, ':', 0, 0, '');
             $pdf->Cell(0, 5.5, $data->sifat_kredit, 0, 1);
@@ -177,7 +177,8 @@ class Pdf_lb extends CI_Controller
             $pdf->SetFont('Times', '', 12);
 
             $no = 0;
-            $rp = $this->db->get('riwayat_pinjaman')->result();
+            $id_lb = $_GET['id_lb'];
+            $rp = $this->db->get_where('riwayat_pinjaman', array('id_lb' => $id_lb))->result();
             foreach ($rp as $data) {
                 $no++;
                 $pdf->Cell(10, 5.5, $no, 1, 0, 'C');
@@ -186,7 +187,6 @@ class Pdf_lb extends CI_Controller
                 $pdf->Cell(37, 5.5, $data->saldo, 1, 0, 'C');
                 $pdf->Cell(37, 5.5, $data->sejarah, 1, 0, 'C');
                 $pdf->Cell(37, 5.5, $data->data, 1, 1, 'C');
-
             }
 
             $pdf->Output();
