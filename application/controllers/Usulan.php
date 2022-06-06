@@ -32,7 +32,12 @@ class Usulan extends CI_Controller
     public function add()
     {
         $id_usulan = $this->input->post('id_usulan');
-        $this->m_usulan->add_data($id_usulan);
+
+        $query = $this->m_usulan->cek_id($id_usulan)->num_rows();
+        if (empty($query))
+            $this->m_usulan->add_data($id_usulan);
+        else
+            $this->m_usulan->edit_data($id_usulan);
     }
 
     public function analis()

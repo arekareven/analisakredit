@@ -43,6 +43,7 @@ class Test extends CI_Controller
         $data['cashflow'] = $this->m_test->edit_cash($id_lb);
         $data['collateralt'] = $this->m_test->edit_collt($id_lb);
         $data['collateralk'] = $this->m_test->edit_collk($id_lb);
+        $data['condition'] = $this->m_test->edit_cond($id_lb);
         $data['usulan'] = $this->m_test->edit_usulan($id_lb);
 
         $this->load->view('templates/header', $data);

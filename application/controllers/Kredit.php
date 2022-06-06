@@ -26,12 +26,19 @@ class Kredit extends CI_Controller
         else 
             $this->m_kredit->edit_data($id_lb);
 	}
-
+	
 	public function add_rw()
 	{
-		$id_lb = $this->input->post('id_lb');
-		$this->m_kredit->add_data_rw($id_lb);
+		$id_rp = $this->input->post('id_rp');
+
+		$query = $this->m_kredit->cek_id_rw($id_rp)->num_rows();
+        if(empty($query)) 
+			$this->m_kredit->add_data_rw($id_rp);
+        else 
+            $this->m_kredit->edit_data_rw($id_rp);
 	}
+
+
 
 	public function to_rp()
 	{
@@ -160,6 +167,13 @@ class Kredit extends CI_Controller
 	{
 		$idt = $this->input->post('idt2');
 		$this->m_kredit->hapus_data($idt);
+	}
+
+	public function hapus2()
+	{
+		$idt = $this->input->post('idt2');
+		$id_lb = $this->input->post('id_lb');
+		$this->m_kredit->hapus_data2($idt,$id_lb);
 	}
 
 	/*

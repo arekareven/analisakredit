@@ -32,13 +32,23 @@ class Collateral extends CI_Controller
     public function add()
     {
         $id_col = $this->input->post('id_col');
-        $this->m_collateral->add_data($id_col);
+
+        $query = $this->m_collateral->cek_id($id_col)->num_rows();
+        if (empty($query))
+            $this->m_collateral->add_data($id_col);
+        else
+            $this->m_collateral->edit_data($id_col);
     }
 
     public function add2()
     {
         $id_col2 = $this->input->post('id_col2');
-        $this->m_collateral->add_data2($id_col2);
+
+        $query = $this->m_collateral->cek_id2($id_col2)->num_rows();
+        if (empty($query))
+            $this->m_collateral->add_data2($id_col2);
+        else
+            $this->m_collateral->edit_data2($id_col2);
     }
 
     public function next()

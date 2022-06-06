@@ -38,6 +38,12 @@ class M_usulan extends CI_Model
         return $query;
     }
 
+    function cek_id($id_usulan)
+	{
+		$query = array('id_usulan' => $id_usulan);
+		return $this->db->get_where('usulan', $query);
+	}
+
     public function add_data($data)
     {
         $id_lb          = $this->input->post('id_lb');
@@ -123,6 +129,33 @@ class M_usulan extends CI_Model
         );
         $this->db->insert('usulan', $data);
         redirect('test?id_lb='.$id_lb);
+    }
+
+    public function edit_data($data)
+    {
+        $id_usulan          = $this->input->post('id_usulan');
+        $id_lb          = $this->input->post('id_lb');
+        $character     = $this->input->post('character');
+        $capacity         = $this->input->post('capacity');
+        $capital         = $this->input->post('capital');
+        $coe         = $this->input->post('coe');
+        $collateral   = $this->input->post('collateral');
+        $realisasi     = $this->input->post('realisasi');
+        $notaris     = $this->input->post('notaris');
+        
+		$kondisi = array('id_usulan' => $id_usulan );
+
+        $data = array(
+            'character'    => $character,
+            'capacity'        => $capacity,
+            'capital'        => $capital,
+            'coe'        => $coe,
+            'collateral'  => $collateral,
+            'realisasi'    => $realisasi,
+            'notaris'    => $notaris
+        );
+        $this->db->update('usulan', $data,$kondisi);
+        redirect('test/edit?id_lb='.$id_lb);
     }
 
     /*

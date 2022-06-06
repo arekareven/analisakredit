@@ -33,6 +33,8 @@ class Character extends CI_Controller
     public function add()
     {
         $id_char = $this->input->post('id_char');
+        var_dump($id_char);
+        die;
 
         $query = $this->m_character->cek_id($id_char)->num_rows();
         if (empty($query))
@@ -40,12 +42,13 @@ class Character extends CI_Controller
         else
             $this->m_character->edit_data($id_char);
     }
-
+/*
     public function add_rw()
     {
-        $id_lb = $this->input->post('id_lb');
-        $this->m_character->add_data_rw($id_lb);
+        $id_rp = $this->input->post('id_rp');
+        $this->m_character->edit_data_rw($id_rp);
     }
+    */
 
     public function next()
     {

@@ -84,6 +84,7 @@ class M_capacity extends CI_Model
 
     public function edit_data($data)
     {
+        $id_cap          = $this->input->post('id_cap');
         $id_lb          = $this->input->post('id_lb');
         $nama_usaha     = $this->input->post('nama_usaha');
         $sektor         = $this->input->post('sektor');
@@ -105,6 +106,8 @@ class M_capacity extends CI_Model
         $dana2     = $this->input->post('dana2');
         $dana3     = $this->input->post('dana3');
         $usaha_realisasi     = $this->input->post('usaha_realisasi');
+        
+		$kondisi = array('id_cap' => $id_cap );
 
         $data = array(
             'id_lb'         => $id_lb,
@@ -129,7 +132,7 @@ class M_capacity extends CI_Model
             'dana3'    => $dana3,
             'usaha_realisasi'    => $usaha_realisasi,
         );
-        $this->db->update('capacity', $data);
+        $this->db->update('capacity', $data,$kondisi);
         redirect('test/edit?id_lb='.$id_lb);
     }
 }

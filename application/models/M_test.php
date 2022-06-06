@@ -59,6 +59,11 @@ class M_test extends CI_Model
     {
         return $this->db->query("SELECT * FROM collateral WHERE id_lb=$id_lb");
     }
+    
+    public function edit_cond($id_lb)
+    {
+        return $this->db->query("SELECT * FROM `condition` WHERE id_lb=$id_lb");
+    }
 
     public function edit_usulan($id_lb)
     {

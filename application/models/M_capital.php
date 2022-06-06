@@ -101,6 +101,7 @@ class M_capital extends CI_Model
 
     public function edit_data($data)
     {
+        $id_capi          = $this->input->post('id_capi');
         $id_lb          = $this->input->post('id_lb');
         $kas     = $this->input->post('kas');
         $tabungan         = $this->input->post('tabungan');
@@ -124,6 +125,8 @@ class M_capital extends CI_Model
         $hutang_jpg = $this->input->post('hutang_jpg');
         $hutang_lain     = $this->input->post('hutang_lain');
         $hutang_dagang     = $this->input->post('hutang_dagang');
+        
+		$kondisi = array('id_capi' => $id_capi );
 
         $data = array(
             'id_lb'         => $id_lb,
@@ -150,7 +153,7 @@ class M_capital extends CI_Model
             'hutang_lain'    => $hutang_lain,
             'hutang_dagang'    => $hutang_dagang
         );
-        $this->db->update('capital_b', $data);
+        $this->db->update('capital_b', $data,$kondisi);
         redirect('test/edit?id_lb='.$id_lb);
     }
 

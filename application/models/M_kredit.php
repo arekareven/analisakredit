@@ -40,6 +40,12 @@ class M_kredit extends CI_Model
 		return $this->db->get_where('latar_belakang', $query);
 	}
 
+	function cek_id_rw($id_rp)
+	{
+		$query = array('id_rp' => $id_rp);
+		return $this->db->get_where('riwayat_pinjaman', $query);
+	}
+
 	public function tampil_data($user)
 	{
 		return $this->db->query("SELECT * FROM latar_belakang WHERE user='$user'");
@@ -164,6 +170,8 @@ class M_kredit extends CI_Model
 		$hubungan_keluarga	= $this->input->post('hubungan_keluarga');
 		$alamat_keluarga	= $this->input->post('alamat_keluarga');
 		$hp_keluarga		= $this->input->post('hp_keluarga');
+		
+		$kondisi = array('id_lb' => $id_lb );
 
 		$data = array(
 
@@ -202,8 +210,8 @@ class M_kredit extends CI_Model
 			'alamat_keluarga'	=> $alamat_keluarga,
 			'hp_keluarga'		=> $hp_keluarga
 		);
-		$this->db->update('latar_belakang', $data);
-		redirect('test/edit?id_lb='.$id_lb);
+		$this->db->update('latar_belakang', $data,$kondisi);
+		redirect('test/edit?id_lb=' . $id_lb);
 	}
 
 
@@ -226,6 +234,30 @@ class M_kredit extends CI_Model
 			'data'	    => $data
 		);
 		$this->db->insert('riwayat_pinjaman', $x);
+	}
+
+	public function edit_data_rw($data)
+	{
+		$id_rp			= $this->input->post('id_rp');
+		$id_lb			= $this->input->post('id_lb');
+		$plafond			= $this->input->post('plafond');
+		$status		= $this->input->post('status');
+		$saldo     = $this->input->post('saldo');
+		$sejarah      		= $this->input->post('sejarah');
+		$data      	= $this->input->post('data');
+
+		$kondisi = array('id_rp' => $id_rp );
+
+		$data = array(
+
+			'plafond'	    	=> $plafond,
+			'status'	    => $status,
+			'saldo'	=> $saldo,
+			'sejarah'	    	=> $sejarah,
+			'data'	    => $data
+		);
+		$this->db->update('riwayat_pinjaman', $data,$kondisi);
+		redirect('test/edit?id_lb=' . $id_lb);
 	}
 
 	/* penambahan data dengan perulangan
@@ -261,5 +293,12 @@ class M_kredit extends CI_Model
 		$this->db->where(array('id_lb' => $id_lb));
 		$this->db->delete('latar_belakang');
 		redirect('kredit/lb?=id' . $id_lb);
+	}
+
+	function hapus_data2($id_rp, $id_lb)
+	{
+		$this->db->where(array('id_rp' => $id_rp));
+		$this->db->delete('riwayat_pinjaman');
+		redirect('test/edit?id_lb=' . $id_lb);
 	}
 }

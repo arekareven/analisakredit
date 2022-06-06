@@ -30,7 +30,12 @@ class Condition extends CI_Controller
     public function add()
     {
         $id_con = $this->input->post('id_con');
-        $this->m_condition->add_data($id_con);
+        
+        $query = $this->m_condition->cek_id($id_con)->num_rows();
+        if (empty($query))
+            $this->m_condition->add_data($id_con);
+        else
+            $this->m_condition->edit_data($id_con);
     }
 
     public function next()

@@ -18,10 +18,16 @@ class M_character extends CI_Model
     }
 
     function cek_id($id_char)
-	{
-		$query = array('id_char' => $id_char);
-		return $this->db->get_where('karakter', $query);
-	}
+    {
+        $query = array('id_char' => $id_char);
+        return $this->db->get_where('karakter', $query);
+    }
+
+    function cek_id_rp($id_rp)
+    {
+        $query = array('id_rp' => $id_rp);
+        return $this->db->get_where('riwayat_pinjaman', $query);
+    }
 
     public function tampil_data($id_lb)
     {
@@ -98,32 +104,49 @@ class M_character extends CI_Model
             'hp3'                => $hp3,
         );
         $this->db->update('karakter', $data);
-        redirect('test/edit?id_lb='.$id_lb);
+        redirect('test/edit?id_lb=' . $id_lb);
     }
 
     public function add_data_rw($data)
     {
-        $id_lb            = $_POST['id_lb'];
-        $plafond            = $_POST['plafond'];
-        $status        = $_POST['status'];
-        $saldo     = $_POST['saldo'];
-        $sejarah              = $_POST['sejarah'];
-        $data          = $_POST['data'];
+        $id_lb  = $this->input->post('id_lb');
+        $plafond  = $this->input->post('plafond');
+        $status = $this->input->post('status');
+        $saldo = $this->input->post('saldo');
+        $sejarah           = $this->input->post('sejarah');
+        $data           = $this->input->post('data');
 
-        $total = count($plafond);
+        $data = array(
+            'id_lb'            => $id_lb,
+            'plafond'            => $plafond,
+            'status'        => $status,
+            'saldo'    => $saldo,
+            'sejarah'                => $sejarah,
+            'data'                => $data
+        );
+        $this->db->insert('riwayat_pinjaman', $data);
+    }
 
-        for ($i = 0; $i < $total; $i++) {
-            $x[] = array(
+    public function edit_data_rw($data)
+    {
+        $id_rp  = $this->input->post('id_rp');
+        $id_lb  = $this->input->post('id_lb');
+        $plafond  = $this->input->post('plafond');
+        $status = $this->input->post('status');
+        $saldo = $this->input->post('saldo');
+        $sejarah           = $this->input->post('sejarah');
+        $data           = $this->input->post('data');
+        
+		$kondisi = array('id_rp' => $id_rp );
 
-                'id_lb'            => $id_lb[$i],
-                'plafond'            => $plafond[$i],
-                'status'        => $status[$i],
-                'saldo'    => $saldo[$i],
-                'sejarah'            => $sejarah[$i],
-                'data'        => $data[$i]
-            );
-            $this->db->insert('riwayat_pinjaman', $x[$i]);
-        }
-        redirect('character?id_lb=' . $id_lb);
+        $data = array(
+            'plafond'            => $plafond,
+            'status'        => $status,
+            'saldo'    => $saldo,
+            'sejarah'                => $sejarah,
+            'data'                => $data
+        );
+        $this->db->update('riwayat_pinjaman', $data,$kondisi);
+        redirect('test/edit?id_lb=' . $id_lb);
     }
 }
