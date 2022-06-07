@@ -33,8 +33,6 @@ class Character extends CI_Controller
     public function add()
     {
         $id_char = $this->input->post('id_char');
-        var_dump($id_char);
-        die;
 
         $query = $this->m_character->cek_id($id_char)->num_rows();
         if (empty($query))

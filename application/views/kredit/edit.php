@@ -15,7 +15,6 @@
                         <a class="nav-link" id="v-pills-capacity-tab" data-toggle="pill" href="#v-pills-capacity" role="tab" aria-controls="v-pills-capacity" aria-selected="false">Capacity</a>
                         <a class="nav-link" id="v-pills-capital-tab" data-toggle="pill" href="#v-pills-capital" role="tab" aria-controls="v-pills-capital" aria-selected="false">Capital</a>
                         <a class="nav-link" id="v-pills-cashflow-tab" data-toggle="pill" href="#v-pills-cashflow" role="tab" aria-controls="v-pills-cashflow" aria-selected="false">Cashflow Awal</a>
-                        <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Cashflow</a>
                         <a class="nav-link" id="v-pills-condition-tab" data-toggle="pill" href="#v-pills-condition" role="tab" aria-controls="v-pills-condition" aria-selected="false">Condition</a>
                         <a class="nav-link" id="v-pills-collateralt-tab" data-toggle="pill" href="#v-pills-collateralt" role="tab" aria-controls="v-pills-collateralt" aria-selected="false">Collateral Tanah</a>
                         <a class="nav-link" id="v-pills-collateralk-tab" data-toggle="pill" href="#v-pills-collateralk" role="tab" aria-controls="v-pills-collateralk" aria-selected="false">Collateral Kendaraan</a>
@@ -53,7 +52,8 @@
                                         </div>
                                         <div class="col-md-8 mb-3">
                                             <label for="sifat_kredit" class="form-label">Sifat Kredit</label>
-                                            <select class="form-control" aria-label="Default select example" id="sifat_kredit" name="sifat_kredit" value="<?php echo $row->sifat_kredit; ?>">
+                                            <select class="form-control" aria-label="Default select example" id="sifat_kredit" name="sifat_kredit">
+                                                <option value="<?php echo $row->sifat_kredit; ?>"><?php echo $row->sifat_kredit; ?></option>
                                                 <option value="Pokok bunga tiap bulan">Pokok bunga tiap bulan</option>
                                                 <option value="Pokok tiap 3 bulan bunga tiap bulan">Pokok tiap 3 bulan bunga tiap bulan</option>
                                                 <option value="Pokok tiap 4 bulan bunga tiap bulan">Pokok tiap 4 bulan bunga tiap bulan</option>
@@ -72,7 +72,8 @@
                                         </div>
                                         <div class="col-md-8 mb-3">
                                             <label for="jenis_permohonan" class="form-label">Jenis Permohonan</label>
-                                            <select class="form-control" aria-label="Default select example" id="jenis_permohonan" name="jenis_permohonan" value="<?php echo $row->jenis_permohonan; ?>">
+                                            <select class="form-control" aria-label="Default select example" id="jenis_permohonan" name="jenis_permohonan">
+                                                <option value="<?php echo $row->jenis_permohonan; ?>"><?php echo $row->jenis_permohonan; ?></option>
                                                 <option value="Baru">Baru</option>
                                                 <option value="Ulangan">Ulangan</option>
                                                 <option value="Top Up">Top Up / Perpanjangan</option>
@@ -81,7 +82,8 @@
                                         </div>
                                         <div class="col-md-8 mb-3">
                                             <label for="tujuan_permohonan" class="form-label">Tujuan Penggunaan</label>
-                                            <select class="form-control" aria-label="Default select example" id="tujuan_permohonan" name="tujuan_permohonan" value="<?php echo $row->tujuan_permohonan; ?>">
+                                            <select class="form-control" aria-label="Default select example" id="tujuan_permohonan" name="tujuan_permohonan">
+                                                <option value="<?php echo $row->tujuan_permohonan; ?>"><?php echo $row->tujuan_permohonan; ?></option>
                                                 <option value="Modal Kerja">Modal Kerja</option>
                                                 <option value="Investasi">Investasi</option>
                                                 <option value="Konsumsi">Konsumsi</option>
@@ -101,7 +103,8 @@
                                         </div>
                                         <div class="col-md-8 mb-3">
                                             <label for="status_kawin" class="form-label">Status Perkawinan</label>
-                                            <select class="form-control" aria-label="Default select example" id="status_kawin" name="status_kawin" value="<?php echo $row->status_kawin; ?>">
+                                            <select class="form-control" aria-label="Default select example" id="status_kawin" name="status_kawin">
+                                                <option value="<?php echo $row->status_kawin; ?>"><?php echo $row->status_kawin; ?></option>
                                                 <option value="Tidak Menikah">Tidak Menikah</option>
                                                 <option value="Menikah">Menikah</option>
                                                 <option value="Duda">Duda</option>
@@ -130,7 +133,8 @@
                                         </div>
                                         <div class="col-md-8 mb-3">
                                             <label for="status_tt" class="form-label">Status Tempat Tinggal</label>
-                                            <select class="form-control" aria-label="Default select example" id="status_tt" name="status_tt" value="<?php echo $row->status_tt; ?>">
+                                            <select class="form-control" aria-label="Default select example" id="status_tt" name="status_tt">
+                                                <option value="<?php echo $row->status_tt; ?>"><?php echo $row->status_tt; ?></option>
                                                 <option value="Milik Sendiri">Milik Sendiri</option>
                                                 <option value="Milik Keluarga/Ortu">Milik Keluarga/Ortu</option>
                                                 <option value="Instansi">Instansi</option>
@@ -148,7 +152,8 @@
                                         </div>
                                         <div class="col-md-8 mb-3">
                                             <label for="pendidikan" class="form-label">Pendidikan</label>
-                                            <select class="form-control" aria-label="Default select example" id="pendidikan" name="pendidikan" value="<?php echo $row->pendidikan; ?>">
+                                            <select class="form-control" aria-label="Default select example" id="pendidikan" name="pendidikan">
+                                                <option value="<?php echo $row->pendidikan; ?>"><?php echo $row->pendidikan; ?></option>
                                                 <option value="SD">SD</option>
                                                 <option value="SMP">SMP</option>
                                                 <option value="SMA">SMA</option>
@@ -215,7 +220,8 @@
                                         </div>
                                         <div class="col-md-8 mb-3">
                                             <label for="hubungan_keluarga" class="form-label">Hubungan Keluarga</label>
-                                            <select class="form-control" aria-label="Default select example" id="hubungan_keluarga" name="hubungan_keluarga" value="<?php echo $row->hubungan_keluarga; ?>">
+                                            <select class="form-control" aria-label="Default select example" id="hubungan_keluarga" name="hubungan_keluarga">
+                                                <option value="<?php echo $row->hubungan_keluarga; ?>"><?php echo $row->hubungan_keluarga; ?></option>
                                                 <option value="Anak Kandung">Anak Kandung</option>
                                                 <option value="Saudara Kandung">Saudara Kandung</option>
                                                 <option value="Orang Tua">Orang Tua</option>
@@ -226,7 +232,7 @@
                                         </div>
                                         <div class="col-md-12 mb-3">
                                             <label for="alamat_keluarga" class="form-label">Alamat Rumah</label>
-                                            <textarea class="form-control" id="alamat_keluarga" name="alamat_keluarga"> <?php echo $row->alamat_keluarga; ?></textarea>
+                                            <textarea class="form-control" id="alamat_keluarga" name="alamat_keluarga"><?php echo $row->alamat_keluarga; ?></textarea>
                                         </div>
                                         <div class="col-md-8 mb-5">
                                             <label for="hp_keluarga" class="form-label">No. Tlp/Hp</label>
@@ -275,87 +281,6 @@
                                     </tbody>
                                 </table>
                             </div>
-
-                            <!-- Modal LB-->
-                            <div class="modal fade" id="edit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-lg">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Riwayat Pinjaman</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <form method="post" action="<?php echo base_url('kredit/add_rw'); ?>">
-                                            <div class="modal-body">
-                                                <div class="row">
-                                                    <div class="col-md-3 mb-3">
-                                                        <label for="plafond" class="form-label">Plafond (Rp.)</label>
-                                                        <input type="text" class="form-control" id="plafond" name="plafond">
-                                                        <input type="hidden" class="form-control" id="id_rp" name="id_rp">
-                                                        <input type="hidden" class="form-control" id="id_lb" name="id_lb" value="<?php echo $id_lb; ?>">
-                                                    </div>
-                                                    <div class="col-md-2 mb-3">
-                                                        <label for="status" class="form-label">Status</label>
-                                                        <select class="form-control" aria-label="Default select example" id="status" name="status">
-                                                            <option value=""></option>
-                                                            <option value="Lunas">Lunas</option>
-                                                            <option value="Belum Lunas">Belum Lunas</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="col-md-3 mb-3">
-                                                        <label for="saldo" class="form-label">Saldo (Rp.)</label>
-                                                        <input type="text" class="form-control" id="saldo" name="saldo">
-                                                    </div>
-                                                    <div class="col-md-2 mb-3">
-                                                        <label for="sejarah" class="form-label">Sejarah</label>
-                                                        <select class="form-control" aria-label="Default select example" id="sejarah" name="sejarah">
-                                                            <option value=""></option>
-                                                            <option value="Baik">Baik</option>
-                                                            <option value="Tidak Baik">Tidak Baik</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="col-md-2 mb-3">
-                                                        <label for="data" class="form-label">Data</label>
-                                                        <select class="form-control" aria-label="Default select example" id="data" name="data">
-                                                            <option value=""></option>
-                                                            <option value="Terlampir">Terlampir</option>
-                                                            <option value="Tidak Terlampir">Tidak Terlampir</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="submit" id="btn_rp" class="btn btn-primary">Save changes</button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div id="hapus" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" style="display: none;">
-                                <div class="modal-dialog modal-sm">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h4 class="modal-title" id="custom-width-modalLabel">Konfirmasi Hapus</h4>
-                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                        </div>
-                                        <form action="<?php echo base_url() . 'kredit/hapus2'; ?>" method="post" class="form-horizontal" role="form">
-                                            <div class="modal-body">
-                                                <p>Apakah anda yakin ingin menghapus?</p>
-                                                <div>
-                                                    <input type="hidden" id="idt2" name="idt2">
-                                                    <input type="hidden" id="id_lb" name="id_lb" value="<?php echo $id_lb; ?>">
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">Tidak</button>
-                                                <button type="submit" class="btn btn-success waves-effect waves-light">Ya</button>
-                                            </div>
-                                    </div><!-- /.modal-content -->
-                                </div><!-- /.modal-dialog -->
-                            </div><!-- /.modal -->
-
                         </div>
                         <div class="tab-pane fade" id="v-pills-character" role="tabpanel" aria-labelledby="v-pills-character-tab">
                             <?php
@@ -363,10 +288,10 @@
                             ?>
                                 <form method="post" action="<?php echo base_url('character/add'); ?>">
                                     <div class="modal-body">
-                                        <input type="hidden" class="form-control" id="id_lb" name="id_lb" value="<?php echo $row->id_lb; ?>">
-                                        <input type="hidden" class="form-control" id="id_char" name="id_char" value="<?php echo $row->id_char; ?>">
                                         <div class="col-md-12 mb-4">
                                             <label for="info_pribadi" class="form-label">Informasi Pribadi</label>
+                                            <input type="hidden" class="form-control" id="id_lb" name="id_lb" value="<?php echo $id_lb; ?>">
+                                            <input type="hidden" class="form-control" id="id_char" name="id_char" value="<?php echo $row->id_char; ?>">
                                             <textarea class="form-control" id="info_pribadi" name="info_pribadi"><?php echo $row->info_pribadi; ?></textarea>
                                         </div>
                                         <div class="col-md-12 mb-4">
@@ -445,7 +370,8 @@
                                         </div>
                                         <div class="col-md-4 mb-3">
                                             <label for="sektor" class="form-label">Sektor Usaha</label>
-                                            <select class="form-control" aria-label="Default select example" id="sektor" name="sektor" value="<?php echo $row->sektor; ?>">
+                                            <select class="form-control" aria-label="Default select example" id="sektor" name="sektor">
+                                                <option value="<?php echo $row->sektor; ?>"><?php echo $row->sektor; ?></option>
                                                 <option value="Industri">Industri</option>
                                                 <option value="Jasa">Jasa</option>
                                                 <option value="Kontraktor">Kontraktor</option>
@@ -464,7 +390,8 @@
                                         </div>
                                         <div class="col-md-4 mb-3">
                                             <label for="status_usaha" class="form-label">Status Tempat Usaha</label>
-                                            <select class="form-control" aria-label="Default select example" id="status_usaha" name="status_usaha" value="<?php echo $row->status_usaha; ?>">
+                                            <select class="form-control" aria-label="Default select example" id="status_usaha" name="status_usaha">
+                                                <option value="<?php echo $row->status_usaha; ?>"><?php echo $row->status_usaha; ?></option>
                                                 <option value="Milik Sendiri">Milik Sendiri</option>
                                                 <option value="Milik Keluarga/Ortu">Milik Keluarga/Ortu</option>
                                                 <option value="Instansi">Instansi</option>
@@ -720,117 +647,71 @@
                                 </ul>
                                 <div class="tab-content" id="pills-tabContent">
                                     <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                                        <?php
-                                        foreach ($cashflow->result() as $row) {
-                                        ?>
-                                            <form id="cashflow">
-                                                <div class="modal-body">
-                                                    <div class="col-md-8 mb-4">
-                                                        <label for="dari" class="form-label">Pendapatan dari</label>
-                                                        <select class="form-control" aria-label="Default select example" id="kode_perkiraan" name="kode_perkiraan" value="<?php echo $row->nama_perkiraan; ?>">
-                                                            <option value=""></option>
-                                                            <option value="4.1.1">Pendapatan Usaha 1</option>
-                                                            <option value="4.1.2">Pendapatan Usaha 2</option>
-                                                            <option value="4.1.3">Pendapatan Usaha 3</option>
-                                                            <option value="4.1.4">Pendapatan Lain / Gaji</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="col-md-8 mb-4">
-                                                        <label for="nopol" class="form-label">Untuk</label>
-                                                        <select class="form-control" aria-label="Default select example" id="kode_perkiraan2" name="kode_perkiraan2" onchange="return nama_p2();" value="<?php echo $row->kode_perkiraan2; ?>">
-                                                            <option value=""></option>
-                                                            <option value="1.1.1">Kas</option>
-                                                            <option value="1.1.2">Tabungan</option>
-                                                            <option value="1.1.3">Deposito</option>
-                                                            <option value="1.1.4">Piutang</option>
-                                                            <option value="1.1.5">Peralatan</option>
-                                                            <option value="1.1.6">Persediaan Barang Usaha 1</option>
-                                                            <option value="1.1.12">Persediaan Barang Usaha 2</option>
-                                                            <option value="1.1.13">Persediaan Barang Usaha 3</option>
-                                                            <option value="1.1.7">Sewa Dibayar Dimuka</option>
-                                                            <option value="1.1.8">Lahan Garap</option>
-                                                            <option value="1.1.9">Gedung / Ruko</option>
-                                                            <option value="1.1.10">Kendaraan Operasional</option>
-                                                            <option value="1.1.11">Lain - Lain</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="col-md-12 mb-4">
-                                                        <label for="keterangan" class="form-label">Keterangan</label>
-                                                        <input type="text" class="form-control" id="keterangan" name="keterangan" value="<?php echo $row->keterangan; ?>">
-                                                        <input type="hidden" class="form-control" id="id_lb" name="id_lb" value="<?php echo $id_lb; ?>">
-                                                        <input type="hidden" class="form-control" id="nama_perkiraan" name="nama_perkiraan">
-                                                        <input type="hidden" class="form-control" id="nama_perkiraan2" name="nama_perkiraan2">
-                                                        <input type="hidden" class="form-control" id="jenis" name="jenis" value="pendapatan">
-                                                    </div>
-                                                    <div class="col-md-8 mb-4">
-                                                        <label for="nama_stnk" class="form-label">Sebesar</label>
-                                                        <input type="number" class="form-control" id="saldo" name="saldo" value="<?php echo $row->saldo; ?>">
-                                                    </div>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" id="simpan" class="btn btn-primary">Save changes</button>
-                                                </div>
-                                            </form>
-                                        <?php
-                                        }
-                                        ?>
+                                        <div class="table-responsive">
+                                            <table class="table table-hover" width="100%" cellspacing="0">
+                                                <thead class="thead">
+                                                    <tr>
+                                                        <th scope="col">No</th>
+                                                        <th scope="col">Keterangan</th>
+                                                        <th scope="col">Saldo</th>
+                                                        <th scope="col">kode</th>
+                                                        <th scope="col">Aksi</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php
+                                                    $no = 1;
+                                                    foreach ($cashflow->result() as $row) {
+                                                        echo "<tr>
+                                                                <td>" . $no . "</td>
+                                                                <td>" . $row->keterangan . "</td>
+                                                                <td>" . number_format($row->saldo) . "</td>                      
+                                                                <td>" . $row->kode . "</td>
+                                                                <td>
+                                                                <a href='#' class ='btn btn-warning btn-circle' data-toggle='modal' title='Edit' data-target='#editCashflow' onClick=\"EditDataCashflow('" . $row->id_cf . "','" . $row->kode . "', '" . $row->kode_perkiraan . "', '" . $row->nama_perkiraan . "', '" . $row->keterangan . "', '" . $row->saldo . "')\"><i class='fas fa-edit'></i></a>                               
+                                                                <a href='#' class='btn btn-danger btn-circle' data-toggle='modal' title='Hapus' data-target='#hapus' onClick=\"HapusDataCashflow('" . $row->kode . "')\"><i class='fas fa-trash'></i></a>
+                                                                </td>							    
+                                                                </tr>";
+                                                        $no++;
+                                                    }
+                                                    ?>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                     <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-                                        <form id="cashflowp">
-                                            <div class="modal-body">
-                                                <div class="col-md-8 mb-4">
-                                                    <label for="dari" class="form-label">Menggunakan uang dari</label>
-                                                    <select class="form-control" aria-label="Default select example" id="kode_perkiraanp" name="kode_perkiraanp" onchange="return perkiraan();">
-                                                        <option value=""></option>
-                                                        <option value="1.1.1">Kas</option>
-                                                        <option value="1.1.2">Tabungan</option>
-                                                        <option value="1.1.3">Deposito</option>
-                                                        <option value="1.1.4">Piutang</option>
-                                                        <option value="1.1.5">Peralatan</option>
-                                                        <option value="1.1.6">Persediaan Barang Usaha 1</option>
-                                                        <option value="1.1.12">Persediaan Barang Usaha 2</option>
-                                                        <option value="1.1.13">Persediaan Barang Usaha 3</option>
-                                                        <option value="1.1.7">Sewa Dibayar Dimuka</option>
-                                                        <option value="1.1.8">Lahan Garap</option>
-                                                        <option value="1.1.9">Gedung / Ruko</option>
-                                                        <option value="1.1.10">Kendaraan Operasional</option>
-                                                        <option value="1.1.11">Lain - Lain</option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-md-8 mb-4">
-                                                    <label for="nopol" class="form-label">Untuk</label>
-                                                    <select class="form-control" aria-label="Default select example" id="kode_perkiraanp2" name="kode_perkiraanp2" onchange="return perkiraan2();">
-                                                        <option value=""></option>
-                                                        <?php
-                                                        foreach ($perkiraan->result() as $row) {
-                                                            echo "<option value='$row->kode_perkiraan'>$row->nama_perkiraan</option>";
-                                                        }
-                                                        ?>
-                                                    </select>
-                                                </div>
-                                                <div class="col-md-12 mb-4">
-                                                    <label for="keterangan" class="form-label">Keterangan</label>
-                                                    <input type="text" class="form-control" id="keteranganp" name="keteranganp">
-                                                    <input type="hidden" class="form-control" id="id_lb" name="id_lb" value="<?php echo $id_lb; ?>">
-                                                    <input type="hidden" class="form-control" id="nama_perkiraanp" name="nama_perkiraanp">
-                                                    <input type="hidden" class="form-control" id="nama_perkiraanp2" name="nama_perkiraanp2">
-                                                    <input type="hidden" class="form-control" id="jenisp" name="jenisp" value="pengeluaran">
-                                                </div>
-                                                <div class="col-md-8 mb-4">
-                                                    <label for="nama_stnk" class="form-label">Sebesar</label>
-                                                    <input type="number" class="form-control" id="saldop" name="saldop">
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" id="simpanp" class="btn btn-primary">Save changes</button>
-                                            </div>
-                                        </form>
+                                        <div class="table-responsive">
+                                            <table class="table table-hover" width="100%" cellspacing="0">
+                                                <thead class="thead">
+                                                    <tr>
+                                                        <th scope="col">No</th>
+                                                        <th scope="col">Keterangan</th>
+                                                        <th scope="col">Saldo</th>
+                                                        <th scope="col">Aksi</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php
+                                                    $no = 1;
+                                                    foreach ($cashflowp->result() as $row) {
+                                                        echo "<tr>
+                                                                <td>" . $no . "</td>
+                                                                <td>" . $row->keterangan . "</td>
+                                                                <td>" . number_format($row->saldo) . "</td>                      
+                                                                <td>
+                                                                <a href='#' class ='btn btn-warning btn-circle' data-toggle='modal' title='Edit' data-target='#edit' onClick=\"EditData('" . $row->id_cf . "', '" . $row->keterangan . "', '" . $row->saldo . "')\"><i class='fas fa-edit'></i></a>                               
+                                                                <a href='#' class='btn btn-danger btn-circle' data-toggle='modal' title='Hapus' data-target='#hapus' onClick=\"HapusData('" . $row->id_cf . "')\"><i class='fas fa-trash'></i></a>
+                                                                </td>							
+                                                                </tr>";
+                                                        $no++;
+                                                    }
+                                                    ?>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
-                            ...
                         </div>
                         <div class="tab-pane fade" id="v-pills-condition" role="tabpanel" aria-labelledby="v-pills-condition-tab">
                             <?php
@@ -981,8 +862,8 @@
                                         <div class="row">
                                             <div class="col-md-3 mb-4">
                                                 <label for="status" class="form-label">Roda</label>
-                                                <select class="form-control" aria-label="Default select example" id="roda" name="roda" value="<?php echo $row->roda; ?>">
-                                                    <option value=""></option>
+                                                <select class="form-control" aria-label="Default select example" id="roda" name="roda">
+                                                    <option value="<?php echo $row->roda; ?>"><?php echo substr($row->roda, 0, 1); ?></option>
                                                     <option value="2 (Dua)">2</option>
                                                     <option value="4 (Empat)">4</option>
                                                     <option value="6 (Enam)">6</option>
@@ -1129,148 +1010,156 @@
             </div>
         </div>
     </div>
-
-
-
-
-    <script src="<?php echo base_url(); ?>assets/ajax.js"></script>
-    <script src="<?php echo base_url(); ?>assets/bootstrap.js"></script>
-    <script src="<?php echo base_url(); ?>assets/jquery.min.js"></script>
-
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $(".add-more").click(function() {
-                var html = $(".copy").html();
-                $(".after-add-more").before(html);
-            });
-
-            // saat tombol remove dklik control group akan dihapus 
-            $("body").on("click", ".remove", function() {
-                $(this).parents(".form-group").remove();
-            });
-        });
-    </script>
-
-    <script>
-        function nama_p() {
-            var kode_perkiraan = document.getElementById('kode_perkiraan').value;
-            $.ajax({
-                url: "<?php echo base_url(); ?>test/cari",
-                data: '&kode_perkiraan=' + kode_perkiraan,
-                success: function(data) {
-                    var hasil = JSON.parse(data);
-
-                    $.each(hasil, function(key, val) {
-
-                        document.getElementById('kode_perkiraan').value = val.kode_perkiraan;
-                        document.getElementById('nama_perkiraan').value = val.nama_perkiraan;
-
-                    });
-                }
-            });
-
-        }
-
-        function nama_p2() {
-            var kode_perkiraan2 = document.getElementById('kode_perkiraan2').value;
-            $.ajax({
-                url: "<?php echo base_url(); ?>test/cari",
-                data: '&kode_perkiraan=' + kode_perkiraan2,
-                success: function(data) {
-                    var hasil = JSON.parse(data);
-
-                    $.each(hasil, function(key, val) {
-
-                        document.getElementById('kode_perkiraan2').value = val.kode_perkiraan;
-                        document.getElementById('nama_perkiraan2').value = val.nama_perkiraan;
-
-                    });
-                }
-            });
-
-        }
-
-        function perkiraan() {
-            var kode_perkiraanp = document.getElementById('kode_perkiraanp').value;
-            $.ajax({
-                url: "<?php echo base_url(); ?>test/cari",
-                data: '&kode_perkiraan=' + kode_perkiraanp,
-                success: function(data) {
-                    var hasil = JSON.parse(data);
-
-                    $.each(hasil, function(key, val) {
-
-                        document.getElementById('kode_perkiraanp').value = val.kode_perkiraan;
-                        document.getElementById('nama_perkiraanp').value = val.nama_perkiraan;
-
-                    });
-                }
-            });
-
-        }
-
-        function perkiraan2() {
-            var kode_perkiraanp2 = document.getElementById('kode_perkiraanp2').value;
-            $.ajax({
-                url: "<?php echo base_url(); ?>test/cari",
-                data: '&kode_perkiraan=' + kode_perkiraanp2,
-                success: function(data) {
-                    var hasil = JSON.parse(data);
-
-                    $.each(hasil, function(key, val) {
-
-                        document.getElementById('kode_perkiraanp2').value = val.kode_perkiraan;
-                        document.getElementById('nama_perkiraanp2').value = val.nama_perkiraan;
-
-                    });
-                }
-            });
-
-        }
-    </script>
-
-
-    <script>
-        function autofill() {
-            var notaris = document.getElementById('notaris').value;
-            $.ajax({
-                url: "<?php echo base_url(); ?>usulan/cari",
-                data: '&notaris=' + notaris,
-                success: function(data) {
-                    var hasil = JSON.parse(data);
-
-                    $.each(hasil, function(key, val) {
-
-                        document.getElementById('notaris').value = val.notaris;
-                        document.getElementById('provisi').value = val.provisi;
-                        document.getElementById('administrasi').value = val.administrasi;
-                        document.getElementById('asuransi').value = val.asuransi;
-                        document.getElementById('materai').value = val.materai;
-                        document.getElementById('apht').value = val.apht;
-                        document.getElementById('skmht').value = val.skmht;
-                        document.getElementById('titipan').value = val.titipan;
-                        document.getElementById('fiduciare').value = val.fiduciare;
-                        document.getElementById('legalisasi').value = val.legalisasi;
-                        document.getElementById('lain').value = val.lain;
-                        document.getElementById('roya').value = val.roya;
-                        document.getElementById('proses').value = val.proses;
-                        document.getElementById('sertifikat').value = val.sertifikat;
-                        document.getElementById('akta').value = val.akta;
-                        document.getElementById('pendaftaran').value = val.pendaftaran;
-                        document.getElementById('plotting').value = val.plotting;
-
-                    });
-                }
-            });
-
-        }
-    </script>
-
-
 </div>
 
 </div>
 
+
+<!-- Modal edit riwayat pinjaman-->
+<div class="modal fade" id="edit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Riwayat Pinjaman</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method="post" action="<?php echo base_url('kredit/add_rw'); ?>">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-3 mb-3">
+                            <label for="plafond" class="form-label">Plafond (Rp.)</label>
+                            <input type="text" class="form-control" id="plafond" name="plafond">
+                            <input type="hidden" class="form-control" id="id_rp" name="id_rp">
+                            <input type="hidden" class="form-control" id="id_lb" name="id_lb" value="<?php echo $id_lb; ?>">
+                        </div>
+                        <div class="col-md-2 mb-3">
+                            <label for="status" class="form-label">Status</label>
+                            <select class="form-control" aria-label="Default select example" id="status" name="status">
+                                <option value=""></option>
+                                <option value="Lunas">Lunas</option>
+                                <option value="Belum Lunas">Belum Lunas</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="saldo" class="form-label">Saldo (Rp.)</label>
+                            <input type="text" class="form-control" id="saldo" name="saldo">
+                        </div>
+                        <div class="col-md-2 mb-3">
+                            <label for="sejarah" class="form-label">Sejarah</label>
+                            <select class="form-control" aria-label="Default select example" id="sejarah" name="sejarah">
+                                <option value=""></option>
+                                <option value="Baik">Baik</option>
+                                <option value="Tidak Baik">Tidak Baik</option>
+                            </select>
+                        </div>
+                        <div class="col-md-2 mb-3">
+                            <label for="data" class="form-label">Data</label>
+                            <select class="form-control" aria-label="Default select example" id="data" name="data">
+                                <option value=""></option>
+                                <option value="Terlampir">Terlampir</option>
+                                <option value="Tidak Terlampir">Tidak Terlampir</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" id="btn_rp" class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- /.modal hapus riwayat pinjaman -->
+<div id="hapus" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="custom-width-modalLabel">Konfirmasi Hapus</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <form action="<?php echo base_url() . 'kredit/hapus2'; ?>" method="post" class="form-horizontal" role="form">
+                <div class="modal-body">
+                    <p>Apakah anda yakin ingin menghapus?</p>
+                    <div>
+                        <input type="hidden" id="idt2" name="idt2">
+                        <input type="hidden" id="id_lb" name="id_lb" value="<?php echo $id_lb; ?>">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">Tidak</button>
+                    <button type="submit" class="btn btn-success waves-effect waves-light">Ya</button>
+                </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+<!-- Modal edit cashflow-->
+<div class="modal fade" id="editCashflow" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Cashflow</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method="post" action="<?php echo base_url('cashflow/add'); ?>">
+                <div class="modal-body">
+                    <div class="col-md-8 mb-4">
+                        <label for="dari" class="form-label">Pendapatan dari</label>
+                        <select class="form-control" aria-label="Default select example" id="kode_perkiraan" name="kode_perkiraan" onchange="return nama_p();">
+                            <option value=""></option>
+                            <option value="4.1.1">Pendapatan Usaha 1</option>
+                            <option value="4.1.2">Pendapatan Usaha 2</option>
+                            <option value="4.1.3">Pendapatan Usaha 3</option>
+                            <option value="4.1.4">Pendapatan Lain / Gaji</option>
+                        </select>
+                    </div>
+                    <div class="col-md-8 mb-4">
+                        <label for="nopol" class="form-label">Untuk</label>
+                        <select class="form-control" aria-label="Default select example" id="kode_perkiraan2" name="kode_perkiraan2" onchange="return nama_p2();">
+                            <option value=""></option>
+                            <option value="1.1.1">Kas</option>
+                            <option value="1.1.2">Tabungan</option>
+                            <option value="1.1.3">Deposito</option>
+                            <option value="1.1.4">Piutang</option>
+                            <option value="1.1.5">Peralatan</option>
+                            <option value="1.1.6">Persediaan Barang Usaha 1</option>
+                            <option value="1.1.12">Persediaan Barang Usaha 2</option>
+                            <option value="1.1.13">Persediaan Barang Usaha 3</option>
+                            <option value="1.1.7">Sewa Dibayar Dimuka</option>
+                            <option value="1.1.8">Lahan Garap</option>
+                            <option value="1.1.9">Gedung / Ruko</option>
+                            <option value="1.1.10">Kendaraan Operasional</option>
+                            <option value="1.1.11">Lain - Lain</option>
+                        </select>
+                    </div>
+                    <div class="col-md-12 mb-4">
+                        <label for="keterangan" class="form-label">Keterangan</label>
+                        <input type="text" class="form-control" id="keterangan" name="keterangan">
+                        <input type="text" class="form-control" id="id_lb" name="id_lb" value="<?php echo $id_lb; ?>">
+                        <input type="text" class="form-control" id="nama_perkiraan" name="nama_perkiraan">
+                        <input type="hidden" class="form-control" id="nama_perkiraan2" name="nama_perkiraan2">
+                    </div>
+                    <div class="col-md-8 mb-4">
+                        <label for="nama_stnk" class="form-label">Sebesar</label>
+                        <input type="number" class="form-control" id="saldo" name="saldo">
+                        <input type="text" class="form-control" id="kode" name="kode">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" id="simpan" class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<!-- data untuk riwayat pinjaman -->
 <script type="text/javascript">
     function EditData(id_rp, plafond, status, saldo, sejarah, data) {
         document.getElementById('id_rp').value = id_rp;
@@ -1283,5 +1172,151 @@
 
     function HapusData(idt) {
         document.getElementById('idt2').value = idt;
+    }
+
+    function EditDataCashflow(id_cf, kode, kode_perkiraan, nama_perkiraan, keterangan, saldo) {
+
+        document.getElementById('kode').value = kode;
+        document.getElementById('kode_perkiraan').value = kode_perkiraan;
+        document.getElementById('nama_perkiraan').value = nama_perkiraan;
+        document.getElementById('keterangan').value = keterangan;
+        document.getElementById('saldo').value = saldo
+    }
+
+    function HapusDataCashflow(idt) {
+        document.getElementById('idt2').value = idt;
+    }
+</script>
+
+<script src="<?php echo base_url(); ?>assets/ajax.js"></script>
+<script src="<?php echo base_url(); ?>assets/bootstrap.js"></script>
+<script src="<?php echo base_url(); ?>assets/jquery.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $(".add-more").click(function() {
+            var html = $(".copy").html();
+            $(".after-add-more").before(html);
+        });
+
+        // saat tombol remove dklik control group akan dihapus 
+        $("body").on("click", ".remove", function() {
+            $(this).parents(".form-group").remove();
+        });
+    });
+</script>
+
+<script>
+    function nama_p() {
+        var kode_perkiraan = document.getElementById('kode_perkiraan').value;
+        $.ajax({
+            url: "<?php echo base_url(); ?>test/cari",
+            data: '&kode_perkiraan=' + kode_perkiraan,
+            success: function(data) {
+                var hasil = JSON.parse(data);
+
+                $.each(hasil, function(key, val) {
+
+                    document.getElementById('kode_perkiraan').value = val.kode_perkiraan;
+                    document.getElementById('nama_perkiraan').value = val.nama_perkiraan;
+
+                });
+            }
+        });
+
+    }
+
+    function nama_p2() {
+        var kode_perkiraan2 = document.getElementById('kode_perkiraan2').value;
+        $.ajax({
+            url: "<?php echo base_url(); ?>test/cari",
+            data: '&kode_perkiraan=' + kode_perkiraan2,
+            success: function(data) {
+                var hasil = JSON.parse(data);
+
+                $.each(hasil, function(key, val) {
+
+                    document.getElementById('kode_perkiraan2').value = val.kode_perkiraan;
+                    document.getElementById('nama_perkiraan2').value = val.nama_perkiraan;
+
+                });
+            }
+        });
+
+    }
+
+    function perkiraan() {
+        var kode_perkiraanp = document.getElementById('kode_perkiraanp').value;
+        $.ajax({
+            url: "<?php echo base_url(); ?>test/cari",
+            data: '&kode_perkiraan=' + kode_perkiraanp,
+            success: function(data) {
+                var hasil = JSON.parse(data);
+
+                $.each(hasil, function(key, val) {
+
+                    document.getElementById('kode_perkiraanp').value = val.kode_perkiraan;
+                    document.getElementById('nama_perkiraanp').value = val.nama_perkiraan;
+
+                });
+            }
+        });
+
+    }
+
+    function perkiraan2() {
+        var kode_perkiraanp2 = document.getElementById('kode_perkiraanp2').value;
+        $.ajax({
+            url: "<?php echo base_url(); ?>test/cari",
+            data: '&kode_perkiraan=' + kode_perkiraanp2,
+            success: function(data) {
+                var hasil = JSON.parse(data);
+
+                $.each(hasil, function(key, val) {
+
+                    document.getElementById('kode_perkiraanp2').value = val.kode_perkiraan;
+                    document.getElementById('nama_perkiraanp2').value = val.nama_perkiraan;
+
+                });
+            }
+        });
+
+    }
+</script>
+
+
+<script>
+    function autofill() {
+        var notaris = document.getElementById('notaris').value;
+        $.ajax({
+            url: "<?php echo base_url(); ?>usulan/cari",
+            data: '&notaris=' + notaris,
+            success: function(data) {
+                var hasil = JSON.parse(data);
+
+                $.each(hasil, function(key, val) {
+
+                    document.getElementById('notaris').value = val.notaris;
+                    document.getElementById('provisi').value = val.provisi;
+                    document.getElementById('administrasi').value = val.administrasi;
+                    document.getElementById('asuransi').value = val.asuransi;
+                    document.getElementById('materai').value = val.materai;
+                    document.getElementById('apht').value = val.apht;
+                    document.getElementById('skmht').value = val.skmht;
+                    document.getElementById('titipan').value = val.titipan;
+                    document.getElementById('fiduciare').value = val.fiduciare;
+                    document.getElementById('legalisasi').value = val.legalisasi;
+                    document.getElementById('lain').value = val.lain;
+                    document.getElementById('roya').value = val.roya;
+                    document.getElementById('proses').value = val.proses;
+                    document.getElementById('sertifikat').value = val.sertifikat;
+                    document.getElementById('akta').value = val.akta;
+                    document.getElementById('pendaftaran').value = val.pendaftaran;
+                    document.getElementById('plotting').value = val.plotting;
+
+                });
+            }
+        });
+
     }
 </script>

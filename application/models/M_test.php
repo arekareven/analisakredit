@@ -47,7 +47,12 @@ class M_test extends CI_Model
 
     public function edit_cash($id_lb)
     {
-        return $this->db->query("SELECT * FROM cashflow_b WHERE id_lb=$id_lb");
+        return $this->db->query("SELECT * FROM cashflow_b WHERE id_lb=$id_lb AND jenis='pendapatan' AND kode_jenis='K'");
+    }
+
+    public function edit_cashp($id_lb)
+    {
+        return $this->db->query("SELECT * FROM cashflow_b WHERE id_lb=$id_lb AND jenis='pengeluaran' AND kode_jenis='D'");
     }
 
     public function edit_collt($id_lb)
