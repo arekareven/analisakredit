@@ -53,7 +53,7 @@ class Pdf_usulan extends CI_Controller
             $pdf->Cell(49, 5.5, 'Hutang Rp. ' . number_format($data->total_hutang) . ' atau ' . number_format($this->persen1(), 2)  . ' % dari Aset Produktif Rp. ' . number_format($data->total_al), 0, 1, '');
             $pdf->Cell(49, 5.5, $this->status1(), 1, 1, 'C');
             $pdf->Cell(49, 5.5, '', 0, 1, '');
-            $pdf->Cell(49, 5.5, 'Total Angsuran Pinjaman Rp. ' . number_format($this->angsuran()) . ' atau ' . 'dari Laba Operasional/Pendapatan Rp. ' . number_format($this->labaRugi()), 0, 1, '');
+            $pdf->Cell(49, 5.5, 'Total Angsuran Pinjaman Rp. ' . number_format($this->angsuran()) . ' atau ' . number_format($this->persen2(), 2)  . ' % dari Laba Operasional/Pendapatan Rp. ' . number_format($this->labaRugi()), 0, 1, '');
             $pdf->Cell(49, 5.5, $this->status2(), 1, 1, 'C');
             $pdf->Cell(49, 5.5, '', 0, 1, '');
             $pdf->Cell(49, 5.5, '5. Condition Of Economy', 0, 0, '');
@@ -78,7 +78,7 @@ class Pdf_usulan extends CI_Controller
             $pdf->Cell(0, 5.5, $data->tujuan_permohonan, 0, 1);
             $pdf->Cell(49, 5.5, 'Jangka Waktu', 0, 0, '');
             $pdf->Cell(5, 5.5, ':', 0, 0, '');
-            $pdf->Cell(0, 5.5, $data->jangka_waktu, 0, 1);
+            $pdf->Cell(0, 5.5, $data->jangka_waktu . ' Bulan', 0, 1);
             $pdf->Cell(49, 5.5, 'Bunga', 0, 0, '');
             $pdf->Cell(5, 5.5, ':', 0, 0, '');
             $pdf->Cell(0, 5.5, $data->suku_bunga, 0, 1);
@@ -143,11 +143,11 @@ class Pdf_usulan extends CI_Controller
 
     function status2()
     {
-            if ($this->persen2() <= 60) {
-                $status = 'Layak';
-            } else {
-                $status = 'Tidak Layak';
-            }
-            return $status;
+        if ($this->persen2() <= 60) {
+            $status = 'Layak';
+        } else {
+            $status = 'Tidak Layak';
+        }
+        return $status;
     }
 }

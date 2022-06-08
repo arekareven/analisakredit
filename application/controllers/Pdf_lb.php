@@ -76,7 +76,7 @@ class Pdf_lb extends CI_Controller
             $pdf->Cell(59, 5.5, $data->nama_debitur, 0, 0);
             $pdf->Cell(35, 5.5, 'Tanggungan', 0, 0, '');
             $pdf->Cell(5, 5.5, ':', 0, 0, '');
-            $pdf->Cell(0, 5.5, $data->tanggungan, 0, 1);
+            $pdf->Cell(0, 5.5, $data->tanggungan.' orang', 0, 1);
 
             $pdf->Cell(49, 5.5, 'Status Perkawinan', 0, 0, '');
             $pdf->Cell(5, 5.5, ':', 0, 0, '');
@@ -111,7 +111,7 @@ class Pdf_lb extends CI_Controller
             $pdf->Cell(59, 5.5, $data->status_tt, 0, 0);
             $pdf->Cell(35, 5.5, 'Lama Tinggal', 0, 0, '');
             $pdf->Cell(5, 5.5, ':', 0, 0, '');
-            $pdf->Cell(0, 5.5, $data->lama_tinggal, 0, 1);
+            $pdf->Cell(0, 5.5, $data->lama_tinggal.' tahun', 0, 1);
 
             $pdf->Cell(49, 5.5, 'Pekerjaan', 0, 0, '');
             $pdf->Cell(5, 5.5, ':', 0, 0, '');
@@ -119,10 +119,10 @@ class Pdf_lb extends CI_Controller
 
             $pdf->Cell(49, 5.5, 'Alamat Sesuai KTP', 0, 0, '');
             $pdf->Cell(5, 5.5, ':', 0, 0, '');
-            $pdf->Cell(0, 5.5, $data->alamat_ktp_nasabah, 0, 1);
+            $pdf->MultiCell(0, 5.5, $data->alamat_ktp_nasabah);
             $pdf->Cell(49, 5.5, 'Alamat Domisili', 0, 0, '');
             $pdf->Cell(5, 5.5, ':', 0, 0, '');
-            $pdf->Cell(0, 5.5, $data->domisili_nasabah, 0, 1);
+            $pdf->MultiCell(0, 5.5, $data->domisili_nasabah);
             $pdf->Cell(5, 5.5, '', 0, 1);
 
             $pdf->SetFont('Times', 'B', 12);
@@ -136,10 +136,10 @@ class Pdf_lb extends CI_Controller
             $pdf->Cell(0, 5.5, $data->ttl_pasangan, 0, 1);
             $pdf->Cell(49, 5.5, 'Alamat Sesuai KTP', 0, 0, '');
             $pdf->Cell(5, 5.5, ':', 0, 0, '');
-            $pdf->Cell(0, 5.5, $data->alamat_ktp_pasangan, 0, 1);
+            $pdf->MultiCell(0, 5.5, $data->alamat_ktp_pasangan);
             $pdf->Cell(49, 5.5, 'Alamat Domisili', 0, 0, '');
             $pdf->Cell(5, 5.5, ':', 0, 0, '');
-            $pdf->Cell(0, 5.5, $data->domisili_pasangan, 0, 1);
+            $pdf->MultiCell(0, 5.5, $data->domisili_pasangan);
             $pdf->Cell(49, 5.5, 'Profesi Istri/Suami', 0, 0, '');
             $pdf->Cell(5, 5.5, ':', 0, 0, '');
             $pdf->Cell(0, 5.5, $data->pekerjaan_pasangan, 0, 1);
@@ -159,7 +159,7 @@ class Pdf_lb extends CI_Controller
             $pdf->Cell(0, 5.5, $data->hubungan_keluarga, 0, 1);
             $pdf->Cell(49, 5.5, 'Alamat Rumah', 0, 0, '');
             $pdf->Cell(5, 5.5, ':', 0, 0, '');
-            $pdf->Cell(0, 5.5, $data->alamat_keluarga, 0, 1);
+            $pdf->MultiCell(0, 5.5, $data->alamat_keluarga);
             $pdf->Cell(49, 5.5, 'No. Telp/HP', 0, 0, '');
             $pdf->Cell(5, 5.5, ':', 0, 0, '');
             $pdf->Cell(0, 5.5, $data->hp_keluarga, 0, 1);
@@ -182,9 +182,9 @@ class Pdf_lb extends CI_Controller
             foreach ($rp as $data) {
                 $no++;
                 $pdf->Cell(10, 5.5, $no, 1, 0, 'C');
-                $pdf->Cell(37, 5.5, $data->plafond, 1, 0, 'C');
+                $pdf->Cell(37, 5.5,number_format($data->plafond), 1, 0, 'C');
                 $pdf->Cell(37, 5.5, $data->status, 1, 0, 'C');
-                $pdf->Cell(37, 5.5, $data->saldo, 1, 0, 'C');
+                $pdf->Cell(37, 5.5,number_format($data->saldo), 1, 0, 'C');
                 $pdf->Cell(37, 5.5, $data->sejarah, 1, 0, 'C');
                 $pdf->Cell(37, 5.5, $data->data, 1, 1, 'C');
             }

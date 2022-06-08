@@ -1120,7 +1120,7 @@
                     </div>
                     <div class="col-md-8 mb-4">
                         <label for="nopol" class="form-label">Untuk</label>
-                        <select class="form-control" aria-label="Default select example" id="kode_perkiraan2" name="kode_perkiraan2" onchange="return nama_p2();">
+                        <select class="form-control" aria-label="Default select example" id="kode_perkiraan" name="kode_perkiraan" onchange="return nama_p2();">
                             <option value=""></option>
                             <option value="1.1.1">Kas</option>
                             <option value="1.1.2">Tabungan</option>
@@ -1140,14 +1140,13 @@
                     <div class="col-md-12 mb-4">
                         <label for="keterangan" class="form-label">Keterangan</label>
                         <input type="text" class="form-control" id="keterangan" name="keterangan">
-                        <input type="text" class="form-control" id="id_lb" name="id_lb" value="<?php echo $id_lb; ?>">
+                        <input type="hidden" class="form-control" id="id_lb" name="id_lb" value="<?php echo $id_lb; ?>">
                         <input type="text" class="form-control" id="nama_perkiraan" name="nama_perkiraan">
-                        <input type="hidden" class="form-control" id="nama_perkiraan2" name="nama_perkiraan2">
                     </div>
                     <div class="col-md-8 mb-4">
                         <label for="nama_stnk" class="form-label">Sebesar</label>
-                        <input type="number" class="form-control" id="saldo" name="saldo">
-                        <input type="text" class="form-control" id="kode" name="kode">
+                        <input type="text" class="form-control" id="saldo" name="saldo">
+                        <input type="hidden" class="form-control" id="kode" name="kode">
                     </div>
                 </div>
                 <div class="modal-footer">

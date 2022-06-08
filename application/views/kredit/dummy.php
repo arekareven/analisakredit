@@ -1,7 +1,16 @@
 <!-- Test case 1-->
 <div class="container-fluid">
 
-    <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
+    <div class="row">
+        <div class="col-md-11 mb-2">
+            <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
+        </div>
+        <div class="col-md-1 mb-2">
+            <a href="test/edit?id_lb=<?php echo $id_lb; ?>" type="button" class="btn btn-warning" target="_blank">
+                Edit
+            </a>
+        </div>
+    </div>
 
     <!-- table pemasukan -->
     <div class="card shadow mb-4">
@@ -13,7 +22,7 @@
                         <a class="nav-link" id="v-pills-character-tab" data-toggle="pill" href="#v-pills-character" role="tab" aria-controls="v-pills-character" aria-selected="false">Character</a>
                         <a class="nav-link" id="v-pills-capacity-tab" data-toggle="pill" href="#v-pills-capacity" role="tab" aria-controls="v-pills-capacity" aria-selected="false">Capacity</a>
                         <a class="nav-link" id="v-pills-capital-tab" data-toggle="pill" href="#v-pills-capital" role="tab" aria-controls="v-pills-capital" aria-selected="false">Capital</a>
-                        <a class="nav-link" id="v-pills-cashflow-tab" data-toggle="pill" href="#v-pills-cashflow" role="tab" aria-controls="v-pills-cashflow" aria-selected="false">Cashflow Sesudah</a>
+                        <a class="nav-link" id="v-pills-cashflow-tab" data-toggle="pill" href="#v-pills-cashflow" role="tab" aria-controls="v-pills-cashflow" aria-selected="false">Cashflow Setelah</a>
                         <a class="nav-link" id="v-pills-condition-tab" data-toggle="pill" href="#v-pills-condition" role="tab" aria-controls="v-pills-condition" aria-selected="false">Condition</a>
                         <a class="nav-link" id="v-pills-collateralt-tab" data-toggle="pill" href="#v-pills-collateralt" role="tab" aria-controls="v-pills-collateralt" aria-selected="false">Collateral Tanah</a>
                         <a class="nav-link" id="v-pills-collateralk-tab" data-toggle="pill" href="#v-pills-collateralk" role="tab" aria-controls="v-pills-collateralk" aria-selected="false">Collateral Kendaraan</a>
@@ -66,6 +75,7 @@
                                     <button type="button" id="btn_rp" class="btn btn-primary">Save changes</button>
                                 </div>
                             </form>
+                            <p>* Jika tidak ada riwayat pinjaman, maka silahkan dikosongi dan lanjut ke character</p>
                         </div>
                         <div class="tab-pane fade" id="v-pills-character" role="tabpanel" aria-labelledby="v-pills-character-tab">
                             <form id="character">
@@ -133,6 +143,7 @@
                                     <button type="button" id="btn_character" class="btn btn-primary">Save changes</button>
                                 </div>
                             </form>
+                            <p>* Untuk informasi karakter jika hanya 1 atau 2 saja, kolom yang lain dikosongi saja</p>
                         </div>
                         <div class="tab-pane fade" id="v-pills-capacity" role="tabpanel" aria-labelledby="v-pills-capacity-tab">
                             <form id="capacity">
@@ -411,6 +422,7 @@
                                                 <button type="button" id="btn_capital" class="btn btn-primary">Save changes</button>
                                             </div>
                                         </form>
+                                        <p>* Tidak boleh kosong, isi dengan 0</p>
                                     </div>
                                     <div class="tab-pane fade show" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                                         <form id="cashflow">
@@ -753,29 +765,29 @@
                                     <div class="row">
                                         <div class="col-md-4 mb-4">
                                             <label for="luas_t" class="form-label">Luas Tanah (M2)</label>
-                                            <input type="text" class="form-control" id="luas_t" name="luas_t">
-                                        </div>
-                                        <div class="col-md-4 mb-4">
-                                            <label for="harga_t2" class="form-label">Harga Tanah Pasar (Rp.)</label>
-                                            <input type="text" class="form-control" id="harga_t2" name="harga_t2">
+                                            <input type="text" class="form-control" id="luas_t" name="luas_t" required>
                                         </div>
                                         <div class="col-md-4 mb-4">
                                             <label for="luas_b" class="form-label">Luas Bangunan (M2)</label>
-                                            <input type="text" class="form-control" id="luas_b" name="luas_b">
+                                            <input type="text" class="form-control" id="luas_b" name="luas_b" required>
+                                        </div>
+                                        <div class="col-md-4 mb-4">
+                                            <label for="harga_t2" class="form-label">Harga Tanah Pasar (Rp.)</label>
+                                            <input type="text" class="form-control" id="harga_t2" name="harga_t2" required>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-4 mb-4">
+                                            <label for="harga_b2" class="form-label">Harga Bangunan Pasar (Rp.)</label>
+                                            <input type="text" class="form-control" id="harga_b2" name="harga_b2" required>
+                                        </div>
+                                        <div class="col-md-4 mb-4">
                                             <label for="harga_t" class="form-label">Harga Tanah SPPT (Rp.)</label>
-                                            <input type="text" class="form-control" id="harga_t" name="harga_t">
+                                            <input type="text" class="form-control" id="harga_t" name="harga_t" required>
                                         </div>
                                         <div class="col-md-4 mb-4">
                                             <label for="harga_b" class="form-label">Harga Bangunan SPPT (Rp.)</label>
-                                            <input type="text" class="form-control" id="harga_b" name="harga_b">
-                                        </div>
-                                        <div class="col-md-4 mb-4">
-                                            <label for="harga_b2" class="form-label">Harga Bangunan Pasar (Rp.)</label>
-                                            <input type="text" class="form-control" id="harga_b2" name="harga_b2">
+                                            <input type="text" class="form-control" id="harga_b" name="harga_b" required>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -795,11 +807,11 @@
                                     <div class="row">
                                         <div class="col-md-4 mb-4">
                                             <label for="ht" class="form-label">Nilai HT (Rp.)</label>
-                                            <input type="number" class="form-control" id="ht" name="ht">
+                                            <input type="number" class="form-control" id="ht" name="ht" required>
                                         </div>
                                         <div class="col-md-4 mb-4">
                                             <label for="taksasi" class="form-label">Taksasi (%)</label>
-                                            <input type="number" class="form-control" id="taksasi" name="taksasi">
+                                            <input type="number" class="form-control" id="taksasi" name="taksasi" required>
                                         </div>
                                     </div>
                                     <div class="col-md-12 mb-4">
@@ -823,6 +835,7 @@
                                     <button type="button" id="btn_collateralt" class="btn btn-primary">Save changes</button>
                                 </div>
                             </form>
+                            <p>* Jika harga atau luas tidak ada, harap isi dengan 0</p>
                         </div>
                         <div class="tab-pane fade" id="v-pills-collateralk" role="tabpanel" aria-labelledby="v-pills-collateralk-tab">
                             <form id="collateralk">
@@ -887,7 +900,7 @@
                                     <div class="row">
                                         <div class="col-md-4 mb-4">
                                             <label for="taksiran" class="form-label">Harga Pasaran</label>
-                                            <input type="number" class="form-control" id="taksiran" name="taksiran">
+                                            <input type="number" class="form-control" id="taksiran" name="taksiran" required>
                                         </div>
                                         <div class="col-md-4 mb-4">
                                             <label for="nl" class="form-label">NL</label>
@@ -1065,43 +1078,31 @@
                         <div class="tab-pane fade" id="v-pills-print" role="tabpanel" aria-labelledby="v-pills-print-tab">
                             <div class="modal-body">
                                 <div class="row">
-                                    <a href="pdf_lb?id_lb=<?php echo $id_lb; ?>" class="btn btn-primary" target="_blank">LB</i></a>
+                                    <div class="col-md-3 mb-3">
+                                        <a href="pdf_lb?id_lb=<?php echo $id_lb; ?>" class="btn btn-primary" target="_blank">Latar Belakang</i></a>
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <a href="pdf_char?id_lb=<?php echo $id_lb; ?>" class="btn btn-primary" target="_blank">Character</i></a>
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <a href="capacity/templateword?id_lb=<?php echo $id_lb; ?>" class="btn btn-primary">Capacity</i></a>
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <a href="pdf_capiseb?id_lb=<?php echo $id_lb; ?>" class="btn btn-primary" target="_blank">Capital</i></a>
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <a href="pdf_capiset?id_lb=<?php echo $id_lb; ?>" class="btn btn-primary" target="_blank">Capital Setelah</i></a>
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <a href="pdf_coe?id_lb=<?php echo $id_lb; ?>" class="btn btn-primary" target="_blank">Condition</i></a>
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <a href="pdf_collateral?id_lb=<?php echo $id_lb; ?>" class="btn btn-primary" target="_blank">Collateral</i></a>
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <a href="pdf_usulan?id_lb=<?php echo $id_lb; ?>" class="btn btn-primary" target="_blank">Usulan</i></a>
+                                    </div>
                                 </div>
-                                <hr>
-                                <div class="row">
-                                    <a href="pdf_char?id_lb=<?php echo $id_lb; ?>" class="btn btn-primary" target="_blank">Character</i></a>
-                                </div>
-                                <hr>
-                                <div class="row">
-                                    <a href="capacity/templateword?id_lb=<?php echo $id_lb; ?>" class="btn btn-primary">Capacity</i></a>
-                                </div>
-                                <hr>
-                                <!--
-                                <div class="row">
-                                    <a href="pdf_capi2?id_lb=<?php echo $id_lb; ?>" class="btn btn-primary" target="_blank">Capital</i></a>
-                                </div>
-                                <hr>
-                                -->
-                                <div class="row">
-                                    <a href="pdf_capiseb?id_lb=<?php echo $id_lb; ?>" class="btn btn-primary" target="_blank">Capital</i></a>
-                                </div>
-                                <hr>
-                                <div class="row">
-                                    <a href="pdf_capiset?id_lb=<?php echo $id_lb; ?>" class="btn btn-primary" target="_blank">Capital Sesudah</i></a>
-                                </div>
-                                <hr>
-                                <div class="row">
-                                    <a href="pdf_coe?id_lb=<?php echo $id_lb; ?>" class="btn btn-primary" target="_blank">Condition</i></a>
-                                </div>
-                                <hr>
-                                <div class="row">
-                                    <a href="pdf_collateral?id_lb=<?php echo $id_lb; ?>" class="btn btn-primary" target="_blank">Collateral</i></a>
-                                </div>
-                                <hr>
-                                <div class="row">
-                                    <a href="pdf_usulan?id_lb=<?php echo $id_lb; ?>" class="btn btn-primary" target="_blank">Usulan</i></a>
-                                </div>
-                                <hr>
                             </div>
                         </div>
                     </div>
@@ -1110,8 +1111,57 @@
         </div>
     </div>
 
+    <!--
+    <script>
+        console.clear();
+        const currency = [2000, 1000, 500, 200, 100, 50, 20, 10, 5, 2, 1];
 
+        const valueRef = document.querySelector("#plafond");
 
+        function getCurrency(value) {
+            console.clear();
+            var map = new Map();
+            let i = 0;
+            //loop unitll value 0
+            while (value) {
+                //if divide in non-zero add in map
+                if (Math.floor(value / currency[i]) != 0) {
+                    map.set(currency[i], Math.floor(value / currency[i]));
+                    //update value using mod
+                    value = value % currency[i];
+                }
+                i++;
+            }
+
+            debugger;
+            for (var [key, value] of map) {
+                console.log(key + ' = ' + value);
+            }
+        }
+
+        function getChange() {
+            // 48 - 57 (0-9)
+            var str1 = valueRef.value;
+            if (
+                str1[str1.length - 1].charCodeAt() < 48 ||
+                str1[str1.length - 1].charCodeAt() > 57
+            ) {
+                valueRef.value = str1.substring(0, str1.length - 1);
+                return;
+            }
+
+            // t.replace(/,/g,'')
+            let str = valueRef.value.replace(/,/g, "");
+
+            let value = +str;
+            getCurrency(value)
+            valueRef.value = value.toLocaleString();
+        }
+
+        valueRef.addEventListener("keyup", getChange);
+        console.log(valueRef);
+    </script>
+-->
 
     <script src="<?php echo base_url(); ?>assets/ajax.js"></script>
     <script src="<?php echo base_url(); ?>assets/bootstrap.js"></script>
@@ -1130,7 +1180,6 @@
             });
         });
     </script>
-
 
     <script>
         //JS untuk mengambil data perkiraan

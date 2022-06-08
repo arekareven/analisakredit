@@ -12,7 +12,6 @@ class Pdf_collateral extends CI_Controller
     function index()
     {
         $pdf = new FPDF('P', 'mm', 'A4');
-        $pdf->SetAutoPageBreak(true);
         // membuat halaman baru
         $pdf->AddPage();
         // margin
@@ -66,30 +65,30 @@ class Pdf_collateral extends CI_Controller
             $pdf->Cell(49, 5.5, 'Taksiran harga didasarkan SPPT :', 0, 1, '');
             $pdf->Cell(89, 5.5, 'Luas Tanah ' . $data->luas_t . ' M2 x Rp. ' . number_format($data->harga_t) . ',-', 0, 0, '');
             $pdf->Cell(25, 5.5, '= Rp.', 0, 0, '');
-            $pdf->Cell(13, 5.5, number_format($this->taksiran_sppt_tanah()) . ',-', 0, 1, 'R');
+            $pdf->Cell(20, 5.5, number_format($this->taksiran_sppt_tanah()) . ',-', 0, 1, 'R');
             $pdf->Cell(89, 5.5, 'Luas Bangunan ' . $data->luas_b . ' M2 x Rp. ' . number_format($data->harga_b) . ',-', 0, 0, '');
             $pdf->Cell(25, 5.5, '= Rp.', 0, 0, '');
-            $pdf->Cell(13, 5.5, number_format($this->taksiran_sppt_bangunan()) . ',-', 0, 1, 'R');
+            $pdf->Cell(20, 5.5, number_format($this->taksiran_sppt_bangunan()) . ',-', 0, 1, 'R');
             $pdf->Cell(25, 5.5, '', 0, 1, '');
 
             $pdf->Cell(49, 5.5, 'Taksiran harga didasarkan Harga Pasar :', 0, 1, '');
             $pdf->Cell(89, 5.5, 'Luas Tanah ' . $data->luas_t . ' M2 x Rp. ' . number_format($data->harga_t2) . ',-', 0, 0, '');
             $pdf->Cell(25, 5.5, '= Rp.', 0, 0, '');
-            $pdf->Cell(13, 5.5, number_format($this->taksiran_pasar_tanah()) . ',-', 0, 1, 'R');
+            $pdf->Cell(20, 5.5, number_format($this->taksiran_pasar_tanah()) . ',-', 0, 1, 'R');
             $pdf->Cell(89, 5.5, 'Luas Bangunan ' . $data->luas_b . ' M2 x Rp. ' . number_format($data->harga_b2) . ',-', 0, 0, '');
             $pdf->Cell(25, 5.5, '= Rp.', 0, 0, '');
-            $pdf->Cell(13, 5.5, number_format($this->taksiran_pasar_bangunan()) . ',-', 0, 1, 'R');
+            $pdf->Cell(20, 5.5, number_format($this->taksiran_pasar_bangunan()) . ',-', 0, 1, 'R');
             $pdf->Cell(25, 5.5, '', 0, 1, '');
 
             $pdf->Cell(49, 5.5, 'Taksiran Harga Bank adalah', 0, 1, '');
             $pdf->Cell(89, 5.5, 'Rp. ' . number_format($this->taksiran_pasar_tanah()) . ',- x 60%', 0, 0, '');
             $pdf->Cell(25, 5.5, '= Rp.', 0, 0, '');
-            $pdf->Cell(13, 5.5, number_format($this->taksasi()) . ',-', 0, 1, 'R');
+            $pdf->Cell(20, 5.5, number_format($this->taksasi()) . ',-', 0, 1, 'R');
             $pdf->Cell(25, 5.5, '', 0, 1, '');
 
             $pdf->Cell(89, 5.5, 'HT Rp. ' . number_format($this->plafond()) . ',- x 125%', 0, 0, '');
             $pdf->Cell(25, 5.5, '= Rp.', 0, 0, '');
-            $pdf->Cell(13, 5.5, number_format($this->ht()) . ',-', 0, 1, 'R');
+            $pdf->Cell(20, 5.5, number_format($this->ht()) . ',-', 0, 1, 'R');
             $pdf->Cell(25, 5.5, '', 0, 1, '');
 
             $pdf->SetFont('Times', 'B', 12);
@@ -220,8 +219,8 @@ class Pdf_collateral extends CI_Controller
         $lb = $this->db->get('collateral_tanah', array('id_lb' => $id_lb))->result();
         foreach ($lb as $data) {
             $taksasi_tanah = (($data->harga_t + $data->harga_t2) / 2) * (60 / 100);
-            return $taksasi_tanah;
         }
+        return $taksasi_tanah;
     }
 
     function taksasi_kendaraan()
@@ -230,8 +229,8 @@ class Pdf_collateral extends CI_Controller
         $lb = $this->db->get('collateral', array('id_lb' => $id_lb))->result();
         foreach ($lb as $data) {
             $taksasi_kendaraan = $data->taksiran  * (70 / 100);
-            return $taksasi_kendaraan;
         }
+        return $taksasi_kendaraan;
     }
 
     function taksiran_sppt_tanah()
@@ -240,8 +239,8 @@ class Pdf_collateral extends CI_Controller
         $lb = $this->db->get('collateral_tanah', array('id_lb' => $id_lb))->result();
         foreach ($lb as $data) {
             $taksiran_sppt_tanah = $data->luas_t  * $data->harga_t;
-            return $taksiran_sppt_tanah;
         }
+        return $taksiran_sppt_tanah;
     }
 
     function taksiran_sppt_bangunan()
@@ -250,8 +249,8 @@ class Pdf_collateral extends CI_Controller
         $lb = $this->db->get('collateral_tanah', array('id_lb' => $id_lb))->result();
         foreach ($lb as $data) {
             $taksiran_sppt_bangunan = $data->luas_b  * $data->harga_b;
-            return $taksiran_sppt_bangunan;
         }
+        return $taksiran_sppt_bangunan;
     }
 
     function taksiran_pasar_tanah()
@@ -260,8 +259,8 @@ class Pdf_collateral extends CI_Controller
         $lb = $this->db->get('collateral_tanah', array('id_lb' => $id_lb))->result();
         foreach ($lb as $data) {
             $taksiran_pasar_tanah = $data->luas_t  * $data->harga_t2;
-            return $taksiran_pasar_tanah;
         }
+        return $taksiran_pasar_tanah;
     }
 
     function taksiran_pasar_bangunan()
@@ -270,8 +269,8 @@ class Pdf_collateral extends CI_Controller
         $lb = $this->db->get('collateral_tanah', array('id_lb' => $id_lb))->result();
         foreach ($lb as $data) {
             $taksiran_pasar_bangunan = $data->luas_b  * $data->harga_b2;
-            return $taksiran_pasar_bangunan;
         }
+        return $taksiran_pasar_bangunan;
     }
 
     function taksasi()
@@ -282,8 +281,8 @@ class Pdf_collateral extends CI_Controller
 
     function ht()
     {
-            $ht = $this->plafond()  * (125 / 100);
-            return $ht;
+        $ht = $this->plafond()  * (125 / 100);
+        return $ht;
     }
 
     function plafond()
@@ -291,8 +290,8 @@ class Pdf_collateral extends CI_Controller
         $id_lb = $_GET['id_lb'];
         $next = $this->db->query("SELECT * FROM latar_belakang WHERE id_lb='$id_lb'");
         foreach ($next->result() as $row) {
-            $ht = $row->plafon ;
-            return $ht;
+            $ht = $row->plafon;
         }
+        return $ht;
     }
 }
