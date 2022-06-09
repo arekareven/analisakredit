@@ -59,6 +59,7 @@ class M_cashflow extends CI_Model
             'jenis'        => $jenis,
         );
 
+
         $this->db->insert('cashflow_a', $data);
         $this->db->insert('cashflow_a', $data2);
     }

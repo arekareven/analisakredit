@@ -1157,6 +1157,30 @@
     </div>
 </div>
 
+<!-- /.modal hapus riwayat pinjaman -->
+<div id="HapusDataCashflow" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="custom-width-modalLabel">Konfirmasi Hapus</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <form action="<?php echo base_url() . 'kredit/hapus2'; ?>" method="post" class="form-horizontal" role="form">
+                <div class="modal-body">
+                    <p>Apakah anda yakin ingin menghapus?</p>
+                    <div>
+                        <input type="hidden" id="idt2" name="idt2">
+                        <input type="hidden" id="id_lb" name="id_lb" value="<?php echo $id_lb; ?>">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">Tidak</button>
+                    <button type="submit" class="btn btn-success waves-effect waves-light">Ya</button>
+                </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
 
 <!-- data untuk riwayat pinjaman -->
 <script type="text/javascript">

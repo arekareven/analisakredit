@@ -1170,8 +1170,8 @@ class Pdf_capiset extends CI_Controller
         $modal = $this->aset() - ($this->rugiLaba() + $this->aktivaTetap() + $this->totalHutang());
         if ($modal < 0) {
             $modal = $modal * -1;
-            $test = '(' .number_format($modal) . ')';
+            $modal = '(' . number_format($modal) . ')';
         }
-        return $test;
+        return $modal;
     }
 }

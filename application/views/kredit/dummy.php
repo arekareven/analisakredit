@@ -583,7 +583,7 @@
                                                     <input type="hidden" class="form-control" id="jenis" name="jenis" value="pendapatan">
                                                 </div>
                                                 <div class="col-md-8 mb-4">
-                                                    <label for="nama_stnk" class="form-label">Sebesar</label>
+                                                    <label for="saldo" class="form-label">Sebesar</label>
                                                     <input type="number" class="form-control" id="saldo" name="saldo">
                                                 </div>
                                             </div>

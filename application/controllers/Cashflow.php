@@ -30,18 +30,6 @@ class Cashflow extends CI_Controller
 
     public function add()
     {
-
-        $kode = $this->input->post('kode');
-        $kode_perkiraan = $this->input->post('kode_perkiraan');
-        $kode_perkiraan2 = $this->input->post('kode_perkiraan2');
-        $nama_perkiraan = $this->input->post('nama_perkiraan');
-        $nama_perkiraan2 = $this->input->post('nama_perkiraan2');
-        $keterangan = $this->input->post('keterangan');
-        $saldo = $this->input->post('saldo');
-
-        var_dump($kode,$kode_perkiraan,$kode_perkiraan2,$nama_perkiraan,$nama_perkiraan2,$keterangan,$saldo);
-        die;
-
         $id_cf = $this->input->post('id_cf');
         $this->m_cashflow->add_data($id_cf);
     }

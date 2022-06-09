@@ -59,8 +59,6 @@ class Dummy extends CI_Controller
             $total[] = $row->pemasukan;
         }
         $sum = array_sum($total);
-        var_dump($sum);
-        die;
     }
 
 

@@ -2,7 +2,7 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800"><?= $title;?></h1>
+    <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
 
     <!-- Button modal Latar Belakang -->
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#lb">
@@ -40,14 +40,14 @@
                         <a href='to_rp?id_lb=" . $row->id_lb . "' class ='btn btn-success btn-circle' title='Next'><i class='fas fa-arrow-right'></i></a>
                         </td>							
                         </tr>";
-                    }
-                    ?>
+                        }
+                        ?>
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
-    
+
     <!--
         <a href='cetak?id_lb=" . $row->id_lb . "' class ='btn btn-warning btn-circle' title='Next' target='_blank'>Cetak</i></a>                               
     <table class="table">
@@ -103,8 +103,8 @@
                         <div class="col-md-8 mb-3">
                             <label for="cif_bank" class="form-label">CIF Bank</label>
                             <input type="hidden" id="id_lb" name="id_lb">
-                            <input type="hidden" id="user" name="user" value="<?php $user['email']; ?>">
-                            <input type="number" class="form-control" id="cif_bank" name="cif_bank" value="<?php echo $cif; ?>" disabled>
+                            <input type="hidden" id="user" name="user" value="<?= $user['email']; ?>">
+                            <input type="number" class="form-control" id="cif_bank" name="cif_bank" value="<?php echo $cif; ?>" readonly>
                         </div>
                         <div class="col-md-8 mb-3">
                             <label for="tgl_permohonan" class="form-label">Tgl Permohonan</label>
