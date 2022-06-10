@@ -34,6 +34,11 @@ class M_kredit extends CI_Model
 		return $kodetampil;
 	}
 
+	public function edit_cash($id_lb)
+	{
+		return $this->db->query("SELECT * FROM cashflow_b WHERE id_lb=$id_lb AND jenis='pendapatan' AND kode_jenis='K'");
+	}
+
 	function cek_id($id_lb)
 	{
 		$query = array('id_lb' => $id_lb);
@@ -102,7 +107,7 @@ class M_kredit extends CI_Model
 			'jenis_permohonan'	=> $jenis_permohonan,
 			'tujuan_permohonan'	=> $tujuan_permohonan,
 			'ket_penggunaan'	=> $ket_penggunaan,
-			'nama_debitur'	    => $nama_debitur,
+			'nama_debitur'	    => ucwords($nama_debitur),
 			'status_kawin'	    => $status_kawin,
 			'ttl_nasabah'	    => $ttl_nasabah,
 			'ktp'	    		=> $ktp,
@@ -117,13 +122,13 @@ class M_kredit extends CI_Model
 			'masa_laku'	    	=> $masa_laku,
 			'telp_kantor'	    => $telp_kantor,
 			'lama_tinggal'	    => $lama_tinggal,
-			'nama_pasangan'	    => $nama_pasangan,
+			'nama_pasangan'	    => ucwords($nama_pasangan),
 			'ttl_pasangan'	    => $ttl_pasangan,
 			'alamat_ktp_pasangan' => $alamat_ktp_pasangan,
 			'domisili_pasangan'	=> $domisili_pasangan,
 			'pekerjaan_pasangan' => $pekerjaan_pasangan,
 			'hp_pasangan'	    => $hp_pasangan,
-			'nama_keluarga'	    => $nama_keluarga,
+			'nama_keluarga'	    => ucwords($nama_keluarga),
 			'hubungan_keluarga'	=> $hubungan_keluarga,
 			'alamat_keluarga'	=> $alamat_keluarga,
 			'hp_keluarga'		=> $hp_keluarga,
@@ -170,8 +175,8 @@ class M_kredit extends CI_Model
 		$hubungan_keluarga	= $this->input->post('hubungan_keluarga');
 		$alamat_keluarga	= $this->input->post('alamat_keluarga');
 		$hp_keluarga		= $this->input->post('hp_keluarga');
-		
-		$kondisi = array('id_lb' => $id_lb );
+
+		$kondisi = array('id_lb' => $id_lb);
 
 		$data = array(
 
@@ -210,7 +215,7 @@ class M_kredit extends CI_Model
 			'alamat_keluarga'	=> $alamat_keluarga,
 			'hp_keluarga'		=> $hp_keluarga
 		);
-		$this->db->update('latar_belakang', $data,$kondisi);
+		$this->db->update('latar_belakang', $data, $kondisi);
 		redirect('test/edit?id_lb=' . $id_lb);
 	}
 
@@ -246,7 +251,7 @@ class M_kredit extends CI_Model
 		$sejarah      		= $this->input->post('sejarah');
 		$data      	= $this->input->post('data');
 
-		$kondisi = array('id_rp' => $id_rp );
+		$kondisi = array('id_rp' => $id_rp);
 
 		$data = array(
 
@@ -256,7 +261,7 @@ class M_kredit extends CI_Model
 			'sejarah'	    	=> $sejarah,
 			'data'	    => $data
 		);
-		$this->db->update('riwayat_pinjaman', $data,$kondisi);
+		$this->db->update('riwayat_pinjaman', $data, $kondisi);
 		redirect('test/edit?id_lb=' . $id_lb);
 	}
 
@@ -292,7 +297,7 @@ class M_kredit extends CI_Model
 	{
 		$this->db->where(array('id_lb' => $id_lb));
 		$this->db->delete('latar_belakang');
-		redirect('kredit/lb?=id' . $id_lb);
+		redirect('kredit/id_lb?=' . $id_lb);
 	}
 
 	function hapus_data2($id_rp, $id_lb)

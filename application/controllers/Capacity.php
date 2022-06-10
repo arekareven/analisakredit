@@ -79,6 +79,7 @@ class Capacity extends CI_Controller
                 $pathToSave = "C:/xampp/htdocs/analisakredit/cache/" . $row->nama_debitur . date('d-m-y') . ".docx";
                 $templateProcessor->saveAs($pathToSave);
                 force_download('C:/xampp/htdocs/analisakredit/cache/' . $row->nama_debitur . date('d-m-y') . '.docx', NULL);
+                @unlink('C:/xampp/htdocs/analisakredit/cache/' . $row->nama_debitur . date('d-m-y') . '.docx');
             }
             /*redirect('capacity/next?id_lb=' . $row->id_lb);*/
         }

@@ -22,6 +22,7 @@
                         <a class="nav-link" id="v-pills-character-tab" data-toggle="pill" href="#v-pills-character" role="tab" aria-controls="v-pills-character" aria-selected="false">Character</a>
                         <a class="nav-link" id="v-pills-capacity-tab" data-toggle="pill" href="#v-pills-capacity" role="tab" aria-controls="v-pills-capacity" aria-selected="false">Capacity</a>
                         <a class="nav-link" id="v-pills-capital-tab" data-toggle="pill" href="#v-pills-capital" role="tab" aria-controls="v-pills-capital" aria-selected="false">Capital</a>
+                        <a class="nav-link" id="v-pills-cashflowa-tab" data-toggle="pill" href="#v-pills-cashflowa" role="tab" aria-controls="v-pills-cashflowa" aria-selected="false">Cashflow Awal</a>
                         <a class="nav-link" id="v-pills-cashflow-tab" data-toggle="pill" href="#v-pills-cashflow" role="tab" aria-controls="v-pills-cashflow" aria-selected="false">Cashflow Setelah</a>
                         <a class="nav-link" id="v-pills-condition-tab" data-toggle="pill" href="#v-pills-condition" role="tab" aria-controls="v-pills-condition" aria-selected="false">Condition</a>
                         <a class="nav-link" id="v-pills-collateralt-tab" data-toggle="pill" href="#v-pills-collateralt" role="tab" aria-controls="v-pills-collateralt" aria-selected="false">Collateral Tanah</a>
@@ -162,6 +163,7 @@
                                             <option value="Pegawai">Pegawai</option>
                                             <option value="Perdagangan">Perdagangan</option>
                                             <option value="Pertanian">Pertanian</option>
+                                            <option value="Konsumtif">Konsumtif</option>
                                         </select>
                                     </div>
                                     <div class="col-md-4 mb-3">
@@ -169,11 +171,11 @@
                                         <input type="text" class="form-control" id="bidang" name="bidang">
                                     </div>
                                     <div class="col-md-12 mb-3">
-                                        <label for="alamat_usaha" class="form-label">Alamat Usaha</label>
+                                        <label for="alamat_usaha" class="form-label">Alamat Usaha / Kantor</label>
                                         <textarea class="form-control" id="alamat_usaha" name="alamat_usaha"></textarea>
                                     </div>
                                     <div class="col-md-4 mb-3">
-                                        <label for="status_usaha" class="form-label">Status Tempat Usaha</label>
+                                        <label for="status_usaha" class="form-label">Status Tempat Usaha / Kantor</label>
                                         <select class="form-control" aria-label="Default select example" id="status_usaha" name="status_usaha">
                                             <option value="Milik Sendiri">Milik Sendiri</option>
                                             <option value="Milik Keluarga/Ortu">Milik Keluarga/Ortu</option>
@@ -183,7 +185,7 @@
                                         </select>
                                     </div>
                                     <div class="col-md-4 mb-3">
-                                        <label for="tlp_usaha" class="form-label">No. Tlp Usaha</label>
+                                        <label for="tlp_usaha" class="form-label">No. Tlp Usaha / Kantor</label>
                                         <input type="text" class="form-control" id="tlp_usaha" name="tlp_usaha">
                                     </div>
                                     <div class="col-md-4 mb-3">
@@ -262,12 +264,6 @@
                                 <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                                     <li class="nav-item" role="presentation">
                                         <a class="nav-link active" id="pills-capitall-tab" data-toggle="pill" href="#pills-capitall" role="tab" aria-controls="pills-capitall" aria-selected="true">Capital</a>
-                                    </li>
-                                    <li class="nav-item" role="presentation">
-                                        <a class="nav-link" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Pendapatan</a>
-                                    </li>
-                                    <li class="nav-item" role="presentation">
-                                        <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Pengeluaran</a>
                                     </li>
                                 </ul>
                                 <div class="tab-content" id="pills-tabContent">
@@ -424,7 +420,21 @@
                                         </form>
                                         <p>* Tidak boleh kosong, isi dengan 0</p>
                                     </div>
-                                    <div class="tab-pane fade show" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="v-pills-cashflowa" role="tabpanel" aria-labelledby="v-pills-cashflowa-tab">
+                            <div class="modal-body">
+                                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Pendapatan</a>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Pengeluaran</a>
+                                    </li>
+                                </ul>
+                                <div class="tab-content" id="pills-tabContent">
+                                    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                                         <form id="cashflow">
                                             <div class="modal-body">
                                                 <div class="col-md-8 mb-4">
@@ -473,6 +483,28 @@
                                                 <button type="button" id="simpan" class="btn btn-primary">Save changes</button>
                                             </div>
                                         </form>
+                                        <table class="table table-hover" width="100%" cellspacing="0">
+                                            <thead class="thead">
+                                                <tr>
+                                                    <th scope="col">No</th>
+                                                    <th scope="col">Keterangan</th>
+                                                    <th scope="col">Saldo</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php
+                                                $no = 1;
+                                                foreach ($cashflow->result() as $row) {
+                                                    echo "<tr>
+                                                                <td>" . $no . "</td>
+                                                                <td>" . $row->keterangan . "</td>
+                                                                <td>" . number_format($row->saldo) . "</td>							    
+                                                                </tr>";
+                                                    $no++;
+                                                }
+                                                ?>
+                                            </tbody>
+                                        </table>
                                     </div>
                                     <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
                                         <form id="cashflowp">
@@ -524,6 +556,29 @@
                                                 <button type="button" id="simpanp" class="btn btn-primary">Save changes</button>
                                             </div>
                                         </form>
+                                        
+                                        <table class="table table-hover" width="100%" cellspacing="0">
+                                            <thead class="thead">
+                                                <tr>
+                                                    <th scope="col">No</th>
+                                                    <th scope="col">Keterangan</th>
+                                                    <th scope="col">Saldo</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php
+                                                $no = 1;
+                                                foreach ($cashflowp->result() as $row) {
+                                                    echo "<tr>
+                                                                <td>" . $no . "</td>
+                                                                <td>" . $row->keterangan . "</td>
+                                                                <td>" . number_format($row->saldo) . "</td>							    
+                                                                </tr>";
+                                                    $no++;
+                                                }
+                                                ?>
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
                             </div>

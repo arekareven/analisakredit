@@ -12,12 +12,15 @@ class Test extends CI_Controller
 
     public function index()
     {
+        $id_lb = $_GET['id_lb'];
         $data['id_lb'] = $_GET['id_lb'];
         $data['title'] = 'Dashboard';
         $data['user'] = $this->db->get_where('user', ['email' =>
         $this->session->userdata('email')])->row_array();
         $data['select'] = $this->m_test->data_select();
-        $data['perkiraan'] = $this->m_test->data_perkiraan();
+        $data['perkiraan'] = $this->m_test->data_perkiraan();	
+        $data['cashflow'] = $this->m_test->edit_cash($id_lb);
+        $data['cashflowp'] = $this->m_test->edit_cashp($id_lb);
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);

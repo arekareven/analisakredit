@@ -13,7 +13,6 @@ class Pdf_capiset extends CI_Controller
     {
         //PDF CAPITAL
         $pdf = new FPDF('P', 'mm', 'Letter');
-        $pdf->SetAutoPageBreak(true);
         // membuat halaman baru
         $pdf->AddPage();
         // margin

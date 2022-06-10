@@ -13,7 +13,6 @@ class Pdf_capiseb extends CI_Controller
     {
         //PDF CAPITAL
         $pdf = new FPDF('P', 'mm', 'Letter');
-        $pdf->SetAutoPageBreak(true);
         // membuat halaman baru
         $pdf->AddPage();
         // margin
@@ -119,7 +118,7 @@ class Pdf_capiseb extends CI_Controller
             $pdf->Cell(46, 5.5, number_format($data->peralatan + $this->peralatan()), 0, 0);
             $pdf->Cell(44, 5.5, 'Hutang Lain', 0, 0, '');
             $pdf->Cell(10, 5.5, 'Rp.', 0, 0, '');
-            $pdf->Cell(46, 5.5, number_format($data->hutang_lain), 0, 1);
+            $pdf->Cell(46, 5.5, number_format($this->totalHutangLain()), 0, 1);
             $pdf->Cell(44, 5.5, 'Persediaan Brg Usaha 1', 0, 0, '');
             $pdf->Cell(10, 5.5, 'Rp.', 0, 0, '');
             $pdf->Cell(46, 5.5, number_format($data->barang + $this->barang1()), 0, 0);
@@ -288,6 +287,7 @@ class Pdf_capiseb extends CI_Controller
             //Cashflow usaha 3
             $rp3 = $this->db->query("SELECT * FROM cashflow_b WHERE kode_perkiraan = '4.1.3' && id_lb='$id_lb'");
             if (!empty($rp3->result())) {
+                $pdf->SetFont('Times', '', 12);
                 $pdf->Cell(7, 5.5, '', 1, 0, 'C');
                 $pdf->Cell(106, 5.5, 'USAHA 3', 1, 0, '');
                 $pdf->Cell(30, 5.5, '', 1, 0, 'C');
@@ -316,6 +316,36 @@ class Pdf_capiseb extends CI_Controller
                 $pdf->Cell(30, 5.5, '', 1, 0, 'C');
                 $pdf->Cell(30, 5.5, '', 1, 0, 'C');
                 $pdf->Cell(30, 5.5, '', 1, 1, 'C');
+            } else {
+            }
+
+            //Cashflow gaji 
+            $gaji = $this->db->query("SELECT * FROM cashflow_b WHERE kode_perkiraan = '4.1.4' && id_lb='$id_lb'");
+            if (!empty($gaji->result())) {
+                $pdf->SetFont('Times', '', 12);
+                $pdf->Cell(7, 5.5, '', 1, 0, 'C');
+                $pdf->Cell(106, 5.5, 'PENDAPATAN LAIN / GAJI', 1, 0, '');
+                $pdf->Cell(30, 5.5, '', 1, 0, 'C');
+                $pdf->Cell(30, 5.5, '', 1, 0, 'C');
+                $pdf->Cell(30, 5.5, '', 1, 1, 'C');
+
+                foreach ($gaji->result() as $data) {
+                    $pdf->Cell(7, 5.5, '', 1, 0, 'C');
+                    $pdf->Cell(106, 5.5, $data->keterangan, 1, 0, '');
+                    $pdf->Cell(30, 5.5, number_format($data->saldo), 1, 0, 'R');
+                    $pdf->Cell(30, 5.5, '', 1, 0, 'R');
+                    $pdf->Cell(30, 5.5, '', 1, 1, 'R');
+                }
+                $no = 0;
+                $gaji = $this->db->query("SELECT * FROM cashflow_b WHERE MID(kode_perkiraan,1,3) = '5.3' && id_lb='$id_lb'");
+                foreach ($gaji->result() as $data) {
+                    $no++;
+                    $pdf->Cell(7, 5.5, $no, 1, 0, 'C');
+                    $pdf->Cell(106, 5.5, $data->keterangan, 1, 0, '');
+                    $pdf->Cell(30, 5.5, '', 1, 0, 'R');
+                    $pdf->Cell(30, 5.5, number_format($data->saldo), 1, 0, 'R');
+                    $pdf->Cell(30, 5.5, '', 1, 1, 'R');
+                }
             } else {
             }
 
@@ -457,9 +487,10 @@ class Pdf_capiseb extends CI_Controller
         return $sum_kredit;
     }
 
-    function tot_kredit(){
-       $sum_kredit = $this->kredit() + $this->kredit2() + $this->kredit3();
-       return $sum_kredit;
+    function tot_kredit()
+    {
+        $sum_kredit = $this->kredit() + $this->kredit2() + $this->kredit3();
+        return $sum_kredit;
     }
 
     function surplus()
@@ -1002,13 +1033,41 @@ class Pdf_capiseb extends CI_Controller
         return $tot_lain;
     }
 
+    function hutangLain()
+    {
+        //hutang hutangLain debit
+        $id_lb = $_GET['id_lb'];
+        $hutangLaind = $this->db->query("SELECT * FROM cashflow_b WHERE nama_perkiraan= 'Biaya Angsuran Hutang Lain' && kode_jenis='D' && id_lb='$id_lb'");
+        if (!empty($hutangLaind->result())) {
+            foreach ($hutangLaind->result() as $row) {
+                $array_hutangLaind[] = $row->saldo;
+            }
+            $sum_hutangLaind = array_sum($array_hutangLaind);
+        } else
+            $sum_hutangLaind = 0;
+
+        $tot_hutangLain = $sum_hutangLaind ;
+        return $tot_hutangLain;
+    }
+
+    function totalHutangLain()
+    {
+
+        $id_lb = $_GET['id_lb'];
+        $lb = $this->db->query("SELECT * FROM capital_b WHERE id_lb='$id_lb'");
+        foreach ($lb->result() as $data) {
+            $totalHutangLain = $data->hutang_lain - $this->hutangLain();
+        }
+        return $totalHutangLain;
+    }
+
     function totalHutang()
     {
 
         $id_lb = $_GET['id_lb'];
         $lb = $this->db->query("SELECT * FROM capital_b WHERE id_lb='$id_lb'");
         foreach ($lb->result() as $data) {
-            $totalHutang = $data->hutang_jpk + $data->hutang_jpg + $data->hutang_lain + $data->hutang_dagang;
+            $totalHutang = $data->hutang_jpk + $data->hutang_jpg + $this->totalHutangLain() + $data->hutang_dagang;
         }
         return $totalHutang;
     }
