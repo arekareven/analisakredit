@@ -636,6 +636,7 @@
                                                     <input type="text" class="form-control" id="keterangan" name="keterangan">
                                                     <input type="hidden" class="form-control" id="id_lb" name="id_lb" value="<?php echo $id_lb; ?>">
                                                     <input type="hidden" class="form-control" id="nama_perkiraan_cp" name="nama_perkiraan_cp">
+                                                    <input type="hidden" class="form-control" id="kode" name="kode" value="<?php echo $kode2; ?>">
                                                     <input type="hidden" class="form-control" id="nama_perkiraan_cp2" name="nama_perkiraan_cp2">
                                                     <input type="hidden" class="form-control" id="jenis" name="jenis" value="pendapatan">
                                                 </div>
@@ -686,12 +687,13 @@
                                                     <label for="keterangan" class="form-label">Keterangan</label>
                                                     <input type="text" class="form-control" id="keteranganp" name="keteranganp">
                                                     <input type="hidden" class="form-control" id="id_lb" name="id_lb" value="<?php echo $id_lb; ?>">
+                                                    <input type="hidden" class="form-control" id="kode" name="kode" value="<?php echo $kode2; ?>">
                                                     <input type="hidden" class="form-control" id="nama_perkiraan_cpe" name="nama_perkiraan_cpe">
                                                     <input type="hidden" class="form-control" id="nama_perkiraan_cpe2" name="nama_perkiraan_cpe2">
                                                     <input type="hidden" class="form-control" id="jenisp" name="jenisp" value="pengeluaran">
                                                 </div>
                                                 <div class="col-md-8 mb-4">
-                                                    <label for="nama_stnk" class="form-label">Sebesar</label>
+                                                    <label class="form-label">Sebesar</label>
                                                     <input type="number" class="form-control" id="saldop" name="saldop">
                                                 </div>
                                             </div>
@@ -745,6 +747,7 @@
                                                     <label for="keterangan" class="form-label">Keterangan</label>
                                                     <input type="text" class="form-control" id="keterangan" name="keterangan">
                                                     <input type="hidden" class="form-control" id="id_lb" name="id_lb" value="<?php echo $id_lb; ?>">
+                                                    <input type="hidden" class="form-control" id="kode" name="kode" value="<?php echo $kode2; ?>">
                                                     <input type="hidden" class="form-control" id="nama_perkiraan_hutang" name="nama_perkiraan_hutang">
                                                     <input type="hidden" class="form-control" id="nama_perkiraan_hutang2" name="nama_perkiraan_hutang2">
                                                     <input type="hidden" class="form-control" id="jenis" name="jenis" value="hutang">

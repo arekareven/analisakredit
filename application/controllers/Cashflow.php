@@ -31,19 +31,38 @@ class Cashflow extends CI_Controller
     public function add()
     {
         $id_cf = $this->input->post('id_cf');
-        $kode = $this->input->post('kode');
-        
-        $query = $this->m_cashflow->cek_id($id_cf)->num_rows();
-        if (empty($query))
-            $this->m_cashflow->add_data($id_cf);
-        else
-            $this->m_cashflow->edit_data($id_cf,$kode);
+
+        $this->m_cashflow->add_data($id_cf);
+    }
+
+    public function edit()
+    {
+        $id_lb = $this->input->post('id_lbcp');
+        $kode = $this->input->post('kodecp');
+
+        $this->db->where(array('id_lb' => $id_lb));
+        $this->db->where(array('kode' => $kode));
+        $this->db->delete('cashflow_a');
+
+        $this->m_cashflow->edit_data($kode);
     }
 
     public function add2()
     {
         $id_cf = $this->input->post('id_cf');
         $this->m_cashflow->add_data2($id_cf);
+    }
+    
+    public function editp()
+    {
+        $id_lb = $this->input->post('id_lbcpe');
+        $kode = $this->input->post('kodecpe');
+
+        $this->db->where(array('id_lb' => $id_lb));
+        $this->db->where(array('kode' => $kode));
+        $this->db->delete('cashflow_a');
+
+        $this->m_cashflow->edit_datap($kode);
     }
 
     public function add_hutang()

@@ -27,6 +27,7 @@ class M_cashflow extends CI_Model
     {
         $id_cf = $this->input->post('id_cf');
         $id_lb = $this->input->post('id_lb');
+        $kode = $this->input->post('kode');
         $kode_perkiraan = $this->input->post('kode_perkiraan_cp');
         $kode_perkiraan2 = $this->input->post('kode_perkiraan_cp2');
         $nama_perkiraan = $this->input->post('nama_perkiraan_cp');
@@ -46,6 +47,7 @@ class M_cashflow extends CI_Model
             'saldo'        => $saldo,
             'kode_jenis'        => $kode_jenis,
             'jenis'        => $jenis,
+            'kode'        => $kode
         );
 
         $data2 = array(
@@ -57,11 +59,55 @@ class M_cashflow extends CI_Model
             'saldo'        => $saldo,
             'kode_jenis'        => $kode_jenis2,
             'jenis'        => $jenis,
+            'kode'        => $kode
         );
-
 
         $this->db->insert('cashflow_a', $data);
         $this->db->insert('cashflow_a', $data2);
+    }
+    
+    public function edit_data($data)
+    {
+        $id_cf = $this->input->post('id_cfcp');
+        $id_lb = $this->input->post('id_lbcp');
+        $kode = $this->input->post('kodecp');
+        $kode_perkiraan = $this->input->post('kode_perkiraan_cp');
+        $kode_perkiraan2 = $this->input->post('kode_perkiraan_cp2');
+        $nama_perkiraan = $this->input->post('nama_perkiraan_cp');
+        $nama_perkiraan2 = $this->input->post('nama_perkiraan_cp2');
+        $keterangan = $this->input->post('keterangancp');
+        $saldo = $this->input->post('saldocp');
+        $kode_jenis = 'K';
+        $kode_jenis2 = 'D';
+        $jenis = $this->input->post('jeniscp');
+
+        $data = array(
+            'id_cf'         => $id_cf,
+            'id_lb'         => $id_lb,
+            'kode_perkiraan'    => $kode_perkiraan,
+            'nama_perkiraan'    => $nama_perkiraan,
+            'keterangan'        => $keterangan,
+            'saldo'        => $saldo,
+            'kode_jenis'        => $kode_jenis,
+            'jenis'        => $jenis,
+            'kode'        => $kode
+        );
+
+        $data2 = array(
+            'id_cf'         => $id_cf,
+            'id_lb'         => $id_lb,
+            'kode_perkiraan'    => $kode_perkiraan2,
+            'nama_perkiraan'    => $nama_perkiraan2,
+            'keterangan'        => $keterangan,
+            'saldo'        => $saldo,
+            'kode_jenis'        => $kode_jenis2,
+            'jenis'        => $jenis,
+            'kode'        => $kode
+        );
+
+        $this->db->insert('cashflow_a', $data);
+        $this->db->insert('cashflow_a', $data2);
+        redirect('test/edit?id_lb='.$id_lb);
     }
 
     public function add_data_hutang($data)
@@ -108,6 +154,7 @@ class M_cashflow extends CI_Model
     {
         $id_cf = $this->input->post('id_cf');
         $id_lb = $this->input->post('id_lb');
+        $kode = $this->input->post('kode');
         $kode_perkiraan = $this->input->post('kode_perkiraan_cpe');
         $kode_perkiraan2 = $this->input->post('kode_perkiraan_cpe2');
         $nama_perkiraan = $this->input->post('nama_perkiraan_cpe');
@@ -127,6 +174,7 @@ class M_cashflow extends CI_Model
             'saldo'        => $saldo,
             'kode_jenis'        => $kode_jenis,
             'jenis'        => $jenis,
+            'kode'        => $kode
         );
 
         $data2 = array(
@@ -138,10 +186,55 @@ class M_cashflow extends CI_Model
             'saldo'        => $saldo,
             'kode_jenis'        => $kode_jenis2,
             'jenis'        => $jenis,
+            'kode'        => $kode
         );
 
         $this->db->insert('cashflow_a', $data);
         $this->db->insert('cashflow_a', $data2);
+    }
+        
+    public function edit_datap($data)
+    {
+        $id_cf = $this->input->post('id_cfcpe');
+        $id_lb = $this->input->post('id_lbcpe');
+        $kode = $this->input->post('kodecpe');
+        $kode_perkiraan = $this->input->post('kode_perkiraan_cpe');
+        $kode_perkiraan2 = $this->input->post('kode_perkiraan_cpe2');
+        $nama_perkiraan = $this->input->post('nama_perkiraan_cpe');
+        $nama_perkiraan2 = $this->input->post('nama_perkiraan_cpe2');
+        $keterangan = $this->input->post('keterangancpe');
+        $saldo = $this->input->post('saldocpe');
+        $kode_jenis = 'K';
+        $kode_jenis2 = 'D';
+        $jenis = $this->input->post('jeniscpe');
+
+        $data = array(
+            'id_cf'         => $id_cf,
+            'id_lb'         => $id_lb,
+            'kode_perkiraan'    => $kode_perkiraan,
+            'nama_perkiraan'    => $nama_perkiraan,
+            'keterangan'        => $keterangan,
+            'saldo'        => $saldo,
+            'kode_jenis'        => $kode_jenis,
+            'jenis'        => $jenis,
+            'kode'        => $kode
+        );
+
+        $data2 = array(
+            'id_cf'         => $id_cf,
+            'id_lb'         => $id_lb,
+            'kode_perkiraan'    => $kode_perkiraan2,
+            'nama_perkiraan'    => $nama_perkiraan2,
+            'keterangan'        => $keterangan,
+            'saldo'        => $saldo,
+            'kode_jenis'        => $kode_jenis2,
+            'jenis'        => $jenis,
+            'kode'        => $kode
+        );
+
+        $this->db->insert('cashflow_a', $data);
+        $this->db->insert('cashflow_a', $data2);
+        redirect('test/edit?id_lb='.$id_lb);
     }
 
     /*
