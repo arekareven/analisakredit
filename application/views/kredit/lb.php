@@ -101,10 +101,9 @@
                 <form method="post" action="<?php echo base_url('kredit/add'); ?>">
                     <div class="modal-body">
                         <div class="col-md-8 mb-3">
-                            <label for="cif_bank" class="form-label">CIF Bank</label>
                             <input type="hidden" id="id_lb" name="id_lb">
                             <input type="hidden" id="user" name="user" value="<?= $user['email']; ?>">
-                            <input type="number" class="form-control" id="cif_bank" name="cif_bank" value="<?php echo $cif; ?>" readonly>
+                            <input type="hidden" class="form-control" id="cif_bank" name="cif_bank" value="<?php echo $cif; ?>" readonly>
                         </div>
                         <div class="col-md-8 mb-3">
                             <label for="tgl_permohonan" class="form-label">Tgl Permohonan</label>

@@ -72,7 +72,7 @@ class Pdf_capiseb extends CI_Controller
             $pdf->Cell(15, 5.5, 'CIF', 0, 0, '');
             $pdf->SetFont('Times', '', 12);
             $pdf->Cell(5, 5.5, ':', 0, 0, '');
-            $pdf->Cell(0, 5.5, $data->cif_bank, 0, 1);
+            $pdf->Cell(0, 5.5, $data->id_lb, 0, 1);
             $pdf->SetFont('Times', 'B', 12);
             $pdf->Cell(15, 5.5, 'Nama', 0, 0, '');
             $pdf->SetFont('Times', '', 12);

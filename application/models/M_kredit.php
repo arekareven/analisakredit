@@ -19,7 +19,7 @@ class M_kredit extends CI_Model
 
 	function get_no_cif()
 	{
-		$sql = "SELECT (cif_bank) AS get_no_cif FROM latar_belakang";
+		$sql = "SELECT MAX(cif_bank) AS get_no_cif FROM latar_belakang";
 		$query = $this->db->query($sql);
 		if ($query->num_rows() > 0) {
 			//cek kode jika telah tersedia    
@@ -140,7 +140,7 @@ class M_kredit extends CI_Model
 
 	public function edit_data($data)
 	{
-		$id_lb		= $this->input->post('id_lb');
+		$id_lb				= $this->input->post('id_lb');
 		$tgl_analisa		= $this->input->post('tgl_analisa');
 		$tgl_permohonan     = $this->input->post('tgl_permohonan');
 		$plafon      		= $this->input->post('plafon');

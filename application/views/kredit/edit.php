@@ -699,7 +699,7 @@
                                                                 <td>" . $row->keterangan . "</td>
                                                                 <td>" . number_format($row->saldo) . "</td>                      
                                                                 <td>
-                                                                <a href='#' class ='btn btn-warning btn-circle' data-toggle='modal' title='Edit' data-target='#edit' onClick=\"EditData('" . $row->id_cf . "', '" . $row->keterangan . "', '" . $row->saldo . "')\"><i class='fas fa-edit'></i></a>                               
+                                                                <a href='#' class ='btn btn-warning btn-circle' data-toggle='modal' title='Edit' data-target='#editCashflowp' onClick=\"EditDataCashflowp('" . $row->id_cf . "', '" . $row->keterangan . "', '" . $row->saldo . "')\"><i class='fas fa-edit'></i></a>                               
                                                                 <a href='#' class='btn btn-danger btn-circle' data-toggle='modal' title='Hapus' data-target='#hapus' onClick=\"HapusData('" . $row->id_cf . "')\"><i class='fas fa-trash'></i></a>
                                                                 </td>							
                                                                 </tr>";
@@ -1106,7 +1106,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form method="post" action="<?php echo base_url('cashflow/add'); ?>">
+            <form method="post" action="<?php echo base_url('test/editca'); ?>">
                 <div class="modal-body">
                     <div class="col-md-8 mb-4">
                         <label for="dari" class="form-label">Pendapatan dari</label>
@@ -1120,7 +1120,7 @@
                     </div>
                     <div class="col-md-8 mb-4">
                         <label for="nopol" class="form-label">Untuk</label>
-                        <select class="form-control" aria-label="Default select example" id="kode_perkiraan" name="kode_perkiraan" onchange="return nama_p2();">
+                        <select class="form-control" aria-label="Default select example" id="kode_perkiraan2" name="kode_perkiraan2" onchange="return nama_p2();">
                             <option value=""></option>
                             <option value="1.1.1">Kas</option>
                             <option value="1.1.2">Tabungan</option>
@@ -1140,24 +1140,27 @@
                     <div class="col-md-12 mb-4">
                         <label for="keterangan" class="form-label">Keterangan</label>
                         <input type="text" class="form-control" id="keterangan" name="keterangan">
+                        <input type="hidden" class="form-control" id="id_cf" name="id_cf">
                         <input type="hidden" class="form-control" id="id_lb" name="id_lb" value="<?php echo $id_lb; ?>">
-                        <input type="text" class="form-control" id="nama_perkiraan" name="nama_perkiraan">
+                        <input type="hidden" class="form-control" id="nama_perkiraan" name="nama_perkiraan">
+                        <input type="hidden" class="form-control" id="nama_perkiraan2" name="nama_perkiraan2">
+                        <input type="hidden" class="form-control" id="jenis" name="jenis" value="pendapatan">
                     </div>
                     <div class="col-md-8 mb-4">
                         <label for="nama_stnk" class="form-label">Sebesar</label>
-                        <input type="text" class="form-control" id="saldo" name="saldo">
+                        <input type="text" class="form-control" id="saldoq" name="saldoq">
                         <input type="hidden" class="form-control" id="kode" name="kode">
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" id="simpan" class="btn btn-primary">Save changes</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
 
-<!-- /.modal hapus riwayat pinjaman -->
+<!-- /.modal hapus cashflow -->
 <div id="HapusDataCashflow" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" style="display: none;">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
@@ -1199,11 +1202,12 @@
 
     function EditDataCashflow(id_cf, kode, kode_perkiraan, nama_perkiraan, keterangan, saldo) {
 
+        document.getElementById('id_cf').value = '';
         document.getElementById('kode').value = kode;
         document.getElementById('kode_perkiraan').value = kode_perkiraan;
         document.getElementById('nama_perkiraan').value = nama_perkiraan;
         document.getElementById('keterangan').value = keterangan;
-        document.getElementById('saldo').value = saldo
+        document.getElementById('saldoq').value = saldo
     }
 
     function HapusDataCashflow(idt) {

@@ -472,6 +472,7 @@
                                                     <input type="hidden" class="form-control" id="id_lb" name="id_lb" value="<?php echo $id_lb; ?>">
                                                     <input type="hidden" class="form-control" id="nama_perkiraan" name="nama_perkiraan">
                                                     <input type="hidden" class="form-control" id="nama_perkiraan2" name="nama_perkiraan2">
+                                                    <input type="hidden" class="form-control" id="kode" name="kode" value="<?php echo $kode; ?>">
                                                     <input type="hidden" class="form-control" id="jenis" name="jenis" value="pendapatan">
                                                 </div>
                                                 <div class="col-md-8 mb-4">
@@ -545,6 +546,7 @@
                                                     <input type="hidden" class="form-control" id="id_lb" name="id_lb" value="<?php echo $id_lb; ?>">
                                                     <input type="hidden" class="form-control" id="nama_perkiraanp" name="nama_perkiraanp">
                                                     <input type="hidden" class="form-control" id="nama_perkiraanp2" name="nama_perkiraanp2">
+                                                    <input type="hidden" class="form-control" id="kodep" name="kodep" value="<?php echo $kode; ?>">
                                                     <input type="hidden" class="form-control" id="jenisp" name="jenisp" value="pengeluaran">
                                                 </div>
                                                 <div class="col-md-8 mb-4">

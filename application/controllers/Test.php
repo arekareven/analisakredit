@@ -18,9 +18,11 @@ class Test extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['email' =>
         $this->session->userdata('email')])->row_array();
         $data['select'] = $this->m_test->data_select();
-        $data['perkiraan'] = $this->m_test->data_perkiraan();	
+        $data['perkiraan'] = $this->m_test->data_perkiraan();
         $data['cashflow'] = $this->m_test->edit_cash($id_lb);
         $data['cashflowp'] = $this->m_test->edit_cashp($id_lb);
+
+        $data['kode']=$this->m_test->get_kode($id_lb);
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
@@ -67,7 +69,18 @@ class Test extends CI_Controller
     public function add()
     {
         $id_cf = $this->input->post('id_cf');
+
         $this->m_test->add_data($id_cf);
+    }
+
+    public function editca()
+    {
+        $kode = $this->input->post('kode');
+
+		$this->db->where(array('kode' => $kode));
+		$this->db->delete('cashflow_b');
+        
+        $this->m_test->edit_data( $kode);
     }
 
     public function add_hutang()
@@ -89,8 +102,8 @@ class Test extends CI_Controller
     }
 
     public function cetak_char()
-	{
-		$id_char = $_GET['id_char'];
-		redirect('pdf_char?id_char=' . $id_char);
-	}
+    {
+        $id_char = $_GET['id_char'];
+        redirect('pdf_char?id_char=' . $id_char);
+    }
 }

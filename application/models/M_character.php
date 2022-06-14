@@ -75,6 +75,7 @@ class M_character extends CI_Model
 
     public function edit_data($data)
     {
+        $id_char  = $this->input->post('id_char');
         $id_lb  = $this->input->post('id_lb');
         $info_pribadi  = $this->input->post('info_pribadi');
         $info_perilaku = $this->input->post('info_perilaku');
@@ -88,6 +89,8 @@ class M_character extends CI_Model
         $hp1        = $this->input->post('hp1');
         $hp2        = $this->input->post('hp2');
         $hp3        = $this->input->post('hp3');
+        
+		$kondisi = array('id_char' => $id_char);
 
         $data = array(
             'info_pribadi'            => $info_pribadi,
@@ -103,7 +106,7 @@ class M_character extends CI_Model
             'hp2'                => $hp2,
             'hp3'                => $hp3,
         );
-        $this->db->update('karakter', $data);
+        $this->db->update('karakter', $data,$kondisi);
         redirect('test/edit?id_lb=' . $id_lb);
     }
 

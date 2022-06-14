@@ -64,7 +64,7 @@ class M_test extends CI_Model
     {
         return $this->db->query("SELECT * FROM collateral WHERE id_lb=$id_lb");
     }
-    
+
     public function edit_cond($id_lb)
     {
         return $this->db->query("SELECT * FROM `condition` WHERE id_lb=$id_lb");
@@ -81,10 +81,25 @@ class M_test extends CI_Model
         return $query;
     }
 
+    function get_kode($id_lb){
+        $cd = $this->db->query("SELECT MAX(kode) AS kd_max FROM cashflow_b WHERE id_lb=$id_lb ");
+        $kd = "";
+        if($cd->num_rows()>0){
+            foreach($cd->result() as $k){
+                $tmp = ((int)$k->kd_max)+1;
+                $kd = $tmp;
+            }
+        }else{
+            $kd = "1";
+        }
+        return $kd;
+    }
+
     public function add_data($data)
     {
         $id_cf = $this->input->post('id_cf');
         $id_lb = $this->input->post('id_lb');
+        $kode = $this->input->post('kode');
         $kode_perkiraan = $this->input->post('kode_perkiraan');
         $kode_perkiraan2 = $this->input->post('kode_perkiraan2');
         $nama_perkiraan = $this->input->post('nama_perkiraan');
@@ -94,6 +109,7 @@ class M_test extends CI_Model
         $kode_jenis = 'K';
         $kode_jenis2 = 'D';
         $jenis = $this->input->post('jenis');
+        $kode = $this->input->post('kode');
 
         $data = array(
             'id_cf'         => $id_cf,
@@ -104,6 +120,7 @@ class M_test extends CI_Model
             'saldo'        => $saldo,
             'kode_jenis'        => $kode_jenis,
             'jenis'        => $jenis,
+            'kode'        => $kode
         );
 
         $data2 = array(
@@ -115,6 +132,51 @@ class M_test extends CI_Model
             'saldo'        => $saldo,
             'kode_jenis'        => $kode_jenis2,
             'jenis'        => $jenis,
+            'kode'        => $kode
+        );
+
+        $this->db->insert('cashflow_b', $data);
+        $this->db->insert('cashflow_b', $data2);
+    }
+
+    public function edit_data($data)
+    {
+        $id_cf = $this->input->post('id_cf');
+        $kode = $this->input->post('kode');
+        $id_lb = $this->input->post('id_lb');
+        $kode_perkiraan = $this->input->post('kode_perkiraan');
+        $kode_perkiraan2 = $this->input->post('kode_perkiraan2');
+        $nama_perkiraan = $this->input->post('nama_perkiraan');
+        $nama_perkiraan2 = $this->input->post('nama_perkiraan2');
+        $keterangan = $this->input->post('keterangan');
+        $saldo = $this->input->post('saldoq');
+        $kode_jenis = 'K';
+        $kode_jenis2 = 'D';
+        $jenis = $this->input->post('jenis');
+
+
+        $data = array(
+            'id_cf'         => $id_cf,
+            'id_lb'         => $id_lb,
+            'kode_perkiraan'    => $kode_perkiraan,
+            'nama_perkiraan'    => $nama_perkiraan,
+            'keterangan'        => $keterangan,
+            'saldo'        => $saldo,
+            'kode_jenis'        => $kode_jenis,
+            'jenis'        => $jenis,
+            'kode'        => $kode,
+        );
+
+        $data2 = array(
+            'id_cf'         => $id_cf,
+            'id_lb'         => $id_lb,
+            'kode_perkiraan'    => $kode_perkiraan2,
+            'nama_perkiraan'    => $nama_perkiraan2,
+            'keterangan'        => $keterangan,
+            'saldo'        => $saldo,
+            'kode_jenis'        => $kode_jenis2,
+            'jenis'        => $jenis,
+            'kode'        => $kode,
         );
 
         $this->db->insert('cashflow_b', $data);
@@ -174,6 +236,7 @@ class M_test extends CI_Model
         $kode_jenis = 'K';
         $kode_jenis2 = 'D';
         $jenis = $this->input->post('jenisp');
+        $kode = $this->input->post('kodep');
 
         $data = array(
             'id_cf'         => $id_cf,
@@ -184,6 +247,7 @@ class M_test extends CI_Model
             'saldo'        => $saldo,
             'kode_jenis'        => $kode_jenis,
             'jenis'        => $jenis,
+            'kode'        => $kode,
         );
 
         $data2 = array(
@@ -195,6 +259,7 @@ class M_test extends CI_Model
             'saldo'        => $saldo,
             'kode_jenis'        => $kode_jenis2,
             'jenis'        => $jenis,
+            'kode'        => $kode,
         );
 
         $this->db->insert('cashflow_b', $data);

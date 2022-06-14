@@ -31,7 +31,13 @@ class Cashflow extends CI_Controller
     public function add()
     {
         $id_cf = $this->input->post('id_cf');
-        $this->m_cashflow->add_data($id_cf);
+        $kode = $this->input->post('kode');
+        
+        $query = $this->m_cashflow->cek_id($id_cf)->num_rows();
+        if (empty($query))
+            $this->m_cashflow->add_data($id_cf);
+        else
+            $this->m_cashflow->edit_data($id_cf,$kode);
     }
 
     public function add2()
