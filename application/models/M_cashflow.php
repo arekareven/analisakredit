@@ -109,6 +109,14 @@ class M_cashflow extends CI_Model
         $this->db->insert('cashflow_a', $data2);
         redirect('test/edit?id_lb='.$id_lb);
     }
+        
+    function hapusCashflowsPendapatan($kode, $id_lb)
+    {
+        $this->db->where(array('id_lb' => $id_lb));
+        $this->db->where(array('kode' => $kode));
+        $this->db->delete('cashflow_a');
+        redirect('test/edit?id_lb=' . $id_lb);
+    }
 
     public function add_data_hutang($data)
     {
@@ -235,6 +243,14 @@ class M_cashflow extends CI_Model
         $this->db->insert('cashflow_a', $data);
         $this->db->insert('cashflow_a', $data2);
         redirect('test/edit?id_lb='.$id_lb);
+    }
+            
+    function hapusCashflowsPengeluaran($kode, $id_lb)
+    {
+        $this->db->where(array('id_lb' => $id_lb));
+        $this->db->where(array('kode' => $kode));
+        $this->db->delete('cashflow_a');
+        redirect('test/edit?id_lb=' . $id_lb);
     }
 
     /*

@@ -54,7 +54,7 @@ class M_test extends CI_Model
     {
         return $this->db->query("SELECT * FROM cashflow_b WHERE id_lb=$id_lb AND jenis='pengeluaran' AND kode_jenis='D'");
     }
-    
+
     public function edit_cashs($id_lb)
     {
         return $this->db->query("SELECT * FROM cashflow_a WHERE id_lb=$id_lb AND jenis='pendapatan' AND kode_jenis='K'");
@@ -64,7 +64,7 @@ class M_test extends CI_Model
     {
         return $this->db->query("SELECT * FROM cashflow_a WHERE id_lb=$id_lb AND jenis='pengeluaran' AND kode_jenis='D'");
     }
-    
+
     public function edit_hut($id_lb)
     {
         return $this->db->query("SELECT * FROM cashflow_a WHERE id_lb=$id_lb AND jenis='hutang' AND kode_jenis='D'");
@@ -96,29 +96,31 @@ class M_test extends CI_Model
         return $query;
     }
 
-    function get_kode($id_lb){
+    function get_kode($id_lb)
+    {
         $cd = $this->db->query("SELECT MAX(kode) AS kd_max FROM cashflow_b WHERE id_lb=$id_lb ");
         $kd = "";
-        if($cd->num_rows()>0){
-            foreach($cd->result() as $k){
-                $tmp = ((int)$k->kd_max)+1;
+        if ($cd->num_rows() > 0) {
+            foreach ($cd->result() as $k) {
+                $tmp = ((int)$k->kd_max) + 1;
                 $kd = $tmp;
             }
-        }else{
+        } else {
             $kd = "1";
         }
         return $kd;
     }
-    
-    function get_kode2($id_lb){
+
+    function get_kode2($id_lb)
+    {
         $cd = $this->db->query("SELECT MAX(kode) AS kd_max FROM cashflow_a WHERE id_lb=$id_lb ");
         $kd = "";
-        if($cd->num_rows()>0){
-            foreach($cd->result() as $k){
-                $tmp = ((int)$k->kd_max)+1;
+        if ($cd->num_rows() > 0) {
+            foreach ($cd->result() as $k) {
+                $tmp = ((int)$k->kd_max) + 1;
                 $kd = $tmp;
             }
-        }else{
+        } else {
             $kd = "1";
         }
         return $kd;
@@ -210,9 +212,17 @@ class M_test extends CI_Model
 
         $this->db->insert('cashflow_b', $data);
         $this->db->insert('cashflow_b', $data2);
-        redirect('test/edit?id_lb='.$id_lb);
+        redirect('test/edit?id_lb=' . $id_lb);
     }
-    
+
+    function hapusCashflowPendapatan($kode, $id_lb)
+    {
+        $this->db->where(array('id_lb' => $id_lb));
+        $this->db->where(array('kode' => $kode));
+        $this->db->delete('cashflow_b');
+        redirect('test/edit?id_lb=' . $id_lb);
+    }
+
     public function add_data2($data)
     {
         $id_cf = $this->input->post('id_cf');
@@ -298,7 +308,15 @@ class M_test extends CI_Model
 
         $this->db->insert('cashflow_b', $data);
         $this->db->insert('cashflow_b', $data2);
-        redirect('test/edit?id_lb='.$id_lb);
+        redirect('test/edit?id_lb=' . $id_lb);
+    }
+    
+    function hapusCashflowPengeluaran($kode, $id_lb)
+    {
+        $this->db->where(array('id_lb' => $id_lb));
+        $this->db->where(array('kode' => $kode));
+        $this->db->delete('cashflow_b');
+        redirect('test/edit?id_lb=' . $id_lb);
     }
 
     public function add_data_hutang($data)
@@ -343,7 +361,7 @@ class M_test extends CI_Model
         $this->db->insert('cashflow_a', $data);
         $this->db->insert('cashflow_a', $data2);
     }
-    
+
     public function edit_datah($data)
     {
         $id_cf = $this->input->post('id_cfh');
@@ -386,9 +404,16 @@ class M_test extends CI_Model
 
         $this->db->insert('cashflow_a', $data);
         $this->db->insert('cashflow_a', $data2);
-        redirect('test/edit?id_lb='.$id_lb);
+        redirect('test/edit?id_lb=' . $id_lb);
     }
-
+        
+    function hapusHutang($kode, $id_lb)
+    {
+        $this->db->where(array('id_lb' => $id_lb));
+        $this->db->where(array('kode' => $kode));
+        $this->db->delete('cashflow_a');
+        redirect('test/edit?id_lb=' . $id_lb);
+    }
 
     public function add_data_usulan($data)
     {

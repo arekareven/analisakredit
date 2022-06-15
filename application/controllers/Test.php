@@ -88,6 +88,13 @@ class Test extends CI_Controller
 
         $this->m_test->edit_data($kode);
     }
+
+    public function hapusCashflowPendapatan()
+	{
+		$idt = $this->input->post('idHapusCashflowPendapatan');        
+		$id_lb = $this->input->post('id_lb');
+		$this->m_test->hapusCashflowPendapatan($idt, $id_lb);
+	}
     
     public function editcap()
     {
@@ -100,6 +107,13 @@ class Test extends CI_Controller
 
         $this->m_test->edit_datap($kode);
     }
+
+    public function hapusCashflowPengeluaran()
+	{
+		$idt = $this->input->post('idHapusCashflowPengeluaran');        
+		$id_lb = $this->input->post('id_lb');
+		$this->m_test->hapusCashflowPengeluaran($idt, $id_lb);
+	}
         
     public function edith()
     {
@@ -112,6 +126,13 @@ class Test extends CI_Controller
 
         $this->m_test->edit_datah($kode);
     }
+    
+    public function hapusHutang()
+	{
+		$idt = $this->input->post('idHapusHutang');        
+		$id_lb = $this->input->post('id_lb');
+		$this->m_test->hapusHutang($idt, $id_lb);
+	}
 
     public function add_hutang()
     {

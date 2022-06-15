@@ -154,7 +154,13 @@ class Pdf_capiset extends CI_Controller
             $pdf->SetFont('Times', 'B', 12);
             $pdf->Cell(66, 5.5, 'Modal Usaha', 0, 0, '');
             $pdf->Cell(10, 5.5, 'Rp.', 0, 0, '');
-            $pdf->Cell(46, 5.5, $this->modal(), 0, 1);
+            $modal = $this->modal();
+            if ($modal < 0) {
+                $modal = $modal * -1;
+                $modal = '(' . number_format($modal) . ')';
+            } else
+                $modal = number_format($modal);
+            $pdf->Cell(46, 5.5,  $modal, 0, 1);
             $pdf->SetFont('Times', '', 12);
             $pdf->Cell(44, 5.5, 'Kendaraan Operasional', 0, 0, '');
             $pdf->Cell(10, 5.5, 'Rp.', 0, 0, '');
@@ -1167,10 +1173,7 @@ class Pdf_capiset extends CI_Controller
     function modal()
     {
         $modal = $this->aset() - ($this->rugiLaba() + $this->aktivaTetap() + $this->totalHutang());
-        if ($modal < 0) {
-            $modal = $modal * -1;
-            $modal = '(' . number_format($modal) . ')';
-        }
+
         return $modal;
     }
 }

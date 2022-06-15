@@ -670,7 +670,7 @@
                                                                 <td>" . $row->kode . "</td>
                                                                 <td>
                                                                 <a href='#' class ='btn btn-warning btn-circle' data-toggle='modal' title='Edit' data-target='#editCashflow' onClick=\"EditDataCashflow('" . $row->id_cf . "','" . $row->kode . "', '" . $row->kode_perkiraan . "', '" . $row->nama_perkiraan . "', '" . $row->keterangan . "', '" . $row->saldo . "')\"><i class='fas fa-edit'></i></a>                               
-                                                                <a href='#' class='btn btn-danger btn-circle' data-toggle='modal' title='Hapus' data-target='#hapus' onClick=\"HapusDataCashflow('" . $row->kode . "')\"><i class='fas fa-trash'></i></a>
+                                                                <a href='#' class='btn btn-danger btn-circle' data-toggle='modal' title='Hapus' data-target='#hapusCashflow' onClick=\"HapusDataCashflow('" . $row->kode . "')\"><i class='fas fa-trash'></i></a>
                                                                 </td>							    
                                                                 </tr>";
                                                         $no++;
@@ -701,7 +701,7 @@
                                                                 <td>" . number_format($row->saldo) . "</td>                      
                                                                 <td>
                                                                 <a href='#' class ='btn btn-warning btn-circle' data-toggle='modal' title='Edit' data-target='#editCashflowp' onClick=\"EditDataCashflowp('" . $row->id_cf . "','" . $row->kode . "', '" . $row->kode_perkiraan . "', '" . $row->nama_perkiraan . "', '" . $row->keterangan . "', '" . $row->saldo . "')\"><i class='fas fa-edit'></i></a>                               
-                                                                <a href='#' class='btn btn-danger btn-circle' data-toggle='modal' title='Hapus' data-target='#hapus' onClick=\"HapusData('" . $row->id_cf . "')\"><i class='fas fa-trash'></i></a>
+                                                                <a href='#' class='btn btn-danger btn-circle' data-toggle='modal' title='Hapus' data-target='#hapusCashflowp' onClick=\"HapusDataCashflowp('" . $row->kode . "')\"><i class='fas fa-trash'></i></a>
                                                                 </td>							
                                                                 </tr>";
                                                         $no++;
@@ -751,7 +751,7 @@
                                                                 <td>" . $row->kode . "</td>
                                                                 <td>
                                                                 <a href='#' class ='btn btn-warning btn-circle' data-toggle='modal' title='Edit' data-target='#editCashflows' onClick=\"EditDataCashflows('" . $row->id_cf . "','" . $row->kode . "', '" . $row->kode_perkiraan . "', '" . $row->nama_perkiraan . "', '" . $row->keterangan . "', '" . $row->saldo . "')\"><i class='fas fa-edit'></i></a>                               
-                                                                <a href='#' class='btn btn-danger btn-circle' data-toggle='modal' title='Hapus' data-target='#hapus' onClick=\"HapusDataCashflow('" . $row->kode . "')\"><i class='fas fa-trash'></i></a>
+                                                                <a href='#' class='btn btn-danger btn-circle' data-toggle='modal' title='Hapus' data-target='#hapusCashflows' onClick=\"HapusDataCashflows('" . $row->kode . "')\"><i class='fas fa-trash'></i></a>
                                                                 </td>							    
                                                                 </tr>";
                                                         $no++;
@@ -784,7 +784,7 @@
                                                                 <td>" . $row->kode . "</td>
                                                                 <td>
                                                                 <a href='#' class ='btn btn-warning btn-circle' data-toggle='modal' title='Edit' data-target='#editCashflowsp' onClick=\"EditDataCashflowsp('" . $row->id_cf . "','" . $row->kode . "', '" . $row->kode_perkiraan . "', '" . $row->nama_perkiraan . "', '" . $row->keterangan . "', '" . $row->saldo . "')\"><i class='fas fa-edit'></i></a>                               
-                                                                <a href='#' class='btn btn-danger btn-circle' data-toggle='modal' title='Hapus' data-target='#hapus' onClick=\"HapusDataCashflow('" . $row->kode . "')\"><i class='fas fa-trash'></i></a>
+                                                                <a href='#' class='btn btn-danger btn-circle' data-toggle='modal' title='Hapus' data-target='#hapusCashflowsp' onClick=\"HapusDataCashflowsp('" . $row->kode . "')\"><i class='fas fa-trash'></i></a>
                                                                 </td>							    
                                                                 </tr>";
                                                         $no++;
@@ -817,7 +817,7 @@
                                                                 <td>" . $row->kode . "</td>
                                                                 <td>
                                                                 <a href='#' class ='btn btn-warning btn-circle' data-toggle='modal' title='Edit' data-target='#editHutang' onClick=\"EditDataHutang('" . $row->id_cf . "','" . $row->kode . "', '" . $row->kode_perkiraan . "', '" . $row->nama_perkiraan . "', '" . $row->keterangan . "', '" . $row->saldo . "')\"><i class='fas fa-edit'></i></a>                               
-                                                                <a href='#' class='btn btn-danger btn-circle' data-toggle='modal' title='Hapus' data-target='#hapus' onClick=\"HapusDataCashflow('" . $row->kode . "')\"><i class='fas fa-trash'></i></a>
+                                                                <a href='#' class='btn btn-danger btn-circle' data-toggle='modal' title='Hapus' data-target='#hapusHutang' onClick=\"HapusDataHutang('" . $row->kode . "')\"><i class='fas fa-trash'></i></a>
                                                                 </td>							    
                                                                 </tr>";
                                                         $no++;
@@ -1277,6 +1277,30 @@
     </div>
 </div>
 
+<!-- /.modal hapus cashflow awal,pendapatan -->
+<div id="hapusCashflow" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="custom-width-modalLabel">Konfirmasi Hapus</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <form action="<?php echo base_url() . 'test/hapusCashflowPendapatan'; ?>" method="post" class="form-horizontal" role="form">
+                <div class="modal-body">
+                    <p>Apakah anda yakin ingin menghapus?</p>
+                    <div>
+                        <input type="hidden" id="idHapusCashflowPendapatan" name="idHapusCashflowPendapatan">
+                        <input type="hidden" id="id_lb" name="id_lb" value="<?php echo $id_lb; ?>">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">Tidak</button>
+                    <button type="submit" class="btn btn-success waves-effect waves-light">Ya</button>
+                </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
 <!-- Modal edit cashflow awal, pengeluaran-->
 <div class="modal fade" id="editCashflowp" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -1340,6 +1364,30 @@
             </form>
         </div>
     </div>
+</div>
+
+<!-- /.modal hapus cashflow awal,pendapatan -->
+<div id="hapusCashflowp" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="custom-width-modalLabel">Konfirmasi Hapus</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <form action="<?php echo base_url() . 'test/hapusCashflowPengeluaran'; ?>" method="post" class="form-horizontal" role="form">
+                <div class="modal-body">
+                    <p>Apakah anda yakin ingin menghapus?</p>
+                    <div>
+                        <input type="hidden" id="idHapusCashflowPengeluaran" name="idHapusCashflowPengeluaran">
+                        <input type="hidden" id="id_lb" name="id_lb" value="<?php echo $id_lb; ?>">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">Tidak</button>
+                    <button type="submit" class="btn btn-success waves-effect waves-light">Ya</button>
+                </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
 </div>
 
 <!-- Modal edit cashflow setelah, pendapatan-->
@@ -1406,6 +1454,30 @@
     </div>
 </div>
 
+<!-- /.modal hapus cashflow setelah,pendapatan -->
+<div id="hapusCashflows" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="custom-width-modalLabel">Konfirmasi Hapus</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <form action="<?php echo base_url() . 'cashflow/hapusCashflowsPendapatan'; ?>" method="post" class="form-horizontal" role="form">
+                <div class="modal-body">
+                    <p>Apakah anda yakin ingin menghapus?</p>
+                    <div>
+                        <input type="hidden" id="idHapusCashflowsPendapatan" name="idHapusCashflowsPendapatan">
+                        <input type="hidden" id="id_lb" name="id_lb" value="<?php echo $id_lb; ?>">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">Tidak</button>
+                    <button type="submit" class="btn btn-success waves-effect waves-light">Ya</button>
+                </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
 <!-- Modal edit cashflows setelah, pengeluaran-->
 <div class="modal fade" id="editCashflowsp" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -1469,6 +1541,30 @@
             </form>
         </div>
     </div>
+</div>
+
+<!-- /.modal hapus cashflow setelah,pendapatan -->
+<div id="hapusCashflowsp" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="custom-width-modalLabel">Konfirmasi Hapus</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <form action="<?php echo base_url() . 'cashflow/hapusCashflowsPengeluaran'; ?>" method="post" class="form-horizontal" role="form">
+                <div class="modal-body">
+                    <p>Apakah anda yakin ingin menghapus?</p>
+                    <div>
+                        <input type="hidden" id="idHapusCashflowsPengeluaran" name="idHapusCashflowsPengeluaran">
+                        <input type="hidden" id="id_lb" name="id_lb" value="<?php echo $id_lb; ?>">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">Tidak</button>
+                    <button type="submit" class="btn btn-success waves-effect waves-light">Ya</button>
+                </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
 </div>
 
 <!-- Modal edit hutang-->
@@ -1544,6 +1640,30 @@
     </div>
 </div>
 
+<!-- /.modal hapus cashflow setelah,pendapatan -->
+<div id="hapusHutang" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="custom-width-modalLabel">Konfirmasi Hapus</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <form action="<?php echo base_url() . 'test/hapusHutang'; ?>" method="post" class="form-horizontal" role="form">
+                <div class="modal-body">
+                    <p>Apakah anda yakin ingin menghapus?</p>
+                    <div>
+                        <input type="hidden" id="idHapusHutang" name="idHapusHutang">
+                        <input type="hidden" id="id_lb" name="id_lb" value="<?php echo $id_lb; ?>">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">Tidak</button>
+                    <button type="submit" class="btn btn-success waves-effect waves-light">Ya</button>
+                </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
 
 <!-- data untuk riwayat pinjaman -->
 <script type="text/javascript">
@@ -1561,7 +1681,7 @@
     }
 </script>
 
-<!-- untuk menampilkan data edit -->
+<!-- untuk menampilkan data edit cashflow-->
 <script type="text/javascript">
     //menampilkan data edit ke modal cashflow awal, pendapatan
     function EditDataCashflow(id_cf, kode, kode_perkiraan, nama_perkiraan, keterangan, saldo) {
@@ -1574,6 +1694,11 @@
         document.getElementById('saldoq').value = saldo
     }
 
+    //hapus data cashflow awal, pendapatan
+    function HapusDataCashflow(kode) {
+        document.getElementById('idHapusCashflowPendapatan').value = kode;
+    }
+
     //menampilkan data edit ke modal cashflow awal, pengeluaran
     function EditDataCashflowp(id_cf, kode, kode_perkiraan, nama_perkiraan, keterangan, saldo) {
 
@@ -1583,6 +1708,11 @@
         document.getElementById('nama_perkiraanp2').value = nama_perkiraan;
         document.getElementById('keteranganp').value = keterangan;
         document.getElementById('saldop').value = saldo
+    }
+    
+    //hapus data cashflow awal, pengeluaran
+    function HapusDataCashflowp(kode) {
+        document.getElementById('idHapusCashflowPengeluaran').value = kode;
     }
 
     //menampilkan data edit ke modal cashflow setelah, pendapatan
@@ -1595,6 +1725,11 @@
         document.getElementById('keterangancp').value = keterangan;
         document.getElementById('saldocp').value = saldo
     }
+        
+    //hapus data cashflow setelah, pendapatan
+    function HapusDataCashflows(kode) {
+        document.getElementById('idHapusCashflowsPendapatan').value = kode;
+    }
 
     //menampilkan data edit ke modal cashflow awal, pengeluaran
     function EditDataCashflowsp(id_cf, kode, kode_perkiraan, nama_perkiraan, keterangan, saldo) {
@@ -1606,6 +1741,11 @@
         document.getElementById('keterangancpe').value = keterangan;
         document.getElementById('saldocpe').value = saldo
     }
+            
+    //hapus data cashflow setelah, pendapatan
+    function HapusDataCashflowsp(kode) {
+        document.getElementById('idHapusCashflowsPengeluaran').value = kode;
+    }
 
     //menampilkan data edit ke modal hutang
     function EditDataHutang(id_cf, kode, kode_perkiraan, nama_perkiraan, keterangan, saldo) {
@@ -1616,6 +1756,11 @@
         document.getElementById('nama_perkiraan_hutang2').value = nama_perkiraan;
         document.getElementById('keteranganh').value = keterangan;
         document.getElementById('saldoh').value = saldo
+    }
+                
+    //hapus data cashflow setelah, pendapatan
+    function HapusDataHutang(kode) {
+        document.getElementById('idHapusHutang').value = kode;
     }
 </script>
 

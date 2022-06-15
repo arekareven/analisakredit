@@ -46,6 +46,13 @@ class Cashflow extends CI_Controller
 
         $this->m_cashflow->edit_data($kode);
     }
+    
+    public function hapusCashflowsPendapatan()
+	{
+		$idt = $this->input->post('idHapusCashflowsPendapatan');        
+		$id_lb = $this->input->post('id_lb');
+		$this->m_cashflow->hapusCashflowsPendapatan($idt, $id_lb);
+	}
 
     public function add2()
     {
@@ -64,6 +71,13 @@ class Cashflow extends CI_Controller
 
         $this->m_cashflow->edit_datap($kode);
     }
+        
+    public function hapusCashflowsPengeluaran()
+	{
+		$idt = $this->input->post('idHapusCashflowsPengeluaran');        
+		$id_lb = $this->input->post('id_lb');
+		$this->m_cashflow->hapusCashflowsPengeluaran($idt, $id_lb);
+	}
 
     public function add_hutang()
     {
