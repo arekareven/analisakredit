@@ -903,21 +903,21 @@
                                                 <input type="text" class="form-control" id="luas_b" name="luas_b" value="<?php echo $row->luas_b; ?>">
                                             </div>
                                             <div class="col-md-4 mb-4">
-                                                <label for="harga_t" class="form-label">Harga Tanah SPPT (Rp.)</label>
+                                                <label for="harga_t" class="form-label">Harga Tanah SPPT per Meter (Rp.)</label>
                                                 <input type="text" class="form-control" id="harga_t" name="harga_t" value="<?php echo $row->harga_t; ?>">
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-4 mb-4">
-                                                <label for="harga_b" class="form-label">Harga Bangunan SPPT (Rp.)</label>
+                                                <label for="harga_b" class="form-label">Harga Bangunan SPPT per Meter (Rp.)</label>
                                                 <input type="text" class="form-control" id="harga_b" name="harga_b" value="<?php echo $row->harga_b; ?>">
                                             </div>
                                             <div class="col-md-4 mb-4">
-                                                <label for="harga_t2" class="form-label">Harga Tanah Pasar (Rp.)</label>
+                                                <label for="harga_t2" class="form-label">Harga Tanah Pasar per Meter (Rp.)</label>
                                                 <input type="text" class="form-control" id="harga_t2" name="harga_t2" value="<?php echo $row->harga_t2; ?>">
                                             </div>
                                             <div class="col-md-4 mb-4">
-                                                <label for="harga_b2" class="form-label">Harga Bangunan Pasar (Rp.)</label>
+                                                <label for="harga_b2" class="form-label">Harga Bangunan Pasar per Meter (Rp.)</label>
                                                 <input type="text" class="form-control" id="harga_b2" name="harga_b2" value="<?php echo $row->harga_b2; ?>">
                                             </div>
                                         </div>

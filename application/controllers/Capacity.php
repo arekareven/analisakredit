@@ -50,6 +50,29 @@ class Capacity extends CI_Controller
         $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor("C:/xampp/htdocs/analisakredit/capacity.docx");
         $surat = $this->db->query("SELECT * FROM capacity WHERE id_lb='$id_lb'");
         foreach ($surat->result() as $row) {
+            if($row->tgl_mulai == '0000-00-00'){
+                $tgl_mulai = '-';
+            } else {
+                $tgl_mulai = date('d-m-Y', strtotime($row->tgl_mulai));
+            }
+            
+            if($row->tgl_nasabah == '0000-00-00'){
+                $tgl_nasabah = '-';
+            } else {
+                $tgl_nasabah = date('d-m-Y', strtotime($row->tgl_nasabah));
+            }
+            
+            if($row->tgl_akta == '0000-00-00'){
+                $tgl_akta = '-';
+            } else {
+                $tgl_akta = date('d-m-Y', strtotime($row->tgl_akta));
+            }
+            
+            if($row->tgl_npwp == '0000-00-00'){
+                $tgl_npwp = '-';
+            } else {
+                $tgl_npwp = date('d-m-Y', strtotime($row->tgl_npwp));
+            }
 
             $templateProcessor->setValues([
                 'nama_usaha'    => $row->nama_usaha,
@@ -58,12 +81,12 @@ class Capacity extends CI_Controller
                 'status_usaha'  => $row->status_usaha,
                 'alamat_usaha'  => $row->alamat_usaha,
                 'tlp_usaha'     => $row->tlp_usaha,
-                'tgl_mulai'     => date('d-m-Y', strtotime($row->tgl_mulai)),
-                'tgl_nasabah'   => date('d-m-Y', strtotime($row->tgl_nasabah)),
+                'tgl_mulai'     => $tgl_mulai,
+                'tgl_nasabah'   => $tgl_nasabah,
                 'akta'          => $row->akta,
-                'tgl_akta'      => date('d-m-Y', strtotime($row->tgl_akta)),
+                'tgl_akta'      => $tgl_akta,
                 'npwp'          => $row->npwp,
-                'tgl_npwp'      => date('d-m-Y', strtotime($row->tgl_npwp)),
+                'tgl_npwp'      => $tgl_npwp,
                 'usaha_skrg'    => $row->usaha_skrg,
                 'alokasi1'    => $row->alokasi1,
                 'alokasi2'    => $row->alokasi2,
