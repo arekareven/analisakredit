@@ -11,7 +11,7 @@ class Collateral extends CI_Controller
         $this->load->helper('url');
         $this->load->library(array('session'));
     }
-
+    
     public function index()
     {
         $data['id_lb'] = $_GET['id_lb'];
@@ -28,6 +28,100 @@ class Collateral extends CI_Controller
         $this->load->view('kredit/collateral', $data);
         $this->load->view('templates/footer');
     }
+    
+	//CRUD dengan jquery Ajax colta
+	function data_colta()
+	{
+		$id_lb = $this->input->post('id_lb');
+		$data = $this->m_collateral->colta_list($id_lb);
+		echo json_encode($data);
+	}
+
+	function get_colta()
+	{
+		$id_col2 = $this->input->get('id');
+		$data = $this->m_collateral->get_colta_by_kode($id_col2);
+		echo json_encode($data);
+	}
+
+	public function update_colta()
+	{
+		$id_col2          = $this->input->post('id_col2');
+		$jenis     = $this->input->post('jenis');
+		$nama         = $this->input->post('nama');
+		$alamat         = $this->input->post('alamat');
+		$no_shm   = $this->input->post('no_shm');
+		$lokasi      = $this->input->post('lokasi');
+		$tgl_ukur      = $this->input->post('tgl_ukur');
+		$no_ukur    = $this->input->post('no_ukur');
+		$milik       = $this->input->post('milik');
+		$fisik_jaminan           = $this->input->post('fisik_jaminan');
+		$luas_t           = $this->input->post('luas_t');
+		$luas_b           = $this->input->post('luas_b');
+		$harga_t           = $this->input->post('harga_t');
+		$harga_b           = $this->input->post('harga_b');
+		$harga_t2           = $this->input->post('harga_t2');
+		$harga_b2           = $this->input->post('harga_b2');
+		$ht           = $this->input->post('ht');
+		$taksasi           = $this->input->post('taksasi');
+		$usulan     = $this->input->post('usulan');
+		$data = $this->m_collateral->update_colta($id_col2, $jenis, $nama, $alamat, $no_shm, $lokasi, $tgl_ukur, $no_ukur, $milik, $fisik_jaminan, $luas_t, $luas_b, $harga_t, $harga_b, $harga_t2, $harga_b2, $ht, $taksasi, $usulan);
+		echo json_encode($data);
+	}
+
+	function delete_colta()
+	{
+		$id_col2 = $this->input->post('kode');
+		$data = $this->m_collateral->delete_colta($id_col2);
+		echo json_encode($data);
+	}
+	//End CRUD Jquery Ajax
+    	
+	//CRUD dengan jquery Ajax colken
+	function data_colken()
+	{
+		$id_lb = $this->input->post('id_lb');
+		$data = $this->m_collateral->colken_list($id_lb);
+		echo json_encode($data);
+	}
+
+	function get_colken()
+	{
+		$id_col = $this->input->get('id');
+		$data = $this->m_collateral->get_colken_by_kode($id_col);
+		echo json_encode($data);
+	}
+
+	public function update_colken()
+	{
+		$id_col          = $this->input->post('id_col');
+		$roda     = $this->input->post('roda');
+		$nopol         = $this->input->post('nopol');
+		$nama_stnk         = $this->input->post('nama_stnk');
+		$alamat   = $this->input->post('alamat');
+		$type      = $this->input->post('type');
+		$jenis      = $this->input->post('jenis');
+		$tahun    = $this->input->post('tahun');
+		$warna       = $this->input->post('warna');
+		$silinder           = $this->input->post('silinder');
+		$no_rangka           = $this->input->post('no_rangka');
+		$no_mesin           = $this->input->post('no_mesin');
+		$no_bpkb           = $this->input->post('no_bpkb');
+		$milik           = $this->input->post('milik');
+		$taksiran           = $this->input->post('taksiran');
+		$nl           = $this->input->post('nl');
+		$usulan     = $this->input->post('usulan');
+		$data = $this->m_collateral->update_colken($id_col, $roda, $nopol, $nama_stnk, $alamat, $type, $jenis, $tahun, $warna, $silinder, $no_rangka, $no_mesin, $no_bpkb, $milik, $taksiran, $nl, $usulan);
+		echo json_encode($data);
+	}
+
+	function delete_colken()
+	{
+		$id_col2 = $this->input->post('kode');
+		$data = $this->m_collateral->delete_colken($id_col2);
+		echo json_encode($data);
+	}
+	//End CRUD Jquery Ajax
 
     public function add()
     {
@@ -39,6 +133,13 @@ class Collateral extends CI_Controller
         else
             $this->m_collateral->edit_data($id_col);
     }
+            
+    public function hapus()
+	{
+		$idt = $this->input->post('idcollk');        
+		$id_lb = $this->input->post('id_lb');
+		$this->m_collateral->hapus($idt, $id_lb);
+	}
 
     public function add2()
     {
@@ -50,6 +151,13 @@ class Collateral extends CI_Controller
         else
             $this->m_collateral->edit_data2($id_col2);
     }
+        
+    public function hapus2()
+	{
+		$idt = $this->input->post('idcollt');        
+		$id_lb = $this->input->post('id_lb');
+		$this->m_collateral->hapus2($idt, $id_lb);
+	}
 
     public function next()
     {

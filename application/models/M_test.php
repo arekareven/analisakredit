@@ -9,15 +9,43 @@ class M_test extends CI_Model
         $this->load->library(array('session'));
         $this->load->helper(array('url'));
     }
+        
+	function rw_list($id_lb){
+		$hasil=$this->db->query("SELECT * FROM riwayat_pinjaman WHERE id_lb=$id_lb");
+		return $hasil->result();
+	}
+        
+	function get_rp_by_kode($id_rp){
+		$hsl=$this->db->query("SELECT * FROM riwayat_pinjaman WHERE id_rp='$id_rp'");
+		if($hsl->num_rows()>0){
+			foreach ($hsl->result() as $data) {
+				$hasil=array(
+					'id_rp' => $data->id_rp,
+					'id_lb' => $data->id_lb,
+					'plafond' => $data->plafond,
+					'status' => $data->status,
+					'saldo' => $data->saldo,
+					'sejarah' => $data->sejarah,
+					'data' => $data->data,
+					);
+			}
+		}
+		return $hasil;
+	}
 
     public function data_select()
     {
         return $this->db->get('notaris');
     }
 
+    public function data_analis()
+    {
+        return $this->db->get('analis');
+    }
+
     public function data_perkiraan()
     {
-        return $this->db->query("SELECT * FROM perkiraan WHERE LENGTH(kode_perkiraan) > 3");
+        return $this->db->query("SELECT * FROM perkiraan WHERE MID(kode_perkiraan,1,1) = '5' && LENGTH(kode_perkiraan) > 3");
     }
 
     public function edit_lb($id_lb)
@@ -84,10 +112,15 @@ class M_test extends CI_Model
     {
         return $this->db->query("SELECT * FROM `condition` WHERE id_lb=$id_lb");
     }
+    
+    public function edit_real($id_lb)
+    {
+        return $this->db->query("SELECT * FROM realisasi WHERE id_lb='$id_lb'");
+    }
 
     public function edit_usulan($id_lb)
     {
-        return $this->db->query("SELECT * FROM usulan WHERE id_lb=$id_lb");
+        return $this->db->query("SELECT * FROM usulan WHERE id_lb='$id_lb'");
     }
 
     function cari($id)
@@ -98,39 +131,35 @@ class M_test extends CI_Model
 
     function get_kode($id_lb)
     {
-        $cd = $this->db->query("SELECT MAX(kode) AS kd_max FROM cashflow_b WHERE id_lb=$id_lb ");
-        $kd = "";
+        $cd = $this->db->query("SELECT MAX(kode) AS kd_max FROM cashflow_b WHERE id_lb='$id_lb' ");
         if ($cd->num_rows() > 0) {
             foreach ($cd->result() as $k) {
                 $tmp = ((int)$k->kd_max) + 1;
-                $kd = $tmp;
             }
         } else {
-            $kd = "1";
+            $tmp = "1";
         }
-        return $kd;
+        return $tmp;
     }
 
     function get_kode2($id_lb)
     {
-        $cd = $this->db->query("SELECT MAX(kode) AS kd_max FROM cashflow_a WHERE id_lb=$id_lb ");
-        $kd = "";
+        $cd = $this->db->query("SELECT MAX(kode) AS kd_max FROM cashflow_a WHERE id_lb='$id_lb' ");
         if ($cd->num_rows() > 0) {
             foreach ($cd->result() as $k) {
                 $tmp = ((int)$k->kd_max) + 1;
-                $kd = $tmp;
             }
         } else {
-            $kd = "1";
+            $tmp = "1";
         }
-        return $kd;
+        return $tmp;
     }
 
     public function add_data($data)
     {
         $id_cf = $this->input->post('id_cf');
         $id_lb = $this->input->post('id_lb');
-        $kode = $this->input->post('kode');
+        $kode =  $this->get_kode($id_lb);
         $kode_perkiraan = $this->input->post('kode_perkiraan');
         $kode_perkiraan2 = $this->input->post('kode_perkiraan2');
         $nama_perkiraan = $this->input->post('nama_perkiraan');
@@ -140,7 +169,6 @@ class M_test extends CI_Model
         $kode_jenis = 'K';
         $kode_jenis2 = 'D';
         $jenis = $this->input->post('jenis');
-        $kode = $this->input->post('kode');
 
         $data = array(
             'id_cf'         => $id_cf,
@@ -173,8 +201,8 @@ class M_test extends CI_Model
     public function edit_data($data)
     {
         $id_cf = $this->input->post('id_cf');
-        $kode = $this->input->post('kode');
         $id_lb = $this->input->post('id_lb');
+        $kode = $this->input->post('kode');
         $kode_perkiraan = $this->input->post('kode_perkiraan');
         $nama_perkiraan = $this->input->post('nama_perkiraan');
         $kode_perkiraan2 = $this->input->post('kode_perkiraan2');
@@ -184,7 +212,6 @@ class M_test extends CI_Model
         $kode_jenis = 'K';
         $kode_jenis2 = 'D';
         $jenis = $this->input->post('jenis');
-
 
         $data = array(
             'id_cf'         => $id_cf,
@@ -236,7 +263,7 @@ class M_test extends CI_Model
         $kode_jenis = 'K';
         $kode_jenis2 = 'D';
         $jenis = $this->input->post('jenisp');
-        $kode = $this->input->post('kodep');
+        $kode =  $this->get_kode($id_lb);
 
         $data = array(
             'id_cf'         => $id_cf,
@@ -323,7 +350,7 @@ class M_test extends CI_Model
     {
         $id_cf = $this->input->post('id_cf');
         $id_lb = $this->input->post('id_lb');
-        $kode = $this->input->post('kode');
+        $kode = $this->get_kode2($id_lb);
         $kode_perkiraan = $this->input->post('kode_perkiraan_hutang');
         $kode_perkiraan2 = $this->input->post('kode_perkiraan_hutang2');
         $nama_perkiraan = $this->input->post('nama_perkiraan_hutang');
@@ -438,4 +465,13 @@ class M_test extends CI_Model
         );
         $this->db->insert('usulan', $data);
     }
+ 
+    /*
+    function search_notaris($notaris){
+        $this->db->like('notaris', $notaris , 'both');
+        $this->db->order_by('notaris', 'ASC');
+        $this->db->limit(10);
+        return $this->db->get('notaris')->result();
+    }
+    */
 }

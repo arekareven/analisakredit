@@ -21,9 +21,10 @@ class Auth extends CI_Controller {
         $this->form_validation->set_rules('password','Password','required|trim');
 
         if ($this->form_validation->run() == false){
-		$data['title']='Login Minpro';
+		$data['title']='LAS';
 		$this->load->view('templates/auth_header',$data);
 		$this->load->view('auth/login');
+		//$this->load->view('auth/maintenance');
 		$this->load->view('templates/auth_footer');
 	} else {
 		$this->_login();
@@ -118,5 +119,6 @@ class Auth extends CI_Controller {
 
     public function blocked(){
         $this->load->view('auth/blocked');
+        //$this->load->view('auth/maintenance');
     }
 }

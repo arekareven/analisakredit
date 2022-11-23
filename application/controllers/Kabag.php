@@ -26,16 +26,13 @@ class Kabag extends CI_Controller
         $this->load->view('templates/footer');
     }
 
+    //---
 
-    public function edit()
-    {
-        $id_analisis = $this->input->post('id_analisis');
-        $this->m_kabag->edit_data($id_analisis);
-    }
-
-    public function lakukan_download()
-    {
-        $file = $_GET['file'];
-        force_download('cache/' . $file, NULL);
-    }
+	public function update_pengajuan()
+	{
+		$id_pengajuan = $this->input->post('id_pengajuan');
+		$status		= $this->input->post('status');
+		$catatan     = $this->input->post('catatan');
+		$this->m_kabag->update_pengajuan($id_pengajuan, $status,$catatan);
+	}
 }

@@ -9,29 +9,18 @@ class M_kabag extends CI_Model
         $this->load->library(array('session'));
         $this->load->helper(array('url', 'download'));
     }
+    		
+	public function update_pengajuan($id_pengajuan, $status, $catatan)
+	{
+		$this->db->query("UPDATE pengajuan SET `status`='$status', catatan='$catatan' WHERE id_pengajuan='$id_pengajuan'");
+		redirect('analisa');
+	}
 
     public function tampil_data()
     {
-        $user = $this->db->get_where('user', ['email' =>
-        $this->session->userdata('email')])->row_array();
-        $a = $user['name'];
-        return $this->db->query("SELECT * FROM analisis ORDER BY id_analisis DESC");
-    }
-
-    function edit_data($data)
-    {
-        $id_analisis                = $this->input->post('id_analisis');
-        $catatan    = $this->input->post('catatan');
-        $status            = $this->input->post('status');
-
-        $kondisi = array('id_analisis' => $id_analisis);
-
-        $data = array(
-            'catatan'    => $catatan,
-            'status'            => $status
-        );
-
-        $this->db->update('analisis', $data, $kondisi);
-        redirect('kabag');
+        return $this->db->query("SELECT * FROM pengajuan WHERE `status`='Direkomendasi'");
+        /*
+        return $this->db->query("SELECT * FROM analisis WHERE nama='$a' AND status='Ditinjau'");
+        */
     }
 }

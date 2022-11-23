@@ -8,6 +8,56 @@ class M_character extends CI_Model
         parent::__construct();
         $this->load->library(array('session'));
     }
+        
+//CRUD dengan jquery Ajax
+    function char_list($id_lb)
+    {
+        $hasil = $this->db->query("SELECT * FROM karakter WHERE id_lb=$id_lb");
+        return $hasil->result();
+    }
+
+    function get_char_by_kode($id_char)
+    {
+        $hsl = $this->db->query("SELECT * FROM karakter WHERE id_char='$id_char'");
+        if ($hsl->num_rows() > 0) {
+            foreach ($hsl->result() as $data) {
+                $hasil = array(
+                    'id_char' => $data->id_char,
+                    'id_lb' => $data->id_lb,
+                    'info_pribadi' => $data->info_pribadi,
+                    'info_perilaku' => $data->info_perilaku,
+                    'info_keluarga' => $data->info_keluarga,
+                    'nm1' => $data->nm1,
+                    'nm2' => $data->nm2,
+                    'nm3' => $data->nm3,
+                    'al1' => $data->al1,
+                    'al2' => $data->al2,
+                    'al3' => $data->al3,
+                    'hp1' => $data->hp1,
+                    'hp2' => $data->hp2,
+                    'hp3' => $data->hp3,
+                );
+            }
+        }
+        return $hasil;
+    }
+
+    public function update_char($id_char, $info_pribadi, $info_perilaku, $info_keluarga, $nm1, $nm2, $nm3, $al1, $al2, $al3, $hp1, $hp2, $hp3)
+    {
+        $hasil = $this->db->query("UPDATE karakter SET info_pribadi='$info_pribadi',info_perilaku='$info_perilaku',
+                                                        info_keluarga='$info_keluarga',
+                                                        nm1='$nm1',nm2='$nm2',nm3='$nm3',
+                                                        al1='$al1',al2='$al2',al3='$al3',
+                                                        hp1='$hp1',hp2='$hp2',hp3='$hp3' WHERE id_char='$id_char'");
+        return $hasil;
+    }
+
+    function delete_char($id_char)
+    {
+        $hasil = $this->db->query("DELETE FROM karakter WHERE id_char='$id_char'");
+        return $hasil;
+    }
+//END CRUD dengan jquery Ajax
 
     public function insert($data)
     {

@@ -1,7 +1,11 @@
 <!-- Test case 1-->
 <div class="container-fluid">
 
-    <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
+	<div class="row">
+        <div class="col-md-10 mb-2">
+            <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
+        </div>
+    </div>
 
     <!-- table pemasukan -->
     <div class="card shadow mb-4">
@@ -20,6 +24,8 @@
                         <a class="nav-link" id="v-pills-collateralt-tab" data-toggle="pill" href="#v-pills-collateralt" role="tab" aria-controls="v-pills-collateralt" aria-selected="false">Collateral Tanah</a>
                         <a class="nav-link" id="v-pills-collateralk-tab" data-toggle="pill" href="#v-pills-collateralk" role="tab" aria-controls="v-pills-collateralk" aria-selected="false">Collateral Kendaraan</a>
                         <a class="nav-link" id="v-pills-usulan-tab" data-toggle="pill" href="#v-pills-usulan" role="tab" aria-controls="v-pills-usulan" aria-selected="false">Usulan</a>
+                        <!--
+                        <a class="nav-link" id="v-pills-print-tab" data-toggle="pill" href="#v-pills-print" role="tab" aria-controls="v-pills-print" aria-selected="false">Cetak</a>    -->
                     </div>
                 </div>
                 <div class="col-9">
@@ -70,6 +76,10 @@
                                         <div class="col-md-8 mb-3">
                                             <label for="suku_bunga" class="form-label">Suku Bunga</label>
                                             <input type="text" class="form-control" id="suku_bunga" name="suku_bunga" value="<?php echo $row->suku_bunga; ?>">
+                                        </div>
+                                        <div class="col-md-8 mb-3">
+                                            <label for="musiman" class="form-label">Musiman (Bulan)</label>
+                                            <input type="text" class="form-control" id="musiman" name="musiman" value="<?php echo $row->musiman; ?>">
                                         </div>
                                         <div class="col-md-8 mb-3">
                                             <label for="jenis_permohonan" class="form-label">Jenis Permohonan</label>
@@ -166,7 +176,8 @@
                                         </div>
                                         <div class="col-md-8 mb-3">
                                             <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
-                                            <select class="form-control" aria-label="Default select example" id="jenis_kelamin" name="jenis_kelamin" value="<?php echo $row->jenis_kelamin; ?>">
+                                            <select class="form-control" aria-label="Default select example" id="jenis_kelamin" name="jenis_kelamin">
+                                                <option value="<?php echo $row->jenis_kelamin; ?>"><?php echo $row->jenis_kelamin; ?></option>
                                                 <option value="Laki-laki">Laki-laki</option>
                                                 <option value="Perempuan">Perempuan</option>
                                             </select>
@@ -243,7 +254,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-primary">Save changes</button>
+                                        <button type="submit" class="btn btn-primary">Simpan</button>
                                     </div>
                                 </form>
                             <?php
@@ -272,8 +283,8 @@
                                                 <td>" . $row->status . "</td>
                                                 <td>" . number_format($row->saldo) . "</td>                      
                                                 <td>
-                                                <a href='#' class ='btn btn-warning btn-circle' data-toggle='modal' title='Edit' data-target='#edit' onClick=\"EditData('" . $row->id_rp . "', '" . $row->plafond . "', '" . $row->status . "', '" . $row->saldo . "', '" . $row->sejarah . "', '" . $row->data . "')\"><i class='fas fa-edit'></i></a>                               
-                                                <a href='#' class='btn btn-danger btn-circle' data-toggle='modal' title='Hapus' data-target='#hapus' onClick=\"HapusData('" . $row->id_rp . "')\"><i class='fas fa-trash'></i></a>
+                                                <a href='#' class ='btn btn-warning btn-circle' data-toggle='modal' title='Edit' data-target='#editrp' onClick=\"EditData('" . $row->id_rp . "', '" . $row->plafond . "', '" . $row->status . "', '" . $row->saldo . "', '" . $row->sejarah . "', '" . $row->data . "')\"><i class='fas fa-edit'></i></a>                               
+                                                <a href='#' class='btn btn-danger btn-circle' data-toggle='modal' title='Hapus' data-target='#hapusrp' onClick=\"HapusData('" . $row->id_rp . "')\"><i class='fas fa-trash'></i></a>
                                                 </td>							
                                                 </tr>";
                                             $no++;
@@ -350,7 +361,7 @@
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="submit" id="btn_character" class="btn btn-primary">Save changes</button>
+                                        <button type="submit" id="btn_character" class="btn btn-primary">Simpan</button>
                                     </div>
                                 </form>
                             <?php
@@ -471,7 +482,7 @@
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="submit" id="btn_capacity" class="btn btn-primary">Save changes</button>
+                                        <button type="submit" id="btn_capacity" class="btn btn-primary">Simpan</button>
                                     </div>
                                 </form>
                             <?php
@@ -629,41 +640,41 @@
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="submit" id="btn_capital" class="btn btn-primary">Save changes</button>
+                                        <button type="submit" id="btn_capital" class="btn btn-primary">Simpan</button>
                                     </div>
                                 </form>
                             <?php
                             }
                             ?>
                         </div>
-                        <div class="tab-pane fade" id="v-pills-cashflow" role="tabpanel" aria-labelledby="v-pills-cashflow-tab">
-                            <div class="modal-body">
-                                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                                    <li class="nav-item" role="presentation">
-                                        <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Pendapatan</a>
-                                    </li>
-                                    <li class="nav-item" role="presentation">
-                                        <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Pengeluaran</a>
-                                    </li>
-                                </ul>
-                                <div class="tab-content" id="pills-tabContent">
-                                    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                                        <div class="table-responsive">
-                                            <table class="table table-hover" width="100%" cellspacing="0">
-                                                <thead class="thead">
-                                                    <tr>
-                                                        <th scope="col">No</th>
-                                                        <th scope="col">Keterangan</th>
-                                                        <th scope="col">Saldo</th>
-                                                        <th scope="col">kode</th>
-                                                        <th scope="col">Aksi</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <?php
-                                                    $no = 1;
-                                                    foreach ($cashflow->result() as $row) {
-                                                        echo "<tr>
+						<div class="tab-pane fade" id="v-pills-cashflow" role="tabpanel" aria-labelledby="v-pills-cashflow-tab">
+							<div class="modal-body">
+								<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+									<li class="nav-item" role="presentation">
+										<a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Pendapatan</a>
+									</li>
+									<li class="nav-item" role="presentation">
+										<a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Pengeluaran</a>
+									</li>
+								</ul>
+								<div class="tab-content" id="pills-tabContent">
+									<div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+										<div class="table-responsive">
+											<table class="table table-hover" width="100%" cellspacing="0">
+												<thead class="thead">
+													<tr>
+														<th scope="col">No</th>
+														<th scope="col">Keterangan</th>
+														<th scope="col">Saldo</th>
+														<th scope="col">kode</th>
+														<th scope="col">Aksi</th>
+													</tr>
+												</thead>
+												<tbody>
+													<?php
+													$no = 1;
+													foreach ($cashflow->result() as $row) {
+														echo "<tr>
                                                                 <td>" . $no . "</td>
                                                                 <td>" . $row->keterangan . "</td>
                                                                 <td>" . number_format($row->saldo) . "</td>                      
@@ -673,29 +684,29 @@
                                                                 <a href='#' class='btn btn-danger btn-circle' data-toggle='modal' title='Hapus' data-target='#hapusCashflow' onClick=\"HapusDataCashflow('" . $row->kode . "')\"><i class='fas fa-trash'></i></a>
                                                                 </td>							    
                                                                 </tr>";
-                                                        $no++;
-                                                    }
-                                                    ?>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-                                        <div class="table-responsive">
-                                            <table class="table table-hover" width="100%" cellspacing="0">
-                                                <thead class="thead">
-                                                    <tr>
-                                                        <th scope="col">No</th>
-                                                        <th scope="col">Keterangan</th>
-                                                        <th scope="col">Saldo</th>
-                                                        <th scope="col">Aksi</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <?php
-                                                    $no = 1;
-                                                    foreach ($cashflowp->result() as $row) {
-                                                        echo "<tr>
+														$no++;
+													}
+													?>
+												</tbody>
+											</table>
+										</div>
+									</div>
+									<div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+										<div class="table-responsive">
+											<table class="table table-hover" width="100%" cellspacing="0">
+												<thead class="thead">
+													<tr>
+														<th scope="col">No</th>
+														<th scope="col">Keterangan</th>
+														<th scope="col">Saldo</th>
+														<th scope="col">Aksi</th>
+													</tr>
+												</thead>
+												<tbody>
+													<?php
+													$no = 1;
+													foreach ($cashflowp->result() as $row) {
+														echo "<tr>
                                                                 <td>" . $no . "</td>
                                                                 <td>" . $row->keterangan . "</td>
                                                                 <td>" . number_format($row->saldo) . "</td>                      
@@ -704,47 +715,47 @@
                                                                 <a href='#' class='btn btn-danger btn-circle' data-toggle='modal' title='Hapus' data-target='#hapusCashflowp' onClick=\"HapusDataCashflowp('" . $row->kode . "')\"><i class='fas fa-trash'></i></a>
                                                                 </td>							
                                                                 </tr>";
-                                                        $no++;
-                                                    }
-                                                    ?>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane fade" id="v-pills-cashflows" role="tabpanel" aria-labelledby="v-pills-cashflows-tab">
-                            <div class="modal-body">
-                                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                                    <li class="nav-item" role="presentation">
-                                        <a class="nav-link active" id="pills-home_c-tab" data-toggle="pill" href="#pills-home_c" role="tab" aria-controls="pills-home_c" aria-selected="true">Pendapatan</a>
-                                    </li>
-                                    <li class="nav-item" role="presentation">
-                                        <a class="nav-link" id="pills-profile_c-tab" data-toggle="pill" href="#pills-profile_c" role="tab" aria-controls="pills-profile_c" aria-selected="false">Pengeluaran</a>
-                                    </li>
-                                    <li class="nav-item" role="presentation">
-                                        <a class="nav-link" id="pills-hutang-tab" data-toggle="pill" href="#pills-hutang" role="tab" aria-controls="pills-hutang" aria-selected="false">Hutang</a>
-                                    </li>
-                                </ul>
-                                <div class="tab-content" id="pills-tabContent">
-                                    <div class="tab-pane fade show active" id="pills-home_c" role="tabpanel" aria-labelledby="pills-home_c-tab">
-                                        <div class="table-responsive">
-                                            <table class="table table-hover" width="100%" cellspacing="0">
-                                                <thead class="thead">
-                                                    <tr>
-                                                        <th scope="col">No</th>
-                                                        <th scope="col">Keterangan</th>
-                                                        <th scope="col">Saldo</th>
-                                                        <th scope="col">kode</th>
-                                                        <th scope="col">Aksi</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <?php
-                                                    $no = 1;
-                                                    foreach ($cashflows->result() as $row) {
-                                                        echo "<tr>
+														$no++;
+													}
+													?>
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="tab-pane fade" id="v-pills-cashflows" role="tabpanel" aria-labelledby="v-pills-cashflows-tab">
+							<div class="modal-body">
+								<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+									<li class="nav-item" role="presentation">
+										<a class="nav-link active" id="pills-home_c-tab" data-toggle="pill" href="#pills-home_c" role="tab" aria-controls="pills-home_c" aria-selected="true">Pendapatan</a>
+									</li>
+									<li class="nav-item" role="presentation">
+										<a class="nav-link" id="pills-profile_c-tab" data-toggle="pill" href="#pills-profile_c" role="tab" aria-controls="pills-profile_c" aria-selected="false">Pengeluaran</a>
+									</li>
+									<li class="nav-item" role="presentation">
+										<a class="nav-link" id="pills-hutang-tab" data-toggle="pill" href="#pills-hutang" role="tab" aria-controls="pills-hutang" aria-selected="false">Hutang</a>
+									</li>
+								</ul>
+								<div class="tab-content" id="pills-tabContent">
+									<div class="tab-pane fade show active" id="pills-home_c" role="tabpanel" aria-labelledby="pills-home_c-tab">
+										<div class="table-responsive">
+											<table class="table table-hover" width="100%" cellspacing="0">
+												<thead class="thead">
+													<tr>
+														<th scope="col">No</th>
+														<th scope="col">Keterangan</th>
+														<th scope="col">Saldo</th>
+														<th scope="col">kode</th>
+														<th scope="col">Aksi</th>
+													</tr>
+												</thead>
+												<tbody>
+													<?php
+													$no = 1;
+													foreach ($cashflows->result() as $row) {
+														echo "<tr>
                                                                 <td>" . $no . "</td>
                                                                 <td>" . $row->keterangan . "</td>
                                                                 <td>" . number_format($row->saldo) . "</td>                      
@@ -754,30 +765,30 @@
                                                                 <a href='#' class='btn btn-danger btn-circle' data-toggle='modal' title='Hapus' data-target='#hapusCashflows' onClick=\"HapusDataCashflows('" . $row->kode . "')\"><i class='fas fa-trash'></i></a>
                                                                 </td>							    
                                                                 </tr>";
-                                                        $no++;
-                                                    }
-                                                    ?>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane fade" id="pills-profile_c" role="tabpanel" aria-labelledby="pills-profile_c-tab">
-                                        <div class="table-responsive">
-                                            <table class="table table-hover" width="100%" cellspacing="0">
-                                                <thead class="thead">
-                                                    <tr>
-                                                        <th scope="col">No</th>
-                                                        <th scope="col">Keterangan</th>
-                                                        <th scope="col">Saldo</th>
-                                                        <th scope="col">kode</th>
-                                                        <th scope="col">Aksi</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <?php
-                                                    $no = 1;
-                                                    foreach ($cashflowsp->result() as $row) {
-                                                        echo "<tr>
+														$no++;
+													}
+													?>
+												</tbody>
+											</table>
+										</div>
+									</div>
+									<div class="tab-pane fade" id="pills-profile_c" role="tabpanel" aria-labelledby="pills-profile_c-tab">
+										<div class="table-responsive">
+											<table class="table table-hover" width="100%" cellspacing="0">
+												<thead class="thead">
+													<tr>
+														<th scope="col">No</th>
+														<th scope="col">Keterangan</th>
+														<th scope="col">Saldo</th>
+														<th scope="col">kode</th>
+														<th scope="col">Aksi</th>
+													</tr>
+												</thead>
+												<tbody>
+													<?php
+													$no = 1;
+													foreach ($cashflowsp->result() as $row) {
+														echo "<tr>
                                                                 <td>" . $no . "</td>
                                                                 <td>" . $row->keterangan . "</td>
                                                                 <td>" . number_format($row->saldo) . "</td>                      
@@ -787,30 +798,30 @@
                                                                 <a href='#' class='btn btn-danger btn-circle' data-toggle='modal' title='Hapus' data-target='#hapusCashflowsp' onClick=\"HapusDataCashflowsp('" . $row->kode . "')\"><i class='fas fa-trash'></i></a>
                                                                 </td>							    
                                                                 </tr>";
-                                                        $no++;
-                                                    }
-                                                    ?>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane fade" id="pills-hutang" role="tabpanel" aria-labelledby="pills-hutang-tab">
-                                        <div class="table-responsive">
-                                            <table class="table table-hover" width="100%" cellspacing="0">
-                                                <thead class="thead">
-                                                    <tr>
-                                                        <th scope="col">No</th>
-                                                        <th scope="col">Keterangan</th>
-                                                        <th scope="col">Saldo</th>
-                                                        <th scope="col">kode</th>
-                                                        <th scope="col">Aksi</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <?php
-                                                    $no = 1;
-                                                    foreach ($hutang->result() as $row) {
-                                                        echo "<tr>
+														$no++;
+													}
+													?>
+												</tbody>
+											</table>
+										</div>
+									</div>
+									<div class="tab-pane fade" id="pills-hutang" role="tabpanel" aria-labelledby="pills-hutang-tab">
+										<div class="table-responsive">
+											<table class="table table-hover" width="100%" cellspacing="0">
+												<thead class="thead">
+													<tr>
+														<th scope="col">No</th>
+														<th scope="col">Keterangan</th>
+														<th scope="col">Saldo</th>
+														<th scope="col">kode</th>
+														<th scope="col">Aksi</th>
+													</tr>
+												</thead>
+												<tbody>
+													<?php
+													$no = 1;
+													foreach ($hutang->result() as $row) {
+														echo "<tr>
                                                                 <td>" . $no . "</td>
                                                                 <td>" . $row->keterangan . "</td>
                                                                 <td>" . number_format($row->saldo) . "</td>                      
@@ -820,16 +831,16 @@
                                                                 <a href='#' class='btn btn-danger btn-circle' data-toggle='modal' title='Hapus' data-target='#hapusHutang' onClick=\"HapusDataHutang('" . $row->kode . "')\"><i class='fas fa-trash'></i></a>
                                                                 </td>							    
                                                                 </tr>";
-                                                        $no++;
-                                                    }
-                                                    ?>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+														$no++;
+													}
+													?>
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
                         <div class="tab-pane fade" id="v-pills-condition" role="tabpanel" aria-labelledby="v-pills-condition-tab">
                             <?php
                             foreach ($condition->result() as $row) {
@@ -864,7 +875,7 @@
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="submit" id="btn_condition" class="btn btn-primary">Save changes</button>
+                                        <button type="submit" id="btn_condition" class="btn btn-primary">Simpan</button>
                                     </div>
                                 </form>
                             <?php
@@ -872,106 +883,40 @@
                             ?>
                         </div>
                         <div class="tab-pane fade" id="v-pills-collateralt" role="tabpanel" aria-labelledby="v-pills-collateralt-tab">
-                            <?php
-                            foreach ($collateralt->result() as $row) {
-                            ?>
-                                <form method="post" action="<?php echo base_url('collateral/add2'); ?>">
-                                    <div class="modal-body">
-                                        <div class="row">
-                                            <div class="col-md-4 mb-4">
-                                                <label for="jenis" class="form-label">Jenis</label>
-                                                <input type="hidden" class="form-control" id="id_lb" name="id_lb" value="<?php echo $row->id_lb; ?>">
-                                                <input type="hidden" class="form-control" id="id_col2" name="id_col2" value="<?php echo $row->id_col2; ?>">
-                                                <input type="text" class="form-control" id="jenis" name="jenis" value="<?php echo $row->jenis; ?>">
-                                            </div>
-                                            <div class="col-md-4 mb-4">
-                                                <label for="nama" class="form-label">Nama Pemilik</label>
-                                                <input type="text" class="form-control" id="nama" name="nama" value="<?php echo $row->nama; ?>">
-                                            </div>
-                                            <div class="col-md-4 mb-4">
-                                                <label for="no_shm" class="form-label">No. SHM</label>
-                                                <input type="text" class="form-control" id="no_shm" name="no_shm" value="<?php echo $row->no_shm; ?>">
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-4 mb-4">
-                                                <label for="luas_t" class="form-label">Luas Tanah (M2)</label>
-                                                <input type="text" class="form-control" id="luas_t" name="luas_t" value="<?php echo $row->luas_t; ?>">
-                                            </div>
-                                            <div class="col-md-4 mb-4">
-                                                <label for="luas_b" class="form-label">Luas Bangunan (M2)</label>
-                                                <input type="text" class="form-control" id="luas_b" name="luas_b" value="<?php echo $row->luas_b; ?>">
-                                            </div>
-                                            <div class="col-md-4 mb-4">
-                                                <label for="harga_t" class="form-label">Harga Tanah SPPT per Meter (Rp.)</label>
-                                                <input type="text" class="form-control" id="harga_t" name="harga_t" value="<?php echo $row->harga_t; ?>">
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-4 mb-4">
-                                                <label for="harga_b" class="form-label">Harga Bangunan SPPT per Meter (Rp.)</label>
-                                                <input type="text" class="form-control" id="harga_b" name="harga_b" value="<?php echo $row->harga_b; ?>">
-                                            </div>
-                                            <div class="col-md-4 mb-4">
-                                                <label for="harga_t2" class="form-label">Harga Tanah Pasar per Meter (Rp.)</label>
-                                                <input type="text" class="form-control" id="harga_t2" name="harga_t2" value="<?php echo $row->harga_t2; ?>">
-                                            </div>
-                                            <div class="col-md-4 mb-4">
-                                                <label for="harga_b2" class="form-label">Harga Bangunan Pasar per Meter (Rp.)</label>
-                                                <input type="text" class="form-control" id="harga_b2" name="harga_b2" value="<?php echo $row->harga_b2; ?>">
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-4 mb-4">
-                                                <label for="tgl_ukur" class="form-label">Tgl Surat Ukur</label>
-                                                <input type="date" class="form-control" id="tgl_ukur" name="tgl_ukur" value="<?php echo $row->tgl_ukur; ?>">
-                                            </div>
-                                            <div class="col-md-4 mb-4">
-                                                <label for="no_ukur" class="form-label">No. Surat Ukur</label>
-                                                <input type="text" class="form-control" id="no_ukur" name="no_ukur" value="<?php echo $row->no_ukur; ?>">
-                                            </div>
-                                            <div class="col-md-4 mb-4">
-                                                <label for="milik" class="form-label">Kepemilikan</label>
-                                                <input type="text" class="form-control" id="milik" name="milik" value="<?php echo $row->milik; ?>">
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-4 mb-4">
-                                                <label for="ht" class="form-label">Nilai HT (Rp.)</label>
-                                                <input type="number" class="form-control" id="ht" name="ht" value="<?php echo $row->ht; ?>">
-                                            </div>
-                                            <div class="col-md-4 mb-4">
-                                                <label for="taksasi" class="form-label">Taksasi (%)</label>
-                                                <input type="number" class="form-control" id="taksasi" name="taksasi" value="<?php echo $row->taksasi; ?>">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12 mb-4">
-                                            <label for="alamat" class="form-label">Alamat Pemilik</label>
-                                            <textarea class="form-control" id="alamat" name="alamat"><?php echo $row->alamat; ?></textarea>
-                                        </div>
-                                        <div class="col-md-12 mb-4">
-                                            <label for="lokasi" class="form-label">Lokasi Jaminan</label>
-                                            <textarea class="form-control" id="lokasi" name="lokasi"><?php echo $row->lokasi; ?></textarea>
-                                        </div>
-                                        <div class="col-md-12 mb-4">
-                                            <label for="fisik_jaminan" class="form-label">Keterangan</label>
-                                            <textarea class="form-control" id="fisik_jaminan" name="fisik_jaminan"><?php echo $row->fisik_jaminan; ?></textarea>
-                                        </div>
-                                        <div class="col-md-12 mb-4">
-                                            <label for="pertimbangan" class="form-label">Pertimbangan</label>
-                                            <textarea class="form-control" id="usulan" name="usulan"><?php echo $row->usulan; ?></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="submit" id="btn_collateralt" class="btn btn-primary">Save changes</button>
-                                    </div>
-                                </form>
-                            <?php
-                            }
-                            ?>
+                            <div class="table-responsive">
+                                <table class="table table-hover" width="100%" cellspacing="0">
+                                    <thead class="thead">
+                                        <tr>
+                                            <th scope="col">No</th>
+                                            <th scope="col">Jenis</th>
+                                            <th scope="col">Nama Pemilik</th>
+                                            <th scope="col">No SHM</th>
+                                            <th scope="col">Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        $no = 1;
+                                        foreach ($collateralt->result() as $row) {
+                                            echo "<tr>
+                                            <td>" . $no . "</td>
+                                                <td>" . $row->jenis . "</td>
+                                                <td>" . $row->nama . "</td>
+                                                <td>" . $row->no_shm . "</td>                      
+                                                <td>
+                                                <a href='#' class ='btn btn-warning btn-circle' data-toggle='modal' title='Edit' data-target='#editcollt' onClick=\"EditDataCollt('" . $row->id_col2 . "', '" . $row->jenis . "', '" . $row->nama . "', '" . $row->alamat . "', '" . $row->no_shm . "', '" . $row->lokasi . "', '" . $row->tgl_ukur . "', '" . $row->no_ukur . "', '" . $row->luas_t . "', '" . $row->luas_b . "', '" . $row->milik . "', '" . $row->fisik_jaminan . "', '" . $row->taksasi . "', '" . $row->usulan . "', '" . $row->harga_t . "', '" . $row->harga_b . "', '" . $row->harga_t2 . "', '" . $row->harga_b2 . "', '" . $row->ht . "')\"><i class='fas fa-edit'></i></a>                               
+                                                <a href='#' class='btn btn-danger btn-circle' data-toggle='modal' title='Hapus' data-target='#hapuscollt' onClick=\"HapusDataCollt('" . $row->id_col2 . "')\"><i class='fas fa-trash'></i></a>
+                                                </td>							
+                                                </tr>";
+                                            $no++;
+                                        }
+                                        ?>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                         <div class="tab-pane fade" id="v-pills-collateralk" role="tabpanel" aria-labelledby="v-pills-collateralk-tab">
-                            <?php
+                            <!-- <?php
                             foreach ($collateralk->result() as $row) {
                             ?>
                                 <form method="post" action="<?php echo base_url('collateral/add'); ?>">
@@ -1058,12 +1003,43 @@
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="submit" id="btn_collateralk" class="btn btn-primary">Save changes</button>
+                                        <button type="submit" id="btn_collateralk" class="btn btn-primary">Simpan</button>
                                     </div>
                                 </form>
                             <?php
                             }
-                            ?>
+                            ?>  -->
+                            <div class="table-responsive">
+                                <table class="table table-hover" width="100%" cellspacing="0">
+                                    <thead class="thead">
+                                        <tr>
+                                            <th scope="col">No</th>
+                                            <th scope="col">Nopol</th>
+                                            <th scope="col">Nama STNK</th>
+                                            <th scope="col">Jenis</th>
+                                            <th scope="col">Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        $no = 1;
+                                        foreach ($collateralk->result() as $row) {
+                                            echo "<tr>
+                                            <td>" . $no . "</td>
+                                                <td>" . $row->nopol . "</td>
+                                                <td>" . $row->nama_stnk . "</td>
+                                                <td>" . $row->jenis . "</td>                      
+                                                <td>
+                                                <a href='#' class ='btn btn-warning btn-circle' data-toggle='modal' title='Edit' data-target='#editcollk' onClick=\"EditDataCollk('" . $row->id_col . "', '" . $row->roda . "', '" . $row->nopol . "', '" . $row->nama_stnk . "', '" . $row->alamat . "', '" . $row->type . "', '" . $row->jenis . "', '" . $row->tahun . "', '" . $row->warna . "', '" . $row->silinder . "', '" . $row->no_rangka . "', '" . $row->no_mesin . "', '" . $row->no_bpkb . "', '" . $row->milik . "', '" . $row->taksiran . "', '" . $row->nl . "', '" . $row->usulan . "')\"><i class='fas fa-edit'></i></a>                               
+                                                <a href='#' class='btn btn-danger btn-circle' data-toggle='modal' title='Hapus' data-target='#hapuscollk' onClick=\"HapusDataCollk('" . $row->id_col . "')\"><i class='fas fa-trash'></i></a>
+                                                </td>							
+                                                </tr>";
+                                            $no++;
+                                        }
+                                        ?>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                         <div class="tab-pane fade" id="v-pills-usulan" role="tabpanel" aria-labelledby="v-pills-usulan-tab">
                             <?php
@@ -1101,27 +1077,149 @@
                                                 <label for="realisasi" class="form-label">Tanggal Ralisasi</label>
                                                 <input type="date" class="form-control" id="realisasi" name="realisasi" value="<?php echo $row->realisasi; ?>">
                                             </div>
-                                            <div class="col-md-4 mb-4">
-                                                <label for="notaris" class="form-label">Notaris</label>
-                                                <select class="custom-select" id="notaris" name="notaris" onchange="autofill()">
-                                                    <option value="<?php echo $row->notaris; ?>">-- Pilih Notaris --</option>
-                                                    <?php
-                                                    foreach ($select->result() as $row) {
-                                                        echo "<option name='notaris' value='$row->notaris'>$row->notaris</option>";
-                                                    }
-                                                    ?>
-                                                </select>
+                                            <div class="col-md-5 mb-4">
+                                                <label for="plafond" class="form-label">Plafond</label>
+                                                <input type="number" class="form-control" id="plafondu" name="plafondu" value="<?php echo $row->plafond; ?>">
                                             </div>
                                         </div>
+                                        <div class="row">
+                                            <div class="col-md-3 mb-4">
+                                                <label for="waktu" class="form-label">Jangka Waktu (Bulan)</label>
+                                                <input type="number" class="form-control" id="waktu" name="waktu" value="<?php echo $row->waktu; ?>">
+                                            </div>
+                                            <div class="col-md-3 mb-4">
+                                                <label for="bunga" class="form-label">Bunga</label>
+                                                <input type="text" class="form-control" id="bunga" name="bunga" value="<?php echo $row->bunga; ?>">
+                                            </div>
+                                            <div class="col-md-3 mb-4">
+                                                <label for="provisi" class="form-label">Provisi (%)</label>
+                                                <input type="text" class="form-control" id="provisi" name="provisi" value="<?php echo $row->provisi; ?>">
+                                            </div>
+                                            <div class="col-md-3 mb-4">
+                                                <label for="administrasi" class="form-label">Administrasi (%)</label>
+                                                <input type="text" class="form-control" id="administrasi" name="administrasi" value="<?php echo $row->administrasi; ?>">
+                                            </div>
+                                        </div>          
+                                        <hr>                          
+                                        <div class="row">
+                                            <div class="col-md-4 mb-4">
+                                                <label for="asuransi" class="form-label">Asuransi</label>
+                                                <input type="text" class="form-control" id="asuransi" name="asuransi" value="<?php echo $row->asuransi; ?>">
+                                            </div>
+                                            <div class="col-md-4 mb-4">
+                                                <label for="materai" class="form-label">Materai</label>
+                                                <input type="text" class="form-control" id="materai" name="materai" value="<?php echo $row->materai; ?>">
+                                            </div>
+                                            <div class="col-md-4 mb-4">
+                                                <label for="apht" class="form-label">APHT</label>
+                                                <input type="text" class="form-control" id="apht" name="apht" value="<?php echo $row->apht; ?>">
+                                            </div>
+                                        </div> 
+                                        <div class="row">
+                                            <div class="col-md-4 mb-4">
+                                                <label for="skmht" class="form-label">SKMHT</label>
+                                                <input type="text" class="form-control" id="skmht" name="skmht" value="<?php echo $row->skmht; ?>">
+                                            </div>                                   
+                                            <div class="col-md-4 mb-4">
+                                                <label for="titipan" class="form-label">Titipan biaya SKMHT ke APHT</label>
+                                                <input type="text" class="form-control" id="titipan" name="titipan" value="<?php echo $row->titipan; ?>">
+                                            </div>
+                                            <div class="col-md-4 mb-4">
+                                                <label for="fiduciare" class="form-label">Fiduciare Didaftarkan</label>
+                                                <input type="text" class="form-control" id="fiduciare" name="fiduciare" value="<?php echo $row->fiduciare; ?>">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-4 mb-4">
+                                                <label for="legalisasi" class="form-label">Legalisasi</label>
+                                                <input type="text" class="form-control" id="legalisasi" name="legalisasi" value="<?php echo $row->legalisasi; ?>">
+                                            </div>
+                                            <div class="col-md-4 mb-4">
+                                                <label for="roya" class="form-label">Roya</label>
+                                                <input type="text" class="form-control" id="roya" name="roya" value="<?php echo $row->roya; ?>">
+                                            </div>
+                                            <div class="col-md-4 mb-4">
+                                                <label for="lainnya" class="form-label">Lain -lain</label>
+                                                <input type="text" class="form-control" id="lainnya" name="lainnya" value="<?php echo $row->lainnya; ?>">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-4 mb-4">
+                                                <label for="notaris" class="form-label">Notaris</label>
+                                                <input type="text" class="form-control" id="notaris" name="notaris" value="<?php echo $row->notaris; ?>">
+                                            </div>
+                                        </div>
+                                        <p>* Harap isi dengan 0 jika tidak ada biaya</p>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="submit" id="btn_usulan" class="btn btn-primary">Save changes</button>
+                                        <button type="submit" id="btn_usulan" class="btn btn-primary">Simpan</button>
                                     </div>
                                 </form>
                             <?php
                             }
                             ?>
+                            <div class="table-responsive">
+                                <table class="table table-hover" width="100%" cellspacing="0">
+                                    <thead class="thead">
+                                        <tr>
+                                            <th scope="col">No</th>
+                                            <th scope="col">Nama</th>
+                                            <th scope="col">Sebagai</th>
+                                            <th scope="col">Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        $no = 1;
+                                        foreach ($realisasi->result() as $row) {
+                                            echo "<tr>
+                                            <td>" . $no . "</td>
+                                                <td>" . $row->oleh . "</td>
+                                                <td>" . $row->sebagai . "</td>                      
+                                                <td>
+                                                <a href='#' class ='btn btn-warning btn-circle' data-toggle='modal' title='Edit' data-target='#editreal' onClick=\"EditDataReal('" . $row->id_real . "', '" . $row->oleh . "', '" . $row->sebagai . "')\"><i class='fas fa-edit'></i></a>                               
+                                                <a href='#' class='btn btn-danger btn-circle' data-toggle='modal' title='Hapus' data-target='#hapusreal' onClick=\"HapusDataReal('" . $row->id_real . "')\"><i class='fas fa-trash'></i></a>
+                                                </td>							
+                                                </tr>";
+                                            $no++;
+                                        }
+                                        ?>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
+                        <!--
+                        <div class="tab-pane fade" id="v-pills-print" role="tabpanel" aria-labelledby="v-pills-print-tab">
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-md-3 mb-3">
+                                        <a href="/pdf_lb?id_lb=<?php echo $id_lb; ?>" class="btn btn-primary" target="_blank">1. Latar Belakang</i></a>
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <a href="pdf_char?id_lb=<?php echo $id_lb; ?>" class="btn btn-primary" target="_blank">2. Character</i></a>
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <a href="capacity/templateword?id_lb=<?php echo $id_lb; ?>" class="btn btn-primary">3. Capacity</i></a>
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <a href="pdf_capiseb?id_lb=<?php echo $id_lb; ?>" class="btn btn-primary" target="_blank">4. Capital</i></a>
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <a href="pdf_capiset?id_lb=<?php echo $id_lb; ?>" class="btn btn-primary" target="_blank">5. Capital Setelah</i></a>
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <a href="pdf_coe?id_lb=<?php echo $id_lb; ?>" class="btn btn-primary" target="_blank">6. Condition</i></a>
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <a href="pdf_collateral?id_lb=<?php echo $id_lb; ?>" class="btn btn-primary" target="_blank">7. Collateral</i></a>
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <a href="pdf_usulan?id_lb=<?php echo $id_lb; ?>" class="btn btn-primary" target="_blank">8. Usulan</i></a>
+                                    </div>
+                                    <p>Harap cetak sesuai urutan.</p>
+                                </div>
+                            </div>
+                        </div>  -->
                     </div>
                 </div>
             </div>
@@ -1133,7 +1231,7 @@
 
 
 <!-- Modal edit riwayat pinjaman-->
-<div class="modal fade" id="edit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="editrp" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -1182,7 +1280,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" id="btn_rp" class="btn btn-primary">Save changes</button>
+                    <button type="submit" id="btn_rp" class="btn btn-primary">Simpan</button>
                 </div>
             </form>
         </div>
@@ -1190,7 +1288,7 @@
 </div>
 
 <!-- /.modal hapus riwayat pinjaman -->
-<div id="hapus" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" style="display: none;">
+<div id="hapusrp" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" style="display: none;">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
             <div class="modal-header">
@@ -1209,72 +1307,73 @@
                     <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">Tidak</button>
                     <button type="submit" class="btn btn-success waves-effect waves-light">Ya</button>
                 </div>
+            </form>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div>
 
 <!-- Modal edit cashflow awal,pendapatan-->
 <div class="modal fade" id="editCashflow" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Cashflow</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <form method="post" action="<?php echo base_url('test/editca'); ?>">
-                <div class="modal-body">
-                    <div class="col-md-8 mb-4">
-                        <label for="dari" class="form-label">Pendapatan dari</label>
-                        <select class="form-control" aria-label="Default select example" id="kode_perkiraan" name="kode_perkiraan" onchange="return nama_p();">
-                            <option value=""></option>
-                            <option value="4.1.1">Pendapatan Usaha 1</option>
-                            <option value="4.1.2">Pendapatan Usaha 2</option>
-                            <option value="4.1.3">Pendapatan Usaha 3</option>
-                            <option value="4.1.4">Pendapatan Lain / Gaji</option>
-                        </select>
-                    </div>
-                    <div class="col-md-8 mb-4">
-                        <label for="nopol" class="form-label">Untuk</label>
-                        <select class="form-control" aria-label="Default select example" id="kode_perkiraan2" name="kode_perkiraan2" onchange="return nama_p2();">
-                            <option value=""></option>
-                            <option value="1.1.1">Kas</option>
-                            <option value="1.1.2">Tabungan</option>
-                            <option value="1.1.3">Deposito</option>
-                            <option value="1.1.4">Piutang</option>
-                            <option value="1.1.5">Peralatan</option>
-                            <option value="1.1.6">Persediaan Barang Usaha 1</option>
-                            <option value="1.1.12">Persediaan Barang Usaha 2</option>
-                            <option value="1.1.13">Persediaan Barang Usaha 3</option>
-                            <option value="1.1.7">Sewa Dibayar Dimuka</option>
-                            <option value="1.1.8">Lahan Garap</option>
-                            <option value="1.1.9">Gedung / Ruko</option>
-                            <option value="1.1.10">Kendaraan Operasional</option>
-                            <option value="1.1.11">Lain - Lain</option>
-                        </select>
-                    </div>
-                    <div class="col-md-12 mb-4">
-                        <label for="keterangan" class="form-label">Keterangan</label>
-                        <input type="text" class="form-control" id="keterangan" name="keterangan">
-                        <input type="hidden" class="form-control" id="id_cf" name="id_cf">
-                        <input type="hidden" class="form-control" id="id_lb" name="id_lb" value="<?php echo $id_lb; ?>">
-                        <input type="hidden" class="form-control" id="nama_perkiraan" name="nama_perkiraan">
-                        <input type="hidden" class="form-control" id="nama_perkiraan2" name="nama_perkiraan2">
-                        <input type="hidden" class="form-control" id="jenis" name="jenis" value="pendapatan">
-                    </div>
-                    <div class="col-md-8 mb-4">
-                        <label for="nama_stnk" class="form-label">Sebesar</label>
-                        <input type="text" class="form-control" id="saldoq" name="saldoq">
-                        <input type="hidden" class="form-control" id="kode" name="kode">
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">Save changes</button>
-                </div>
-            </form>
-        </div>
-    </div>
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Cashflow</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<form method="post" action="<?php echo base_url('test/editca'); ?>">
+				<div class="modal-body">
+					<div class="col-md-8 mb-4">
+						<label for="dari" class="form-label">Pendapatan dari</label>
+						<select class="form-control" aria-label="Default select example" id="kode_perkiraan" name="kode_perkiraan" onchange="return nama_p();">
+							<option value=""></option>
+							<option value="4.1.1">Pendapatan Usaha 1</option>
+							<option value="4.1.2">Pendapatan Usaha 2</option>
+							<option value="4.1.3">Pendapatan Usaha 3</option>
+							<option value="4.1.4">Pendapatan Lain / Gaji</option>
+						</select>
+					</div>
+					<div class="col-md-8 mb-4">
+						<label for="nopol" class="form-label">Untuk</label>
+						<select class="form-control" aria-label="Default select example" id="kode_perkiraan2" name="kode_perkiraan2" onchange="return nama_p2();">
+							<option value=""></option>
+							<option value="1.1.1">Kas</option>
+							<option value="1.1.2">Tabungan</option>
+							<option value="1.1.3">Deposito</option>
+							<option value="1.1.4">Piutang</option>
+							<option value="1.1.5">Peralatan</option>
+							<option value="1.1.6">Persediaan Barang Usaha 1</option>
+							<option value="1.1.12">Persediaan Barang Usaha 2</option>
+							<option value="1.1.13">Persediaan Barang Usaha 3</option>
+							<option value="1.1.7">Sewa Dibayar Dimuka</option>
+							<option value="1.1.8">Lahan Garap</option>
+							<option value="1.1.9">Gedung / Ruko</option>
+							<option value="1.1.10">Kendaraan Operasional</option>
+							<option value="1.1.11">Lain - Lain</option>
+						</select>
+					</div>
+					<div class="col-md-12 mb-4">
+						<label for="keterangan" class="form-label">Keterangan</label>
+						<input type="text" class="form-control" id="keterangan" name="keterangan">
+						<input type="hidden" class="form-control" id="id_cf" name="id_cf">
+						<input type="hidden" class="form-control" id="id_lb" name="id_lb" value="<?php echo $id_lb; ?>">
+						<input type="hidden" class="form-control" id="nama_perkiraan" name="nama_perkiraan">
+						<input type="hidden" class="form-control" id="nama_perkiraan2" name="nama_perkiraan2">
+						<input type="hidden" class="form-control" id="jenis" name="jenis" value="pendapatan">
+					</div>
+					<div class="col-md-8 mb-4">
+						<label for="nama_stnk" class="form-label">Sebesar</label>
+						<input type="text" class="form-control" id="saldoq" name="saldoq">
+						<input type="hidden" class="form-control" id="kode" name="kode">
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-primary">Simpan</button>
+				</div>
+			</form>
+		</div>
+	</div>
 </div>
 
 <!-- /.modal hapus cashflow awal,pendapatan -->
@@ -1297,76 +1396,77 @@
                     <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">Tidak</button>
                     <button type="submit" class="btn btn-success waves-effect waves-light">Ya</button>
                 </div>
+            </form>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div>
 
 <!-- Modal edit cashflow awal, pengeluaran-->
 <div class="modal fade" id="editCashflowp" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Cashflow</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <form method="post" action="<?php echo base_url('test/editcap'); ?>">
-                <div class="modal-body">
-                    <div class="col-md-8 mb-4">
-                        <label for="dari" class="form-label">Menggunakan uang dari</label>
-                        <select class="form-control" aria-label="Default select example" id="kode_perkiraanp" name="kode_perkiraanp" onchange="return perkiraan();">
-                            <option value=""></option>
-                            <option value="1.1.1">Kas</option>
-                            <option value="1.1.2">Tabungan</option>
-                            <option value="1.1.3">Deposito</option>
-                            <option value="1.1.4">Piutang</option>
-                            <option value="1.1.5">Peralatan</option>
-                            <option value="1.1.6">Persediaan Barang Usaha 1</option>
-                            <option value="1.1.12">Persediaan Barang Usaha 2</option>
-                            <option value="1.1.13">Persediaan Barang Usaha 3</option>
-                            <option value="1.1.7">Sewa Dibayar Dimuka</option>
-                            <option value="1.1.8">Lahan Garap</option>
-                            <option value="1.1.9">Gedung / Ruko</option>
-                            <option value="1.1.10">Kendaraan Operasional</option>
-                            <option value="1.1.11">Lain - Lain</option>
-                        </select>
-                    </div>
-                    <div class="col-md-8 mb-4">
-                        <label for="nopol" class="form-label">Untuk</label>
-                        <select class="form-control" aria-label="Default select example" id="kode_perkiraanp2" name="kode_perkiraanp2" onchange="return perkiraan2();">
-                            <option value=""></option>
-                            <?php
-                            foreach ($perkiraan->result() as $row) {
-                                echo "<option value='$row->kode_perkiraan'>$row->nama_perkiraan</option>";
-                            }
-                            ?>
-                        </select>
-                    </div>
-                    <div class="col-md-12 mb-4">
-                        <label for="keterangan" class="form-label">Keterangan</label>
-                        <input type="text" class="form-control" id="keteranganp" name="keteranganp">
-                        <input type="hidden" class="form-control" id="id_cfp" name="id_cfp">
-                        <input type="hidden" class="form-control" id="id_lbp" name="id_lbp" value="<?php echo $id_lb; ?>">
-                        <input type="hidden" class="form-control" id="nama_perkiraanp" name="nama_perkiraanp">
-                        <input type="hidden" class="form-control" id="nama_perkiraanp2" name="nama_perkiraanp2">
-                        <input type="hidden" class="form-control" id="kodep" name="kodep">
-                        <input type="hidden" class="form-control" id="jenisp" name="jenisp" value="pengeluaran">
-                    </div>
-                    <div class="col-md-8 mb-4">
-                        <label class="form-label">Sebesar</label>
-                        <input type="number" class="form-control" id="saldop" name="saldop">
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" id="simpanp" class="btn btn-primary">Save changes</button>
-                </div>
-            </form>
-        </div>
-    </div>
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Cashflow</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<form method="post" action="<?php echo base_url('test/editcap'); ?>">
+				<div class="modal-body">
+					<div class="col-md-8 mb-4">
+						<label for="dari" class="form-label">Menggunakan uang dari</label>
+						<select class="form-control" aria-label="Default select example" id="kode_perkiraanp" name="kode_perkiraanp" onchange="return perkiraan();">
+							<option value=""></option>
+							<option value="1.1.1">Kas</option>
+							<option value="1.1.2">Tabungan</option>
+							<option value="1.1.3">Deposito</option>
+							<option value="1.1.4">Piutang</option>
+							<option value="1.1.5">Peralatan</option>
+							<option value="1.1.6">Persediaan Barang Usaha 1</option>
+							<option value="1.1.12">Persediaan Barang Usaha 2</option>
+							<option value="1.1.13">Persediaan Barang Usaha 3</option>
+							<option value="1.1.7">Sewa Dibayar Dimuka</option>
+							<option value="1.1.8">Lahan Garap</option>
+							<option value="1.1.9">Gedung / Ruko</option>
+							<option value="1.1.10">Kendaraan Operasional</option>
+							<option value="1.1.11">Lain - Lain</option>
+						</select>
+					</div>
+					<div class="col-md-8 mb-4">
+						<label for="nopol" class="form-label">Untuk</label>
+						<select class="form-control" aria-label="Default select example" id="kode_perkiraanp2" name="kode_perkiraanp2" onchange="return perkiraan2();">
+							<option value=""></option>
+							<?php
+							foreach ($perkiraan->result() as $row) {
+								echo "<option value='$row->kode_perkiraan'>$row->nama_perkiraan</option>";
+							}
+							?>
+						</select>
+					</div>
+					<div class="col-md-12 mb-4">
+						<label for="keterangan" class="form-label">Keterangan</label>
+						<input type="text" class="form-control" id="keteranganp" name="keteranganp">
+						<input type="hidden" class="form-control" id="id_cfp" name="id_cfp">
+						<input type="hidden" class="form-control" id="id_lbp" name="id_lbp" value="<?php echo $id_lb; ?>">
+						<input type="hidden" class="form-control" id="nama_perkiraanp" name="nama_perkiraanp">
+						<input type="hidden" class="form-control" id="nama_perkiraanp2" name="nama_perkiraanp2">
+						<input type="hidden" class="form-control" id="kodep" name="kodep">
+						<input type="hidden" class="form-control" id="jenisp" name="jenisp" value="pengeluaran">
+					</div>
+					<div class="col-md-8 mb-4">
+						<label class="form-label">Sebesar</label>
+						<input type="number" class="form-control" id="saldop" name="saldop">
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="submit" id="simpanp" class="btn btn-primary">Simpan</button>
+				</div>
+			</form>
+		</div>
+	</div>
 </div>
 
-<!-- /.modal hapus cashflow awal,pendapatan -->
+<!-- /.modal hapus cashflow awal,pengeluaran -->
 <div id="hapusCashflowp" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" style="display: none;">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
@@ -1386,72 +1486,73 @@
                     <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">Tidak</button>
                     <button type="submit" class="btn btn-success waves-effect waves-light">Ya</button>
                 </div>
+            </form>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div>
 
 <!-- Modal edit cashflow setelah, pendapatan-->
 <div class="modal fade" id="editCashflows" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Cashflow</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <form method="post" action="<?php echo base_url('cashflow/edit'); ?>">
-                <div class="modal-body">
-                    <div class="col-md-8 mb-4">
-                        <label for="dari" class="form-label">Pendapatan dari</label>
-                        <select class="form-control" aria-label="Default select example" id="kode_perkiraan_cp" name="kode_perkiraan_cp" onchange="return c_pendapatan();">
-                            <option value=""></option>
-                            <option value="4.1.1">Pendapatan Usaha 1</option>
-                            <option value="4.1.2">Pendapatan Usaha 2</option>
-                            <option value="4.1.3">Pendapatan Usaha 3</option>
-                            <option value="4.1.4">Pendapatan Lain / Gaji</option>
-                        </select>
-                    </div>
-                    <div class="col-md-8 mb-4">
-                        <label for="nopol" class="form-label">Untuk</label>
-                        <select class="form-control" aria-label="Default select example" id="kode_perkiraan_cp2" name="kode_perkiraan_cp2" onchange="return c_pendapatan2();">
-                            <option value=""></option>
-                            <option value="1.1.1">Kas</option>
-                            <option value="1.1.2">Tabungan</option>
-                            <option value="1.1.3">Deposito</option>
-                            <option value="1.1.4">Piutang</option>
-                            <option value="1.1.5">Peralatan</option>
-                            <option value="1.1.6">Persediaan Barang Usaha 1</option>
-                            <option value="1.1.12">Persediaan Barang Usaha 2</option>
-                            <option value="1.1.13">Persediaan Barang Usaha 3</option>
-                            <option value="1.1.7">Sewa Dibayar Dimuka</option>
-                            <option value="1.1.8">Lahan Garap</option>
-                            <option value="1.1.9">Gedung / Ruko</option>
-                            <option value="1.1.10">Kendaraan Operasional</option>
-                            <option value="1.1.11">Lain - Lain</option>
-                        </select>
-                    </div>
-                    <div class="col-md-12 mb-4">
-                        <label for="keterangan" class="form-label">Keterangan</label>
-                        <input type="text" class="form-control" id="keterangancp" name="keterangancp">
-                        <input type="hidden" class="form-control" id="id_cfcp" name="id_cfcp">
-                        <input type="hidden" class="form-control" id="id_lbcp" name="id_lbcp" value="<?php echo $id_lb; ?>">
-                        <input type="hidden" class="form-control" id="nama_perkiraan_cp" name="nama_perkiraan_cp">
-                        <input type="hidden" class="form-control" id="nama_perkiraan_cp2" name="nama_perkiraan_cp2">
-                        <input type="hidden" class="form-control" id="jeniscp" name="jeniscp" value="pendapatan">
-                        <input type="hidden" class="form-control" id="kodecp" name="kodecp">
-                    </div>
-                    <div class="col-md-8 mb-4">
-                        <label for="saldo" class="form-label">Sebesar</label>
-                        <input type="number" class="form-control" id="saldocp" name="saldocp">
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" id="simpan2" class="btn btn-primary">Save changes</button>
-                </div>
-            </form>
-        </div>
-    </div>
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Cashflow</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<form method="post" action="<?php echo base_url('cashflow/edit'); ?>">
+				<div class="modal-body">
+					<div class="col-md-8 mb-4">
+						<label for="dari" class="form-label">Pendapatan dari</label>
+						<select class="form-control" aria-label="Default select example" id="kode_perkiraan_cp" name="kode_perkiraan_cp" onchange="return c_pendapatan();">
+							<option value=""></option>
+							<option value="4.1.1">Pendapatan Usaha 1</option>
+							<option value="4.1.2">Pendapatan Usaha 2</option>
+							<option value="4.1.3">Pendapatan Usaha 3</option>
+							<option value="4.1.4">Pendapatan Lain / Gaji</option>
+						</select>
+					</div>
+					<div class="col-md-8 mb-4">
+						<label for="nopol" class="form-label">Untuk</label>
+						<select class="form-control" aria-label="Default select example" id="kode_perkiraan_cp2" name="kode_perkiraan_cp2" onchange="return c_pendapatan2();">
+							<option value=""></option>
+							<option value="1.1.1">Kas</option>
+							<option value="1.1.2">Tabungan</option>
+							<option value="1.1.3">Deposito</option>
+							<option value="1.1.4">Piutang</option>
+							<option value="1.1.5">Peralatan</option>
+							<option value="1.1.6">Persediaan Barang Usaha 1</option>
+							<option value="1.1.12">Persediaan Barang Usaha 2</option>
+							<option value="1.1.13">Persediaan Barang Usaha 3</option>
+							<option value="1.1.7">Sewa Dibayar Dimuka</option>
+							<option value="1.1.8">Lahan Garap</option>
+							<option value="1.1.9">Gedung / Ruko</option>
+							<option value="1.1.10">Kendaraan Operasional</option>
+							<option value="1.1.11">Lain - Lain</option>
+						</select>
+					</div>
+					<div class="col-md-12 mb-4">
+						<label for="keterangan" class="form-label">Keterangan</label>
+						<input type="text" class="form-control" id="keterangancp" name="keterangancp">
+						<input type="hidden" class="form-control" id="id_cfcp" name="id_cfcp">
+						<input type="hidden" class="form-control" id="id_lbcp" name="id_lbcp" value="<?php echo $id_lb; ?>">
+						<input type="hidden" class="form-control" id="nama_perkiraan_cp" name="nama_perkiraan_cp">
+						<input type="hidden" class="form-control" id="nama_perkiraan_cp2" name="nama_perkiraan_cp2">
+						<input type="hidden" class="form-control" id="jeniscp" name="jeniscp" value="pendapatan">
+						<input type="hidden" class="form-control" id="kodecp" name="kodecp">
+					</div>
+					<div class="col-md-8 mb-4">
+						<label for="saldo" class="form-label">Sebesar</label>
+						<input type="number" class="form-control" id="saldocp" name="saldocp">
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="submit" id="simpan2" class="btn btn-primary">Simpan</button>
+				</div>
+			</form>
+		</div>
+	</div>
 </div>
 
 <!-- /.modal hapus cashflow setelah,pendapatan -->
@@ -1474,76 +1575,77 @@
                     <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">Tidak</button>
                     <button type="submit" class="btn btn-success waves-effect waves-light">Ya</button>
                 </div>
+            </form>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div>
 
 <!-- Modal edit cashflows setelah, pengeluaran-->
 <div class="modal fade" id="editCashflowsp" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Cashflow</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <form method="post" action="<?php echo base_url('cashflow/editp'); ?>">
-                <div class="modal-body">
-                    <div class="col-md-8 mb-4">
-                        <label for="dari" class="form-label">Menggunakan uang dari</label>
-                        <select class="form-control" aria-label="Default select example" id="kode_perkiraan_cpe" name="kode_perkiraan_cpe" onchange="return c_pengeluaran();">
-                            <option value=""></option>
-                            <option value="1.1.1">Kas</option>
-                            <option value="1.1.2">Tabungan</option>
-                            <option value="1.1.3">Deposito</option>
-                            <option value="1.1.4">Piutang</option>
-                            <option value="1.1.5">Peralatan</option>
-                            <option value="1.1.6">Persediaan Barang Usaha 1</option>
-                            <option value="1.1.12">Persediaan Barang Usaha 2</option>
-                            <option value="1.1.13">Persediaan Barang Usaha 3</option>
-                            <option value="1.1.7">Sewa Dibayar Dimuka</option>
-                            <option value="1.1.8">Lahan Garap</option>
-                            <option value="1.1.9">Gedung / Ruko</option>
-                            <option value="1.1.10">Kendaraan Operasional</option>
-                            <option value="1.1.11">Lain - Lain</option>
-                        </select>
-                    </div>
-                    <div class="col-md-8 mb-4">
-                        <label for="nopol" class="form-label">Untuk</label>
-                        <select class="form-control" aria-label="Default select example" id="kode_perkiraan_cpe2" name="kode_perkiraan_cpe2" onchange="return c_pengeluaran2();">
-                            <option value=""></option>
-                            <?php
-                            foreach ($perkiraan->result() as $row) {
-                                echo "<option value='$row->kode_perkiraan'>$row->nama_perkiraan</option>";
-                            }
-                            ?>
-                        </select>
-                    </div>
-                    <div class="col-md-12 mb-4">
-                        <label for="keterangan" class="form-label">Keterangan</label>
-                        <input type="text" class="form-control" id="keterangancpe" name="keterangancpe">
-                        <input type="hidden" class="form-control" id="id_cfcpe" name="id_cfcpe">
-                        <input type="hidden" class="form-control" id="id_lbcpe" name="id_lbcpe" value="<?php echo $id_lb; ?>">
-                        <input type="hidden" class="form-control" id="nama_perkiraan_cpe" name="nama_perkiraan_cpe">
-                        <input type="hidden" class="form-control" id="nama_perkiraan_cpe2" name="nama_perkiraan_cpe2">
-                        <input type="hidden" class="form-control" id="jeniscpe" name="jeniscpe" value="pengeluaran">
-                        <input type="hidden" class="form-control" id="kodecpe" name="kodecpe">
-                    </div>
-                    <div class="col-md-8 mb-4">
-                        <label for="nama_stnk" class="form-label">Sebesar</label>
-                        <input type="number" class="form-control" id="saldocpe" name="saldocpe">
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" id="simpanp2" class="btn btn-primary">Save changes</button>
-                </div>
-            </form>
-        </div>
-    </div>
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Cashflow</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<form method="post" action="<?php echo base_url('cashflow/editp'); ?>">
+				<div class="modal-body">
+					<div class="col-md-8 mb-4">
+						<label for="dari" class="form-label">Menggunakan uang dari</label>
+						<select class="form-control" aria-label="Default select example" id="kode_perkiraan_cpe" name="kode_perkiraan_cpe" onchange="return c_pengeluaran();">
+							<option value=""></option>
+							<option value="1.1.1">Kas</option>
+							<option value="1.1.2">Tabungan</option>
+							<option value="1.1.3">Deposito</option>
+							<option value="1.1.4">Piutang</option>
+							<option value="1.1.5">Peralatan</option>
+							<option value="1.1.6">Persediaan Barang Usaha 1</option>
+							<option value="1.1.12">Persediaan Barang Usaha 2</option>
+							<option value="1.1.13">Persediaan Barang Usaha 3</option>
+							<option value="1.1.7">Sewa Dibayar Dimuka</option>
+							<option value="1.1.8">Lahan Garap</option>
+							<option value="1.1.9">Gedung / Ruko</option>
+							<option value="1.1.10">Kendaraan Operasional</option>
+							<option value="1.1.11">Lain - Lain</option>
+						</select>
+					</div>
+					<div class="col-md-8 mb-4">
+						<label for="nopol" class="form-label">Untuk</label>
+						<select class="form-control" aria-label="Default select example" id="kode_perkiraan_cpe2" name="kode_perkiraan_cpe2" onchange="return c_pengeluaran2();">
+							<option value=""></option>
+							<?php
+							foreach ($perkiraan->result() as $row) {
+								echo "<option value='$row->kode_perkiraan'>$row->nama_perkiraan</option>";
+							}
+							?>
+						</select>
+					</div>
+					<div class="col-md-12 mb-4">
+						<label for="keterangan" class="form-label">Keterangan</label>
+						<input type="text" class="form-control" id="keterangancpe" name="keterangancpe">
+						<input type="hidden" class="form-control" id="id_cfcpe" name="id_cfcpe">
+						<input type="hidden" class="form-control" id="id_lbcpe" name="id_lbcpe" value="<?php echo $id_lb; ?>">
+						<input type="hidden" class="form-control" id="nama_perkiraan_cpe" name="nama_perkiraan_cpe">
+						<input type="hidden" class="form-control" id="nama_perkiraan_cpe2" name="nama_perkiraan_cpe2">
+						<input type="hidden" class="form-control" id="jeniscpe" name="jeniscpe" value="pengeluaran">
+						<input type="hidden" class="form-control" id="kodecpe" name="kodecpe">
+					</div>
+					<div class="col-md-8 mb-4">
+						<label for="nama_stnk" class="form-label">Sebesar</label>
+						<input type="number" class="form-control" id="saldocpe" name="saldocpe">
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="submit" id="simpanp2" class="btn btn-primary">Simpan</button>
+				</div>
+			</form>
+		</div>
+	</div>
 </div>
 
-<!-- /.modal hapus cashflow setelah,pendapatan -->
+<!-- /.modal hapus cashflow setelah,pengeluaran -->
 <div id="hapusCashflowsp" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" style="display: none;">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
@@ -1563,84 +1665,85 @@
                     <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">Tidak</button>
                     <button type="submit" class="btn btn-success waves-effect waves-light">Ya</button>
                 </div>
+            </form>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div>
 
 <!-- Modal edit hutang-->
 <div class="modal fade" id="editHutang" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Cashflow</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <form method="post" action="<?php echo base_url('test/edith'); ?>">
-                <div class="modal-body">
-                    <div class="col-md-8 mb-4">
-                        <label for="dari" class="form-label">Akun asal</label>
-                        <select class="form-control" aria-label="Default select example" id="kode_perkiraan_hutang" name="kode_perkiraan_hutang" onchange="return hutangp();">
-                            <option value=""></option>
-                            <option value="2.1.1">Hutang Jangka Pendek</option>
-                            <option value="2.1.2">Hutang Jangka Panjang</option>
-                            <option value="2.1.3">Hutang Dagang</option>
-                            <option value="2.1.4">Hutang Lain</option>
-                        </select>
-                    </div>
-                    <div class="col-md-8 mb-4">
-                        <label for="nopol" class="form-label">Akun untuk</label>
-                        <select class="form-control" aria-label="Default select example" id="kode_perkiraan_hutang2" name="kode_perkiraan_hutang2" onchange="return hutangp2();">
-                            <option value=""></option>
-                            <option value="1.1.1">Kas</option>
-                            <option value="1.1.2">Tabungan</option>
-                            <option value="1.1.3">Deposito</option>
-                            <option value="1.1.4">Piutang</option>
-                            <option value="1.1.5">Peralatan</option>
-                            <option value="1.1.6">Persediaan Barang Usaha 1</option>
-                            <option value="1.1.12">Persediaan Barang Usaha 2</option>
-                            <option value="1.1.13">Persediaan Barang Usaha 3</option>
-                            <option value="1.1.7">Sewa Dibayar Dimuka</option>
-                            <option value="1.1.8">Lahan Garap</option>
-                            <option value="1.1.9">Gedung / Ruko</option>
-                            <option value="1.1.10">Kendaraan Operasional</option>
-                            <option value="1.1.11">Lain - Lain</option>
-                            <option value="1.2.1">Tanah</option>
-                            <option value="1.2.2">Bangunan</option>
-                            <option value="1.2.3">Kendaraan Pribadi</option>
-                            <option value="1.2.4">Inventaris</option>
-                            <option value="1.2.5">Lain - lain</option>
-                            <option value="2.1.1">Hutang Jangka Pendek</option>
-                            <option value="2.1.2">Hutang Jangka Panjang</option>
-                            <option value="2.1.3">Hutang Dagang</option>
-                            <option value="2.1.4">Hutang Lain</option>
-                        </select>
-                    </div>
-                    <div class="col-md-12 mb-4">
-                        <label for="keterangan" class="form-label">Keterangan</label>
-                        <input type="text" class="form-control" id="keteranganh" name="keteranganh">
-                        <input type="hidden" class="form-control" id="id_cfh" name="id_cfh">
-                        <input type="hidden" class="form-control" id="kodeh" name="kodeh">
-                        <input type="hidden" class="form-control" id="id_lbh" name="id_lbh" value="<?php echo $id_lb; ?>">
-                        <input type="text" class="form-control" id="nama_perkiraan_hutang" name="nama_perkiraan_hutang">
-                        <input type="hidden" class="form-control" id="nama_perkiraan_hutang2" name="nama_perkiraan_hutang2">
-                        <input type="hidden" class="form-control" id="jenish" name="jenish" value="hutang">
-                    </div>
-                    <div class="col-md-8 mb-4">
-                        <label class="form-label">Sebesar</label>
-                        <input type="number" class="form-control" id="saldoh" name="saldoh">
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" id="btn_hutang" class="btn btn-primary">Save changes</button>
-                </div>
-            </form>
-        </div>
-    </div>
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Cashflow</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<form method="post" action="<?php echo base_url('test/edith'); ?>">
+				<div class="modal-body">
+					<div class="col-md-8 mb-4">
+						<label for="dari" class="form-label">Akun asal</label>
+						<select class="form-control" aria-label="Default select example" id="kode_perkiraan_hutang" name="kode_perkiraan_hutang" onchange="return hutangp();">
+							<option value=""></option>
+							<option value="2.1.1">Hutang Jangka Pendek</option>
+							<option value="2.1.2">Hutang Jangka Panjang</option>
+							<option value="2.1.3">Hutang Dagang</option>
+							<option value="2.1.4">Hutang Lain</option>
+						</select>
+					</div>
+					<div class="col-md-8 mb-4">
+						<label for="nopol" class="form-label">Akun untuk</label>
+						<select class="form-control" aria-label="Default select example" id="kode_perkiraan_hutang2" name="kode_perkiraan_hutang2" onchange="return hutangp2();">
+							<option value=""></option>
+							<option value="1.1.1">Kas</option>
+							<option value="1.1.2">Tabungan</option>
+							<option value="1.1.3">Deposito</option>
+							<option value="1.1.4">Piutang</option>
+							<option value="1.1.5">Peralatan</option>
+							<option value="1.1.6">Persediaan Barang Usaha 1</option>
+							<option value="1.1.12">Persediaan Barang Usaha 2</option>
+							<option value="1.1.13">Persediaan Barang Usaha 3</option>
+							<option value="1.1.7">Sewa Dibayar Dimuka</option>
+							<option value="1.1.8">Lahan Garap</option>
+							<option value="1.1.9">Gedung / Ruko</option>
+							<option value="1.1.10">Kendaraan Operasional</option>
+							<option value="1.1.11">Lain - Lain</option>
+							<option value="1.2.1">Tanah</option>
+							<option value="1.2.2">Bangunan</option>
+							<option value="1.2.3">Kendaraan Pribadi</option>
+							<option value="1.2.4">Inventaris</option>
+							<option value="1.2.5">Lain - lain</option>
+							<option value="2.1.1">Hutang Jangka Pendek</option>
+							<option value="2.1.2">Hutang Jangka Panjang</option>
+							<option value="2.1.3">Hutang Dagang</option>
+							<option value="2.1.4">Hutang Lain</option>
+						</select>
+					</div>
+					<div class="col-md-12 mb-4">
+						<label for="keterangan" class="form-label">Keterangan</label>
+						<input type="text" class="form-control" id="keteranganh" name="keteranganh">
+						<input type="hidden" class="form-control" id="id_cfh" name="id_cfh">
+						<input type="hidden" class="form-control" id="kodeh" name="kodeh">
+						<input type="hidden" class="form-control" id="id_lbh" name="id_lbh" value="<?php echo $id_lb; ?>">
+						<input type="hidden" class="form-control" id="nama_perkiraan_hutang" name="nama_perkiraan_hutang">
+						<input type="hidden" class="form-control" id="nama_perkiraan_hutang2" name="nama_perkiraan_hutang2">
+						<input type="hidden" class="form-control" id="jenish" name="jenish" value="hutang">
+					</div>
+					<div class="col-md-8 mb-4">
+						<label class="form-label">Sebesar</label>
+						<input type="number" class="form-control" id="saldoh" name="saldoh">
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="submit" id="btn_hutang" class="btn btn-primary">Simpan</button>
+				</div>
+			</form>
+		</div>
+	</div>
 </div>
 
-<!-- /.modal hapus cashflow setelah,pendapatan -->
+<!-- /.modal hapus hutang-->
 <div id="hapusHutang" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" style="display: none;">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
@@ -1660,10 +1763,325 @@
                     <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">Tidak</button>
                     <button type="submit" class="btn btn-success waves-effect waves-light">Ya</button>
                 </div>
+            </form>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div>
 
+
+<!-- Modal edit collateral tanah-->
+<div class="modal fade" id="editcollt" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Collateral Tanah</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method="post" action="<?php echo base_url('collateral/add2'); ?>">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-4 mb-4">
+                            <label for="jenis" class="form-label">Jenis</label>
+                            <input type="hidden" class="form-control" id="id_lb" name="id_lb" value="<?php echo $id_lb; ?>">
+                            <input type="hidden" class="form-control" id="id_col2" name="id_col2">
+                            <input type="text" class="form-control" id="jenis_collt" name="jenis_collt">
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <label for="nama" class="form-label">Nama Pemilik</label>
+                            <input type="text" class="form-control" id="nama" name="nama">
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <label for="no_shm" class="form-label">No. SHM</label>
+                            <input type="text" class="form-control" id="no_shm" name="no_shm">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 mb-4">
+                            <label for="luas_t" class="form-label">Luas Tanah (M2)</label>
+                            <input type="text" class="form-control" id="luas_t" name="luas_t">
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <label for="luas_b" class="form-label">Luas Bangunan (M2)</label>
+                            <input type="text" class="form-control" id="luas_b" name="luas_b">
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <label for="harga_t" class="form-label">Harga Tanah SPPT per Meter (Rp.)</label>
+                            <input type="text" class="form-control" id="harga_t" name="harga_t">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 mb-4">
+                            <label for="harga_b" class="form-label">Harga Bangunan SPPT per Meter (Rp.)</label>
+                            <input type="text" class="form-control" id="harga_b" name="harga_b">
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <label for="harga_t2" class="form-label">Harga Tanah Pasar per Meter (Rp.)</label>
+                            <input type="text" class="form-control" id="harga_t2" name="harga_t2">
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <label for="harga_b2" class="form-label">Harga Bangunan Pasar per Meter (Rp.)</label>
+                            <input type="text" class="form-control" id="harga_b2" name="harga_b2">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 mb-4">
+                            <label for="tgl_ukur" class="form-label">Tgl Surat Ukur</label>
+                            <input type="date" class="form-control" id="tgl_ukur" name="tgl_ukur">
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <label for="no_ukur" class="form-label">No. Surat Ukur</label>
+                            <input type="text" class="form-control" id="no_ukur" name="no_ukur">
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <label for="milik" class="form-label">Kepemilikan</label>
+                            <input type="text" class="form-control" id="milik_collt" name="milik_collt">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 mb-4">
+                            <label for="ht" class="form-label">Nilai HT (Rp.)</label>
+                            <input type="number" class="form-control" id="ht" name="ht">
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <label for="taksasi" class="form-label">Taksasi (%)</label>
+                            <input type="number" class="form-control" id="taksasi" name="taksasi">
+                        </div>
+                    </div>
+                    <div class="col-md-12 mb-4">
+                        <label for="alamat" class="form-label">Alamat Pemilik</label>
+                        <textarea class="form-control" id="alamat_collt" name="alamat_collt"></textarea>
+                    </div>
+                    <div class="col-md-12 mb-4">
+                        <label for="lokasi" class="form-label">Lokasi Jaminan</label>
+                        <textarea class="form-control" id="lokasi" name="lokasi"></textarea>
+                    </div>
+                    <div class="col-md-12 mb-4">
+                        <label for="fisik_jaminan" class="form-label">Keterangan</label>
+                        <textarea class="form-control" id="fisik_jaminan" name="fisik_jaminan"></textarea>
+                    </div>
+                    <div class="col-md-12 mb-4">
+                        <label for="pertimbangan" class="form-label">Usulan</label>
+                        <textarea class="form-control" id="usulan_collt" name="usulan_collt"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" id="btn_collateralt" class="btn btn-primary">Simpan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- /.modal hapus collateral tanah -->
+<div id="hapuscollt" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="custom-width-modalLabel">Konfirmasi Hapus</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <form action="<?php echo base_url() . 'collateral/hapus2'; ?>" method="post" class="form-horizontal" role="form">
+                <div class="modal-body">
+                    <p>Apakah anda yakin ingin menghapus?</p>
+                    <div>
+                        <input type="hidden" id="idcollt" name="idcollt">
+                        <input type="hidden" id="id_lb" name="id_lb" value="<?php echo $id_lb; ?>">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">Tidak</button>
+                    <button type="submit" class="btn btn-success waves-effect waves-light">Ya</button>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+<!-- Modal edit collateral kendaraan-->
+<div class="modal fade" id="editcollk" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Collateral Tanah</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method="post" action="<?php echo base_url('collateral/add'); ?>">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-3 mb-4">
+                            <label for="status" class="form-label">Roda</label>
+                            <select class="form-control" aria-label="Default select example" id="roda" name="roda">
+                                <option value=""></option>
+                                <option value="2 (Dua)">2</option>
+                                <option value="4 (Empat)">4</option>
+                                <option value="6 (Enam)">6</option>
+                                <option value="8 (Delapan)">8</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3 mb-4">
+                            <label for="nopol" class="form-label">Nomor Polisi</label>
+                            <input type="hidden" class="form-control" id="id_lb" name="id_lb" value="<?php echo $id_lb; ?>">
+                            <input type="hidden" class="form-control" id="id_col" name="id_col">
+                            <input type="text" class="form-control" id="nopol" name="nopol">
+                        </div>
+                        <div class="col-md-3 mb-4">
+                            <label for="nama_stnk" class="form-label">Nama di STNK</label>
+                            <input type="text" class="form-control" id="nama_stnk" name="nama_stnk">
+                        </div>
+                        <div class="col-md-3 mb-4">
+                            <label for="tahun" class="form-label">Tahun</label>
+                            <input type="year" class="form-control" id="tahun" name="tahun">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 mb-4">
+                            <label for="silinder" class="form-label">Isi Silinder</label>
+                            <input type="text" class="form-control" id="silinder" name="silinder">
+                        </div>
+                        <div class="col-md-3 mb-4">
+                            <label for="no_rangka" class="form-label">No. Rangka</label>
+                            <input type="text" class="form-control" id="no_rangka" name="no_rangka">
+                        </div>
+                        <div class="col-md-3 mb-4">
+                            <label for="no_mesin" class="form-label">No. Mesin</label>
+                            <input type="text" class="form-control" id="no_mesin" name="no_mesin">
+                        </div>
+                        <div class="col-md-3 mb-4">
+                            <label for="no_bpkb" class="form-label">No. BPKB</label>
+                            <input type="text" class="form-control" id="no_bpkb" name="no_bpkb">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 mb-4">
+                            <label for="type" class="form-label">Merk / Type</label>
+                            <input type="text" class="form-control" id="type" name="type">
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <label for="jenis" class="form-label">Jenis / Model</label>
+                            <input type="text" class="form-control" id="jenis_collk" name="jenis_collk">
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <label for="warna" class="form-label">Warna</label>
+                            <input type="text" class="form-control" id="warna" name="warna">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 mb-4">
+                            <label for="taksiran" class="form-label">Harga Pasaran</label>
+                            <input type="number" class="form-control" id="taksiran" name="taksiran">
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <label for="nl" class="form-label">NL</label>
+                            <input type="number" class="form-control" id="nl" name="nl">
+                        </div>
+                        <div class="col-md-4 mb-4">
+                            <label for="milik" class="form-label">Hak Milik</label>
+                            <input type="text" class="form-control" id="milik_collk" name="milik_collk">
+                        </div>
+                    </div>
+                    <div class="col-md-12 mb-4">
+                        <label for="alamat" class="form-label">Alamat</label>
+                        <textarea class="form-control" id="alamat" name="alamat"></textarea>
+                    </div>
+                    <div class="col-md-12 mb-4">
+                        <label for="kondisi" class="form-label">Usulan</label>
+                        <textarea class="form-control" id="usulan" name="usulan"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" id="btn_collateralk" class="btn btn-primary">Simpan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- /.modal hapus collateral kendaraan -->
+<div id="hapuscollk" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="custom-width-modalLabel">Konfirmasi Hapus</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <form action="<?php echo base_url() . 'collateral/hapus'; ?>" method="post" class="form-horizontal" role="form">
+                <div class="modal-body">
+                    <p>Apakah anda yakin ingin menghapus?</p>
+                    <div>
+                        <input type="hidden" id="idcollk" name="idcollk">
+                        <input type="hidden" id="id_lb" name="id_lb" value="<?php echo $id_lb; ?>">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">Tidak</button>
+                    <button type="submit" class="btn btn-success waves-effect waves-light">Ya</button>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+<!-- Modal edit realisasi-->
+<div class="modal fade" id="editreal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Realisasi</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method="post" action="<?php echo base_url('usulan/add_real'); ?>">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-3 mb-3">
+                            <label for="oleh" class="form-label">Nama</label>
+                            <input type="text" class="form-control" id="oleh" name="oleh">
+                            <input type="hidden" class="form-control" id="id_real" name="id_real">
+                            <input type="hidden" class="form-control" id="id_lb" name="id_lb" value="<?php echo $id_lb; ?>">
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="sebagai" class="form-label">Sebagai</label>
+                            <input type="text" class="form-control" id="sebagai" name="sebagai">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" id="btn_real" class="btn btn-primary">Simpan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- /.modal hapus realisasi -->
+<div id="hapusreal" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="custom-width-modalLabel">Konfirmasi Hapus</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <form action="<?php echo base_url() . 'usulan/hapus'; ?>" method="post" class="form-horizontal" role="form">
+                <div class="modal-body">
+                    <p>Apakah anda yakin ingin menghapus?</p>
+                    <div>
+                        <input type="hidden" id="idreal" name="idreal">
+                        <input type="hidden" id="id_lb" name="id_lb" value="<?php echo $id_lb; ?>">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger waves-effect" data-dismiss="modal">Tidak</button>
+                    <button type="submit" class="btn btn-success waves-effect waves-light">Ya</button>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
 
 <!-- data untuk riwayat pinjaman -->
 <script type="text/javascript">
@@ -1761,6 +2179,79 @@
     //hapus data cashflow setelah, pendapatan
     function HapusDataHutang(kode) {
         document.getElementById('idHapusHutang').value = kode;
+    }
+</script>
+
+<!-- data untuk collateral tanah -->
+<script type="text/javascript">
+    function EditDataCollt(id_col2, jenis, nama, alamat, no_shm, lokasi
+    , tgl_ukur, no_ukur, luas_t, luas_b, milik, fisik_jaminan, taksasi, usulan, harga_t
+    , harga_b, harga_t2, harga_b2, ht) {
+        document.getElementById('id_col2').value = id_col2;
+        document.getElementById('jenis_collt').value = jenis;
+        document.getElementById('nama').value = nama;
+        document.getElementById('alamat_collt').value = alamat;
+        document.getElementById('no_shm').value = no_shm;
+        document.getElementById('lokasi').value = lokasi;
+        document.getElementById('tgl_ukur').value = tgl_ukur;
+        document.getElementById('no_ukur').value = no_ukur;
+        document.getElementById('luas_t').value = luas_t;
+        document.getElementById('luas_b').value = luas_b;
+        document.getElementById('milik_collt').value = milik;
+        document.getElementById('fisik_jaminan').value = fisik_jaminan;
+        document.getElementById('taksasi').value = taksasi;
+        document.getElementById('usulan_collt').value = usulan;
+        document.getElementById('harga_t').value = harga_t;
+        document.getElementById('harga_b').value = harga_b;
+        document.getElementById('harga_t2').value = harga_t2;
+        document.getElementById('harga_b2').value = harga_b2;
+        document.getElementById('ht').value = ht;
+    }
+
+    function HapusDataCollt(id_col2) {
+        document.getElementById('idcollt').value = id_col2;
+    }
+</script>
+
+<!-- data untuk collateral kendaraan -->
+<script type="text/javascript">
+    function EditDataCollk(id_col, roda, nopol, nama_stnk, alamat, type
+    , jenis, tahun, warna, silinder, no_rangka, no_mesin, no_bpkb, milik, taksiran
+    , nl, usulan) {
+        document.getElementById('id_col').value = id_col;
+        document.getElementById('roda').value = roda;
+        document.getElementById('nopol').value = nopol;
+        document.getElementById('nama_stnk').value = nama_stnk;
+        document.getElementById('alamat').value = alamat;
+        document.getElementById('type').value = type;
+        document.getElementById('jenis_collk').value = jenis;
+        document.getElementById('tahun').value = tahun;
+        document.getElementById('warna').value = warna;
+        document.getElementById('silinder').value = silinder;
+        document.getElementById('no_rangka').value = no_rangka;
+        document.getElementById('no_mesin').value = no_mesin;
+        document.getElementById('no_bpkb').value = no_bpkb;
+        document.getElementById('milik_collk').value = milik;
+        document.getElementById('taksiran').value = taksiran;
+        document.getElementById('nl').value = nl;
+        document.getElementById('usulan').value = usulan;
+    }
+
+    function HapusDataCollk(id_col) {
+        document.getElementById('idcollk').value = id_col;
+    }
+</script>
+
+<!-- data untuk realisasi -->
+<script type="text/javascript">
+    function EditDataReal(id_real, oleh, sebagai) {
+        document.getElementById('id_real').value = id_real;
+        document.getElementById('oleh').value = oleh;
+        document.getElementById('sebagai').value = sebagai;
+    }
+
+    function HapusDataReal(idt) {
+        document.getElementById('idreal').value = idt;
     }
 </script>
 

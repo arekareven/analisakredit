@@ -29,6 +29,47 @@ class Character extends CI_Controller
         $this->load->view('templates/footer');
     }
 
+    //CRUD dengan jquery Ajax
+    function data_char()
+    {
+        $id_lb = $this->input->post('id_lb');
+        $data = $this->m_character->char_list($id_lb);
+        echo json_encode($data);
+    }
+
+    function get_char()
+    {
+        $id_char = $this->input->get('id');
+        $data = $this->m_character->get_char_by_kode($id_char);
+        echo json_encode($data);
+    }
+
+    public function update_char()
+    {
+        $id_char = $this->input->post('id_char');
+        $info_pribadi            = $this->input->post('info_pribadi');
+        $info_perilaku        = $this->input->post('info_perilaku');
+        $info_keluarga     = $this->input->post('info_keluarga');
+        $nm1              = $this->input->post('nm1');
+        $nm2          = $this->input->post('nm2');
+        $nm3          = $this->input->post('nm3');
+        $al1          = $this->input->post('al1');
+        $al2          = $this->input->post('al2');
+        $al3          = $this->input->post('al3');
+        $hp1          = $this->input->post('hp1');
+        $hp2          = $this->input->post('hp2');
+        $hp3          = $this->input->post('hp3');
+        $hasil = $this->m_character->update_char($id_char, $info_pribadi, $info_perilaku, $info_keluarga, $nm1, $nm2, $nm3, $al1, $al2, $al3, $hp1, $hp2, $hp3);
+        echo json_encode($hasil);
+    }
+
+    function delete_char()
+    {
+        $id_char = $this->input->post('kode');
+        $data = $this->m_character->delete_char($id_char);
+        echo json_encode($data);
+    }
+    //End CRUD Jquery Ajax
 
     public function add()
     {

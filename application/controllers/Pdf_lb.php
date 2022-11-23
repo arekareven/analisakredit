@@ -189,7 +189,7 @@ class Pdf_lb extends CI_Controller
                 $pdf->Cell(37, 5.5, $data->data, 1, 1, 'C');
             }
 
-            $pdf->Output();
+            $pdf->Output('Latar Belakang.pdf','I');
         }
     }
 }

@@ -4,10 +4,6 @@
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
 
-
-
-
-
     <table class="table table-bordered" width="100%" cellspacing="0">
         <thead class="thead-dark">
             <tr>
@@ -86,7 +82,6 @@
                         </span>
                         <span class="text">Capital Sesudah</span>
                     </button>
-                    -->
                     <!--
                     <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#cashflow1">
                         Cashflow Sebelum

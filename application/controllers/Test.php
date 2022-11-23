@@ -21,10 +21,11 @@ class Test extends CI_Controller
     {
         $id_lb = $_GET['id_lb'];
         $data['id_lb'] = $_GET['id_lb'];
-        $data['title'] = 'Dashboard';
+        $data['title'] = 'Halaman Input Data';
         $data['user'] = $this->db->get_where('user', ['email' =>
         $this->session->userdata('email')])->row_array();
         $data['select'] = $this->m_test->data_select();
+        $data['analis'] = $this->m_test->data_analis();
         $data['perkiraan'] = $this->m_test->data_perkiraan();
         $data['cashflow'] = $this->m_test->edit_cash($id_lb);
         $data['cashflowp'] = $this->m_test->edit_cashp($id_lb);
@@ -43,7 +44,7 @@ class Test extends CI_Controller
     {
         $data['id_lb'] = $_GET['id_lb'];
         $id_lb = $_GET['id_lb'];
-        $data['title'] = 'Dashboard';
+        $data['title'] = 'Halaman Edit';
         $data['user'] = $this->db->get_where('user', ['email' =>
         $this->session->userdata('email')])->row_array();
         $data['select'] = $this->m_test->data_select();
@@ -61,6 +62,7 @@ class Test extends CI_Controller
         $data['collateralt'] = $this->m_test->edit_collt($id_lb);
         $data['collateralk'] = $this->m_test->edit_collk($id_lb);
         $data['condition'] = $this->m_test->edit_cond($id_lb);
+        $data['realisasi'] = $this->m_test->edit_real($id_lb);
         $data['usulan'] = $this->m_test->edit_usulan($id_lb);
 
         $this->load->view('templates/header', $data);
@@ -151,6 +153,19 @@ class Test extends CI_Controller
         $id_usulan = $this->input->post('id_usulan');
         $this->m_test->add_data_usulan($id_usulan);
     }
+
+    /*
+    function get_autocomplete(){
+        if (isset($_GET['term'])) {
+            $result = $this->m_test->search_notaris($_GET['term']);
+            if (count($result) > 0) {
+            foreach ($result as $row)
+                $arr_result[] = $row->notaris;
+                echo json_encode($arr_result);
+            }
+        }
+    }
+    */
 
     public function cetak_char()
     {

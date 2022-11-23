@@ -66,7 +66,7 @@ class Pdf_char extends CI_Controller
             $pdf->Cell(30, 5.5, $data->hp3, 1, 1, '');
 
 
-            $pdf->Output();
+            $pdf->Output('Character','I');
         }
     }
 }

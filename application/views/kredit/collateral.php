@@ -147,7 +147,7 @@
                             <input class="form-control" id="taksasi" name="taksasi">
                         </div>
                         <div class="col-md-12 mb-4">
-                            <label for="pertimbangan" class="form-label">Pertimbangan</label>
+                            <label for="pertimbangan" class="form-label">Usulan</label>
                             <textarea class="form-control" id="pertimbangan" name="pertimbangan"></textarea>
                         </div>
                     </div>

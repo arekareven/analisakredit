@@ -8,6 +8,46 @@ class M_condition extends CI_Model
         parent::__construct();
         $this->load->library(array('session'));
     }
+    
+    //CRUD dengan jquery Ajax
+    function con_list($id_lb)
+    {
+        $hasil = $this->db->query("SELECT * FROM `condition` WHERE id_lb='$id_lb'");
+        return $hasil->result();
+    }
+
+    function get_con_by_kode($id_con)
+    {
+        $hsl = $this->db->query("SELECT * FROM `condition` WHERE id_con='$id_con'");
+        if ($hsl->num_rows() > 0) {
+            foreach ($hsl->result() as $data) {
+                $hasil = array(
+                    'id_con' => $data->id_con,
+                    'id_lb' => $data->id_lb,
+                    'kekuatan' => $data->kekuatan,
+                    'kelemahan' => $data->kelemahan,
+                    'peluang' => $data->peluang,
+                    'ancaman' => $data->ancaman,
+                );
+            }
+        }
+        return $hasil;
+    }
+
+    public function update_con($id_con, $kekuatan, $kelemahan, $peluang, $ancaman)
+    {
+        $hasil = $this->db->query("UPDATE `condition` SET kekuatan='$kekuatan',kelemahan='$kelemahan',
+                                                    peluang='$peluang',ancaman='$ancaman'
+                                                    WHERE id_con='$id_con'");
+        return $hasil;
+    }
+
+    function delete_con($id_con)
+    {
+        $hasil = $this->db->query("DELETE FROM `condition` WHERE id_con='$id_con'");
+        return $hasil;
+    }
+    //END CRUD dengan jquery Ajax
 
     public function insert($data)
     {

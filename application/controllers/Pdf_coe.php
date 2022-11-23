@@ -44,7 +44,7 @@ class Pdf_coe extends CI_Controller
             $pdf->SetFont('Times', '', 12);
             $pdf->MultiCell(0, 5.5, $data->ancaman);
 
-            $pdf->Output();
+            $pdf->Output('Condition','I');
         }
     }
 }

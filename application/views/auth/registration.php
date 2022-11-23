@@ -36,9 +36,10 @@
                                 </button>
                             </form>
                             <hr>
+                            <!--
                             <div class="text-center">
                                 <a class="small" href="#">Forgot Password?</a>
-                            </div>
+                            </div>  -->
                             <div class="text-center">
                                 <a class="small" href="<?= base_url('auth'); ?>">Already have an account? Login!</a>
                             </div>

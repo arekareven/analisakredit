@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://192.168.202.136/analisakredit/';
+$config['base_url'] = 'http://localhost/analisakredit/';
 
 /*
 |--------------------------------------------------------------------------
@@ -101,6 +101,7 @@ $config['charset'] = 'UTF-8';
 |
 */
 $config['enable_hooks'] = FALSE;
+$config['maintenance_mode'] = FALSE;
 
 /*
 |--------------------------------------------------------------------------
@@ -524,3 +525,5 @@ $config['rewrite_short_tags'] = FALSE;
 | Array:		array('10.0.1.200', '192.168.5.0/24')
 */
 $config['proxy_ips'] = '';
+
+

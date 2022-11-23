@@ -26,6 +26,40 @@ class Condition extends CI_Controller
         $this->load->view('kredit/condition', $data);
         $this->load->view('templates/footer');
     }
+        
+    //CRUD dengan jquery Ajax
+    function data_con()
+    {
+        $id_lb = $this->input->post('id_lb');
+        $data = $this->m_condition->con_list($id_lb);
+        echo json_encode($data);
+    }
+
+    function get_con()
+    {
+        $id_con = $this->input->get('id');
+        $data = $this->m_condition->get_con_by_kode($id_con);
+        echo json_encode($data);
+    }
+
+    public function update_con()
+    {
+        $id_con = $this->input->post('id_con');
+        $kekuatan            = $this->input->post('kekuatan');
+        $kelemahan        = $this->input->post('kelemahan');
+        $peluang     = $this->input->post('peluang');
+        $ancaman              = $this->input->post('ancaman');
+        $data = $this->m_condition->update_con($id_con, $kekuatan, $kelemahan, $peluang, $ancaman);
+        echo json_encode($data);
+    }
+
+    function delete_con()
+    {
+        $id_con = $this->input->post('kode');
+        $data = $this->m_condition->delete_con($id_con);
+        echo json_encode($data);
+    }
+    //End CRUD Jquery Ajax
 
     public function add()
     {

@@ -9,12 +9,104 @@ class M_kredit extends CI_Model
 		$this->load->library(array('session'));
 	}
 
-	public function insert($data)
-	{
-		$insert = $this->db->insert_batch('latar_belakang', $data);
-		if ($insert) {
-			return true;
+	/*
+	function lb_list($id_lb){
+		$hasil=$this->db->query("SELECT * FROM latar_belakang WHERE id_lb=$id_lb");
+		return $hasil->result();
+	}
+        
+	function get_lb_by_kode($id_lb){
+		$hsl=$this->db->query("SELECT * FROM latar_belakang WHERE id_lb='$id_lb'");
+		if($hsl->num_rows()>0){
+			foreach ($hsl->result() as $data) {
+				$hasil=array(
+					'id_lb' => $data->id_lb,
+					'tgl_analisa' => $data->tgl_analisa,
+					'tgl_permohonan' => $data->tgl_permohonan,
+					'plafon' => $data->plafon,
+					'jangka_waktu' => $data->jangka_waktu,
+					'sifat_kredit' => $data->sifat_kredit,
+					'suku_bunga' => $data->suku_bunga,							
+					'musiman' => $data->musiman,							
+					'jenis_permohonan' => $data->jenis_permohonan,
+					'tujuan_permohonan' => $data->tujuan_permohonan,
+					'ket_penggunaan' => $data->ket_penggunaan,
+					'nama_debitur' => $data->nama_debitur,
+					'status_kawin' => $data->status_kawin,
+					'ttl_nasabah' => $data->ttl_nasabah,
+					'ktp' => $data->ktp,
+					'alamat_ktp_nasabah' => $data->alamat_ktp_nasabah,
+					'domisili_nasabah' => $data->domisili_nasabah,
+					'hp_nasabah' => $data->hp_nasabah,
+					'status_tt' => $data->status_tt,
+					'pekerjaan_nasabah' => $data->pekerjaan_nasabah,
+					'tanggungan' => $data->tanggungan,
+					'pendidikan' => $data->pendidikan,
+					'jenis_kelamin' => $data->jenis_kelamin,
+					'masa_laku' => $data->masa_laku,
+					'telp_kantor' => $data->telp_kantor,
+					'lama_tinggal' => $data->lama_tinggal,
+					'nama_pasangan' => $data->nama_pasangan,
+					'ttl_pasangan' => $data->ttl_pasangan,
+					'alamat_ktp_pasangan' => $data->alamat_ktp_pasangan,
+					'domisili_pasangan' => $data->domisili_pasangan,
+					'pekerjaan_pasangan' => $data->pekerjaan_pasangan,
+					'hp_pasangan' => $data->hp_pasangan,
+					'nama_keluarga' => $data->nama_keluarga,
+					'hubungan_keluarga' => $data->hubungan_keluarga,
+					'alamat_keluarga' => $data->alamat_keluarga,
+					'hp_keluarga' => $data->hp_keluarga,
+					);
+			}
 		}
+		return $hasil;
+	}
+		
+	public function update_lb($id_lb,$tgl_analisa,$tgl_permohonan,$plafon,$jangka_waktu,$sifat_kredit,$suku_bunga,$musiman,$jenis_permohonan,$tujuan_permohonan,$ket_penggunaan,$nama_debitur,$status_kawin,$ttl_nasabah,$ktp,$alamat_ktp_nasabah,$domisili_nasabah,$hp_nasabah,$status_tt,$pekerjaan_nasabah,$tanggungan,$pendidikan,$jenis_kelamin,$masa_laku,$telp_kantor,$lama_tinggal,$nama_pasangan,$ttl_pasangan,$alamat_ktp_pasangan,$domisili_pasangan,$pekerjaan_pasangan,$hp_pasangan,$nama_keluarga,$hubungan_keluarga,$alamat_keluarga,$hp_keluarga)
+	{
+		$hasil=$this->db->query("UPDATE latar_belakang SET tgl_analisa=$tgl_analisa,tgl_permohonan=$tgl_permohonan,plafon=$plafon,jangka_waktu=$jangka_waktu,sifat_kredit=$sifat_kredit,suku_bunga=$suku_bunga,musiman=$musiman,jenis_permohonan=$jenis_permohonan,tujuan_permohonan=$tujuan_permohonan,ket_penggunaan=$ket_penggunaan,nama_debitur=$nama_debitur,status_kawin=$status_kawin,ttl_nasabah=$ttl_nasabah,ktp=$ktp,alamat_ktp_nasabah=$alamat_ktp_nasabah,domisili_nasabah=$domisili_nasabah,hp_nasabah=$hp_nasabah,status_tt=$status_tt,pekerjaan_nasabah=$pekerjaan_nasabah,tanggungan=$tanggungan,pendidikan=$pendidikan,jenis_kelamin=$jenis_kelamin,masa_laku=$masa_laku,telp_kantor=$telp_kantor,lama_tinggal=$lama_tinggal,nama_pasangan=$nama_pasangan,ttl_pasangan=$ttl_pasangan,alamat_ktp_pasangan=$alamat_ktp_pasangan,domisili_pasangan=$domisili_pasangan,pekerjaan_pasangan=$pekerjaan_pasangan,hp_pasangan=$hp_pasangan,nama_keluarga=$nama_keluarga,hubungan_keluarga=$hubungan_keluarga,alamat_keluarga=$alamat_keluarga,hp_keluarga=$hp_keluarga	WHERE id_lb='$id_lb'");
+		return $hasil;
+	}
+	
+	function delete_lb($id_lb){
+		$hasil=$this->db->query("DELETE FROM riwayat_pinjaman WHERE id_lb='$id_lb'");
+		return $hasil;
+	} 
+	*/
+
+
+	function rw_list($id_lb){
+		$hasil=$this->db->query("SELECT * FROM riwayat_pinjaman WHERE id_lb=$id_lb");
+		return $hasil->result();
+	}
+        
+	function get_rp_by_kode($id_rp){
+		$hsl=$this->db->query("SELECT * FROM riwayat_pinjaman WHERE id_rp='$id_rp'");
+		if($hsl->num_rows()>0){
+			foreach ($hsl->result() as $data) {
+				$hasil=array(
+					'id_rp' => $data->id_rp,
+					'id_lb' => $data->id_lb,
+					'plafond' => $data->plafond,
+					'status' => $data->status,
+					'saldo' => $data->saldo,
+					'sejarah' => $data->sejarah,
+					'data' => $data->data,
+					);
+			}
+		}
+		return $hasil;
+	}
+		
+	public function update_rp($id_rp, $plafond, $status, $saldo, $sejarah, $data)
+	{
+		$hasil=$this->db->query("UPDATE riwayat_pinjaman SET plafond='$plafond',`status`='$status',saldo='$saldo',sejarah='$sejarah',`data`='$data' WHERE id_rp='$id_rp'");
+		return $hasil;
+	}
+	
+	function delete_rp($id_rp){
+		$hasil=$this->db->query("DELETE FROM riwayat_pinjaman WHERE id_rp='$id_rp'");
+		return $hasil;
 	}
 
 	function get_no_cif()
@@ -65,6 +157,7 @@ class M_kredit extends CI_Model
 		$jangka_waktu      	= $this->input->post('jangka_waktu');
 		$sifat_kredit      	= $this->input->post('sifat_kredit');
 		$suku_bunga      	= $this->input->post('suku_bunga');
+		$musiman      		= $this->input->post('musiman');
 		$jenis_permohonan   = $this->input->post('jenis_permohonan');
 		$tujuan_permohonan  = $this->input->post('tujuan_permohonan');
 		$ket_penggunaan     = $this->input->post('ket_penggunaan');
@@ -104,6 +197,7 @@ class M_kredit extends CI_Model
 			'jangka_waktu'	    => $jangka_waktu,
 			'sifat_kredit'	    => $sifat_kredit,
 			'suku_bunga'	    => $suku_bunga,
+			'musiman'	    	=> $musiman,
 			'jenis_permohonan'	=> $jenis_permohonan,
 			'tujuan_permohonan'	=> $tujuan_permohonan,
 			'ket_penggunaan'	=> $ket_penggunaan,
@@ -147,6 +241,7 @@ class M_kredit extends CI_Model
 		$jangka_waktu      	= $this->input->post('jangka_waktu');
 		$sifat_kredit      	= $this->input->post('sifat_kredit');
 		$suku_bunga      	= $this->input->post('suku_bunga');
+		$musiman      		= $this->input->post('musiman');
 		$jenis_permohonan   = $this->input->post('jenis_permohonan');
 		$tujuan_permohonan  = $this->input->post('tujuan_permohonan');
 		$ket_penggunaan     = $this->input->post('ket_penggunaan');
@@ -186,6 +281,7 @@ class M_kredit extends CI_Model
 			'jangka_waktu'	    => $jangka_waktu,
 			'sifat_kredit'	    => $sifat_kredit,
 			'suku_bunga'	    => $suku_bunga,
+			'musiman'	    	=> $musiman,
 			'jenis_permohonan'	=> $jenis_permohonan,
 			'tujuan_permohonan'	=> $tujuan_permohonan,
 			'ket_penggunaan'	=> $ket_penggunaan,
@@ -297,7 +393,7 @@ class M_kredit extends CI_Model
 	{
 		$this->db->where(array('id_lb' => $id_lb));
 		$this->db->delete('latar_belakang');
-		redirect('kredit/id_lb?=' . $id_lb);
+		redirect('kredit/lb');
 	}
 
 	function hapus_data2($id_rp, $id_lb)

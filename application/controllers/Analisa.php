@@ -26,21 +26,29 @@ class Analisa extends CI_Controller
         $this->load->view('templates/footer');
     }
 
-    public function edit()
-    {
-        $id_analisis = $this->input->post('id_analisis');
-        $this->m_analisa->edit_data($id_analisis);
-    }
+    //---
 
-    public function lakukan_download()
-    {
-        $file = $_GET['file'];
-        force_download('cache/' . $file, NULL);
-    }
+	public function add_pengajuan()
+	{
+		$id_pengajuan = $this->input->post('id_pengajuan');
 
-    public function next()
-    {
-        $id_lb = $_GET['id_lb'];
-        redirect('analisa?id_lb=' . $id_lb);
-    }
+		$this->m_analisa->add_data_pengajuan($id_pengajuan);
+	}
+
+    function data_pengajuan(){
+        $id_lb=$this->input->post('id_lb');
+		$data=$this->m_analisa->pengajuan_list($id_lb);
+		echo json_encode($data);
+	}
+
+	public function update_pengajuan()
+	{
+		$id_pengajuan = $this->input->post('id_pengajuan');
+		$name_debitur = $this->input->post('name_debitur');
+		$plafond = $this->input->post('plafon');
+		$status		= $this->input->post('status');
+		$catatan     = $this->input->post('catatan');
+		$this->m_analisa->update_pengajuan($id_pengajuan,$name_debitur,$plafond, $status,$catatan);
+	}
+	
 }
