@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 07, 2022 at 04:13 AM
--- Server version: 10.1.29-MariaDB
--- PHP Version: 7.2.0
+-- Waktu pembuatan: 30 Nov 2022 pada 03.57
+-- Versi server: 10.4.25-MariaDB
+-- Versi PHP: 7.4.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -25,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `analis`
+-- Struktur dari tabel `analis`
 --
 
 CREATE TABLE `analis` (
@@ -34,7 +33,7 @@ CREATE TABLE `analis` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `analis`
+-- Dumping data untuk tabel `analis`
 --
 
 INSERT INTO `analis` (`nama`, `email`) VALUES
@@ -45,29 +44,7 @@ INSERT INTO `analis` (`nama`, `email`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `analisis`
---
-
-CREATE TABLE `analisis` (
-  `id_analisis` int(11) NOT NULL,
-  `nama` varchar(50) NOT NULL,
-  `nama_ao` varchar(50) NOT NULL,
-  `file` varchar(128) NOT NULL,
-  `catatan` text NOT NULL,
-  `status` varchar(10) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `analisis`
---
-
-INSERT INTO `analisis` (`id_analisis`, `nama`, `nama_ao`, `file`, `catatan`, `status`) VALUES
-(1, 'Vera Fernanda', 'Fatia Larasati', 'Agus Siswanto13-05-22.docx', '', 'Diserahkan');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `capacity`
+-- Struktur dari tabel `capacity`
 --
 
 CREATE TABLE `capacity` (
@@ -85,7 +62,7 @@ CREATE TABLE `capacity` (
   `tgl_akta` date DEFAULT NULL,
   `npwp` varchar(15) DEFAULT NULL,
   `tgl_npwp` date DEFAULT NULL,
-  `usaha_skrg` text,
+  `usaha_skrg` text DEFAULT NULL,
   `alokasi1` varchar(128) DEFAULT NULL,
   `alokasi2` varchar(128) DEFAULT NULL,
   `alokasi3` varchar(128) DEFAULT NULL,
@@ -93,11 +70,11 @@ CREATE TABLE `capacity` (
   `dana2` varchar(20) DEFAULT NULL,
   `dana3` varchar(20) DEFAULT NULL,
   `total` varchar(20) DEFAULT NULL,
-  `usaha_realisasi` text
+  `usaha_realisasi` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `capacity`
+-- Dumping data untuk tabel `capacity`
 --
 
 INSERT INTO `capacity` (`id_cap`, `id_lb`, `nama_usaha`, `sektor`, `bidang`, `alamat_usaha`, `status_usaha`, `tlp_usaha`, `tgl_mulai`, `tgl_nasabah`, `akta`, `tgl_akta`, `npwp`, `tgl_npwp`, `usaha_skrg`, `alokasi1`, `alokasi2`, `alokasi3`, `dana1`, `dana2`, `dana3`, `total`, `usaha_realisasi`) VALUES
@@ -189,7 +166,7 @@ INSERT INTO `capacity` (`id_cap`, `id_lb`, `nama_usaha`, `sektor`, `bidang`, `al
 -- --------------------------------------------------------
 
 --
--- Table structure for table `capital_a`
+-- Struktur dari tabel `capital_a`
 --
 
 CREATE TABLE `capital_a` (
@@ -228,11 +205,11 @@ CREATE TABLE `capital_a` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `capital_a`
+-- Dumping data untuk tabel `capital_a`
 --
 
 INSERT INTO `capital_a` (`id_capi`, `id_lb`, `kas`, `tabungan`, `deposito`, `piutang`, `peralatan`, `barang`, `barang2`, `barang3`, `sewa`, `lahan`, `gedung`, `operasional`, `lain`, `total_al`, `tanah`, `bangunan`, `kendaraan`, `inventaris`, `lain2`, `total_at`, `total_aset`, `hutang_jpk`, `hutang_jpg`, `hutang_lain`, `hutang_dagang`, `total_hutang`, `laba_rugi`, `modal`, `harta`, `total_kjb`) VALUES
-(34, 11, '55000000', '100000000', '0', '0', '20000000', '0', '0', '0', '0', '0', '0', '10000000', '5000000', '190000000', '150000000', '150000000', '150000000', '0', '5000000', '455000000', '645000000', '12000000', '57647336', '0', '0', '69647336', '95963310', '24389354', '455000000', '645000000'),
+(34, 11, '0', '100000000', '0', '0', '20000000', '0', '0', '0', '0', '0', '0', '10000000', '5000000', '135000000', '150000000', '150000000', '150000000', '0', '5000000', '455000000', '590000000', '100000000', '0', '0', '0', '100000000', '95963310', '-60963310', '455000000', '590000000'),
 (40, 29, '2000000', '0', '0', '0', '0', '25000000', '0', '0', '0', '30000000', '0', '10000000', '35000000', '102000000', '400000000', '100000000', '20000000', '0', '0', '520000000', '622000000', '0', '0', '25000000', '0', '25000000', '415515899', '-338515899', '520000000', '622000000'),
 (41, 46, '5000000', '0', '0', '5000000', '8000000', '200000000', '0', '0', '0', '0', '340000000', '8000000', '0', '566000000', '0', '0', '120000000', '0', '0', '120000000', '686000000', '13500000', '0', '94902889', '0', '108402889', '1236500', '456360611', '120000000', '686000000'),
 (42, 47, '10000000', '0', '0', '35000000', '400000000', '0', '20000000', '0', '0', '0', '0', '385000000', '0', '850000000', '782000000', '150000000', '10000000', '0', '0', '942000000', '1792000000', '104795718', '0', '295254050', '0', '400049768', '9405000', '440545232', '942000000', '1792000000'),
@@ -295,7 +272,7 @@ INSERT INTO `capital_a` (`id_capi`, `id_lb`, `kas`, `tabungan`, `deposito`, `piu
 -- --------------------------------------------------------
 
 --
--- Table structure for table `capital_b`
+-- Struktur dari tabel `capital_b`
 --
 
 CREATE TABLE `capital_b` (
@@ -334,11 +311,11 @@ CREATE TABLE `capital_b` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `capital_b`
+-- Dumping data untuk tabel `capital_b`
 --
 
 INSERT INTO `capital_b` (`id_capi`, `id_lb`, `kas`, `tabungan`, `deposito`, `piutang`, `peralatan`, `barang`, `barang2`, `barang3`, `sewa`, `lahan`, `gedung`, `operasional`, `lain`, `total_al`, `tanah`, `bangunan`, `kendaraan`, `inventaris`, `lain2`, `total_at`, `total_aset`, `hutang_jpk`, `hutang_jpg`, `hutang_lain`, `hutang_dagang`, `total_hutang`, `laba_rugi`, `modal`, `harta`, `total_kjb`) VALUES
-(30, 11, '55000000', '100000000', '0', '0', '20000000', '0', '0', '0', '0', '0', '0', '10000000', '5000000', '410000000', '150000000', '150000000', '150000000', '0', '5000000', '455000000', '865000000', '12000000', '57647336', '0', '0', '69647336', NULL, NULL, NULL, NULL),
+(30, 11, '0', '100000000', '0', '0', '20000000', '0', '0', '0', '0', '0', '0', '10000000', '5000000', '135000000', '150000000', '150000000', '150000000', '0', '5000000', '455000000', '590000000', '100000000', '0', '0', '0', '100000000', NULL, NULL, NULL, NULL),
 (31, 17, '25000000', '10000000', '0', '100000000', '75000000', '250000000', '0', '0', '0', '100000000', '200000000', '175000000', '0', '935000000', '200000000', '100000000', '100000000', '0', '0', '400000000', '1335000000', '0', '0', '130653000', '0', '130653000', NULL, NULL, NULL, NULL),
 (32, 22, '2500000', '0', '0', '5000000', '7500000', '20000000', '0', '0', '0', '75000000', '25000000', '0', '0', '135000000', '100000000', '125000000', '25000000', '0', '0', '250000000', '385000000', '0', '0', '0', '0', '0', NULL, NULL, NULL, NULL),
 (33, 23, '1000000', '0', '0', '0', '0', '0', '0', '0', '0', '451000000', '0', '0', '0', '452000000', '148512000', '240000000', '0', '0', '0', '388512000', '840512000', '3750000', '0', '124028028', '0', '127778028', NULL, NULL, NULL, NULL),
@@ -407,7 +384,7 @@ INSERT INTO `capital_b` (`id_capi`, `id_lb`, `kas`, `tabungan`, `deposito`, `piu
 -- --------------------------------------------------------
 
 --
--- Table structure for table `capital_cache`
+-- Struktur dari tabel `capital_cache`
 --
 
 CREATE TABLE `capital_cache` (
@@ -447,13 +424,13 @@ CREATE TABLE `capital_cache` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `capital_cache`
+-- Dumping data untuk tabel `capital_cache`
 --
 
 INSERT INTO `capital_cache` (`id_capi`, `id_lb`, `kas`, `tabungan`, `deposito`, `piutang`, `peralatan`, `barang`, `barang2`, `barang3`, `sewa`, `lahan`, `gedung`, `operasional`, `lain`, `total_al`, `tanah`, `bangunan`, `kendaraan`, `inventaris`, `lain2`, `total_at`, `total_aset`, `hutang_jpk`, `hutang_jpg`, `hutang_lain`, `hutang_dagang`, `total_hutang`, `laba_rugi`, `modal`, `harta`, `total_kjb`, `total_angsuran`) VALUES
 (27, 29, '12130000', '0', '0', '0', '0', '145000000', '0', '0', '0', '30000000', '0', '10000000', '35000000', '232130000', '400000000', '100000000', '20000000', '0', '0', '520000000', '752130000', '0', '120000000', '25000000', '0', '145000000', '10130000', '77000000', '520000000', '752130000', '8200000'),
 (28, 25, '217475000', '30000000', '0', '1200000000', '100000000', '350000000', '150000000', '0', '0', '500000000', '300000000', '325000000', '100000000', '3272475000', '500000000', '700000000', '80000000', '0', '0', '1280000000', '4552475000', '150000000', '0', '999941289', '0', '1149941289', '17475000', '2105058711', '1280000000', '4552475000', '16125000'),
-(29, 11, '55000000', '100000000', '0', '0', '20000000', '0', '0', '0', '0', '0', '0', '10000000', '18250000', '203250000', '550000000', '150000000', '150000000', '0', '18250000', '868250000', '1071500000', '112000000', '557647336', '13000000', '0', '682647336', '25755000', '-505152336', '868250000', '1071500000', '0'),
+(29, 11, '100000000', '100000000', '0', '0', '20000000', '0', '0', '0', '0', '0', '0', '10000000', '5000000', '235000000', '150000000', '150000000', '150000000', '0', '5000000', '455000000', '590000000', '0', '200000000', '0', '0', '200000000', '95963310', '-60963310', '455000000', '590000000', '0'),
 (30, 46, '7332500', '2500000', '0', '5000000', '8000000', '224000000', '0', '0', '0', '0', '340000000', '8000000', '0', '594832500', '0', '0', '120000000', '0', '0', '120000000', '714832500', '40000000', '0', '94902889', '0', '134902889', '9542000', '457597111', '120000000', '714832500', '5309500'),
 (31, 47, '125655000', '0', '0', '35000000', '400000000', '0', '20000000', '0', '0', '0', '0', '385000000', '0', '965655000', '782000000', '150000000', '10000000', '0', '0', '942000000', '1907655000', '104795718', '300000000', '95254050', '0', '500049768', '54125000', '449950232', '942000000', '1907655000', '15220000'),
 (32, 48, '4597496', '5000000', '0', '0', '30000000', '10000000', '0', '0', '18426050', '0', '7500000', '0', '0', '75523546', '50000000', '150000000', '15000000', '0', '0', '215000000', '290523546', '0', '154830998', '0', '0', '154830998', '10500000', '-82904948', '215000000', '290523546', '4402504'),
@@ -461,14 +438,14 @@ INSERT INTO `capital_cache` (`id_capi`, `id_lb`, `kas`, `tabungan`, `deposito`, 
 (34, 50, '76945100', '50000000', '0', '0', '150000000', '20000000', '10000000', '0', '0', '600000000', '100000000', '20000000', '5000000', '1031945100', '1400000000', '100000000', '18000000', '0', '0', '1518000000', '2549945100', '372660873', '0', '0', '0', '372660873', '50945100', '632339127', '1518000000', '2549945100', '24000000'),
 (35, 53, '1241713378', '200000000', '0', '200000000', '4500000000', '3583451000', '122225500', '65000000', '500000000', '800000000', '600000000', '200000000', '100000000', '12112389878', '5000000000', '3000000000', '1250000000', '50000000', '0', '9300000000', '21412389878', '0', '900000000', '5501366028', '0', '6401366028', '202352605', '5589310472', '9300000000', '21412389878', '80639227'),
 (36, 52, '16585802.723525', '0', '0', '15000000', '0', '44000000', '0', '0', '0', '0', '530000000', '145000000', '0', '750585802.72353', '0', '0', '113000000', '145000000', '0', '258000000', '1008585802.7235', '0', '100000000', '285581302', '0', '385581302', '27900002.723525', '354168698', '258000000', '1008585802.7235', '13614200'),
-(37, 17, '25000000', '10000000', '0', '100000000', '75000000', '529510000', '0', '0', '0', '100000000', '200000000', '175000000', '0', '1214510000', '200000000', '100000000', '100000000', '0', '0', '400000000', '1614510000', '250000000', '0', '130653000', '0', '380653000', '80000000', '804347000', '400000000', '1614510000', '41490000'),
-(38, 54, '40000000', '0', '0', '110000000', '10000000', '260000000', '45000000', '0', '20000000', '500000000', '250000000', '450000000', '0', '1685000000', '250000000', '635800000', '549999997', '0', '0', '1435799997', '3120799997', '0', '240000000', '1074159298', '0', '1314159298', '125500000', '285634702', '1435799997', '3120799997', '38094000'),
+(37, 17, '25000000', '10000000', '0', '100000000', '75000000', '529510000', '0', '0', '0', '100000000', '200000000', '175000000', '0', '1214510000', '200000000', '100000000', '100000000', '0', '0', '400000000', '1335000000', '250000000', '0', '103330000', '0', '353330000', '90000000', '750670000', '400000000', '1335000000', '41490000'),
+(38, 54, '40000000', '0', '0', '110000000', '10000000', '260000000', '45000000', '0', '20000000', '500000000', '250000000', '450000000', '0', '1685000000', '250000000', '635800000', '549999997', '0', '0', '1435799997', '2880799997', '0', '240000000', '1040465298', '0', '1280465298', '85500000', '322234702', '1435799997', '2880799997', '38094000'),
 (39, 57, '95217059', '5000000', '0', '5000000', '50000000', '9990000', '8550000', '9000000', '0', '250000000', '0', '45000000', '30000000', '507757059', '200000000', '300000000', '85000000', '0', '50000000', '635000000', '1142757059', '0', '125000000', '0', '0', '125000000', '12190000', '375912893', '635000000', '1142757059', '3645834'),
 (40, 55, '121000000', '0', '0', '0', '95000000', '100000000', '105000000', '0', '0', '0', '100000000', '102000000', '0', '623000000', '678000000', '200000000', '60000000', '0', '0', '938000000', '1561000000', '120000000', '0', '221440840', '0', '341440840', '20570000', '275011270', '938000000', '1561000000', '11072110'),
 (41, 56, '247400000', '0', '0', '400000000', '122500000', '650000000', '0', '0', '0', '1062600000', '1350000000', '755000000', '0', '4587500000', '250000000', '250000000', '0', '0', '0', '500000000', '5087500000', '0', '600000000', '1921422948', '0', '2521422948', '100000000', '2017377052', '500000000', '5087500000', '48300000'),
 (42, 62, '310000000', '50000000', '0', '100000000', '15000000', '50000000', '0', '0', '0', '200000000', '150000000', '229000000', '0', '1104000000', '350000000', '350000000', '452000000', '0', '0', '1152000000', '2256000000', '100000000', '300000000', '0', '0', '400000000', '35466000', '683934000', '1152000000', '2256000000', '13550000'),
 (43, 66, '70838000', '0', '0', '0', '0', '0', '0', '0', '0', '250000000', '70000000', '0', '0', '390838000', '100000000', '150000000', '25000000', '0', '0', '275000000', '665838000', '0', '150000000', '41694009', '0', '191694009', '12200000', '189555991', '275000000', '665838000', '1412000'),
-(44, 67, '25000000', '400000000', '0', '750000000', '500000000', '790000000', '6700000000', '0', '500000000', '200000000', '6111000000', '716000000', '0', '16692000000', '250000000', '350000000', '450000000', '0', '0', '1050000000', '17742000000', '550000000', '0', '454862923', '0', '1004862923', '95000000', '15636274728', '1050000000', '17742000000', '30137651'),
+(44, 67, '25000000', '400000000', '0', '750000000', '500000000', '790000000', '6700000000', '0', '500000000', '200000000', '6111000000', '716000000', '0', '16692000000', '250000000', '350000000', '450000000', '0', '0', '1050000000', '17192000000', '550000000', '0', '430225272', '0', '980225272', '95000000', '15630774728', '1050000000', '17192000000', '30137651'),
 (45, 64, '350521865', '30000000', '0', '0', '200000000', '500000000', '72000000', '0', '0', '0', '1750000000', '150000000', '75000000', '3127521865', '200000000', '600000000', '250000000', '0', '0', '1050000000', '4177521865', '300000000', '0', '1397019846', '0', '1697019846', '61000000', '1399980154', '1050000000', '4177521865', '26978135'),
 (46, 68, '7686200', '10000000', '0', '0', '15000000', '20000000', '0', '0', '0', '376666660', '150000000', '0', '0', '579352860', '150000000', '200000000', '30000000', '0', '0', '380000000', '959352860', '0', '120000000', '134254077', '0', '254254077', '11052900', '322412583', '380000000', '959352860', '5666700'),
 (47, 70, '37293000', '0', '0', '0', '0', '0', '0', '0', '0', '350000000', '0', '0', '0', '387293000', '150000000', '150000000', '75000000', '0', '0', '375000000', '762293000', '100000000', '0', '0', '0', '100000000', '13550000', '280777000', '375000000', '762293000', '5334000'),
@@ -504,18 +481,18 @@ INSERT INTO `capital_cache` (`id_capi`, `id_lb`, `kas`, `tabungan`, `deposito`, 
 (77, 105, '152000000', '5185940', '0', '0', '5000000', '1800000', '0', '0', '0', '150000000', '0', '2000000', '0', '315985940', '241755000', '81000000', '20000000', '0', '0', '342755000', '658740940', '150000000', '0', '3772586', '0', '153772586', '9268750', '158846604', '342755000', '658740940', '4402000'),
 (78, 97, '2000000', '4000000', '0', '0', '5000000', '20000000', '5000000', '0', '15000000', '220000000', '0', '10000000', '5000000', '286000000', '560000000', '150000000', '100000000', '100000000', '0', '910000000', '1196000000', '18753020', '180000000', '0', '0', '198753020', '25440000', '61806980', '910000000', '1196000000', '0'),
 (79, 107, '45000000', '50438808', '200000000', '350000000', '70000000', '250000000', '0', '0', '0', '450000000', '250000000', '150000000', '500000000', '2315438808', '1000000000', '900000000', '850000000', '25000000', '0', '2775000000', '5090438808', '550000000', '0', '584008820', '0', '1134008820', '167500000', '1017729988', '2775000000', '5090438808', '0'),
-(80, 109, '190000000', '15000000', '0', '57000000', '90000000', '60000000', '0', '0', '0', '150000000', '120000000', '70000000', '0', '752000000', '70000000', '250000000', '36000000', '0', '0', '356000000', '1108000000', '42400000', '446205070', '0', '0', '488605070', '23800000', '246069930', '356000000', '1108000000', '4375000'),
+(80, 109, '281675000', '15000000', '0', '57000000', '90000000', '60000000', '0', '0', '0', '150000000', '120000000', '70000000', '0', '843675000', '70000000', '250000000', '36000000', '0', '0', '356000000', '1199675000', '42400000', '446205070', '0', '0', '488605070', '23800000', '337744930', '356000000', '1199675000', '4375000'),
 (81, 110, '210000000', '0', '0', '0', '5000000', '15000000', '0', '0', '0', '250000000', '0', '70000000', '10000000', '560000000', '170000000', '300000000', '25000000', '0', '0', '495000000', '1055000000', '0', '200000000', '30734014', '0', '230734014', '21500000', '316940119', '495000000', '1055000000', '7174133'),
 (82, 111, '180000000', '0', '0', '0', '10000000', '0', '0', '0', '0', '0', '0', '800000000', '0', '990000000', '100000000', '150000000', '850000000', '0', '0', '1100000000', '2090000000', '175000000', '0', '0', '0', '175000000', '24000000', '804849000', '1100000000', '2090000000', '7049000'),
-(83, 112, '81439175', '15000000', '1000000', '10000000', '10000000', '30000000', '0', '0', '0', '400000000', '80000000', '100000000', '30000000', '757439175', '200000000', '400000000', '50000000', '0', '20000000', '670000000', '1427439175', '0', '0', '-4301017', '220000000', '215698983', '28080000', '526878209', '670000000', '1427439175', '10718017'),
+(83, 112, '664577192', '15000000', '1000000', '10000000', '10000000', '30000000', '0', '0', '0', '400000000', '80000000', '100000000', '30000000', '1340577192', '200000000', '400000000', '50000000', '0', '20000000', '670000000', '2010577192', '0', '0', '-4301017', '220000000', '215698983', '28080000', '1110016226', '670000000', '2010577192', '10718017'),
 (84, 113, '340000000', '10000000', '0', '855000000', '250000000', '60000000', '200000000', '180000000', '0', '3000000000', '800000000', '700000000', '0', '6395000000', '1000000000', '1200000000', '450000000', '0', '0', '2650000000', '9045000000', '0', '300000000', '2752257947', '0', '3052257947', '315200000', '3116135879.1167', '2650000000', '9045000000', '84593826.116667'),
 (85, 91, '2150000', '0', '0', '0', '17850000', '175000000', '0', '0', '0', '0', '700000000', '65000000', '0', '960000000', '0', '366500000', '15000000', '0', '0', '381500000', '1341500000', '0', '100000000', '416270503', '0', '516270503', '21175500', '437193497', '381500000', '1341500000', '12689500'),
-(86, 114, '110000000', '0', '0', '0', '75000000', '0', '0', '0', '0', '0', '0', '95000000', '0', '280000000', '250000000', '55000000', '50000000', '0', '0', '355000000', '635000000', '100000000', '165947732', '0', '0', '265947732', '20000000', '-1697732', '355000000', '635000000', '750000');
+(86, 114, '254250000', '0', '0', '0', '75000000', '0', '0', '0', '0', '0', '0', '95000000', '0', '424250000', '250000000', '55000000', '50000000', '0', '0', '355000000', '779250000', '100000000', '165947732', '0', '0', '265947732', '20000000', '142552268', '355000000', '779250000', '750000');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cashflow_a`
+-- Struktur dari tabel `cashflow_a`
 --
 
 CREATE TABLE `cashflow_a` (
@@ -531,12 +508,10 @@ CREATE TABLE `cashflow_a` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `cashflow_a`
+-- Dumping data untuk tabel `cashflow_a`
 --
 
 INSERT INTO `cashflow_a` (`id_cf`, `id_lb`, `kode`, `kode_perkiraan`, `nama_perkiraan`, `keterangan`, `saldo`, `kode_jenis`, `jenis`) VALUES
-(83, 11, 1, '2.1.2', 'Hutang Jangka Panjang', 'Hutang di Ekadharma', '400000000', 'K', 'hutang'),
-(84, 11, 1, '1.2.1', 'Tanah', 'Hutang di Ekadharma', '400000000', 'D', 'hutang'),
 (87, 11, 3, '1.1.1', 'Kas', 'Pembelian barang dagangan', '80000000', 'K', 'pengeluaran'),
 (88, 11, 3, '5.1.1', 'Harga Pokok Pembelian 1', 'Pembelian barang dagangan', '80000000', 'D', 'pengeluaran'),
 (89, 11, 4, '1.1.1', 'Kas', 'Biaya operasional', '1500000', 'K', 'pengeluaran'),
@@ -599,8 +574,6 @@ INSERT INTO `cashflow_a` (`id_cf`, `id_lb`, `kode`, `kode_perkiraan`, `nama_perk
 (192, 11, 6, '1.1.1', 'Kas', 'Dari usaha dropshiping', '3200000', 'D', 'pendapatan'),
 (197, 11, 7, '1.1.1', 'Kas', 'Biaya beli laptop asus x540LJ', '1650000', 'K', 'pengeluaran'),
 (198, 11, 7, '5.2.3', 'Biaya Operasional Usaha 2', 'Biaya beli laptop asus x540LJ', '1650000', 'D', 'pengeluaran'),
-(201, 11, 8, '2.1.4', 'Hutang Lain', 'Hutang tetangga', '13250000', 'K', 'hutang'),
-(202, 11, 8, '1.2.5', 'Lain - lain', 'Hutang tetangga', '13250000', 'D', 'hutang'),
 (203, 26, 1, '4.1.1', 'Pendapatan Usaha (Omset) 1', 'penjualan bawang merah', '666000000', 'K', 'pendapatan'),
 (204, 26, 1, '1.1.1', 'Kas', 'penjualan bawang merah', '666000000', 'D', 'pendapatan'),
 (205, 26, 1, '4.1.2', 'Pendapatan Usaha (Omset) 2', 'hasil dari toko perancang', '53800000', 'K', 'pendapatan'),
@@ -1050,12 +1023,12 @@ INSERT INTO `cashflow_a` (`id_cf`, `id_lb`, `kode`, `kode_perkiraan`, `nama_perk
 (971, 67, 1, '4.1.1', 'Pendapatan Usaha (Omset) 1', 'Usaha properti ( perumahan )', '650000000', 'K', 'pendapatan'),
 (972, 67, 1, '1.1.1', 'Kas', 'Usaha properti ( perumahan )', '650000000', 'D', 'pendapatan'),
 (973, 67, 2, '1.1.1', 'Kas', 'Pembelian tanah kapling', '250000000', 'K', 'pengeluaran'),
-(974, 67, 2, '5.1.1', 'Harga Pokok Pembelian 1', 'Pembelian tanah kapling', '250000000', 'D', 'pengeluaran');
-INSERT INTO `cashflow_a` (`id_cf`, `id_lb`, `kode`, `kode_perkiraan`, `nama_perkiraan`, `keterangan`, `saldo`, `kode_jenis`, `jenis`) VALUES
+(974, 67, 2, '5.1.1', 'Harga Pokok Pembelian 1', 'Pembelian tanah kapling', '250000000', 'D', 'pengeluaran'),
 (975, 67, 3, '1.1.1', 'Kas', 'Pembelian Material bangunan', '250000000', 'K', 'pengeluaran'),
 (976, 67, 3, '5.1.3', 'Biaya Operasional Usaha 1', 'Pembelian Material bangunan', '250000000', 'D', 'pengeluaran'),
 (977, 67, 4, '1.1.1', 'Kas', 'Biaya tenaga kerja', '45000000', 'K', 'pengeluaran'),
-(978, 67, 4, '5.1.4', 'Biaya Gaji Karyawan Usaha 1', 'Biaya tenaga kerja', '45000000', 'D', 'pengeluaran'),
+(978, 67, 4, '5.1.4', 'Biaya Gaji Karyawan Usaha 1', 'Biaya tenaga kerja', '45000000', 'D', 'pengeluaran');
+INSERT INTO `cashflow_a` (`id_cf`, `id_lb`, `kode`, `kode_perkiraan`, `nama_perkiraan`, `keterangan`, `saldo`, `kode_jenis`, `jenis`) VALUES
 (979, 67, 5, '1.1.1', 'Kas', 'Biaya lain-lain', '10000000', 'K', 'pengeluaran'),
 (980, 67, 5, '5.1.5', 'Biaya Lain - lain Usaha 1', 'Biaya lain-lain', '10000000', 'D', 'pengeluaran'),
 (981, 67, 6, '1.1.1', 'Kas', 'Biaya hidup sehari-hari', '2500000', 'K', 'pengeluaran'),
@@ -1561,12 +1534,12 @@ INSERT INTO `cashflow_a` (`id_cf`, `id_lb`, `kode`, `kode_perkiraan`, `nama_perk
 (1699, 85, 3, '1.1.1', 'Kas', 'Pemeliharaan Usaha pisang', '500000', 'K', 'pengeluaran'),
 (1700, 85, 3, '5.2.2', 'Biaya Pemeliharaan Usaha 2', 'Pemeliharaan Usaha pisang', '500000', 'D', 'pengeluaran'),
 (1701, 85, 4, '1.1.1', 'Kas', 'operasional ', '500000', 'K', 'pengeluaran'),
-(1702, 85, 4, '5.2.3', 'Biaya Operasional Usaha 2', 'operasional ', '500000', 'D', 'pengeluaran');
-INSERT INTO `cashflow_a` (`id_cf`, `id_lb`, `kode`, `kode_perkiraan`, `nama_perkiraan`, `keterangan`, `saldo`, `kode_jenis`, `jenis`) VALUES
+(1702, 85, 4, '5.2.3', 'Biaya Operasional Usaha 2', 'operasional ', '500000', 'D', 'pengeluaran'),
 (1705, 85, 6, '1.1.1', 'Kas', 'Biaya Hidup', '1500000', 'K', 'pengeluaran'),
 (1706, 85, 6, '5.4.1', 'Biaya Lain - lain (umum)', 'Biaya Hidup', '1500000', 'D', 'pengeluaran'),
 (1707, 85, 7, '1.1.1', 'Kas', 'Biaya listrik,air,telp', '400000', 'K', 'pengeluaran'),
-(1708, 85, 7, '5.4.1', 'Biaya Lain - lain (umum)', 'Biaya listrik,air,telp', '400000', 'D', 'pengeluaran'),
+(1708, 85, 7, '5.4.1', 'Biaya Lain - lain (umum)', 'Biaya listrik,air,telp', '400000', 'D', 'pengeluaran');
+INSERT INTO `cashflow_a` (`id_cf`, `id_lb`, `kode`, `kode_perkiraan`, `nama_perkiraan`, `keterangan`, `saldo`, `kode_jenis`, `jenis`) VALUES
 (1709, 85, 8, '2.1.2', 'Hutang Jangka Panjang', 'Pembelian Tanah', '140000000', 'K', 'hutang'),
 (1710, 85, 8, '1.1.1', 'Kas', 'Pembelian Tanah', '140000000', 'D', 'hutang'),
 (1713, 85, 5, '1.1.1', 'Kas', 'gaji karyawan Teh gopek', '6000000', 'K', 'pengeluaran'),
@@ -1739,8 +1712,6 @@ INSERT INTO `cashflow_a` (`id_cf`, `id_lb`, `kode`, `kode_perkiraan`, `nama_perk
 (1994, 95, 13, '2.1.4', 'Hutang Lain', 'Pelunasan pinjaman PNM', '96900000', 'D', 'hutang'),
 (1999, 95, 16, '2.1.2', 'Hutang Jangka Panjang', 'Biaya renovasi rumah', '33100000', 'K', 'hutang'),
 (2000, 95, 16, '1.2.2', 'Bangunan', 'Biaya renovasi rumah', '33100000', 'D', 'hutang'),
-(2017, 11, 12, '2.1.1', 'Hutang Jangka Pendek', 'pelunasan sebagian', '100000000', 'K', 'hutang'),
-(2018, 11, 12, '2.1.2', 'Hutang Jangka Panjang', 'pelunasan sebagian', '100000000', 'D', 'hutang'),
 (2019, 100, 1, '4.1.1', 'Pendapatan Usaha (Omset) 1', 'Hasil Usaha dagang pakaian', '10000000', 'K', 'pendapatan'),
 (2020, 100, 1, '1.1.1', 'Kas', 'Hasil Usaha dagang pakaian', '10000000', 'D', 'pendapatan'),
 (2023, 100, 3, '1.1.1', 'Kas', 'biaya kebutuhan sehari hari tiap bulan', '1000000', 'K', 'pengeluaran'),
@@ -2064,13 +2035,13 @@ INSERT INTO `cashflow_a` (`id_cf`, `id_lb`, `kode`, `kode_perkiraan`, `nama_perk
 (2495, 91, 8, '1.1.1', 'Kas', 'Biaya Listrik dan Telepon Toko', '200000', 'K', 'pengeluaran'),
 (2496, 91, 8, '5.1.3', 'Biaya Operasional Usaha 1', 'Biaya Listrik dan Telepon Toko', '200000', 'D', 'pengeluaran'),
 (2497, 91, 9, '1.1.1', 'Kas', 'Biaya Transportasi Usaha', '1000000', 'K', 'pengeluaran'),
-(2498, 91, 9, '5.1.3', 'Biaya Operasional Usaha 1', 'Biaya Transportasi Usaha', '1000000', 'D', 'pengeluaran');
-INSERT INTO `cashflow_a` (`id_cf`, `id_lb`, `kode`, `kode_perkiraan`, `nama_perkiraan`, `keterangan`, `saldo`, `kode_jenis`, `jenis`) VALUES
+(2498, 91, 9, '5.1.3', 'Biaya Operasional Usaha 1', 'Biaya Transportasi Usaha', '1000000', 'D', 'pengeluaran'),
 (2499, 91, 10, '1.1.1', 'Kas', 'Biaya Gaji 2 Orang Karyawan', '3000000', 'K', 'pengeluaran'),
 (2500, 91, 10, '5.1.4', 'Biaya Gaji Karyawan Usaha 1', 'Biaya Gaji 2 Orang Karyawan', '3000000', 'D', 'pengeluaran'),
 (2501, 113, 1, '4.1.1', 'Pendapatan Usaha (Omset) 1', 'Hasil usaha bersih Alfamart Sidowayah', '35000000', 'K', 'pendapatan'),
 (2502, 113, 1, '', '', 'Hasil usaha bersih Alfamart Sidowayah', '35000000', 'D', 'pendapatan'),
-(2503, 113, 2, '4.1.2', 'Pendapatan Usaha (Omset) 2', 'Usaha angkutan truk', '350000000', 'K', 'pendapatan'),
+(2503, 113, 2, '4.1.2', 'Pendapatan Usaha (Omset) 2', 'Usaha angkutan truk', '350000000', 'K', 'pendapatan');
+INSERT INTO `cashflow_a` (`id_cf`, `id_lb`, `kode`, `kode_perkiraan`, `nama_perkiraan`, `keterangan`, `saldo`, `kode_jenis`, `jenis`) VALUES
 (2504, 113, 2, '', '', 'Usaha angkutan truk', '350000000', 'D', 'pendapatan'),
 (2509, 91, 11, '1.1.1', 'Kas', 'HPP Usaha Toko Bangunan', '31500000', 'K', 'pengeluaran'),
 (2510, 91, 11, '5.1.1', 'Harga Pokok Pembelian 1', 'HPP Usaha Toko Bangunan', '31500000', 'D', 'pengeluaran'),
@@ -2108,13 +2079,15 @@ INSERT INTO `cashflow_a` (`id_cf`, `id_lb`, `kode`, `kode_perkiraan`, `nama_perk
 (2588, 114, 9, '5.5.5', 'Biaya Angsuran Hutang Jangka Panjang', 'Angsuran FIF', '750000', 'D', 'pengeluaran'),
 (2589, 114, 10, '2.1.1', 'Hutang Jangka Pendek', 'SISA Hutang di Ekadharma ', '14999664', 'K', 'hutang'),
 (2590, 114, 10, '1.1.1', 'Kas', 'SISA Hutang di Ekadharma ', '14999664', 'D', 'hutang'),
-(2595, 11, 13, '1.1.1', 'Kas', 'pelunasan hutang lain dari kas', '13000000', 'K', 'pengeluaran'),
-(2596, 11, 13, '5.6.3', 'Pelunasan Hutang Lain', 'pelunasan hutang lain dari kas', '13000000', 'D', 'pengeluaran');
+(2597, 11, 8, '2.1.2', 'Hutang Jangka Panjang', 'pelunasan', '100000000', 'K', 'hutang'),
+(2598, 11, 8, '2.1.1', 'Hutang Jangka Pendek', 'pelunasan', '100000000', 'D', 'hutang'),
+(2599, 11, 9, '2.1.2', 'Hutang Jangka Panjang', 'sisa masuk kas', '100000000', 'K', 'hutang'),
+(2600, 11, 9, '1.1.1', 'Kas', 'sisa masuk kas', '100000000', 'D', 'hutang');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cashflow_b`
+-- Struktur dari tabel `cashflow_b`
 --
 
 CREATE TABLE `cashflow_b` (
@@ -2130,7 +2103,7 @@ CREATE TABLE `cashflow_b` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `cashflow_b`
+-- Dumping data untuk tabel `cashflow_b`
 --
 
 INSERT INTO `cashflow_b` (`id_cf`, `id_lb`, `kode`, `kode_perkiraan`, `nama_perkiraan`, `keterangan`, `saldo`, `kode_jenis`, `jenis`) VALUES
@@ -3534,7 +3507,7 @@ INSERT INTO `cashflow_b` (`id_cf`, `id_lb`, `kode`, `kode_perkiraan`, `nama_perk
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cashflow_lain`
+-- Struktur dari tabel `cashflow_lain`
 --
 
 CREATE TABLE `cashflow_lain` (
@@ -3552,7 +3525,7 @@ CREATE TABLE `cashflow_lain` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `collateral`
+-- Struktur dari tabel `collateral`
 --
 
 CREATE TABLE `collateral` (
@@ -3573,11 +3546,11 @@ CREATE TABLE `collateral` (
   `milik` varchar(128) DEFAULT NULL,
   `taksiran` varchar(20) DEFAULT NULL,
   `nl` varchar(20) DEFAULT NULL,
-  `usulan` text
+  `usulan` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `collateral`
+-- Dumping data untuk tabel `collateral`
 --
 
 INSERT INTO `collateral` (`id_col`, `id_lb`, `roda`, `nopol`, `nama_stnk`, `alamat`, `type`, `jenis`, `tahun`, `warna`, `silinder`, `no_rangka`, `no_mesin`, `no_bpkb`, `milik`, `taksiran`, `nl`, `usulan`) VALUES
@@ -3611,7 +3584,7 @@ INSERT INTO `collateral` (`id_col`, `id_lb`, `roda`, `nopol`, `nama_stnk`, `alam
 -- --------------------------------------------------------
 
 --
--- Table structure for table `collateral_tanah`
+-- Struktur dari tabel `collateral_tanah`
 --
 
 CREATE TABLE `collateral_tanah` (
@@ -3627,9 +3600,9 @@ CREATE TABLE `collateral_tanah` (
   `luas_t` varchar(10) DEFAULT NULL,
   `luas_b` varchar(10) DEFAULT NULL,
   `milik` varchar(128) DEFAULT NULL,
-  `fisik_jaminan` text,
-  `taksasi` text,
-  `usulan` text,
+  `fisik_jaminan` text DEFAULT NULL,
+  `taksasi` text DEFAULT NULL,
+  `usulan` text DEFAULT NULL,
   `harga_t` varchar(20) DEFAULT NULL,
   `harga_b` varchar(20) DEFAULT NULL,
   `harga_t2` varchar(20) DEFAULT NULL,
@@ -3638,7 +3611,7 @@ CREATE TABLE `collateral_tanah` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `collateral_tanah`
+-- Dumping data untuk tabel `collateral_tanah`
 --
 
 INSERT INTO `collateral_tanah` (`id_col2`, `id_lb`, `jenis`, `nama`, `alamat`, `no_shm`, `lokasi`, `tgl_ukur`, `no_ukur`, `luas_t`, `luas_b`, `milik`, `fisik_jaminan`, `taksasi`, `usulan`, `harga_t`, `harga_b`, `harga_t2`, `harga_b2`, `ht`) VALUES
@@ -3712,20 +3685,20 @@ INSERT INTO `collateral_tanah` (`id_col2`, `id_lb`, `jenis`, `nama`, `alamat`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `condition`
+-- Struktur dari tabel `condition`
 --
 
 CREATE TABLE `condition` (
   `id_con` int(11) NOT NULL,
   `id_lb` int(11) NOT NULL,
-  `kekuatan` text,
-  `kelemahan` text,
-  `peluang` text,
-  `ancaman` text
+  `kekuatan` text DEFAULT NULL,
+  `kelemahan` text DEFAULT NULL,
+  `peluang` text DEFAULT NULL,
+  `ancaman` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `condition`
+-- Dumping data untuk tabel `condition`
 --
 
 INSERT INTO `condition` (`id_con`, `id_lb`, `kekuatan`, `kelemahan`, `peluang`, `ancaman`) VALUES
@@ -3800,7 +3773,7 @@ INSERT INTO `condition` (`id_con`, `id_lb`, `kekuatan`, `kelemahan`, `peluang`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dummy`
+-- Struktur dari tabel `dummy`
 --
 
 CREATE TABLE `dummy` (
@@ -3815,7 +3788,7 @@ CREATE TABLE `dummy` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `dummy`
+-- Dumping data untuk tabel `dummy`
 --
 
 INSERT INTO `dummy` (`id_cf`, `id_lb`, `dari`, `untuk`, `keterangan`, `pemasukan`, `pengeluaran`, `saldo`) VALUES
@@ -3827,13 +3800,13 @@ INSERT INTO `dummy` (`id_cf`, `id_lb`, `dari`, `untuk`, `keterangan`, `pemasukan
 -- --------------------------------------------------------
 
 --
--- Table structure for table `karakter`
+-- Struktur dari tabel `karakter`
 --
 
 CREATE TABLE `karakter` (
   `id_char` int(10) NOT NULL,
   `id_lb` int(10) NOT NULL,
-  `info_pribadi` text,
+  `info_pribadi` text DEFAULT NULL,
   `info_perilaku` varchar(128) DEFAULT NULL,
   `info_keluarga` varchar(128) DEFAULT NULL,
   `nm1` varchar(50) DEFAULT NULL,
@@ -3848,7 +3821,7 @@ CREATE TABLE `karakter` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `karakter`
+-- Dumping data untuk tabel `karakter`
 --
 
 INSERT INTO `karakter` (`id_char`, `id_lb`, `info_pribadi`, `info_perilaku`, `info_keluarga`, `nm1`, `nm2`, `nm3`, `al1`, `al2`, `al3`, `hp1`, `hp2`, `hp3`) VALUES
@@ -3934,7 +3907,7 @@ INSERT INTO `karakter` (`id_char`, `id_lb`, `info_pribadi`, `info_perilaku`, `in
 -- --------------------------------------------------------
 
 --
--- Table structure for table `latar_belakang`
+-- Struktur dari tabel `latar_belakang`
 --
 
 CREATE TABLE `latar_belakang` (
@@ -3975,98 +3948,99 @@ CREATE TABLE `latar_belakang` (
   `hubungan_keluarga` varchar(50) DEFAULT NULL,
   `alamat_keluarga` varchar(128) DEFAULT NULL,
   `hp_keluarga` varchar(15) DEFAULT NULL,
-  `user` varchar(50) DEFAULT NULL
+  `user` varchar(50) DEFAULT NULL,
+  `analis` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `latar_belakang`
+-- Dumping data untuk tabel `latar_belakang`
 --
 
-INSERT INTO `latar_belakang` (`id_lb`, `cif_bank`, `tgl_analisa`, `tgl_permohonan`, `plafon`, `jangka_waktu`, `sifat_kredit`, `suku_bunga`, `musiman`, `jenis_permohonan`, `tujuan_permohonan`, `ket_penggunaan`, `nama_debitur`, `status_kawin`, `ttl_nasabah`, `ktp`, `alamat_ktp_nasabah`, `domisili_nasabah`, `hp_nasabah`, `status_tt`, `pekerjaan_nasabah`, `tanggungan`, `pendidikan`, `jenis_kelamin`, `masa_laku`, `telp_kantor`, `lama_tinggal`, `nama_pasangan`, `ttl_pasangan`, `alamat_ktp_pasangan`, `domisili_pasangan`, `pekerjaan_pasangan`, `hp_pasangan`, `nama_keluarga`, `hubungan_keluarga`, `alamat_keluarga`, `hp_keluarga`, `user`) VALUES
-(11, '00001', '2022-06-28', '2022-06-12', '450000000', '600', 'Pokok bunga tiap bulan', '20 % Flate per tahun', 0, 'Baru', 'Modal Kerja', 'Pembelian tanah luas 2.270 m2', 'RANDY WIJAYA KUSUMA', 'Tidak Menikah', 'Ngawi, 20-07-1994', '3521032007940002', 'Desa Soco RT 05 RW 02 Kec. Jogorogo Kab. Ngawi', 'Perumahan Arya Mandiri 2 Blok C No. 2 RT 05 RW 06 Plesungan Gondangrejo Kab. Karanganyar Jawa Tengah.', '08131049959', 'Milik Sendiri', 'Wiraswasta', '3', 'SMA', 'Laki-laki', 'Seumur Hidup', '0', '2', 'IZZATUL NAJMI ALMANARAH', 'Blitar, 28-11-1997', 'Desa Soco RT 05 RW 02 Kec. Jogorogo Kab. Ngawi', 'Perumahan Arya Mandiri 2 Blok C No. 2 RT 05 RW 06 Plesungan Gondangrejo Kab. Karanganyar Jawa Tengah.', 'Ibu Rumah Tangga', '08131049959', 'ERNING YULI ASTUTIK', 'Anak Kandung', 'Desa Soco RT 05 RW 02 Kec. Jogorogo Kab. Ngawi', '0895704310022', 'fatia@gmail.com'),
-(17, '00002', '2022-06-09', '2022-06-09', '250000000', '24', 'Pokok bunga tiap bulan', '18', 0, 'Baru', 'Modal Kerja', 'Tambah modal usaha dagang beras', 'KASDI', 'Menikah', 'Magetan, 20-07-1965', '3520042007650001', 'Desa Sawojajar RT 09 RW 02 Kecamatan Takeran Kabupaten Magetan', 'Desa Sawojajar RT 09 RW 02 Kecamatan Takeran Kabupaten Magetan', '081359950159', 'Milik Sendiri', 'Perdagangan ( Beras )', '2', 'SMA', 'Laki-laki', 'Seumur Hidup', '0', '25', 'YAYUK EKAWATI', 'Magetan, 08-12-1973', 'Desa Sawojajar RT 09 RW 02 Kecamatan Takeran Kabupaten Magetan', 'Desa Sawojajar RT 09 RW 02 Kecamatan Takeran Kabupaten Magetan', 'Wiraswasta', '0', 'Wahyu', 'Rekan Kerja', 'Desa Sawojajar RT 09 RW 02 Kecamatan Takeran Kabupaten Magetan', '085735301218', 'arisanaaa82@gmail.com'),
-(22, '00002', '2022-06-10', '2022-06-10', '25000000', '24', 'Pokok bunga tiap bulan', '18 % flat /tahun', 0, 'Baru', 'Modal Kerja', 'Tambah modal dagang pracangan', 'supriyati', 'Menikah', 'Magetan,08-09-1981', '3520034507860002', 'Desa Nguri RT01 RW 03, Kec.Lembeyan Kab.Magetan', 'Desa Nguri RT01 RW 03, Kec.Lembeyan Kab.Magetan', '08133577044', 'Milik Sendiri', 'Wiraswasta', '2', 'SMA', 'Laki-laki', 'Seumur Hidup', '0', '10', 'Suhadi prayitno', 'Magetan,05-02-1975', 'Desa Nguri RT01 RW 03, Kec.Lembeyan Kab.Magetan', 'Desa Nguri RT01 RW 03, Kec.Lembeyan Kab.Magetan', 'Wiraswasta', '0812345678', 'Suparmi', 'Tetangga', 'Desa Nguri RT01 RW 03, Kec.Lembeyan Kab.Magetan', '08523443221', 'arie29895@gmail.com'),
-(23, '00002', '2022-06-03', '2022-05-25', '200000000', '36', 'Pokok bunga tiap bulan', '12 %', 0, 'Ulangan', 'Konsumsi', 'Digunakan untuk pembelian mobil Avanza tahun 2012', 'Isran', 'Menikah', 'Magetan, 05-02-1967', '3520050502670001', 'Ds. Tulung Rt 003 Rw 005 Kec. Kawedanan Kab.Magetan', 'Ds. Tulung Rt 003 Rw 005 Kec. Kawedanan Kab.Magetan', '081217531170', 'Milik Sendiri', 'PNS ( BPN Magetan )', '4', 'S1', 'Laki-laki', 'Seumur Hidup', '0351895097', '23', 'Dwi Hastutik', 'Pacitan, 13-11-1970', 'Ds. Tulung Rt 003 Rw 005 Kec. Kawedanan Kab.Magetan', 'Ds. Tulung Rt 003 Rw 005 Kec. Kawedanan Kab.Magetan', 'Wiraswasta', '085641012220', 'Pauji', 'Saudara Kandung', 'Surabaya', '0815007871', 'mahfutansori@gmail.com'),
-(25, '00003', '2022-06-23', '2022-06-20', '150000000', '24', 'Pokok bunga tiap bulan', '15% pertahun', 0, 'Baru', 'Modal Kerja', 'Modal Usaha Bawang Merah', 'SUPRIYANTO', 'Menikah', 'MAGETAN', '3520080607790002', 'DESA SIMO RT/RW 001/01 KECAMATAN KENDAL KABUPATEN NGAWI', 'DESA SIMO RT/RW 001/01 KECAMATAN KENDAL KABUPATEN NGAWI', '0856724264', 'Milik Sendiri', 'WIRASWASTA', '3', 'SMA', 'Laki-laki', 'Seumur Hidup', '0', '10', 'YENI MAHRITA', 'NGAWI,06-07-1986', 'DESA SIMO RT/RW 01/01 KECAMATAN KENDAL KABUPATEN NGAWI', 'DESA SIMO RT/RW 01/01 KECAMATAN KENDAL KABUPATEN NGAWI', 'IBU RUMAH TANGGA', '0', 'SUKARNO', 'Orang Tua', 'DESA TURI RT/RW 01/04 KECAMATAN PANEKAN KABUPATEN MAGETAN ', '081234476073', 'chandradestian97@gmail.com'),
-(26, '00003', '2022-02-03', '2022-06-20', '150000000', '24', 'Pokok bunga tiap bulan', '15% pertahun', 0, 'Baru', 'Modal Kerja', 'modal usaha bawang merah', 'Supriyanto', 'Menikah', 'magetan, 07-05-1979', '3520080607790002', 'desa simo, rt/ 01/01 kec kendal kab magetan', 'desa simo, rt/ 01/01 kec kendal kab magetan', '08567247264', 'Milik Sendiri', 'wiraswasta', '3', 'SMA', 'Laki-laki', 'Seumur Hidup', '08567247264', '10', 'Yeni Mahrita', 'ngawi, 06-07-1986', 'desa simo, rt/01/01 kec kendal kab ngawi', 'desa simo, rt/01/01 kec kendal kab magetan', 'ibu rumah tangga', '', 'Sukarno', 'Orang Tua', 'desa turi rt 01/04 kec panekan kab magetan', '081234476073', 'hanifmuslim74@gmail.com'),
-(29, '00005', '2022-06-22', '2022-06-20', '120000000', '60', 'Pokok bunga tiap bulan', '12% pertahun', 0, 'Baru', 'Modal Kerja', 'untk menambah modal usaha jualan kambing', 'KAIRUDIN', 'Menikah', 'NGAWI, 09-08-1973', '3521040809730001', 'Jatisari RT 2 RW 6 DS. MAJASEM, Kec. kendal kab. Magetan', 'jatisari RT 2 RW 6 DS. MAJASEM, kec. kedal kab. magetan', '085330934275', 'Milik Sendiri', 'wiraswasta', '', 'SMA', 'Laki-laki', 'Seumur Hidup', '085330934275', '20', 'KARMI', 'ngawi, 04-06-1975', 'jatisari rt 2 rw 6 DS. majasem, kec. kendal kab. ngawi', 'jatisari rt 2 rw 6 DS. majasem, kec. kendal kab. ngawi', 'tidak bekerja', '', 'Nurhadi', 'Anak Kandung', 'jatisari rt 2 rw 6 DS. majasem, kec. kendal kab. magetan', '082234750197', 'hanifmuslim74@gmail.com'),
-(30, '00006', '2022-06-22', '2022-06-20', '80000000', '48', 'Pokok tiap 6 bulan bunga tiap bulan', '18%', 0, 'Top Up', 'Modal Kerja', 'TAMBAH MODAL PERTANIAN PADI', 'JUMI RAHAYU', 'Menikah', 'MAGETAN, 30- 10-1961', '3520044910610001', 'DS KUWONHARJO RT/RW 21/04 KEC TAKERAN KAB MAGETAN', 'DS KUWONHARJO RT/RW 21/04 KEC TAKERAN KAB MAGETAN', '081252235368', 'Milik Sendiri', 'PEGAWAI NEGERI SIPIL ( PNS ) PENSIUN', '1', 'S1', 'Perempuan', 'Seumur Hidup', '0', '30', 'SUTIKNO', 'MAGETAN,18-10-1961', 'DS KUWONHARJO RT/RW 21/04 KEC TAKERAN KAB MAGETAN', 'DS KUWONHARJO RT/RW 21/04 KEC TAKERAN KAB MAGETAN', 'WIRASWASTA (Pertanian Padi )', '085730789117', 'BOBBY RAMA', 'Anak Kandung', 'DS KUWONHARJO RT/RW 21/04 KEC TAKERAN KAB MAGETAN', '085730789117', 'chandradestian97@gmail.com'),
-(33, '00007', '0000-00-00', '0000-00-00', '', '', 'Pokok bunga tiap bulan', '', 0, 'Baru', 'Modal Kerja', '', '', 'Tidak Menikah', '', '', '', '', '', 'Milik Sendiri', '', '', 'SD', 'Laki-laki', 'Seumur Hidup', '', '', '', '', '', '', '', '', '', 'Anak Kandung', '', '', 'Supraptogandhi@gmail.com'),
-(36, '00007', '2022-07-11', '2022-07-08', '72.000.000', '36', 'Pokok bunga tiap bulan', '18', 0, 'Baru', 'Konsumsi', 'Beli tanah', '', 'Tidak Menikah', '', '', '', '', '', 'Milik Sendiri', '', '', 'SD', 'Laki-laki', 'Seumur Hidup', '', '', '', '', '', '', '', '', '', 'Anak Kandung', '', '', 'basukihanoraga@gmail.com'),
-(38, '00009', '0000-00-00', '0000-00-00', '', '', 'Pokok bunga tiap bulan', '', 0, 'Baru', 'Modal Kerja', '', '', 'Tidak Menikah', '', '', '', '', '', 'Milik Sendiri', '', '', 'SD', 'Laki-laki', 'Seumur Hidup', '', '', '', '', '', '', '', '', '', 'Anak Kandung', '', '', 'adhanialisyahuri414@gmail.com'),
-(39, '00007', '2022-07-08', '2022-07-08', '100.000.000', '24', 'Pokok bunga tiap bulan', '18', 0, 'Baru', 'Modal Kerja', 'Pembelian material bahan pembuatan batako', 'Harianto', 'Menikah', 'Ponorogo,17-08-1945', '35021999000999', 'Dukuh kajang RT 2 RW 3 desa babadan kec babadan kab ponorogo', 'Dukuh kajang RT 2 RW 3 desa babadan kec babadan kab ponorogo', '08125555999', 'Milik Sendiri', 'Wiraswasta', '1', 'SMA', 'Laki-laki', 'Seumur Hidup', '08125555999', '25', 'Srini', 'Ponorogo,17-08-1955', 'Dukuh kajang RT 2 RW 3 desa babadan kec babadan kab ponorogo', 'Dukuh kajang RT 2 RW 3 desa babadan kec babadan kab ponorogo', 'Ibu rumah tangga', '08227777999', 'Anis', 'Anak Kandung', 'Dukuh kajang RT 2 RW 3 desa babadan kec babadan kab ponorogo', '08226667777', 'santojosep99@gmail.com'),
-(40, '00009', '2022-07-08', '2022-07-08', '72.000.000', '48', 'Pokok bunga tiap bulan', '18', 0, 'Baru', 'Modal Kerja', 'Membeli dagangan', 'Basuki', 'Menikah', '25 juli 1995', '0987', 'Yhygst', 'Wuiij', '0909', 'Milik Sendiri', 'Wiraswasta', '3', 'S1', 'Laki-laki', 'Seumur Hidup', '0090', '23', 'Iuii', '09', 'Ujuj', 'Qpoi', 'Poooki', '565', 'Oopo', 'Tetangga', 'Klk', '109', 'basukihanoraga@gmail.com'),
-(41, '00009', '2022-07-08', '2022-07-08', '200000000', '120', 'Pokok bunga tiap bulan', '18', 0, 'Baru', 'Modal Kerja', 'Renovasi tempat hiburan', 'Man Ana', 'Tidak Menikah', 'Magetan,16-08-1985', '364648484992-293', 'Desa ngaglek rt 2 rw 3 parang magetan', 'Desa ngaglek rt 2 rw 3 parang magetan', '085706768011', 'Milik Sendiri', 'Atlit tenis meja', '0', 'S1', 'Laki-laki', 'Seumur Hidup', '-', '20', '-', '-', '-', '-', '-', '-', 'Gandi', 'Tetangga', 'Desa ngaglek rt 2 rw 3 parang magetan', '085788011922', 'andikadevir95@gmail.com'),
-(42, '00009', '2022-07-08', '2022-07-08', '100000000', '36', 'Pokok bunga tiap bulan', '18%', 0, 'Baru', 'Modal Kerja', 'Untuk tambah kulakan', 'Okee', 'Menikah', 'Magetan, 20081991', '3520062008910001', 'Gang 5', 'Gang 5', '085612345678', 'Milik Sendiri', 'Swasta', '', 'S1', 'Laki-laki', 'Seumur Hidup', '', '28', '', '', '', '', '', '', 'Pake', 'Orang Tua', 'Gang 4', '0123456789101', 'avidianski@gmail.com'),
-(44, '000010', '2022-07-08', '2022-07-08', '72.000.000', '36', 'Pokok bunga tiap bulan', '18', 0, 'Baru', 'Modal Kerja', 'Dipakai sendiri', 'Basuki', 'Menikah', '25 juli 1995', '09878', 'Ujuhy nnj', 'Okoko', '0909', 'Milik Sendiri', 'Wiraswasta', '3', 'SD', 'Laki-laki', 'Seumur Hidup', '0909', '10', 'Iuii', 'Tre . 23', 'Rt23 rw 08 trenggalek', 'Rt23 rw08 trrnggalek', 'Poooki', '565', 'Oopo', 'Orang Tua', 'Pokok', '0909', 'basukihanoraga@gmail.com'),
-(46, '000010', '2022-07-09', '2022-07-04', '40000000', '24', 'Pokok bunga tiap bulan', '18% Flat per Tahun', 0, 'Ulangan', 'Modal Kerja', 'Tambah Modal Usaha Grosir Topi dan Boneka', 'PAINIWATI', 'Janda', 'Nganjuk, 19-03-1967', '3577025903670001', 'Jl. Gajah Mada Gg Rukun No 08, RT 01/RW 01, Kelurahan Winongo, Kecamatan Manguharjo, Kota Madiun', 'Jl. Gajah Mada Gg Rukun No 08, RT 01/RW 01, Kelurahan Winongo, Kecamatan Manguharjo, Kota Madiun', '082141509358', 'Milik Sendiri', 'Mengurus Rumah Tangga', '0', 'SMP', 'Laki-laki', 'Seumur Hidup', '0', '30', '-', '-', '-', '-', '-', '-', 'DEDE SETIYANA', 'Tetangga', 'Jl. Wijaya no 17, RT 02/RW 01, Kelurahan Winongo, Kecamatan Manguharjo, Kota Madiun', '081235359169', 'Eka.sandha@gmail.com'),
-(47, '000010', '2022-07-11', '2022-06-10', '600000000', '96', 'Pokok bunga tiap bulan', '18%', 0, 'Baru', 'Modal Kerja', 'Tambah modal usaha proyek ', 'Arip Wibowo', 'Menikah', '14 Oktober 1984', '3520171410840001', 'Ds simbatan RT/RW 001/001 kec Nguntoronadi kab Magetan ', 'Ds simbatan RT/RW 001/001 kec Nguntoronadi kab Magetan ', '', 'Milik Sendiri', 'Wiraswasta', '3', 'SMA', 'Laki-laki', 'Seumur Hidup', '-', '10', 'Yuni Tri Handikasari', 'Magetan 2 Juni 1988', 'Ds simbatan RT/RW 001/001 kec Nguntoronadi kab Magetan ', 'Ds simbatan RT/RW 001/001 kec Nguntoronadi kab Magetan ', 'Wiraswasta ', '', 'Agung Widodo', 'Saudara Kandung', 'Ds Duwet  kec bendo kab Magetan ', '081233919568', 'danangwindianto55@gmail.com'),
-(48, '000010', '2022-07-11', '2022-07-08', '100000000', '48', 'Pokok bunga tiap bulan', '17 % Anuitas rate / th', 0, 'Baru', 'Modal Kerja', 'Tambah modal usaha perdagangan soft drink dan maka', 'ANDIKADEVI RISMANTO', 'Tidak Menikah', 'Magetan, 26-12-1995', '3520052612950001', 'Desa Bogem RT 02 RW 01 Kec. Kawedanan Kab. Magetan', 'Desa Bogem RT 02 RW 01 Kec. Kawedanan Kab. Magetan', '085706768011', 'Milik Keluarga/Ortu', 'Pelajar/Mahasiswa ( Karyawan PT. BPR EKADHARMA )', '0', 'SMA', 'Laki-laki', 'Seumur Hidup', '0351-439872', '27', '-', '-', '-', '-', '-', '-', 'RAPI DHIA MAHARDIKA', 'Saudara Kandung', 'Desa Bogem RT 02 RW 01 Kec. Kawedanan Kab. Magetan', '082143340487', 'arisanaaa82@gmail.com'),
-(49, '000010', '2022-09-20', '2022-09-16', '450000000', '60', 'Pokok bunga tiap bulan', '19', 0, 'Baru', 'Modal Kerja', 'modal usaha SPBU dan pelunasan di BPR jatim', 'ENDANG SURYANTININGSIH', 'Menikah', 'NGAWI, 07-01-1972', '3521094701720002', 'Griya lawu indah II-20 01/16 Desa Jururejo, Kecamatan Ngawi, Kabupaten Ngawi', 'Jalan Kenari, Desa Beran I, Kecamatan Ngawi, Kabupaten Ngawi', '085103863636', 'Milik Sendiri', 'mengurus rumah tangga', '2', 'SMA', 'Laki-laki', 'Seumur Hidup', '081556445379', '25', 'SARTONO MULYO NUGROHO', 'NGAWI, 05-03-1969', 'Griya lawu indah II-20 01/16 Desa Jururejo, Kecamatan Ngawi, Kabupaten Ngawi', 'Jalan Kenari, Desa Beran I, Kecamatan Ngawi, Kabupaten Ngawi', 'wiraswasta', '081556445379', 'SOENARTO', 'Rekan Kerja', 'Paron 10/01, Kecamatan Paron, Kabupaten  Ngawi', '081232883800', 'wahwahwah82.aw@gmail.com'),
-(50, '000010', '2022-07-12', '2022-06-28', '900000000', '60', 'Anuitas', '16', 0, 'Baru', 'Modal Kerja', 'Tambah modal usaha oli dan nitrogen \r\nPelunasan BR', 'Soenarto', 'Belum Menikah', 'Surabaya 09-09-1963', '3521100909630001', 'Paron 10/01 desa Paron ,kec Paron, kab Ngawi', 'Paron 10/01 desa Paron ,kec Paron, kab Ngawi', '081232883800', 'Milik Sendiri', 'Wiraswasta', '0', 'SMA', 'Laki-laki', 'Seumur Hidup', '081556445379', '40', '-', '-', '-', '-', '-', '-', 'Endang Suryantiningsih', 'Saudara Tidak Sekandung', 'Griya lawu indah II-20 01/16 desa jururejo, kec Ngawi, kab Ngawi', '085103863636', 'wahwahwah82.aw@gmail.com'),
-(51, '000010', '2022-07-12', '2022-07-05', '300000000', '36', 'Pokok tiap 4 bulan bunga tiap bulan', '30% Efektif', 0, 'Baru', 'Modal Kerja', 'Modal Usaha Jasa Konstruksi', 'CICILIA MIRNASARI PUTRI', 'Belum Menikah', 'Madiun, 21 Mei 1987', '3519086105870001', 'Desa Dimong RT 06/RW 01 Kecamatan Madiun Kabupaten Madiun', 'Desa Dimong RT 06/RW 01 Kecamatan Madiun Kabupaten Madiun', '082232321038', 'Milik Keluarga/Ortu', 'Pelajar / Mahasiswa', '0', 'S1', 'Perempuan', 'Seumur Hidup', '085790635456', '27', '-', '-', '-', '-', '-', '-', 'ARIS SETIAWAN', 'Rekan Kerja', 'Jl. Gulun RT 48/ RW 15 Kelurahan Kejuron Kecamatan Taman Madiun', '081398060646', 'Eka.sandha@gmail.com'),
-(52, '000010', '2022-07-14', '2022-07-12', '100000000', '60', 'Pokok bunga tiap bulan', '13', 0, 'Top Up', 'Modal Kerja', 'Tambah Modal USaha Dagang Alat Penyaring Air', 'SETYANINGSIH', 'Menikah', 'Magetan, 26 Juni 1974', '3520116606740001', 'Perumahan Imam Bonjol Village Blok A2, RT 22/ RW 05, Kel. Kanigoro, Kec. Kartoharjo, Madiun', 'Perumahan Imam Bonjol Village Blok A2, RT 22/ RW 05, Kel. Kanigoro, Kec. Kartoharjo, Madiun', '085856033792', 'Milik Sendiri', 'Wiraswasta', '1', 'SMA', 'Laki-laki', 'Seumur Hidup', '-', '6', 'AGUS HARIYANTO', 'Bojonegoro, 15 November 1966', 'Perumahan Imam Bonjol Village Blok A2, RT 22/ RW 05, Kel. Kanigoro, Kec. Kartoharjo, Madiun', 'Perumahan Imam Bonjol Village Blok A2, RT 22/ RW 05, Kel. Kanigoro, Kec. Kartoharjo, Madiun', 'Wiraswasta', '-', 'SULIS', 'Saudara Kandung', 'Jl. Puntodewo RT 11/RW 02, Desa Pandean, Kecamatan Maospati, Kabupaten Magetan', '085792273949', 'Eka.sandha@gmail.com'),
-(53, '000010', '2022-07-11', '2022-06-24', '900000000', '60', 'Anuitas', '16', 0, 'Baru', 'Modal Kerja', 'modal usaha SPBU, pelunasan Mandiri dan BRI', 'ENDANG SURYANTINGSIH', 'Menikah', 'NGAWI 07-01-1972', '3521094701720002', 'Griya lawu indah II-20 01/16 Desa Jururejo, kecamatan Ngawi, kabupaten Ngawi', 'jalan Kenari, Desa Beran , kecamatan Ngawi, kabupaten Ngawi', '085103863636', 'Milik Sendiri', 'mengurus rumah tangga', '2', 'SMA', 'Perempuan', 'Seumur Hidup', '081556445379', '25', 'SARTONO MULYO NUGROHO', 'NGAWI 05-03-1969', 'Griya lawu indah II-20 01/16 Desa Jururejo, kecamatan Ngawi, kabupaten Ngawi', 'jalan Kenari, Desa Beran , kecamatan Ngawi, kabupaten Ngawi', 'WIRASWASTA', '081556445379', 'SOENARTO', 'Saudara Tidak Sekandung', 'Paron 10/01 ,kecamatan Paron, kabupaten Ngawi', '081232883800', 'wahwahwah82.aw@gmail.com'),
-(54, '000010', '2022-08-12', '2022-08-10', '240000000', '120', 'Pokok bunga tiap bulan', '12%', 0, 'Ulangan', 'Modal Kerja', 'Tambah modal usaha dagang kelapa', 'MUJIONO', 'Menikah', 'Magetan, 12-12-1972', '3520021212720002', 'Desa Krajan RT 06/02 Kec. Parang Kab. Magetan', 'Desa Krajan RT 05/01 Kec. Parang Kab. Magetan', '081231293187', 'Milik Sendiri', 'Kepala desa', '1', 'S1', 'Laki-laki', 'Seumur Hidup', '-', '45', 'FARIDA FERRY IRAWATY', 'Magetan, 17-03-1987', 'Desa Baron RT 03/03 Kec. Magetan Kab. Magetan', 'Desa Krajan RT 05/01 Kec. Parang Kab. Magetan', 'Kepala desa', '081231293187', 'TUKIMIN', 'Anak Kandung', 'Kab Malang', '082244408246', 'antonekadharma62@gmail.com'),
-(55, '000010', '2022-07-15', '2022-07-13', '150000000', '36', 'Pokok bunga tiap bulan', '18%', 0, 'Baru', 'Modal Kerja', 'Pembelian mobil dan tambah modal usaha.', 'Eko Adi Mulyono', 'Menikah', 'Ngawi, 12-07-1968', '3521181207680002', 'Dsn Kayut II RT/RW 001/005 Ds Guyung Kec Gerih Kab Ngawi.', 'Dsn Kayut II RT/RW 001/005 Ds Guyung Kec Gerih Kab Ngawi.', '082328814009', 'Milik Sendiri', 'Pengacara', '4', 'S1', 'Laki-laki', 'Seumur Hidup', '-', '15', 'Zulkaidah', 'Bengkalis ,10-10-1977', 'Dsn Kayut II RT/RW 001/005 Ds Guyung Kec Gerih Kab Ngawi.', 'Dsn Kayut II RT/RW 001/005 Ds Guyung Kec Gerih Kab Ngawi.', 'Pegawai negeri Sipil ', '-', 'Didik Setyawan', 'Saudara Kandung', 'Dsn Kayut I Ds Guyung Kec Gerih Kab Ngawi.', '085850594055', 'danangwindianto55@gmail.com'),
-(56, '000010', '2022-07-15', '2022-06-17', '600000000', '60', 'Pokok bunga tiap bulan', '14.4 % Pertahun', 0, 'Baru', 'Modal Kerja', 'Pelunasan di bank lain dan pembelian stok dagang b', 'RAMIN', 'Menikah', 'Nganjuk, 07-03-1984', '3518160703840005', 'Desa Klagen Rt 012 Rw 04 Kecamatan Rejoso Kabupaten Nganjuk', 'Desa Klagen Rt 012 Rw 04 Kecamatan Rejoso Kabupaten Nganjuk', '081335568368', 'Milik Sendiri', 'Wiraswasta', '4', 'SMP', 'Laki-laki', 'Seumur Hidup', '', '38', 'Hartutik', 'Ponorogo,22-10-1982', 'Desa Klagen Rt 012 Rw 04 Kecamatan Rejoso Kabupaten Nganjuk', 'Desa Klagen Rt 012 Rw 04 Kecamatan Rejoso Kabupaten Nganjuk', 'Wiraswasta', '', 'Ahmad Rusdianto', 'Rekan Kerja', 'JL Pinang GG I NO 129 RT 23 RW 08 Kelurahan Blabak Kecamatan Pesantren Kota Kediri', '082145998489', 'Muhamadrois0432@gmail.com'),
-(57, '000010', '2022-06-23', '2022-06-20', '150000000', '24', 'Pokok bunga tiap bulan', '15%', 0, 'Baru', 'Modal Kerja', 'Modal Usaha Bawang Merah', 'Supriyanto', 'Menikah', 'Magetan, 06-07-1979', '352008067790002', 'Desa Simo Rt 01 Rw 01 Kec Kendal Kab Ngawi', 'Desa Simo Rt 01 Rw 01 Kec Kendal Kab Ngawi', '08567247264', 'Milik Sendiri', 'wiraswasta', '3', 'SMA', 'Laki-laki', 'Seumur Hidup', '-', '10', 'Yeni Mahrita', 'Madiun, 07-06-1986', 'Desa Simo Rt 01 Rw 01 Kec Kendal Kab Ngawi', 'Desa Simo Rt 01 Rw 01 Kec Kendal Kab Ngawi', 'ibu rumah tangga', '-', 'Sukarno', 'Orang Tua', 'Desa Turi Rt 01/04 kec Panekan Kab Magetan', '081234476073', 'Yoppi.febri.ramadan@gmail.com'),
-(60, '000010', '2022-07-18', '2022-07-18', '740000000', '12', 'Pokok terakhir bunga tiap bulan', '12', 0, 'Baru', 'Modal Kerja', 'Pembelian Tanah Kavling dan Rumah', 'Rian Dian Raga', 'Menikah', 'Magetan, 07 Juni 1985', '3520060706850001', 'Jl. Sulawesi No. 37 RT 03 RW 02 Kel. Tawanganom Kec./Kab. Magetan ', 'Jl. Sulawesi No. 37 RT 03 RW 02 Kel. Tawanganom Kec./Kab. Magetan ', '085790317006', 'Milik Keluarga/Ortu', 'Karyawan Swasta', '2', 'S1', 'Laki-laki', 'Seumur Hidup', '0351 439872', '10', 'Ifa Lylla Mareta', 'Magetan 04 Maret 1987', 'Jl. Sulawesi No. 37 RT 03 RW 02 Kel. Tawanganom Kec./Kab. Magetan ', 'Jl. Sulawesi No. 37 RT 03 RW 02 Kel. Tawanganom Kec./Kab. Magetan ', 'Ibu rumah tangga', '085204181508', 'Anin Adinda', 'Saudara Kandung', 'Perumahan Green Garden Desa Milangasri Kec. Panekan Kab. Magetan', '085706165846', 'Masdidik86@gmail.com'),
-(62, '000010', '2022-07-19', '2022-07-14', '300000000', '48', 'Pokok bunga tiap bulan', '12', 0, 'Baru', 'Modal Kerja', 'Usaha kerajinan sepatu dan sandal', 'Lilis Suryani', 'Menikah', 'Magetan, 08-11-1972', '3520164811720001', 'Desa Mojopurno RT. 05 RW. 04, Kec. Ngariboyo, Kab. Magetan', 'Desa Mojopurno RT. 05 RW. 04, Kec. Ngariboyo, Kab. Magetan', '085784371371', 'Milik Sendiri', 'Perdagangan ', '1', 'SMA', 'Laki-laki', 'Seumur Hidup', '0', '35', 'Haryono', 'Magetan, 27-06-1969', 'Desa Mojopurno RT. 05 RW. 04, Kec. Ngariboyo, Kab. Magetan', 'Desa Mojopurno RT. 05 RW. 04, Kec. Ngariboyo, Kab. Magetan', 'Perdagangan ', '082142661432', 'Iqbal Wahid Abdullah', 'Anak Kandung', 'Desa Mojopurno RT. 05 RW. 04, Kec. Ngariboyo, Kab. Magetan', '', 'taufikdianmurseto97@gmail.com'),
-(63, '000010', '2022-08-16', '2022-08-12', '350000000', '60', 'Anuitas', '16', 0, 'Baru', 'Konsumsi', 'Renovasi rumah', 'nurul hidayat', 'Menikah', 'Ngawi, 06-07-1982', '3521110607820006', 'desa sambirejo 01/08 , kecamatan Mantingan, kabupaten Ngawi', 'Desa Jenggrik, kecamatan Kedunggalar, kabupaten Ngawi', '0813 1540 6705', 'Milik Sendiri', 'Pelaut', '6', 'S1', 'Laki-laki', 'Seumur Hidup', '-', '20', 'Ana suzana', 'Palembang, 14-04-1983', 'desa sambirejo 01/08 , kecamatan Mantingan, kabupaten Ngawi', 'Desa Jenggrik, kecamatan Kedunggalar, kabupaten Ngawi', 'Mengurus rumah tangga', '08', 'Isroh choirifah', 'Saudara Kandung', 'Desa Jenggrik, kecamatan Kedunggalar, kabupaten Ngawi', '+62 813 3546 49', 'wahwahwah82.aw@gmail.com'),
-(64, '000010', '2022-07-19', '2022-07-18', '300000000', '36', 'Pokok bunga tiap bulan', '17%', 0, 'Baru', 'Modal Kerja', 'Tambah modal dagang spearpart kendaraan bermotor', 'Fa\'ila Triyana', 'Menikah', 'Magetan, 02-07-1981', '3520164207810001', 'Ngariboyo RT 02 RW 03,Ngariboyo,Magetan.', 'Ngariboyo RT 02 RW 03,Ngariboyo,Magetan.', '081234095094', 'Milik Sendiri', 'Mengurus Rumah Tangga', '3', 'SMA', 'Laki-laki', 'Seumur Hidup', '081234095094', '41', 'Catur Iswanto', 'Sampang, 26-11-1983', 'Ngariboyo RT 02 RW 03,Ngariboyo,Magetan.', 'Ngariboyo RT 02 RW 03,Ngariboyo,Magetan.', 'Wiraswasta', '081234095094', 'Alfian Pribadi Saputra', 'Saudara Kandung', 'Ngariboyo RT 02 RW 03,Ngariboyo,Magetan.', '082237221416', 'yannisoneb93@gmail.com'),
-(65, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, NULL),
-(66, '000010', '2022-07-22', '2022-07-21', '150000000', '24', 'Pokok bunga tiap bulan', '12', 0, 'Ulangan', 'Konsumsi', 'Biaya renovasi rumah', 'SUMIATI', 'Menikah', 'Magetan, 17-04-1959', '3520075704650003', 'Desa Sumberagung Rt 07 Rw 02 Kec. Plaosan Kab Magetan', 'Desa Sumberagung Rt 07 Rw 02 Kec. Plaosan Kab Magetan', '081546111296', 'Milik Sendiri', 'Buruh tani / Perkebunan', '2', 'SMP', 'Laki-laki', 'Seumur Hidup', '0', '56', 'SUPARNI', 'Magrtan, 03-04-1959', 'Desa Sumberagung Rt 07 Rw 02 Kec. Plaosan Kab Magetan', 'Desa Sumberagung Rt 07 Rw 02 Kec. Plaosan Kab Magetan', 'Wiraswasta', '081546111296', 'JOKO PURNOMO', 'Anak Kandung', 'Desa Mangunrejo Rt 03 Rw 01 Kec. Kawedanan Kab. Magetan', '081336799115', 'Masdidik86@gmail.com'),
-(67, '000010', '2022-09-12', '2022-09-12', '550000000', '6', 'Pokok terakhir bunga tiap bulan', '12', 0, 'Ulangan', 'Modal Kerja', 'Tambah modal usaha Properti dan jasa kontruksi', 'SUKERI', 'Menikah', 'Ponorogo, 13-08-1968', '3502171308680002', 'Jl. Kamboja No. 27 B Kel. Purbosuman RT 02 RW 02 Kec. Ponorogo Kab. Ponorogo', 'Jl. Kamboja No. 27 B Kel. Purbosuman RT 02 RW 02 Kec. Ponorogo Kab. Ponorogo', '081231752548', 'Milik Sendiri', 'Wiraswasta', '2', 'SMA', 'Laki-laki', 'Seumur Hidup', '081231752548', '30', 'LILIK PURWATI', 'Ponorogo, 14-06-1971', 'Jl. Kamboja No. 27 B Kel. Purbosuman RT 02 RW 02 Kec. Ponorogo Kab. Ponorogo', 'Jl. Kamboja No. 27 B Kel. Purbosuman RT 02 RW 02 Kec. Ponorogo Kab. Ponorogo', 'Mengurus Rumah Tangga', '081231752548', 'DENY PRASETY0', 'Anak Kandung', 'Jl. Kamboja No. 27 B Kel. Purbosuman RT 02 RW 02 Kec. Ponorogo Kab. Ponorogo', '081234210117', 'arisanaaa82@gmail.com'),
-(68, '000010', '2022-08-01', '2022-07-29', '120000000', '72', 'Pokok bunga tiap bulan', '15 % flat/tahun', 0, 'Baru', 'Investasi', 'Untuk pembelian tanah sawah', 'Suhartini', 'Menikah', 'Lumajang,13 - 06 -1976', '3520125306760002', 'Desa Karangsono Rt 17 Rw 04 Kecamatan Barat Kabupaten Magetan', 'Desa Karangsono Rt 17 Rw 04 Kecamatan Barat Kabupaten Magetan', '082335350007', 'Milik Sendiri', 'Wiraswasta', '2', 'S1', 'Laki-laki', 'Seumur Hidup', '082335350007', '20', 'Suparno', 'Magetan,23-12-1972', 'Desa Karangsono Rt 17 Rw 04 Kecamatan Barat Kabupaten Magetan', 'Desa Karangsono Rt 17 Rw 04 Kecamatan Barat Kabupaten Magetan', 'TNI', '082335350007', 'Risma', 'Anak Kandung', 'Desa Karangsono Rt 17 Rw 04 Kecamatan Barat Kabupaten Magetan', '0895331300385', 'andikadevir95@gmail.com'),
-(70, '000010', '2022-08-04', '2022-08-03', '100000000', '24', 'Pokok bunga tiap bulan', '14% flat /tahun', 0, 'Ulangan', 'Konsumsi', 'Biaya renovasi rumah', 'EDI SURYANTO', 'Menikah', 'Magetan 09 April 1963', '3520080904630001', 'Desa Milangasri Rt 02 Rw 02 kec. Panekan Kab. amgetan', 'Desa Milangasri Rt 02 Rw 02 kec. Panekan Kab. amgetan', '085235064227', 'Milik Sendiri', 'Wiraswasta', '2', 'SMA', 'Laki-laki', 'Seumur Hidup', '0', '23', 'SUKIRAH', 'Magetan 22 april 1948', 'Desa Milangasri Rt 02 Rw 02 kec. Panekan Kab. amgetan', 'Desa Milangasri Rt 02 Rw 02 kec. Panekan Kab. amgetan', 'Petani/Pekebun', '085736559227', 'HENDRA', 'Anak Kandung', 'Desa Milangasri Rt 02 Rw 02 kec. Panekan Kab. amgetan', '0895631104470', 'Masdidik86@gmail.com'),
-(71, '000010', '2022-08-05', '2022-08-04', '120000000', '42', 'Pokok bunga tiap bulan', '13%Flat pertahun', 0, 'Top Up', 'Modal Kerja', 'Tambah modal kerja untuk dagang ayam jantan ', 'ENDAH RAHAYU', 'Janda', 'Magetan,17-01-1980', '3520035701800001', 'Desa Kediren RT 03 RW 01 Kec.Lembeyan Kab.Magetan', 'Desa Kediren RT 03 RW 01 Kec.Lembeyan Kab.Magetan', '085708991375', 'Milik Sendiri', 'Wiraswas', '4', 'SMA', 'Laki-laki', 'Seumur Hidup', '0', '15', '-', '-', '-', '-', '-', '-', 'TRIANA', 'Saudara Kandung', 'Desa Kediren RT 03 RW 01 Kec.Lembeyan Kab.Magetan', '081217846255', 'arie29895@gmail.com'),
-(72, '000010', '2022-08-04', '2022-07-29', '350000000', '72', 'Pokok bunga tiap bulan', '15% flate pertahun', 0, 'Baru', 'Investasi', 'Untuk membangun rumah percontohan KPR', 'Susilo Sandi', 'Menikah', 'Madiun 10 Mei 2022', '3577011005800008', 'Desa Kanigoro Rt 36 Rw 09 Kec. Kartoharjo Kota Madiun', 'Desa Kanigoro Rt 36 Rw 09 Kec. Kartoharjo Kota Madiun', '085235755994', 'Milik Sendiri', 'Wiraswasta', '2', 'S1', 'Laki-laki', 'Seumur Hidup', '085235755994', '15', 'Retno Sulistyowati', 'Madiun, 02 Mei 2022', 'Desa Kanigoro Rt 36 Rw 09 Kec. Kartoharjo Kota Madiun', 'Desa Kanigoro Rt 36 Rw 09 Kec. Kartoharjo Kota Madiun', 'Notaris', '081226855907', 'Antok', 'Rekan Kerja', 'Ds Maospati Kec.Maospati Kab.Magetan', '083845474977', 'andikadevir95@gmail.com'),
-(73, '000010', '2022-08-05', '2022-08-04', '105000000', '48', 'Pokok bunga tiap bulan', '15% flate pertahun', 0, 'Ulangan', 'Investasi', 'Pembelian tanah sawah', 'Suhendar', 'Menikah', 'Tasikmalaya,16 Oktober 1984', '3520121610840001', 'Desa Tebon Rt 03 Rw 02 Kecamatan Barat Kabupaten Magetan', 'Desa Tebon Rt 03 Rw 02 Kecamatan Barat Kabupaten Magetan', '082337496498', 'Milik Sendiri', 'Wiraswasta', '3', 'SMA', 'Laki-laki', 'Seumur Hidup', '082337496498', '10', 'Kartini', 'Tasikmalaya,17 April 1987', 'Desa Tebon Rt 03 Rw 02 Kecamatan Barat Kabupaten Magetan', 'Desa Tebon Rt 03 Rw 02 Kecamatan Barat Kabupaten Magetan', 'Wiraswasta', '-', 'Rahmi', 'Tetangga', 'Desa Tebon Rt 03 Rw 02 Kecamatan Barat Kabupaten Magetan', '083873494582', 'andikadevir95@gmail.com'),
-(74, '000010', '2022-08-05', '2022-06-13', '1500000000', '96', 'Pokok bunga tiap bulan', '18%', 0, 'Baru', 'Modal Kerja', 'Tambah modal usaha bengkel dan toko sparepart mobi', 'Dwi Hari Wahyudi', 'Menikah', 'Madiun,05-07-1980', '3519090507800004', 'Dusun II RT/RW 016/005 Ds Sukolilo Kec Jiwan Kab Madiun', 'Jl sukosari Rt 18 Rw 06 Ds kwangsen Kec Jiwan Kab Madiun', '081217754883', 'Milik Sendiri', 'Karyawan swasta', '3', 'SMA', 'Laki-laki', 'Seumur Hidup', '085853906436', '10', 'Sri Rahayu', 'Madiun,28-12-1980', 'Dusun II RT/RW 016/005 Ds Sukolilo Kec Jiwan Kab Madiun', 'Jl sukosari Rt 18 Rw 06 Ds kwangsen Kec Jiwan Kab Madiun', 'Mengurus rumah tangga', '', 'Mohammad yudhik sukmana', 'Saudara Tidak Sekandung', 'perumahan seemount garden Blok D.8 Ds jiwan Kec JIwan Kab Madiun', '081392488111', 'danangwindianto55@gmail.com'),
-(75, '000010', '2022-08-08', '2022-08-02', '100000000', '24', 'Pokok bunga tiap bulan', '19.75 % anuitas / th', 0, 'Top Up', 'Modal Kerja', 'Tambah modal usaha ternak kambing ( beli kambing )', 'SUYATNO', 'Menikah', 'Magetan, 29-11-1969', '3520052912690001', 'Desa Ngentep RT 10 RW 02 Kec. Kawedanan Kab. Magetan', 'Desa Ngentep RT 10 RW 02 Kec. Kawedanan Kab. Magetan', '085172391068', 'Milik Sendiri', 'Karyawan swasta', '2', 'SMA', 'Laki-laki', 'Seumur Hidup', '085172391068', '15', 'TUTIK SETYA RAHAYU', 'Madiun, 21-12-1969', 'Desa Ngentep RT 10 RW 02 Kec. Kawedanan Kab. Magetan', 'Desa Ngentep RT 10 RW 02 Kec. Kawedanan Kab. Magetan', 'Mengurus Rumah Tangga', '081235271768', 'RIDWAN DWIKI PRASETYA', 'Anak Kandung', 'Desa Ngentep RT 10 RW 02 Kec. Kawedanan Kab. Magetan', '082323832947', 'arisanaaa82@gmail.com'),
-(76, '000010', '2022-08-08', '2022-07-20', '2000000000', '72', 'Pokok bunga tiap bulan', '12,5% Flat per Tahun', 0, 'Baru', 'Modal Kerja', 'Biaya Pembelian Emas Untuk Diperdagangkan', 'ANGGIT DJIWANTORO', 'Menikah', 'Ujung Pandang, 06-09-1971', '3577020609710001', 'Jl. Elang 3/15, Rt 04/RW 01, Kel. Nambangan Kidul, Kec. Manguharjo, Kota Madiun', 'Jl. Elang 3/15, Rt 04/RW 01, Kel. Nambangan Kidul, Kec. Manguharjo, Kota Madiun', '081359670665', 'Milik Sendiri', 'Kepolisian RI', '3', 'Diploma', 'Laki-laki', 'Seumur Hidup', '-', '15', 'SULISTYANI', 'Magetan, 23-05-1972', 'Jl. Elang 3/15, Rt 04/RW 01, Kel. Nambangan Kidul, Kec. Manguharjo, Kota Madiun', 'Jl. Elang 3/15, Rt 04/RW 01, Kel. Nambangan Kidul, Kec. Manguharjo, Kota Madiun', 'Karyawan BUMN', '-', 'FARIS', 'Anak Kandung', 'Puri Mas Regency, Jl. I Gusti Ngurah Rai, Gunung Anyar, Surabaya', '082228021754', 'Eka.sandha@gmail.com'),
-(78, '000010', '2022-08-08', '2022-08-08', '140000000', '60', 'Pokok bunga tiap bulan', '15% FLATE PER TAHUN', 0, 'Baru', 'Modal Kerja', 'UNTUK PEMBELIAN MOBIL ELF UNTUK USAHA ANGKUTAN', 'HERU WANCOKO', 'Menikah', 'MAGETAN, 14 JANUARI 2022', '3520171401880002', 'DESA SIMBATAN RT 005 RW 001 KECAMATAN NGUNTORONADI KABUPATEN MAGETAN', 'DESA SIMBATAN RT 005 RW 001 KECAMATAN NGUNTORONADI KABUPATEN MAGETAN', '081216389059', 'Milik Keluarga/Ortu', 'WIRASWASTA', '4 ', 'SMA', 'Laki-laki', 'Seumur Hidup', '-', '10', 'SUPRAPTI', 'MAGETAN,18-08-1987', 'DESA SIMBATAN RT 005 RW 001 KECAMATAN NGUNTORONADI KABUPATEN MAGETAN', 'DESA SIMBATAN RT 005 RW 001 KECAMATAN NGUNTORONADI KABUPATEN MAGETAN', 'WIRASWASTA', '081357053264', 'PURWATININGSIH', 'Saudara Tidak Sekandung', 'DESA SELOREJO RT 06 RW 001 KECAMATAN KAWEDANAN KABUPATEN MAGETAN', '0813 3232 1171', 'handajanisri8@gmail.com'),
-(79, '000010', '2022-08-09', '2022-08-07', '100000000', '72', 'Pokok bunga tiap bulan', '13% flat', 0, 'Baru', 'Modal Kerja', 'tambah modal usaha wrung makan', 'Supriyanto', 'Menikah', 'Magetan, 05 November 1980', '3520020510800001', 'dsn. jombok Rt024 Rw007 kel. pragak kec. parang kab. magetan', 'dsn. jombok Rt024 Rw007 kel. pragak kec. parang kab. magetan', '081335936333', 'Milik Sendiri', 'warung makan', '2', 'SMA', 'Laki-laki', 'Seumur Hidup', '', '10', 'Maremiati', 'Magetan, 10 desember 1976', 'dsn. jombok Rt024 Rw007 kel. pragak kec. parang kab. magetan', 'dsn. jombok Rt024 Rw007 kel. pragak kec. parang kab. magetan', 'menjalankan warung makan dengan suami', '081359512636', 'Jami', 'Saudara Tidak Sekandung', 'dsn. jombok Rt024 Rw007 kel. pragak kec. parang kab. magetan', '0 ', 'Chincoaldhy@gmail.com'),
-(80, '000010', '2022-08-09', '2022-08-20', '400000000', '60', 'Pokok bunga tiap bulan', '20% anuitas', 0, 'Baru', 'Modal Kerja', 'Modal Usaha Pupuk', 'MARSUDI NUGROHO', 'Menikah', 'Magetan, 28-03-1974', '352008280374004', 'Cepoko Rt 02 Rw 01 Kec Panekan Kab Magetan', 'Cepoko Rt 02 Rw 01 Kec Panekan Kab Magetan', '081333673434', 'Milik Sendiri', 'wiraswasta', '2', 'SMA', 'Laki-laki', 'Seumur Hidup', '-', '15', 'ARTI WINANTU', 'Magetan, 23-02-1975', 'Cepoko Rt 02 Rw 01 Kec Panekan Kab Magetan', 'Cepoko Rt 02 Rw 01 Kec Panekan Kab Magetan', 'Mengurus Rumah Tangga', '081240548464', 'Anggita ', 'Anak Kandung', 'Cepoko Rt 02 Rw 01 Kec Panekan Kab Magetan', '085736640007', 'Yoppi.febri.ramadan@gmail.com'),
-(81, '000010', '2022-08-09', '2022-08-05', '200000000', '48', 'Pokok bunga tiap bulan', '18%anuitas', 0, 'Top Up', 'Modal Kerja', ' Tambah modal usaha dagang gas lpg dan air minum', 'Siti Rubiah', 'Menikah', 'Magetan,23-03-1974', '3520126303740002', 'Desa Panggung Rt 14 Rw 04 Kec. Barat Kab. Magetan', 'Desa Panggung Rt 14 Rw 04 Kec. Barat Kab. Magetan', '081536075300', 'Milik Sendiri', 'Wiraswasta', '2', 'SMA', 'Laki-laki', 'Seumur Hidup', '081536075300', '20', 'Mujiono', 'Magetan, 08-11-1970', 'Desa Panggung Rt 14 Rw 04 Kec. Barat Kab. Magetan', 'Desa Panggung Rt 14 Rw 04 Kec. Barat Kab. Magetan', 'TNI', '081536075300', 'Karyati', 'Saudara Kandung', 'Desa Panggung Rt 14 Rw 04 Kec. Barat Kab. Magetan', '-', 'andikadevir95@gmail.com'),
-(82, '000010', '2022-08-09', '2022-08-09', '140000000', '60', 'Pokok bunga tiap bulan', '15% FLATE PER TAHUN', 0, 'Baru', 'Modal Kerja', 'Untuk pembelian mobil penumpang elf yang digunakan', 'TRI WAHYUNI NURUL HAMIDAH', 'Belum Menikah', 'MAGETAN , 02 SEPTEMBER 2002', '3520054209020002', 'DESA SELOREJO RT 006 RW 001 KECAMATAN KAWEDANAN KABUPATEN MAGETAN', 'DESA SELOREJO RT 006 RW 001 KECAMATAN KAWEDANAN KABUPATEN MAGETAN', '0821 3989 9572', 'Milik Sendiri', 'Pelajar/Mahasiswa', '0', 'S1', 'Perempuan', 'Seumur Hidup', '-', '22', '-', '-', '-', '-', '-', '-', 'PURWATININGSIH', 'Saudara Kandung', 'DESA SELOREJO RT 006 RW 001 KECAMATAN KAWEDANAN KABUPATEN MAGETAN', '0813 3232 1171', 'handajanisri8@gmail.com'),
-(83, '000010', '2022-08-19', '2022-08-16', '150000000', '48', 'Pokok bunga tiap bulan', '15%pertahun', 0, 'Baru', 'Modal Kerja', 'Tambah modal usaha wifi', 'ERICKO VALERIAN GRADIYANTO', 'Belum Menikah', 'Magetan,08-09-1997', '3520030809970004', 'Desa Nguri RT 03 RW 09 KecamatanLembeyan Kabupaten Magetan', 'Desa Nguri RT 03 RW 09 KecamatanLembeyan Kabupaten Magetan', '081359929587', 'Milik Keluarga/Ortu', 'Pelajar/mahasiswa ( Wiraswasta)', '0', 'SMA', 'Laki-laki', 'Seumur Hidup', '0', '20', '-', '-', '-', '-', '-', '0', 'NURYANTO', 'Orang Tua', 'Desa Nguri RT 03 RW 09 KecamatanLembeyan Kabupaten Magetan', '08125947449', 'arie29895@gmail.com'),
-(84, '000010', '2022-08-12', '2022-08-09', '350000000', '84', 'Pokok bunga tiap bulan', '18 % Flat Pertahun', 0, 'Baru', 'Modal Kerja', 'Tambah Modal Dagang Warung Makan', 'Sumarmi', 'Menikah', 'Ngawi,01-08-1973', '3521144108770001', 'Kebon 3/3 Kebon Paron Ngawi.', 'Kebon 3/3 Kebon Paron Ngawi', '085749119911', 'Milik Sendiri', 'Perdagangan', '1', 'SD', 'Laki-laki', 'Seumur Hidup', '', '30', 'Dohri', 'Tegal,07-09-1971', 'Kebon 3/3 Kebon Paron Ngawi', 'Kebon 3/3 Kebon Paron Ngawi', 'Perdagangan', '082132267412', 'Suprapto', 'Rekan Kerja', 'jl Karya Ngawi Gang Wibisono', '0816565389', 'yanny.wido@gmail.com'),
-(85, '000010', '2022-08-11', '2022-08-10', '200000000', '60', 'Pokok bunga tiap bulan', '18%', 0, 'Baru', 'Modal Kerja', 'Tambah modal usaha Warung Makan', 'Ika Putrianti', 'Janda', 'Magetan,24-06-1985', '3520136406850001', 'Desa Belotan Rt 044 Rw 015 Kec Bendo Kab Magetan ', 'Desa Belotan Rt 044 Rw 015 Kec Bendo Kab Magetan ', '082290008849', 'Milik Sendiri', 'Mengurus Rumah tangga', '3', 'SMA', 'Laki-laki', 'Seumur Hidup', '-', '15', '-', '-', '-', '-', '-', '-', 'wasit ', 'Orang Tua', 'Desa Belotan Rt 044 Rw 015 Kec Bendo Kab Magetan ', '081216629064', 'sarkun123@gmail.com'),
-(86, '000010', '2022-08-10', '2022-08-08', '100000000', '48', 'Pokok bunga tiap bulan', '18 % Flat Pertahun', 0, 'Baru', 'Modal Kerja', 'Tambah Modal Usaha Rental Mobil', 'Yuna Eka Nurida', 'Menikah', 'Ngawi,19-06-1997', '3521105906970001', 'Desa Ngrancang 02/05 Dadapan Kendal Ngawi', 'Desa Ngrancang 02/05 Dadapan Kendal Ngawi', '085717870089', 'Milik Keluarga/Ortu', 'Wiraswasta', '2', 'SMA', 'Perempuan', 'Seumur Hidup', '', '25', 'Rachmad Rizkyartri', 'Ngawi,01-05-1998', 'Desa Ngrancang 02/05 Dadapan Kendal Ngawi', 'Desa Ngrancang 02/05 Dadapan Kendal Ngawi', 'WIRASWASTA', '088803131330', 'Rio Hermawan', 'Saudara Tidak Sekandung', 'Dsn Nglencer Ds Setono Ngrambe Ngawi', '085750957101', 'yanny.wido@gmail.com'),
-(87, '000010', '2022-12-08', '2022-10-08', '175000000', '48', 'Anuitas', '20%', 0, 'Top Up', 'Modal Kerja', 'Modal Usaha Ayam Petelur', 'Agung Guritno', 'Menikah', 'Magetan , 31-07-1996', '3520083107960003', 'Desa Manjung RT 01 Rw 02 Kec Panekan Kab Magetan', 'Desa Manjung RT 01 Rw 02 Kec Panekan Kab Magetan', '0895703260050', 'Milik Sendiri', 'Peternak', '3', 'SMA', 'Laki-laki', 'Seumur Hidup', '-', '26', 'Novia Audri Cristalia', 'Magetan. 06-11-1996', 'Desa Manjung RT 01 Rw 02 Kec Panekan Kab Magetan', 'Desa Manjung RT 01 Rw 02 Kec Panekan Kab Magetan', 'Mengurus Rumah Tangga', '081559507656', 'Ruki', 'Orang Tua', 'Desa Manjung RT 01 Rw 02 Kec Panekan Kab Magetan', '-', 'Yoppi.febri.ramadan@gmail.com'),
-(88, '000010', '2022-08-11', '2022-08-10', '700000000', '72', 'Pokok bunga tiap bulan', '12', 0, 'Baru', 'Investasi', 'Pembelian tanah', 'Joni Suhata', 'Menikah', 'Magetan, 26-11-1985', '3520122611850002', 'Desa Purwodadi Rt 12 Rw 02 Kecamatan Barat Kabupaten Magetan', 'Desa Purwodadi Rt 12 Rw 02 Kecamatan Barat Kabupaten Magetan', '085649185785', 'Milik Sendiri', 'Wiraswasta', '3', 'S1', 'Laki-laki', 'Seumur Hidup', '0', '15', 'Fina Fristiani', 'Ngawi, 03-07-1993', 'Desa Purwodadi Rt 12 Rw 02 Kecamatan Barat Kabupaten Magetan', 'Desa Purwodadi Rt 12 Rw 02 Kecamatan Barat Kabupaten Magetan', 'Wiraswasta', '085649185785', 'Hariyono', 'Saudara Tidak Sekandung', 'Desa Purwodadi Rt 12 Rw 02 Kecamatan Barat Kabupaten Magetan', '081335467378', 'andikadevir95@gmail.com'),
-(89, '000010', '2022-08-18', '2022-08-15', '150000000', '48', 'Pokok bunga tiap bulan', '15% Flat Per Tahun', 0, 'Baru', 'Modal Kerja', 'Biaya Pembelian Truk Tronton Tahun 1990', 'WANTONO', 'Menikah', 'Ngawi, 18-08-1980', '3519061808800001', 'Jl. Arwana no 06, RT 13/RW 04, Kel.Nambangan Kidul, Kec. Manguharjo, Madiun', 'Jl. Arwana no 06, RT 13/RW 04, Kel.Nambangan Kidul, Kec. Manguharjo, Madiun', '082334466868', 'Milik Sendiri', 'Karyawan Swasta', '0', 'SMA', 'Laki-laki', 'Seumur Hidup', '-', '10', 'NINIK SULISTYOWATI', 'Madiun, 25-03-1974', 'Jl. Arwana no 06, RT 13/RW 04, Kel.Nambangan Kidul, Kec. Manguharjo, Madiun', 'Jl. Arwana no 06, RT 13/RW 04, Kel.Nambangan Kidul, Kec. Manguharjo, Madiun', 'Mengurus Rumah Tangga', '-', 'SUPRIADI', 'Rekan Kerja', 'Desa Sawojajar RT 07 /RW 02, Desa Sawojajar, Kec. Takeran, Magetan', '088234161225', 'Eka.sandha@gmail.com'),
-(90, '000010', '2022-08-18', '2022-08-10', '100000000', '60', 'Pokok bunga tiap bulan', '18 % flate/ tahun', 0, 'Baru', 'Modal Kerja', 'Tambah modal usaha dagang sepatu,tas dan peralatan', 'Kadiran', 'Menikah', 'Magetan, 01-01-1953', '3520120101530003', 'Kelurahan Mangge Rt O7 Rw 03 Kecamatan Barat Kabupaten Magetan', 'Kelurahan Mangge Rt O7 Rw 03 Kecamatan Barat Kabupaten Magetan', '081249823989', 'Milik Sendiri', 'Wiraswasta', '0', 'SMA', 'Laki-laki', 'Seumur Hidup', '-', '50', 'Sulastri', 'Magetan, 16-08-1960', 'Kelurahan Mangge Rt O7 Rw 03 Kecamatan Barat Kabupaten Magetan', 'Kelurahan Mangge Rt O7 Rw 03 Kecamatan Barat Kabupaten Magetan', 'Wiraswasta', '-', 'Sri Rahayu', 'Tetangga', 'Kelurahan Mangge Rt O7 Rw 03 Kecamatan Barat Kabupaten Magetan', '085259936725', 'andikadevir95@gmail.com'),
-(91, '000010', '2022-09-23', '2022-09-22', '200000000', '48', 'Pokok bunga tiap bulan', '15', 0, 'Baru', 'Modal Kerja', 'Tambah Modal Usaha Toko Bangunan', 'AGUS RIYANTO', 'Menikah', 'Trenggalek, 06-11-1976', '3503050611760001', 'Dsn Krajan, RT.10 RW.03 Desa Nglinggis Kecamatan Tugu Kabupaten Trenggalek', 'Dsn Krajan, RT.10 RW.03 Desa Nglinggis Kecamatan Tugu Kabupaten Trenggalek', '081335773379', 'Milik Sendiri', 'Wiraswasta', '3', 'SMA', 'Laki-laki', 'Seumur Hidup', '081335773379', '20', 'TRI RAHAYUNINGSIH', 'Trenggalek, 20-01-1979', 'Dsn Krajan, RT.10 RW.03 Desa Nglinggis Kecamatan Tugu Kabupaten Trenggalek', 'Dsn Krajan, RT.10 RW.03 Desa Nglinggis Kecamatan Tugu Kabupaten Trenggalek', 'Pegawai Negeri Sipil (PNS)', '082293832579', 'Aldy', 'Anak Kandung', 'Dsn Krajan, RT.10 RW.03 Desa Nglinggis Kecamatan Tugu Kabupaten Trenggalek', '081949769605', 'dwihardianto93@gmail.com'),
-(92, '000010', '2022-08-19', '2022-08-18', '250000000', '60', 'Pokok bunga tiap bulan', '12% flate', 0, 'Top Up', 'Modal Kerja', 'Pembelian kios di pasar Gorang Gareng', 'RIS RIANTO', 'Menikah', 'Magetan, 12-05-1976', '352005 120576 00', 'Desa Bogem Rt 05 Rw 02 Kecamatan Kawedanan Kabupaten Magetan\r\n', 'Desa Bogem Rt 05 Rw 02 Kecamatan Kawedanan Kabupaten Magetan\r\n', '081-235-590-598', 'Milik Sendiri', 'Pegawai Negeri Sipil ( PNS )', '3 orang', 'SMA', 'Laki-laki', 'Seumur Hidup', ' ( 0351 ) 895049', '10 tahun', 'SULISTYOWATI', 'Ngawi, 14 Juli 1985', 'Desa Bogem Rt 05 Rw 02 Kecamatan Kawedanan Kabupaten Magetan\r\n', 'Desa Bogem Rt 05 Rw 02 Kecamatan Kawedanan Kabupaten Magetan\r\n', 'Pedagang', '081-217-021-325', 'SUPRIHATIN', 'Saudara Kandung', 'Desa Begal Rt Rw Kecamatan Kedunggalar Kabupaten Ngawi', '0823-3599-1742', 'handajanisri8@gmail.com'),
-(94, '000010', '2022-08-22', '2022-08-19', '90000000', '60', 'Pokok bunga tiap bulan', '18 % Flat Pertahun', 0, 'Baru', 'Modal Kerja', 'Tambah modal usaha Las listrik', 'Tugiono', 'Menikah', 'Madiun, 22-02-1971', '3519012202710001', 'Sriket tambakmas Kebonsari 040/004 Kel. Tambakmas Kec.kebonsari Kab Madiun', 'Sriket tambakmas Kebonsari 040/004 Kel. Tambakmas Kec.kebonsari Kab Madiun', '081339035338', 'Milik Sendiri', 'Bengkel Las listrik', '1', 'SMP', 'Laki-laki', 'Seumur Hidup', '', '20', 'Badriyah', 'Madiun, 22-02-1973', 'Sriket tambakmas Kebonsari 040/004 Kel. Tambakmas Kec.kebonsari Kab Madiun', 'Sriket tambakmas Kebonsari 040/004 Kel. Tambakmas Kec.kebonsari Kab Madiun', 'WIRASWASTA', '0', 'Ni\'matul Zannah', 'Anak Kandung', 'Sriket tambakmas Kebonsari 040/004 Kel. Tambakmas Kec.kebonsari Kab Madiun', '085735988884', 'Chincoaldhy@gmail.com'),
-(95, '000010', '2022-08-22', '2022-08-19', '130000000', '60', 'Pokok bunga tiap bulan', '12 % flat pertahun', 0, 'Baru', 'Konsumsi', 'Biaya renovasi rumah', 'Sumartini', 'Menikah', 'Magetan, 16 Mei 1968', '3520085605680001', 'Desa Cepoko Rt 02 Rw 02 Kec Panekan Kab Magetan', 'Desa Cepoko Rt 02 Rw 02 Kec Panekan Kab Magetan', '082140373605', 'Milik Sendiri', 'Guru', '2', 'S1', 'Laki-laki', 'Seumur Hidup', '0', '25', 'Suratman', 'Magetan, 23 Januari 1966', 'Desa Cepoko Rt 02 Rw 02 Kec Panekan Kab Magetan', 'Desa Cepoko Rt 02 Rw 02 Kec Panekan Kab Magetan', 'Guru', '081381271322', 'Lely Liana Liasari', 'Anak Kandung', 'Desa Cepoko Rt 02 Rw 02 Kec Panekan Kab Magetan', '08125104807', 'wmzzanna@gmail.com'),
-(97, '000010', '2022-09-07', '2022-09-05', '180000000', '60', 'Pokok tiap 4 bulan bunga tiap bulan', '18', 0, 'Baru', 'Modal Kerja', 'Pembelian lahan pertanian luas 1 Kotak ( 1.400m2 )', 'EDI SUSILO', 'Menikah', 'Magetan, 10 November 1982', '3520151010820002', 'Ds Kartoharjo RT 35 RW09 Kec Kartoharjo Magetan', 'Jl Minggit Kel Tebon Kec Barat Kab Magetan', '0882337660900', 'Kontrak', 'Wiraswasta', '4', 'SMA', 'Laki-laki', 'Seumur Hidup', '0', '2', 'SUMARMI', 'Magetan, 15 Juni 1983', 'Ds Kartoharjo RT 35 RW 09 Kec Kartoharjo Kab Magetab', 'Jl Minggit Kel Tebon Kec Barat Kab Magetan', 'Guru', '082336880675', 'Lilik', 'Orang Tua', 'Ds Kartoharjo RT 35 RW 09 Kec Kartoharjo Kab Magetan', '-', 'gandiprapto750@gmail.com'),
-(98, '000010', '2022-08-23', '2022-08-19', '170000000', '60', 'Pokok bunga tiap bulan', '15% flate pertahun', 0, 'Top Up', 'Modal Kerja', 'Tambah modal usaha supliyer tanah urug', 'ETIK MUZAIYANAH', 'Menikah', 'Madiun, 15-07-1978', '3520055507780001', 'Desa Karangrejo RT 13 RW 05 Kec. Kawedanan Kab. Magetan', 'Desa Karangrejo RT 13 RW 05 Kec. Kawedanan Kab. Magetan', '08974326610', 'Milik Sendiri', 'Wiraswasta', '2', 'Diploma', 'Laki-laki', 'Seumur Hidup', '08974326610', '15', 'HERU SUBEKTI', 'Magetan, 03-10-1978', 'Desa Karangrejo RT 13 RW 05 Kec. Kawedanan Kab. Magetan', 'Desa Karangrejo RT 13 RW 05 Kec. Kawedanan Kab. Magetan', 'Karyawan swasta', '081314758701', 'SUHARTANTO', 'Saudara Kandung', 'Desa Karangrejo RT 13 RW 05 Kec. Kawedanan Kab. Magetan', '085730143303', 'arisanaaa82@gmail.com'),
-(99, '000010', '2022-08-23', '2022-08-23', '140000000', '60', 'Pokok bunga tiap bulan', '15 flate/tahun', 0, 'Baru', 'Modal Kerja', 'Pembelian lahan pertanian seluas 1.400', '', 'Belum Menikah', '', '', '', '', '', 'Milik Sendiri', '', '', 'SD', 'Laki-laki', 'Seumur Hidup', '', '', '', '', '', '', '', '', '', 'Anak Kandung', '', '', 'handajanisri8@gmail.com'),
-(100, '000010', '2022-08-24', '2022-08-24', '175000000', '84', 'Pokok bunga tiap bulan', '6%', 0, 'Top Up', 'Konsumsi', 'Pebelian tanah perumahan', 'AFRI PRISTIONO', 'Menikah', 'SANGGAU 19-04-1972', '3506251904720001', 'Desa Nambaan RT03 RW 03 Kec Ngasem Kab Kediri ', 'Desa Nambaan RT 03 RW 03 Kec Ngasem Kab Kediri', '085606792405', 'Milik Sendiri', 'Karyawan Swasta', '3', 'S1', 'Laki-laki', 'Seumur Hidup', '-', '15', 'MUSTIKAYATI', 'Kediri 10-05-1971', 'Desa Nambaan RT 03 RW 03 Kec Ngasem Kab Kediri', 'Desa Nambaan RT 03 RW 03 Kec Ngasem Kab Kediri', 'Mengurus Rumah Tangga', '-', 'Moh Edwin Alif Utama', 'Anak Kandung', 'Desa Nambaan RT 03 RW 03 Kec Ngasem Kab Kediri', '-', 'gandiprapto750@gmail.com'),
-(101, '000010', '2022-08-31', '2022-08-30', '300000000', '60', 'Pokok bunga tiap bulan', '12% flate pertahun', 0, 'Ulangan', 'Modal Kerja', 'Modal usaha dagang mobil bekas', 'Mela Agung Rusfianto', 'Menikah', 'Magetan : 09-05-1982', '3520100905820003', 'Desa Carikan Rt 11 Rw 04 Kecamatan Bendo Kabupaten Magetan', 'Desa Carikan Rt 11 Rw 04 Kecamatan Bendo Kabupaten Magetan', '081217841856', 'Milik Sendiri', 'Wiraswasta', '3', 'SMP', 'Laki-laki', 'Seumur Hidup', '0', '30', 'Fitri Setyaningrum', 'Magetan : 14-02-1990', 'Desa Carikan Rt 11 Rw 04 Kecamatan Bendo Kabupaten Magetan', 'Desa Carikan Rt 11 Rw 04 Kecamatan Bendo Kabupaten Magetan', 'Ibu rumah tangga', '081216227329', 'Sumarsono', 'Saudara Kandung', 'Desa Carikan Rt 11 Rw 04 Kecamatan Bendo Kabupaten Magetan', '0', 'sarkun123@gmail.com'),
-(102, '000010', '2022-09-01', '2022-09-01', '100000000', '6', 'Pokok terakhir bunga tiap bulan', '18', 0, 'Baru', 'Modal Kerja', 'pembelian tanah pertanian', 'TITIK SUPARTI', 'Menikah', 'MAGETAN, 24 NOVEMBER 1963', '3520146411630001', 'Ds. Taji RT 6 RW 3 Ds. Taji Kec. Karas Kab. Magetan', 'Ds. Taji RT 6 RW 3 Ds. Taji Kec. Karas Kab. Magetan', '085329204445', 'Milik Sendiri', 'Petani', '0', 'SMA', 'Laki-laki', 'Seumur Hidup', '0', '20', 'Amir', 'Ngawi, 11 Maret 1971', 'Ds. Taji RT 6 RW 3 Ds. Taji Kec. Karas Kab. Magetan', 'Ds. Taji RT 6 RW 3 Ds. Taji Kec. Karas Kab. Magetan', 'petani', '0', 'Ervandra Mustafa Putra', 'Saudara Tidak Sekandung', 'Ds. Taji RT 6 RW 3 Ds. Taji Kec. Karas Kab. Magetan', '082243568976', 'fanymikopermana@gmail.c0m'),
-(103, '000010', '2022-08-31', '2022-07-26', '100000000', '60', 'Pokok bunga tiap bulan', '13,2', 0, 'Baru', 'Modal Kerja', 'Modal usaha toko klontong\r\n( gas elpiji, air isi u', 'Suradi', 'Menikah', 'Blora 19-06-1977', '3316031906770001', 'Dusun kalikangkung 02/01, Ds nglebak, Kec kradenan, Kab blora', 'Dusun kalikangkung 02/01, Ds nglebak, Kec kradenan, Kab blora', '085648902834', 'Milik Sendiri', 'Wiraswasta', '2', 'SMA', 'Laki-laki', 'Seumur Hidup', '-', '20', 'Ria Susanti', 'Ngawi 14-04-1982', 'Dusun kalikangkung 02/01, Ds nglebak, Kec kradenan, Kab blora', 'Dusun kalikangkung 02/01, Ds nglebak, Kec kradenan, Kab blora', 'Wiraswasta', '-', 'Ngatinem', 'Saudara Tidak Sekandung', 'Dusun kalikangkung 02/01, Ds nglebak, Kec kradenan, Kab blora', '085748815074', 'wahwahwah82.aw@gmail.com'),
-(104, '000010', '2022-09-02', '2022-08-26', '700000000', '36', 'Efektif', '18 efektif 4 bulan ', 0, 'Baru', 'Modal Kerja', 'Modal usaha industri Paving', 'MUKHLIS HASANY', 'Menikah', 'ngawi, 02-05-1970', '3521180205700001', 'Dsn Balong 09/07 Ds Gerih ,kab Ngawi', 'Dsn Balong 09/07 Ds Gerih ,kab Ngawi', '085259358934', 'Milik Sendiri', 'Karyawan swasta', '3', 'SMP', 'Laki-laki', 'Seumur Hidup', '085259358934', '10', 'SUDARWATI', 'Magetan 26-05-1975', 'Dsn Balong 09/07 Ds Gerih ,kab Ngawi', 'Dsn Balong 09/07 Ds Gerih ,kab Ngawi', 'ibu rumah tangga', '-', 'Djuariah', 'Saudara Tidak Sekandung', 'Ds Tambakromo 03/01 Kec Geneng, Kab Ngawi', '081335141133', 'wahwahwah82.aw@gmail.com'),
-(105, '000010', '2022-09-06', '2022-09-06', '150000000', '60', 'Pokok bunga tiap bulan', '12% flate', 0, 'Top Up', 'Konsumsi', 'Untuk pembelian tanah pertanian seluas 1400 m2', 'SLAMET', 'Menikah', 'Magetan, 12-12-1963', '3520051212630002', 'Desa Selorejo Rt 06 Rw 01 Kecamatan Kawedanan Kabupaten Magetan', 'Desa Selorejo Rt 06 Rw 01 Kecamatan Kawedanan Kabupaten Magetan', '0812 1616 1663', 'Milik Sendiri', 'Pedagang', '2', 'SD', 'Laki-laki', 'Seumur Hidup', '-', '59', 'Hartini', 'Magetan, 12-07-1966', 'Desa Selorejo Rt 06 Rw 01 Kecamatan Kawedanan Kabupaten Magetan', 'Desa Selorejo Rt 06 Rw 01 Kecamatan Kawedanan Kabupaten Magetan', 'Pekerjaan lainnya', '0858 5644 2258', 'IBNU AZIZ ASGHORI', 'Anak Kandung', 'Kalimantaan', '0822 6410  4252', 'handajanisri8@gmail.com');
-INSERT INTO `latar_belakang` (`id_lb`, `cif_bank`, `tgl_analisa`, `tgl_permohonan`, `plafon`, `jangka_waktu`, `sifat_kredit`, `suku_bunga`, `musiman`, `jenis_permohonan`, `tujuan_permohonan`, `ket_penggunaan`, `nama_debitur`, `status_kawin`, `ttl_nasabah`, `ktp`, `alamat_ktp_nasabah`, `domisili_nasabah`, `hp_nasabah`, `status_tt`, `pekerjaan_nasabah`, `tanggungan`, `pendidikan`, `jenis_kelamin`, `masa_laku`, `telp_kantor`, `lama_tinggal`, `nama_pasangan`, `ttl_pasangan`, `alamat_ktp_pasangan`, `domisili_pasangan`, `pekerjaan_pasangan`, `hp_pasangan`, `nama_keluarga`, `hubungan_keluarga`, `alamat_keluarga`, `hp_keluarga`, `user`) VALUES
-(106, '000010', '2022-09-08', '2022-09-05', '300000000', '96', 'Pokok bunga tiap bulan', '15% Flat Per Tahun', 0, 'Baru', 'Modal Kerja', 'Tambah Modal Toko Pupuk Non Subsidi', 'SUCAHYO', 'Menikah', 'Kediri, 18 Desember 1969', '3520041812690004', 'Desa madigondo RT 13/RW 05, Kecamatan Takeran, Kabupaten Magetan', 'Desa madigondo RT 13/RW 05, Kecamatan Takeran, Kabupaten Magetan', '085607105724', 'Milik Sendiri', 'Pegawai Negeri Sipil', '5', 'SMA', 'Laki-laki', 'Seumur Hidup', '-', '25', 'MISYUNI NUR SAIDAH', 'Magetan, 19 Januari 1980', 'Desa madigondo RT 13/RW 05, Kecamatan Takeran, Kabupaten Magetan', 'Desa madigondo RT 13/RW 05, Kecamatan Takeran, Kabupaten Magetan', 'Mengurus Rumah Tangga', '085856519859', 'SLAMET RIYADI', 'Saudara Kandung', 'Kecamatan Mejayan, Kabupaten Magetan', '081252241757', 'Eka.sandha@gmail.com'),
-(107, '000010', '2022-09-16', '2022-09-14', '350000000', '42', 'Pokok tiap 6 bulan bunga tiap bulan', '12', 0, 'Ulangan', 'Investasi', 'Pembelian Tanah Pekarangan  L.1000 m2', 'TABITA NUNUNG HERMAWATI', 'Menikah', 'Magetan,27-08-1970', '3520136708700002', 'Desa Kauman RT 001 RW 002 Kec Karangrejo Kab Magetan', 'Desa Kauman RT 001 RW 002 Kec Karangrejo Kab Magetan', '081231917702', 'Milik Sendiri', 'Pedagang', '2', 'SMA', 'Laki-laki', 'Seumur Hidup', '-', '20', 'PHILIPUS HERI SUTARNO', 'Magetan,30-05-1965', 'Desa Kauman RT 001 RW 002 Kec Karangrejo Kab Magetan', 'Desa Kauman RT 001 RW 002 Kec Karangrejo Kab Magetan', 'Perdagangan', '081231917702', 'DANI IRWANTO', 'Saudara Kandung', 'Desa Kauman RT 001 RW 002 Kec Karangrejo Kab Magetan', '085235028242', 'kunekwan2106@gmail.com'),
-(108, '000010', '2022-12-09', '2022-12-09', '150000000', '36', 'Pokok tiap 6 bulan bunga tiap bulan', '18 % flate per tahun', 0, 'Ulangan', 'Modal Kerja', 'Modal usaha ayam pedaging', 'Sri Utami', 'Menikah', 'Magetan, 19 Nopember-1968', '3520105911680001', 'Desa Duwet Rt 21 Rw 03 Kecamatan Bendo Kabupaten Magetan', 'Desa Duwet Rt 21 Rw 03 Kecamatan Bendo Kabupaten Magetan', '081273336774', 'Milik Sendiri', 'Mengurus rumah tangga', '3', 'SMP', 'Perempuan', 'Seumur Hidup', '0', '25', 'Sugito', 'Magetan,15 Juli 1061', '3520101507610001', 'Desa Duwet Rt 21 Rw 03 Kecamatan Bendo Kabupaten Magetan', 'Suami', '0', 'Sambu Dwi Satriyo', 'Anak Kandung', 'Desa Duwet Rt 21 Rw 03 Kecamatan Bendo Kabupaten Magetan', '0', 'sarkun123@gmail.com'),
-(109, '000010', '0000-00-00', '0000-00-00', '300000000', '60', 'Pokok bunga tiap bulan', '15% ', 0, 'Baru', 'Modal Kerja', 'Tambah modal usaha bengkel las', 'SUYANI', 'Menikah', 'NGANJUK, 28 OKTOBER 1970', '3520163112700003', 'DS. SUMBERDUKUN  RT.01/01 KEC. NGARIBOYO KAB. MAGETAN', 'DS. SUMBERDUKUN  RT.01/01 KEC. NGARIBOYO KAB. MAGETAN', '081239762255', 'Milik Sendiri', 'WIRASWASTA', '2', 'SMA', 'Laki-laki', 'Seumur Hidup', '081239762255', '20', 'TUMINI', 'JEMBER, 27 OKTOBER 1969', 'DS. SUMBERDUKUN  RT.01/01 KEC. NGARIBOYO KAB. MAGETAN', 'DS. SUMBERDUKUN  RT.01/01 KEC. NGARIBOYO KAB. MAGETAN', 'PNS', '085730211039', 'OCHY', 'Anak Kandung', 'DS. BANDAR KEC. SUKOMORO KAB. MAGETAN', '082233370009', 'avidianski@gmail.com'),
-(110, '000010', '2022-09-21', '2022-09-19', '200000000', '60', 'Pokok bunga tiap bulan', '12%flat per tahun', 0, 'Ulangan', 'Modal Kerja', 'Tambah modal dagang gabah dan jagung', 'SUKATI', 'Menikah', 'Magetan,31-12-1972', '3520037112720012', 'Desa Kedungpanji RT 11 RW 06 Kec.Lembeyan Kab.Magetan', 'Desa Kedungpanji RT 11 RW 06 Kec.Lembeyan Kab.Magetan', '081334631713', 'Milik Sendiri', 'Wiraswasta', '1', 'SMA', 'Laki-laki', 'Seumur Hidup', '0', '20', 'SETU', 'Magetan,10-01-1965', 'Desa Kedungpanji RT 11 RW 06 Kec.Lembeyan Kab.Magetan', 'Desa Kedungpanji RT 11 RW 06 Kec.Lembeyan Kab.Magetan', 'Wiraswasta', '081216053943', 'Teguh', 'Tetangga', 'Desa Kedungpanji RT 11 RW 06 Kec.Lembeyan Kab.Magetan', '085607610556', 'arie29895@gmail.com'),
-(111, '000010', '2022-09-22', '2022-09-19', '350000000', '36', 'Pokok bunga tiap bulan', '15flat/th', 0, 'Baru', 'Investasi', 'Pembelian tanah dan pembuatan garasi', 'GALUH PRINGGODIKDO', 'Menikah', 'magetan 27-06-1993', '5320062706930003', 'Jl. kalimantan 53D Rt01 Rw 02 Kel. Kepolorejo kec. Magetan Kab. Magetan', 'Jl. kalimantan 53D Rt01 Rw 02 Kel. Kepolorejo kec. Magetan Kab. Magetan', '089504188814', 'Milik Sendiri', 'Karyawan swasta', '2', 'Diploma', 'Laki-laki', 'Seumur Hidup', '081323325554', '25', '-', '-', '-', '-', '-', '-', 'HERI BUDIONO', 'Orang Tua', 'Jl. kalimantan 53D Rt01 Rw 02 Kel. Kepolorejo kec. Magetan Kab. Magetan', '08904188841', 'Masdidik86@gmail.com'),
-(112, '000010', '2022-09-23', '2022-09-20', '220000000', '60', 'Pokok bunga tiap bulan', '15%', 0, 'Ulangan', 'Modal Kerja', 'Modal Usaha Dagang Sayur', 'NANIK', 'Menikah', 'Magetan , 03-07-1991', '3520184307910001', 'Desa Getasanyar RT 25 RW 04 Kec Sidorejo Kab Magetan', 'Desa Getasanyar RT 25 RW 04 Kec Sidorejo Kab Magetan', '085815820230', 'Milik Sendiri', 'Petani/Pekebun', '3', 'SMA', 'Laki-laki', 'Seumur Hidup', '-', '31', 'Puguh', 'Magetan, 14-06-1988', 'Desa Getasanyar RT 25 RW 04 Kec Sidorejo Kab Magetan', 'Desa Getasanyar RT 25 RW 04 Kec Sidorejo Kab Magetan', 'Petani/Pekebun', '081559507583', 'Tri Utami', 'Saudara Kandung', 'Desa Getasanyar RT 25 RW 04 Kec Sidorejo Kab Magetan', '081234476073', 'Yoppi.febri.ramadan@gmail.com'),
-(113, '000010', '2022-09-23', '2022-09-21', '300000000', '36', 'Pokok bunga tiap bulan', '13.8', 0, 'Top Up', 'Modal Kerja', 'Tambah modal pembelian tanah sawah', 'WIWIK HARIYANTI', 'Belum Menikah', 'NGAWI 26-01-1964', '3521116601640001', 'DESA JENGGRIK 04/01 KECAMATAN KEDUNGGALAR, KABUPATEN NGAWI', 'DESA JENGGRIK 04/01 KECAMATAN KEDUNGGALAR, KABUPATEN NGAWI', '081359255228', 'Milik Sendiri', 'ANGGOTA DPRD KAB', '2', 'S1', 'Perempuan', 'Seumur Hidup', '-', '26', 'H SUPARNI', 'MAGETAN 06-06-1960', 'DESA JENGGRIK 04/01 KECAMATAN KEDUNGGALAR, KABUPATEN NGAWI', 'DESA JENGGRIK 04/01 KECAMATAN KEDUNGGALAR, KABUPATEN NGAWI', 'KEPALA DESA', '081259663731', 'SUNOTO', 'Tetangga', 'DESA GEMARANG 02/03 KEC KEDUNGGALAR, KAB NGAWI', '081259468044', 'wahwahwah82.aw@gmail.com'),
-(114, '000010', '2022-10-04', '2022-09-28', '100000000', '24', 'Pokok bunga tiap bulan', '18 % Flat Pertahun', 1, 'Top Up', 'Modal Kerja', 'Debitur mengajukan pinjaman sebesar Rp. 100.000.00', 'Suherman', 'Menikah', 'Magetan, 08-08-1979', '3520020808790003', 'Dsn. Sundul 2 RT008/RW003 Kel.Sundul Kec. Parang Kab. Magetan', 'Dsn. Sundul 2 RT008/RW003 Kel.Sundul Kec. Parang Kab. Magetan', '085655606638', 'Milik Sendiri', 'MEUBEL UD. JATIMULYO', '2', 'SMP', 'Laki-laki', 'Seumur Hidup', '0', '15', 'Siti Komariyah', 'Magetan, 01-03-1978', 'Dsn. Sundul 2 RT008/RW003 Kel.Sundul Kec. Parang Kab. Magetan', 'Dsn. Sundul 2 RT008/RW003 Kel.Sundul Kec. Parang Kab. Magetan', 'ibu rumah tangga', '0', 'Dimas Setiyobudi', 'Saudara Kandung', 'Ds. Krajan 000/000 Kel.Krajan Kec.Parang Kab Magetan', '085606988414', 'Chincoaldhy@gmail.com');
+INSERT INTO `latar_belakang` (`id_lb`, `cif_bank`, `tgl_analisa`, `tgl_permohonan`, `plafon`, `jangka_waktu`, `sifat_kredit`, `suku_bunga`, `musiman`, `jenis_permohonan`, `tujuan_permohonan`, `ket_penggunaan`, `nama_debitur`, `status_kawin`, `ttl_nasabah`, `ktp`, `alamat_ktp_nasabah`, `domisili_nasabah`, `hp_nasabah`, `status_tt`, `pekerjaan_nasabah`, `tanggungan`, `pendidikan`, `jenis_kelamin`, `masa_laku`, `telp_kantor`, `lama_tinggal`, `nama_pasangan`, `ttl_pasangan`, `alamat_ktp_pasangan`, `domisili_pasangan`, `pekerjaan_pasangan`, `hp_pasangan`, `nama_keluarga`, `hubungan_keluarga`, `alamat_keluarga`, `hp_keluarga`, `user`, `analis`) VALUES
+(11, '00001', '2022-06-28', '2022-06-12', '450000000', '600', 'Pokok bunga tiap bulan', '20 % Flate per tahun', 0, 'Baru', 'Modal Kerja', 'Pembelian tanah luas 2.270 m2', 'RANDY WIJAYA KUSUMA', 'Tidak Menikah', 'Ngawi, 20-07-1994', '3521032007940002', 'Desa Soco RT 05 RW 02 Kec. Jogorogo Kab. Ngawi', 'Perumahan Arya Mandiri 2 Blok C No. 2 RT 05 RW 06 Plesungan Gondangrejo Kab. Karanganyar Jawa Tengah.', '08131049959', 'Milik Sendiri', 'Wiraswasta', '3', 'SMA', 'Laki-laki', 'Seumur Hidup', '0', '2', 'IZZATUL NAJMI ALMANARAH', 'Blitar, 28-11-1997', 'Desa Soco RT 05 RW 02 Kec. Jogorogo Kab. Ngawi', 'Perumahan Arya Mandiri 2 Blok C No. 2 RT 05 RW 06 Plesungan Gondangrejo Kab. Karanganyar Jawa Tengah.', 'Ibu Rumah Tangga', '08131049959', 'ERNING YULI ASTUTIK', 'Anak Kandung', 'Desa Soco RT 05 RW 02 Kec. Jogorogo Kab. Ngawi', '0895704310022', 'fatia@gmail.com', 'Vera Fernanda'),
+(17, '00002', '2022-06-09', '2022-06-09', '250000000', '24', 'Pokok bunga tiap bulan', '18', 0, 'Baru', 'Modal Kerja', 'Tambah modal usaha dagang beras', 'KASDI', 'Menikah', 'Magetan, 20-07-1965', '3520042007650001', 'Desa Sawojajar RT 09 RW 02 Kecamatan Takeran Kabupaten Magetan', 'Desa Sawojajar RT 09 RW 02 Kecamatan Takeran Kabupaten Magetan', '081359950159', 'Milik Sendiri', 'Perdagangan ( Beras )', '2', 'SMA', 'Laki-laki', 'Seumur Hidup', '0', '25', 'YAYUK EKAWATI', 'Magetan, 08-12-1973', 'Desa Sawojajar RT 09 RW 02 Kecamatan Takeran Kabupaten Magetan', 'Desa Sawojajar RT 09 RW 02 Kecamatan Takeran Kabupaten Magetan', 'Wiraswasta', '0', 'Wahyu', 'Rekan Kerja', 'Desa Sawojajar RT 09 RW 02 Kecamatan Takeran Kabupaten Magetan', '085735301218', 'arisanaaa82@gmail.com', 'Vera Fernanda'),
+(22, '00002', '2022-06-10', '2022-06-10', '25000000', '24', 'Pokok bunga tiap bulan', '18 % flat /tahun', 0, 'Baru', 'Modal Kerja', 'Tambah modal dagang pracangan', 'supriyati', 'Menikah', 'Magetan,08-09-1981', '3520034507860002', 'Desa Nguri RT01 RW 03, Kec.Lembeyan Kab.Magetan', 'Desa Nguri RT01 RW 03, Kec.Lembeyan Kab.Magetan', '08133577044', 'Milik Sendiri', 'Wiraswasta', '2', 'SMA', 'Laki-laki', 'Seumur Hidup', '0', '10', 'Suhadi prayitno', 'Magetan,05-02-1975', 'Desa Nguri RT01 RW 03, Kec.Lembeyan Kab.Magetan', 'Desa Nguri RT01 RW 03, Kec.Lembeyan Kab.Magetan', 'Wiraswasta', '0812345678', 'Suparmi', 'Tetangga', 'Desa Nguri RT01 RW 03, Kec.Lembeyan Kab.Magetan', '08523443221', 'arie29895@gmail.com', 'Vera Fernanda'),
+(23, '00002', '2022-06-03', '2022-05-25', '200000000', '36', 'Pokok bunga tiap bulan', '12 %', 0, 'Ulangan', 'Konsumsi', 'Digunakan untuk pembelian mobil Avanza tahun 2012', 'Isran', 'Menikah', 'Magetan, 05-02-1967', '3520050502670001', 'Ds. Tulung Rt 003 Rw 005 Kec. Kawedanan Kab.Magetan', 'Ds. Tulung Rt 003 Rw 005 Kec. Kawedanan Kab.Magetan', '081217531170', 'Milik Sendiri', 'PNS ( BPN Magetan )', '4', 'S1', 'Laki-laki', 'Seumur Hidup', '0351895097', '23', 'Dwi Hastutik', 'Pacitan, 13-11-1970', 'Ds. Tulung Rt 003 Rw 005 Kec. Kawedanan Kab.Magetan', 'Ds. Tulung Rt 003 Rw 005 Kec. Kawedanan Kab.Magetan', 'Wiraswasta', '085641012220', 'Pauji', 'Saudara Kandung', 'Surabaya', '0815007871', 'mahfutansori@gmail.com', ''),
+(25, '00003', '2022-06-23', '2022-06-20', '150000000', '24', 'Pokok bunga tiap bulan', '15% pertahun', 0, 'Baru', 'Modal Kerja', 'Modal Usaha Bawang Merah', 'SUPRIYANTO', 'Menikah', 'MAGETAN', '3520080607790002', 'DESA SIMO RT/RW 001/01 KECAMATAN KENDAL KABUPATEN NGAWI', 'DESA SIMO RT/RW 001/01 KECAMATAN KENDAL KABUPATEN NGAWI', '0856724264', 'Milik Sendiri', 'WIRASWASTA', '3', 'SMA', 'Laki-laki', 'Seumur Hidup', '0', '10', 'YENI MAHRITA', 'NGAWI,06-07-1986', 'DESA SIMO RT/RW 01/01 KECAMATAN KENDAL KABUPATEN NGAWI', 'DESA SIMO RT/RW 01/01 KECAMATAN KENDAL KABUPATEN NGAWI', 'IBU RUMAH TANGGA', '0', 'SUKARNO', 'Orang Tua', 'DESA TURI RT/RW 01/04 KECAMATAN PANEKAN KABUPATEN MAGETAN ', '081234476073', 'chandradestian97@gmail.com', ''),
+(26, '00003', '2022-02-03', '2022-06-20', '150000000', '24', 'Pokok bunga tiap bulan', '15% pertahun', 0, 'Baru', 'Modal Kerja', 'modal usaha bawang merah', 'Supriyanto', 'Menikah', 'magetan, 07-05-1979', '3520080607790002', 'desa simo, rt/ 01/01 kec kendal kab magetan', 'desa simo, rt/ 01/01 kec kendal kab magetan', '08567247264', 'Milik Sendiri', 'wiraswasta', '3', 'SMA', 'Laki-laki', 'Seumur Hidup', '08567247264', '10', 'Yeni Mahrita', 'ngawi, 06-07-1986', 'desa simo, rt/01/01 kec kendal kab ngawi', 'desa simo, rt/01/01 kec kendal kab magetan', 'ibu rumah tangga', '', 'Sukarno', 'Orang Tua', 'desa turi rt 01/04 kec panekan kab magetan', '081234476073', 'hanifmuslim74@gmail.com', ''),
+(29, '00005', '2022-06-22', '2022-06-20', '120000000', '60', 'Pokok bunga tiap bulan', '12% pertahun', 0, 'Baru', 'Modal Kerja', 'untk menambah modal usaha jualan kambing', 'KAIRUDIN', 'Menikah', 'NGAWI, 09-08-1973', '3521040809730001', 'Jatisari RT 2 RW 6 DS. MAJASEM, Kec. kendal kab. Magetan', 'jatisari RT 2 RW 6 DS. MAJASEM, kec. kedal kab. magetan', '085330934275', 'Milik Sendiri', 'wiraswasta', '', 'SMA', 'Laki-laki', 'Seumur Hidup', '085330934275', '20', 'KARMI', 'ngawi, 04-06-1975', 'jatisari rt 2 rw 6 DS. majasem, kec. kendal kab. ngawi', 'jatisari rt 2 rw 6 DS. majasem, kec. kendal kab. ngawi', 'tidak bekerja', '', 'Nurhadi', 'Anak Kandung', 'jatisari rt 2 rw 6 DS. majasem, kec. kendal kab. magetan', '082234750197', 'hanifmuslim74@gmail.com', ''),
+(30, '00006', '2022-06-22', '2022-06-20', '80000000', '48', 'Pokok tiap 6 bulan bunga tiap bulan', '18%', 0, 'Top Up', 'Modal Kerja', 'TAMBAH MODAL PERTANIAN PADI', 'JUMI RAHAYU', 'Menikah', 'MAGETAN, 30- 10-1961', '3520044910610001', 'DS KUWONHARJO RT/RW 21/04 KEC TAKERAN KAB MAGETAN', 'DS KUWONHARJO RT/RW 21/04 KEC TAKERAN KAB MAGETAN', '081252235368', 'Milik Sendiri', 'PEGAWAI NEGERI SIPIL ( PNS ) PENSIUN', '1', 'S1', 'Perempuan', 'Seumur Hidup', '0', '30', 'SUTIKNO', 'MAGETAN,18-10-1961', 'DS KUWONHARJO RT/RW 21/04 KEC TAKERAN KAB MAGETAN', 'DS KUWONHARJO RT/RW 21/04 KEC TAKERAN KAB MAGETAN', 'WIRASWASTA (Pertanian Padi )', '085730789117', 'BOBBY RAMA', 'Anak Kandung', 'DS KUWONHARJO RT/RW 21/04 KEC TAKERAN KAB MAGETAN', '085730789117', 'chandradestian97@gmail.com', ''),
+(33, '00007', '0000-00-00', '0000-00-00', '', '', 'Pokok bunga tiap bulan', '', 0, 'Baru', 'Modal Kerja', '', '', 'Tidak Menikah', '', '', '', '', '', 'Milik Sendiri', '', '', 'SD', 'Laki-laki', 'Seumur Hidup', '', '', '', '', '', '', '', '', '', 'Anak Kandung', '', '', 'Supraptogandhi@gmail.com', ''),
+(36, '00007', '2022-07-11', '2022-07-08', '72.000.000', '36', 'Pokok bunga tiap bulan', '18', 0, 'Baru', 'Konsumsi', 'Beli tanah', '', 'Tidak Menikah', '', '', '', '', '', 'Milik Sendiri', '', '', 'SD', 'Laki-laki', 'Seumur Hidup', '', '', '', '', '', '', '', '', '', 'Anak Kandung', '', '', 'basukihanoraga@gmail.com', ''),
+(38, '00009', '0000-00-00', '0000-00-00', '', '', 'Pokok bunga tiap bulan', '', 0, 'Baru', 'Modal Kerja', '', '', 'Tidak Menikah', '', '', '', '', '', 'Milik Sendiri', '', '', 'SD', 'Laki-laki', 'Seumur Hidup', '', '', '', '', '', '', '', '', '', 'Anak Kandung', '', '', 'adhanialisyahuri414@gmail.com', ''),
+(39, '00007', '2022-07-08', '2022-07-08', '100.000.000', '24', 'Pokok bunga tiap bulan', '18', 0, 'Baru', 'Modal Kerja', 'Pembelian material bahan pembuatan batako', 'Harianto', 'Menikah', 'Ponorogo,17-08-1945', '35021999000999', 'Dukuh kajang RT 2 RW 3 desa babadan kec babadan kab ponorogo', 'Dukuh kajang RT 2 RW 3 desa babadan kec babadan kab ponorogo', '08125555999', 'Milik Sendiri', 'Wiraswasta', '1', 'SMA', 'Laki-laki', 'Seumur Hidup', '08125555999', '25', 'Srini', 'Ponorogo,17-08-1955', 'Dukuh kajang RT 2 RW 3 desa babadan kec babadan kab ponorogo', 'Dukuh kajang RT 2 RW 3 desa babadan kec babadan kab ponorogo', 'Ibu rumah tangga', '08227777999', 'Anis', 'Anak Kandung', 'Dukuh kajang RT 2 RW 3 desa babadan kec babadan kab ponorogo', '08226667777', 'santojosep99@gmail.com', ''),
+(40, '00009', '2022-07-08', '2022-07-08', '72.000.000', '48', 'Pokok bunga tiap bulan', '18', 0, 'Baru', 'Modal Kerja', 'Membeli dagangan', 'Basuki', 'Menikah', '25 juli 1995', '0987', 'Yhygst', 'Wuiij', '0909', 'Milik Sendiri', 'Wiraswasta', '3', 'S1', 'Laki-laki', 'Seumur Hidup', '0090', '23', 'Iuii', '09', 'Ujuj', 'Qpoi', 'Poooki', '565', 'Oopo', 'Tetangga', 'Klk', '109', 'basukihanoraga@gmail.com', ''),
+(41, '00009', '2022-07-08', '2022-07-08', '200000000', '120', 'Pokok bunga tiap bulan', '18', 0, 'Baru', 'Modal Kerja', 'Renovasi tempat hiburan', 'Man Ana', 'Tidak Menikah', 'Magetan,16-08-1985', '364648484992-293', 'Desa ngaglek rt 2 rw 3 parang magetan', 'Desa ngaglek rt 2 rw 3 parang magetan', '085706768011', 'Milik Sendiri', 'Atlit tenis meja', '0', 'S1', 'Laki-laki', 'Seumur Hidup', '-', '20', '-', '-', '-', '-', '-', '-', 'Gandi', 'Tetangga', 'Desa ngaglek rt 2 rw 3 parang magetan', '085788011922', 'andikadevir95@gmail.com', ''),
+(42, '00009', '2022-07-08', '2022-07-08', '100000000', '36', 'Pokok bunga tiap bulan', '18%', 0, 'Baru', 'Modal Kerja', 'Untuk tambah kulakan', 'Okee', 'Menikah', 'Magetan, 20081991', '3520062008910001', 'Gang 5', 'Gang 5', '085612345678', 'Milik Sendiri', 'Swasta', '', 'S1', 'Laki-laki', 'Seumur Hidup', '', '28', '', '', '', '', '', '', 'Pake', 'Orang Tua', 'Gang 4', '0123456789101', 'avidianski@gmail.com', ''),
+(44, '000010', '2022-07-08', '2022-07-08', '72.000.000', '36', 'Pokok bunga tiap bulan', '18', 0, 'Baru', 'Modal Kerja', 'Dipakai sendiri', 'Basuki', 'Menikah', '25 juli 1995', '09878', 'Ujuhy nnj', 'Okoko', '0909', 'Milik Sendiri', 'Wiraswasta', '3', 'SD', 'Laki-laki', 'Seumur Hidup', '0909', '10', 'Iuii', 'Tre . 23', 'Rt23 rw 08 trenggalek', 'Rt23 rw08 trrnggalek', 'Poooki', '565', 'Oopo', 'Orang Tua', 'Pokok', '0909', 'basukihanoraga@gmail.com', ''),
+(46, '000010', '2022-07-09', '2022-07-04', '40000000', '24', 'Pokok bunga tiap bulan', '18% Flat per Tahun', 0, 'Ulangan', 'Modal Kerja', 'Tambah Modal Usaha Grosir Topi dan Boneka', 'PAINIWATI', 'Janda', 'Nganjuk, 19-03-1967', '3577025903670001', 'Jl. Gajah Mada Gg Rukun No 08, RT 01/RW 01, Kelurahan Winongo, Kecamatan Manguharjo, Kota Madiun', 'Jl. Gajah Mada Gg Rukun No 08, RT 01/RW 01, Kelurahan Winongo, Kecamatan Manguharjo, Kota Madiun', '082141509358', 'Milik Sendiri', 'Mengurus Rumah Tangga', '0', 'SMP', 'Laki-laki', 'Seumur Hidup', '0', '30', '-', '-', '-', '-', '-', '-', 'DEDE SETIYANA', 'Tetangga', 'Jl. Wijaya no 17, RT 02/RW 01, Kelurahan Winongo, Kecamatan Manguharjo, Kota Madiun', '081235359169', 'Eka.sandha@gmail.com', ''),
+(47, '000010', '2022-07-11', '2022-06-10', '600000000', '96', 'Pokok bunga tiap bulan', '18%', 0, 'Baru', 'Modal Kerja', 'Tambah modal usaha proyek ', 'Arip Wibowo', 'Menikah', '14 Oktober 1984', '3520171410840001', 'Ds simbatan RT/RW 001/001 kec Nguntoronadi kab Magetan ', 'Ds simbatan RT/RW 001/001 kec Nguntoronadi kab Magetan ', '', 'Milik Sendiri', 'Wiraswasta', '3', 'SMA', 'Laki-laki', 'Seumur Hidup', '-', '10', 'Yuni Tri Handikasari', 'Magetan 2 Juni 1988', 'Ds simbatan RT/RW 001/001 kec Nguntoronadi kab Magetan ', 'Ds simbatan RT/RW 001/001 kec Nguntoronadi kab Magetan ', 'Wiraswasta ', '', 'Agung Widodo', 'Saudara Kandung', 'Ds Duwet  kec bendo kab Magetan ', '081233919568', 'danangwindianto55@gmail.com', ''),
+(48, '000010', '2022-07-11', '2022-07-08', '100000000', '48', 'Pokok bunga tiap bulan', '17 % Anuitas rate / th', 0, 'Baru', 'Modal Kerja', 'Tambah modal usaha perdagangan soft drink dan maka', 'ANDIKADEVI RISMANTO', 'Tidak Menikah', 'Magetan, 26-12-1995', '3520052612950001', 'Desa Bogem RT 02 RW 01 Kec. Kawedanan Kab. Magetan', 'Desa Bogem RT 02 RW 01 Kec. Kawedanan Kab. Magetan', '085706768011', 'Milik Keluarga/Ortu', 'Pelajar/Mahasiswa ( Karyawan PT. BPR EKADHARMA )', '0', 'SMA', 'Laki-laki', 'Seumur Hidup', '0351-439872', '27', '-', '-', '-', '-', '-', '-', 'RAPI DHIA MAHARDIKA', 'Saudara Kandung', 'Desa Bogem RT 02 RW 01 Kec. Kawedanan Kab. Magetan', '082143340487', 'arisanaaa82@gmail.com', ''),
+(49, '000010', '2022-09-20', '2022-09-16', '450000000', '60', 'Pokok bunga tiap bulan', '19', 0, 'Baru', 'Modal Kerja', 'modal usaha SPBU dan pelunasan di BPR jatim', 'ENDANG SURYANTININGSIH', 'Menikah', 'NGAWI, 07-01-1972', '3521094701720002', 'Griya lawu indah II-20 01/16 Desa Jururejo, Kecamatan Ngawi, Kabupaten Ngawi', 'Jalan Kenari, Desa Beran I, Kecamatan Ngawi, Kabupaten Ngawi', '085103863636', 'Milik Sendiri', 'mengurus rumah tangga', '2', 'SMA', 'Laki-laki', 'Seumur Hidup', '081556445379', '25', 'SARTONO MULYO NUGROHO', 'NGAWI, 05-03-1969', 'Griya lawu indah II-20 01/16 Desa Jururejo, Kecamatan Ngawi, Kabupaten Ngawi', 'Jalan Kenari, Desa Beran I, Kecamatan Ngawi, Kabupaten Ngawi', 'wiraswasta', '081556445379', 'SOENARTO', 'Rekan Kerja', 'Paron 10/01, Kecamatan Paron, Kabupaten  Ngawi', '081232883800', 'wahwahwah82.aw@gmail.com', ''),
+(50, '000010', '2022-07-12', '2022-06-28', '900000000', '60', 'Anuitas', '16', 0, 'Baru', 'Modal Kerja', 'Tambah modal usaha oli dan nitrogen \r\nPelunasan BR', 'Soenarto', 'Belum Menikah', 'Surabaya 09-09-1963', '3521100909630001', 'Paron 10/01 desa Paron ,kec Paron, kab Ngawi', 'Paron 10/01 desa Paron ,kec Paron, kab Ngawi', '081232883800', 'Milik Sendiri', 'Wiraswasta', '0', 'SMA', 'Laki-laki', 'Seumur Hidup', '081556445379', '40', '-', '-', '-', '-', '-', '-', 'Endang Suryantiningsih', 'Saudara Tidak Sekandung', 'Griya lawu indah II-20 01/16 desa jururejo, kec Ngawi, kab Ngawi', '085103863636', 'wahwahwah82.aw@gmail.com', ''),
+(51, '000010', '2022-07-12', '2022-07-05', '300000000', '36', 'Pokok tiap 4 bulan bunga tiap bulan', '30% Efektif', 0, 'Baru', 'Modal Kerja', 'Modal Usaha Jasa Konstruksi', 'CICILIA MIRNASARI PUTRI', 'Belum Menikah', 'Madiun, 21 Mei 1987', '3519086105870001', 'Desa Dimong RT 06/RW 01 Kecamatan Madiun Kabupaten Madiun', 'Desa Dimong RT 06/RW 01 Kecamatan Madiun Kabupaten Madiun', '082232321038', 'Milik Keluarga/Ortu', 'Pelajar / Mahasiswa', '0', 'S1', 'Perempuan', 'Seumur Hidup', '085790635456', '27', '-', '-', '-', '-', '-', '-', 'ARIS SETIAWAN', 'Rekan Kerja', 'Jl. Gulun RT 48/ RW 15 Kelurahan Kejuron Kecamatan Taman Madiun', '081398060646', 'Eka.sandha@gmail.com', ''),
+(52, '000010', '2022-07-14', '2022-07-12', '100000000', '60', 'Pokok bunga tiap bulan', '13', 0, 'Top Up', 'Modal Kerja', 'Tambah Modal USaha Dagang Alat Penyaring Air', 'SETYANINGSIH', 'Menikah', 'Magetan, 26 Juni 1974', '3520116606740001', 'Perumahan Imam Bonjol Village Blok A2, RT 22/ RW 05, Kel. Kanigoro, Kec. Kartoharjo, Madiun', 'Perumahan Imam Bonjol Village Blok A2, RT 22/ RW 05, Kel. Kanigoro, Kec. Kartoharjo, Madiun', '085856033792', 'Milik Sendiri', 'Wiraswasta', '1', 'SMA', 'Laki-laki', 'Seumur Hidup', '-', '6', 'AGUS HARIYANTO', 'Bojonegoro, 15 November 1966', 'Perumahan Imam Bonjol Village Blok A2, RT 22/ RW 05, Kel. Kanigoro, Kec. Kartoharjo, Madiun', 'Perumahan Imam Bonjol Village Blok A2, RT 22/ RW 05, Kel. Kanigoro, Kec. Kartoharjo, Madiun', 'Wiraswasta', '-', 'SULIS', 'Saudara Kandung', 'Jl. Puntodewo RT 11/RW 02, Desa Pandean, Kecamatan Maospati, Kabupaten Magetan', '085792273949', 'Eka.sandha@gmail.com', ''),
+(53, '000010', '2022-07-11', '2022-06-24', '900000000', '60', 'Anuitas', '16', 0, 'Baru', 'Modal Kerja', 'modal usaha SPBU, pelunasan Mandiri dan BRI', 'ENDANG SURYANTINGSIH', 'Menikah', 'NGAWI 07-01-1972', '3521094701720002', 'Griya lawu indah II-20 01/16 Desa Jururejo, kecamatan Ngawi, kabupaten Ngawi', 'jalan Kenari, Desa Beran , kecamatan Ngawi, kabupaten Ngawi', '085103863636', 'Milik Sendiri', 'mengurus rumah tangga', '2', 'SMA', 'Perempuan', 'Seumur Hidup', '081556445379', '25', 'SARTONO MULYO NUGROHO', 'NGAWI 05-03-1969', 'Griya lawu indah II-20 01/16 Desa Jururejo, kecamatan Ngawi, kabupaten Ngawi', 'jalan Kenari, Desa Beran , kecamatan Ngawi, kabupaten Ngawi', 'WIRASWASTA', '081556445379', 'SOENARTO', 'Saudara Tidak Sekandung', 'Paron 10/01 ,kecamatan Paron, kabupaten Ngawi', '081232883800', 'wahwahwah82.aw@gmail.com', ''),
+(54, '000010', '2022-08-12', '2022-08-10', '240000000', '120', 'Pokok bunga tiap bulan', '12%', 0, 'Ulangan', 'Modal Kerja', 'Tambah modal usaha dagang kelapa', 'MUJIONO', 'Menikah', 'Magetan, 12-12-1972', '3520021212720002', 'Desa Krajan RT 06/02 Kec. Parang Kab. Magetan', 'Desa Krajan RT 05/01 Kec. Parang Kab. Magetan', '081231293187', 'Milik Sendiri', 'Kepala desa', '1', 'S1', 'Laki-laki', 'Seumur Hidup', '-', '45', 'FARIDA FERRY IRAWATY', 'Magetan, 17-03-1987', 'Desa Baron RT 03/03 Kec. Magetan Kab. Magetan', 'Desa Krajan RT 05/01 Kec. Parang Kab. Magetan', 'Kepala desa', '081231293187', 'TUKIMIN', 'Anak Kandung', 'Kab Malang', '082244408246', 'antonekadharma62@gmail.com', ''),
+(55, '000010', '2022-07-15', '2022-07-13', '150000000', '36', 'Pokok bunga tiap bulan', '18%', 0, 'Baru', 'Modal Kerja', 'Pembelian mobil dan tambah modal usaha.', 'Eko Adi Mulyono', 'Menikah', 'Ngawi, 12-07-1968', '3521181207680002', 'Dsn Kayut II RT/RW 001/005 Ds Guyung Kec Gerih Kab Ngawi.', 'Dsn Kayut II RT/RW 001/005 Ds Guyung Kec Gerih Kab Ngawi.', '082328814009', 'Milik Sendiri', 'Pengacara', '4', 'S1', 'Laki-laki', 'Seumur Hidup', '-', '15', 'Zulkaidah', 'Bengkalis ,10-10-1977', 'Dsn Kayut II RT/RW 001/005 Ds Guyung Kec Gerih Kab Ngawi.', 'Dsn Kayut II RT/RW 001/005 Ds Guyung Kec Gerih Kab Ngawi.', 'Pegawai negeri Sipil ', '-', 'Didik Setyawan', 'Saudara Kandung', 'Dsn Kayut I Ds Guyung Kec Gerih Kab Ngawi.', '085850594055', 'danangwindianto55@gmail.com', ''),
+(56, '000010', '2022-07-15', '2022-06-17', '600000000', '60', 'Pokok bunga tiap bulan', '14.4 % Pertahun', 0, 'Baru', 'Modal Kerja', 'Pelunasan di bank lain dan pembelian stok dagang b', 'RAMIN', 'Menikah', 'Nganjuk, 07-03-1984', '3518160703840005', 'Desa Klagen Rt 012 Rw 04 Kecamatan Rejoso Kabupaten Nganjuk', 'Desa Klagen Rt 012 Rw 04 Kecamatan Rejoso Kabupaten Nganjuk', '081335568368', 'Milik Sendiri', 'Wiraswasta', '4', 'SMP', 'Laki-laki', 'Seumur Hidup', '', '38', 'Hartutik', 'Ponorogo,22-10-1982', 'Desa Klagen Rt 012 Rw 04 Kecamatan Rejoso Kabupaten Nganjuk', 'Desa Klagen Rt 012 Rw 04 Kecamatan Rejoso Kabupaten Nganjuk', 'Wiraswasta', '', 'Ahmad Rusdianto', 'Rekan Kerja', 'JL Pinang GG I NO 129 RT 23 RW 08 Kelurahan Blabak Kecamatan Pesantren Kota Kediri', '082145998489', 'Muhamadrois0432@gmail.com', ''),
+(57, '000010', '2022-06-23', '2022-06-20', '150000000', '24', 'Pokok bunga tiap bulan', '15%', 0, 'Baru', 'Modal Kerja', 'Modal Usaha Bawang Merah', 'Supriyanto', 'Menikah', 'Magetan, 06-07-1979', '352008067790002', 'Desa Simo Rt 01 Rw 01 Kec Kendal Kab Ngawi', 'Desa Simo Rt 01 Rw 01 Kec Kendal Kab Ngawi', '08567247264', 'Milik Sendiri', 'wiraswasta', '3', 'SMA', 'Laki-laki', 'Seumur Hidup', '-', '10', 'Yeni Mahrita', 'Madiun, 07-06-1986', 'Desa Simo Rt 01 Rw 01 Kec Kendal Kab Ngawi', 'Desa Simo Rt 01 Rw 01 Kec Kendal Kab Ngawi', 'ibu rumah tangga', '-', 'Sukarno', 'Orang Tua', 'Desa Turi Rt 01/04 kec Panekan Kab Magetan', '081234476073', 'Yoppi.febri.ramadan@gmail.com', ''),
+(60, '000010', '2022-07-18', '2022-07-18', '740000000', '12', 'Pokok terakhir bunga tiap bulan', '12', 0, 'Baru', 'Modal Kerja', 'Pembelian Tanah Kavling dan Rumah', 'Rian Dian Raga', 'Menikah', 'Magetan, 07 Juni 1985', '3520060706850001', 'Jl. Sulawesi No. 37 RT 03 RW 02 Kel. Tawanganom Kec./Kab. Magetan ', 'Jl. Sulawesi No. 37 RT 03 RW 02 Kel. Tawanganom Kec./Kab. Magetan ', '085790317006', 'Milik Keluarga/Ortu', 'Karyawan Swasta', '2', 'S1', 'Laki-laki', 'Seumur Hidup', '0351 439872', '10', 'Ifa Lylla Mareta', 'Magetan 04 Maret 1987', 'Jl. Sulawesi No. 37 RT 03 RW 02 Kel. Tawanganom Kec./Kab. Magetan ', 'Jl. Sulawesi No. 37 RT 03 RW 02 Kel. Tawanganom Kec./Kab. Magetan ', 'Ibu rumah tangga', '085204181508', 'Anin Adinda', 'Saudara Kandung', 'Perumahan Green Garden Desa Milangasri Kec. Panekan Kab. Magetan', '085706165846', 'Masdidik86@gmail.com', ''),
+(62, '000010', '2022-07-19', '2022-07-14', '300000000', '48', 'Pokok bunga tiap bulan', '12', 0, 'Baru', 'Modal Kerja', 'Usaha kerajinan sepatu dan sandal', 'Lilis Suryani', 'Menikah', 'Magetan, 08-11-1972', '3520164811720001', 'Desa Mojopurno RT. 05 RW. 04, Kec. Ngariboyo, Kab. Magetan', 'Desa Mojopurno RT. 05 RW. 04, Kec. Ngariboyo, Kab. Magetan', '085784371371', 'Milik Sendiri', 'Perdagangan ', '1', 'SMA', 'Laki-laki', 'Seumur Hidup', '0', '35', 'Haryono', 'Magetan, 27-06-1969', 'Desa Mojopurno RT. 05 RW. 04, Kec. Ngariboyo, Kab. Magetan', 'Desa Mojopurno RT. 05 RW. 04, Kec. Ngariboyo, Kab. Magetan', 'Perdagangan ', '082142661432', 'Iqbal Wahid Abdullah', 'Anak Kandung', 'Desa Mojopurno RT. 05 RW. 04, Kec. Ngariboyo, Kab. Magetan', '', 'taufikdianmurseto97@gmail.com', ''),
+(63, '000010', '2022-08-16', '2022-08-12', '350000000', '60', 'Anuitas', '16', 0, 'Baru', 'Konsumsi', 'Renovasi rumah', 'nurul hidayat', 'Menikah', 'Ngawi, 06-07-1982', '3521110607820006', 'desa sambirejo 01/08 , kecamatan Mantingan, kabupaten Ngawi', 'Desa Jenggrik, kecamatan Kedunggalar, kabupaten Ngawi', '0813 1540 6705', 'Milik Sendiri', 'Pelaut', '6', 'S1', 'Laki-laki', 'Seumur Hidup', '-', '20', 'Ana suzana', 'Palembang, 14-04-1983', 'desa sambirejo 01/08 , kecamatan Mantingan, kabupaten Ngawi', 'Desa Jenggrik, kecamatan Kedunggalar, kabupaten Ngawi', 'Mengurus rumah tangga', '08', 'Isroh choirifah', 'Saudara Kandung', 'Desa Jenggrik, kecamatan Kedunggalar, kabupaten Ngawi', '+62 813 3546 49', 'wahwahwah82.aw@gmail.com', ''),
+(64, '000010', '2022-07-19', '2022-07-18', '300000000', '36', 'Pokok bunga tiap bulan', '17%', 0, 'Baru', 'Modal Kerja', 'Tambah modal dagang spearpart kendaraan bermotor', 'Fa\'ila Triyana', 'Menikah', 'Magetan, 02-07-1981', '3520164207810001', 'Ngariboyo RT 02 RW 03,Ngariboyo,Magetan.', 'Ngariboyo RT 02 RW 03,Ngariboyo,Magetan.', '081234095094', 'Milik Sendiri', 'Mengurus Rumah Tangga', '3', 'SMA', 'Laki-laki', 'Seumur Hidup', '081234095094', '41', 'Catur Iswanto', 'Sampang, 26-11-1983', 'Ngariboyo RT 02 RW 03,Ngariboyo,Magetan.', 'Ngariboyo RT 02 RW 03,Ngariboyo,Magetan.', 'Wiraswasta', '081234095094', 'Alfian Pribadi Saputra', 'Saudara Kandung', 'Ngariboyo RT 02 RW 03,Ngariboyo,Magetan.', '082237221416', 'yannisoneb93@gmail.com', ''),
+(65, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, NULL, ''),
+(66, '000010', '2022-07-22', '2022-07-21', '150000000', '24', 'Pokok bunga tiap bulan', '12', 0, 'Ulangan', 'Konsumsi', 'Biaya renovasi rumah', 'SUMIATI', 'Menikah', 'Magetan, 17-04-1959', '3520075704650003', 'Desa Sumberagung Rt 07 Rw 02 Kec. Plaosan Kab Magetan', 'Desa Sumberagung Rt 07 Rw 02 Kec. Plaosan Kab Magetan', '081546111296', 'Milik Sendiri', 'Buruh tani / Perkebunan', '2', 'SMP', 'Laki-laki', 'Seumur Hidup', '0', '56', 'SUPARNI', 'Magrtan, 03-04-1959', 'Desa Sumberagung Rt 07 Rw 02 Kec. Plaosan Kab Magetan', 'Desa Sumberagung Rt 07 Rw 02 Kec. Plaosan Kab Magetan', 'Wiraswasta', '081546111296', 'JOKO PURNOMO', 'Anak Kandung', 'Desa Mangunrejo Rt 03 Rw 01 Kec. Kawedanan Kab. Magetan', '081336799115', 'Masdidik86@gmail.com', ''),
+(67, '000010', '2022-09-12', '2022-09-12', '550000000', '6', 'Pokok terakhir bunga tiap bulan', '12', 0, 'Ulangan', 'Modal Kerja', 'Tambah modal usaha Properti dan jasa kontruksi', 'SUKERI', 'Menikah', 'Ponorogo, 13-08-1968', '3502171308680002', 'Jl. Kamboja No. 27 B Kel. Purbosuman RT 02 RW 02 Kec. Ponorogo Kab. Ponorogo', 'Jl. Kamboja No. 27 B Kel. Purbosuman RT 02 RW 02 Kec. Ponorogo Kab. Ponorogo', '081231752548', 'Milik Sendiri', 'Wiraswasta', '2', 'SMA', 'Laki-laki', 'Seumur Hidup', '081231752548', '30', 'LILIK PURWATI', 'Ponorogo, 14-06-1971', 'Jl. Kamboja No. 27 B Kel. Purbosuman RT 02 RW 02 Kec. Ponorogo Kab. Ponorogo', 'Jl. Kamboja No. 27 B Kel. Purbosuman RT 02 RW 02 Kec. Ponorogo Kab. Ponorogo', 'Mengurus Rumah Tangga', '081231752548', 'DENY PRASETY0', 'Anak Kandung', 'Jl. Kamboja No. 27 B Kel. Purbosuman RT 02 RW 02 Kec. Ponorogo Kab. Ponorogo', '081234210117', 'arisanaaa82@gmail.com', ''),
+(68, '000010', '2022-08-01', '2022-07-29', '120000000', '72', 'Pokok bunga tiap bulan', '15 % flat/tahun', 0, 'Baru', 'Investasi', 'Untuk pembelian tanah sawah', 'Suhartini', 'Menikah', 'Lumajang,13 - 06 -1976', '3520125306760002', 'Desa Karangsono Rt 17 Rw 04 Kecamatan Barat Kabupaten Magetan', 'Desa Karangsono Rt 17 Rw 04 Kecamatan Barat Kabupaten Magetan', '082335350007', 'Milik Sendiri', 'Wiraswasta', '2', 'S1', 'Laki-laki', 'Seumur Hidup', '082335350007', '20', 'Suparno', 'Magetan,23-12-1972', 'Desa Karangsono Rt 17 Rw 04 Kecamatan Barat Kabupaten Magetan', 'Desa Karangsono Rt 17 Rw 04 Kecamatan Barat Kabupaten Magetan', 'TNI', '082335350007', 'Risma', 'Anak Kandung', 'Desa Karangsono Rt 17 Rw 04 Kecamatan Barat Kabupaten Magetan', '0895331300385', 'andikadevir95@gmail.com', ''),
+(70, '000010', '2022-08-04', '2022-08-03', '100000000', '24', 'Pokok bunga tiap bulan', '14% flat /tahun', 0, 'Ulangan', 'Konsumsi', 'Biaya renovasi rumah', 'EDI SURYANTO', 'Menikah', 'Magetan 09 April 1963', '3520080904630001', 'Desa Milangasri Rt 02 Rw 02 kec. Panekan Kab. amgetan', 'Desa Milangasri Rt 02 Rw 02 kec. Panekan Kab. amgetan', '085235064227', 'Milik Sendiri', 'Wiraswasta', '2', 'SMA', 'Laki-laki', 'Seumur Hidup', '0', '23', 'SUKIRAH', 'Magetan 22 april 1948', 'Desa Milangasri Rt 02 Rw 02 kec. Panekan Kab. amgetan', 'Desa Milangasri Rt 02 Rw 02 kec. Panekan Kab. amgetan', 'Petani/Pekebun', '085736559227', 'HENDRA', 'Anak Kandung', 'Desa Milangasri Rt 02 Rw 02 kec. Panekan Kab. amgetan', '0895631104470', 'Masdidik86@gmail.com', ''),
+(71, '000010', '2022-08-05', '2022-08-04', '120000000', '42', 'Pokok bunga tiap bulan', '13%Flat pertahun', 0, 'Top Up', 'Modal Kerja', 'Tambah modal kerja untuk dagang ayam jantan ', 'ENDAH RAHAYU', 'Janda', 'Magetan,17-01-1980', '3520035701800001', 'Desa Kediren RT 03 RW 01 Kec.Lembeyan Kab.Magetan', 'Desa Kediren RT 03 RW 01 Kec.Lembeyan Kab.Magetan', '085708991375', 'Milik Sendiri', 'Wiraswas', '4', 'SMA', 'Laki-laki', 'Seumur Hidup', '0', '15', '-', '-', '-', '-', '-', '-', 'TRIANA', 'Saudara Kandung', 'Desa Kediren RT 03 RW 01 Kec.Lembeyan Kab.Magetan', '081217846255', 'arie29895@gmail.com', ''),
+(72, '000010', '2022-08-04', '2022-07-29', '350000000', '72', 'Pokok bunga tiap bulan', '15% flate pertahun', 0, 'Baru', 'Investasi', 'Untuk membangun rumah percontohan KPR', 'Susilo Sandi', 'Menikah', 'Madiun 10 Mei 2022', '3577011005800008', 'Desa Kanigoro Rt 36 Rw 09 Kec. Kartoharjo Kota Madiun', 'Desa Kanigoro Rt 36 Rw 09 Kec. Kartoharjo Kota Madiun', '085235755994', 'Milik Sendiri', 'Wiraswasta', '2', 'S1', 'Laki-laki', 'Seumur Hidup', '085235755994', '15', 'Retno Sulistyowati', 'Madiun, 02 Mei 2022', 'Desa Kanigoro Rt 36 Rw 09 Kec. Kartoharjo Kota Madiun', 'Desa Kanigoro Rt 36 Rw 09 Kec. Kartoharjo Kota Madiun', 'Notaris', '081226855907', 'Antok', 'Rekan Kerja', 'Ds Maospati Kec.Maospati Kab.Magetan', '083845474977', 'andikadevir95@gmail.com', ''),
+(73, '000010', '2022-08-05', '2022-08-04', '105000000', '48', 'Pokok bunga tiap bulan', '15% flate pertahun', 0, 'Ulangan', 'Investasi', 'Pembelian tanah sawah', 'Suhendar', 'Menikah', 'Tasikmalaya,16 Oktober 1984', '3520121610840001', 'Desa Tebon Rt 03 Rw 02 Kecamatan Barat Kabupaten Magetan', 'Desa Tebon Rt 03 Rw 02 Kecamatan Barat Kabupaten Magetan', '082337496498', 'Milik Sendiri', 'Wiraswasta', '3', 'SMA', 'Laki-laki', 'Seumur Hidup', '082337496498', '10', 'Kartini', 'Tasikmalaya,17 April 1987', 'Desa Tebon Rt 03 Rw 02 Kecamatan Barat Kabupaten Magetan', 'Desa Tebon Rt 03 Rw 02 Kecamatan Barat Kabupaten Magetan', 'Wiraswasta', '-', 'Rahmi', 'Tetangga', 'Desa Tebon Rt 03 Rw 02 Kecamatan Barat Kabupaten Magetan', '083873494582', 'andikadevir95@gmail.com', ''),
+(74, '000010', '2022-08-05', '2022-06-13', '1500000000', '96', 'Pokok bunga tiap bulan', '18%', 0, 'Baru', 'Modal Kerja', 'Tambah modal usaha bengkel dan toko sparepart mobi', 'Dwi Hari Wahyudi', 'Menikah', 'Madiun,05-07-1980', '3519090507800004', 'Dusun II RT/RW 016/005 Ds Sukolilo Kec Jiwan Kab Madiun', 'Jl sukosari Rt 18 Rw 06 Ds kwangsen Kec Jiwan Kab Madiun', '081217754883', 'Milik Sendiri', 'Karyawan swasta', '3', 'SMA', 'Laki-laki', 'Seumur Hidup', '085853906436', '10', 'Sri Rahayu', 'Madiun,28-12-1980', 'Dusun II RT/RW 016/005 Ds Sukolilo Kec Jiwan Kab Madiun', 'Jl sukosari Rt 18 Rw 06 Ds kwangsen Kec Jiwan Kab Madiun', 'Mengurus rumah tangga', '', 'Mohammad yudhik sukmana', 'Saudara Tidak Sekandung', 'perumahan seemount garden Blok D.8 Ds jiwan Kec JIwan Kab Madiun', '081392488111', 'danangwindianto55@gmail.com', ''),
+(75, '000010', '2022-08-08', '2022-08-02', '100000000', '24', 'Pokok bunga tiap bulan', '19.75 % anuitas / th', 0, 'Top Up', 'Modal Kerja', 'Tambah modal usaha ternak kambing ( beli kambing )', 'SUYATNO', 'Menikah', 'Magetan, 29-11-1969', '3520052912690001', 'Desa Ngentep RT 10 RW 02 Kec. Kawedanan Kab. Magetan', 'Desa Ngentep RT 10 RW 02 Kec. Kawedanan Kab. Magetan', '085172391068', 'Milik Sendiri', 'Karyawan swasta', '2', 'SMA', 'Laki-laki', 'Seumur Hidup', '085172391068', '15', 'TUTIK SETYA RAHAYU', 'Madiun, 21-12-1969', 'Desa Ngentep RT 10 RW 02 Kec. Kawedanan Kab. Magetan', 'Desa Ngentep RT 10 RW 02 Kec. Kawedanan Kab. Magetan', 'Mengurus Rumah Tangga', '081235271768', 'RIDWAN DWIKI PRASETYA', 'Anak Kandung', 'Desa Ngentep RT 10 RW 02 Kec. Kawedanan Kab. Magetan', '082323832947', 'arisanaaa82@gmail.com', ''),
+(76, '000010', '2022-08-08', '2022-07-20', '2000000000', '72', 'Pokok bunga tiap bulan', '12,5% Flat per Tahun', 0, 'Baru', 'Modal Kerja', 'Biaya Pembelian Emas Untuk Diperdagangkan', 'ANGGIT DJIWANTORO', 'Menikah', 'Ujung Pandang, 06-09-1971', '3577020609710001', 'Jl. Elang 3/15, Rt 04/RW 01, Kel. Nambangan Kidul, Kec. Manguharjo, Kota Madiun', 'Jl. Elang 3/15, Rt 04/RW 01, Kel. Nambangan Kidul, Kec. Manguharjo, Kota Madiun', '081359670665', 'Milik Sendiri', 'Kepolisian RI', '3', 'Diploma', 'Laki-laki', 'Seumur Hidup', '-', '15', 'SULISTYANI', 'Magetan, 23-05-1972', 'Jl. Elang 3/15, Rt 04/RW 01, Kel. Nambangan Kidul, Kec. Manguharjo, Kota Madiun', 'Jl. Elang 3/15, Rt 04/RW 01, Kel. Nambangan Kidul, Kec. Manguharjo, Kota Madiun', 'Karyawan BUMN', '-', 'FARIS', 'Anak Kandung', 'Puri Mas Regency, Jl. I Gusti Ngurah Rai, Gunung Anyar, Surabaya', '082228021754', 'Eka.sandha@gmail.com', ''),
+(78, '000010', '2022-08-08', '2022-08-08', '140000000', '60', 'Pokok bunga tiap bulan', '15% FLATE PER TAHUN', 0, 'Baru', 'Modal Kerja', 'UNTUK PEMBELIAN MOBIL ELF UNTUK USAHA ANGKUTAN', 'HERU WANCOKO', 'Menikah', 'MAGETAN, 14 JANUARI 2022', '3520171401880002', 'DESA SIMBATAN RT 005 RW 001 KECAMATAN NGUNTORONADI KABUPATEN MAGETAN', 'DESA SIMBATAN RT 005 RW 001 KECAMATAN NGUNTORONADI KABUPATEN MAGETAN', '081216389059', 'Milik Keluarga/Ortu', 'WIRASWASTA', '4 ', 'SMA', 'Laki-laki', 'Seumur Hidup', '-', '10', 'SUPRAPTI', 'MAGETAN,18-08-1987', 'DESA SIMBATAN RT 005 RW 001 KECAMATAN NGUNTORONADI KABUPATEN MAGETAN', 'DESA SIMBATAN RT 005 RW 001 KECAMATAN NGUNTORONADI KABUPATEN MAGETAN', 'WIRASWASTA', '081357053264', 'PURWATININGSIH', 'Saudara Tidak Sekandung', 'DESA SELOREJO RT 06 RW 001 KECAMATAN KAWEDANAN KABUPATEN MAGETAN', '0813 3232 1171', 'handajanisri8@gmail.com', ''),
+(79, '000010', '2022-08-09', '2022-08-07', '100000000', '72', 'Pokok bunga tiap bulan', '13% flat', 0, 'Baru', 'Modal Kerja', 'tambah modal usaha wrung makan', 'Supriyanto', 'Menikah', 'Magetan, 05 November 1980', '3520020510800001', 'dsn. jombok Rt024 Rw007 kel. pragak kec. parang kab. magetan', 'dsn. jombok Rt024 Rw007 kel. pragak kec. parang kab. magetan', '081335936333', 'Milik Sendiri', 'warung makan', '2', 'SMA', 'Laki-laki', 'Seumur Hidup', '', '10', 'Maremiati', 'Magetan, 10 desember 1976', 'dsn. jombok Rt024 Rw007 kel. pragak kec. parang kab. magetan', 'dsn. jombok Rt024 Rw007 kel. pragak kec. parang kab. magetan', 'menjalankan warung makan dengan suami', '081359512636', 'Jami', 'Saudara Tidak Sekandung', 'dsn. jombok Rt024 Rw007 kel. pragak kec. parang kab. magetan', '0 ', 'Chincoaldhy@gmail.com', ''),
+(80, '000010', '2022-08-09', '2022-08-20', '400000000', '60', 'Pokok bunga tiap bulan', '20% anuitas', 0, 'Baru', 'Modal Kerja', 'Modal Usaha Pupuk', 'MARSUDI NUGROHO', 'Menikah', 'Magetan, 28-03-1974', '352008280374004', 'Cepoko Rt 02 Rw 01 Kec Panekan Kab Magetan', 'Cepoko Rt 02 Rw 01 Kec Panekan Kab Magetan', '081333673434', 'Milik Sendiri', 'wiraswasta', '2', 'SMA', 'Laki-laki', 'Seumur Hidup', '-', '15', 'ARTI WINANTU', 'Magetan, 23-02-1975', 'Cepoko Rt 02 Rw 01 Kec Panekan Kab Magetan', 'Cepoko Rt 02 Rw 01 Kec Panekan Kab Magetan', 'Mengurus Rumah Tangga', '081240548464', 'Anggita ', 'Anak Kandung', 'Cepoko Rt 02 Rw 01 Kec Panekan Kab Magetan', '085736640007', 'Yoppi.febri.ramadan@gmail.com', ''),
+(81, '000010', '2022-08-09', '2022-08-05', '200000000', '48', 'Pokok bunga tiap bulan', '18%anuitas', 0, 'Top Up', 'Modal Kerja', ' Tambah modal usaha dagang gas lpg dan air minum', 'Siti Rubiah', 'Menikah', 'Magetan,23-03-1974', '3520126303740002', 'Desa Panggung Rt 14 Rw 04 Kec. Barat Kab. Magetan', 'Desa Panggung Rt 14 Rw 04 Kec. Barat Kab. Magetan', '081536075300', 'Milik Sendiri', 'Wiraswasta', '2', 'SMA', 'Laki-laki', 'Seumur Hidup', '081536075300', '20', 'Mujiono', 'Magetan, 08-11-1970', 'Desa Panggung Rt 14 Rw 04 Kec. Barat Kab. Magetan', 'Desa Panggung Rt 14 Rw 04 Kec. Barat Kab. Magetan', 'TNI', '081536075300', 'Karyati', 'Saudara Kandung', 'Desa Panggung Rt 14 Rw 04 Kec. Barat Kab. Magetan', '-', 'andikadevir95@gmail.com', ''),
+(82, '000010', '2022-08-09', '2022-08-09', '140000000', '60', 'Pokok bunga tiap bulan', '15% FLATE PER TAHUN', 0, 'Baru', 'Modal Kerja', 'Untuk pembelian mobil penumpang elf yang digunakan', 'TRI WAHYUNI NURUL HAMIDAH', 'Belum Menikah', 'MAGETAN , 02 SEPTEMBER 2002', '3520054209020002', 'DESA SELOREJO RT 006 RW 001 KECAMATAN KAWEDANAN KABUPATEN MAGETAN', 'DESA SELOREJO RT 006 RW 001 KECAMATAN KAWEDANAN KABUPATEN MAGETAN', '0821 3989 9572', 'Milik Sendiri', 'Pelajar/Mahasiswa', '0', 'S1', 'Perempuan', 'Seumur Hidup', '-', '22', '-', '-', '-', '-', '-', '-', 'PURWATININGSIH', 'Saudara Kandung', 'DESA SELOREJO RT 006 RW 001 KECAMATAN KAWEDANAN KABUPATEN MAGETAN', '0813 3232 1171', 'handajanisri8@gmail.com', ''),
+(83, '000010', '2022-08-19', '2022-08-16', '150000000', '48', 'Pokok bunga tiap bulan', '15%pertahun', 0, 'Baru', 'Modal Kerja', 'Tambah modal usaha wifi', 'ERICKO VALERIAN GRADIYANTO', 'Belum Menikah', 'Magetan,08-09-1997', '3520030809970004', 'Desa Nguri RT 03 RW 09 KecamatanLembeyan Kabupaten Magetan', 'Desa Nguri RT 03 RW 09 KecamatanLembeyan Kabupaten Magetan', '081359929587', 'Milik Keluarga/Ortu', 'Pelajar/mahasiswa ( Wiraswasta)', '0', 'SMA', 'Laki-laki', 'Seumur Hidup', '0', '20', '-', '-', '-', '-', '-', '0', 'NURYANTO', 'Orang Tua', 'Desa Nguri RT 03 RW 09 KecamatanLembeyan Kabupaten Magetan', '08125947449', 'arie29895@gmail.com', ''),
+(84, '000010', '2022-08-12', '2022-08-09', '350000000', '84', 'Pokok bunga tiap bulan', '18 % Flat Pertahun', 0, 'Baru', 'Modal Kerja', 'Tambah Modal Dagang Warung Makan', 'Sumarmi', 'Menikah', 'Ngawi,01-08-1973', '3521144108770001', 'Kebon 3/3 Kebon Paron Ngawi.', 'Kebon 3/3 Kebon Paron Ngawi', '085749119911', 'Milik Sendiri', 'Perdagangan', '1', 'SD', 'Laki-laki', 'Seumur Hidup', '', '30', 'Dohri', 'Tegal,07-09-1971', 'Kebon 3/3 Kebon Paron Ngawi', 'Kebon 3/3 Kebon Paron Ngawi', 'Perdagangan', '082132267412', 'Suprapto', 'Rekan Kerja', 'jl Karya Ngawi Gang Wibisono', '0816565389', 'yanny.wido@gmail.com', ''),
+(85, '000010', '2022-08-11', '2022-08-10', '200000000', '60', 'Pokok bunga tiap bulan', '18%', 0, 'Baru', 'Modal Kerja', 'Tambah modal usaha Warung Makan', 'Ika Putrianti', 'Janda', 'Magetan,24-06-1985', '3520136406850001', 'Desa Belotan Rt 044 Rw 015 Kec Bendo Kab Magetan ', 'Desa Belotan Rt 044 Rw 015 Kec Bendo Kab Magetan ', '082290008849', 'Milik Sendiri', 'Mengurus Rumah tangga', '3', 'SMA', 'Laki-laki', 'Seumur Hidup', '-', '15', '-', '-', '-', '-', '-', '-', 'wasit ', 'Orang Tua', 'Desa Belotan Rt 044 Rw 015 Kec Bendo Kab Magetan ', '081216629064', 'sarkun123@gmail.com', ''),
+(86, '000010', '2022-08-10', '2022-08-08', '100000000', '48', 'Pokok bunga tiap bulan', '18 % Flat Pertahun', 0, 'Baru', 'Modal Kerja', 'Tambah Modal Usaha Rental Mobil', 'Yuna Eka Nurida', 'Menikah', 'Ngawi,19-06-1997', '3521105906970001', 'Desa Ngrancang 02/05 Dadapan Kendal Ngawi', 'Desa Ngrancang 02/05 Dadapan Kendal Ngawi', '085717870089', 'Milik Keluarga/Ortu', 'Wiraswasta', '2', 'SMA', 'Perempuan', 'Seumur Hidup', '', '25', 'Rachmad Rizkyartri', 'Ngawi,01-05-1998', 'Desa Ngrancang 02/05 Dadapan Kendal Ngawi', 'Desa Ngrancang 02/05 Dadapan Kendal Ngawi', 'WIRASWASTA', '088803131330', 'Rio Hermawan', 'Saudara Tidak Sekandung', 'Dsn Nglencer Ds Setono Ngrambe Ngawi', '085750957101', 'yanny.wido@gmail.com', ''),
+(87, '000010', '2022-12-08', '2022-10-08', '175000000', '48', 'Anuitas', '20%', 0, 'Top Up', 'Modal Kerja', 'Modal Usaha Ayam Petelur', 'Agung Guritno', 'Menikah', 'Magetan , 31-07-1996', '3520083107960003', 'Desa Manjung RT 01 Rw 02 Kec Panekan Kab Magetan', 'Desa Manjung RT 01 Rw 02 Kec Panekan Kab Magetan', '0895703260050', 'Milik Sendiri', 'Peternak', '3', 'SMA', 'Laki-laki', 'Seumur Hidup', '-', '26', 'Novia Audri Cristalia', 'Magetan. 06-11-1996', 'Desa Manjung RT 01 Rw 02 Kec Panekan Kab Magetan', 'Desa Manjung RT 01 Rw 02 Kec Panekan Kab Magetan', 'Mengurus Rumah Tangga', '081559507656', 'Ruki', 'Orang Tua', 'Desa Manjung RT 01 Rw 02 Kec Panekan Kab Magetan', '-', 'Yoppi.febri.ramadan@gmail.com', ''),
+(88, '000010', '2022-08-11', '2022-08-10', '700000000', '72', 'Pokok bunga tiap bulan', '12', 0, 'Baru', 'Investasi', 'Pembelian tanah', 'Joni Suhata', 'Menikah', 'Magetan, 26-11-1985', '3520122611850002', 'Desa Purwodadi Rt 12 Rw 02 Kecamatan Barat Kabupaten Magetan', 'Desa Purwodadi Rt 12 Rw 02 Kecamatan Barat Kabupaten Magetan', '085649185785', 'Milik Sendiri', 'Wiraswasta', '3', 'S1', 'Laki-laki', 'Seumur Hidup', '0', '15', 'Fina Fristiani', 'Ngawi, 03-07-1993', 'Desa Purwodadi Rt 12 Rw 02 Kecamatan Barat Kabupaten Magetan', 'Desa Purwodadi Rt 12 Rw 02 Kecamatan Barat Kabupaten Magetan', 'Wiraswasta', '085649185785', 'Hariyono', 'Saudara Tidak Sekandung', 'Desa Purwodadi Rt 12 Rw 02 Kecamatan Barat Kabupaten Magetan', '081335467378', 'andikadevir95@gmail.com', ''),
+(89, '000010', '2022-08-18', '2022-08-15', '150000000', '48', 'Pokok bunga tiap bulan', '15% Flat Per Tahun', 0, 'Baru', 'Modal Kerja', 'Biaya Pembelian Truk Tronton Tahun 1990', 'WANTONO', 'Menikah', 'Ngawi, 18-08-1980', '3519061808800001', 'Jl. Arwana no 06, RT 13/RW 04, Kel.Nambangan Kidul, Kec. Manguharjo, Madiun', 'Jl. Arwana no 06, RT 13/RW 04, Kel.Nambangan Kidul, Kec. Manguharjo, Madiun', '082334466868', 'Milik Sendiri', 'Karyawan Swasta', '0', 'SMA', 'Laki-laki', 'Seumur Hidup', '-', '10', 'NINIK SULISTYOWATI', 'Madiun, 25-03-1974', 'Jl. Arwana no 06, RT 13/RW 04, Kel.Nambangan Kidul, Kec. Manguharjo, Madiun', 'Jl. Arwana no 06, RT 13/RW 04, Kel.Nambangan Kidul, Kec. Manguharjo, Madiun', 'Mengurus Rumah Tangga', '-', 'SUPRIADI', 'Rekan Kerja', 'Desa Sawojajar RT 07 /RW 02, Desa Sawojajar, Kec. Takeran, Magetan', '088234161225', 'Eka.sandha@gmail.com', ''),
+(90, '000010', '2022-08-18', '2022-08-10', '100000000', '60', 'Pokok bunga tiap bulan', '18 % flate/ tahun', 0, 'Baru', 'Modal Kerja', 'Tambah modal usaha dagang sepatu,tas dan peralatan', 'Kadiran', 'Menikah', 'Magetan, 01-01-1953', '3520120101530003', 'Kelurahan Mangge Rt O7 Rw 03 Kecamatan Barat Kabupaten Magetan', 'Kelurahan Mangge Rt O7 Rw 03 Kecamatan Barat Kabupaten Magetan', '081249823989', 'Milik Sendiri', 'Wiraswasta', '0', 'SMA', 'Laki-laki', 'Seumur Hidup', '-', '50', 'Sulastri', 'Magetan, 16-08-1960', 'Kelurahan Mangge Rt O7 Rw 03 Kecamatan Barat Kabupaten Magetan', 'Kelurahan Mangge Rt O7 Rw 03 Kecamatan Barat Kabupaten Magetan', 'Wiraswasta', '-', 'Sri Rahayu', 'Tetangga', 'Kelurahan Mangge Rt O7 Rw 03 Kecamatan Barat Kabupaten Magetan', '085259936725', 'andikadevir95@gmail.com', ''),
+(91, '000010', '2022-09-23', '2022-09-22', '200000000', '48', 'Pokok bunga tiap bulan', '15', 0, 'Baru', 'Modal Kerja', 'Tambah Modal Usaha Toko Bangunan', 'AGUS RIYANTO', 'Menikah', 'Trenggalek, 06-11-1976', '3503050611760001', 'Dsn Krajan, RT.10 RW.03 Desa Nglinggis Kecamatan Tugu Kabupaten Trenggalek', 'Dsn Krajan, RT.10 RW.03 Desa Nglinggis Kecamatan Tugu Kabupaten Trenggalek', '081335773379', 'Milik Sendiri', 'Wiraswasta', '3', 'SMA', 'Laki-laki', 'Seumur Hidup', '081335773379', '20', 'TRI RAHAYUNINGSIH', 'Trenggalek, 20-01-1979', 'Dsn Krajan, RT.10 RW.03 Desa Nglinggis Kecamatan Tugu Kabupaten Trenggalek', 'Dsn Krajan, RT.10 RW.03 Desa Nglinggis Kecamatan Tugu Kabupaten Trenggalek', 'Pegawai Negeri Sipil (PNS)', '082293832579', 'Aldy', 'Anak Kandung', 'Dsn Krajan, RT.10 RW.03 Desa Nglinggis Kecamatan Tugu Kabupaten Trenggalek', '081949769605', 'dwihardianto93@gmail.com', ''),
+(92, '000010', '2022-08-19', '2022-08-18', '250000000', '60', 'Pokok bunga tiap bulan', '12% flate', 0, 'Top Up', 'Modal Kerja', 'Pembelian kios di pasar Gorang Gareng', 'RIS RIANTO', 'Menikah', 'Magetan, 12-05-1976', '352005 120576 00', 'Desa Bogem Rt 05 Rw 02 Kecamatan Kawedanan Kabupaten Magetan\r\n', 'Desa Bogem Rt 05 Rw 02 Kecamatan Kawedanan Kabupaten Magetan\r\n', '081-235-590-598', 'Milik Sendiri', 'Pegawai Negeri Sipil ( PNS )', '3 orang', 'SMA', 'Laki-laki', 'Seumur Hidup', ' ( 0351 ) 895049', '10 tahun', 'SULISTYOWATI', 'Ngawi, 14 Juli 1985', 'Desa Bogem Rt 05 Rw 02 Kecamatan Kawedanan Kabupaten Magetan\r\n', 'Desa Bogem Rt 05 Rw 02 Kecamatan Kawedanan Kabupaten Magetan\r\n', 'Pedagang', '081-217-021-325', 'SUPRIHATIN', 'Saudara Kandung', 'Desa Begal Rt Rw Kecamatan Kedunggalar Kabupaten Ngawi', '0823-3599-1742', 'handajanisri8@gmail.com', ''),
+(94, '000010', '2022-08-22', '2022-08-19', '90000000', '60', 'Pokok bunga tiap bulan', '18 % Flat Pertahun', 0, 'Baru', 'Modal Kerja', 'Tambah modal usaha Las listrik', 'Tugiono', 'Menikah', 'Madiun, 22-02-1971', '3519012202710001', 'Sriket tambakmas Kebonsari 040/004 Kel. Tambakmas Kec.kebonsari Kab Madiun', 'Sriket tambakmas Kebonsari 040/004 Kel. Tambakmas Kec.kebonsari Kab Madiun', '081339035338', 'Milik Sendiri', 'Bengkel Las listrik', '1', 'SMP', 'Laki-laki', 'Seumur Hidup', '', '20', 'Badriyah', 'Madiun, 22-02-1973', 'Sriket tambakmas Kebonsari 040/004 Kel. Tambakmas Kec.kebonsari Kab Madiun', 'Sriket tambakmas Kebonsari 040/004 Kel. Tambakmas Kec.kebonsari Kab Madiun', 'WIRASWASTA', '0', 'Ni\'matul Zannah', 'Anak Kandung', 'Sriket tambakmas Kebonsari 040/004 Kel. Tambakmas Kec.kebonsari Kab Madiun', '085735988884', 'Chincoaldhy@gmail.com', ''),
+(95, '000010', '2022-08-22', '2022-08-19', '130000000', '60', 'Pokok bunga tiap bulan', '12 % flat pertahun', 0, 'Baru', 'Konsumsi', 'Biaya renovasi rumah', 'Sumartini', 'Menikah', 'Magetan, 16 Mei 1968', '3520085605680001', 'Desa Cepoko Rt 02 Rw 02 Kec Panekan Kab Magetan', 'Desa Cepoko Rt 02 Rw 02 Kec Panekan Kab Magetan', '082140373605', 'Milik Sendiri', 'Guru', '2', 'S1', 'Laki-laki', 'Seumur Hidup', '0', '25', 'Suratman', 'Magetan, 23 Januari 1966', 'Desa Cepoko Rt 02 Rw 02 Kec Panekan Kab Magetan', 'Desa Cepoko Rt 02 Rw 02 Kec Panekan Kab Magetan', 'Guru', '081381271322', 'Lely Liana Liasari', 'Anak Kandung', 'Desa Cepoko Rt 02 Rw 02 Kec Panekan Kab Magetan', '08125104807', 'wmzzanna@gmail.com', ''),
+(97, '000010', '2022-09-07', '2022-09-05', '180000000', '60', 'Pokok tiap 4 bulan bunga tiap bulan', '18', 0, 'Baru', 'Modal Kerja', 'Pembelian lahan pertanian luas 1 Kotak ( 1.400m2 )', 'EDI SUSILO', 'Menikah', 'Magetan, 10 November 1982', '3520151010820002', 'Ds Kartoharjo RT 35 RW09 Kec Kartoharjo Magetan', 'Jl Minggit Kel Tebon Kec Barat Kab Magetan', '0882337660900', 'Kontrak', 'Wiraswasta', '4', 'SMA', 'Laki-laki', 'Seumur Hidup', '0', '2', 'SUMARMI', 'Magetan, 15 Juni 1983', 'Ds Kartoharjo RT 35 RW 09 Kec Kartoharjo Kab Magetab', 'Jl Minggit Kel Tebon Kec Barat Kab Magetan', 'Guru', '082336880675', 'Lilik', 'Orang Tua', 'Ds Kartoharjo RT 35 RW 09 Kec Kartoharjo Kab Magetan', '-', 'gandiprapto750@gmail.com', ''),
+(98, '000010', '2022-08-23', '2022-08-19', '170000000', '60', 'Pokok bunga tiap bulan', '15% flate pertahun', 0, 'Top Up', 'Modal Kerja', 'Tambah modal usaha supliyer tanah urug', 'ETIK MUZAIYANAH', 'Menikah', 'Madiun, 15-07-1978', '3520055507780001', 'Desa Karangrejo RT 13 RW 05 Kec. Kawedanan Kab. Magetan', 'Desa Karangrejo RT 13 RW 05 Kec. Kawedanan Kab. Magetan', '08974326610', 'Milik Sendiri', 'Wiraswasta', '2', 'Diploma', 'Laki-laki', 'Seumur Hidup', '08974326610', '15', 'HERU SUBEKTI', 'Magetan, 03-10-1978', 'Desa Karangrejo RT 13 RW 05 Kec. Kawedanan Kab. Magetan', 'Desa Karangrejo RT 13 RW 05 Kec. Kawedanan Kab. Magetan', 'Karyawan swasta', '081314758701', 'SUHARTANTO', 'Saudara Kandung', 'Desa Karangrejo RT 13 RW 05 Kec. Kawedanan Kab. Magetan', '085730143303', 'arisanaaa82@gmail.com', ''),
+(99, '000010', '2022-08-23', '2022-08-23', '140000000', '60', 'Pokok bunga tiap bulan', '15 flate/tahun', 0, 'Baru', 'Modal Kerja', 'Pembelian lahan pertanian seluas 1.400', '', 'Belum Menikah', '', '', '', '', '', 'Milik Sendiri', '', '', 'SD', 'Laki-laki', 'Seumur Hidup', '', '', '', '', '', '', '', '', '', 'Anak Kandung', '', '', 'handajanisri8@gmail.com', ''),
+(100, '000010', '2022-08-24', '2022-08-24', '175000000', '84', 'Pokok bunga tiap bulan', '6%', 0, 'Top Up', 'Konsumsi', 'Pebelian tanah perumahan', 'AFRI PRISTIONO', 'Menikah', 'SANGGAU 19-04-1972', '3506251904720001', 'Desa Nambaan RT03 RW 03 Kec Ngasem Kab Kediri ', 'Desa Nambaan RT 03 RW 03 Kec Ngasem Kab Kediri', '085606792405', 'Milik Sendiri', 'Karyawan Swasta', '3', 'S1', 'Laki-laki', 'Seumur Hidup', '-', '15', 'MUSTIKAYATI', 'Kediri 10-05-1971', 'Desa Nambaan RT 03 RW 03 Kec Ngasem Kab Kediri', 'Desa Nambaan RT 03 RW 03 Kec Ngasem Kab Kediri', 'Mengurus Rumah Tangga', '-', 'Moh Edwin Alif Utama', 'Anak Kandung', 'Desa Nambaan RT 03 RW 03 Kec Ngasem Kab Kediri', '-', 'gandiprapto750@gmail.com', ''),
+(101, '000010', '2022-08-31', '2022-08-30', '300000000', '60', 'Pokok bunga tiap bulan', '12% flate pertahun', 0, 'Ulangan', 'Modal Kerja', 'Modal usaha dagang mobil bekas', 'Mela Agung Rusfianto', 'Menikah', 'Magetan : 09-05-1982', '3520100905820003', 'Desa Carikan Rt 11 Rw 04 Kecamatan Bendo Kabupaten Magetan', 'Desa Carikan Rt 11 Rw 04 Kecamatan Bendo Kabupaten Magetan', '081217841856', 'Milik Sendiri', 'Wiraswasta', '3', 'SMP', 'Laki-laki', 'Seumur Hidup', '0', '30', 'Fitri Setyaningrum', 'Magetan : 14-02-1990', 'Desa Carikan Rt 11 Rw 04 Kecamatan Bendo Kabupaten Magetan', 'Desa Carikan Rt 11 Rw 04 Kecamatan Bendo Kabupaten Magetan', 'Ibu rumah tangga', '081216227329', 'Sumarsono', 'Saudara Kandung', 'Desa Carikan Rt 11 Rw 04 Kecamatan Bendo Kabupaten Magetan', '0', 'sarkun123@gmail.com', ''),
+(102, '000010', '2022-09-01', '2022-09-01', '100000000', '6', 'Pokok terakhir bunga tiap bulan', '18', 0, 'Baru', 'Modal Kerja', 'pembelian tanah pertanian', 'TITIK SUPARTI', 'Menikah', 'MAGETAN, 24 NOVEMBER 1963', '3520146411630001', 'Ds. Taji RT 6 RW 3 Ds. Taji Kec. Karas Kab. Magetan', 'Ds. Taji RT 6 RW 3 Ds. Taji Kec. Karas Kab. Magetan', '085329204445', 'Milik Sendiri', 'Petani', '0', 'SMA', 'Laki-laki', 'Seumur Hidup', '0', '20', 'Amir', 'Ngawi, 11 Maret 1971', 'Ds. Taji RT 6 RW 3 Ds. Taji Kec. Karas Kab. Magetan', 'Ds. Taji RT 6 RW 3 Ds. Taji Kec. Karas Kab. Magetan', 'petani', '0', 'Ervandra Mustafa Putra', 'Saudara Tidak Sekandung', 'Ds. Taji RT 6 RW 3 Ds. Taji Kec. Karas Kab. Magetan', '082243568976', 'fanymikopermana@gmail.c0m', ''),
+(103, '000010', '2022-08-31', '2022-07-26', '100000000', '60', 'Pokok bunga tiap bulan', '13,2', 0, 'Baru', 'Modal Kerja', 'Modal usaha toko klontong\r\n( gas elpiji, air isi u', 'Suradi', 'Menikah', 'Blora 19-06-1977', '3316031906770001', 'Dusun kalikangkung 02/01, Ds nglebak, Kec kradenan, Kab blora', 'Dusun kalikangkung 02/01, Ds nglebak, Kec kradenan, Kab blora', '085648902834', 'Milik Sendiri', 'Wiraswasta', '2', 'SMA', 'Laki-laki', 'Seumur Hidup', '-', '20', 'Ria Susanti', 'Ngawi 14-04-1982', 'Dusun kalikangkung 02/01, Ds nglebak, Kec kradenan, Kab blora', 'Dusun kalikangkung 02/01, Ds nglebak, Kec kradenan, Kab blora', 'Wiraswasta', '-', 'Ngatinem', 'Saudara Tidak Sekandung', 'Dusun kalikangkung 02/01, Ds nglebak, Kec kradenan, Kab blora', '085748815074', 'wahwahwah82.aw@gmail.com', ''),
+(104, '000010', '2022-09-02', '2022-08-26', '700000000', '36', 'Efektif', '18 efektif 4 bulan ', 0, 'Baru', 'Modal Kerja', 'Modal usaha industri Paving', 'MUKHLIS HASANY', 'Menikah', 'ngawi, 02-05-1970', '3521180205700001', 'Dsn Balong 09/07 Ds Gerih ,kab Ngawi', 'Dsn Balong 09/07 Ds Gerih ,kab Ngawi', '085259358934', 'Milik Sendiri', 'Karyawan swasta', '3', 'SMP', 'Laki-laki', 'Seumur Hidup', '085259358934', '10', 'SUDARWATI', 'Magetan 26-05-1975', 'Dsn Balong 09/07 Ds Gerih ,kab Ngawi', 'Dsn Balong 09/07 Ds Gerih ,kab Ngawi', 'ibu rumah tangga', '-', 'Djuariah', 'Saudara Tidak Sekandung', 'Ds Tambakromo 03/01 Kec Geneng, Kab Ngawi', '081335141133', 'wahwahwah82.aw@gmail.com', '');
+INSERT INTO `latar_belakang` (`id_lb`, `cif_bank`, `tgl_analisa`, `tgl_permohonan`, `plafon`, `jangka_waktu`, `sifat_kredit`, `suku_bunga`, `musiman`, `jenis_permohonan`, `tujuan_permohonan`, `ket_penggunaan`, `nama_debitur`, `status_kawin`, `ttl_nasabah`, `ktp`, `alamat_ktp_nasabah`, `domisili_nasabah`, `hp_nasabah`, `status_tt`, `pekerjaan_nasabah`, `tanggungan`, `pendidikan`, `jenis_kelamin`, `masa_laku`, `telp_kantor`, `lama_tinggal`, `nama_pasangan`, `ttl_pasangan`, `alamat_ktp_pasangan`, `domisili_pasangan`, `pekerjaan_pasangan`, `hp_pasangan`, `nama_keluarga`, `hubungan_keluarga`, `alamat_keluarga`, `hp_keluarga`, `user`, `analis`) VALUES
+(105, '000010', '2022-09-06', '2022-09-06', '150000000', '60', 'Pokok bunga tiap bulan', '12% flate', 0, 'Top Up', 'Konsumsi', 'Untuk pembelian tanah pertanian seluas 1400 m2', 'SLAMET', 'Menikah', 'Magetan, 12-12-1963', '3520051212630002', 'Desa Selorejo Rt 06 Rw 01 Kecamatan Kawedanan Kabupaten Magetan', 'Desa Selorejo Rt 06 Rw 01 Kecamatan Kawedanan Kabupaten Magetan', '0812 1616 1663', 'Milik Sendiri', 'Pedagang', '2', 'SD', 'Laki-laki', 'Seumur Hidup', '-', '59', 'Hartini', 'Magetan, 12-07-1966', 'Desa Selorejo Rt 06 Rw 01 Kecamatan Kawedanan Kabupaten Magetan', 'Desa Selorejo Rt 06 Rw 01 Kecamatan Kawedanan Kabupaten Magetan', 'Pekerjaan lainnya', '0858 5644 2258', 'IBNU AZIZ ASGHORI', 'Anak Kandung', 'Kalimantaan', '0822 6410  4252', 'handajanisri8@gmail.com', ''),
+(106, '000010', '2022-09-08', '2022-09-05', '300000000', '96', 'Pokok bunga tiap bulan', '15% Flat Per Tahun', 0, 'Baru', 'Modal Kerja', 'Tambah Modal Toko Pupuk Non Subsidi', 'SUCAHYO', 'Menikah', 'Kediri, 18 Desember 1969', '3520041812690004', 'Desa madigondo RT 13/RW 05, Kecamatan Takeran, Kabupaten Magetan', 'Desa madigondo RT 13/RW 05, Kecamatan Takeran, Kabupaten Magetan', '085607105724', 'Milik Sendiri', 'Pegawai Negeri Sipil', '5', 'SMA', 'Laki-laki', 'Seumur Hidup', '-', '25', 'MISYUNI NUR SAIDAH', 'Magetan, 19 Januari 1980', 'Desa madigondo RT 13/RW 05, Kecamatan Takeran, Kabupaten Magetan', 'Desa madigondo RT 13/RW 05, Kecamatan Takeran, Kabupaten Magetan', 'Mengurus Rumah Tangga', '085856519859', 'SLAMET RIYADI', 'Saudara Kandung', 'Kecamatan Mejayan, Kabupaten Magetan', '081252241757', 'Eka.sandha@gmail.com', ''),
+(107, '000010', '2022-09-16', '2022-09-14', '350000000', '42', 'Pokok tiap 6 bulan bunga tiap bulan', '12', 0, 'Ulangan', 'Investasi', 'Pembelian Tanah Pekarangan  L.1000 m2', 'TABITA NUNUNG HERMAWATI', 'Menikah', 'Magetan,27-08-1970', '3520136708700002', 'Desa Kauman RT 001 RW 002 Kec Karangrejo Kab Magetan', 'Desa Kauman RT 001 RW 002 Kec Karangrejo Kab Magetan', '081231917702', 'Milik Sendiri', 'Pedagang', '2', 'SMA', 'Laki-laki', 'Seumur Hidup', '-', '20', 'PHILIPUS HERI SUTARNO', 'Magetan,30-05-1965', 'Desa Kauman RT 001 RW 002 Kec Karangrejo Kab Magetan', 'Desa Kauman RT 001 RW 002 Kec Karangrejo Kab Magetan', 'Perdagangan', '081231917702', 'DANI IRWANTO', 'Saudara Kandung', 'Desa Kauman RT 001 RW 002 Kec Karangrejo Kab Magetan', '085235028242', 'kunekwan2106@gmail.com', ''),
+(108, '000010', '2022-12-09', '2022-12-09', '150000000', '36', 'Pokok tiap 6 bulan bunga tiap bulan', '18 % flate per tahun', 0, 'Ulangan', 'Modal Kerja', 'Modal usaha ayam pedaging', 'Sri Utami', 'Menikah', 'Magetan, 19 Nopember-1968', '3520105911680001', 'Desa Duwet Rt 21 Rw 03 Kecamatan Bendo Kabupaten Magetan', 'Desa Duwet Rt 21 Rw 03 Kecamatan Bendo Kabupaten Magetan', '081273336774', 'Milik Sendiri', 'Mengurus rumah tangga', '3', 'SMP', 'Perempuan', 'Seumur Hidup', '0', '25', 'Sugito', 'Magetan,15 Juli 1061', '3520101507610001', 'Desa Duwet Rt 21 Rw 03 Kecamatan Bendo Kabupaten Magetan', 'Suami', '0', 'Sambu Dwi Satriyo', 'Anak Kandung', 'Desa Duwet Rt 21 Rw 03 Kecamatan Bendo Kabupaten Magetan', '0', 'sarkun123@gmail.com', ''),
+(109, '000010', '0000-00-00', '0000-00-00', '300000000', '60', 'Pokok bunga tiap bulan', '15% ', 0, 'Baru', 'Modal Kerja', 'Tambah modal usaha bengkel las', 'SUYANI', 'Menikah', 'NGANJUK, 28 OKTOBER 1970', '3520163112700003', 'DS. SUMBERDUKUN  RT.01/01 KEC. NGARIBOYO KAB. MAGETAN', 'DS. SUMBERDUKUN  RT.01/01 KEC. NGARIBOYO KAB. MAGETAN', '081239762255', 'Milik Sendiri', 'WIRASWASTA', '2', 'SMA', 'Laki-laki', 'Seumur Hidup', '081239762255', '20', 'TUMINI', 'JEMBER, 27 OKTOBER 1969', 'DS. SUMBERDUKUN  RT.01/01 KEC. NGARIBOYO KAB. MAGETAN', 'DS. SUMBERDUKUN  RT.01/01 KEC. NGARIBOYO KAB. MAGETAN', 'PNS', '085730211039', 'OCHY', 'Anak Kandung', 'DS. BANDAR KEC. SUKOMORO KAB. MAGETAN', '082233370009', 'avidianski@gmail.com', ''),
+(110, '000010', '2022-09-21', '2022-09-19', '200000000', '60', 'Pokok bunga tiap bulan', '12%flat per tahun', 0, 'Ulangan', 'Modal Kerja', 'Tambah modal dagang gabah dan jagung', 'SUKATI', 'Menikah', 'Magetan,31-12-1972', '3520037112720012', 'Desa Kedungpanji RT 11 RW 06 Kec.Lembeyan Kab.Magetan', 'Desa Kedungpanji RT 11 RW 06 Kec.Lembeyan Kab.Magetan', '081334631713', 'Milik Sendiri', 'Wiraswasta', '1', 'SMA', 'Laki-laki', 'Seumur Hidup', '0', '20', 'SETU', 'Magetan,10-01-1965', 'Desa Kedungpanji RT 11 RW 06 Kec.Lembeyan Kab.Magetan', 'Desa Kedungpanji RT 11 RW 06 Kec.Lembeyan Kab.Magetan', 'Wiraswasta', '081216053943', 'Teguh', 'Tetangga', 'Desa Kedungpanji RT 11 RW 06 Kec.Lembeyan Kab.Magetan', '085607610556', 'arie29895@gmail.com', ''),
+(111, '000010', '2022-09-22', '2022-09-19', '350000000', '36', 'Pokok bunga tiap bulan', '15flat/th', 0, 'Baru', 'Investasi', 'Pembelian tanah dan pembuatan garasi', 'GALUH PRINGGODIKDO', 'Menikah', 'magetan 27-06-1993', '5320062706930003', 'Jl. kalimantan 53D Rt01 Rw 02 Kel. Kepolorejo kec. Magetan Kab. Magetan', 'Jl. kalimantan 53D Rt01 Rw 02 Kel. Kepolorejo kec. Magetan Kab. Magetan', '089504188814', 'Milik Sendiri', 'Karyawan swasta', '2', 'Diploma', 'Laki-laki', 'Seumur Hidup', '081323325554', '25', '-', '-', '-', '-', '-', '-', 'HERI BUDIONO', 'Orang Tua', 'Jl. kalimantan 53D Rt01 Rw 02 Kel. Kepolorejo kec. Magetan Kab. Magetan', '08904188841', 'Masdidik86@gmail.com', ''),
+(112, '000010', '2022-09-23', '2022-09-20', '220000000', '60', 'Pokok bunga tiap bulan', '15%', 0, 'Ulangan', 'Modal Kerja', 'Modal Usaha Dagang Sayur', 'NANIK', 'Menikah', 'Magetan , 03-07-1991', '3520184307910001', 'Desa Getasanyar RT 25 RW 04 Kec Sidorejo Kab Magetan', 'Desa Getasanyar RT 25 RW 04 Kec Sidorejo Kab Magetan', '085815820230', 'Milik Sendiri', 'Petani/Pekebun', '3', 'SMA', 'Laki-laki', 'Seumur Hidup', '-', '31', 'Puguh', 'Magetan, 14-06-1988', 'Desa Getasanyar RT 25 RW 04 Kec Sidorejo Kab Magetan', 'Desa Getasanyar RT 25 RW 04 Kec Sidorejo Kab Magetan', 'Petani/Pekebun', '081559507583', 'Tri Utami', 'Saudara Kandung', 'Desa Getasanyar RT 25 RW 04 Kec Sidorejo Kab Magetan', '081234476073', 'Yoppi.febri.ramadan@gmail.com', ''),
+(113, '000010', '2022-09-23', '2022-09-21', '300000000', '36', 'Pokok bunga tiap bulan', '13.8', 0, 'Top Up', 'Modal Kerja', 'Tambah modal pembelian tanah sawah', 'WIWIK HARIYANTI', 'Belum Menikah', 'NGAWI 26-01-1964', '3521116601640001', 'DESA JENGGRIK 04/01 KECAMATAN KEDUNGGALAR, KABUPATEN NGAWI', 'DESA JENGGRIK 04/01 KECAMATAN KEDUNGGALAR, KABUPATEN NGAWI', '081359255228', 'Milik Sendiri', 'ANGGOTA DPRD KAB', '2', 'S1', 'Perempuan', 'Seumur Hidup', '-', '26', 'H SUPARNI', 'MAGETAN 06-06-1960', 'DESA JENGGRIK 04/01 KECAMATAN KEDUNGGALAR, KABUPATEN NGAWI', 'DESA JENGGRIK 04/01 KECAMATAN KEDUNGGALAR, KABUPATEN NGAWI', 'KEPALA DESA', '081259663731', 'SUNOTO', 'Tetangga', 'DESA GEMARANG 02/03 KEC KEDUNGGALAR, KAB NGAWI', '081259468044', 'wahwahwah82.aw@gmail.com', ''),
+(114, '000010', '2022-10-04', '2022-09-28', '100000000', '24', 'Pokok bunga tiap bulan', '18 % Flat Pertahun', 1, 'Top Up', 'Modal Kerja', 'Debitur mengajukan pinjaman sebesar Rp. 100.000.00', 'Suherman', 'Menikah', 'Magetan, 08-08-1979', '3520020808790003', 'Dsn. Sundul 2 RT008/RW003 Kel.Sundul Kec. Parang Kab. Magetan', 'Dsn. Sundul 2 RT008/RW003 Kel.Sundul Kec. Parang Kab. Magetan', '085655606638', 'Milik Sendiri', 'MEUBEL UD. JATIMULYO', '2', 'SMP', 'Laki-laki', 'Seumur Hidup', '0', '15', 'Siti Komariyah', 'Magetan, 01-03-1978', 'Dsn. Sundul 2 RT008/RW003 Kel.Sundul Kec. Parang Kab. Magetan', 'Dsn. Sundul 2 RT008/RW003 Kel.Sundul Kec. Parang Kab. Magetan', 'ibu rumah tangga', '0', 'Dimas Setiyobudi', 'Saudara Kandung', 'Ds. Krajan 000/000 Kel.Krajan Kec.Parang Kab Magetan', '085606988414', 'Chincoaldhy@gmail.com', '');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `notaris`
+-- Struktur dari tabel `notaris`
 --
 
 CREATE TABLE `notaris` (
@@ -4090,7 +4064,7 @@ CREATE TABLE `notaris` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `notaris`
+-- Dumping data untuk tabel `notaris`
 --
 
 INSERT INTO `notaris` (`notaris`, `provisi`, `administrasi`, `asuransi`, `materai`, `apht`, `skmht`, `titipan`, `fiduciare`, `legalisasi`, `lain`, `roya`, `proses`, `sertifikat`, `akta`, `pendaftaran`, `plotting`) VALUES
@@ -4102,7 +4076,75 @@ INSERT INTO `notaris` (`notaris`, `provisi`, `administrasi`, `asuransi`, `matera
 -- --------------------------------------------------------
 
 --
--- Table structure for table `perkiraan`
+-- Struktur dari tabel `pengajuan`
+--
+
+CREATE TABLE `pengajuan` (
+  `id_pengajuan` int(11) NOT NULL,
+  `nama_analis` varchar(50) NOT NULL,
+  `nama_ao` varchar(50) NOT NULL,
+  `name_debitur` varchar(50) DEFAULT NULL,
+  `plafond` varchar(50) DEFAULT NULL,
+  `id_lb` int(11) NOT NULL,
+  `catatan` text DEFAULT '-',
+  `status` varchar(50) DEFAULT NULL,
+  `url_zoom` varchar(124) NOT NULL,
+  `itk_nilai` tinyint(4) NOT NULL,
+  `mu_nilai` tinyint(4) NOT NULL,
+  `kd_nilai` tinyint(4) NOT NULL,
+  `kk_nilai` tinyint(4) NOT NULL,
+  `as_nilai` tinyint(4) NOT NULL,
+  `ak_nilai` tinyint(4) NOT NULL,
+  `t_nilai` tinyint(4) NOT NULL,
+  `hpt_nilai` tinyint(4) NOT NULL,
+  `tk_nilai` tinyint(4) NOT NULL,
+  `jumlah` tinyint(4) NOT NULL,
+  `pengUsa_nilai` tinyint(4) NOT NULL,
+  `admUsa_nilai` tinyint(4) NOT NULL,
+  `legal_nilai` tinyint(4) NOT NULL,
+  `tujUsa_nilai` tinyint(4) NOT NULL,
+  `tingPer_nilai` tinyint(4) NOT NULL,
+  `harPro_nilai` tinyint(4) NOT NULL,
+  `sisPem_nilai` tinyint(4) NOT NULL,
+  `sisDis_nilai` tinyint(4) NOT NULL,
+  `kemBb_nilai` tinyint(4) NOT NULL,
+  `carP_nilai` tinyint(4) NOT NULL,
+  `prosP_nilai` tinyint(4) NOT NULL,
+  `mesP_nilai` tinyint(4) NOT NULL,
+  `tenK_nilai` tinyint(4) NOT NULL,
+  `damSm_nilai` tinyint(4) NOT NULL,
+  `damEk_nilai` tinyint(4) NOT NULL,
+  `dampEma_nilai` tinyint(4) NOT NULL,
+  `damLi_nilai` tinyint(4) NOT NULL,
+  `kemBa_nilai` tinyint(4) NOT NULL,
+  `pemLa_nilai` tinyint(4) NOT NULL,
+  `jumlah_capa` tinyint(4) NOT NULL,
+  `sumDs_nilai` tinyint(4) NOT NULL,
+  `sumDk_nilai` tinyint(4) NOT NULL,
+  `sumDl_nilai` tinyint(4) NOT NULL,
+  `jumlah_capi` tinyint(4) NOT NULL,
+  `UsYd_nilai` tinyint(4) NOT NULL,
+  `serT_nilai` tinyint(4) NOT NULL,
+  `bpkb_nilai` tinyint(4) NOT NULL,
+  `market_nilai` tinyint(4) NOT NULL,
+  `jumlah_coll` tinyint(4) NOT NULL,
+  `kebP_nilai` tinyint(4) NOT NULL,
+  `ekoG_nilai` tinyint(4) NOT NULL,
+  `jumlah_cond` tinyint(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `pengajuan`
+--
+
+INSERT INTO `pengajuan` (`id_pengajuan`, `nama_analis`, `nama_ao`, `name_debitur`, `plafond`, `id_lb`, `catatan`, `status`, `url_zoom`, `itk_nilai`, `mu_nilai`, `kd_nilai`, `kk_nilai`, `as_nilai`, `ak_nilai`, `t_nilai`, `hpt_nilai`, `tk_nilai`, `jumlah`, `pengUsa_nilai`, `admUsa_nilai`, `legal_nilai`, `tujUsa_nilai`, `tingPer_nilai`, `harPro_nilai`, `sisPem_nilai`, `sisDis_nilai`, `kemBb_nilai`, `carP_nilai`, `prosP_nilai`, `mesP_nilai`, `tenK_nilai`, `damSm_nilai`, `damEk_nilai`, `dampEma_nilai`, `damLi_nilai`, `kemBa_nilai`, `pemLa_nilai`, `jumlah_capa`, `sumDs_nilai`, `sumDk_nilai`, `sumDl_nilai`, `jumlah_capi`, `UsYd_nilai`, `serT_nilai`, `bpkb_nilai`, `market_nilai`, `jumlah_coll`, `kebP_nilai`, `ekoG_nilai`, `jumlah_cond`) VALUES
+(14, 'Vera Fernanda', 'Fatia Larasati', 'RANDY WIJAYA KUSUMA', '450000000', 11, '-', 'Layak', '', 2, 2, 2, 2, 2, 2, 2, 2, 2, 18, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 38, 2, 2, 2, 6, 2, 2, 2, 2, 8, 2, 2, 4),
+(15, 'Vera Fernanda', 'Aris', 'SUKERI', '550000000', 67, '', 'Layak', '', 5, 5, 5, 5, 5, 5, 5, 5, 5, 45, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 95, 5, 5, 5, 15, 5, 5, 5, 5, 20, 5, 5, 10);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `perkiraan`
 --
 
 CREATE TABLE `perkiraan` (
@@ -4111,7 +4153,7 @@ CREATE TABLE `perkiraan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `perkiraan`
+-- Dumping data untuk tabel `perkiraan`
 --
 
 INSERT INTO `perkiraan` (`kode_perkiraan`, `nama_perkiraan`) VALUES
@@ -4184,7 +4226,7 @@ INSERT INTO `perkiraan` (`kode_perkiraan`, `nama_perkiraan`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `realisasi`
+-- Struktur dari tabel `realisasi`
 --
 
 CREATE TABLE `realisasi` (
@@ -4195,7 +4237,7 @@ CREATE TABLE `realisasi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `realisasi`
+-- Dumping data untuk tabel `realisasi`
 --
 
 INSERT INTO `realisasi` (`id_real`, `id_lb`, `oleh`, `sebagai`) VALUES
@@ -4328,7 +4370,7 @@ INSERT INTO `realisasi` (`id_real`, `id_lb`, `oleh`, `sebagai`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `riwayat_pinjaman`
+-- Struktur dari tabel `riwayat_pinjaman`
 --
 
 CREATE TABLE `riwayat_pinjaman` (
@@ -4342,7 +4384,7 @@ CREATE TABLE `riwayat_pinjaman` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `riwayat_pinjaman`
+-- Dumping data untuk tabel `riwayat_pinjaman`
 --
 
 INSERT INTO `riwayat_pinjaman` (`id_rp`, `id_lb`, `plafond`, `status`, `saldo`, `sejarah`, `data`) VALUES
@@ -4471,7 +4513,7 @@ INSERT INTO `riwayat_pinjaman` (`id_rp`, `id_lb`, `plafond`, `status`, `saldo`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Struktur dari tabel `user`
 --
 
 CREATE TABLE `user` (
@@ -4486,13 +4528,13 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `user`
+-- Dumping data untuk tabel `user`
 --
 
 INSERT INTO `user` (`id`, `name`, `email`, `image`, `password`, `role_id`, `is_active`, `date_created`) VALUES
 (5, 'Fatia Larasati', 'fatia@gmail.com', 'art-2436545__340.jpg', '$2y$10$iHy9BJuSIDxiVVs53HWea.CdVTWGxQVvjIn403kpBdfISGRWn.PUS', 2, 1, 1644812162),
 (6, 'hasantiro', 'admin@gmail.com', 'download.png', '$2y$10$6NxAuuzqcTQZwQVMhilsnOV0Mpm43owg7aPh4l.rs/i6OD7Kaf1Mu', 1, 1, 1644812241),
-(7, 'Vera Fernanda', 'vera@gmail.com', 'WhatsApp_Image_2022-03-03_at_20_50_06-removebg-preview.png', '$2y$10$l54DzLz7/2Cj.VkJYooo3eqwIQeJrcSa2a4cC6YlgPM2LR6tUCQHm', 3, 1, 1646887061),
+(7, 'Vera Fernanda', 'vera@gmail.com', 'WhatsApp_Image_2022-03-03_at_20_50_06-removebg-preview.png', '$2y$10$bXYTFnU2i0r26LY9/zD4ReNI2a8dVV./nHC0g6Y0nwf95i7vp96Iy', 3, 1, 1646887061),
 (8, 'Reno Febrian', 'reno@gmail.com', 'default.jpg', '$2y$10$708AN740PJjWkPPMCKybm.7tsdt3vTi5WSkC9jRsPRwmjuepb2VMW', 4, 1, 1647315996),
 (9, 'Test', 'test@gmail.com', 'default.jpg', '$2y$10$OfDZBPorrEJ12sYTrMxGMu3T9hfG.KbDrahwm8fdDTIR7lwIK0LMC', 5, 1, 1648089117),
 (10, 'User1', 'user1@gmail.com', 'default.jpg', '$2y$10$9gs/E/aBKGtWHC2u3NEva.jtx8PyDifgMqOKl6UhV3NXREZjmBBmu', 2, 1, 1654236926),
@@ -4552,7 +4594,7 @@ INSERT INTO `user` (`id`, `name`, `email`, `image`, `password`, `role_id`, `is_a
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user_access_menu`
+-- Struktur dari tabel `user_access_menu`
 --
 
 CREATE TABLE `user_access_menu` (
@@ -4562,7 +4604,7 @@ CREATE TABLE `user_access_menu` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `user_access_menu`
+-- Dumping data untuk tabel `user_access_menu`
 --
 
 INSERT INTO `user_access_menu` (`id`, `role_id`, `menu_id`) VALUES
@@ -4585,7 +4627,7 @@ INSERT INTO `user_access_menu` (`id`, `role_id`, `menu_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user_menu`
+-- Struktur dari tabel `user_menu`
 --
 
 CREATE TABLE `user_menu` (
@@ -4594,7 +4636,7 @@ CREATE TABLE `user_menu` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `user_menu`
+-- Dumping data untuk tabel `user_menu`
 --
 
 INSERT INTO `user_menu` (`id`, `menu`) VALUES
@@ -4611,7 +4653,7 @@ INSERT INTO `user_menu` (`id`, `menu`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user_role`
+-- Struktur dari tabel `user_role`
 --
 
 CREATE TABLE `user_role` (
@@ -4620,7 +4662,7 @@ CREATE TABLE `user_role` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `user_role`
+-- Dumping data untuk tabel `user_role`
 --
 
 INSERT INTO `user_role` (`id`, `role`) VALUES
@@ -4634,7 +4676,7 @@ INSERT INTO `user_role` (`id`, `role`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user_sub_menu`
+-- Struktur dari tabel `user_sub_menu`
 --
 
 CREATE TABLE `user_sub_menu` (
@@ -4647,7 +4689,7 @@ CREATE TABLE `user_sub_menu` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `user_sub_menu`
+-- Dumping data untuk tabel `user_sub_menu`
 --
 
 INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_active`) VALUES
@@ -4672,12 +4714,12 @@ INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_active
 (23, 1, 'User', 'admin/user', 'fas fa-fw fa-file-word', 1),
 (24, 8, 'Testing', 'dummy', 'fas fa-fw fa-vial', 1),
 (25, 4, 'Edit', 'test/edit?id_lb=', 'fas fa-fw fa-paperclip', 0),
-(26, 9, 'Daftar Agunan', 'mineka/agunan', 'fas fa-fw fa-file-word', 1);
+(26, 9, 'Daftar Agunan', 'agunan', 'fas fa-fw fa-file-word', 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `usulan`
+-- Struktur dari tabel `usulan`
 --
 
 CREATE TABLE `usulan` (
@@ -4724,7 +4766,7 @@ CREATE TABLE `usulan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `usulan`
+-- Dumping data untuk tabel `usulan`
 --
 
 INSERT INTO `usulan` (`id_usulan`, `id_lb`, `character`, `capacity`, `capital`, `kel_hutang`, `kel_angsuran`, `coe`, `collateral`, `plafond`, `sifat`, `jenis`, `tujuan`, `sektor`, `waktu`, `bunga`, `angsuran`, `denda`, `realisasi`, `tanggungan`, `likuidasi`, `lainnya`, `jaminan`, `notaris`, `provisi`, `administrasi`, `asuransi`, `materai`, `apht`, `skmht`, `titipan`, `fiduciare`, `legalisasi`, `lain`, `roya`, `proses`, `sertifikat`, `akta`, `pendaftaran`, `plotting`) VALUES
@@ -4798,365 +4840,366 @@ INSERT INTO `usulan` (`id_usulan`, `id_lb`, `character`, `capacity`, `capital`, 
 --
 
 --
--- Indexes for table `analis`
+-- Indeks untuk tabel `analis`
 --
 ALTER TABLE `analis`
   ADD PRIMARY KEY (`nama`);
 
 --
--- Indexes for table `analisis`
---
-ALTER TABLE `analisis`
-  ADD PRIMARY KEY (`id_analisis`);
-
---
--- Indexes for table `capacity`
+-- Indeks untuk tabel `capacity`
 --
 ALTER TABLE `capacity`
   ADD PRIMARY KEY (`id_cap`),
   ADD KEY `id_lb` (`id_lb`);
 
 --
--- Indexes for table `capital_a`
+-- Indeks untuk tabel `capital_a`
 --
 ALTER TABLE `capital_a`
   ADD PRIMARY KEY (`id_capi`),
   ADD KEY `id_lb` (`id_lb`);
 
 --
--- Indexes for table `capital_b`
+-- Indeks untuk tabel `capital_b`
 --
 ALTER TABLE `capital_b`
   ADD PRIMARY KEY (`id_capi`),
   ADD KEY `id_lb` (`id_lb`);
 
 --
--- Indexes for table `capital_cache`
+-- Indeks untuk tabel `capital_cache`
 --
 ALTER TABLE `capital_cache`
   ADD PRIMARY KEY (`id_capi`),
   ADD KEY `id_lb` (`id_lb`);
 
 --
--- Indexes for table `cashflow_a`
+-- Indeks untuk tabel `cashflow_a`
 --
 ALTER TABLE `cashflow_a`
   ADD PRIMARY KEY (`id_cf`),
   ADD KEY `id_lb` (`id_lb`);
 
 --
--- Indexes for table `cashflow_b`
+-- Indeks untuk tabel `cashflow_b`
 --
 ALTER TABLE `cashflow_b`
   ADD PRIMARY KEY (`id_cf`),
   ADD KEY `id_lb` (`id_lb`);
 
 --
--- Indexes for table `cashflow_lain`
+-- Indeks untuk tabel `cashflow_lain`
 --
 ALTER TABLE `cashflow_lain`
   ADD PRIMARY KEY (`id_cf`),
   ADD KEY `id_lb` (`id_lb`);
 
 --
--- Indexes for table `collateral`
+-- Indeks untuk tabel `collateral`
 --
 ALTER TABLE `collateral`
   ADD PRIMARY KEY (`id_col`),
   ADD KEY `id_lb` (`id_lb`);
 
 --
--- Indexes for table `collateral_tanah`
+-- Indeks untuk tabel `collateral_tanah`
 --
 ALTER TABLE `collateral_tanah`
   ADD PRIMARY KEY (`id_col2`),
   ADD KEY `id_lb` (`id_lb`);
 
 --
--- Indexes for table `condition`
+-- Indeks untuk tabel `condition`
 --
 ALTER TABLE `condition`
   ADD PRIMARY KEY (`id_con`),
   ADD KEY `id_lb` (`id_lb`);
 
 --
--- Indexes for table `dummy`
+-- Indeks untuk tabel `dummy`
 --
 ALTER TABLE `dummy`
   ADD PRIMARY KEY (`id_cf`);
 
 --
--- Indexes for table `karakter`
+-- Indeks untuk tabel `karakter`
 --
 ALTER TABLE `karakter`
   ADD PRIMARY KEY (`id_char`),
   ADD KEY `id_lb` (`id_lb`) USING BTREE;
 
 --
--- Indexes for table `latar_belakang`
+-- Indeks untuk tabel `latar_belakang`
 --
 ALTER TABLE `latar_belakang`
   ADD PRIMARY KEY (`id_lb`);
 
 --
--- Indexes for table `notaris`
+-- Indeks untuk tabel `notaris`
 --
 ALTER TABLE `notaris`
   ADD PRIMARY KEY (`notaris`);
 
 --
--- Indexes for table `perkiraan`
+-- Indeks untuk tabel `pengajuan`
+--
+ALTER TABLE `pengajuan`
+  ADD PRIMARY KEY (`id_pengajuan`) USING BTREE,
+  ADD UNIQUE KEY `id_lb` (`id_lb`);
+
+--
+-- Indeks untuk tabel `perkiraan`
 --
 ALTER TABLE `perkiraan`
   ADD PRIMARY KEY (`kode_perkiraan`);
 
 --
--- Indexes for table `realisasi`
+-- Indeks untuk tabel `realisasi`
 --
 ALTER TABLE `realisasi`
   ADD PRIMARY KEY (`id_real`),
   ADD KEY `id_lb` (`id_lb`);
 
 --
--- Indexes for table `riwayat_pinjaman`
+-- Indeks untuk tabel `riwayat_pinjaman`
 --
 ALTER TABLE `riwayat_pinjaman`
   ADD PRIMARY KEY (`id_rp`),
   ADD KEY `id_lb` (`id_lb`);
 
 --
--- Indexes for table `user`
+-- Indeks untuk tabel `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `user_access_menu`
+-- Indeks untuk tabel `user_access_menu`
 --
 ALTER TABLE `user_access_menu`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `user_menu`
+-- Indeks untuk tabel `user_menu`
 --
 ALTER TABLE `user_menu`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `user_role`
+-- Indeks untuk tabel `user_role`
 --
 ALTER TABLE `user_role`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `user_sub_menu`
+-- Indeks untuk tabel `user_sub_menu`
 --
 ALTER TABLE `user_sub_menu`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `usulan`
+-- Indeks untuk tabel `usulan`
 --
 ALTER TABLE `usulan`
   ADD PRIMARY KEY (`id_usulan`),
   ADD KEY `id_lb` (`id_lb`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `analisis`
---
-ALTER TABLE `analisis`
-  MODIFY `id_analisis` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `capacity`
+-- AUTO_INCREMENT untuk tabel `capacity`
 --
 ALTER TABLE `capacity`
   MODIFY `id_cap` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
 
 --
--- AUTO_INCREMENT for table `capital_a`
+-- AUTO_INCREMENT untuk tabel `capital_a`
 --
 ALTER TABLE `capital_a`
   MODIFY `id_capi` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
 
 --
--- AUTO_INCREMENT for table `capital_b`
+-- AUTO_INCREMENT untuk tabel `capital_b`
 --
 ALTER TABLE `capital_b`
   MODIFY `id_capi` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
 
 --
--- AUTO_INCREMENT for table `capital_cache`
+-- AUTO_INCREMENT untuk tabel `capital_cache`
 --
 ALTER TABLE `capital_cache`
   MODIFY `id_capi` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
 
 --
--- AUTO_INCREMENT for table `cashflow_a`
+-- AUTO_INCREMENT untuk tabel `cashflow_a`
 --
 ALTER TABLE `cashflow_a`
-  MODIFY `id_cf` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2597;
+  MODIFY `id_cf` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2601;
 
 --
--- AUTO_INCREMENT for table `cashflow_b`
+-- AUTO_INCREMENT untuk tabel `cashflow_b`
 --
 ALTER TABLE `cashflow_b`
   MODIFY `id_cf` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2159;
 
 --
--- AUTO_INCREMENT for table `cashflow_lain`
+-- AUTO_INCREMENT untuk tabel `cashflow_lain`
 --
 ALTER TABLE `cashflow_lain`
   MODIFY `id_cf` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `collateral`
+-- AUTO_INCREMENT untuk tabel `collateral`
 --
 ALTER TABLE `collateral`
   MODIFY `id_col` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
--- AUTO_INCREMENT for table `collateral_tanah`
+-- AUTO_INCREMENT untuk tabel `collateral_tanah`
 --
 ALTER TABLE `collateral_tanah`
   MODIFY `id_col2` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
 
 --
--- AUTO_INCREMENT for table `condition`
+-- AUTO_INCREMENT untuk tabel `condition`
 --
 ALTER TABLE `condition`
   MODIFY `id_con` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
 
 --
--- AUTO_INCREMENT for table `dummy`
+-- AUTO_INCREMENT untuk tabel `dummy`
 --
 ALTER TABLE `dummy`
   MODIFY `id_cf` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `karakter`
+-- AUTO_INCREMENT untuk tabel `karakter`
 --
 ALTER TABLE `karakter`
   MODIFY `id_char` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
 
 --
--- AUTO_INCREMENT for table `latar_belakang`
+-- AUTO_INCREMENT untuk tabel `latar_belakang`
 --
 ALTER TABLE `latar_belakang`
   MODIFY `id_lb` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=115;
 
 --
--- AUTO_INCREMENT for table `realisasi`
+-- AUTO_INCREMENT untuk tabel `pengajuan`
+--
+ALTER TABLE `pengajuan`
+  MODIFY `id_pengajuan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT untuk tabel `realisasi`
 --
 ALTER TABLE `realisasi`
   MODIFY `id_real` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=139;
 
 --
--- AUTO_INCREMENT for table `riwayat_pinjaman`
+-- AUTO_INCREMENT untuk tabel `riwayat_pinjaman`
 --
 ALTER TABLE `riwayat_pinjaman`
   MODIFY `id_rp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=179;
 
 --
--- AUTO_INCREMENT for table `user`
+-- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
--- AUTO_INCREMENT for table `user_access_menu`
+-- AUTO_INCREMENT untuk tabel `user_access_menu`
 --
 ALTER TABLE `user_access_menu`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
--- AUTO_INCREMENT for table `user_menu`
+-- AUTO_INCREMENT untuk tabel `user_menu`
 --
 ALTER TABLE `user_menu`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT for table `user_role`
+-- AUTO_INCREMENT untuk tabel `user_role`
 --
 ALTER TABLE `user_role`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `user_sub_menu`
+-- AUTO_INCREMENT untuk tabel `user_sub_menu`
 --
 ALTER TABLE `user_sub_menu`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
--- AUTO_INCREMENT for table `usulan`
+-- AUTO_INCREMENT untuk tabel `usulan`
 --
 ALTER TABLE `usulan`
   MODIFY `id_usulan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
 
 --
--- Constraints for dumped tables
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
 
 --
--- Constraints for table `capacity`
+-- Ketidakleluasaan untuk tabel `capacity`
 --
 ALTER TABLE `capacity`
   ADD CONSTRAINT `capacity_ibfk_1` FOREIGN KEY (`id_lb`) REFERENCES `latar_belakang` (`id_lb`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `capital_a`
+-- Ketidakleluasaan untuk tabel `capital_a`
 --
 ALTER TABLE `capital_a`
   ADD CONSTRAINT `capital_a_ibfk_1` FOREIGN KEY (`id_lb`) REFERENCES `latar_belakang` (`id_lb`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `capital_b`
+-- Ketidakleluasaan untuk tabel `capital_b`
 --
 ALTER TABLE `capital_b`
   ADD CONSTRAINT `capital_b_ibfk_1` FOREIGN KEY (`id_lb`) REFERENCES `latar_belakang` (`id_lb`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `cashflow_b`
+-- Ketidakleluasaan untuk tabel `cashflow_b`
 --
 ALTER TABLE `cashflow_b`
   ADD CONSTRAINT `cashflow_b_ibfk_1` FOREIGN KEY (`id_lb`) REFERENCES `latar_belakang` (`id_lb`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `collateral`
+-- Ketidakleluasaan untuk tabel `collateral`
 --
 ALTER TABLE `collateral`
   ADD CONSTRAINT `collateral_ibfk_1` FOREIGN KEY (`id_lb`) REFERENCES `latar_belakang` (`id_lb`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `collateral_tanah`
+-- Ketidakleluasaan untuk tabel `collateral_tanah`
 --
 ALTER TABLE `collateral_tanah`
   ADD CONSTRAINT `collateral_tanah_ibfk_1` FOREIGN KEY (`id_lb`) REFERENCES `latar_belakang` (`id_lb`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `condition`
+-- Ketidakleluasaan untuk tabel `condition`
 --
 ALTER TABLE `condition`
   ADD CONSTRAINT `condition_ibfk_1` FOREIGN KEY (`id_lb`) REFERENCES `latar_belakang` (`id_lb`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `karakter`
+-- Ketidakleluasaan untuk tabel `karakter`
 --
 ALTER TABLE `karakter`
   ADD CONSTRAINT `karakter_ibfk_1` FOREIGN KEY (`id_lb`) REFERENCES `latar_belakang` (`id_lb`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `riwayat_pinjaman`
+-- Ketidakleluasaan untuk tabel `riwayat_pinjaman`
 --
 ALTER TABLE `riwayat_pinjaman`
   ADD CONSTRAINT `riwayat_pinjaman_ibfk_1` FOREIGN KEY (`id_lb`) REFERENCES `latar_belakang` (`id_lb`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `usulan`
+-- Ketidakleluasaan untuk tabel `usulan`
 --
 ALTER TABLE `usulan`
   ADD CONSTRAINT `usulan_ibfk_1` FOREIGN KEY (`id_lb`) REFERENCES `latar_belakang` (`id_lb`) ON DELETE CASCADE ON UPDATE CASCADE;
