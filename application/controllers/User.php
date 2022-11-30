@@ -78,7 +78,7 @@ class User extends CI_Controller
 
 		$this->form_validation->set_rules('current_password', 'Current Password', 'required|trim');
 		$this->form_validation->set_rules('new_password1', 'New Password', 'required|trim|min_length[3]|matches[new_password2]');
-		$this->form_validation->set_rules('new_password2', 'Confirm New Password', 'required|trim|min_length[3]|matches[new_passwordl]');
+		$this->form_validation->set_rules('new_password2', 'Confirm New Password', 'required|trim|min_length[3]|matches[new_password1]');
 
 		if ($this->form_validation->run() == false) {
 			$this->load->view('templates/header', $data);
@@ -88,7 +88,7 @@ class User extends CI_Controller
 			$this->load->view('templates/footer');
 		} else {
 			$current_password = $this->input->post('current_password');
-			$new_password = $this->input->post('new_passwordl');
+			$new_password = $this->input->post('new_password1');
 			if (!password_verify($current_password, $data['user']['password'])) {
 				$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Wrong current password!</div>');
 				redirect('user/changepassword');

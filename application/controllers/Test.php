@@ -26,6 +26,7 @@ class Test extends CI_Controller
         $this->session->userdata('email')])->row_array();
         $data['select'] = $this->m_test->data_select();
         $data['analis'] = $this->m_test->data_analis();
+        $data['pengajuan'] = $this->m_test->data_pengajuan($id_lb);
         $data['perkiraan'] = $this->m_test->data_perkiraan();
         $data['cashflow'] = $this->m_test->edit_cash($id_lb);
         $data['cashflowp'] = $this->m_test->edit_cashp($id_lb);

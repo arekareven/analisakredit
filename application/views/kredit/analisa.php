@@ -17,44 +17,40 @@
                             <th scope="col">Nama Debitur</th>
                             <th scope="col">Plafond</th>
                             <th scope="col">Status</th>
-                            <th scope="col">Catatan</th>
-                            <th scope="col">Aksi</th>
+                            <th scope="col">Lihat</th>
+                            <th scope="col">Tambah & Edit</th>
+                            <th scope="col">Link Zoom</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="show_data">
                         <?php
                         foreach ($query->result() as $row) {//ambil data dari DB latar_belakang, file 
-                            /*
-                            if ($row->status == "Diserahkan") {
-                                $x = "class='badge badge-pill badge-info'";
-                            } elseif ($row->status == "Ditinjau") {
-                                $x = "class='badge badge-pill badge-warning'";
-                            } elseif ($row->status == "Proses") {
-                                $x = "class='badge badge-pill badge-primary'";
-                            } elseif ($row->status == "Diterima") {
-                                $x = "class='badge badge-pill badge-success'";
-                            } elseif ($row->status == "Ditolak") {
-                                $x = "class='badge badge-pill badge-danger'";
+    
+                        echo 
+                        "<tr>
+                            <td>" . $row->nama_ao . "</td>
+                            <td>" . $row->name_debitur . "</td>                     
+                            <td>" .number_format($row->plafond) . "</td>                     
+                            <td>".$row->status."</td>                     
+                            <td>
+                                <h5>
+                                <a href='pdf_all?id_lb=".$row->id_lb."' target='_blank' class='btn btn-success btn-circle' title='Hasil Analisa'><i class='fas fa-eye'></i></a>
+                                <a href='pdf_scoring?id_lb=".$row->id_lb."' target='_blank' class='btn btn-warning btn-circle' title='Hasil Scoring'><i class='far fa-clipboard'></i></a>
+                                </h5>
+                            </td>                     
+                            <td>
+                                <h5>
+                                <a href='#' class='btn btn-primary btn-circle' data-toggle='modal' data-target='#scoring' title='Tambah Scoring' onClick=\"AddDataScoring('" . $row->id_pengajuan . "','" . $row->name_debitur . "','" . $row->plafond . "','" . $row->status . "','" . $row->catatan . "')\"><i class='fas fa-plus-circle'></i></a>
+                                <a href='javascript:;' class='btn btn-danger btn-circle item_edit' title='Edit Scoring' data='" . $row->id_pengajuan . "'><i class='fas fa-edit'></i></a>
+                                </h5>
+                            </td>	            
+                            <td>
+                                <h5>
+                                <a href='#' target='_blank' class='btn btn-success btn-circle' title='Zoom Meetinga'><i class='fas fa-video'></i></a>
+                                </h5>
+                            </td>     					
+                        </tr>";
                             }
-                            $user = $this->db->query("SELECT * FROM USER WHERE email='$row->user'");
-                            foreach ($user->result() as $cek){
-                                $nama=$cek->name;
-                            }
-                            */
-                            echo "<tr>
-                        <td>" . $row->nama_ao . "</td>
-                        <td>" . $row->nama_debitur . "</td>                     
-                        <td>" .number_format($row->plafon) . "</td>                     
-                        <td>".$row->status."</td>                     
-                        <td>".$row->catatan."</td>                     
-                        <td><h5>
-                            <a href='pdf_all?id_lb=".$row->id_lb."' target='_blank' class='btn btn-success btn-circle' title='Lihat'><i class='fas fa-eye'></i></a>
-                            <a href='#' class='btn btn-warning btn-circle' data-toggle='modal' data-target='#edit' onClick=\"EditData('" . $row->id_pengajuan . "','" . $row->nama_debitur . "','" . $row->plafon . "','" . $row->status . "','" . $row->catatan . "')\"><i class='fas fa-edit'></i></a>
-                            <a href='#' class='btn btn-primary btn-circle' data-toggle='modal' data-target='#scoring' onClick=\"AddDataScoring('" . $row->id_pengajuan . "')\"><i class='fas fa-percent'></i></a>
-                            </h5>
-                        </td>						
-                    </tr>";
-                        }
                         ?>
                     </tbody>
                 </table>
@@ -62,53 +58,32 @@
         </div>
     </div>
 
-    <!-- Modal edit-->
-    <div class="modal fade" id="edit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Review</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <form action="<?= base_url('analisa/update_pengajuan'); ?>" method="post">
-                    <div class="modal-body">
-                        <input type="hidden" class="form-control" id="id_pengajuan" name="id_pengajuan">
-                        <input type="hidden" class="form-control" id="name_debitur" name="name_debitur">
-                        <input type="hidden" class="form-control" id="plafon" name="plafon">
-                        <div class="col-md-5 mb-4">
-                            <label for="status" class="form-label">Status</label>
-                            <select class="custom-select" id="status" name="status">
-                                <option>Direkomendasi</option>
-                                <option>Revisi</option>
-                            </select>
-                        </div>
-                        <div class="col-md-12 mb-4">
-                            <label for="catatan" class="form-label">Catatan</label>
-                            <textarea class="form-control" id="catatan" name="catatan"></textarea>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Save changes</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
+    <?php
+            echo "Meeting ID: ". $response->id;
+            echo "<br>";
+            echo "Topic: "	. $response->topic;
+            echo "<br>";
+            echo "Join URL: <a href='". $response->join_url ."'>Open URL</a>";
+            echo "<br>";
+            echo "Meeting Password: ". $response->password;
+    ?>
     
     <!-- Modal skoring-->
     <div class="modal fade" id="scoring" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <h5>SKORING</h5>
+                    <button id="close_pengajuan" type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="<?= base_url('analisa/add_scoring'); ?>" method="post">
-                    <div class="modal-body">                        
+                <form action="<?= base_url('analisa/add_scoring'); ?>" method="post" id="form_pengajuan">
+                    <div class="modal-body">                       
+                        <input type="hidden" class="form-control" id="id_pengajuan" name="id_pengajuan">
+                        <input type="hidden" class="form-control" id="name_debitur" name="name_debitur">
+                        <input type="hidden" class="form-control" id="plafon" name="plafon">
+                        <br>                 
                         <table class="table table-striped">
                             <thead>
                                 <tr>
@@ -124,7 +99,7 @@
                                 <tr>
                                     <td>Iktikad terhadap kewajiban</td>
                                     <td>
-                                        <select class="custom-select" id="itk_nilai" onchange="math()">
+                                        <select class="custom-select" id="itk_nilai" name="itk_nilai" onchange="math()">
                                             <option></option>
                                             <option>1</option>
                                             <option>2</option>
@@ -164,7 +139,7 @@
                                 <tr>    
                                     <td>Motivasi usaha</td>
                                     <td>
-                                        <select class="custom-select" id="mu_nilai" onchange="math()">
+                                        <select class="custom-select" id="mu_nilai" name="mu_nilai" onchange="math()">
                                             <option></option>
                                             <option>1</option>
                                             <option>2</option>
@@ -204,7 +179,7 @@
                                 <tr>
                                     <td>Kepercayaan diri</td>
                                     <td>
-                                        <select class="custom-select" id="kd_nilai" onchange="math()">
+                                        <select class="custom-select" id="kd_nilai" name="kd_nilai" onchange="math()">
                                             <option></option>
                                             <option>1</option>
                                             <option>2</option>
@@ -244,7 +219,7 @@
                                 <tr>
                                     <td>Keharmonisan keluarga</td>
                                     <td>
-                                        <select class="custom-select" id="kk_nilai" onchange="math()">
+                                        <select class="custom-select" id="kk_nilai" name="kk_nilai" onchange="math()">
                                             <option></option>
                                             <option>1</option>
                                             <option>2</option>
@@ -284,7 +259,7 @@
                                 <tr>
                                     <td>Aktivitas sosial</td>
                                     <td>
-                                        <select class="custom-select" id="as_nilai" onchange="math()">
+                                        <select class="custom-select" id="as_nilai" name="as_nilai" onchange="math()">
                                             <option></option>
                                             <option>1</option>
                                             <option>2</option>
@@ -324,7 +299,7 @@
                                 <tr>
                                     <td>Aktivitas keagamaan</td>
                                     <td>
-                                        <select class="custom-select" id="ak_nilai" onchange="math()">
+                                        <select class="custom-select" id="ak_nilai" name="ak_nilai" onchange="math()">
                                             <option></option>
                                             <option>1</option>
                                             <option>2</option>
@@ -364,7 +339,7 @@
                                 <tr>
                                     <td>Temperamen</td>
                                     <td>
-                                        <select class="custom-select" id="t_nilai" onchange="math()">
+                                        <select class="custom-select" id="t_nilai" name="t_nilai" onchange="math()">
                                             <option></option>
                                             <option>1</option>
                                             <option>2</option>
@@ -404,7 +379,7 @@
                                 <tr>
                                     <td>Hubungan pihak terkait</td>
                                     <td>
-                                        <select class="custom-select" id="hpt_nilai" onchange="math()">
+                                        <select class="custom-select" id="hpt_nilai" name="hpt_nilai" onchange="math()">
                                             <option></option>
                                             <option>1</option>
                                             <option>2</option>
@@ -444,7 +419,7 @@
                                 <tr>
                                     <td>Tingkat kepatuhan</td>
                                     <td>
-                                        <select class="custom-select" id="tk_nilai" onchange="math()">
+                                        <select class="custom-select" id="tk_nilai" name="tk_nilai" onchange="math()">
                                             <option></option>
                                             <option>1</option>
                                             <option>2</option>
@@ -483,7 +458,7 @@
                                 </tr>  
                                 <tr>
                                     <th>Sub Jumlah</th>
-                                    <th id="jumlah"></th>
+                                    <th id="jumlah" name="jumlah"></th>
                                     <th id="bobot">20%</th>
                                     <th id="score"></th>
                                     <th id="kelayakan"></th>
@@ -534,7 +509,7 @@
                                 <tr>
                                     <td>Pengalaman usaha</td>
                                     <td>
-                                        <select class="custom-select" id="pengUsa_nilai" onchange="math_capa()">
+                                        <select class="custom-select" id="pengUsa_nilai" name="pengUsa_nilai" onchange="math_capa()">
                                             <option></option>
                                             <option>1</option>
                                             <option>2</option>
@@ -574,7 +549,7 @@
                                 <tr>    
                                     <td>Administrasi usaha</td>
                                     <td>
-                                        <select class="custom-select" id="admUsa_nilai" onchange="math_capa()">
+                                        <select class="custom-select" id="admUsa_nilai" name="admUsa_nilai" onchange="math_capa()">
                                             <option></option>
                                             <option>1</option>
                                             <option>2</option>
@@ -614,7 +589,7 @@
                                 <tr>
                                     <td>Legalitas/perijinan</td>
                                     <td>
-                                        <select class="custom-select" id="legal_nilai" onchange="math_capa()">
+                                        <select class="custom-select" id="legal_nilai" name="legal_nilai" onchange="math_capa()">
                                             <option></option>
                                             <option>1</option>
                                             <option>2</option>
@@ -654,7 +629,7 @@
                                 <tr>
                                     <td>Tujuan usaha</td>
                                     <td>
-                                        <select class="custom-select" id="tujUsa_nilai" onchange="math_capa()">
+                                        <select class="custom-select" id="tujUsa_nilai" name="tujUsa_nilai" onchange="math_capa()">
                                             <option></option>
                                             <option>1</option>
                                             <option>2</option>
@@ -694,7 +669,7 @@
                                 <tr>
                                     <td>Tingkat persaingan</td>
                                     <td>
-                                        <select class="custom-select" id="tingPer_nilai" onchange="math_capa()">
+                                        <select class="custom-select" id="tingPer_nilai" name="tingPer_nilai" onchange="math_capa()">
                                             <option></option>
                                             <option>1</option>
                                             <option>2</option>
@@ -734,7 +709,7 @@
                                 <tr>
                                     <td>Harga produk</td>
                                     <td>
-                                        <select class="custom-select" id="harPro_nilai" onchange="math_capa()">
+                                        <select class="custom-select" id="harPro_nilai" name="harPro_nilai" onchange="math_capa()">
                                             <option></option>
                                             <option>1</option>
                                             <option>2</option>
@@ -774,7 +749,7 @@
                                 <tr>
                                     <td>Sistem pembayaran</td>
                                     <td>
-                                        <select class="custom-select" id="sisPem_nilai" onchange="math_capa()">
+                                        <select class="custom-select" id="sisPem_nilai" name="sisPem_nilai" onchange="math_capa()">
                                             <option></option>
                                             <option>1</option>
                                             <option>2</option>
@@ -814,7 +789,7 @@
                                 <tr>
                                     <td>Sistem distribusi</td>
                                     <td>
-                                        <select class="custom-select" id="sisDis_nilai" onchange="math_capa()">
+                                        <select class="custom-select" id="sisDis_nilai" name="sisDis_nilai" onchange="math_capa()">
                                             <option></option>
                                             <option>1</option>
                                             <option>2</option>
@@ -854,7 +829,7 @@
                                 <tr>
                                     <td>Kemudahan bhn baku</td>
                                     <td>
-                                        <select class="custom-select" id="kemBb_nilai" onchange="math_capa()">
+                                        <select class="custom-select" id="kemBb_nilai" name="kemBb_nilai" onchange="math_capa()">
                                             <option></option>
                                             <option>1</option>
                                             <option>2</option>
@@ -890,10 +865,410 @@
                                             }
                                         });
                                     </script>
+                                </tr>                               
+                                <tr>
+                                    <td>Cara pembelian</td>
+                                    <td>
+                                        <select class="custom-select" id="carP_nilai" name="carP_nilai" onchange="math_capa()">
+                                            <option></option>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
+                                    </td>
+                                    <td ></td>
+                                    <td ></td>
+                                    <td id="carP_keterangan"></td>
+                                    <script>
+                                        $('#carP_nilai').on('change', function(){
+                                        const selectedPackage = $('#carP_nilai').val();
+                                        switch(selectedPackage) {
+                                            case "1":
+                                                $('#carP_keterangan').text("Kurang");
+                                                break;
+                                            case "2":
+                                                $('#carP_keterangan').text("Sedang");
+                                                break;
+                                            case "3":
+                                                $('#carP_keterangan').text("Cukup");
+                                                break;
+                                            case "4":
+                                                $('#carP_keterangan').text("Baik");
+                                                break;
+                                            case "5":
+                                                $('#carP_keterangan').text("Sangat Baik");
+                                                break;
+                                            default:
+                                                $('#carP_keterangan').text("Mohon Isi Nilai");
+                                            }
+                                        });
+                                    </script>
+                                </tr>                                 
+                                <tr>
+                                    <td>Proses produksi</td>
+                                    <td>
+                                        <select class="custom-select" id="prosP_nilai" name="prosP_nilai" onchange="math_capa()">
+                                            <option></option>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
+                                    </td>
+                                    <td ></td>
+                                    <td ></td>
+                                    <td id="prosP_keterangan"></td>
+                                    <script>
+                                        $('#prosP_nilai').on('change', function(){
+                                        const selectedPackage = $('#prosP_nilai').val();
+                                        switch(selectedPackage) {
+                                            case "1":
+                                                $('#prosP_keterangan').text("Kurang");
+                                                break;
+                                            case "2":
+                                                $('#prosP_keterangan').text("Sedang");
+                                                break;
+                                            case "3":
+                                                $('#prosP_keterangan').text("Cukup");
+                                                break;
+                                            case "4":
+                                                $('#prosP_keterangan').text("Baik");
+                                                break;
+                                            case "5":
+                                                $('#prosP_keterangan').text("Sangat Baik");
+                                                break;
+                                            default:
+                                                $('#prosP_keterangan').text("Mohon Isi Nilai");
+                                            }
+                                        });
+                                    </script>
+                                </tr>                                 
+                                <tr>
+                                    <td>Mesin & peralatan</td>
+                                    <td>
+                                        <select class="custom-select" id="mesP_nilai" name="mesP_nilai" onchange="math_capa()">
+                                            <option></option>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
+                                    </td>
+                                    <td ></td>
+                                    <td ></td>
+                                    <td id="mesP_keterangan"></td>
+                                    <script>
+                                        $('#mesP_nilai').on('change', function(){
+                                        const selectedPackage = $('#mesP_nilai').val();
+                                        switch(selectedPackage) {
+                                            case "1":
+                                                $('#mesP_keterangan').text("Kurang");
+                                                break;
+                                            case "2":
+                                                $('#mesP_keterangan').text("Sedang");
+                                                break;
+                                            case "3":
+                                                $('#mesP_keterangan').text("Cukup");
+                                                break;
+                                            case "4":
+                                                $('#mesP_keterangan').text("Baik");
+                                                break;
+                                            case "5":
+                                                $('#mesP_keterangan').text("Sangat Baik");
+                                                break;
+                                            default:
+                                                $('#mesP_keterangan').text("Mohon Isi Nilai");
+                                            }
+                                        });
+                                    </script>
+                                </tr>                                 
+                                <tr>
+                                    <td>Tenaga kerja</td>
+                                    <td>
+                                        <select class="custom-select" id="tenK_nilai" name="tenK_nilai" onchange="math_capa()">
+                                            <option></option>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
+                                    </td>
+                                    <td ></td>
+                                    <td ></td>
+                                    <td id="tenK_keterangan"></td>
+                                    <script>
+                                        $('#tenK_nilai').on('change', function(){
+                                        const selectedPackage = $('#tenK_nilai').val();
+                                        switch(selectedPackage) {
+                                            case "1":
+                                                $('#tenK_keterangan').text("Kurang");
+                                                break;
+                                            case "2":
+                                                $('#tenK_keterangan').text("Sedang");
+                                                break;
+                                            case "3":
+                                                $('#tenK_keterangan').text("Cukup");
+                                                break;
+                                            case "4":
+                                                $('#tenK_keterangan').text("Baik");
+                                                break;
+                                            case "5":
+                                                $('#tenK_keterangan').text("Sangat Baik");
+                                                break;
+                                            default:
+                                                $('#tenK_keterangan').text("Mohon Isi Nilai");
+                                            }
+                                        });
+                                    </script>
+                                </tr>                                 
+                                <tr>
+                                    <td>Dampak sosial masy.</td>
+                                    <td>
+                                        <select class="custom-select" id="damSm_nilai" name="damSm_nilai" onchange="math_capa()">
+                                            <option></option>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
+                                    </td>
+                                    <td ></td>
+                                    <td ></td>
+                                    <td id="damSm_keterangan"></td>
+                                    <script>
+                                        $('#damSm_nilai').on('change', function(){
+                                        const selectedPackage = $('#damSm_nilai').val();
+                                        switch(selectedPackage) {
+                                            case "1":
+                                                $('#damSm_keterangan').text("Kurang");
+                                                break;
+                                            case "2":
+                                                $('#damSm_keterangan').text("Sedang");
+                                                break;
+                                            case "3":
+                                                $('#damSm_keterangan').text("Cukup");
+                                                break;
+                                            case "4":
+                                                $('#damSm_keterangan').text("Baik");
+                                                break;
+                                            case "5":
+                                                $('#damSm_keterangan').text("Sangat Baik");
+                                                break;
+                                            default:
+                                                $('#damSm_keterangan').text("Mohon Isi Nilai");
+                                            }
+                                        });
+                                    </script>
+                                </tr>                                 
+                                <tr>
+                                    <td>Dampak ekon. Mikro</td>
+                                    <td>
+                                        <select class="custom-select" id="damEk_nilai" name="damEk_nilai" onchange="math_capa()">
+                                            <option></option>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
+                                    </td>
+                                    <td ></td>
+                                    <td ></td>
+                                    <td id="damEk_keterangan"></td>
+                                    <script>
+                                        $('#damEk_nilai').on('change', function(){
+                                        const selectedPackage = $('#damEk_nilai').val();
+                                        switch(selectedPackage) {
+                                            case "1":
+                                                $('#damEk_keterangan').text("Kurang");
+                                                break;
+                                            case "2":
+                                                $('#damEk_keterangan').text("Sedang");
+                                                break;
+                                            case "3":
+                                                $('#damEk_keterangan').text("Cukup");
+                                                break;
+                                            case "4":
+                                                $('#damEk_keterangan').text("Baik");
+                                                break;
+                                            case "5":
+                                                $('#damEk_keterangan').text("Sangat Baik");
+                                                break;
+                                            default:
+                                                $('#damEk_keterangan').text("Mohon Isi Nilai");
+                                            }
+                                        });
+                                    </script>
+                                </tr>                                 
+                                <tr>
+                                    <td>Dampak ekon. Makro</td>
+                                    <td>
+                                        <select class="custom-select" id="dampEma_nilai" name="dampEma_nilai" onchange="math_capa()">
+                                            <option></option>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
+                                    </td>
+                                    <td ></td>
+                                    <td ></td>
+                                    <td id="dampEma_keterangan"></td>
+                                    <script>
+                                        $('#dampEma_nilai').on('change', function(){
+                                        const selectedPackage = $('#dampEma_nilai').val();
+                                        switch(selectedPackage) {
+                                            case "1":
+                                                $('#dampEma_keterangan').text("Kurang");
+                                                break;
+                                            case "2":
+                                                $('#dampEma_keterangan').text("Sedang");
+                                                break;
+                                            case "3":
+                                                $('#dampEma_keterangan').text("Cukup");
+                                                break;
+                                            case "4":
+                                                $('#dampEma_keterangan').text("Baik");
+                                                break;
+                                            case "5":
+                                                $('#dampEma_keterangan').text("Sangat Baik");
+                                                break;
+                                            default:
+                                                $('#dampEma_keterangan').text("Mohon Isi Nilai");
+                                            }
+                                        });
+                                    </script>
+                                </tr>                                 
+                                <tr>
+                                    <td>Dampak lingkungan</td>
+                                    <td>
+                                        <select class="custom-select" id="damLi_nilai" name="damLi_nilai" onchange="math_capa()">
+                                            <option></option>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
+                                    </td>
+                                    <td ></td>
+                                    <td ></td>
+                                    <td id="damLi_keterangan"></td>
+                                    <script>
+                                        $('#damLi_nilai').on('change', function(){
+                                        const selectedPackage = $('#damLi_nilai').val();
+                                        switch(selectedPackage) {
+                                            case "1":
+                                                $('#damLi_keterangan').text("Kurang");
+                                                break;
+                                            case "2":
+                                                $('#damLi_keterangan').text("Sedang");
+                                                break;
+                                            case "3":
+                                                $('#damLi_keterangan').text("Cukup");
+                                                break;
+                                            case "4":
+                                                $('#damLi_keterangan').text("Baik");
+                                                break;
+                                            case "5":
+                                                $('#damLi_keterangan').text("Sangat Baik");
+                                                break;
+                                            default:
+                                                $('#damLi_keterangan').text("Mohon Isi Nilai");
+                                            }
+                                        });
+                                    </script>
+                                </tr>                                 
+                                <tr>
+                                    <td>Kemampuan bayar</td>
+                                    <td>
+                                        <select class="custom-select" id="kemBa_nilai" name="kemBa_nilai" onchange="math_capa()">
+                                            <option></option>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
+                                    </td>
+                                    <td ></td>
+                                    <td ></td>
+                                    <td id="kemBa_keterangan"></td>
+                                    <script>
+                                        $('#kemBa_nilai').on('change', function(){
+                                        const selectedPackage = $('#kemBa_nilai').val();
+                                        switch(selectedPackage) {
+                                            case "1":
+                                                $('#kemBa_keterangan').text("Kurang");
+                                                break;
+                                            case "2":
+                                                $('#kemBa_keterangan').text("Sedang");
+                                                break;
+                                            case "3":
+                                                $('#kemBa_keterangan').text("Cukup");
+                                                break;
+                                            case "4":
+                                                $('#kemBa_keterangan').text("Baik");
+                                                break;
+                                            case "5":
+                                                $('#kemBa_keterangan').text("Sangat Baik");
+                                                break;
+                                            default:
+                                                $('#kemBa_keterangan').text("Mohon Isi Nilai");
+                                            }
+                                        });
+                                    </script>
+                                </tr>                                 
+                                <tr>
+                                    <td>Pemupukan laba</td>
+                                    <td>
+                                        <select class="custom-select" id="pemLa_nilai" name="pemLa_nilai" onchange="math_capa()">
+                                            <option></option>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
+                                    </td>
+                                    <td ></td>
+                                    <td ></td>
+                                    <td id="pemLa_keterangan"></td>
+                                    <script>
+                                        $('#pemLa_nilai').on('change', function(){
+                                        const selectedPackage = $('#pemLa_nilai').val();
+                                        switch(selectedPackage) {
+                                            case "1":
+                                                $('#pemLa_keterangan').text("Kurang");
+                                                break;
+                                            case "2":
+                                                $('#pemLa_keterangan').text("Sedang");
+                                                break;
+                                            case "3":
+                                                $('#pemLa_keterangan').text("Cukup");
+                                                break;
+                                            case "4":
+                                                $('#pemLa_keterangan').text("Baik");
+                                                break;
+                                            case "5":
+                                                $('#pemLa_keterangan').text("Sangat Baik");
+                                                break;
+                                            default:
+                                                $('#pemLa_keterangan').text("Mohon Isi Nilai");
+                                            }
+                                        });
+                                    </script>
                                 </tr>  
                                 <tr>
                                     <th>Sub Jumlah</th>
-                                    <th id="jumlah_capa"></th>
+                                    <th id="jumlah_capa" name="jumlah_capa"></th>
                                     <th id="bobot_capa">30%</th>
                                     <th id="score_capa"></th>
                                     <th id="kelayakan_capa"></th>
@@ -909,8 +1284,18 @@
                                             var g = parseInt(document.getElementById("sisPem_nilai").value);
                                             var h = parseInt(document.getElementById("sisDis_nilai").value);
                                             var i = parseInt(document.getElementById("kemBb_nilai").value);
-                                            if(a && b && c && d && e && f && g && h && i){
-                                                var jml = a+b+c+d+e+f+g+h+i;
+                                            var j = parseInt(document.getElementById("carP_nilai").value);
+                                            var k = parseInt(document.getElementById("prosP_nilai").value);
+                                            var l = parseInt(document.getElementById("mesP_nilai").value);
+                                            var m = parseInt(document.getElementById("tenK_nilai").value);
+                                            var n = parseInt(document.getElementById("damSm_nilai").value);
+                                            var o = parseInt(document.getElementById("damEk_nilai").value);
+                                            var p = parseInt(document.getElementById("dampEma_nilai").value);
+                                            var q = parseInt(document.getElementById("damLi_nilai").value);
+                                            var r = parseInt(document.getElementById("kemBa_nilai").value);
+                                            var s = parseInt(document.getElementById("pemLa_nilai").value);
+                                            if(a && b && c && d && e && f && g && h && i && j && k && l && m && n && o && p && q && r && s){
+                                                var jml = a+b+c+d+e+f+g+h+i+j+k+l+m+n+o+p+q+r+s;
                                                 var score = jml*0.3;
                                                 document.getElementById("jumlah_capa").innerHTML= jml;
                                                 document.getElementById("score_capa").innerHTML= score.toFixed(1);
@@ -944,7 +1329,7 @@
                                 <tr>
                                     <td>Sumber dana sendiri</td>
                                     <td>
-                                        <select class="custom-select" id="sumDs_nilai" onchange="math_capi()">
+                                        <select class="custom-select" id="sumDs_nilai" name="sumDs_nilai" onchange="math_capi()">
                                             <option></option>
                                             <option>1</option>
                                             <option>2</option>
@@ -984,7 +1369,7 @@
                                 <tr>    
                                     <td>Sumber dana keluarga</td>
                                     <td>
-                                        <select class="custom-select" id="sumDk_nilai" onchange="math_capi()">
+                                        <select class="custom-select" id="sumDk_nilai" name="sumDk_nilai" onchange="math_capi()">
                                             <option></option>
                                             <option>1</option>
                                             <option>2</option>
@@ -1024,7 +1409,7 @@
                                 <tr>
                                     <td>Sumber dana lainnya</td>
                                     <td>
-                                        <select class="custom-select" id="sumDl_nilai" onchange="math_capi()">
+                                        <select class="custom-select" id="sumDl_nilai" name="sumDl_nilai" onchange="math_capi()">
                                             <option></option>
                                             <option>1</option>
                                             <option>2</option>
@@ -1063,7 +1448,7 @@
                                 </tr> 
                                 <tr>
                                     <th>Sub Jumlah</th>
-                                    <th id="jumlah_capi"></th>
+                                    <th id="jumlah_capi" name="jumlah_capi"></th>
                                     <th id="bobot_capi">20%</th>
                                     <th id="score_capi"></th>
                                     <th id="kelayakan_capi"></th>
@@ -1108,7 +1493,7 @@
                                 <tr>
                                     <td>Usaha yang dibiayai</td>
                                     <td>
-                                        <select class="custom-select" id="UsYd_nilai" onchange="math_coll()">
+                                        <select class="custom-select" id="UsYd_nilai" name="UsYd_nilai" onchange="math_coll()">
                                             <option></option>
                                             <option>1</option>
                                             <option>2</option>
@@ -1148,7 +1533,7 @@
                                 <tr>    
                                     <td>Sertipikat tanah</td>
                                     <td>
-                                        <select class="custom-select" id="serT_nilai" onchange="math_coll()">
+                                        <select class="custom-select" id="serT_nilai" name="serT_nilai" onchange="math_coll()">
                                             <option></option>
                                             <option>1</option>
                                             <option>2</option>
@@ -1188,7 +1573,7 @@
                                 <tr>
                                     <td>BPKB</td>
                                     <td>
-                                        <select class="custom-select" id="bpkb_nilai" onchange="math_coll()">
+                                        <select class="custom-select" id="bpkb_nilai" name="bpkb_nilai" onchange="math_coll()">
                                             <option></option>
                                             <option>1</option>
                                             <option>2</option>
@@ -1228,7 +1613,7 @@
                                 <tr>
                                     <td>Marketable</td>
                                     <td>
-                                        <select class="custom-select" id="market_nilai" onchange="math_coll()">
+                                        <select class="custom-select" id="market_nilai" name="market_nilai" onchange="math_coll()">
                                             <option></option>
                                             <option>1</option>
                                             <option>2</option>
@@ -1267,7 +1652,7 @@
                                 </tr> 
                                 <tr>
                                     <th>Sub Jumlah</th>
-                                    <th id="jumlah_coll"></th>
+                                    <th id="jumlah_coll" name="jumlah_coll"></th>
                                     <th id="bobot_coll">20%</th>
                                     <th id="score_coll"></th>
                                     <th id="kelayakan_coll"></th>
@@ -1285,7 +1670,7 @@
                                                 document.getElementById("score_coll").innerHTML= score.toFixed(1);
                                                 if(score<=1){
                                                     document.getElementById("kelayakan_coll").innerHTML= "Tidak Layak";
-                                                }if(score ==2){
+                                                }if(score >1 && score <=2){
                                                     document.getElementById("kelayakan_coll").innerHTML= "Layak Dengan Catatan";
                                                 }if(score > 2){
                                                     document.getElementById("kelayakan_coll").innerHTML= "Layak";
@@ -1313,7 +1698,7 @@
                                 <tr>
                                     <td>Kebijakan Pemerintah</td>
                                     <td>
-                                        <select class="custom-select" id="kebP_nilai" onchange="math_cond()">
+                                        <select class="custom-select" id="kebP_nilai" name="kebP_nilai" onchange="math_cond()">
                                             <option></option>
                                             <option>1</option>
                                             <option>2</option>
@@ -1353,7 +1738,7 @@
                                 <tr>    
                                     <td>Ekonomi global</td>
                                     <td>
-                                        <select class="custom-select" id="ekoG_nilai" onchange="math_cond()">
+                                        <select class="custom-select" id="ekoG_nilai" name="ekoG_nilai" onchange="math_cond()">
                                             <option></option>
                                             <option>1</option>
                                             <option>2</option>
@@ -1392,7 +1777,7 @@
                                 </tr> 
                                 <tr>
                                     <th>Sub Jumlah</th>
-                                    <th id="jumlah_cond"></th>
+                                    <th id="jumlah_cond" name="jumlah_cond"></th>
                                     <th id="bobot_cond">10%</th>
                                     <th id="score_cond"></th>
                                     <th id="kelayakan_cond"></th>
@@ -1419,7 +1804,7 @@
                         </table>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button id="close_pengajuan" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Save changes</button>
                     </div>
                 </form>
@@ -1428,14 +1813,96 @@
     </div>
 
     <script type="text/javascript">
-        function EditData(id_pengajuan,nama_debitur,plafon, status, catatan) {
+        function AddDataScoring(id_pengajuan,nama_debitur,plafon, status, catatan) {
             document.getElementById('id_pengajuan').value = id_pengajuan;
             document.getElementById('name_debitur').value = nama_debitur;
             document.getElementById('plafon').value = plafon;
             document.getElementById('status').value = status;
             document.getElementById('catatan').value = catatan;
         }
+        
+        $('#close_pengajuan').on('click', function() {
+                document.getElementById("form_pengajuan").reset();
+            })
+        
+        
+        //skoring
+        $(document).ready(function() {
+
+			//GET UPDATE skoring
+			$('#show_data').on('click', '.item_edit', function() {
+				var id = $(this).attr('data');
+				$.ajax({
+					type: "GET",
+					url: "<?php echo base_url('analisa/get_pengajuan') ?>",
+					dataType: "JSON",
+					data: {
+						id: id
+					},
+					success: function(data) {
+						$.each(data, function(id_pengajuan,name_debitur,plafon, status,catatan,itk_nilai,
+                        mu_nilai,kd_nilai,kk_nilai,as_nilai,ak_nilai,t_nilai,hpt_nilai,tk_nilai,jumlah,
+                        pengUsa_nilai,admUsa_nilai,legal_nilai,tujUsa_nilai,tingPer_nilai,harPro_nilai,
+                        sisPem_nilai,sisDis_nilai,kemBb_nilai,carP_nilai,prosP_nilai,mesP_nilai,
+                        tenK_nilai,damSm_nilai,damEk_nilai,dampEma_nilai,damLi_nilai,kemBa_nilai,
+                        pemLa_nilai,jumlah_capa,sumDs_nilai,sumDk_nilai,sumDl_nilai,jumlah_capi,
+                        UsYd_nilai,serT_nilai,bpkb_nilai,market_nilai,jumlah_coll,kebP_nilai,ekoG_nilai,
+                        jumlah_cond) {
+							$('#scoring').modal('show');
+							$('[name="id_pengajuan"]').val(data.id_pengajuan);
+							$('[name="name_debitur"]').val(data.name_debitur);
+							$('[name="plafon"]').val(data.plafon);
+							$('[name="itk_nilai"]').val(data.itk_nilai);
+                            $('[name="mu_nilai"]').val(data.mu_nilai);
+                            $('[name="kd_nilai"]').val(data.kd_nilai);
+                            $('[name="kk_nilai"]').val(data.kk_nilai);
+                            $('[name="as_nilai"]').val(data.as_nilai);
+                            $('[name="ak_nilai"]').val(data.ak_nilai);
+                            $('[name="t_nilai"]').val(data.t_nilai);
+                            $('[name="hpt_nilai"]').val(data.hpt_nilai);
+                            $('[name="tk_nilai"]').val(data.tk_nilai);
+                            $('[name="jumlah"]').val(data.jumlah);
+                            $('[name="pengUsa_nilai"]').val(data.pengUsa_nilai);
+                            $('[name="admUsa_nilai"]').val(data.admUsa_nilai);
+                            $('[name="legal_nilai"]').val(data.legal_nilai);
+                            $('[name="tujUsa_nilai"]').val(data.tujUsa_nilai);
+                            $('[name="tingPer_nilai"]').val(data.tingPer_nilai);
+                            $('[name="harPro_nilai"]').val(data.harPro_nilai);
+                            $('[name="sisPem_nilai"]').val(data.sisPem_nilai);
+                            $('[name="sisDis_nilai"]').val(data.sisDis_nilai);
+                            $('[name="kemBb_nilai"]').val(data.kemBb_nilai);
+                            $('[name="carP_nilai"]').val(data.carP_nilai);
+                            $('[name="prosP_nilai"]').val(data.prosP_nilai);
+                            $('[name="mesP_nilai"]').val(data.mesP_nilai);
+                            $('[name="tenK_nilai"]').val(data.tenK_nilai);
+                            $('[name="damSm_nilai"]').val(data.damSm_nilai);
+                            $('[name="damEk_nilai"]').val(data.damEk_nilai);
+                            $('[name="dampEma_nilai"]').val(data.dampEma_nilai);
+                            $('[name="damLi_nilai"]').val(data.damLi_nilai);
+                            $('[name="kemBa_nilai"]').val(data.kemBa_nilai);
+                            $('[name="pemLa_nilai"]').val(data.pemLa_nilai);
+                            $('[name="jumlah_capa"]').val(data.jumlah_capa);
+                            $('[name="sumDs_nilai"]').val(data.sumDs_nilai);
+                            $('[name="sumDk_nilai"]').val(data.sumDk_nilai);
+                            $('[name="sumDl_nilai"]').val(data.sumDl_nilai);
+                            $('[name="jumlah_capi"]').val(data.jumlah_capi);
+                            $('[name="UsYd_nilai"]').val(data.UsYd_nilai);
+                            $('[name="serT_nilai"]').val(data.serT_nilai);
+                            $('[name="bpkb_nilai"]').val(data.bpkb_nilai);
+                            $('[name="market_nilai"]').val(data.market_nilai);
+                            $('[name="jumlah_coll"]').val(data.jumlah_coll);
+                            $('[name="kebP_nilai"]').val(data.kebP_nilai);
+                            $('[name="ekoG_nilai"]').val(data.ekoG_nilai);
+                            $('[name="jumlah_cond"]').val(data.jumlah_cond);
+						});
+					}
+				});
+				return false;
+			});
+
+        });
     </script>
+    
 
 </div>
 <!-- /.container-fluid -->

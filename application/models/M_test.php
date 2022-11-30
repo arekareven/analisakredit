@@ -42,6 +42,11 @@ class M_test extends CI_Model
     {
         return $this->db->get('analis');
     }
+    
+    public function data_pengajuan($id_lb)
+    {
+        return $this->db->query("SELECT * FROM latar_belakang WHERE id_lb=$id_lb");
+    }
 
     public function data_perkiraan()
     {

@@ -203,7 +203,7 @@ class Pdf_disposisi extends CI_Controller
 		$pdf->SetFont('Times', 'B', 12);
 		$pdf->Cell(30, 0, 'Rian Dian Raga, S.Pd', 0, 1, 'C');
 
-		$pdf->Output('Usulan', 'I');
+		$pdf->Output('Disposisi', 'I');
 	}
 
 	function disposisi3()

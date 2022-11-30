@@ -6,7 +6,7 @@
         <div class="col-md-11 mb-2">
             <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
         </div>
--->
+		-->
         <div class="col-md-1 mb-2">
             <a href="test/edit?id_lb=<?php echo $id_lb; ?>" type="button" class="btn btn-warning" target="_blank">
                 Edit
@@ -1521,11 +1521,17 @@
 														echo "<option value='$row->nama'>$row->nama</option>";
 													}
                                                 ?>
-                                            </select>											
+                                            </select>	
 											<input type="hidden" class="form-control" id="nama_ao" name="nama_ao" value="<?= $user['name']; ?>">
-											<input type="hidden" class="form-control" id="id_lb" name="id_lb" value="<?php echo $id_lb; ?>">
-											<input type="hidden" class="form-control" id="status" name="status" value="Diajukan">
-                                        </div>
+											<?php
+												foreach ($pengajuan->result() as $row) {
+													echo "<input type='hidden' class='form-control' id='id_lb' name='id_lb' value='$row->id_lb'>";
+													echo "<input type='hidden' class='form-control' id='nama_debitur' name='nama_debitur' value='$row->nama_debitur'>";
+													echo "<input type='hidden' class='form-control' id='plafond' name='plafond' value='$row->plafon'>";
+													echo "<input type='hidden' class='form-control' id='status' name='status' value='Diajukan'>";
+												}
+											?>
+										</div>
                                     </div>
                                 </div>
 								<div class="modal-footer">
@@ -4323,9 +4329,9 @@
                     success: function(data) {
                         var html = '';
                         var i;
-                        for (i = 0; i < data.length; i++) {
+                        for (i = 0; i < data.length; i++) {							
                             html += '<tr>' +
-                                '<td>' + data[i].analis + '</td>' +
+                                '<td>' + data[i].nama_analis + '</td>' +
                                 '<td>' + data[i].status + '</td>' +
                                 '<td>' + data[i].catatan + '</td>' +
                                 '</tr>';
@@ -4340,7 +4346,7 @@
                 document.getElementById("rp").reset();
             })
 
-			//simpan riwayat
+			//simpan pengajuan
             $('#btn_pengajuan').on('click', function() {
                 var pengajuan = $('#pengajuan').serialize(); 
 

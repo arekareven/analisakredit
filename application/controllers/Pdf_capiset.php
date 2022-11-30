@@ -1026,9 +1026,9 @@ class Pdf_capiset extends CI_Controller
 	function lain2()
 	{
 		//lain debit
-		$id_lb = $_GET['id_lb'];
-		$laind = $this->db->query("SELECT * FROM cashflow_a WHERE nama_perkiraan= 'Lain - lain' && kode_jenis='D' && id_lb='$id_lb'");
-		$laink = $this->db->query("SELECT * FROM cashflow_a WHERE nama_perkiraan= 'Lain - lain' && kode_jenis='K' && id_lb='$id_lb'");
+		$id_lb = $_GET['id_lb'];//COLLATE utf8_bin untuk membedakan case sensitive
+		$laind = $this->db->query("SELECT * FROM cashflow_a WHERE nama_perkiraan= 'Lain - lain' COLLATE utf8_bin && kode_jenis='D' && id_lb='$id_lb'");
+		$laink = $this->db->query("SELECT * FROM cashflow_a WHERE nama_perkiraan= 'Lain - lain' COLLATE utf8_bin && kode_jenis='K' && id_lb='$id_lb'");
 		if (!empty($laind->result())) {
 			foreach ($laind->result() as $row) {
 				$array_laind[] = $row->saldo;
