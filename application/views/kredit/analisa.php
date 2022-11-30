@@ -18,7 +18,8 @@
                             <th scope="col">Plafond</th>
                             <th scope="col">Status</th>
                             <th scope="col">Lihat</th>
-                            <th scope="col">Tambah & Edit</th>
+                            <th scope="col">Skoring</th>
+                            <th scope="col">Buat Zoom</th>
                             <th scope="col">Link Zoom</th>
                         </tr>
                     </thead>
@@ -40,15 +41,19 @@
                             </td>                     
                             <td>
                                 <h5>
-                                <a href='#' class='btn btn-primary btn-circle' data-toggle='modal' data-target='#scoring' title='Tambah Scoring' onClick=\"AddDataScoring('" . $row->id_pengajuan . "','" . $row->name_debitur . "','" . $row->plafond . "','" . $row->status . "','" . $row->catatan . "')\"><i class='fas fa-plus-circle'></i></a>
                                 <a href='javascript:;' class='btn btn-danger btn-circle item_edit' title='Edit Scoring' data='" . $row->id_pengajuan . "'><i class='fas fa-edit'></i></a>
                                 </h5>
                             </td>	            
                             <td>
                                 <h5>
-                                <a href='#' target='_blank' class='btn btn-success btn-circle' title='Zoom Meetinga'><i class='fas fa-video'></i></a>
+                                <a href='#' class='btn btn-primary btn-circle' data-toggle='modal' data-target='#zoomModal' title='Zoom Meeting' onClick=\"AddDataZoom('" . $row->id_pengajuan . "')\"><i class='fas fa-video'></i></a>
                                 </h5>
-                            </td>     					
+                            </td>              
+                            <td>
+                                <h6>
+                                <a href='".$row->link_zoom."'>Click!</a>
+                                </h6>
+                            </td>                           					
                         </tr>";
                             }
                         ?>
@@ -58,16 +63,6 @@
         </div>
     </div>
 
-    <?php
-            echo "Meeting ID: ". $response->id;
-            echo "<br>";
-            echo "Topic: "	. $response->topic;
-            echo "<br>";
-            echo "Join URL: <a href='". $response->join_url ."'>Open URL</a>";
-            echo "<br>";
-            echo "Meeting Password: ". $response->password;
-    ?>
-    
     <!-- Modal skoring-->
     <div class="modal fade" id="scoring" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl">
@@ -1812,21 +1807,42 @@
         </div>
     </div>
 
+    
+    <!-- Modal zoom-->
+    <div class="modal fade" id="zoomModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5>Zoom</h5>
+                    <button id="close_pengajuan" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form id="zoom">
+                    <div class="modal-body">
+                        <div class="form-group row">
+                            <label for="waktu" class="col-sm-2 col-form-label">Waktu</label>
+                            <div class="col-sm-10">
+                                <input type="hidden" class="form-control" id="id_pengajuanz" name="id_pengajuanz">
+                                <input type="datetime-local" class="form-control" id="waktu" name="waktu"></input>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="btn_zoom" class="btn btn-primary">Simpan</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <script type="text/javascript">
-        function AddDataScoring(id_pengajuan,nama_debitur,plafon, status, catatan) {
-            document.getElementById('id_pengajuan').value = id_pengajuan;
-            document.getElementById('name_debitur').value = nama_debitur;
-            document.getElementById('plafon').value = plafon;
-            document.getElementById('status').value = status;
-            document.getElementById('catatan').value = catatan;
-        }
         
+        //skoring
         $('#close_pengajuan').on('click', function() {
                 document.getElementById("form_pengajuan").reset();
             })
         
-        
-        //skoring
         $(document).ready(function() {
 
 			//GET UPDATE skoring
@@ -1900,7 +1916,27 @@
 				return false;
 			});
 
+			//simpan zoom
+            $('#btn_zoom').on('click', function() {
+                var condition = $('#zoom').serialize();
+                $.ajax({
+                        url: "<?php echo base_url(); ?>analisa/zoom_meeting",
+                        type: "POST",
+                        data: condition,
+                        dataType: "JSON",
+                        success: function(data) {
+                            console.log(data)
+                        }
+                    }),
+				    document.getElementById("zoom").reset();    
+            })
+
         });
+
+        function AddDataZoom(id_pengajuan) {
+            document.getElementById('id_pengajuanz').value = id_pengajuan;
+        }
+
     </script>
     
 

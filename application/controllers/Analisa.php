@@ -18,21 +18,12 @@ class Analisa extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['email' =>
         $this->session->userdata('email')])->row_array();
         $data['query'] = $this->m_analisa->tampil_data();
-		$data_zoom = array();
-		$data_zoom['topic'] 		= 'Komite a/n';
-		$data_zoom['start_date'] = date("Y-m-d h:i:s", strtotime('tomorrow'));
-		$data_zoom['duration'] 	= 30;
-		$data_zoom['type'] 		= 2;
-		$data_zoom['password'] 	= "12345";
-		
-		$data['response'] = $this->m_analisa->createMeeting($data_zoom);
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);
         $this->load->view('kredit/analisa', $data);
         $this->load->view('templates/footer');
-
 		
     }
 
@@ -122,14 +113,10 @@ class Analisa extends CI_Controller
 
 	public function zoom_meeting()
 	{
-		$data_zoom = array();
-		$data_zoom['topic'] 		= 'Komite a/n';
-		$data_zoom['start_date'] = date("Y-m-d h:i:s", strtotime('tomorrow'));
-		$data_zoom['duration'] 	= 30;
-		$data_zoom['type'] 		= 2;
-		$data_zoom['password'] 	= "12345";
+		
+        $id_pengajuan = $this->input->post('id_pengajuanz');
 
-		$data['response'] = $this->m_analisa->createMeeting($data_zoom);
+		$this->m_analisa->createMeeting($id_pengajuan);
 	}
 
 }

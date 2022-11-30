@@ -195,35 +195,43 @@ class M_analisa extends CI_Model
 	}	
 	
 	//function to create meeting
-	public function createMeeting($data = array())
+	public function createMeeting($id_pengajuan)
 	{
-		$post_time  = $data['start_date'];
+		
+		$data_zoom = array();
+		$data_zoom['topic'] 		= 'Komite a/n';
+		$data_zoom['start_date'] 	= $this->input->post('waktu');
+		$data_zoom['duration'] 		= 60;
+		$data_zoom['type'] 			= 2;
+		$data_zoom['password'] 		= "12345";
+
+		$post_time  = $data_zoom['start_date'];
 		$start_time = gmdate("Y-m-d\TH:i:s", strtotime($post_time));
 
 		$createMeetingArray = array();
-		if (!empty($data['alternative_host_ids'])) {
-			if (count($data['alternative_host_ids']) > 1) {
-			$alternative_host_ids = implode(",", $data['alternative_host_ids']);
+		if (!empty($data_zoom['alternative_host_ids'])) {
+			if (count($data_zoom['alternative_host_ids']) > 1) {
+			$alternative_host_ids = implode(",", $data_zoom['alternative_host_ids']);
 			} else {
-			$alternative_host_ids = $data['alternative_host_ids'][0];
+			$alternative_host_ids = $data_zoom['alternative_host_ids'][0];
 			}
 		}
 
-		$createMeetingArray['topic']      = $data['topic'];
-		$createMeetingArray['agenda']     = !empty($data['agenda']) ? $data['agenda'] : "";
-		$createMeetingArray['type']       = !empty($data['type']) ? $data['type'] : 2; //Scheduled
+		$createMeetingArray['topic']      = $data_zoom['topic'];
+		$createMeetingArray['agenda']     = !empty($data_zoom['agenda']) ? $data_zoom['agenda'] : "";
+		$createMeetingArray['type']       = !empty($data_zoom['type']) ? $data_zoom['type'] : 2; //Scheduled
 		$createMeetingArray['start_time'] = $start_time;
 		$createMeetingArray['timezone']   = 'Asia/Jakarta';
-		$createMeetingArray['password']   = !empty($data['password']) ? $data['password'] : "";
-		$createMeetingArray['duration']   = !empty($data['duration']) ? $data['duration'] : 60;
+		$createMeetingArray['password']   = !empty($data_zoom['password']) ? $data_zoom['password'] : "";
+		$createMeetingArray['duration']   = !empty($data_zoom['duration']) ? $data_zoom['duration'] : 60;
 
 		$createMeetingArray['settings']   = array(
-            		'join_before_host'  => !empty($data['join_before_host']) ? true : false,
-            		'host_video'        => !empty($data['option_host_video']) ? true : false,
-            		'participant_video' => !empty($data['option_participants_video']) ? true : false,
-            		'mute_upon_entry'   => !empty($data['option_mute_participants']) ? true : false,
-            		'enforce_login'     => !empty($data['option_enforce_login']) ? true : false,
-            		'auto_recording'    => !empty($data['option_auto_recording']) ? $data['option_auto_recording'] : "none",
+            		'join_before_host'  => !empty($data_zoom['join_before_host']) ? true : false,
+            		'host_video'        => !empty($data_zoom['option_host_video']) ? true : false,
+            		'participant_video' => !empty($data_zoom['option_participants_video']) ? true : false,
+            		'mute_upon_entry'   => !empty($data_zoom['option_mute_participants']) ? true : false,
+            		'enforce_login'     => !empty($data_zoom['option_enforce_login']) ? true : false,
+            		'auto_recording'    => !empty($data_zoom['option_auto_recording']) ? $data_zoom['option_auto_recording'] : "none",
             		'alternative_hosts' => isset($alternative_host_ids) ? $alternative_host_ids : ""
         	);
 
@@ -231,7 +239,7 @@ class M_analisa extends CI_Model
 	}	
 	
 	//function to send request
-	protected function sendRequest($data)
+	protected function sendRequest($data_zoom)
 	{
 		//Enter_Your_Email
 		$request_url = "https://api.zoom.us/v2/users/test.app.eka@gmail.com/meetings";
@@ -242,7 +250,7 @@ class M_analisa extends CI_Model
 			"Accept: application/json",
 		);
 		
-		$postFields = json_encode($data);
+		$postFields = json_encode($data_zoom);
 		
 			$ch = curl_init();
 			curl_setopt_array($ch, array(
@@ -261,9 +269,21 @@ class M_analisa extends CI_Model
 			$err = curl_error($ch);
 			curl_close($ch);
 			if (!$response) {
-					return $err;
+				return $err;
 		}
-			return json_decode($response);
+//
+			$id_pengajuan    = $this->input->post('id_pengajuanz');
+			$link     = json_decode($response)->join_url;
+			$waktu	= $data_zoom['start_time'];
+
+			$data = array(
+				'link_zoom'    => $link,
+				'waktu_zoom'		=> $waktu
+			);
+			
+			$this->db->where('id_pengajuan', $id_pengajuan);
+			$this->db->update('pengajuan', $data,);
+//
 	}
 
 }
