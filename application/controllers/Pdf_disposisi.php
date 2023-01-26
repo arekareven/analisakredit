@@ -217,14 +217,22 @@ class Pdf_disposisi extends CI_Controller
 			$name = $data->name;
 		}
 
+		//----Tanda tangan digital----
+		//$lokasi_ttd_kabag = "assets/ttd/test.png";
+		//$lokasi_ttd_kcu = "assets/ttd/ttd-hasan.png";
+		
 		$pdf = new FPDF('P', 'mm', 'A4');
+		
 		$pdf->SetAutoPageBreak(false);
 		// membuat halaman baru
 		$pdf->AddPage();
 		// margin
 		$pdf->SetMargins(10, 10, 10);
-
 		$pdf->SetFont('Times', 'B', 12);
+
+		//$ttd_kabag = $pdf->Image($lokasi_ttd_kabag, 130, 105, 70);
+		//$ttd_kcu = $pdf->Image($lokasi_ttd_kcu, 130, 105, 70);
+
 		$pdf->Cell(79, 5.5, 'Lembar Disposisi', 0, 1, '');
 		//Line($x,$y,$width,$height,$style)
 		$pdf->Rect(10,15,190,38);
@@ -282,7 +290,7 @@ class Pdf_disposisi extends CI_Controller
 		$pdf->Cell(10, 4, '......................................................................................................................................................................', 0, 1, '');
 		$pdf->Cell(130, 2, '', 0, 0, '');
 		$pdf->Cell(10, 5, 'Kabag Kredit & Marketing', 0, 1, '');
-		$pdf->Cell(140, 15, '', 0, 1, '');
+		$pdf->Cell(140, 15, '', 0, 1, ''); //$ttd_kabag
 		$pdf->Cell(140, 2, '', 0, 0, '');
 		$pdf->SetFont('Times', 'B', 12);
 		$pdf->Cell(30, 0, 'Sonny Wahyu Sampurno', 0, 1, 'C');
@@ -296,7 +304,7 @@ class Pdf_disposisi extends CI_Controller
 		$pdf->Cell(10, 4, '......................................................................................................................................................................', 0, 1, '');
 		$pdf->Cell(135, 2, '', 0, 0, '');
 		$pdf->Cell(10, 5, 'Kepala Cabang Utama', 0, 1, '');
-		$pdf->Cell(140, 15, '', 0, 1, '');
+		$pdf->Cell(140, 15, '', 0, 1, ''); //$ttd_kcu
 		$pdf->Cell(140, 2, '', 0, 0, '');
 		$pdf->SetFont('Times', 'B', 12);
 		$pdf->Cell(30, 0, 'Rian Dian Raga, S.Pd', 0, 1, 'C');

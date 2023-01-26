@@ -15,45 +15,53 @@
                         <tr>
                             <th scope="col">Nama AO</th>
                             <th scope="col">Nama Debitur</th>
-                            <th scope="col">Plafond</th>
                             <th scope="col">Status</th>
-                            <th scope="col">Lihat</th>
+                            <!--<th scope="col">Plafond</th>
+                            <th scope="col">Lihat</th>-->
+                            <!--<th scope="col">Zoom</th>-->
+                            <th scope="col">Zoom</th>
                             <th scope="col">Skoring</th>
-                            <th scope="col">Buat Zoom</th>
-                            <th scope="col">Link Zoom</th>
                         </tr>
                     </thead>
                     <tbody id="show_data">
                         <?php
                         foreach ($query->result() as $row) {//ambil data dari DB latar_belakang, file 
+                        if (!isset($row->waktu_zoom)){
+                            $waktuZoom = 'Belum Ada';
+                        }else{
+                            $waktuZoom = date('d-m-Y H:i',strtotime($row->waktu_zoom));
+                        }
     
                         echo 
                         "<tr>
                             <td>" . $row->nama_ao . "</td>
-                            <td>" . $row->name_debitur . "</td>                     
-                            <td>" .number_format($row->plafond) . "</td>                     
-                            <td>".$row->status."</td>                     
+                            <td>
+                                <a href='pdf_all?id_lb=".$row->id_lb."' target='_blank'>". $row->name_debitur ."</a>
+                            </td>                     
+                            <td>
+                                <a href='pdf_scoring?id_lb=".$row->id_lb."' target='_blank'>".$row->status ."</a>
+                            </td>                  
+                            <!--<td>" .number_format($row->plafond) . "</td>              
                             <td>
                                 <h5>
                                 <a href='pdf_all?id_lb=".$row->id_lb."' target='_blank' class='btn btn-success btn-circle' title='Hasil Analisa'><i class='fas fa-eye'></i></a>
                                 <a href='pdf_scoring?id_lb=".$row->id_lb."' target='_blank' class='btn btn-warning btn-circle' title='Hasil Scoring'><i class='far fa-clipboard'></i></a>
                                 </h5>
-                            </td>                     
+                            </td>     
+                            -->                
                             <td>
-                                <h5>
-                                <a href='javascript:;' class='btn btn-danger btn-circle item_edit' title='Edit Scoring' data='" . $row->id_pengajuan . "'><i class='fas fa-edit'></i></a>
-                                </h5>
-                            </td>	            
+                                <a href='".$row->link_zoom."' target='_blank'>".$waktuZoom."</a>
+                            </td>	      
+                            <!--       
                             <td>
-                                <h5>
-                                <a href='#' class='btn btn-primary btn-circle' data-toggle='modal' data-target='#zoomModal' title='Zoom Meeting' onClick=\"AddDataZoom('" . $row->id_pengajuan . "')\"><i class='fas fa-video'></i></a>
-                                </h5>
-                            </td>              
+                            <h6>
+                                <a href='".$row->link_zoom."' target='_blank'>Meeting</a>
+                            </h6>
+                            </td>   
+                            --> 
                             <td>
-                                <h6>
-                                <a href='".$row->link_zoom."'>Click!</a>
-                                </h6>
-                            </td>                           					
+                                <a href='javascript:;' class='btn btn-warning btn-circle item_edit' title='Edit Scoring' data='" . $row->id_pengajuan . "'><i class='fas fa-edit'></i></a>
+                            </td>                        					
                         </tr>";
                             }
                         ?>
@@ -1807,34 +1815,6 @@
         </div>
     </div>
 
-    
-    <!-- Modal zoom-->
-    <div class="modal fade" id="zoomModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5>Zoom</h5>
-                    <button id="close_pengajuan" type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <form id="zoom">
-                    <div class="modal-body">
-                        <div class="form-group row">
-                            <label for="waktu" class="col-sm-2 col-form-label">Waktu</label>
-                            <div class="col-sm-10">
-                                <input type="hidden" class="form-control" id="id_pengajuanz" name="id_pengajuanz">
-                                <input type="datetime-local" class="form-control" id="waktu" name="waktu"></input>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" id="btn_zoom" class="btn btn-primary">Simpan</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
 
     <script type="text/javascript">
         
@@ -1911,31 +1891,13 @@
                             $('[name="ekoG_nilai"]').val(data.ekoG_nilai);
                             $('[name="jumlah_cond"]').val(data.jumlah_cond);
 						});
+						$('#scoring').modal('hide');
 					}
 				});
 				return false;
 			});
 
-			//simpan zoom
-            $('#btn_zoom').on('click', function() {
-                var condition = $('#zoom').serialize();
-                $.ajax({
-                        url: "<?php echo base_url(); ?>analisa/zoom_meeting",
-                        type: "POST",
-                        data: condition,
-                        dataType: "JSON",
-                        success: function(data) {
-                            console.log(data)
-                        }
-                    }),
-				    document.getElementById("zoom").reset();    
-            })
-
         });
-
-        function AddDataZoom(id_pengajuan) {
-            document.getElementById('id_pengajuanz').value = id_pengajuan;
-        }
 
     </script>
     

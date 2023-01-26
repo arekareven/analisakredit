@@ -14,7 +14,7 @@ class Analisa extends CI_Controller
 
     public function index()
     {
-        $data['title'] = 'Analisa';
+        $data['title'] = 'Analis';
         $data['user'] = $this->db->get_where('user', ['email' =>
         $this->session->userdata('email')])->row_array();
         $data['query'] = $this->m_analisa->tampil_data();
@@ -100,7 +100,7 @@ class Analisa extends CI_Controller
 		$kebP_nilai     = $this->input->post('kebP_nilai');
 		$ekoG_nilai     = $this->input->post('ekoG_nilai');
 		$jumlah_cond	     = $kebP_nilai+$ekoG_nilai;		
-		$score		= $jumlah+$jumlah_capa+$jumlah_capi+$jumlah_coll+$jumlah_cond;
+		$score		= ($jumlah * 0.2)+($jumlah_capa * 0.3)+($jumlah_capi * 0.2)+($jumlah_coll * 0.2)+($jumlah_cond * 0.1);
 		if($score<=17){
 		$status= "Tidak layak";
 		}if($score > 17 && $score <=34){

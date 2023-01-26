@@ -137,7 +137,7 @@ class Kredit extends CI_Controller
 	public function to_rp()
 	{
 		$id_lb = $_GET['id_lb'];
-		redirect('test?id_lb=' . $id_lb);
+		redirect('main?id_lb=' . $id_lb);
 	}
 
 	public function next()

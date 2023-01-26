@@ -195,7 +195,7 @@
                             <select class="form-control" aria-label="Default select example" id="tujuan_permohonan" name="tujuan_permohonan">
                                 <option value="Modal Kerja">Modal Kerja</option>
                                 <option value="Investasi">Investasi</option>
-                                <option value="Konsumsi">Konsumsi</option>
+                                <option value="Konsumtif">Konsumtif</option>
                             </select>
                         </div>
                         <div class="col-md-12 mb-5">
@@ -446,7 +446,7 @@
 								<select class="form-control" aria-label="Default select example" id="tujuan_permohonan" name="tujuan_permohonan">
 									<option value="Modal Kerja">Modal Kerja</option>
 									<option value="Investasi">Investasi</option>
-									<option value="Konsumsi">Konsumsi</option>
+									<option value="Konsumtif">Konsumtif</option>
 								</select>
 							</div>
 							<div class="col-md-12 mb-5">

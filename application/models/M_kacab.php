@@ -14,7 +14,7 @@ use \Firebase\JWT\JWT;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-class M_kabag extends CI_Model
+class M_kacab extends CI_Model
 {
 
     public function __construct()
@@ -26,11 +26,7 @@ class M_kabag extends CI_Model
 
     public function tampil_data()
     {
-		
-		$data = $this->db->get_where('user', ['email' =>
-        $this->session->userdata('email')])->row_array();
-        $kantor = $data['kantor'];
-        return $this->db->query("SELECT * FROM pengajuan WHERE kantor='$kantor' AND `status`='Layak'");
+        return $this->db->query("SELECT * FROM pengajuan WHERE `status`='Layak'");
         /*
         return $this->db->query("SELECT * FROM analisis WHERE nama='$a' AND status='Ditinjau'");
         */

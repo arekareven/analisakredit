@@ -104,13 +104,13 @@ class M_collateral extends CI_Model
 		return $hasil;
 	}
 
-	public function update_colken($id_col, $roda, $nopol, $nama_stnk, $alamat, $type, $jenis, $tahun, $milik, $warna, $silinder, $no_rangka, $no_mesin, $no_bpkb, $taksiran, $nl, $usulan)
+	public function update_colken($id_col, $roda, $nopol, $nama_stnk, $alamat, $type, $jenis, $tahun, $warna, $silinder, $no_rangka, $no_mesin, $no_bpkb, $milik, $taksiran, $nl, $usulan)
 	{
-		$hasil = $this->db->query("UPDATE collateral SET roda='$roda',nopol='$nopol',
-                                                    nama_stnk='$nama_stnk',alamat='$alamat',`type`='$type',jenis='$jenis',
-                                                    tahun='$tahun',milik='$milik',warna='$warna',
-                                                    silinder='$silinder',no_rangka='$no_rangka',no_mesin='$no_mesin',
-                                                    no_bpkb='$no_bpkb',taksiran='$taksiran',nl='$nl', usulan='$usulan'
+		$hasil = $this->db->query("UPDATE collateral SET roda='$roda', nopol='$nopol',
+                                                    nama_stnk='$nama_stnk', alamat='$alamat', `type`='$type', jenis='$jenis',
+                                                    tahun='$tahun', warna='$warna',
+                                                    silinder='$silinder', no_rangka='$no_rangka', no_mesin='$no_mesin',
+                                                    no_bpkb='$no_bpkb', milik='$milik', taksiran='$taksiran', nl='$nl', usulan='$usulan'
                                                     WHERE id_col='$id_col'");
 		return $hasil;
 	}

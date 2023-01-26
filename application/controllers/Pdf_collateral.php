@@ -49,7 +49,7 @@ class Pdf_collateral extends CI_Controller
             $pdf->Cell(0, 5.5, $data->nama, 0, 1);
             $pdf->Cell(49, 5.5, 'Alamat Pemilik', 0, 0, '');
             $pdf->Cell(5, 5.5, ':', 0, 0, '');
-            $pdf->Cell(0, 5.5, $data->alamat, 0, 1);
+            $pdf->MultiCell(0, 5.5, $data->alamat, 0, 1);
             $pdf->Cell(49, 5.5, 'No. SHM', 0, 0, '');
             $pdf->Cell(5, 5.5, ':', 0, 0, '');
             $pdf->Cell(0, 5.5, $data->no_shm, 0, 1);
@@ -137,7 +137,7 @@ class Pdf_collateral extends CI_Controller
             $pdf->Cell(0, 5.5, $data->nama_stnk, 0, 1);
             $pdf->Cell(49, 5.5, 'Alamat', 0, 0, '');
             $pdf->Cell(5, 5.5, ':', 0, 0, '');
-            $pdf->Cell(0, 5.5, $data->alamat, 0, 1);
+            $pdf->MultiCell(0, 5.5, $data->alamat, 0, 1);
             $pdf->Cell(49, 5.5, 'Merk / Type', 0, 0, '');
             $pdf->Cell(5, 5.5, ':', 0, 0, '');
             $pdf->Cell(0, 5.5, $data->type, 0, 1);

@@ -97,7 +97,7 @@
                                                 <option value="<?php echo $row->tujuan_permohonan; ?>"><?php echo $row->tujuan_permohonan; ?></option>
                                                 <option value="Modal Kerja">Modal Kerja</option>
                                                 <option value="Investasi">Investasi</option>
-                                                <option value="Konsumsi">Konsumsi</option>
+                                                <option value="Konsumtif">Konsumtif</option>
                                             </select>
                                         </div>
                                         <div class="col-md-12 mb-5">

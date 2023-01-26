@@ -1523,6 +1523,7 @@
                                                 ?>
                                             </select>	
 											<input type="hidden" class="form-control" id="nama_ao" name="nama_ao" value="<?= $user['name']; ?>">
+											<input type="hidden" class="form-control" id="kantor" name="kantor" value="<?= $user['kantor']; ?>">
 											<?php
 												foreach ($pengajuan->result() as $row) {
 													echo "<input type='hidden' class='form-control' id='id_lb' name='id_lb' value='$row->id_lb'>";
@@ -1544,7 +1545,7 @@
 										<tr>
 											<th scope="col">Analis</th>
 											<th scope="col">Status</th>
-											<th scope="col">Catatan</th>
+											<th scope="col">Link Zoom</th>
 										</tr>
 									</thead>
 									<tbody id="show_data_pengajuan">
@@ -3729,7 +3730,7 @@
 			$('#btn_edit_colta').on('click', function() {
 				var id_col2 = $('#id_col22').val();
 				var id_lb = $('#id_lb2').val();
-				var jenis = $('#jenis2').val();
+				var jenis = $('#jenis_collt').val();
 				var nama = $('#nama2').val();
 				var alamat = $('#alamat2').val();
 				var no_shm = $('#no_shm2').val();
@@ -3913,19 +3914,19 @@
 				var roda = $('#roda2').val();
 				var nopol = $('#nopol2').val();
 				var nama_stnk = $('#nama_stnk2').val();
-				var alamat = $('#alamat2').val();
+				var alamat = $('#alamat2_colken').val();
 				var type = $('#type2').val();
-				var jenis = $('#jenis2').val();
+				var jenis = $('#jenis2_colken').val();
 				var tahun = $('#tahun2').val();
 				var warna = $('#warna2').val();
 				var silinder = $('#silinder2').val();
 				var no_rangka = $('#no_rangka2').val();
 				var no_mesin = $('#no_mesin2').val();
 				var no_bpkb = $('#no_bpkb2').val();
-				var milik = $('#milik2').val();
+				var milik = $('#milik2_colken').val();
 				var taksiran = $('#taksiran2').val();
 				var nl = $('#nl2').val();
-				var usulan = $('#usulan2').val();
+				var usulan = $('#usulan2_colken').val();
 				$.ajax({
 					type: "POST",
 					url: "<?php echo base_url('collateral/update_colken') ?>",
@@ -4329,11 +4330,17 @@
                     success: function(data) {
                         var html = '';
                         var i;
-                        for (i = 0; i < data.length; i++) {							
+                        for (i = 0; i < data.length; i++) {	
+							if (data[i].waktu_zoom=!null){
+                            	$waktuZoom = "Belum Ada";
+							}else{
+								$waktuZoom = new Date(data[i].waktu_zoom);
+							}
+							$test = "sscs";		
                             html += '<tr>' +
                                 '<td>' + data[i].nama_analis + '</td>' +
                                 '<td>' + data[i].status + '</td>' +
-                                '<td>' + data[i].catatan + '</td>' +
+                                '<td><a href=' + data[i].link_zoom + ' target="_blank">' + $waktuZoom + '</a></td>' +
                                 '</tr>';
                         }
                         $('#show_data_pengajuan').html(html);
@@ -4718,7 +4725,7 @@
 							<select class="form-control" aria-label="Default select example" id="tujuan_permohonan" name="tujuan_permohonan">
 								<option value="Modal Kerja">Modal Kerja</option>
 								<option value="Investasi">Investasi</option>
-								<option value="Konsumsi">Konsumsi</option>
+								<option value="Konsumtif">Konsumtif</option>
 							</select>
 						</div>
 						<div class="col-md-12 mb-5">
@@ -6213,7 +6220,7 @@
 								<label for="jenis" class="form-label">Jenis</label>
 								<input type="hidden" class="form-control" id="id_col22" name="id_col2">
 								<input type="hidden" class="form-control" id="id_lb2" name="id_lb">
-								<input type="text" class="form-control" id="jenis2" name="jenis">
+								<input type="text" class="form-control" id="jenis_collt" name="jenis">
 							</div>
 							<div class="col-md-4 mb-4">
 								<label for="nama" class="form-label">Nama Pemilik</label>
@@ -6393,7 +6400,7 @@
 							</div>
 							<div class="col-md-4 mb-4">
 								<label for="jenis" class="form-label">Jenis / Model</label>
-								<input type="text" class="form-control" id="jenis2" name="jenis">
+								<input type="text" class="form-control" id="jenis2_colken" name="jenis">
 							</div>
 							<div class="col-md-4 mb-4">
 								<label for="warna" class="form-label">Warna</label>
@@ -6411,16 +6418,16 @@
 							</div>
 							<div class="col-md-4 mb-4">
 								<label for="milik" class="form-label">Hak Milik</label>
-								<input type="text" class="form-control" id="milik2" name="milik">
+								<input type="text" class="form-control" id="milik2_colken" name="milik">
 							</div>
 						</div>
 						<div class="col-md-12 mb-4">
 							<label for="alamat" class="form-label">Alamat Pemilik</label>
-							<textarea class="form-control" id="alamat2" name="alamat"></textarea>
+							<textarea class="form-control" id="alamat2_colken" name="alamat"></textarea>
 						</div>
 						<div class="col-md-12 mb-4">
 							<label for="kondisi" class="form-label">Usulan</label>
-							<textarea class="form-control" id="usulan2" name="usulan"></textarea>
+							<textarea class="form-control" id="usulan2_colken" name="usulan"></textarea>
 						</div>
 					</div>
 					<div class="modal-footer">

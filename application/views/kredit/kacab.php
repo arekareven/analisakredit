@@ -15,47 +15,39 @@
                         <tr>
                             <th scope="col">Nama AO</th>
                             <th scope="col">Nama Debitur</th>
-                            <th scope="col">Status</th>
-                            <!--<th scope="col">Plafond</th>
-                            <th scope="col">Lihat</th>-->
-                            <!--<th scope="col">Zoom</th>-->
-                            <th scope="col">Zoom</th>
+                            <th scope="col">Plafond</th>
+                            <th scope="col">Lihat</th>
                             <th scope="col">Buat Zoom</th>
+                            <th scope="col">Zoom</th>
+                            <th scope="col">Jadwal</th>
                         </tr>
                     </thead>
                     <tbody id="show_data">
                         <?php
                         foreach ($query->result() as $row) {//ambil data dari DB pengajuan 
-                        if (!isset($row->waktu_zoom)){
-                            $waktuZoom = 'Belum Ada';
-                        }else{
-                            $waktuZoom = date('d-m-Y H:i',strtotime($row->waktu_zoom));
-                        }
-                        
+    
                         echo 
                         "<tr>
                             <td>" . $row->nama_ao . "</td>
-                            <td>
-                                <a href='pdf_all?id_lb=".$row->id_lb."' target='_blank'>" . $row->name_debitur . "</a>
-                            </td> 
-                            <!--                    
-                            <td>" .number_format($row->plafond) . "</td>    
+                            <td>" . $row->name_debitur . "</td>                     
+                            <td>" .number_format($row->plafond) . "</td>                        
                             <td>
                                 <h5>
                                 <a href='pdf_all?id_lb=".$row->id_lb."' target='_blank' class='btn btn-success btn-circle' title='Hasil Analisa'><i class='fas fa-eye'></i></a>
                                 <a href='pdf_scoring?id_lb=".$row->id_lb."' target='_blank' class='btn btn-warning btn-circle' title='Hasil Scoring'><i class='far fa-clipboard'></i></a>
                                 </h5>
-                            </td>     
-                            -->            
+                            </td>                 
                             <td>
-                                <a href='pdf_scoring?id_lb=".$row->id_lb."' target='_blank'>" . $row->status . "</a>
+                                <h5>
+                                <a href='#' class='btn btn-primary btn-circle' data-toggle='modal' data-target='#zoomModal' title='Zoom Meeting' onClick=\"AddDataZoom('" . $row->id_pengajuan . "','" . $row->id_lb . "')\"><i class='fas fa-video'></i></a>
+                                </h5>
                             </td>              
                             <td>
-                                <a href='".$row->link_zoom."' target='_blank'>".$waktuZoom."</a>
+                                <h6>
+                                <a href='".$row->link_zoom."' target='_blank'>Meeting</a>
+                                </h6>
                             </td>           
-                            <td>
-                                <a href='#' class='btn btn-primary btn-circle' data-toggle='modal' data-target='#zoomModal' title='Zoom Meeting' onClick=\"AddDataZoom('" . $row->id_pengajuan . "','" . $row->id_lb . "')\"><i class='fas fa-video'></i></a>
-                            </td>                           					
+                            <td>".date('d-m-Y H:i',strtotime($row->waktu_zoom))."</td>                           					
                         </tr>";
                             }
                         ?>

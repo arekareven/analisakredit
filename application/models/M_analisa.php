@@ -23,6 +23,7 @@ class M_analisa extends CI_Model
 		$id_lb			= $this->input->post('id_lb');
 		$analis			= $this->input->post('analis');
 		$nama_ao		= $this->input->post('nama_ao');
+		$kantor		= $this->input->post('kantor');
 		$name_debitur		= $this->input->post('nama_debitur');
 		$plafond		= $this->input->post('plafond');
 		$status      		= $this->input->post('status');
@@ -32,6 +33,7 @@ class M_analisa extends CI_Model
 			'id_lb'	    	=> $id_lb,
 			'nama_analis'	    	=> $analis,
 			'nama_ao'	    => $nama_ao,
+			'kantor'	    => $kantor,
 			'name_debitur'	    => $name_debitur,
 			'plafond'	    => $plafond,
 			'status'	    	=> $status,
@@ -272,17 +274,17 @@ class M_analisa extends CI_Model
 				return $err;
 		}
 //
-			$id_pengajuan    = $this->input->post('id_pengajuanz');
-			$link     = json_decode($response)->join_url;
-			$waktu	= $data_zoom['start_time'];
+		$id_pengajuan    = $this->input->post('id_pengajuanz');
+		$link     = json_decode($response)->join_url;
+		$waktu	= $data_zoom['start_time'];
 
-			$data = array(
-				'link_zoom'    => $link,
-				'waktu_zoom'		=> $waktu
-			);
-			
-			$this->db->where('id_pengajuan', $id_pengajuan);
-			$this->db->update('pengajuan', $data,);
+		$data = array(
+			'link_zoom'    => $link,
+			'waktu_zoom'		=> $waktu
+		);
+		
+		$this->db->where('id_pengajuan', $id_pengajuan);
+		$this->db->update('pengajuan', $data,);
 //
 	}
 
