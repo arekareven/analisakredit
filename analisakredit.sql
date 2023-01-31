@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 30 Nov 2022 pada 03.57
+-- Waktu pembuatan: 31 Jan 2023 pada 09.21
 -- Versi server: 10.4.25-MariaDB
 -- Versi PHP: 7.4.30
 
@@ -40,6 +40,26 @@ INSERT INTO `analis` (`nama`, `email`) VALUES
 ('Mahfud Ansori', ''),
 ('Sonny Wahyu Sampurno', ''),
 ('Vera Fernanda', 'vera@gmail.com');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `anggota_komite`
+--
+
+CREATE TABLE `anggota_komite` (
+  `id_anggota_komite` tinyint(4) NOT NULL,
+  `nama_anggota_komite` varchar(50) NOT NULL,
+  `email_anggota_komite` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `anggota_komite`
+--
+
+INSERT INTO `anggota_komite` (`id_anggota_komite`, `nama_anggota_komite`, `email_anggota_komite`) VALUES
+(1, 'test', 'kadi.hore@gmail.com'),
+(2, 'test 2', 'renaalecuy@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -209,7 +229,7 @@ CREATE TABLE `capital_a` (
 --
 
 INSERT INTO `capital_a` (`id_capi`, `id_lb`, `kas`, `tabungan`, `deposito`, `piutang`, `peralatan`, `barang`, `barang2`, `barang3`, `sewa`, `lahan`, `gedung`, `operasional`, `lain`, `total_al`, `tanah`, `bangunan`, `kendaraan`, `inventaris`, `lain2`, `total_at`, `total_aset`, `hutang_jpk`, `hutang_jpg`, `hutang_lain`, `hutang_dagang`, `total_hutang`, `laba_rugi`, `modal`, `harta`, `total_kjb`) VALUES
-(34, 11, '0', '100000000', '0', '0', '20000000', '0', '0', '0', '0', '0', '0', '10000000', '5000000', '135000000', '150000000', '150000000', '150000000', '0', '5000000', '455000000', '590000000', '100000000', '0', '0', '0', '100000000', '95963310', '-60963310', '455000000', '590000000'),
+(34, 11, '0', '100000000', '0', '0', '20000000', '0', '0', '0', '0', '0', '0', '10000000', '5000000', '135000000', '150000000', '150000000', '150000000', '0', '5000000', '455000000', '590000000', '100000000', '0', '0', '0', '100000000', '95868999', '-60868999', '455000000', '590000000'),
 (40, 29, '2000000', '0', '0', '0', '0', '25000000', '0', '0', '0', '30000000', '0', '10000000', '35000000', '102000000', '400000000', '100000000', '20000000', '0', '0', '520000000', '622000000', '0', '0', '25000000', '0', '25000000', '415515899', '-338515899', '520000000', '622000000'),
 (41, 46, '5000000', '0', '0', '5000000', '8000000', '200000000', '0', '0', '0', '0', '340000000', '8000000', '0', '566000000', '0', '0', '120000000', '0', '0', '120000000', '686000000', '13500000', '0', '94902889', '0', '108402889', '1236500', '456360611', '120000000', '686000000'),
 (42, 47, '10000000', '0', '0', '35000000', '400000000', '0', '20000000', '0', '0', '0', '0', '385000000', '0', '850000000', '782000000', '150000000', '10000000', '0', '0', '942000000', '1792000000', '104795718', '0', '295254050', '0', '400049768', '9405000', '440545232', '942000000', '1792000000'),
@@ -430,7 +450,7 @@ CREATE TABLE `capital_cache` (
 INSERT INTO `capital_cache` (`id_capi`, `id_lb`, `kas`, `tabungan`, `deposito`, `piutang`, `peralatan`, `barang`, `barang2`, `barang3`, `sewa`, `lahan`, `gedung`, `operasional`, `lain`, `total_al`, `tanah`, `bangunan`, `kendaraan`, `inventaris`, `lain2`, `total_at`, `total_aset`, `hutang_jpk`, `hutang_jpg`, `hutang_lain`, `hutang_dagang`, `total_hutang`, `laba_rugi`, `modal`, `harta`, `total_kjb`, `total_angsuran`) VALUES
 (27, 29, '12130000', '0', '0', '0', '0', '145000000', '0', '0', '0', '30000000', '0', '10000000', '35000000', '232130000', '400000000', '100000000', '20000000', '0', '0', '520000000', '752130000', '0', '120000000', '25000000', '0', '145000000', '10130000', '77000000', '520000000', '752130000', '8200000'),
 (28, 25, '217475000', '30000000', '0', '1200000000', '100000000', '350000000', '150000000', '0', '0', '500000000', '300000000', '325000000', '100000000', '3272475000', '500000000', '700000000', '80000000', '0', '0', '1280000000', '4552475000', '150000000', '0', '999941289', '0', '1149941289', '17475000', '2105058711', '1280000000', '4552475000', '16125000'),
-(29, 11, '100000000', '100000000', '0', '0', '20000000', '0', '0', '0', '0', '0', '0', '10000000', '5000000', '235000000', '150000000', '150000000', '150000000', '0', '5000000', '455000000', '590000000', '0', '200000000', '0', '0', '200000000', '95963310', '-60963310', '455000000', '590000000', '0'),
+(29, 11, '100000000', '100000000', '0', '0', '20000000', '0', '0', '0', '0', '0', '0', '10000000', '5000000', '235000000', '150000000', '150000000', '150000000', '0', '5000000', '455000000', '590000000', '0', '199000000', '0', '0', '199000000', '96868999', '-60868999', '455000000', '590000000', '1000000'),
 (30, 46, '7332500', '2500000', '0', '5000000', '8000000', '224000000', '0', '0', '0', '0', '340000000', '8000000', '0', '594832500', '0', '0', '120000000', '0', '0', '120000000', '714832500', '40000000', '0', '94902889', '0', '134902889', '9542000', '457597111', '120000000', '714832500', '5309500'),
 (31, 47, '125655000', '0', '0', '35000000', '400000000', '0', '20000000', '0', '0', '0', '0', '385000000', '0', '965655000', '782000000', '150000000', '10000000', '0', '0', '942000000', '1907655000', '104795718', '300000000', '95254050', '0', '500049768', '54125000', '449950232', '942000000', '1907655000', '15220000'),
 (32, 48, '4597496', '5000000', '0', '0', '30000000', '10000000', '0', '0', '18426050', '0', '7500000', '0', '0', '75523546', '50000000', '150000000', '15000000', '0', '0', '215000000', '290523546', '0', '154830998', '0', '0', '154830998', '10500000', '-82904948', '215000000', '290523546', '4402504'),
@@ -483,11 +503,11 @@ INSERT INTO `capital_cache` (`id_capi`, `id_lb`, `kas`, `tabungan`, `deposito`, 
 (79, 107, '45000000', '50438808', '200000000', '350000000', '70000000', '250000000', '0', '0', '0', '450000000', '250000000', '150000000', '500000000', '2315438808', '1000000000', '900000000', '850000000', '25000000', '0', '2775000000', '5090438808', '550000000', '0', '584008820', '0', '1134008820', '167500000', '1017729988', '2775000000', '5090438808', '0'),
 (80, 109, '281675000', '15000000', '0', '57000000', '90000000', '60000000', '0', '0', '0', '150000000', '120000000', '70000000', '0', '843675000', '70000000', '250000000', '36000000', '0', '0', '356000000', '1199675000', '42400000', '446205070', '0', '0', '488605070', '23800000', '337744930', '356000000', '1199675000', '4375000'),
 (81, 110, '210000000', '0', '0', '0', '5000000', '15000000', '0', '0', '0', '250000000', '0', '70000000', '10000000', '560000000', '170000000', '300000000', '25000000', '0', '0', '495000000', '1055000000', '0', '200000000', '30734014', '0', '230734014', '21500000', '316940119', '495000000', '1055000000', '7174133'),
-(82, 111, '180000000', '0', '0', '0', '10000000', '0', '0', '0', '0', '0', '0', '800000000', '0', '990000000', '100000000', '150000000', '850000000', '0', '0', '1100000000', '2090000000', '175000000', '0', '0', '0', '175000000', '24000000', '804849000', '1100000000', '2090000000', '7049000'),
-(83, 112, '664577192', '15000000', '1000000', '10000000', '10000000', '30000000', '0', '0', '0', '400000000', '80000000', '100000000', '30000000', '1340577192', '200000000', '400000000', '50000000', '0', '20000000', '670000000', '2010577192', '0', '0', '-4301017', '220000000', '215698983', '28080000', '1110016226', '670000000', '2010577192', '10718017'),
-(84, 113, '340000000', '10000000', '0', '855000000', '250000000', '60000000', '200000000', '180000000', '0', '3000000000', '800000000', '700000000', '0', '6395000000', '1000000000', '1200000000', '450000000', '0', '0', '2650000000', '9045000000', '0', '300000000', '2752257947', '0', '3052257947', '315200000', '3116135879.1167', '2650000000', '9045000000', '84593826.116667'),
+(82, 111, '180000000', '0', '0', '0', '10000000', '0', '0', '0', '0', '0', '0', '800000000', '0', '990000000', '100000000', '150000000', '850000000', '0', '0', '1100000000', '1915000000', '175000000', '0', '0', '0', '175000000', '26000000', '795800000', '1100000000', '1915000000', '7049000'),
+(83, 112, '81439175', '15000000', '1000000', '10000000', '10000000', '30000000', '0', '0', '0', '400000000', '80000000', '100000000', '30000000', '757439175', '200000000', '400000000', '50000000', '0', '20000000', '670000000', '1376000000', '0', '0', '-4301017', '220000000', '215698983', '28080000', '522055318', '670000000', '1376000000', '10718017'),
+(84, 113, '340000000', '10000000', '0', '855000000', '250000000', '60000000', '200000000', '180000000', '0', '3000000000', '800000000', '700000000', '0', '6395000000', '1000000000', '1200000000', '450000000', '0', '0', '2650000000', '8745000000', '0', '300000000', '2667664120.8833', '0', '2967664120.8833', '315200000', '3122252540', '2650000000', '8745000000', '84593826.116667'),
 (85, 91, '2150000', '0', '0', '0', '17850000', '175000000', '0', '0', '0', '0', '700000000', '65000000', '0', '960000000', '0', '366500000', '15000000', '0', '0', '381500000', '1341500000', '0', '100000000', '416270503', '0', '516270503', '21175500', '437193497', '381500000', '1341500000', '12689500'),
-(86, 114, '254250000', '0', '0', '0', '75000000', '0', '0', '0', '0', '0', '0', '95000000', '0', '424250000', '250000000', '55000000', '50000000', '0', '0', '355000000', '779250000', '100000000', '165947732', '0', '0', '265947732', '20000000', '142552268', '355000000', '779250000', '750000');
+(86, 114, '110000000', '0', '0', '0', '75000000', '0', '0', '0', '0', '0', '0', '95000000', '0', '280000000', '250000000', '55000000', '50000000', '0', '0', '355000000', '535000000', '100000000', '165947732', '0', '0', '265947732', '20000000', '-2447732', '355000000', '535000000', '750000');
 
 -- --------------------------------------------------------
 
@@ -2082,7 +2102,9 @@ INSERT INTO `cashflow_a` (`id_cf`, `id_lb`, `kode`, `kode_perkiraan`, `nama_perk
 (2597, 11, 8, '2.1.2', 'Hutang Jangka Panjang', 'pelunasan', '100000000', 'K', 'hutang'),
 (2598, 11, 8, '2.1.1', 'Hutang Jangka Pendek', 'pelunasan', '100000000', 'D', 'hutang'),
 (2599, 11, 9, '2.1.2', 'Hutang Jangka Panjang', 'sisa masuk kas', '100000000', 'K', 'hutang'),
-(2600, 11, 9, '1.1.1', 'Kas', 'sisa masuk kas', '100000000', 'D', 'hutang');
+(2600, 11, 9, '1.1.1', 'Kas', 'sisa masuk kas', '100000000', 'D', 'hutang'),
+(2601, 11, 10, '1.1.1', 'Kas', 'angsuran`', '1000000', 'K', 'pengeluaran'),
+(2602, 11, 10, '5.5.5', 'Biaya Angsuran Hutang Jangka Panjang', 'angsuran`', '1000000', 'D', 'pengeluaran');
 
 -- --------------------------------------------------------
 
@@ -2175,8 +2197,6 @@ INSERT INTO `cashflow_b` (`id_cf`, `id_lb`, `kode`, `kode_perkiraan`, `nama_perk
 (154, 23, NULL, '5.5.4', 'Biaya Angsuran Hutang Lain', 'Angsuran BRI ( istri )', '1625000', 'D', 'pengeluaran'),
 (175, 11, 5, '4.1.2', 'Pendapatan Usaha (Omset) 2', 'Dari usaha dropship', '2530000', 'K', 'pendapatan'),
 (176, 11, 5, '1.1.1', 'Kas', 'Dari usaha dropship', '2530000', 'D', 'pendapatan'),
-(183, 11, 1, '4.1.1', 'Pendapatan Usaha (Omset) 1', 'Dari usaha Online Shop', '1230000', 'K', 'pendapatan'),
-(184, 11, 1, '1.1.1', 'Kas', 'Dari usaha Online Shop', '1230000', 'D', 'pendapatan'),
 (193, 11, 7, '1.1.1', 'Kas', 'Biaya beli laptop asus', '12000000', 'K', 'pengeluaran'),
 (194, 11, 7, '5.2.2', 'Biaya Pemeliharaan Usaha 2', 'Biaya beli laptop asus', '12000000', 'D', 'pengeluaran'),
 (197, 26, 1, '4.1.1', 'Pendapatan Usaha (Omset) 1', 'usaha dari bawang merah', '666000000', 'K', 'pendapatan'),
@@ -2269,12 +2289,6 @@ INSERT INTO `cashflow_b` (`id_cf`, `id_lb`, `kode`, `kode_perkiraan`, `nama_perk
 (394, 29, 6, '5.3.3', 'Biaya Operasional Usaha 3', 'test faktur', '503000', 'D', 'pengeluaran'),
 (395, 29, 8, '1.1.1', 'Kas', 'test faktur', '101', 'K', 'pengeluaran'),
 (396, 29, 8, '5.3.5', 'Biaya Lain - lain Usaha 3', 'test faktur', '101', 'D', 'pengeluaran'),
-(397, 11, 8, '4.1.3', 'Pendapatan Usaha (Omset) 3', 'Test Faktur', '403', 'K', 'pendapatan'),
-(398, 11, 8, '1.1.1', 'Kas', 'Test Faktur', '403', 'D', 'pendapatan'),
-(399, 11, 9, '4.1.4', 'Pendapatan Lain / Gaji', 'test faktur', '404', 'K', 'pendapatan'),
-(400, 11, 9, '1.1.1', 'Kas', 'test faktur', '404', 'D', 'pendapatan'),
-(401, 11, 10, '4.1.4', 'Pendapatan Lain / Gaji', 'test faktur', '503', 'K', 'pendapatan'),
-(402, 11, 10, '1.1.1', 'Kas', 'test faktur', '503', 'D', 'pendapatan'),
 (407, 42, 1, '4.1.1', 'Pendapatan Usaha (Omset) 1', 'Omzet penjualan', '80000000', 'K', 'pendapatan'),
 (408, 42, 1, '1.1.1', 'Kas', 'Omzet penjualan', '80000000', 'D', 'pendapatan'),
 (409, 42, 2, '1.1.1', 'Kas', 'Pembelian unit', '50000000', 'K', 'pengeluaran'),
@@ -2628,15 +2642,15 @@ INSERT INTO `cashflow_b` (`id_cf`, `id_lb`, `kode`, `kode_perkiraan`, `nama_perk
 (909, 64, 14, '1.1.1', 'Kas', 'Angsuran BFI 2', '4427012', 'K', 'pengeluaran'),
 (910, 64, 14, '5.5.4', 'Biaya Angsuran Hutang Lain', 'Angsuran BFI 2', '4427012', 'D', 'pengeluaran'),
 (911, 64, 15, '1.1.1', 'Kas', 'Angsuran BFI 3', '3545188', 'K', 'pengeluaran'),
-(912, 64, 15, '5.5.4', 'Biaya Angsuran Hutang Lain', 'Angsuran BFI 3', '3545188', 'D', 'pengeluaran');
-INSERT INTO `cashflow_b` (`id_cf`, `id_lb`, `kode`, `kode_perkiraan`, `nama_perkiraan`, `keterangan`, `saldo`, `kode_jenis`, `jenis`) VALUES
+(912, 64, 15, '5.5.4', 'Biaya Angsuran Hutang Lain', 'Angsuran BFI 3', '3545188', 'D', 'pengeluaran'),
 (913, 64, 9, '', '', 'Operasional usaha 1', '1000000', 'K', 'pengeluaran'),
 (914, 64, 9, '5.1.3', 'Biaya Operasional Usaha 1', 'Operasional usaha 1', '1000000', 'D', 'pengeluaran'),
 (915, 64, 4, '1.1.1', 'Kas', 'Pembelian barang dagangan', '100000000', 'K', 'pengeluaran'),
 (916, 64, 4, '5.1.1', 'Harga Pokok Pembelian 1', 'Pembelian barang dagangan', '100000000', 'D', 'pengeluaran'),
 (917, 64, 16, '1.1.1', 'Kas', 'Biaya hidup sehari hari', '1500000', 'K', 'pengeluaran'),
 (918, 64, 16, '5.4.1', 'Biaya Lain - lain (umum)', 'Biaya hidup sehari hari', '1500000', 'D', 'pengeluaran'),
-(919, 64, 17, '1.1.1', 'Kas', 'Pendidikan', '500000', 'K', 'pengeluaran'),
+(919, 64, 17, '1.1.1', 'Kas', 'Pendidikan', '500000', 'K', 'pengeluaran');
+INSERT INTO `cashflow_b` (`id_cf`, `id_lb`, `kode`, `kode_perkiraan`, `nama_perkiraan`, `keterangan`, `saldo`, `kode_jenis`, `jenis`) VALUES
 (920, 64, 17, '5.4.1', 'Biaya Lain - lain (umum)', 'Pendidikan', '500000', 'D', 'pengeluaran'),
 (921, 64, 18, '1.1.1', 'Kas', 'Biaya Listrik,Air,Telepon', '500000', 'K', 'pengeluaran'),
 (922, 64, 18, '5.4.1', 'Biaya Lain - lain (umum)', 'Biaya Listrik,Air,Telepon', '500000', 'D', 'pengeluaran'),
@@ -3144,14 +3158,14 @@ INSERT INTO `cashflow_b` (`id_cf`, `id_lb`, `kode`, `kode_perkiraan`, `nama_perk
 (1550, 94, 6, '5.3.1', 'Harga Pokok Pembelian Usaha 3', 'Pembelian bahan pokok Makanan dan minuman ', '6000000', 'D', 'pengeluaran'),
 (1551, 94, 7, '1.1.1', 'Kas', 'Oprasional', '1000000', 'K', 'pengeluaran'),
 (1552, 94, 7, '5.2.3', 'Biaya Operasional Usaha 2', 'Oprasional', '1000000', 'D', 'pengeluaran'),
-(1553, 94, 8, '1.1.1', 'Kas', 'Biaya hidup sehari hari', '1000000', 'K', 'pengeluaran');
-INSERT INTO `cashflow_b` (`id_cf`, `id_lb`, `kode`, `kode_perkiraan`, `nama_perkiraan`, `keterangan`, `saldo`, `kode_jenis`, `jenis`) VALUES
+(1553, 94, 8, '1.1.1', 'Kas', 'Biaya hidup sehari hari', '1000000', 'K', 'pengeluaran'),
 (1554, 94, 8, '5.4.1', 'Biaya Lain - lain (umum)', 'Biaya hidup sehari hari', '1000000', 'D', 'pengeluaran'),
 (1555, 94, 9, '1.1.1', 'Kas', 'Baiya Listrik,Air dan Telfon', '1000000', 'K', 'pengeluaran'),
 (1556, 94, 9, '5.4.1', 'Biaya Lain - lain (umum)', 'Baiya Listrik,Air dan Telfon', '1000000', 'D', 'pengeluaran'),
 (1557, 94, 10, '1.1.1', 'Kas', 'Biaya Umum Lainnya', '500000', 'K', 'pengeluaran'),
 (1558, 94, 10, '5.4.1', 'Biaya Lain - lain (umum)', 'Biaya Umum Lainnya', '500000', 'D', 'pengeluaran'),
-(1559, 94, 11, '1.1.1', 'Kas', 'Angsuran BRI', '2700000', 'K', 'pengeluaran'),
+(1559, 94, 11, '1.1.1', 'Kas', 'Angsuran BRI', '2700000', 'K', 'pengeluaran');
+INSERT INTO `cashflow_b` (`id_cf`, `id_lb`, `kode`, `kode_perkiraan`, `nama_perkiraan`, `keterangan`, `saldo`, `kode_jenis`, `jenis`) VALUES
 (1560, 94, 11, '5.5.4', 'Biaya Angsuran Hutang Lain', 'Angsuran BRI', '2700000', 'D', 'pengeluaran'),
 (1561, 94, 12, '1.1.1', 'Kas', 'Angsuran BPR Lestari', '1500000', 'K', 'pengeluaran'),
 (1562, 94, 12, '5.5.4', 'Biaya Angsuran Hutang Lain', 'Angsuran BPR Lestari', '1500000', 'D', 'pengeluaran'),
@@ -3502,7 +3516,15 @@ INSERT INTO `cashflow_b` (`id_cf`, `id_lb`, `kode`, `kode_perkiraan`, `nama_perk
 (2155, 114, 8, '1.1.1', 'Kas', 'biaya listrik,air, dan telpon', '500000', 'K', 'pengeluaran'),
 (2156, 114, 8, '5.4.1', 'Biaya Lain - lain (umum)', 'biaya listrik,air, dan telpon', '500000', 'D', 'pengeluaran'),
 (2157, 114, 9, '1.1.1', 'Kas', 'Angsuran FIF', '750000', 'K', 'pengeluaran'),
-(2158, 114, 9, '5.5.5', 'Biaya Angsuran Hutang Jangka Panjang', 'Angsuran FIF', '750000', 'D', 'pengeluaran');
+(2158, 114, 9, '5.5.5', 'Biaya Angsuran Hutang Jangka Panjang', 'Angsuran FIF', '750000', 'D', 'pengeluaran'),
+(2161, 11, 9, '4.1.4', 'Pendapatan Lain / Gaji', 'test faktur', '404000', 'K', 'pendapatan'),
+(2162, 11, 9, '1.1.1', 'Kas', 'test faktur', '404000', 'D', 'pendapatan'),
+(2163, 11, 10, '4.1.4', 'Pendapatan Lain / Gaji', 'test faktur', '503000', 'K', 'pendapatan'),
+(2164, 11, 10, '1.1.1', 'Kas', 'test faktur', '503000', 'D', 'pendapatan'),
+(2165, 11, 1, '4.1.1', 'Pendapatan Usaha (Omset) 1', 'Dari usaha Online Shop', '1229999', 'K', 'Tanah non Pertanian'),
+(2166, 11, 1, '1.1.1', 'Kas', 'Dari usaha Online Shop', '1229999', 'D', 'Tanah non Pertanian'),
+(2167, 11, 11, '1.1.1', 'Kas', 'angsuran', '1000000', 'K', 'pengeluaran'),
+(2168, 11, 11, '5.5.2', 'Biaya Angsuran Hutang Jangka Pendek', 'angsuran', '1000000', 'D', 'pengeluaran');
 
 -- --------------------------------------------------------
 
@@ -3554,7 +3576,6 @@ CREATE TABLE `collateral` (
 --
 
 INSERT INTO `collateral` (`id_col`, `id_lb`, `roda`, `nopol`, `nama_stnk`, `alamat`, `type`, `jenis`, `tahun`, `warna`, `silinder`, `no_rangka`, `no_mesin`, `no_bpkb`, `milik`, `taksiran`, `nl`, `usulan`) VALUES
-(2, 11, '4 (Empat)', 'xAE 7359 N', 'xYuliatii', 'Bali', 'Isuzu', 'Microbus', 2013, '2771 cc', 'MHCNKR', 'M055107', 'O-05769918', 'test', 'Putih Hijau Kuning', '0', '32000000', '-'),
 (3, 17, '6 (Enam)', 'AE 9573 NC', 'YAYUK EKAWATI', 'Desa Sawojajar RT 09 RW 02 Kecamatan Takeran Kabupaten Magetan', 'MITSUBISHI/DS FE74 4X2', 'TRUCK', 2008, 'KUNING', '3908', 'MHMFE74P48K023458', '4D34TDX7156', 'K06618732', 'Milik sendiri atas nama sendiri', '165000000', '150000000', 'Diusulkan = Rp 165.000.000,- x 73 % = Rp 120.450.000,-'),
 (4, 25, '4 (Empat)', 'AE 8870 UP', 'SUPRIYANTO', 'DESA TURU RT/RW 04/01 KECAMATAN PANEKAN KABUPATEN MAGETAN', 'MITSHUBISHI', 'TRUCK MOBIL BARANG', 2010, 'KUNING', '3900', 'MHMFE74P4AK036372', '4D34TF36676', 'G-3381211J', 'MILIK SENDIRI', '225000000', '157500000', ''),
 (5, 26, '4 (Empat)', 'ae 8870 up', 'supriyanto', 'DESA TURI RT 04/01 KEC PANEKAN KAB MAGETAN ', 'MITSUBISHI/FE74S4X2MT', 'TRUK MOBIL BARANG', 2010, 'KUNING', '3908', 'MKMFE74P4AK036372', '4D34TF36676', 'G 3381211J', 'MILIK SENDIRI', '225000000', '157500000', ''),
@@ -3579,7 +3600,8 @@ INSERT INTO `collateral` (`id_col`, `id_lb`, `roda`, `nopol`, `nama_stnk`, `alam
 (28, 101, '4 (Empat)', 'B-7037-now', 'PT.FAMILI TRANS TANGSEL', 'JL.CILENGGANGI RT 001 RW 001 KELURAHAN CILENGGANG KECAMATAN SERPONG TANGERANG SELATAN', 'HINO/RK8JSKA-MHJ/R260', 'MB/BUS', 2015, 'MOBIL KOMBINASI', '7684 CC', 'MJERK873KFJN17243', 'J08EUFJ70941', 'Q-01147907', 'MILIK SENDIRI/BELUM A/N SENDIRI', '985000000', '350000000', '0'),
 (35, 104, '6 (Enam)', 'AE 8061 UK', 'PT SATWIGA MUSTIKA NAGA', 'JL RAYA GENENG NO.100 KEC, GENENG. KAB NGAWI', 'HINO', 'TRUK CONCRETE TRONTON', 2016, 'PUTIH', '7684', 'MJEFM8JK1GJE10925', 'J08EUFJ75605', 'N-00137019', 'MILIK SENDIRI', '930000000', '700000000', ''),
 (37, 97, '4 (Empat)', 'AE 1097 RY', 'SUMARMI', 'Desa Kartoharjo RT 35 RW 09 Kec Kartoharjo Kab Magetan', 'DAIHATSU/F600RVGMDFJJ', 'MINIBUS', 2011, 'SILVER ETALIK', '989CC', 'MHKV1AA2JBK099553', 'DP43901', 'L 12517488', 'Milik sendiri', '75000000', '48000000', '-'),
-(38, 111, '4 (Empat)', 'K 1608 CB', 'KOPERASI TRANS MURIA UTAMA', 'Perum Sumber Indah 02B No.57 Rt 04 Rw 05 Tenggeles Kec, Mejobo', 'HINO RNBJSKA-SJJ/RN285', 'MB,BUS', 2015, 'HIJAU TOSCA KOMBINASI', '7684 CC', 'MJERNBJSKEJS12290', 'JOBEVTJ10958', 'P-01490527', 'Milik sendiri belum atas nama sendiri', '750000000', '400000000', '-');
+(38, 111, '4 (Empat)', 'K 1608 CB', 'KOPERASI TRANS MURIA UTAMA', 'Perum Sumber Indah 02B No.57 Rt 04 Rw 05 Tenggeles Kec, Mejobo', 'HINO RNBJSKA-SJJ/RN285', 'MB,BUS', 2015, 'HIJAU TOSCA KOMBINASI', '7684 CC', 'MJERNBJSKEJS12290', 'JOBEVTJ10958', 'P-01490527', 'Milik sendiri belum atas nama sendiri', '750000000', '400000000', '-'),
+(41, 11, '8 (Delapan)', 'H 454 N', 'Muhammad Hasan Kun', 'Ngawi ramah', 'KAWASAKI', 'STD NYL', 2024, 'HITAM HIJAU', '1200', 'R', 'M', 'B', 'Milik Sendiri a/n', '250000000', '12000000', '');
 
 -- --------------------------------------------------------
 
@@ -3615,7 +3637,7 @@ CREATE TABLE `collateral_tanah` (
 --
 
 INSERT INTO `collateral_tanah` (`id_col2`, `id_lb`, `jenis`, `nama`, `alamat`, `no_shm`, `lokasi`, `tgl_ukur`, `no_ukur`, `luas_t`, `luas_b`, `milik`, `fisik_jaminan`, `taksasi`, `usulan`, `harga_t`, `harga_b`, `harga_t2`, `harga_b2`, `ht`) VALUES
-(5, 11, 'Tanah non Pertanian', 'Giri Purnomo', 'Desa Soco RT 05 RW 02 Kec. Jogorogo Kab. Magetan', '2521', 'Desa Soco RT 05 RW 02 Kec. Jogorogo Kab. Magetan', '2011-06-09', '05/2011', '2270', '10', 'Milik sendiri', 'Sebidang tanah pertanian yang sudah dikeringkan terletak di pinggir jalan raya Jogorogo- Paron mempunyai nilai marketable yang baik. (proses balik nama ke calon debitur)', '60', '-', '10000', '11000', '12000', '13000', '500000000'),
+(5, 11, 'SHM', 'Giri Purnomo', 'Desa Soco RT 05 RW 02 Kec. Jogorogo Kab. Magetan', '2521', 'Desa Soco RT 05 RW 02 Kec. Jogorogo Kab. Magetan', '2011-06-09', '05/2011', '2270', '10', 'Milik sendiri', 'Sebidang tanah pertanian yang sudah dikeringkan terletak di pinggir jalan raya Jogorogo- Paron mempunyai nilai marketable yang baik. (proses balik nama ke calon debitur)', '60', '-', '10000', '11000', '12000', '13000', '500000000'),
 (10, 17, 'Tanah Pertanaian', 'Yayuk Ekawati', 'Desa Sawojajar RT 09 RW 02 Kecamatan Takeran Kabupaten Magetan', '00562', 'Desa Sawojajar, Kecamatan Takeran Kabupaten Magetan', '1987-05-01', '1445', '575', '0', 'Milik sendiri atas nama sendiri', 'Agunan sebidang tanah pertanian yang terletak dipinggir jalan desa akses jalan beraspal lebar 3 meter', '70', 'Diusulkan melebihi taksasi bank dengan perhitungan = Rp 184.000.000,- x 73% = Rp 134.320.000,- dengan pertimbangan karakter baik, usaha lancar, tanah produktif', '27000', '0', '320000', '0', '165000000'),
 (11, 22, 'Tanah perkarangan', 'supriyati', 'Desa Nguri RT01 RW 03, Kec.Lembeyan Kab.Magetan', '387', 'Desa Nguri,Lembeyan ,Magetan', '0000-00-00', '387/NGURI/2014', '733', '150', 'SUPRIYATI', 'Tanah pekarangan yang diatasnya berdiri bangunan tembok beratap genting yang dijadikan sebagai rumah tempat tinggal terletak dipinggir jalan desa berjarak 10 kilometer dari kecamatan dan 25 kilometer dari kabupaten terdapat akses  jalan aspal', '60', '-', '20000', '0', '142000', '1500000', '31000000'),
 (14, 29, '', 'khairudin', 'desa majasem rt 02 rw 06 kec. kendal kab. ngawi', '3631', 'desa majasem rt 02 rw 06 kec. kendal kab magetan', '2018-12-26', '03224/majasem/2018', '5391', '0', 'milik sendiriatas nama orang lain', 'sebidang tanah pertanian luas 5391 m2 yang saat ini ditanami padi ', '70', '-', '20000', '0', '50000', '0', '150000000'),
@@ -4083,12 +4105,14 @@ CREATE TABLE `pengajuan` (
   `id_pengajuan` int(11) NOT NULL,
   `nama_analis` varchar(50) NOT NULL,
   `nama_ao` varchar(50) NOT NULL,
+  `kantor` varchar(50) NOT NULL,
   `name_debitur` varchar(50) DEFAULT NULL,
   `plafond` varchar(50) DEFAULT NULL,
   `id_lb` int(11) NOT NULL,
   `catatan` text DEFAULT '-',
   `status` varchar(50) DEFAULT NULL,
-  `url_zoom` varchar(124) NOT NULL,
+  `link_zoom` varchar(200) NOT NULL,
+  `waktu_zoom` datetime DEFAULT NULL,
   `itk_nilai` tinyint(4) NOT NULL,
   `mu_nilai` tinyint(4) NOT NULL,
   `kd_nilai` tinyint(4) NOT NULL,
@@ -4137,9 +4161,9 @@ CREATE TABLE `pengajuan` (
 -- Dumping data untuk tabel `pengajuan`
 --
 
-INSERT INTO `pengajuan` (`id_pengajuan`, `nama_analis`, `nama_ao`, `name_debitur`, `plafond`, `id_lb`, `catatan`, `status`, `url_zoom`, `itk_nilai`, `mu_nilai`, `kd_nilai`, `kk_nilai`, `as_nilai`, `ak_nilai`, `t_nilai`, `hpt_nilai`, `tk_nilai`, `jumlah`, `pengUsa_nilai`, `admUsa_nilai`, `legal_nilai`, `tujUsa_nilai`, `tingPer_nilai`, `harPro_nilai`, `sisPem_nilai`, `sisDis_nilai`, `kemBb_nilai`, `carP_nilai`, `prosP_nilai`, `mesP_nilai`, `tenK_nilai`, `damSm_nilai`, `damEk_nilai`, `dampEma_nilai`, `damLi_nilai`, `kemBa_nilai`, `pemLa_nilai`, `jumlah_capa`, `sumDs_nilai`, `sumDk_nilai`, `sumDl_nilai`, `jumlah_capi`, `UsYd_nilai`, `serT_nilai`, `bpkb_nilai`, `market_nilai`, `jumlah_coll`, `kebP_nilai`, `ekoG_nilai`, `jumlah_cond`) VALUES
-(14, 'Vera Fernanda', 'Fatia Larasati', 'RANDY WIJAYA KUSUMA', '450000000', 11, '-', 'Layak', '', 2, 2, 2, 2, 2, 2, 2, 2, 2, 18, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 38, 2, 2, 2, 6, 2, 2, 2, 2, 8, 2, 2, 4),
-(15, 'Vera Fernanda', 'Aris', 'SUKERI', '550000000', 67, '', 'Layak', '', 5, 5, 5, 5, 5, 5, 5, 5, 5, 45, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 95, 5, 5, 5, 15, 5, 5, 5, 5, 20, 5, 5, 10);
+INSERT INTO `pengajuan` (`id_pengajuan`, `nama_analis`, `nama_ao`, `kantor`, `name_debitur`, `plafond`, `id_lb`, `catatan`, `status`, `link_zoom`, `waktu_zoom`, `itk_nilai`, `mu_nilai`, `kd_nilai`, `kk_nilai`, `as_nilai`, `ak_nilai`, `t_nilai`, `hpt_nilai`, `tk_nilai`, `jumlah`, `pengUsa_nilai`, `admUsa_nilai`, `legal_nilai`, `tujUsa_nilai`, `tingPer_nilai`, `harPro_nilai`, `sisPem_nilai`, `sisDis_nilai`, `kemBb_nilai`, `carP_nilai`, `prosP_nilai`, `mesP_nilai`, `tenK_nilai`, `damSm_nilai`, `damEk_nilai`, `dampEma_nilai`, `damLi_nilai`, `kemBa_nilai`, `pemLa_nilai`, `jumlah_capa`, `sumDs_nilai`, `sumDk_nilai`, `sumDl_nilai`, `jumlah_capi`, `UsYd_nilai`, `serT_nilai`, `bpkb_nilai`, `market_nilai`, `jumlah_coll`, `kebP_nilai`, `ekoG_nilai`, `jumlah_cond`) VALUES
+(15, 'Analis Ekadharma', 'Aris', 'KCU', 'SUKERI', '550000000', 67, '', 'Layak', 'https://us05web.zoom.us/j/89496733615?pwd=eEFFUkg1NExWNVpCa3BvbFdVMFFMUT09', '2022-12-08 11:30:00', 5, 5, 5, 5, 5, 5, 5, 5, 5, 45, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 95, 5, 5, 5, 15, 5, 5, 5, 5, 20, 5, 5, 10),
+(17, 'Analis Ekadharma', 'Fatia Larasati', 'KCU', 'RANDY WIJAYA KUSUMA', '450000000', 11, '', 'Layak dgn catatan', '', NULL, 2, 2, 2, 2, 2, 2, 2, 2, 2, 18, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 38, 2, 2, 2, 6, 2, 2, 2, 2, 8, 2, 2, 4);
 
 -- --------------------------------------------------------
 
@@ -4520,6 +4544,7 @@ CREATE TABLE `user` (
   `id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
   `email` varchar(128) NOT NULL,
+  `kantor` varchar(50) NOT NULL,
   `image` varchar(128) NOT NULL,
   `password` varchar(256) NOT NULL,
   `role_id` int(11) NOT NULL,
@@ -4531,65 +4556,66 @@ CREATE TABLE `user` (
 -- Dumping data untuk tabel `user`
 --
 
-INSERT INTO `user` (`id`, `name`, `email`, `image`, `password`, `role_id`, `is_active`, `date_created`) VALUES
-(5, 'Fatia Larasati', 'fatia@gmail.com', 'art-2436545__340.jpg', '$2y$10$iHy9BJuSIDxiVVs53HWea.CdVTWGxQVvjIn403kpBdfISGRWn.PUS', 2, 1, 1644812162),
-(6, 'hasantiro', 'admin@gmail.com', 'download.png', '$2y$10$6NxAuuzqcTQZwQVMhilsnOV0Mpm43owg7aPh4l.rs/i6OD7Kaf1Mu', 1, 1, 1644812241),
-(7, 'Vera Fernanda', 'vera@gmail.com', 'WhatsApp_Image_2022-03-03_at_20_50_06-removebg-preview.png', '$2y$10$bXYTFnU2i0r26LY9/zD4ReNI2a8dVV./nHC0g6Y0nwf95i7vp96Iy', 3, 1, 1646887061),
-(8, 'Reno Febrian', 'reno@gmail.com', 'default.jpg', '$2y$10$708AN740PJjWkPPMCKybm.7tsdt3vTi5WSkC9jRsPRwmjuepb2VMW', 4, 1, 1647315996),
-(9, 'Test', 'test@gmail.com', 'default.jpg', '$2y$10$OfDZBPorrEJ12sYTrMxGMu3T9hfG.KbDrahwm8fdDTIR7lwIK0LMC', 5, 1, 1648089117),
-(10, 'User1', 'user1@gmail.com', 'default.jpg', '$2y$10$9gs/E/aBKGtWHC2u3NEva.jtx8PyDifgMqOKl6UhV3NXREZjmBBmu', 2, 1, 1654236926),
-(11, 'Aris', 'arisanaaa82@gmail.com', 'default.jpg', '$2y$10$H/gXPCLBdzxO1kk4.yh3ieBKoGJNLVq5A9VDf.dumBo6EttOEazCi', 2, 1, 1654759518),
-(12, 'SRI HANDAJANI', 'handajanisri8@gmail.com', 'default.jpg', '$2y$10$TPjK3aVUSDpqegBQ/1jQQuZn3pg8DUdXxFjBgi.fbIqvj1zfFt.oa', 2, 1, 1654759611),
-(13, 'Bowo', 'arie29895@gmail.com', 'default.jpg', '$2y$10$.CQv1zCNGSw4J98vQztZH.JIFFFLjLlavHoLckMxmLEvuvz2qUFFK', 2, 1, 1654761390),
-(14, 'mahfut ansori', 'mahfutansori@gmail.com', 'default.jpg', '$2y$10$bW20nNgN1dn7dI0G5eDwaeA0AWBJESD8yHfY./unUFbhw.dvJinS2', 2, 1, 1654830559),
-(15, 'Fanny permana sujatmiko', 'permanafany94@gmail.com', 'default.jpg', '$2y$10$YnbIh5rsiZU1xpsmKwmI1OsJnkHDK/5G.GCZ7rZ.MpjmhA6amWZ0m', 2, 1, 1654830756),
-(16, 'Wanda Miftakhul Jannah', 'wmzzanna@gmail.com', 'default.jpg', '$2y$10$EeqFd8nufzEtHHoy0M7c.ukke.sgEdRtBSt1VWHl9t3t6pnrghQTO', 2, 1, 1654830834),
-(17, 'Kamal Hasan', 'kmlabuhsn@gmail.com', 'IMG_20220708_1121321.jpg', '$2y$10$Bqg6khK.JUDkzjmWwBqJKerTbYrR4zcEoLT/XdoBfygEDFeF/gllK', 2, 1, 1654830834),
-(18, 'RIAN DIAN RAGA', 'dianr857@gmail.com', 'default.jpg', '$2y$10$PqXAAWYKnghljFSZsUjDO.eP1kI//ApywG9KlxcX3af2p7E2XIenK', 2, 1, 1654831058),
-(19, 'Sony wahyu sampurno', 'sonymagetan72@gmail.com', 'default.jpg', '$2y$10$Gz0S0JgR1GnGcceC5bJn.utYzcUW7moRKd.axBxD/NheUXU9/w/q2', 2, 1, 1654831313),
-(20, 'Adi cahyono', 'cahyoadi0606@gmail.com', 'Screenshot_20220609-214812_One_UI_Home.jpg', '$2y$10$JkgXesLQZqezrJqczpsS5u1XqOwAHBaaHlHt9aBDpvnD6h5/nekUe', 2, 1, 1654831352),
-(21, 'Avidian Bintang Pamungkas', 'avidianski@gmail.com', '3328.jpg', '$2y$10$HqHJLA0zhpBITK7OmTEEkOOxkckE3gPHYQCPRW40VqnYCXTzYcpwy', 2, 1, 1654831399),
-(22, 'Taufik Dian Murseto', 'taufikdianmurseto97@gmail.com', 'default.jpg', '$2y$10$fPxT3r2VjfyLFcw/zwKRB.Rih4MxABHvyU8qjEfgvEKXUcU00qIXe', 2, 1, 1654833392),
-(23, 'kamis', 'testkamis@gmail.com', 'default.jpg', '$2y$10$gtx4GWHc4S9O8fG8fklicez5LzfO8mnSjzrSgYdpZ/VOLAbR23zlO', 2, 1, 1656558420),
-(24, 'CHANDRA DESTIAN PRABAYU', 'chandradestian97@gmail.com', 'default.jpg', '$2y$10$JC5k8EE9Al2wGV/VZUxTiulRCWe3GHtm2cEh3s4JANebRitJTS9d.', 2, 1, 1656560743),
-(25, 'hanif muslim alamsyah', 'hanifmuslim74@gmail.com', 'default.jpg', '$2y$10$dCrfCii80L1Smi3LR1nSPu2ngBzup5Zd6iUj9vPFOoCH3LV0rp9Fq', 2, 1, 1656560748),
-(26, 'KUN EKWAN JUNIANTO', 'kunekwan2106@gmail.com', 'default.jpg', '$2y$10$EcLqKBNeFXCLq0ywMcUB9usO0S.n9Mm4XpTLOr92psWALA4jkLbVy', 2, 1, 1656572670),
-(27, 'Wanda Miftakhul Jannah', 'wmz_zanna@yahoo.co.id', 'default.jpg', '$2y$10$jCEp3dbSffYBm/PYRzEIkOt97hv8lN8qtXNtoey1V7mLi9ev0upL2', 2, 1, 1657250075),
-(28, 'MUHAMMAD DWI HARDIANTO', 'dwihardianto93@gmail.com', 'IMG-20211105-WA0004.jpg', '$2y$10$Ly/OUGXTrQ.KYKSF1zy3vuO8LWz3uxo47C8lYcQyVyb/CjwpCa4qO', 2, 1, 1657250114),
-(29, 'Andika devi rismianto', 'andikadevir95@gmail.com', 'default.jpg', '$2y$10$LQV9BFdg7Ngrhef1weUufeVRmFHZuKfoM1MOGNQI6gduqoIYGIsHW', 2, 1, 1657250138),
-(30, 'Tino prayogo', 'Thinoprayoga03@gmail.com', 'default.jpg', '$2y$10$rpy1jP/Fam6cAfbhatip3O9NYPMAHK5cvf/Q8513sqe75EX1VT05O', 2, 1, 1657250143),
-(31, 'adhani alisyahuri', 'adhanialisyahuri414@gmail.com', 'default.jpg', '$2y$10$..Of58i84WP/AuwblwibiuLKerpZjkT1JeGc3X0ddZpWwLsCeeT52', 2, 1, 1657250151),
-(32, 'Bagus ari wibowo', 'Ario_w@gmail.com', 'default.jpg', '$2y$10$Q5QKRrYLkcoIz64YBDp1Me51NiBxyQDESMQs2tPm5FrR5cIrmtPeq', 2, 1, 1657250188),
-(33, 'DIDIK PURNOMO', 'Masdidik86@gmail.com', 'default.jpg', '$2y$10$BMTUlKNV5//AO/U69Q1WGeh2j1cRGRxE1Omw7tsGPw6XdOPylvPYq', 2, 1, 1657250245),
-(34, 'SETIYO WAHYU FITRIANTO', 'setiyowahyu120@gmail.com', 'default.jpg', '$2y$10$niuERB1kBdvklXySsYu9W.GTF/7fVdLKBHJotnUQBTnswkTnjLBye', 2, 1, 1657250448),
-(35, 'Bagus ari wibowo', 'Ario_81@g.mail.com', 'IMG_20210525_182439.jpg', '$2y$10$g6KlRnGvkw0SnCrtKGWTjexKA2GXoy9EEVMFSKVtW3TaImwVllyga', 2, 1, 1657250473),
-(36, 'Muhamad rois muchlisin', 'Muhamadrois0432@gmail.com', 'default.jpg', '$2y$10$2iGx.chYcLqpGa7x6jwJPeY3Y53veOQxdAO/rZ4/xs6EPcmtCeJoO', 2, 1, 1657251468),
-(37, 'Panji Dwi Febrianto', 'panjidwifebrianto4@gmail.com', 'IMG-20220701-WA0020.jpg', '$2y$10$brEHRH9sYzsQBKfLyGIaaOp4/8HMGVclDqNPRko6SJhJUQgiG1wJK', 2, 1, 1657251534),
-(38, 'Yoppi', 'Yoppi.febri.ramadan@gmail.com', 'default.jpg', '$2y$10$Mtr7H3c1hnGnnFCO9sQH4exUbBJGV1G/OL6M/9M.tRVacFhi21uBW', 2, 1, 1657251601),
-(39, 'Bijak', 'Bijakekadharma@gmail.com', 'IMG-20220605-WA0013.jpg', '$2y$10$YBkmHiBs48iLWXLipE3lMuYXmTvOmYS6jblOsekssemjl0vEw3t8C', 2, 1, 1657252139),
-(40, 'Basuki rahmat', 'basukihanoraga@gmail.com', 'default.jpg', '$2y$10$U5CrUHpvsfh/K9ZvkAZc.e2KNvskvUdEyVzKYdnAWwJ.tHrb5w6Ja', 2, 1, 1657253316),
-(41, 'Santojosep', 'santojosep99@gmail.com', 'default.jpg', '$2y$10$jSmcvvdFySVnSPGohpGwHuL9k8w24iT3c7QSe/9.Z.otxfmRrbqxa', 2, 1, 1657253326),
-(42, 'Aldi bagus septian', 'Chincoaldhy@gmail.com', 'default.jpg', '$2y$10$brN86EJ7G/btLXWgxtqLme.nfa6akjjcbtJxbqE5hql4Kmr4UvQ66', 2, 1, 1657253337),
-(43, 'Fajarbaskoro', 'Fajarbaskoro@gmail.com', 'default.jpg', '$2y$10$S2w2rwX0H0uSS8VSgvDILeum3FMpg2Yw6aaIgXK51ILzuoRobOfgC', 2, 1, 1657253415),
-(44, 'ASRUL ANGGRIAWAN AZIS', 'Eka.sandha@gmail.com', '_20210425_093547.JPG', '$2y$10$b7W4WwnhDWC4TPyRLemqc.VOeOzKv3FoShl5Xzz2iB5iZZQCjHBsu', 2, 1, 1657253702),
-(45, 'Danang windianto', 'danangwindianto55@gmail.com', 'default.jpg', '$2y$10$Tn8LKa648Lct2zJN/81uAucMJ42DCQEWQhYj37wcySS7euL.HD2o6', 2, 1, 1657253970),
-(47, 'Muhammad Hasan', 'hasan@gmail.com', '2021_10_05_18_27_IMG_8412.JPG', '$2y$10$3awaATJS4k60L6ycmQVmSO/aOB/GRlX8s9AlW/t9A29b.CBq2AqeK', 2, 1, 1657253985),
-(48, 'Suprapto', 'Supraptogandhi@gmail.com', 'default.jpg', '$2y$10$hPCBuAvDWnO5.5n4cg6sVuIqttt9ddoRaQh1Rj6rqP8sd0bzYbhGi', 2, 1, 1657253992),
-(49, 'Ridho alex kuncoro', 'alexridho73@gmail.com', 'default.jpg', '$2y$10$KqS8ejPIehnXlgfu6.EiFOnpYqPQ5KsNVATm/TcHUalkrpKJjISLW', 2, 1, 1657253994),
-(50, 'Setiyo wahyu fitrianto', 'setyowahyu120@gmail.com', 'default.jpg', '$2y$10$yhlUupeMnzfQGHRBT3BQDOEAkc7D2mBowCnYIbcqstWissxCBQSQm', 2, 1, 1657254108),
-(51, 'Triwidodo', 'Triw7334@gmail.com', 'IMG_20211009_122140_469.jpg', '$2y$10$aQRwWdMZdbt9N3MJNqXv7O.SwuqRVB1sYDAVTUc4GZzrKHb4hHr0m', 2, 1, 1657254159),
-(52, 'Agus Sunaryo, SE', 'agussunaryo335@gmail.com', 'default.jpg', '$2y$10$t3Wz4DG0lfoAMpBYCDP2Xea29mOnmW/WFCCE7ZVi9sMRMOkMt8XbW', 2, 1, 1657265551),
-(53, 'GUNADI', 'gunadi0938@gmail.com', 'default.jpg', '$2y$10$6ZDpJPrU03J4PHn6E4qzkeAX89Fyy9T3XawDtfEhOJXqLVK0xWrSG', 2, 1, 1657265557),
-(54, 'Sitilatifa', 'sitilatifa2130@gmail.com', 'default.jpg', '$2y$10$3KRrEnn7P2DjfqDQpxQFFu3JVSgH5aX1OJVE6.HxD1Y1B/6Wy36W2', 2, 1, 1657266136),
-(55, 'ari wahyudi', 'wahwahwah82.aw@gmail.com', 'default.jpg', '$2y$10$0Jb/ReQouFpPdj6uOTDJq.fe3ZIISoEuwfwQg1t7MA6B6/Ejo5krq', 2, 1, 1657512300),
-(56, 'Antonius yunita mahendra', 'antonekadharma62@gmail.com', 'default.jpg', '$2y$10$Du7x/LtqpXIcc1RHGKzcO.WpFbS39JwxGtnm/tzE6Jd/97Z3uefd6', 2, 1, 1657779935),
-(57, 'Yannis One Brielliant', 'yannisoneb93@gmail.com', 'default.jpg', '$2y$10$gY5nz9MovbeyXgrFKd8jUuVp6/AUmSvQjSDU1ALNs7ualD3HiKo1K', 2, 1, 1658135304),
-(58, 'yani widodo', 'yanny.wido@gmail.com', 'IMG-20220817-WA0023.jpg', '$2y$10$Sl8RHXIC7fXaMI/aBOJVf.K5yndRwR5Pag/BppMNaNN/nT1u4RQiy', 2, 1, 1660190996),
-(59, 'sarkun', 'sarkun123@gmail.com', 'default.jpg', '$2y$10$JyKCjJXbSytfUTwbjChiw.twLI1.yGLvwhUJeBC8MFbmbhUaXw1IO', 2, 1, 1660197174),
-(60, 'tri widodo subianto', 'tri301182@gmail.com', 'default.jpg', '$2y$10$/TnS.3FrjpC.wvXhmZKIAeQ3BV6WFUgjsGXHnBtNqgrIkRGl0oLoS', 2, 1, 1660822000),
-(61, 'suprapto', 'gandiprapto750@gmail.com', 'default.jpg', '$2y$10$E8JkdeVzPrCFeCGfZrlmferMujiUNTt2CcMBUY8jMFfIsWC9eOsli', 2, 1, 1661158392),
-(62, 'fanny permana', 'fanymikopermana@gmail.c0m', 'default.jpg', '$2y$10$nf6dVVGTN4.Bw94KXmnMzuHw4wf6rxOGUSa.EU5tdRFIMG.9KOY3i', 2, 1, 1661841508),
-(63, 'Admin Mineka', 'mineka@gmail.com', 'default.jpg', '$2y$10$tqLClLHqvj86EnPNsDUqIOTYOhzFxjik2gLIwpBc46jU86zM0az9i', 6, 1, 1667355529);
+INSERT INTO `user` (`id`, `name`, `email`, `kantor`, `image`, `password`, `role_id`, `is_active`, `date_created`) VALUES
+(5, 'Fatia Larasati', 'fatia@gmail.com', 'KCU', 'art-2436545__340.jpg', '$2y$10$iHy9BJuSIDxiVVs53HWea.CdVTWGxQVvjIn403kpBdfISGRWn.PUS', 2, 1, 1644812162),
+(6, 'hasantiro', 'admin@gmail.com', '', 'download.png', '$2y$10$6NxAuuzqcTQZwQVMhilsnOV0Mpm43owg7aPh4l.rs/i6OD7Kaf1Mu', 1, 1, 1644812241),
+(7, 'Analis Ekadharma', 'analis@gmail.com', '', 'WhatsApp_Image_2022-03-03_at_20_50_06-removebg-preview.png', '$2y$10$bXYTFnU2i0r26LY9/zD4ReNI2a8dVV./nHC0g6Y0nwf95i7vp96Iy', 3, 1, 1646887061),
+(8, 'Kepala Bagian Kredit', 'kabag@gmail.com', 'KCU', 'default.jpg', '$2y$10$708AN740PJjWkPPMCKybm.7tsdt3vTi5WSkC9jRsPRwmjuepb2VMW', 4, 1, 1647315996),
+(9, 'Test', 'test@gmail.com', '', 'default.jpg', '$2y$10$OfDZBPorrEJ12sYTrMxGMu3T9hfG.KbDrahwm8fdDTIR7lwIK0LMC', 5, 1, 1648089117),
+(10, 'User1', 'user1@gmail.com', '', 'default.jpg', '$2y$10$9gs/E/aBKGtWHC2u3NEva.jtx8PyDifgMqOKl6UhV3NXREZjmBBmu', 2, 1, 1654236926),
+(11, 'Aris', 'arisanaaa82@gmail.com', '', 'default.jpg', '$2y$10$H/gXPCLBdzxO1kk4.yh3ieBKoGJNLVq5A9VDf.dumBo6EttOEazCi', 2, 1, 1654759518),
+(12, 'SRI HANDAJANI', 'handajanisri8@gmail.com', '', 'default.jpg', '$2y$10$TPjK3aVUSDpqegBQ/1jQQuZn3pg8DUdXxFjBgi.fbIqvj1zfFt.oa', 2, 1, 1654759611),
+(13, 'Bowo', 'arie29895@gmail.com', '', 'default.jpg', '$2y$10$.CQv1zCNGSw4J98vQztZH.JIFFFLjLlavHoLckMxmLEvuvz2qUFFK', 2, 1, 1654761390),
+(14, 'mahfut ansori', 'mahfutansori@gmail.com', '', 'default.jpg', '$2y$10$bW20nNgN1dn7dI0G5eDwaeA0AWBJESD8yHfY./unUFbhw.dvJinS2', 2, 1, 1654830559),
+(15, 'Fanny permana sujatmiko', 'permanafany94@gmail.com', '', 'default.jpg', '$2y$10$YnbIh5rsiZU1xpsmKwmI1OsJnkHDK/5G.GCZ7rZ.MpjmhA6amWZ0m', 2, 1, 1654830756),
+(16, 'Wanda Miftakhul Jannah', 'wmzzanna@gmail.com', '', 'default.jpg', '$2y$10$EeqFd8nufzEtHHoy0M7c.ukke.sgEdRtBSt1VWHl9t3t6pnrghQTO', 2, 1, 1654830834),
+(17, 'Kamal Hasan', 'kmlabuhsn@gmail.com', '', 'IMG_20220708_1121321.jpg', '$2y$10$Bqg6khK.JUDkzjmWwBqJKerTbYrR4zcEoLT/XdoBfygEDFeF/gllK', 2, 1, 1654830834),
+(18, 'RIAN DIAN RAGA', 'dianr857@gmail.com', '', 'default.jpg', '$2y$10$PqXAAWYKnghljFSZsUjDO.eP1kI//ApywG9KlxcX3af2p7E2XIenK', 2, 1, 1654831058),
+(19, 'Sony wahyu sampurno', 'sonymagetan72@gmail.com', '', 'default.jpg', '$2y$10$Gz0S0JgR1GnGcceC5bJn.utYzcUW7moRKd.axBxD/NheUXU9/w/q2', 2, 1, 1654831313),
+(20, 'Adi cahyono', 'cahyoadi0606@gmail.com', '', 'Screenshot_20220609-214812_One_UI_Home.jpg', '$2y$10$JkgXesLQZqezrJqczpsS5u1XqOwAHBaaHlHt9aBDpvnD6h5/nekUe', 2, 1, 1654831352),
+(21, 'Avidian Bintang Pamungkas', 'avidianski@gmail.com', '', '3328.jpg', '$2y$10$HqHJLA0zhpBITK7OmTEEkOOxkckE3gPHYQCPRW40VqnYCXTzYcpwy', 2, 1, 1654831399),
+(22, 'Taufik Dian Murseto', 'taufikdianmurseto97@gmail.com', '', 'default.jpg', '$2y$10$fPxT3r2VjfyLFcw/zwKRB.Rih4MxABHvyU8qjEfgvEKXUcU00qIXe', 2, 1, 1654833392),
+(23, 'kamis', 'testkamis@gmail.com', '', 'default.jpg', '$2y$10$gtx4GWHc4S9O8fG8fklicez5LzfO8mnSjzrSgYdpZ/VOLAbR23zlO', 2, 1, 1656558420),
+(24, 'CHANDRA DESTIAN PRABAYU', 'chandradestian97@gmail.com', '', 'default.jpg', '$2y$10$JC5k8EE9Al2wGV/VZUxTiulRCWe3GHtm2cEh3s4JANebRitJTS9d.', 2, 1, 1656560743),
+(25, 'hanif muslim alamsyah', 'hanifmuslim74@gmail.com', '', 'default.jpg', '$2y$10$dCrfCii80L1Smi3LR1nSPu2ngBzup5Zd6iUj9vPFOoCH3LV0rp9Fq', 2, 1, 1656560748),
+(26, 'KUN EKWAN JUNIANTO', 'kunekwan2106@gmail.com', '', 'default.jpg', '$2y$10$EcLqKBNeFXCLq0ywMcUB9usO0S.n9Mm4XpTLOr92psWALA4jkLbVy', 2, 1, 1656572670),
+(27, 'Wanda Miftakhul Jannah', 'wmz_zanna@yahoo.co.id', '', 'default.jpg', '$2y$10$jCEp3dbSffYBm/PYRzEIkOt97hv8lN8qtXNtoey1V7mLi9ev0upL2', 2, 1, 1657250075),
+(28, 'MUHAMMAD DWI HARDIANTO', 'dwihardianto93@gmail.com', '', 'IMG-20211105-WA0004.jpg', '$2y$10$Ly/OUGXTrQ.KYKSF1zy3vuO8LWz3uxo47C8lYcQyVyb/CjwpCa4qO', 2, 1, 1657250114),
+(29, 'Andika devi rismianto', 'andikadevir95@gmail.com', '', 'default.jpg', '$2y$10$LQV9BFdg7Ngrhef1weUufeVRmFHZuKfoM1MOGNQI6gduqoIYGIsHW', 2, 1, 1657250138),
+(30, 'Tino prayogo', 'Thinoprayoga03@gmail.com', '', 'default.jpg', '$2y$10$rpy1jP/Fam6cAfbhatip3O9NYPMAHK5cvf/Q8513sqe75EX1VT05O', 2, 1, 1657250143),
+(31, 'adhani alisyahuri', 'adhanialisyahuri414@gmail.com', '', 'default.jpg', '$2y$10$..Of58i84WP/AuwblwibiuLKerpZjkT1JeGc3X0ddZpWwLsCeeT52', 2, 1, 1657250151),
+(32, 'Bagus ari wibowo', 'Ario_w@gmail.com', '', 'default.jpg', '$2y$10$Q5QKRrYLkcoIz64YBDp1Me51NiBxyQDESMQs2tPm5FrR5cIrmtPeq', 2, 1, 1657250188),
+(33, 'DIDIK PURNOMO', 'Masdidik86@gmail.com', '', 'default.jpg', '$2y$10$BMTUlKNV5//AO/U69Q1WGeh2j1cRGRxE1Omw7tsGPw6XdOPylvPYq', 2, 1, 1657250245),
+(34, 'SETIYO WAHYU FITRIANTO', 'setiyowahyu120@gmail.com', '', 'default.jpg', '$2y$10$niuERB1kBdvklXySsYu9W.GTF/7fVdLKBHJotnUQBTnswkTnjLBye', 2, 1, 1657250448),
+(35, 'Bagus ari wibowo', 'Ario_81@g.mail.com', '', 'IMG_20210525_182439.jpg', '$2y$10$g6KlRnGvkw0SnCrtKGWTjexKA2GXoy9EEVMFSKVtW3TaImwVllyga', 2, 1, 1657250473),
+(36, 'Muhamad rois muchlisin', 'Muhamadrois0432@gmail.com', '', 'default.jpg', '$2y$10$2iGx.chYcLqpGa7x6jwJPeY3Y53veOQxdAO/rZ4/xs6EPcmtCeJoO', 2, 1, 1657251468),
+(37, 'Panji Dwi Febrianto', 'panjidwifebrianto4@gmail.com', '', 'IMG-20220701-WA0020.jpg', '$2y$10$brEHRH9sYzsQBKfLyGIaaOp4/8HMGVclDqNPRko6SJhJUQgiG1wJK', 2, 1, 1657251534),
+(38, 'Yoppi', 'Yoppi.febri.ramadan@gmail.com', '', 'default.jpg', '$2y$10$Mtr7H3c1hnGnnFCO9sQH4exUbBJGV1G/OL6M/9M.tRVacFhi21uBW', 2, 1, 1657251601),
+(39, 'Bijak', 'Bijakekadharma@gmail.com', '', 'IMG-20220605-WA0013.jpg', '$2y$10$YBkmHiBs48iLWXLipE3lMuYXmTvOmYS6jblOsekssemjl0vEw3t8C', 2, 1, 1657252139),
+(40, 'Basuki rahmat', 'basukihanoraga@gmail.com', '', 'default.jpg', '$2y$10$U5CrUHpvsfh/K9ZvkAZc.e2KNvskvUdEyVzKYdnAWwJ.tHrb5w6Ja', 2, 1, 1657253316),
+(41, 'Santojosep', 'santojosep99@gmail.com', '', 'default.jpg', '$2y$10$jSmcvvdFySVnSPGohpGwHuL9k8w24iT3c7QSe/9.Z.otxfmRrbqxa', 2, 1, 1657253326),
+(42, 'Aldi bagus septian', 'Chincoaldhy@gmail.com', '', 'default.jpg', '$2y$10$brN86EJ7G/btLXWgxtqLme.nfa6akjjcbtJxbqE5hql4Kmr4UvQ66', 2, 1, 1657253337),
+(43, 'Fajarbaskoro', 'Fajarbaskoro@gmail.com', '', 'default.jpg', '$2y$10$S2w2rwX0H0uSS8VSgvDILeum3FMpg2Yw6aaIgXK51ILzuoRobOfgC', 2, 1, 1657253415),
+(44, 'ASRUL ANGGRIAWAN AZIS', 'Eka.sandha@gmail.com', '', '_20210425_093547.JPG', '$2y$10$b7W4WwnhDWC4TPyRLemqc.VOeOzKv3FoShl5Xzz2iB5iZZQCjHBsu', 2, 1, 1657253702),
+(45, 'Danang windianto', 'danangwindianto55@gmail.com', '', 'default.jpg', '$2y$10$Tn8LKa648Lct2zJN/81uAucMJ42DCQEWQhYj37wcySS7euL.HD2o6', 2, 1, 1657253970),
+(47, 'Muhammad Hasan', 'hasan@gmail.com', '', '2021_10_05_18_27_IMG_8412.JPG', '$2y$10$3awaATJS4k60L6ycmQVmSO/aOB/GRlX8s9AlW/t9A29b.CBq2AqeK', 2, 1, 1657253985),
+(48, 'Suprapto', 'Supraptogandhi@gmail.com', '', 'default.jpg', '$2y$10$hPCBuAvDWnO5.5n4cg6sVuIqttt9ddoRaQh1Rj6rqP8sd0bzYbhGi', 2, 1, 1657253992),
+(49, 'Ridho alex kuncoro', 'alexridho73@gmail.com', '', 'default.jpg', '$2y$10$KqS8ejPIehnXlgfu6.EiFOnpYqPQ5KsNVATm/TcHUalkrpKJjISLW', 2, 1, 1657253994),
+(50, 'Setiyo wahyu fitrianto', 'setyowahyu120@gmail.com', '', 'default.jpg', '$2y$10$yhlUupeMnzfQGHRBT3BQDOEAkc7D2mBowCnYIbcqstWissxCBQSQm', 2, 1, 1657254108),
+(51, 'Triwidodo', 'Triw7334@gmail.com', '', 'IMG_20211009_122140_469.jpg', '$2y$10$aQRwWdMZdbt9N3MJNqXv7O.SwuqRVB1sYDAVTUc4GZzrKHb4hHr0m', 2, 1, 1657254159),
+(52, 'Agus Sunaryo, SE', 'agussunaryo335@gmail.com', '', 'default.jpg', '$2y$10$t3Wz4DG0lfoAMpBYCDP2Xea29mOnmW/WFCCE7ZVi9sMRMOkMt8XbW', 2, 1, 1657265551),
+(53, 'GUNADI', 'gunadi0938@gmail.com', '', 'default.jpg', '$2y$10$6ZDpJPrU03J4PHn6E4qzkeAX89Fyy9T3XawDtfEhOJXqLVK0xWrSG', 2, 1, 1657265557),
+(54, 'Sitilatifa', 'sitilatifa2130@gmail.com', '', 'default.jpg', '$2y$10$3KRrEnn7P2DjfqDQpxQFFu3JVSgH5aX1OJVE6.HxD1Y1B/6Wy36W2', 2, 1, 1657266136),
+(55, 'ari wahyudi', 'wahwahwah82.aw@gmail.com', '', 'default.jpg', '$2y$10$0Jb/ReQouFpPdj6uOTDJq.fe3ZIISoEuwfwQg1t7MA6B6/Ejo5krq', 2, 1, 1657512300),
+(56, 'Antonius yunita mahendra', 'antonekadharma62@gmail.com', '', 'default.jpg', '$2y$10$Du7x/LtqpXIcc1RHGKzcO.WpFbS39JwxGtnm/tzE6Jd/97Z3uefd6', 2, 1, 1657779935),
+(57, 'Yannis One Brielliant', 'yannisoneb93@gmail.com', '', 'default.jpg', '$2y$10$gY5nz9MovbeyXgrFKd8jUuVp6/AUmSvQjSDU1ALNs7ualD3HiKo1K', 2, 1, 1658135304),
+(58, 'yani widodo', 'yanny.wido@gmail.com', '', 'IMG-20220817-WA0023.jpg', '$2y$10$Sl8RHXIC7fXaMI/aBOJVf.K5yndRwR5Pag/BppMNaNN/nT1u4RQiy', 2, 1, 1660190996),
+(59, 'sarkun', 'sarkun123@gmail.com', '', 'default.jpg', '$2y$10$JyKCjJXbSytfUTwbjChiw.twLI1.yGLvwhUJeBC8MFbmbhUaXw1IO', 2, 1, 1660197174),
+(60, 'tri widodo subianto', 'tri301182@gmail.com', '', 'default.jpg', '$2y$10$/TnS.3FrjpC.wvXhmZKIAeQ3BV6WFUgjsGXHnBtNqgrIkRGl0oLoS', 2, 1, 1660822000),
+(61, 'suprapto', 'gandiprapto750@gmail.com', '', 'default.jpg', '$2y$10$E8JkdeVzPrCFeCGfZrlmferMujiUNTt2CcMBUY8jMFfIsWC9eOsli', 2, 1, 1661158392),
+(62, 'fanny permana', 'fanymikopermana@gmail.c0m', '', 'default.jpg', '$2y$10$nf6dVVGTN4.Bw94KXmnMzuHw4wf6rxOGUSa.EU5tdRFIMG.9KOY3i', 2, 1, 1661841508),
+(63, 'Admin Mineka', 'mineka@gmail.com', '', 'default.jpg', '$2y$10$tqLClLHqvj86EnPNsDUqIOTYOhzFxjik2gLIwpBc46jU86zM0az9i', 6, 1, 1667355529),
+(64, 'Kepala Cabang', 'kacab@gmail.com', '', 'default.jpg', '$2y$10$5/KGcljKMk94/EU.LQouI./z42xmCCnqWtVH0yI9MHTNev6/5FfDu', 7, 1, 1670574315);
 
 -- --------------------------------------------------------
 
@@ -4612,9 +4638,7 @@ INSERT INTO `user_access_menu` (`id`, `role_id`, `menu_id`) VALUES
 (2, 1, 2),
 (3, 2, 2),
 (4, 1, 3),
-(5, 1, 4),
 (6, 2, 4),
-(8, 1, 5),
 (14, 3, 2),
 (17, 3, 6),
 (18, 4, 2),
@@ -4622,7 +4646,9 @@ INSERT INTO `user_access_menu` (`id`, `role_id`, `menu_id`) VALUES
 (20, 5, 8),
 (21, 5, 2),
 (22, 6, 9),
-(23, 6, 2);
+(23, 6, 2),
+(24, 7, 2),
+(25, 7, 7);
 
 -- --------------------------------------------------------
 
@@ -4646,7 +4672,7 @@ INSERT INTO `user_menu` (`id`, `menu`) VALUES
 (4, 'Analisa Kredit'),
 (5, 'Analisis'),
 (6, 'Review'),
-(7, 'Kabag'),
+(7, 'LAS'),
 (8, 'Tester'),
 (9, 'Mineka');
 
@@ -4671,7 +4697,8 @@ INSERT INTO `user_role` (`id`, `role`) VALUES
 (3, 'Analis'),
 (4, 'Kabag'),
 (5, 'Tester'),
-(6, 'Mineka');
+(6, 'Mineka'),
+(7, 'kacab');
 
 -- --------------------------------------------------------
 
@@ -4702,8 +4729,8 @@ INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_active
 (7, 2, 'Change Password', 'user/changepassword', 'fas fa-fw fa-lock-open', 1),
 (8, 4, 'Latar Belakang', 'kredit/lb', 'fas fa-fw fa-id-card', 1),
 (13, 5, 'Daftar Kredit', 'analisis', 'fas fa-fw fa-file-word', 1),
-(14, 6, 'Daftar analisa', 'analisa', 'fas fa-fw fa-paperclip', 1),
-(15, 7, 'Daftar AK', 'kabag', 'fas fa-fw fa-paperclip', 1),
+(14, 6, 'Daftar Analisa', 'analisa', 'fas fa-fw fa-paperclip', 1),
+(15, 7, 'Daftar Analisa', 'kabag', 'fas fa-fw fa-paperclip', 1),
 (16, 4, 'Character', 'character?id_lb=', 'fas fa-fw fa-person-booth', 0),
 (17, 4, 'Capacity', 'capacity?id_lb=', 'fas fa-fw fa-warehouse', 0),
 (18, 4, 'Capital Sebelum Kredit', 'capital?id_lb=', 'fas fa-fw fa-money-bill', 0),
@@ -4844,6 +4871,12 @@ INSERT INTO `usulan` (`id_usulan`, `id_lb`, `character`, `capacity`, `capital`, 
 --
 ALTER TABLE `analis`
   ADD PRIMARY KEY (`nama`);
+
+--
+-- Indeks untuk tabel `anggota_komite`
+--
+ALTER TABLE `anggota_komite`
+  ADD PRIMARY KEY (`id_anggota_komite`);
 
 --
 -- Indeks untuk tabel `capacity`
@@ -5009,6 +5042,12 @@ ALTER TABLE `usulan`
 --
 
 --
+-- AUTO_INCREMENT untuk tabel `anggota_komite`
+--
+ALTER TABLE `anggota_komite`
+  MODIFY `id_anggota_komite` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT untuk tabel `capacity`
 --
 ALTER TABLE `capacity`
@@ -5036,13 +5075,13 @@ ALTER TABLE `capital_cache`
 -- AUTO_INCREMENT untuk tabel `cashflow_a`
 --
 ALTER TABLE `cashflow_a`
-  MODIFY `id_cf` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2601;
+  MODIFY `id_cf` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2603;
 
 --
 -- AUTO_INCREMENT untuk tabel `cashflow_b`
 --
 ALTER TABLE `cashflow_b`
-  MODIFY `id_cf` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2159;
+  MODIFY `id_cf` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2169;
 
 --
 -- AUTO_INCREMENT untuk tabel `cashflow_lain`
@@ -5054,7 +5093,7 @@ ALTER TABLE `cashflow_lain`
 -- AUTO_INCREMENT untuk tabel `collateral`
 --
 ALTER TABLE `collateral`
-  MODIFY `id_col` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id_col` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT untuk tabel `collateral_tanah`
@@ -5090,7 +5129,7 @@ ALTER TABLE `latar_belakang`
 -- AUTO_INCREMENT untuk tabel `pengajuan`
 --
 ALTER TABLE `pengajuan`
-  MODIFY `id_pengajuan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_pengajuan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT untuk tabel `realisasi`
@@ -5108,13 +5147,13 @@ ALTER TABLE `riwayat_pinjaman`
 -- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 
 --
 -- AUTO_INCREMENT untuk tabel `user_access_menu`
 --
 ALTER TABLE `user_access_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT untuk tabel `user_menu`
@@ -5126,7 +5165,7 @@ ALTER TABLE `user_menu`
 -- AUTO_INCREMENT untuk tabel `user_role`
 --
 ALTER TABLE `user_role`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT untuk tabel `user_sub_menu`
