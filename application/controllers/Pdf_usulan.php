@@ -52,11 +52,20 @@ class Pdf_usulan extends CI_Controller
 			$pdf->Cell(0, 5.5, $data->capital, 0, 1);
 			$pdf->Cell(69, 5.5, '4.	Cash Flow', 0, 0, '');
 			$pdf->Cell(5, 5.5, ':', 0, 1, '');
-			$pdf->Cell(69, 5.5, 'Hutang Rp. ' . number_format($data->total_hutang) . ' atau ' . number_format($this->persen1(), 2)  . ' % dari Aset Produktif Rp. ' . number_format($data->total_al), 0, 1, '');
-			$pdf->Cell(69, 5.5, $this->status1(), 1, 1, 'C');
+			if($data->tujuan_permohonan == "Konsumtif"){
+				$pdf->Cell(69, 5.5, 'Hutang Rp. ' . number_format($data->total_hutang) . ' atau ' . number_format($this->persenKonsumtif(), 2)  . ' % dari Total Aset Rp. ' . number_format($data->total_aset), 0, 1, '');
+				$pdf->Cell(69, 5.5, $this->statusKonsumtif(), 1, 1, 'C');
+			}else{
+				$pdf->Cell(69, 5.5, 'Hutang Rp. ' . number_format($data->total_hutang) . ' atau ' . number_format($this->persen1(), 2)  . ' % dari Aset Produktif Rp. ' . number_format($data->total_al), 0, 1, '');
+				$pdf->Cell(69, 5.5, $this->status1(), 1, 1, 'C');
+			}
+			$pdf->Cell(69, 5.5, '<= 50 % Layak', 0, 0, '');
+			$pdf->Cell(5, 5.5, ' > 50 % Tidak Layak', 0, 0, '');
 			$pdf->Cell(69, 5.5, '', 0, 1, '');
 			$pdf->Cell(69, 5.5, 'Total Angsuran Pinjaman Rp. ' . number_format($this->angsuran()) . ' atau ' . number_format($this->persen2(), 2)  . ' % dari Laba Operasional/Pendapatan Rp. ' . number_format($this->labaRugi()), 0, 1, '');
 			$pdf->Cell(69, 5.5, $this->status2(), 1, 1, 'C');
+			$pdf->Cell(69, 5.5, '<= 60 % Layak', 0, 0, '');
+			$pdf->Cell(5, 5.5, ' > 60 % Tidak Layak', 0, 0, '');
 			$pdf->Cell(69, 5.5, '', 0, 1, '');
 			$pdf->Cell(69, 5.5, '5. Condition Of Economy', 0, 0, '');
 			$pdf->Cell(5, 5.5, ':', 0, 0, '');
@@ -155,17 +164,25 @@ class Pdf_usulan extends CI_Controller
 				$pdf->Cell(100, 5.5, $data->oleh, 1, 0, 'L');
 				$pdf->Cell(80, 5.5, $data->sebagai, 1, 1, 'L');
 			}
-			
 
 			$pdf->Output('Usulan', 'I');
 		}
 		
 	}
-
 	
 	function status1()
 	{
 		if ($this->persen1() <= 50) {
+			$status = 'Layak';
+		} else {
+			$status = 'Tidak Layak';
+		}
+		return $status;
+	}
+		
+	function statusKonsumtif()
+	{
+		if ($this->persenKonsumtif() <= 50) {
 			$status = 'Layak';
 		} else {
 			$status = 'Tidak Layak';
@@ -182,6 +199,19 @@ class Pdf_usulan extends CI_Controller
                                         WHERE cashflow_b.id_lb='$id_lb'");
 		foreach ($lb->result() as $data) {
 			$persen = ($data->total_hutang / $data->total_al) * 100;
+			return $persen;
+		}
+	}
+	
+	function persenKonsumtif()
+	{
+		$id_lb = $_GET['id_lb'];
+		$lb = $this->db->query("SELECT * FROM cashflow_b 
+                                        JOIN capital_b 
+                                        ON cashflow_b.id_lb=capital_b.id_lb
+                                        WHERE cashflow_b.id_lb='$id_lb'");
+		foreach ($lb->result() as $data) {
+			$persen = ($data->total_hutang / $data->total_aset) * 100;
 			return $persen;
 		}
 	}

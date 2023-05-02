@@ -16,9 +16,6 @@
                             <th scope="col">Nama AO</th>
                             <th scope="col">Nama Debitur</th>
                             <th scope="col">Status</th>
-                            <!--<th scope="col">Plafond</th>
-                            <th scope="col">Lihat</th>-->
-                            <!--<th scope="col">Zoom</th>-->
                             <th scope="col">Zoom</th>
                             <th scope="col">Buat Zoom</th>
                         </tr>
@@ -37,16 +34,7 @@
                             <td>" . $row->nama_ao . "</td>
                             <td>
                                 <a href='pdf_all?id_lb=".$row->id_lb."' target='_blank'>" . $row->name_debitur . "</a>
-                            </td> 
-                            <!--                    
-                            <td>" .number_format($row->plafond) . "</td>    
-                            <td>
-                                <h5>
-                                <a href='pdf_all?id_lb=".$row->id_lb."' target='_blank' class='btn btn-success btn-circle' title='Hasil Analisa'><i class='fas fa-eye'></i></a>
-                                <a href='pdf_scoring?id_lb=".$row->id_lb."' target='_blank' class='btn btn-warning btn-circle' title='Hasil Scoring'><i class='far fa-clipboard'></i></a>
-                                </h5>
-                            </td>     
-                            -->            
+                            </td>         
                             <td>
                                 <a href='pdf_scoring?id_lb=".$row->id_lb."' target='_blank'>" . $row->status . "</a>
                             </td>              

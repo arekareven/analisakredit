@@ -1493,13 +1493,22 @@ class Pdf_all extends CI_Controller
             $pdf->Cell(5, 5.5, ':', 0, 0, '');
             $pdf->Cell(0, 5.5, $data->capital, 0, 1);
             $pdf->Cell(69, 5.5, '4.	Cash Flow', 0, 0, '');
-            $pdf->Cell(5, 5.5, ':', 0, 1, '');
-            $pdf->Cell(69, 5.5, 'Hutang Rp. ' . number_format($data->total_hutang) . ' atau ' . number_format($this->persen1_u(), 2)  . ' % dari Aset Produktif Rp. ' . number_format($data->total_al), 0, 1, '');
-            $pdf->Cell(69, 5.5, $this->status1_u(), 1, 1, 'C');
-            $pdf->Cell(69, 5.5, '', 0, 1, '');
-            $pdf->Cell(69, 5.5, 'Total Angsuran Pinjaman Rp. ' . number_format($this->angsuran_u()) . ' atau ' . number_format($this->persen2_u(), 2)  . ' % dari Laba Operasional/Pendapatan Rp. ' . number_format($this->labaRugi_u()), 0, 1, '');
-            $pdf->Cell(69, 5.5, $this->status2_u(), 1, 1, 'C');
-            $pdf->Cell(69, 5.5, '', 0, 1, '');
+			$pdf->Cell(5, 5.5, ':', 0, 1, '');
+			if($data->tujuan_permohonan == "Konsumtif"){
+				$pdf->Cell(69, 5.5, 'Hutang Rp. ' . number_format($data->total_hutang) . ' atau ' . number_format($this->persenKonsumtif(), 2)  . ' % dari Total Aset Rp. ' . number_format($data->total_aset), 0, 1, '');
+				$pdf->Cell(69, 5.5, $this->statusKonsumtif(), 1, 1, 'C');
+			}else{
+				$pdf->Cell(69, 5.5, 'Hutang Rp. ' . number_format($data->total_hutang) . ' atau ' . number_format($this->persen1(), 2)  . ' % dari Aset Produktif Rp. ' . number_format($data->total_al), 0, 1, '');
+				$pdf->Cell(69, 5.5, $this->status1(), 1, 1, 'C');
+			}
+			$pdf->Cell(69, 5.5, '<= 50 % Layak', 0, 0, '');
+			$pdf->Cell(5, 5.5, ' > 50 % Tidak Layak', 0, 0, '');
+			$pdf->Cell(69, 5.5, '', 0, 1, '');
+			$pdf->Cell(69, 5.5, 'Total Angsuran Pinjaman Rp. ' . number_format($this->angsuran()) . ' atau ' . number_format($this->persen2(), 2)  . ' % dari Laba Operasional/Pendapatan Rp. ' . number_format($this->labaRugi()), 0, 1, '');
+			$pdf->Cell(69, 5.5, $this->status2(), 1, 1, 'C');
+			$pdf->Cell(69, 5.5, '<= 60 % Layak', 0, 0, '');
+			$pdf->Cell(5, 5.5, ' > 60 % Tidak Layak', 0, 0, '');
+			$pdf->Cell(69, 5.5, '', 0, 1, '');
             $pdf->Cell(69, 5.5, '5. Condition Of Economy', 0, 0, '');
             $pdf->Cell(5, 5.5, ':', 0, 0, '');
             $pdf->Cell(0, 5.5, $data->coe, 0, 1);
@@ -1596,266 +1605,6 @@ class Pdf_all extends CI_Controller
 
         }
 
-        //DISPOSISI TIDAK IKUT TERCETAK KARENA KALAU $pdf->Output('LAS', 'I'); DITARUH DI DISPOSISI
-        //USULAN AKAN BERULANG,ANEH
-
-        //DISPOSISI
-        $pdf->AddPage();
-        $lb = $this->db->query("SELECT * FROM usulan WHERE id_lb='$id_lb'");
-        foreach ($lb->result() as $data) {
-                $plafon = intval($data->plafond);
-                if($plafon <= 50000000){
-                    $nama = $this->db->query("SELECT * FROM latar_belakang 
-                                            JOIN user ON latar_belakang.user=user.email
-                                            WHERE latar_belakang.id_lb='$id_lb'");
-                    foreach ($nama->result() as $data) {
-                        $name = $data->name;
-                    }
-
-                    $pdf->SetFont('Times', 'B', 12);
-                    $pdf->Cell(79, 5.5, 'Lembar Disposisi', 0, 1, '');
-                    //Line($x,$y,$width,$height,$style)
-                    $pdf->Rect(10,15,190,38);
-                    $pdf->Rect(10,53,190,38);
-                    $pdf->Rect(10,91,190,38);
-                    $pdf->Rect(10,129,190,38);
-                    
-                    //1
-                    $pdf->SetFont('Times', '', 12);
-                    $pdf->Cell(5, 2, '', 0, 0, '');
-                    $pdf->Cell(10, 12, '......................................................................................................................................................................', 0, 1, '');
-                    $pdf->Cell(140, 2, '', 0, 0, '');
-                    $pdf->Cell(10, 0, 'Diusulkan oleh', 0, 1, '');
-                    $pdf->Cell(140, 23, '', 0, 1, '');
-                    $pdf->Cell(140, 2, '', 0, 0, '');
-                    $pdf->SetFont('Times', 'B', 12);
-                    $pdf->Cell(30, 0, '('.$name.')', 0, 1, 'C');
-                    
-                    //2
-                    $pdf->SetFont('Times', '', 12);
-                    $pdf->Cell(140, 3, '', 0, 1, '');
-                    $pdf->Cell(5, 2, '', 0, 0, '');
-                    $pdf->Cell(10, 11, '......................................................................................................................................................................', 0, 1, '');
-                    $pdf->Cell(5, 2, '', 0, 0, '');
-                    $pdf->Cell(10, 4, '......................................................................................................................................................................', 0, 1, '');
-                    $pdf->Cell(138, 2, '', 0, 0, '');
-                    $pdf->Cell(10, 5, 'Administrasi Kredit', 0, 1, '');
-                    $pdf->Cell(140, 15, '', 0, 1, '');
-                    $pdf->Cell(140, 2, '', 0, 0, '');
-                    $pdf->SetFont('Times', 'B', 12);
-                    $pdf->Cell(30, 0, '(.............................)', 0, 1, 'C');
-                    
-                    //3
-                    $pdf->SetFont('Times', '', 12);
-                    $pdf->Cell(140, 3, '', 0, 1, '');
-                    $pdf->Cell(5, 2, '', 0, 0, '');
-                    $pdf->Cell(10, 11, '......................................................................................................................................................................', 0, 1, '');
-                    $pdf->Cell(5, 2, '', 0, 0, '');
-                    $pdf->Cell(10, 4, '......................................................................................................................................................................', 0, 1, '');
-                    $pdf->Cell(142, 2, '', 0, 0, '');
-                    $pdf->Cell(10, 5, 'Analis Kredit', 0, 1, '');
-                    $pdf->Cell(140, 15, '', 0, 1, '');
-                    $pdf->Cell(140, 2, '', 0, 0, '');
-                    $pdf->SetFont('Times', 'B', 12);
-                    $pdf->Cell(30, 0, '(.............................)', 0, 1, 'C');
-                    
-                    //4
-                    $pdf->SetFont('Times', '', 12);
-                    $pdf->Cell(140, 3, '', 0, 1, '');
-                    $pdf->Cell(5, 2, '', 0, 0, '');
-                    $pdf->Cell(10, 11, '......................................................................................................................................................................', 0, 1, '');
-                    $pdf->Cell(5, 2, '', 0, 0, '');
-                    $pdf->Cell(10, 4, '......................................................................................................................................................................', 0, 1, '');
-                    $pdf->Cell(130, 2, '', 0, 0, '');
-                    $pdf->Cell(10, 5, 'Kabag Kredit & Marketing', 0, 1, '');
-                    $pdf->Cell(140, 15, '', 0, 1, '');
-                    $pdf->Cell(140, 2, '', 0, 0, '');
-                    $pdf->SetFont('Times', 'B', 12);
-                    $pdf->Cell(30, 0, 'Sonny Wahyu Sampurno', 0, 1, 'C');
-
-                }elseif($plafon > 50000000 & $plafon < 100000000){
-                    $nama = $this->db->query("SELECT * FROM latar_belakang 
-                                            JOIN user ON latar_belakang.user=user.email
-                                            WHERE latar_belakang.id_lb='$id_lb'");
-                        foreach ($nama->result() as $data) {
-                            $name = $data->name;
-                        }
-                        $pdf->SetFont('Times', 'B', 12);
-                        $pdf->Cell(79, 5.5, 'Lembar Disposisi', 0, 1, '');
-                        //Line($x,$y,$width,$height,$style)
-                        $pdf->Rect(10,15,190,38);
-                        $pdf->Rect(10,53,190,38);
-                        $pdf->Rect(10,91,190,38);
-                        $pdf->Rect(10,129,190,38);
-                        $pdf->Rect(10,167,190,38);
-                        
-                        //1
-                        $pdf->SetFont('Times', '', 12);
-                        $pdf->Cell(5, 2, '', 0, 0, '');
-                        $pdf->Cell(10, 12, '......................................................................................................................................................................', 0, 1, '');
-                        $pdf->Cell(140, 2, '', 0, 0, '');
-                        $pdf->Cell(10, 0, 'Diusulkan oleh', 0, 1, '');
-                        $pdf->Cell(140, 23, '', 0, 1, '');
-                        $pdf->Cell(140, 2, '', 0, 0, '');
-                        $pdf->SetFont('Times', 'B', 12);
-                        $pdf->Cell(30, 0, '('.$name.')', 0, 1, 'C');
-                        
-                        //2
-                        $pdf->SetFont('Times', '', 12);
-                        $pdf->Cell(140, 3, '', 0, 1, '');
-                        $pdf->Cell(5, 2, '', 0, 0, '');
-                        $pdf->Cell(10, 11, '......................................................................................................................................................................', 0, 1, '');
-                        $pdf->Cell(5, 2, '', 0, 0, '');
-                        $pdf->Cell(10, 4, '......................................................................................................................................................................', 0, 1, '');
-                        $pdf->Cell(138, 2, '', 0, 0, '');
-                        $pdf->Cell(10, 5, 'Administrasi Kredit', 0, 1, '');
-                        $pdf->Cell(140, 15, '', 0, 1, '');
-                        $pdf->Cell(140, 2, '', 0, 0, '');
-                        $pdf->SetFont('Times', 'B', 12);
-                        $pdf->Cell(30, 0, '(.............................)', 0, 1, 'C');
-                        
-                        //3
-                        $pdf->SetFont('Times', '', 12);
-                        $pdf->Cell(140, 3, '', 0, 1, '');
-                        $pdf->Cell(5, 2, '', 0, 0, '');
-                        $pdf->Cell(10, 11, '......................................................................................................................................................................', 0, 1, '');
-                        $pdf->Cell(5, 2, '', 0, 0, '');
-                        $pdf->Cell(10, 4, '......................................................................................................................................................................', 0, 1, '');
-                        $pdf->Cell(142, 2, '', 0, 0, '');
-                        $pdf->Cell(10, 5, 'Analis Kredit', 0, 1, '');
-                        $pdf->Cell(140, 15, '', 0, 1, '');
-                        $pdf->Cell(140, 2, '', 0, 0, '');
-                        $pdf->SetFont('Times', 'B', 12);
-                        $pdf->Cell(30, 0, '(.............................)', 0, 1, 'C');
-                        
-                        //4
-                        $pdf->SetFont('Times', '', 12);
-                        $pdf->Cell(140, 3, '', 0, 1, '');
-                        $pdf->Cell(5, 2, '', 0, 0, '');
-                        $pdf->Cell(10, 11, '......................................................................................................................................................................', 0, 1, '');
-                        $pdf->Cell(5, 2, '', 0, 0, '');
-                        $pdf->Cell(10, 4, '......................................................................................................................................................................', 0, 1, '');
-                        $pdf->Cell(130, 2, '', 0, 0, '');
-                        $pdf->Cell(10, 5, 'Kabag Kredit & Marketing', 0, 1, '');
-                        $pdf->Cell(140, 15, '', 0, 1, '');
-                        $pdf->Cell(140, 2, '', 0, 0, '');
-                        $pdf->SetFont('Times', 'B', 12);
-                        $pdf->Cell(30, 0, 'Sonny Wahyu Sampurno', 0, 1, 'C');
-
-                        //5
-                        $pdf->SetFont('Times', '', 12);
-                        $pdf->Cell(140, 3, '', 0, 1, '');
-                        $pdf->Cell(5, 2, '', 0, 0, '');
-                        $pdf->Cell(10, 11, '......................................................................................................................................................................', 0, 1, '');
-                        $pdf->Cell(5, 2, '', 0, 0, '');
-                        $pdf->Cell(10, 4, '......................................................................................................................................................................', 0, 1, '');
-                        $pdf->Cell(135, 2, '', 0, 0, '');
-                        $pdf->Cell(10, 5, 'Kepala Cabang Utama', 0, 1, '');
-                        $pdf->Cell(140, 15, '', 0, 1, '');
-                        $pdf->Cell(140, 2, '', 0, 0, '');
-                        $pdf->SetFont('Times', 'B', 12);
-                        $pdf->Cell(30, 0, 'Rian Dian Raga, S.Pd', 0, 1, 'C');
-
-                }elseif($plafon >= 100000000){
-                    $nama = $this->db->query("SELECT * FROM latar_belakang 
-                                            JOIN user ON latar_belakang.user=user.email
-                                            WHERE latar_belakang.id_lb='$id_lb'");
-                        foreach ($nama->result() as $data) {
-                            $name = $data->name;
-                        }
-                        $pdf->SetFont('Times', 'B', 12);
-                        $pdf->Cell(79, 5.5, 'Lembar Disposisi', 0, 1, '');
-                        //Line($x,$y,$width,$height,$style)
-                        $pdf->Rect(10,15,190,38);
-                        $pdf->Rect(10,53,190,38);
-                        $pdf->Rect(10,91,190,38);
-                        $pdf->Rect(10,129,190,38);
-                        $pdf->Rect(10,167,190,38);
-                        $pdf->Rect(10,205,190,38);
-                        
-                        //1
-                        $pdf->SetFont('Times', '', 12);
-                        $pdf->Cell(5, 2, '', 0, 0, '');
-                        $pdf->Cell(10, 12, '......................................................................................................................................................................', 0, 1, '');
-                        $pdf->Cell(140, 2, '', 0, 0, '');
-                        $pdf->Cell(10, 0, 'Diusulkan oleh', 0, 1, '');
-                        $pdf->Cell(140, 23, '', 0, 1, '');
-                        $pdf->Cell(140, 2, '', 0, 0, '');
-                        $pdf->SetFont('Times', 'B', 12);
-                        $pdf->Cell(30, 0, '('.$name.')', 0, 1, 'C');
-                        
-                        //2
-                        $pdf->SetFont('Times', '', 12);
-                        $pdf->Cell(140, 3, '', 0, 1, '');
-                        $pdf->Cell(5, 2, '', 0, 0, '');
-                        $pdf->Cell(10, 11, '......................................................................................................................................................................', 0, 1, '');
-                        $pdf->Cell(5, 2, '', 0, 0, '');
-                        $pdf->Cell(10, 4, '......................................................................................................................................................................', 0, 1, '');
-                        $pdf->Cell(138, 2, '', 0, 0, '');
-                        $pdf->Cell(10, 5, 'Administrasi Kredit', 0, 1, '');
-                        $pdf->Cell(140, 15, '', 0, 1, '');
-                        $pdf->Cell(140, 2, '', 0, 0, '');
-                        $pdf->SetFont('Times', 'B', 12);
-                        $pdf->Cell(30, 0, '(.............................)', 0, 1, 'C');
-                        
-                        //3
-                        $pdf->SetFont('Times', '', 12);
-                        $pdf->Cell(140, 3, '', 0, 1, '');
-                        $pdf->Cell(5, 2, '', 0, 0, '');
-                        $pdf->Cell(10, 11, '......................................................................................................................................................................', 0, 1, '');
-                        $pdf->Cell(5, 2, '', 0, 0, '');
-                        $pdf->Cell(10, 4, '......................................................................................................................................................................', 0, 1, '');
-                        $pdf->Cell(142, 2, '', 0, 0, '');
-                        $pdf->Cell(10, 5, 'Analis Kredit', 0, 1, '');
-                        $pdf->Cell(140, 15, '', 0, 1, '');
-                        $pdf->Cell(140, 2, '', 0, 0, '');
-                        $pdf->SetFont('Times', 'B', 12);
-                        $pdf->Cell(30, 0, '(.............................)', 0, 1, 'C');
-                        
-                        //4
-                        $pdf->SetFont('Times', '', 12);
-                        $pdf->Cell(140, 3, '', 0, 1, '');
-                        $pdf->Cell(5, 2, '', 0, 0, '');
-                        $pdf->Cell(10, 11, '......................................................................................................................................................................', 0, 1, '');
-                        $pdf->Cell(5, 2, '', 0, 0, '');
-                        $pdf->Cell(10, 4, '......................................................................................................................................................................', 0, 1, '');
-                        $pdf->Cell(130, 2, '', 0, 0, '');
-                        $pdf->Cell(10, 5, 'Kabag Kredit & Marketing', 0, 1, '');
-                        $pdf->Cell(140, 15, '', 0, 1, '');
-                        $pdf->Cell(140, 2, '', 0, 0, '');
-                        $pdf->SetFont('Times', 'B', 12);
-                        $pdf->Cell(30, 0, 'Sonny Wahyu Sampurno', 0, 1, 'C');
-
-                        //5
-                        $pdf->SetFont('Times', '', 12);
-                        $pdf->Cell(140, 3, '', 0, 1, '');
-                        $pdf->Cell(5, 2, '', 0, 0, '');
-                        $pdf->Cell(10, 11, '......................................................................................................................................................................', 0, 1, '');
-                        $pdf->Cell(5, 2, '', 0, 0, '');
-                        $pdf->Cell(10, 4, '......................................................................................................................................................................', 0, 1, '');
-                        $pdf->Cell(135, 2, '', 0, 0, '');
-                        $pdf->Cell(10, 5, 'Kepala Cabang Utama', 0, 1, '');
-                        $pdf->Cell(140, 15, '', 0, 1, '');
-                        $pdf->Cell(140, 2, '', 0, 0, '');
-                        $pdf->SetFont('Times', 'B', 12);
-                        $pdf->Cell(30, 0, 'Rian Dian Raga, S.Pd', 0, 1, 'C');
-
-                        //6
-                        $pdf->SetFont('Times', '', 12);
-                        $pdf->Cell(140, 3, '', 0, 1, '');
-                        $pdf->Cell(5, 2, '', 0, 0, '');
-                        $pdf->Cell(10, 11, '......................................................................................................................................................................', 0, 1, '');
-                        $pdf->Cell(5, 2, '', 0, 0, '');
-                        $pdf->Cell(10, 4, '......................................................................................................................................................................', 0, 1, '');
-                        $pdf->Cell(137, 2, '', 0, 0, '');
-                        $pdf->Cell(10, 5, 'Direktur Utama', 0, 1, '');
-                        $pdf->Cell(140, 15, '', 0, 1, '');
-                        $pdf->Cell(140, 2, '', 0, 0, '');
-                        $pdf->SetFont('Times', 'B', 12);
-                        $pdf->Cell(30, 0, 'Muhammad Nuf Bernadin, SE', 0, 1, 'C');
-
-            }
-        }
     }
 
 	//Cashflow
@@ -3065,63 +2814,86 @@ function modal_cs()
 
 //***************************** */
 	
-function status1_u()
+function status1()
 {
-    if ($this->persen1_u() <= 50) {
-        $status = 'Layak';
-    } else {
-        $status = 'Tidak Layak';
-    }
-    return $status;
+	if ($this->persen1() <= 50) {
+		$status = 'Layak';
+	} else {
+		$status = 'Tidak Layak';
+	}
+	return $status;
+}
+	
+function statusKonsumtif()
+{
+	if ($this->persenKonsumtif() <= 50) {
+		$status = 'Layak';
+	} else {
+		$status = 'Tidak Layak';
+	}
+	return $status;
 }
 
-function persen1_u()
+function persen1()
 {
-    $id_lb = $_GET['id_lb'];
-    $lb = $this->db->query("SELECT * FROM cashflow_b 
-                                    JOIN capital_b 
-                                    ON cashflow_b.id_lb=capital_b.id_lb
-                                    WHERE cashflow_b.id_lb='$id_lb'");
-    foreach ($lb->result() as $data) {
-        $persen = ($data->total_hutang / $data->total_al) * 100;
-        return $persen;
-    }
+	$id_lb = $_GET['id_lb'];
+	$lb = $this->db->query("SELECT * FROM cashflow_b 
+									JOIN capital_b 
+									ON cashflow_b.id_lb=capital_b.id_lb
+									WHERE cashflow_b.id_lb='$id_lb'");
+	foreach ($lb->result() as $data) {
+		$persen = ($data->total_hutang / $data->total_al) * 100;
+		return $persen;
+	}
 }
 
-function angsuran_u()
+function persenKonsumtif()
 {
-    $id_lb = $_GET['id_lb'];
-    $angsuran = $this->db->query("SELECT * FROM capital_cache WHERE id_lb='$id_lb'");
-    foreach ($angsuran->result() as $data) {
-        $angsuran = $data->total_angsuran;
-    }
-    return $angsuran;
+	$id_lb = $_GET['id_lb'];
+	$lb = $this->db->query("SELECT * FROM cashflow_b 
+									JOIN capital_b 
+									ON cashflow_b.id_lb=capital_b.id_lb
+									WHERE cashflow_b.id_lb='$id_lb'");
+	foreach ($lb->result() as $data) {
+		$persen = ($data->total_hutang / $data->total_aset) * 100;
+		return $persen;
+	}
 }
 
-function labaRugi_u()
+function angsuran()
 {
-    $id_lb = $_GET['id_lb'];
-    $labaRugi = $this->db->query("SELECT * FROM capital_cache WHERE id_lb='$id_lb'");
-    foreach ($labaRugi->result() as $data) {
-        $labaRugi = $data->laba_rugi;
-    }
-    return $labaRugi;
+	$id_lb = $_GET['id_lb'];
+	$angsuran = $this->db->query("SELECT * FROM capital_cache WHERE id_lb='$id_lb'");
+	foreach ($angsuran->result() as $data) {
+		$angsuran = $data->total_angsuran;
+	}
+	return $angsuran;
 }
 
-function persen2_u()
+function labaRugi()
 {
-    $persen = ($this->angsuran_u() / $this->labaRugi_u()) * 100;
-    return $persen;
+	$id_lb = $_GET['id_lb'];
+	$labaRugi = $this->db->query("SELECT * FROM capital_cache WHERE id_lb='$id_lb'");
+	foreach ($labaRugi->result() as $data) {
+		$labaRugi = $data->laba_rugi;
+	}
+	return $labaRugi;
 }
 
-function status2_u()
+function persen2()
 {
-    if ($this->persen2_u() <= 60) {
-        $status = 'Layak';
-    } else {
-        $status = 'Tidak Layak';
-    }
-    return $status;
+	$persen = ($this->angsuran() / $this->labaRugi()) * 100;
+	return $persen;
+}
+
+function status2()
+{
+	if ($this->persen2() <= 60) {
+		$status = 'Layak';
+	} else {
+		$status = 'Tidak Layak';
+	}
+	return $status;
 }
 
 

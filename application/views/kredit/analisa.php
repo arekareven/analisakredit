@@ -40,25 +40,10 @@
                             </td>                     
                             <td>
                                 <a href='pdf_scoring?id_lb=".$row->id_lb."' target='_blank'>".$row->status ."</a>
-                            </td>                  
-                            <!--<td>" .number_format($row->plafond) . "</td>              
-                            <td>
-                                <h5>
-                                <a href='pdf_all?id_lb=".$row->id_lb."' target='_blank' class='btn btn-success btn-circle' title='Hasil Analisa'><i class='fas fa-eye'></i></a>
-                                <a href='pdf_scoring?id_lb=".$row->id_lb."' target='_blank' class='btn btn-warning btn-circle' title='Hasil Scoring'><i class='far fa-clipboard'></i></a>
-                                </h5>
-                            </td>     
-                            -->                
+                            </td>               
                             <td>
                                 <a href='".$row->link_zoom."' target='_blank'>".$waktuZoom."</a>
-                            </td>	      
-                            <!--       
-                            <td>
-                            <h6>
-                                <a href='".$row->link_zoom."' target='_blank'>Meeting</a>
-                            </h6>
-                            </td>   
-                            --> 
+                            </td>	 
                             <td>
                                 <a href='javascript:;' class='btn btn-warning btn-circle item_edit' title='Edit Scoring' data='" . $row->id_pengajuan . "'><i class='fas fa-edit'></i></a>
                             </td>                        					
@@ -1815,7 +1800,6 @@
         </div>
     </div>
 
-
     <script type="text/javascript">
         
         //skoring
@@ -1900,7 +1884,6 @@
         });
 
     </script>
-    
 
 </div>
 <!-- /.container-fluid -->

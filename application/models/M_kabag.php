@@ -30,7 +30,8 @@ class M_kabag extends CI_Model
 		$data = $this->db->get_where('user', ['email' =>
         $this->session->userdata('email')])->row_array();
         $kantor = $data['kantor'];
-        return $this->db->query("SELECT * FROM pengajuan WHERE kantor='$kantor' AND `status`='Layak'");
+        return $this->db->query("SELECT * FROM pengajuan WHERE kantor='$kantor'");
+        // return $this->db->query("SELECT * FROM pengajuan WHERE kantor='$kantor' AND `status`='Layak'");
         /*
         return $this->db->query("SELECT * FROM analisis WHERE nama='$a' AND status='Ditinjau'");
         */
@@ -172,7 +173,7 @@ class M_kabag extends CI_Model
 			$mail->addAddress($row->email_anggota_komite); //email tujuan pengiriman email
 		}
 
-		$id_lb    = $this->input->post('id_lb');
+		$id_lb = $this->input->post('id_lb');
 		foreach ($this->db->query("SELECT * FROM latar_belakang WHERE id_lb=$id_lb")->result() as $row) {
 			$mail->addAddress($row->user); //email tujuan pengiriman email
 		}

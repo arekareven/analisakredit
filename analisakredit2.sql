@@ -4109,7 +4109,7 @@ CREATE TABLE `pengajuan` (
   `name_debitur` varchar(50) DEFAULT NULL,
   `plafond` varchar(50) DEFAULT NULL,
   `id_lb` int(11) NOT NULL,
-  `catatan` text DEFAULT DEFAULT NULL,
+  `catatan` text DEFAULT NULL,
   `status` varchar(50) DEFAULT NULL,
   `link_zoom` varchar(200) NOT NULL,
   `waktu_zoom` datetime DEFAULT NULL,
