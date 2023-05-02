@@ -1,31 +1,15 @@
 <!-- Test case 1-->
 <div class="container-fluid">
 
-    <div class="row">
-		<!--
-        <div class="col-md-11 mb-2">
-            <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
-        </div>
-		-->
-        <div class="col-md-1 mb-2">
-            <a href="test/edit?id_lb=<?php echo $id_lb; ?>" type="button" class="btn btn-warning" target="_blank">
-                Edit
-            </a>
-        </div>
-    </div>
-
     <!-- table pemasukan -->
     <div class="card shadow mb-4">
 		<div class="card-header py-3">
-			<h6 class="m-0 font-weight-bold text-primary">INPUT DATA</h6>
+			<h6 class="m-0 font-weight-bold text-primary">HALAMAN INPUT DATA</h6>
 		</div>
         <div class="card-body">
             <div class="row">
                 <div class="col-3">
                     <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-						<!--
-                        <a class="nav-link" id="v-pills-lb-tab" data-toggle="pill" href="#v-pills-lb" role="tab" aria-controls="v-pills-lb" aria-selected="true">Latar Belakang</a>
-						-->
                         <a class="nav-link active" id="v-pills-rw-tab" data-toggle="pill" href="#v-pills-rw" role="tab" aria-controls="v-pills-rw" aria-selected="true">Riwayat Pinjaman</a>
                         <a class="nav-link" id="v-pills-character-tab" data-toggle="pill" href="#v-pills-character" role="tab" aria-controls="v-pills-character" aria-selected="false">Character</a>
                         <a class="nav-link" id="v-pills-capacity-tab" data-toggle="pill" href="#v-pills-capacity" role="tab" aria-controls="v-pills-capacity" aria-selected="false">Capacity</a>
@@ -43,23 +27,30 @@
                 </div>
                 <div class="col-9">
                     <div class="tab-content" id="v-pills-tabContent">
-                        <div class="tab-pane fade" id="v-pills-lb" role="tabpanel" aria-labelledby="v-pills-lb-tab">
-							<div id="reload">
-								<table class="table table-bordered" id="dataLb">
-									<thead>
-										<tr>
-											<th scope="col">ID</th>
-											<th scope="col">Plafond</th>
-											<th scope="col">Waktu</th>
-											<th scope="col">Aksi</th>
-										</tr>
-									</thead>
-									<tbody id="show_data_lb">
-									</tbody>
-								</table>
-							</div>
-                        </div>
                         <div class="tab-pane fade show active" id="v-pills-rw" role="tabpanel" aria-labelledby="v-pills-rw-tab">
+							<p>
+								<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseRiwayatPinjaman" aria-expanded="false" aria-controls="collapseRiwayatPinjaman">
+									Button with data-target
+								</button>
+							</p>
+							<div class="collapse" id="collapseRiwayatPinjaman">
+								<div class="card card-body">
+									<div id="reload">
+										<table class="table table-bordered" id="dataRw">
+											<thead class="thead-dark">
+												<tr>
+													<th scope="col">Plafond</th>
+													<th scope="col">Status</th>
+													<th scope="col">Saldo</th>
+													<th scope="col">Aksi</th>
+												</tr>
+											</thead>
+											<tbody id="show_data">
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
                             <form id="rp">
                                 <div class="form-group">
                                     <div class="row">
@@ -101,24 +92,10 @@
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" id="btn_rp" class="btn btn-primary">Simpan</button>
+                                    <button type="button" id="btn_rp" class="btn btn-success">Simpan</button>
                                 </div>
                             </form>
 							<p class="box">* Jika tidak ada riwayat pinjaman, maka silahkan dikosongi dan lanjut ke character</p>
-							<div id="reload">
-								<table class="table table-bordered" id="dataRw">
-									<thead class="thead-dark">
-										<tr>
-											<th scope="col">Plafond</th>
-											<th scope="col">Status</th>
-											<th scope="col">Saldo</th>
-											<th scope="col">Aksi</th>
-										</tr>
-									</thead>
-									<tbody id="show_data">
-									</tbody>
-								</table>
-							</div>
                         </div>
                         <div class="tab-pane fade" id="v-pills-character" role="tabpanel" aria-labelledby="v-pills-character-tab">
                             <form id="character">
@@ -183,7 +160,7 @@
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" id="btn_character" class="btn btn-primary">Simpan</button>
+                                    <button type="button" id="btn_character" class="btn btn-success">Simpan</button>
                                 </div>
                             </form>
 							<p class="box">* Untuk informasi karakter jika hanya 1 atau 2 saja, kolom yang lain dikosongi saja</p>
@@ -326,7 +303,7 @@
 									</div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" id="btn_capacity" class="btn btn-primary">Simpan</button>
+                                    <button type="button" id="btn_capacity" class="btn btn-success">Simpan</button>
                                 </div>
                             </form>
 							<div id="reload">
@@ -492,7 +469,7 @@
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" id="btn_capital" class="btn btn-primary">Simpan</button>
+                                    <button type="button" id="btn_capital" class="btn btn-success">Simpan</button>
                                 </div>
                             </form>
 							<p class="box">* Tidak boleh kosong, isi dengan 0</p>
@@ -571,7 +548,7 @@
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" id="btn_cashawpend" class="btn btn-primary">Simpan</button>
+                                                <button type="button" id="btn_cashawpend" class="btn btn-success">Simpan</button>
                                             </div>
                                         </form>
 										<div id="reload">
@@ -639,7 +616,7 @@
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" id="btn_cashawpeng" class="btn btn-primary">Simpan</button>
+                                                <button type="button" id="btn_cashawpeng" class="btn btn-success">Simpan</button>
                                             </div>
                                         </form>
 										<div id="reload">
@@ -721,7 +698,7 @@
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" id="btn_cashsetpend" class="btn btn-primary">Simpan</button>
+                                                <button type="button" id="btn_cashsetpend" class="btn btn-success">Simpan</button>
                                             </div>
                                         </form>
 										<div id="reload">
@@ -787,7 +764,7 @@
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" id="btn_cashsetpeng" class="btn btn-primary">Simpan</button>
+                                                <button type="button" id="btn_cashsetpeng" class="btn btn-success">Simpan</button>
                                             </div>
                                         </form>
 										<div id="reload">
@@ -861,7 +838,7 @@
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" id="btn_cashsethut" class="btn btn-primary">Save changes</button>
+                                                <button type="button" id="btn_cashsethut" class="btn btn-success">Save changes</button>
                                             </div>
                                         </form>
 										<div id="reload">
@@ -941,7 +918,7 @@
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" id="btn_cashpendlain" class="btn btn-primary">Simpan</button>
+                                                <button type="button" id="btn_cashpendlain" class="btn btn-success">Simpan</button>
                                             </div>
                                         </form>
 										<div id="reload">
@@ -1007,7 +984,7 @@
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" id="btn_cashpenglain" class="btn btn-primary">Simpan</button>
+                                                <button type="button" id="btn_cashpenglain" class="btn btn-success">Simpan</button>
                                             </div>
                                         </form>
 										<div id="reload">
@@ -1059,7 +1036,7 @@
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" id="btn_condition" class="btn btn-primary">Simpan</button>
+                                    <button type="button" id="btn_condition" class="btn btn-success">Simpan</button>
                                 </div>
                             </form>
 							<div id="reload">
@@ -1174,7 +1151,7 @@
 									</div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" id="btn_collateralt" class="btn btn-primary">Simpan</button>
+                                    <button type="button" id="btn_collateralt" class="btn btn-success">Simpan</button>
                                 </div>
                             </form>
 							<p class="box">* Jika harga atau luas tidak ada, harap isi dengan 0</p>
@@ -1281,7 +1258,7 @@
 									</div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" id="btn_collateralk" class="btn btn-primary">Simpan</button>
+                                    <button type="button" id="btn_collateralk" class="btn btn-success">Simpan</button>
                                 </div>
                             </form>
 							<div id="reload">
@@ -1326,7 +1303,7 @@
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" id="btn_realisasi" class="btn btn-primary">Simpan</button>
+                                                <button type="button" id="btn_realisasi" class="btn btn-success">Simpan</button>
                                             </div>
                                         </form>
                                         <div id="reload">
@@ -1559,222 +1536,8 @@
         </div>
     </div>
 
+	<!-- JS untuk menyimpan data ke database dan reset form -->
     <script type="text/javascript">
-        //JS untuk menyimpan data ke database dan reset form
-
-		/*
-        //latar belakang
-        $(document).ready(function() {
-            tampil_data_lb(); //pemanggilan fungsi tampil riwayat.
-            $('#dataLb').dataTable();
-
-            //fungsi tampil riwayat
-            function tampil_data_lb() {
-                var id_lb = <?php echo $id_lb; ?>;
-                $.ajax({
-                    type: 'POST',
-                    url: '<?php echo base_url() ?>kredit/data_lb',
-                    async: true,
-                    dataType: 'json',
-                    data: {
-                        id_lb: id_lb
-                    },
-                    success: function(data) {
-                        var html = '';
-                        var i;
-                        for (i = 0; i < data.length; i++) {
-                            html += '<tr>' +
-                                '<td>' + data[i].id_lb + '</td>' +
-                                '<td>' + data[i].plafon + '</td>' +
-                                '<td>' + data[i].jangka_waktu + '</td>' +
-                                '<td style="text-align:right;">' +
-                                '<a href="javascript:;" class="btn btn-info btn-xs item_edit_lb" data="' + data[i].id_lb + '">Edit</a>' + ' ' +
-                                '<a href="javascript:;" class="btn btn-danger btn-xs item_hapus_lb" data="' + data[i].id_lb + '">Hapus</a>' +
-                                '</td>' +
-                                '</tr>';
-                        }
-                        $('#show_data_lb').html(html);
-                    }
-
-                });
-            }
-            
-			//GET UPDATE riwayat
-			$('#show_data_lb').on('click', '.item_edit_lb', function() {
-				var id = $(this).attr('data');
-				$.ajax({
-					type: "GET",
-					url: "<?php echo base_url('kredit/get_lb') ?>",
-					dataType: "JSON",
-					data: {
-						id: id
-					},
-					success: function(datalb) {
-						$.each(datalb, function(id_lb, tgl_analisa, tgl_permohonan, plafon, jangka_waktu, sifat_kredit, suku_bunga, musiman,
-						jenis_permohonan,tujuan_permohonan,ket_penggunaan,nama_debitur,status_kawin,ttl_nasabah,ktp,alamat_ktp_nasabah,
-						domisili_nasabah,hp_nasabah,status_tt,pekerjaan_nasabah,tanggungan,pendidikan,jenis_kelamin,masa_laku,telp_kantor,
-						lama_tinggal,nama_pasangan,ttl_pasangan,alamat_ktp_pasangan,domisili_pasangan,pekerjaan_pasangan,hp_pasangan,nama_keluarga,
-						hubungan_keluarga,alamat_keluarga_hp_keluarga) {
-							$('#editlb').modal('show');
-							$('[name="id_lb"]').val(datalb.id_lb);
-							$('[name="tgl_analisa"]').val(datalb.tgl_analisa);
-							$('[name="tgl_permohonan"]').val(datalb.tgl_permohonan);
-							$('[name="plafon"]').val(datalb.plafon);
-							$('[name="jangka_waktu"]').val(datalb.jangka_waktu);
-							$('[name="sifat_kredit"]').val(datalb.sifat_kredit);
-							$('[name="suku_bunga"]').val(datalb.suku_bunga);							
-							$('[name="musiman"]').val(datalb.musiman);							
-							$('[name="jenis_permohonan"]').val(datalb.jenis_permohonan);
-							$('[name="tujuan_permohonan"]').val(datalb.tujuan_permohonan);
-							$('[name="ket_penggunaan"]').val(datalb.ket_penggunaan);
-							$('[name="nama_debitur"]').val(datalb.nama_debitur);
-							$('[name="status_kawin"]').val(datalb.status_kawin);
-							$('[name="ttl_nasabah"]').val(datalb.ttl_nasabah);
-							$('[name="ktp"]').val(datalb.ktp);
-							$('[name="alamat_ktp_nasabah"]').val(datalb.alamat_ktp_nasabah);
-							$('[name="domisili_nasabah"]').val(datalb.domisili_nasabah);
-							$('[name="hp_nasabah"]').val(datalb.hp_nasabah);
-							$('[name="status_tt"]').val(datalb.status_tt);
-							$('[name="pekerjaan_nasabah"]').val(datalb.pekerjaan_nasabah);
-							$('[name="tanggungan"]').val(datalb.tanggungan);
-							$('[name="pendidikan"]').val(datalb.pendidikan);
-							$('[name="jenis_kelamin"]').val(datalb.jenis_kelamin);
-							$('[name="masa_laku"]').val(datalb.masa_laku);
-							$('[name="telp_kantor"]').val(datalb.telp_kantor);
-							$('[name="lama_tinggal"]').val(datalb.lama_tinggal);
-							$('[name="nama_pasangan"]').val(datalb.nama_pasangan);
-							$('[name="ttl_pasangan"]').val(datalb.ttl_pasangan);
-							$('[name="alamat_ktp_pasangan"]').val(datalb.alamat_ktp_pasangan);
-							$('[name="domisili_pasangan"]').val(datalb.domisili_pasangan);
-							$('[name="pekerjaan_pasangan"]').val(datalb.pekerjaan_pasangan);
-							$('[name="hp_pasangan"]').val(datalb.hp_pasangan);
-							$('[name="nama_keluarga"]').val(datalb.nama_keluarga);
-							$('[name="hubungan_keluarga"]').val(datalb.hubungan_keluarga);
-							$('[name="alamat_keluarga"]').val(datalb.alamat_keluarga);
-							$('[name="hp_keluarga"]').val(datalb.hp_keluarga);
-						});
-					}
-				});
-				return false;
-			});
-            
-			//Update latar nelakang
-			$('#btn_edit_lb').on('click', function() {
-				var id_lb = $('#id_lb').val();
-				var tgl_analisa = $('#tgl_analisa').val();
-				var tgl_permohonan = $('#tgl_permohonan').val();
-				var plafon = $('#plafon').val();
-				var jangka_waktu = $('#jangka_waktu').val();
-				var sifat_kredit = $('#sifat_kredit').val();
-				var suku_bunga = $('#suku_bunga').val();							
-				var musiman = $('#musiman').val();							
-				var jenis_permohonan = $('#jenis_permohonan').val();
-				var tujuan_permohonan = $('#tujuan_permohonan').val();
-				var ket_penggunaan = $('#ket_penggunaan').val();
-				var nama_debitur = $('#nama_debitur').val();
-				var status_kawin = $('#status_kawin').val();
-				var ttl_nasabah = $('#ttl_nasabah').val();
-				var ktp = $('#ktp').val();
-				var alamat_ktp_nasabah = $('#alamat_ktp_nasabah').val();
-				var domisili_nasabah = $('#domisili_nasabah').val();
-				var hp_nasabah = $('#hp_nasabah').val();
-				var status_tt = $('#status_tt').val();
-				var pekerjaan_nasabah = $('#pekerjaan_nasabah').val();
-				var tanggungan = $('#tanggungan').val();
-				var pendidikan = $('#pendidikan').val();
-				var jenis_kelamin = $('#jenis_kelamin').val();
-				var masa_laku = $('#masa_laku').val();
-				var telp_kantor = $('#telp_kantor').val();
-				var lama_tinggal = $('#lama_tinggal').val();
-				var nama_pasangan = $('#nama_pasangan').val();
-				var ttl_pasangan = $('#ttl_pasangan').val();
-				var alamat_ktp_pasangan = $('#alamat_ktp_pasangan').val();
-				var domisili_pasangan = $('#domisili_pasangan').val();
-				var pekerjaan_pasangan = $('#pekerjaan_pasangan').val();
-				var hp_pasangan = $('#hp_pasangan').val();
-				var nama_keluarga = $('#nama_keluarga').val();
-				var hubungan_keluarga = $('#hubungan_keluarga').val();
-				var alamat_keluarga = $('#alamat_keluarga').val();
-				var hp_keluarga = $('#hp_keluarga').val();
-
-				$.ajax({
-					type: "POST",
-					url: "<?php echo base_url('kredit/update_lb') ?>",
-					dataType: "json",
-					data: {
-						id_lb: id_lb,
-						tgl_analisa: tgl_analisa,
-						tgl_permohonan: tgl_permohonan,
-						plafon: plafon,
-						jangka_waktu: jangka_waktu,
-						sifat_kredit: sifat_kredit,
-						suku_bunga: suku_bunga,							
-						musiman: musiman,							
-						jenis_permohonan: jenis_permohonan,
-						tujuan_permohonan: tujuan_permohonan,
-						ket_penggunaan: ket_penggunaan,
-						nama_debitur: nama_debitur,
-						status_kawin: status_kawin,
-						ttl_nasabah: ttl_nasabah,
-						ktp: ktp,
-						alamat_ktp_nasabah: alamat_ktp_nasabah,
-						domisili_nasabah: domisili_nasabah,
-						hp_nasabah: hp_nasabah,
-						status_tt: status_tt,
-						pekerjaan_nasabah: pekerjaan_nasabah,
-						tanggungan: tanggungan,
-						pendidikan: pendidikan,
-						jenis_kelamin: jenis_kelamin,
-						masa_laku: masa_laku,
-						telp_kantor: telp_kantor,
-						lama_tinggal: lama_tinggal,
-						nama_pasangan: nama_pasangan,
-						ttl_pasangan: ttl_pasangan,
-						alamat_ktp_pasangan: alamat_ktp_pasangan,
-						domisili_pasangan: domisili_pasangan,
-						pekerjaan_pasangan: pekerjaan_pasangan,
-						hp_pasangan: hp_pasangan,
-						nama_keluarga: nama_keluarga,
-						hubungan_keluarga: hubungan_keluarga,
-						alamat_keluarga: alamat_keluarga,
-						hp_keluarga: hp_keluarga
-					},
-					success: function(data) {
-						document.getElementById("form_lb").reset();
-						$('#editlb').modal('hide');
-						tampil_data_lb();
-					}
-				});
-				return false;
-			});
-
-			//GET HAPUS
-			$('#show_data').on('click', '.item_hapus_rp', function() {
-				var id = $(this).attr('data');
-				$('#deleterp').modal('show');
-				$('[name="kode_rp"]').val(id);
-			});
-
-			//Hapus latar nelakang
-			$('#btn_hapus_rp').on('click', function() {
-				var kode = $('#textkode_rp').val();
-				$.ajax({
-					type: "POST",
-					url: "<?php echo base_url('kredit/delete_rp') ?>",
-					dataType: "JSON",
-					data: {
-						kode: kode
-					},
-					success: function(data) {
-						$('#deleterp').modal('hide');
-						tampil_data_rp();
-					}
-				});
-				return false;
-			});
-
-        });
-		*/
 		
         //riwayat
         $(document).ready(function() {
@@ -4376,8 +4139,8 @@
 
     </script>
 
+	<!-- JS untuk mengambil data perkiraan -->
 	<script>
-        //JS untuk mengambil data perkiraan
 
         //cashflow pendapatan awal
         function js_koper_awpend() {
@@ -6681,8 +6444,8 @@
 	</div>
 	<!--END MODAL HAPUS-->
 
+	<!-- JS untuk mengambil data perkiraan -->
     <script>
-        //JS untuk mengambil data perkiraan
 
         //cashflow pendapatan
         function nama_p() {
