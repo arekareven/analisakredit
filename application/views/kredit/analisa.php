@@ -26,28 +26,31 @@
                     <tbody id="show_data">
                         <?php
                         foreach ($query->result() as $row) {//ambil data dari DB latar_belakang, file 
-                        if (!isset($row->waktu_zoom)){
-                            $waktuZoom = 'Belum Ada';
-                        }else{
-                            $waktuZoom = date('d-m-Y H:i',strtotime($row->waktu_zoom));
-                        }
-    
-                        echo 
-                        "<tr>
-                            <td>" . $row->nama_ao . "</td>
-                            <td>
-                                <a href='pdf_all?id_lb=".$row->id_lb."' target='_blank'>". $row->name_debitur ."</a>
-                            </td>                     
-                            <td>
-                                <a href='pdf_scoring?id_lb=".$row->id_lb."' target='_blank'>".$row->status ."</a>
-                            </td>               
-                            <td>
-                                <a href='".$row->link_zoom."' target='_blank'>".$waktuZoom."</a>
-                            </td>	 
-                            <td>
-                                <a href='javascript:;' class='btn btn-warning btn-circle item_edit' title='Edit Scoring' data='" . $row->id_pengajuan . "'><i class='fas fa-edit'></i></a>
-                            </td>                        					
-                        </tr>";
+							if (!isset($row->waktu_zoom)){
+								$waktuZoom = "Belum Ada";								
+								$linkZoom = "analisa/index";
+							}else{
+								$waktuZoom = date('d-m-Y H:i',strtotime($row->waktu_zoom));							
+								$linkZoom = $row->link_zoom;
+							}
+		
+							echo 
+							"<tr>
+								<td>" . $row->nama_ao . "</td>
+								<td>
+									<a href='pdf_all?id_lb=".$row->id_lb."' target='_blank'>". $row->name_debitur ."</a>
+								</td>                     
+								<td>
+									<a href='pdf_scoring?id_lb=".$row->id_lb."' target='_blank'>".$row->status ."</a>
+								</td>               
+								<td>
+									<a href='".$linkZoom."' target='_blank'>".$waktuZoom."</a>
+								</td>	 
+								<td>
+									<a href='javascript:;' class='btn btn-warning btn-circle item_edit' title='Edit Scoring' data='" . $row->id_pengajuan . "'><i class='fas fa-edit'></i></a>
+									<a href='javascript:;' class='btn btn-info btn-circle item_resume' title='Resume' data='" . $row->id_pengajuan . "'><i class='fas fa-paperclip'></i></a>
+								</td>                        					
+							</tr>";
                             }
                         ?>
                     </tbody>
@@ -1800,6 +1803,32 @@
         </div>
     </div>
 
+    <!-- Modal skoring-->
+    <div class="modal fade" id="resume" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5>SKORING</h5>
+                    <button id="close_pengajuan" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="<?= base_url('analisa/add_scoring'); ?>" method="post" id="form_pengajuan">
+                    <div class="modal-body">                       
+                        <input type="hidden" class="form-control" id="id_pengajuan" name="id_pengajuan">
+                        <input type="hidden" class="form-control" id="name_debitur" name="name_debitur">
+                        <input type="hidden" class="form-control" id="plafon" name="plafon">
+
+                    </div>
+                    <div class="modal-footer">
+                        <button id="close_pengajuan" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <script type="text/javascript">
         
         //skoring
@@ -1884,6 +1913,41 @@
         });
 
     </script>
+
+	<script type="text/javascript">
+		        
+        //resume
+        $(document).ready(function() {
+                                                           
+            $('#close_resume').on('click', function() {
+                document.getElementById("resume").reset();
+            })
+       
+			//GET UPDATE resume
+			$('#show_data').on('click', '.item_resume', function() {
+				var id = $(this).attr('data');
+				$.ajax({
+					type: "GET",
+					url: "<?php echo base_url('analisa/get_resume') ?>",
+					dataType: "JSON",
+					data: {
+						id: id
+					},
+					success: function(data) {
+						$.each(data, function(id_real, id_lb, oleh, sebagai) {
+							$('#resume').modal('show');
+							$('[name="id_real"]').val(data.id_real);
+							$('[name="id_lb"]').val(data.id_lb);
+							$('[name="oleh"]').val(data.oleh);
+							$('[name="sebagai"]').val(data.sebagai);
+						});
+					}
+				});
+				return false;
+			});
+
+        });
+	</script>
 
 </div>
 <!-- /.container-fluid -->

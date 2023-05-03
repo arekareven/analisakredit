@@ -25,7 +25,12 @@ class Main extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['email' =>
         $this->session->userdata('email')])->row_array();
         $data['select'] = $this->m_main->data_select();
-        $data['analis'] = $this->m_main->data_analis();
+		
+		$kantor = $this->db->get_where('user', ['email' =>
+        $this->session->userdata('email')])->row_array();
+		// var_dump($kantor['kantor']);
+		// die;
+        $data['analis'] = $this->m_main->data_analis($kantor['kantor']);
         $data['pengajuan'] = $this->m_main->data_pengajuan($id_lb);
         $data['perkiraan'] = $this->m_main->data_perkiraan();
         $data['cashflow'] = $this->m_main->edit_cash($id_lb);

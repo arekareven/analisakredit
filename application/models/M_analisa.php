@@ -64,9 +64,14 @@ class M_analisa extends CI_Model
         $this->session->userdata('email')])->row_array();
         $a = $user['name'];
         return $this->db->query("SELECT * FROM pengajuan WHERE nama_analis='$a' ORDER BY id_lb DESC");
-        /*
-        return $this->db->query("SELECT * FROM analisis WHERE nama='$a' AND status='Ditinjau'");
-        */
+    }
+
+    public function tampil_data_monitoring()
+    {
+        $user = $this->db->get_where('user', ['email' =>
+        $this->session->userdata('email')])->row_array();
+        $a = $user['name'];
+        return $this->db->query("SELECT * FROM pengajuan WHERE nama_analis='$a' && status='Diajukan'")->num_rows();
     }
    	
 	function get_pengajuan_by_kode($id_pengajuan)

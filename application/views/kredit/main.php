@@ -1,7 +1,6 @@
 <!-- Test case 1-->
 <div class="container-fluid">
-
-    <!-- table pemasukan -->
+	<!-- <?= $user['name']; ?> -->
     <div class="card shadow mb-4">
 		<div class="card-header py-3">
 			<h6 class="m-0 font-weight-bold text-primary">HALAMAN INPUT DATA</h6>
@@ -28,29 +27,7 @@
                 <div class="col-9">
                     <div class="tab-content" id="v-pills-tabContent">
                         <div class="tab-pane fade show active" id="v-pills-rw" role="tabpanel" aria-labelledby="v-pills-rw-tab">
-							<p>
-								<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseRiwayatPinjaman" aria-expanded="false" aria-controls="collapseRiwayatPinjaman">
-									Button with data-target
-								</button>
-							</p>
-							<div class="collapse" id="collapseRiwayatPinjaman">
-								<div class="card card-body">
-									<div id="reload">
-										<table class="table table-bordered" id="dataRw">
-											<thead class="thead-dark">
-												<tr>
-													<th scope="col">Plafond</th>
-													<th scope="col">Status</th>
-													<th scope="col">Saldo</th>
-													<th scope="col">Aksi</th>
-												</tr>
-											</thead>
-											<tbody id="show_data">
-											</tbody>
-										</table>
-									</div>
-								</div>
-							</div>
+							<br>
                             <form id="rp">
                                 <div class="form-group">
                                     <div class="row">
@@ -87,8 +64,6 @@
                                                 <option value="Tidak Terlampir">Tidak Terlampir</option>
                                             </select>
                                         </div>
-                                        <!--untuk menampilkan pesan error ketika kosong-->
-                                        <p class="text-danger" id="err_sejarah"></p>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
@@ -96,6 +71,23 @@
                                 </div>
                             </form>
 							<p class="box">* Jika tidak ada riwayat pinjaman, maka silahkan dikosongi dan lanjut ke character</p>
+							
+							<div class="card card-body">
+								<div id="reload">
+									<table class="table table-sm" id="dataRw">
+										<thead class="thead-dark">
+											<tr>
+												<th scope="col">Plafond</th>
+												<th scope="col">Status</th>
+												<th scope="col">Saldo</th>
+												<th scope="col">Aksi</th>
+											</tr>
+										</thead>
+										<tbody id="show_data">
+										</tbody>
+									</table>
+								</div>
+							</div>
                         </div>
                         <div class="tab-pane fade" id="v-pills-character" role="tabpanel" aria-labelledby="v-pills-character-tab">
                             <form id="character">
@@ -166,7 +158,7 @@
 							<p class="box">* Untuk informasi karakter jika hanya 1 atau 2 saja, kolom yang lain dikosongi saja</p>
 							<br>
 							<div id="reload">
-								<table class="table table-bordered" id="dataChar">
+								<table class="table table-sm" id="dataChar">
 									<thead class="thead-dark">
 										<tr>
 											<th scope="col">Info Pribadi</th>
@@ -307,7 +299,7 @@
                                 </div>
                             </form>
 							<div id="reload">
-								<table class="table table-bordered" id="dataCapa">
+								<table class="table table-sm" id="dataCapa">
 									<thead class="thead-dark">
 										<tr>
 											<th scope="col">Nama Usaha</th>
@@ -322,122 +314,122 @@
 							</div>
                         </div>
                         <div class="tab-pane fade" id="v-pills-capital" role="tabpanel" aria-labelledby="v-pills-capital-tab">
-                            <form id="capital">
+                            <form id="capital" class="was-validated">
                                 <div class="modal-body">
                                     <div class="col-md-12 mb-3">
-                                        <h5>Aktiva lancar</h5>
+                                        <h5>Aktiva Produktif</h5>
                                     </div>
                                     <div class="form-group row">
                                         <label for="kas" class="col-sm-6 col-form-label">Kas</label>
                                         <div class="col-sm-6">
                                             <input type="hidden" class="form-control" id="id_lb" name="id_lb" value="<?php echo $id_lb; ?>">
                                             <input type="hidden" class="form-control" id="type" name="type" value="before">
-                                            <input type="number" class="form-control" id="kas" name="kas">
+                                            <input type="number" class="form-control" id="kas" name="kas" required>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="tabungan" class="col-sm-6 col-form-label">Tabungan</label>
                                         <div class="col-sm-6">
-                                            <input type="number" class="form-control" id="tabungan" name="tabungan">
+                                            <input type="number" class="form-control" id="tabungan" name="tabungan" required>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="deposito" class="col-sm-6 col-form-label">Deposito</label>
                                         <div class="col-sm-6">
-                                            <input type="number" class="form-control" id="deposito" name="deposito">
+                                            <input type="number" class="form-control" id="deposito" name="deposito" required>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="piutang" class="col-sm-6 col-form-label">Piutang</label>
                                         <div class="col-sm-6">
-                                            <input type="number" class="form-control" id="piutang" name="piutang">
+                                            <input type="number" class="form-control" id="piutang" name="piutang" required>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="peralatan" class="col-sm-6 col-form-label">Peralatan</label>
                                         <div class="col-sm-6">
-                                            <input type="number" class="form-control" id="peralatan" name="peralatan">
+                                            <input type="number" class="form-control" id="peralatan" name="peralatan" required>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="barang" class="col-sm-6 col-form-label">Persediaan Barang Usaha 1</label>
                                         <div class="col-sm-6">
-                                            <input type="number" class="form-control" id="barang" name="barang">
+                                            <input type="number" class="form-control" id="barang" name="barang" required>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="barang2" class="col-sm-6 col-form-label">Persediaan Barang Usaha 2</label>
                                         <div class="col-sm-6">
-                                            <input type="number" class="form-control" id="barang2" name="barang2">
+                                            <input type="number" class="form-control" id="barang2" name="barang2" required>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="barang3" class="col-sm-6 col-form-label">Persediaan Barang Usaha 3</label>
                                         <div class="col-sm-6">
-                                            <input type="number" class="form-control" id="barang3" name="barang3">
+                                            <input type="number" class="form-control" id="barang3" name="barang3" required>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="sewa" class="col-sm-6 col-form-label">Sewa Dibayar Dimuka</label>
                                         <div class="col-sm-6">
-                                            <input type="number" class="form-control" id="sewa" name="sewa">
+                                            <input type="number" class="form-control" id="sewa" name="sewa" required>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="lahan" class="col-sm-6 col-form-label">Lahan Garap</label>
                                         <div class="col-sm-6">
-                                            <input type="number" class="form-control" id="lahan" name="lahan">
+                                            <input type="number" class="form-control" id="lahan" name="lahan" required>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="gedung" class="col-sm-6 col-form-label">Gedung / Ruko</label>
                                         <div class="col-sm-6">
-                                            <input type="number" class="form-control" id="gedung" name="gedung">
+                                            <input type="number" class="form-control" id="gedung" name="gedung" required>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="operasional" class="col-sm-6 col-form-label">Kendaraan Operasional</label>
                                         <div class="col-sm-6">
-                                            <input type="number" class="form-control" id="operasional" name="operasional">
+                                            <input type="number" class="form-control" id="operasional" name="operasional" required>
                                         </div>
                                     </div>
                                     <div class="form-group row mb-5">
                                         <label for="lain" class="col-sm-6 col-form-label">Lain-lain</label>
                                         <div class="col-sm-6">
-                                            <input type="number" class="form-control" id="lain" name="lain">
+                                            <input type="number" class="form-control" id="lain" name="lain" required>
                                         </div>
                                     </div>
                                     <div class="col-md-12 mb-3">
-                                        <h5>Aktiva Tetap</h5>
+                                        <h5>Aktiva Lainnya</h5>
                                     </div>
                                     <div class="form-group row">
                                         <label for="tanah" class="col-sm-6 col-form-label">Tanah</label>
                                         <div class="col-sm-6">
-                                            <input type="number" class="form-control" id="tanah" name="tanah">
+                                            <input type="number" class="form-control" id="tanah" name="tanah" required>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="bangunan" class="col-sm-6 col-form-label">Bangunan</label>
                                         <div class="col-sm-6">
-                                            <input type="number" class="form-control" id="bangunan" name="bangunan">
+                                            <input type="number" class="form-control" id="bangunan" name="bangunan" required>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="kendaraan" class="col-sm-6 col-form-label">Kendaraan</label>
                                         <div class="col-sm-6">
-                                            <input type="number" class="form-control" id="kendaraan" name="kendaraan">
+                                            <input type="number" class="form-control" id="kendaraan" name="kendaraan" required>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="inventaris" class="col-sm-6 col-form-label">Inventaris</label>
                                         <div class="col-sm-6">
-                                            <input type="number" class="form-control" id="inventaris" name="inventaris">
+                                            <input type="number" class="form-control" id="inventaris" name="inventaris" required>
                                         </div>
                                     </div>
                                     <div class="form-group row mb-5">
                                         <label for="lain2" class="col-sm-6 col-form-label">Lain-lain</label>
                                         <div class="col-sm-6">
-                                            <input type="number" class="form-control" id="lain2" name="lain2">
+                                            <input type="number" class="form-control" id="lain2" name="lain2" required>
                                         </div>
                                     </div>
                                     <div class="col-md-12 mb-3">
@@ -446,25 +438,25 @@
                                     <div class="form-group row">
                                         <label for="hutang_jpk" class="col-sm-6 col-form-label">Hutang Jangka Pendek</label>
                                         <div class="col-sm-6">
-                                            <input type="number" class="form-control" id="hutang_jpk" name="hutang_jpk">
+                                            <input type="number" class="form-control" id="hutang_jpk" name="hutang_jpk" required>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="hutang_jpg" class="col-sm-6 col-form-label">Hutang Jangka Panjang</label>
                                         <div class="col-sm-6">
-                                            <input type="number" class="form-control" id="hutang_jpg" name="hutang_jpg">
+                                            <input type="number" class="form-control" id="hutang_jpg" name="hutang_jpg" required>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="hutang_lain" class="col-sm-6 col-form-label">Hutang Lain</label>
                                         <div class="col-sm-6">
-                                            <input type="number" class="form-control" id="hutang_lain" name="hutang_lain">
+                                            <input type="number" class="form-control" id="hutang_lain" name="hutang_lain" required>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="hutang_dagang" class="col-sm-6 col-form-label">Hutang Dagang</label>
                                         <div class="col-sm-6">
-                                            <input type="number" class="form-control" id="hutang_dagang" name="hutang_dagang">
+                                            <input type="number" class="form-control" id="hutang_dagang" name="hutang_dagang" required>
                                         </div>
                                     </div>
                                 </div>
@@ -474,7 +466,7 @@
                             </form>
 							<p class="box">* Tidak boleh kosong, isi dengan 0</p>
 							<div id="reload">
-								<table class="table table-bordered" id="dataCapi">
+								<table class="table table-sm" id="dataCapi">
 									<thead class="thead-dark">
 										<tr>
 											<th scope="col">Kas</th>
@@ -490,7 +482,7 @@
                         </div>					
                         <div class="tab-pane fade" id="v-pills-cashflowa" role="tabpanel" aria-labelledby="v-pills-cashflowa-tab">
                             <div class="modal-body">
-                                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                                <ul class="nav nav-tabs mb-3" id="pills-tab" role="tablist">
                                     <li class="nav-item" role="presentation">
                                         <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Pendapatan</a>
                                     </li>
@@ -552,7 +544,7 @@
                                             </div>
                                         </form>
 										<div id="reload">
-											<table class="table table-bordered" id="dataCashawpend">
+											<table class="table table-sm" id="dataCashawpend">
 												<thead class="thead-dark">
 													<tr>
 														<th scope="col">Keterangan</th>
@@ -620,7 +612,7 @@
                                             </div>
                                         </form>
 										<div id="reload">
-											<table class="table table-bordered" id="dataCashawpeng">
+											<table class="table table-sm" id="dataCashawpeng">
 												<thead class="thead-dark">
 													<tr>
 														<th scope="col">Keterangan</th>
@@ -640,7 +632,7 @@
                         </div>
                         <div class="tab-pane fade" id="v-pills-cashflow" role="tabpanel" aria-labelledby="v-pills-cashflow-tab">
                             <div class="modal-body">
-                                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                                <ul class="nav nav-tabs mb-3" id="pills-tab" role="tablist">
                                     <li class="nav-item" role="presentation">
                                         <a class="nav-link active" id="pills-home_c-tab" data-toggle="pill" href="#pills-home_c" role="tab" aria-controls="pills-home_c" aria-selected="true">Pendapatan</a>
                                     </li>
@@ -702,7 +694,7 @@
                                             </div>
                                         </form>
 										<div id="reload">
-											<table class="table table-bordered" id="dataCashsetpend">
+											<table class="table table-sm" id="dataCashsetpend">
 												<thead class="thead-dark">
 													<tr>
 														<th scope="col">Keterangan</th>
@@ -768,7 +760,7 @@
                                             </div>
                                         </form>
 										<div id="reload">
-											<table class="table table-bordered" id="dataCashsetpeng">
+											<table class="table table-sm" id="dataCashsetpeng">
 												<thead class="thead-dark">
 													<tr>
 														<th scope="col">Keterangan</th>
@@ -842,7 +834,7 @@
                                             </div>
                                         </form>
 										<div id="reload">
-											<table class="table table-bordered" id="dataCashsethut">
+											<table class="table table-sm" id="dataCashsethut">
 												<thead class="thead-dark">
 													<tr>
 														<th scope="col">Keterangan</th>
@@ -863,7 +855,7 @@
                         <div class="tab-pane fade" id="v-pills-cashflowlain" role="tabpanel" aria-labelledby="v-pills-cashflowlain-tab">
                             <div class="modal-body">
 								<p>*Diisi hanya untuk kredit musiman</p>
-                                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                                <ul class="nav nav-tabs mb-3" id="pills-tab" role="tablist">
                                     <li class="nav-item" role="presentation">
                                         <a class="nav-link active" id="pills-pendlain-tab" data-toggle="pill" href="#pills-pendlain" role="tab" aria-controls="pills-pendlain" aria-selected="true">Pendapatan</a>
                                     </li>
@@ -922,7 +914,7 @@
                                             </div>
                                         </form>
 										<div id="reload">
-											<table class="table table-bordered" id="dataCashpendlain">
+											<table class="table table-sm" id="dataCashpendlain">
 												<thead class="thead-dark">
 													<tr>
 														<th scope="col">Keterangan</th>
@@ -988,7 +980,7 @@
                                             </div>
                                         </form>
 										<div id="reload">
-											<table class="table table-bordered" id="dataCashpenglain">
+											<table class="table table-sm" id="dataCashpenglain">
 												<thead class="thead-dark">
 													<tr>
 														<th scope="col">Keterangan</th>
@@ -1040,7 +1032,7 @@
                                 </div>
                             </form>
 							<div id="reload">
-								<table class="table table-bordered" id="dataCon">
+								<table class="table table-sm" id="dataCon">
 									<thead class="thead-dark">
 										<tr>
 											<th scope="col">Kekuatan</th>
@@ -1156,7 +1148,7 @@
                             </form>
 							<p class="box">* Jika harga atau luas tidak ada, harap isi dengan 0</p>
 							<div id="reload">
-								<table class="table table-bordered" id="dataColta">
+								<table class="table table-sm" id="dataColta">
 									<thead class="thead-dark">
 										<tr>
 											<th scope="col">Jenis</th>
@@ -1262,7 +1254,7 @@
                                 </div>
                             </form>
 							<div id="reload">
-								<table class="table table-bordered" id="dataColken">
+								<table class="table table-sm" id="dataColken">
 									<thead class="thead-dark">
 										<tr>
 											<th scope="col">Nopol</th>
@@ -1307,7 +1299,7 @@
                                             </div>
                                         </form>
                                         <div id="reload">
-                                            <table class="table table-bordered" id="dataReal">
+                                            <table class="table table-sm" id="dataReal">
                                                 <thead class="thead-dark">
                                                     <tr>
                                                         <th scope="col">Oleh</th>
@@ -1429,7 +1421,7 @@
                                             </div>
                                         </form>
                                         <div id="reload">
-                                            <table class="table table-bordered" id="dataUsul">
+                                            <table class="table table-sm" id="dataUsul">
                                                 <thead class="thead-dark">
                                                     <tr>
                                                         <th scope="col">Character</th>
@@ -1495,7 +1487,7 @@
 												<option value=""></option>
 													<?php
 													foreach ($analis->result() as $row) {
-														echo "<option value='$row->nama'>$row->nama</option>";
+														echo "<option value='$row->name'>$row->name</option>";
 													}
                                                 ?>
                                             </select>	
@@ -1517,7 +1509,7 @@
 								</div>
                             </form>
 							<div id="reload">
-								<table class="table table-bordered" id="dataPengajuan">
+								<table class="table table-sm" id="dataPengajuan">
 									<thead class="thead-dark">
 										<tr>
 											<th scope="col">Analis</th>
@@ -1564,8 +1556,8 @@
                                 '<td>' + data[i].status + '</td>' +
                                 '<td>' + data[i].saldo + '</td>' +
                                 '<td style="text-align:right;">' +
-                                '<a href="javascript:;" class="btn btn-info btn-xs item_edit_rp" data="' + data[i].id_rp + '">Edit</a>' + ' ' +
-                                '<a href="javascript:;" class="btn btn-danger btn-xs item_hapus_rp" data="' + data[i].id_rp + '">Hapus</a>' +
+                                '<a href="javascript:;" class="btn btn-warning btn-sm item_edit_rp" data="' + data[i].id_rp + '"><i class="fas fa-edit"></i></a>' + ' ' +
+                                '<a href="javascript:;" class="btn btn-danger btn-sm item_hapus_rp" data="' + data[i].id_rp + '"><i class="fas fa-trash"></i></a>' +
                                 '</td>' +
                                 '</tr>';
                         }
@@ -1715,8 +1707,8 @@
 								'<td>' + data[i].info_perilaku + '</td>' +
 								'<td>' + data[i].info_keluarga + '</td>' +
 								'<td style="text-align:right;">' +
-								'<a href="javascript:;" class="btn btn-info btn-xs item_edit_char" data="' + data[i].id_char + '">Edit</a>' + ' ' +
-								'<a href="javascript:;" class="btn btn-danger btn-xs item_hapus_char" data="' + data[i].id_char + '">Hapus</a>' +
+								'<a href="javascript:;" class="btn btn-warning btn-xs item_edit_char" data="' + data[i].id_char + '"><i class="fas fa-edit"></i></a>' + ' ' +
+								'<a href="javascript:;" class="btn btn-danger btn-xs item_hapus_char" data="' + data[i].id_char + '"><i class="fas fa-trash"></i></a>' +
 								'</td>' +
 								'</tr>';
 						}
@@ -1878,8 +1870,8 @@
 								'<td>' + data[i].sektor + '</td>' +
 								'<td>' + data[i].tgl_mulai + '</td>' +
 								'<td style="text-align:right;">' +
-								'<a href="javascript:;" class="btn btn-info btn-xs item_edit_capa" data="' + data[i].id_cap + '">Edit</a>' + ' ' +
-								'<a href="javascript:;" class="btn btn-danger btn-xs item_hapus_capa" data="' + data[i].id_cap + '">Hapus</a>' +
+								'<a href="javascript:;" class="btn btn-warning btn-xs item_edit_capa" data="' + data[i].id_cap + '"><i class="fas fa-edit"></i></a>' + ' ' +
+								'<a href="javascript:;" class="btn btn-danger btn-xs item_hapus_capa" data="' + data[i].id_cap + '"><i class="fas fa-trash"></i></a>' +
 								'</td>' +
 								'</tr>';
 						}
@@ -2067,8 +2059,8 @@
 								'<td>' + data[i].tanah + '</td>' +
 								'<td>' + data[i].hutang_jpk + '</td>' +
 								'<td style="text-align:right;">' +
-								'<a href="javascript:;" class="btn btn-info btn-xs item_edit_capi" data="' + data[i].id_capi + '">Edit</a>' + ' ' +
-								'<a href="javascript:;" class="btn btn-danger btn-xs item_hapus_capi" data="' + data[i].id_capi + '">Hapus</a>' +
+								'<a href="javascript:;" class="btn btn-warning btn-xs item_edit_capi" data="' + data[i].id_capi + '"><i class="fas fa-edit"></i></a>' + ' ' +
+								'<a href="javascript:;" class="btn btn-danger btn-xs item_hapus_capi" data="' + data[i].id_capi + '"><i class="fas fa-trash"></i></a>' +
 								'</td>' +
 								'</tr>';
 						}
@@ -2259,8 +2251,8 @@
 								'<td>' + data[i].saldo + '</td>' +
 								'<td>' + data[i].jenis + '</td>' +
 								'<td style="text-align:right;">' +
-								'<a href="javascript:;" class="btn btn-info btn-xs item_edit_cashawpend" data="' + data[i].id_cf + '">Edit</a>' + ' ' +
-								'<a href="javascript:;" class="btn btn-danger btn-xs item_hapus_cashawpend" data="' + data[i].kode + '">Hapus</a>' +
+								'<a href="javascript:;" class="btn btn-warning btn-xs item_edit_cashawpend" data="' + data[i].id_cf + '"><i class="fas fa-edit"></i></a>' + ' ' +
+								'<a href="javascript:;" class="btn btn-danger btn-xs item_hapus_cashawpend" data="' + data[i].kode + '"><i class="fas fa-trash"></i></a>' +
 								'</td>' +
 								'</tr>';
 						}
@@ -2405,8 +2397,8 @@
 								'<td>' + data[i].saldo + '</td>' +
 								'<td>' + data[i].jenis + '</td>' +
 								'<td style="text-align:right;">' +
-								'<a href="javascript:;" class="btn btn-info btn-xs item_edit_cashawpeng" data="' + data[i].id_cf + '">Edit</a>' + ' ' +
-								'<a href="javascript:;" class="btn btn-danger btn-xs item_hapus_cashawpeng" data="' + data[i].kode + '">Hapus</a>' +
+								'<a href="javascript:;" class="btn btn-warning btn-xs item_edit_cashawpeng" data="' + data[i].id_cf + '"><i class="fas fa-edit"></i></a>' + ' ' +
+								'<a href="javascript:;" class="btn btn-danger btn-xs item_hapus_cashawpeng" data="' + data[i].kode + '"><i class="fas fa-trash"></i></a>' +
 								'</td>' +
 								'</tr>';
 						}
@@ -2551,8 +2543,8 @@
 								'<td>' + data[i].saldo + '</td>' +
 								'<td>' + data[i].jenis + '</td>' +
 								'<td style="text-align:right;">' +
-								'<a href="javascript:;" class="btn btn-info btn-xs item_edit_cashsetpend" data="' + data[i].id_cf + '">Edit</a>' + ' ' +
-								'<a href="javascript:;" class="btn btn-danger btn-xs item_hapus_cashsetpend" data="' + data[i].kode + '">Hapus</a>' +
+								'<a href="javascript:;" class="btn btn-warning btn-xs item_edit_cashsetpend" data="' + data[i].id_cf + '"><i class="fas fa-edit"></i></a>' + ' ' +
+								'<a href="javascript:;" class="btn btn-danger btn-xs item_hapus_cashsetpend" data="' + data[i].kode + '"><i class="fas fa-trash"></i></a>' +
 								'</td>' +
 								'</tr>';
 						}
@@ -2697,8 +2689,8 @@
 								'<td>' + data[i].saldo + '</td>' +
 								'<td>' + data[i].jenis + '</td>' +
 								'<td style="text-align:right;">' +
-								'<a href="javascript:;" class="btn btn-info btn-xs item_edit_cashsetpeng" data="' + data[i].id_cf + '">Edit</a>' + ' ' +
-								'<a href="javascript:;" class="btn btn-danger btn-xs item_hapus_cashsetpeng" data="' + data[i].kode + '">Hapus</a>' +
+								'<a href="javascript:;" class="btn btn-warning btn-xs item_edit_cashsetpeng" data="' + data[i].id_cf + '"><i class="fas fa-edit"></i></a>' + ' ' +
+								'<a href="javascript:;" class="btn btn-danger btn-xs item_hapus_cashsetpeng" data="' + data[i].kode + '"><i class="fas fa-trash"></i></a>' +
 								'</td>' +
 								'</tr>';
 						}
@@ -2843,8 +2835,8 @@
 								'<td>' + data[i].saldo + '</td>' +
 								'<td>' + data[i].jenis + '</td>' +
 								'<td style="text-align:right;">' +
-								'<a href="javascript:;" class="btn btn-info btn-xs item_edit_cashsethut" data="' + data[i].id_cf + '">Edit</a>' + ' ' +
-								'<a href="javascript:;" class="btn btn-danger btn-xs item_hapus_cashsethut" data="' + data[i].kode + '">Hapus</a>' +
+								'<a href="javascript:;" class="btn btn-warning btn-xs item_edit_cashsethut" data="' + data[i].id_cf + '"><i class="fas fa-edit"></i></a>' + ' ' +
+								'<a href="javascript:;" class="btn btn-danger btn-xs item_hapus_cashsethut" data="' + data[i].kode + '"><i class="fas fa-trash"></i></a>' +
 								'</td>' +
 								'</tr>';
 						}
@@ -2989,8 +2981,8 @@
 								'<td>' + data[i].saldo + '</td>' +
 								'<td>' + data[i].jenis + '</td>' +
 								'<td style="text-align:right;">' +
-								'<a href="javascript:;" class="btn btn-info btn-xs item_edit_cashpendlain" data="' + data[i].id_cf + '">Edit</a>' + ' ' +
-								'<a href="javascript:;" class="btn btn-danger btn-xs item_hapus_cashpendlain" data="' + data[i].kode + '">Hapus</a>' +
+								'<a href="javascript:;" class="btn btn-warning btn-xs item_edit_cashpendlain" data="' + data[i].id_cf + '"><i class="fas fa-edit"></i></a>' + ' ' +
+								'<a href="javascript:;" class="btn btn-danger btn-xs item_hapus_cashpendlain" data="' + data[i].kode + '"><i class="fas fa-trash"></i></a>' +
 								'</td>' +
 								'</tr>';
 						}
@@ -3135,8 +3127,8 @@
 								'<td>' + data[i].saldo + '</td>' +
 								'<td>' + data[i].jenis + '</td>' +
 								'<td style="text-align:right;">' +
-								'<a href="javascript:;" class="btn btn-info btn-xs item_edit_cashpenglain" data="' + data[i].id_cf + '">Edit</a>' + ' ' +
-								'<a href="javascript:;" class="btn btn-danger btn-xs item_hapus_cashpenglain" data="' + data[i].kode + '">Hapus</a>' +
+								'<a href="javascript:;" class="btn btn-warning btn-xs item_edit_cashpenglain" data="' + data[i].id_cf + '"><i class="fas fa-edit"></i></a>' + ' ' +
+								'<a href="javascript:;" class="btn btn-danger btn-xs item_hapus_cashpenglain" data="' + data[i].kode + '"><i class="fas fa-trash"></i></a>' +
 								'</td>' +
 								'</tr>';
 						}
@@ -3281,8 +3273,8 @@
 								'<td>' + data[i].kelemahan + '</td>' +
 								'<td>' + data[i].peluang + '</td>' +
 								'<td style="text-align:right;">' +
-								'<a href="javascript:;" class="btn btn-info btn-xs item_edit_con" data="' + data[i].id_con + '">Edit</a>' + ' ' +
-								'<a href="javascript:;" class="btn btn-danger btn-xs item_hapus_con" data="' + data[i].id_con + '">Hapus</a>' +
+								'<a href="javascript:;" class="btn btn-warning btn-xs item_edit_con" data="' + data[i].id_con + '"><i class="fas fa-edit"></i></a>' + ' ' +
+								'<a href="javascript:;" class="btn btn-danger btn-xs item_hapus_con" data="' + data[i].id_con + '"><i class="fas fa-trash"></i></a>' +
 								'</td>' +
 								'</tr>';
 						}
@@ -3417,8 +3409,8 @@
 								'<td>' + data[i].nama + '</td>' +
 								'<td>' + data[i].no_shm + '</td>' +
 								'<td style="text-align:right;">' +
-								'<a href="javascript:;" class="btn btn-info btn-xs item_edit_colta" data="' + data[i].id_col2 + '">Edit</a>' + ' ' +
-								'<a href="javascript:;" class="btn btn-danger btn-xs item_hapus_colta" data="' + data[i].id_col2 + '">Hapus</a>' +
+								'<a href="javascript:;" class="btn btn-warning btn-xs item_edit_colta" data="' + data[i].id_col2 + '"><i class="fas fa-edit"></i></a>' + ' ' +
+								'<a href="javascript:;" class="btn btn-danger btn-xs item_hapus_colta" data="' + data[i].id_col2 + '"><i class="fas fa-trash"></i></a>' +
 								'</td>' +
 								'</tr>';
 						}
@@ -3600,8 +3592,8 @@
 								'<td>' + data[i].nama_stnk + '</td>' +
 								'<td>' + data[i].type + '</td>' +
 								'<td style="text-align:right;">' +
-								'<a href="javascript:;" class="btn btn-info btn-xs item_edit_colken" data="' + data[i].id_col + '">Edit</a>' + ' ' +
-								'<a href="javascript:;" class="btn btn-danger btn-xs item_hapus_colken" data="' + data[i].id_col + '">Hapus</a>' +
+								'<a href="javascript:;" class="btn btn-warning btn-xs item_edit_colken" data="' + data[i].id_col + '"><i class="fas fa-edit"></i></a>' + ' ' +
+								'<a href="javascript:;" class="btn btn-danger btn-xs item_hapus_colken" data="' + data[i].id_col + '"><i class="fas fa-trash"></i></a>' +
 								'</td>' +
 								'</tr>';
 						}
@@ -3776,8 +3768,8 @@
 								'<td>' + data[i].oleh + '</td>' +
 								'<td>' + data[i].sebagai + '</td>' +
 								'<td style="text-align:right;">' +
-								'<a href="javascript:;" class="btn btn-info btn-xs item_edit_real" data="' + data[i].id_real + '">Edit</a>' + ' ' +
-								'<a href="javascript:;" class="btn btn-danger btn-xs item_hapus_real" data="' + data[i].id_real + '">Hapus</a>' +
+								'<a href="javascript:;" class="btn btn-warning btn-xs item_edit_real" data="' + data[i].id_real + '"><i class="fas fa-edit"></i></a>' + ' ' +
+								'<a href="javascript:;" class="btn btn-danger btn-xs item_hapus_real" data="' + data[i].id_real + '"><i class="fas fa-trash"></i></a>' +
 								'</td>' +
 								'</tr>';
 						}
@@ -3908,8 +3900,8 @@
 								'<td>' + data[i].capacity + '</td>' +
 								'<td>' + data[i].capital + '</td>' +
 								'<td style="text-align:right;">' +
-								'<a href="javascript:;" class="btn btn-info btn-xs item_edit_usul" data="' + data[i].id_usulan + '">Edit</a>' + ' ' +
-								'<a href="javascript:;" class="btn btn-danger btn-xs item_hapus_usul" data="' + data[i].id_usulan + '">Hapus</a>' +
+								'<a href="javascript:;" class="btn btn-warning btn-xs item_edit_usul" data="' + data[i].id_usulan + '"><i class="fas fa-edit"></i></a>' + ' ' +
+								'<a href="javascript:;" class="btn btn-danger btn-xs item_hapus_usul" data="' + data[i].id_usulan + '"><i class="fas fa-trash"></i></a>' +
 								'</td>' +
 								'</tr>';
 						}
@@ -4095,15 +4087,17 @@
                         var i;
                         for (i = 0; i < data.length; i++) {	
 							if (data[i].waktu_zoom=!null){
-                            	$waktuZoom = "Belum Ada";
+                            	$waktuZoom = "Belum Ada";								
+								$linkZoom = "Tidak ada";
 							}else{
 								$waktuZoom = new Date(data[i].waktu_zoom);
+								$linkZoom = data[i].link_zoom;
 							}
 							$test = "sscs";		
                             html += '<tr>' +
                                 '<td>' + data[i].nama_analis + '</td>' +
                                 '<td>' + data[i].status + '</td>' +
-                                '<td><a href=' + data[i].link_zoom + ' target="_blank">' + $waktuZoom + '</a></td>' +
+                                '<td><a href=' + $linkZoom + ' target="_blank">' + $waktuZoom + '</a></td>' +
                                 '</tr>';
                         }
                         $('#show_data_pengajuan').html(html);

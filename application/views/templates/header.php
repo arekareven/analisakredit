@@ -12,7 +12,7 @@
     <title><?= $title; ?></title>
 	<style>
 		.box {
-			margin-bottom: 120px;
+			margin-bottom: 80px;
 		}
 	</style>
 

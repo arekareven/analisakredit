@@ -38,9 +38,9 @@ class M_main extends CI_Model
         return $this->db->get('notaris');
     }
 
-    public function data_analis()
+    public function data_analis($kantor)
     {
-        return $this->db->get('analis');
+        return $this->db->query("SELECT * FROM user WHERE role_id='3' AND kantor='$kantor' ");
     }
     
     public function data_pengajuan($id_lb)
