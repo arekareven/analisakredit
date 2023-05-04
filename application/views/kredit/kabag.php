@@ -69,8 +69,8 @@
                         <div class="form-group row">
                             <label for="waktu" class="col-sm-2 col-form-label">Waktu</label>
                             <div class="col-sm-10">
-                                <input type="hidden" class="form-control" id="id_pengajuan" name="id_pengajuan">
-                                <input type="hidden" class="form-control" id="id_lb" name="id_lb">
+                                <input type="text" class="form-control" id="id_pengajuan" name="id_pengajuan">
+                                <input type="text" class="form-control" id="id_lb" name="id_lb">
                                 <input type="datetime-local" class="form-control" id="waktu" name="waktu"></input>
                             </div>
                         </div>

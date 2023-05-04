@@ -126,19 +126,23 @@ class Analisa extends CI_Controller
 		$this->m_analisa->add_scoring($id_pengajuan,$name_debitur,$plafond, $status,$catatan,$itk_nilai,$mu_nilai,$kd_nilai,$kk_nilai,$as_nilai,$ak_nilai,$t_nilai,$hpt_nilai,$tk_nilai,$jumlah,$pengUsa_nilai,$admUsa_nilai,$legal_nilai,$tujUsa_nilai,$tingPer_nilai,$harPro_nilai,$sisPem_nilai,$sisDis_nilai,$kemBb_nilai,$carP_nilai,$prosP_nilai,$mesP_nilai,$tenK_nilai,$damSm_nilai,$damEk_nilai,$dampEma_nilai,$damLi_nilai,$kemBa_nilai,$pemLa_nilai,$jumlah_capa,$sumDs_nilai,$sumDk_nilai,$sumDl_nilai,$jumlah_capi,$UsYd_nilai,$serT_nilai,$bpkb_nilai,$market_nilai,$jumlah_coll,$kebP_nilai,$ekoG_nilai,$jumlah_cond);
 	}
 	
-	public function add_resume()
+	public function update_resume()
 	{
 		$id_pengajuan = $this->input->post('id_pengajuan');
-		$name_debitur = $this->input->post('name_debitur');
-		$plafond = $this->input->post('plafon');
-		$catatan     = $this->input->post('catatan');
-		$itk_nilai     = $this->input->post('itk_nilai');
-		$mu_nilai     = $this->input->post('mu_nilai');
-		$kd_nilai     = $this->input->post('kd_nilai');
-		$kk_nilai     = $this->input->post('kk_nilai');
-		$as_nilai     = $this->input->post('as_nilai');
+		$analis = $this->input->post('analis');
+		$kabag = $this->input->post('kabag');
+		$kacab = $this->input->post('kacab');
+		$dirut = $this->input->post('dirut');
 
-		$this->m_analisa->add_scoring($id_pengajuan,$name_debitur,$plafond);
+        $query = $this->m_analisa->cek_id($id_pengajuan)->num_rows();
+        if (empty($query))
+            $this->m_analisa->store_resume($id_pengajuan,$analis,$kabag,$kacab,$dirut);
+        else
+            $this->m_analisa->update_resume($id_pengajuan,$analis,$kabag,$kacab,$dirut);
+		// var_dump($analis,$kabag,$kacab,$dirut);
+		// die;
+
+		// $this->m_analisa->update_resume($id_pengajuan,$analis,$kabag,$kacab,$dirut);
 	}
 
 	public function zoom_meeting()

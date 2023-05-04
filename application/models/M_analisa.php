@@ -83,6 +83,7 @@ class M_analisa extends CI_Model
 					'id_pengajuan'      => $data->id_pengajuan,
 					'name_debitur'      => $data->name_debitur,
 					'plafon'      => $data->plafond,
+					'catatan'      => $data->catatan,
 					'itk_nilai'      => $data->itk_nilai,
 					'mu_nilai'      => $data->mu_nilai,
 					'kd_nilai'      => $data->kd_nilai,
@@ -184,6 +185,40 @@ class M_analisa extends CI_Model
 		WHERE id_pengajuan='$id_pengajuan'");
 		redirect('analisa');
 	}
+
+
+	
+    function cek_id($id_pengajuan)
+	{
+		$query = array('id_pengajuan' => $id_pengajuan);
+		return $this->db->get_where('resume', $query);
+	}
+	
+	public function store_resume($id_pengajuan,$analis,$kabag,$kacab,$dirut)
+	{
+
+		$data = array(
+
+			'id_pengajuan'	    	=> $id_pengajuan,
+			'analis'	    	=> $analis,
+			'kabag'	    => $kabag,
+			'kacab'	    => $kacab,
+			'dirut'	    => $dirut,
+		);
+		$this->db->insert('resume', $data);
+		redirect('analisa');
+	}
+	
+	public function update_resume($id_pengajuan,$analis,$kabag,$kacab,$dirut)
+	{
+
+		// var_dump($analis,$kabag,$kacab,$dirut);
+		// die;
+		$this->db->query("UPDATE pengajuan SET analis='$analis' kabag='$kabag' kacab='$kacab' dirut='$dirut' WHERE id_pengajuan='$id_pengajuan'");
+		redirect('analisa');
+	}
+
+
 
 //-----------------MENGAKSES ZOOM API TO MAKE MEETING---------------------
 	private $zoom_api_key = 'x9RDcJdxRk2pIHI-Pb-shw';

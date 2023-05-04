@@ -16,9 +16,6 @@
                             <th scope="col">Nama AO</th>
                             <th scope="col">Nama Debitur</th>
                             <th scope="col">Status</th>
-                            <!--<th scope="col">Plafond</th>
-                            <th scope="col">Lihat</th>-->
-                            <!--<th scope="col">Zoom</th>-->
                             <th scope="col">Zoom</th>
                             <th scope="col">Skoring</th>
                         </tr>
@@ -1803,26 +1800,39 @@
         </div>
     </div>
 
-    <!-- Modal skoring-->
+    <!-- Modal resume-->
     <div class="modal fade" id="resume" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5>SKORING</h5>
+                    <h5>Resume</h5>
                     <button id="close_pengajuan" type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="<?= base_url('analisa/add_scoring'); ?>" method="post" id="form_pengajuan">
+                <form action="<?= base_url('analisa/update_resume'); ?>" method="post" id="form_resume">
                     <div class="modal-body">                       
                         <input type="hidden" class="form-control" id="id_pengajuan" name="id_pengajuan">
-                        <input type="hidden" class="form-control" id="name_debitur" name="name_debitur">
-                        <input type="hidden" class="form-control" id="plafon" name="plafon">
-
+						<div class="form-group">
+							<label for="analis">Analis</label>
+							<textarea class="form-control" id="analis" name="analis" rows="3"></textarea>
+						</div>
+						<div class="form-group">
+							<label for="kabag">Kepala Bagian Kredit</label>
+							<textarea class="form-control" id="kabag" name="kabag" rows="3"></textarea>
+						</div>
+						<div class="form-group">
+							<label for="kacab">Kepala Cabang</label>
+							<textarea class="form-control" id="kacab" name="kacab" rows="3"></textarea>
+						</div>
+						<div class="form-group">
+							<label for="dirut">Direktur Utama</label>
+							<textarea class="form-control" id="dirut" name="dirut" rows="3"></textarea>
+						</div>
                     </div>
                     <div class="modal-footer">
-                        <button id="close_pengajuan" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Save changes</button>
+                        <button id="close_pengajuan" type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                        <button type="submit" class="btn btn-primary">Simpan</button>
                     </div>
                 </form>
             </div>
@@ -1928,18 +1938,15 @@
 				var id = $(this).attr('data');
 				$.ajax({
 					type: "GET",
-					url: "<?php echo base_url('analisa/get_resume') ?>",
+					url: "<?php echo base_url('analisa/get_pengajuan') ?>",
 					dataType: "JSON",
 					data: {
 						id: id
 					},
 					success: function(data) {
-						$.each(data, function(id_real, id_lb, oleh, sebagai) {
+						$.each(data, function(id_pengajuan, catatan) {
 							$('#resume').modal('show');
-							$('[name="id_real"]').val(data.id_real);
-							$('[name="id_lb"]').val(data.id_lb);
-							$('[name="oleh"]').val(data.oleh);
-							$('[name="sebagai"]').val(data.sebagai);
+							$('[name="id_pengajuan"]').val(data.id_pengajuan);
 						});
 					}
 				});

@@ -30,6 +30,10 @@ class Kabag extends CI_Controller
 	public function zoom_meeting()
 	{
         $id_pengajuan = $this->input->post('id_pengajuan');
+        // $id_lb = $this->input->post('id_lb');
+        // $waktu = $this->input->post('waktu');
+		
 		$this->m_kabag->createMeeting($id_pengajuan);
+		// $this->m_kabag->penerimaEmail();
 	}
 }

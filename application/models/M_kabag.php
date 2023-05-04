@@ -56,7 +56,6 @@ class M_kabag extends CI_Model
 	//function to create meeting
 	public function createMeeting($id_pengajuan)
 	{
-
 		$data_zoom = array();
 		$data_zoom['topic'] 		= 'Komite a/n';
 		$data_zoom['start_date'] 	= $this->input->post('waktu');
@@ -169,13 +168,33 @@ class M_kabag extends CI_Model
         $mail->Subject = 'Info Meeting Komite | LAS Ekadharma'; //subject email
 
         // Add a recipient
-		foreach ($this->db->query("SELECT * FROM anggota_komite")->result() as $row) {
-			$mail->addAddress($row->email_anggota_komite); //email tujuan pengiriman email
-		}
+				
+		$id_pengajuan = $this->input->post('id_pengajuan');
+		foreach ($this->db->query("SELECT * FROM pengajuan WHERE id_pengajuan=$id_pengajuan")->result() as $row) {
+			
+			$id_lb = $row->id_lb;
+			$nama_analis = $row->nama_analis;
+			$kantor = $row->kantor;
 
-		$id_lb = $this->input->post('id_lb');
-		foreach ($this->db->query("SELECT * FROM latar_belakang WHERE id_lb=$id_lb")->result() as $row) {
-			$mail->addAddress($row->user); //email tujuan pengiriman email
+			foreach ($this->db->query("SELECT * FROM latar_belakang WHERE id_lb=$id_lb")->result() as $row) {
+				$mail->addAddress($row->user); //(AO)
+			}
+
+			foreach ($this->db->query("SELECT * FROM user WHERE `name`='$nama_analis'")->result() as $row) {
+				$mail->addAddress($row->email); //(analis)
+			}
+			
+			foreach ($this->db->query("SELECT * FROM user WHERE kantor='$kantor' AND role_id=4")->result() as $row) {
+				$mail->addAddress($row->email); //(kabag)
+			}
+			
+			foreach ($this->db->query("SELECT * FROM user WHERE kantor='$kantor' AND role_id=7")->result() as $row) {
+				$mail->addAddress($row->email); //(kacab)
+			}
+			
+			foreach ($this->db->query("SELECT * FROM user WHERE role_id=8")->result() as $row) {
+				$mail->addAddress($row->email); //(dirut)
+			}
 		}
 
         // Set email format to HTML
@@ -198,4 +217,36 @@ class M_kabag extends CI_Model
             echo 'Message has been sent';
         }
 	}
+
+	public function penerimaEmail(){
+		
+		$id_pengajuan = $this->input->post('id_pengajuan');
+		foreach ($this->db->query("SELECT * FROM pengajuan WHERE id_pengajuan=$id_pengajuan")->result() as $row) {
+			
+			$id_lb = $row->id_lb;
+			$nama_analis = $row->nama_analis;
+			$kantor = $row->kantor;
+
+			foreach ($this->db->query("SELECT * FROM latar_belakang WHERE id_lb=$id_lb")->result() as $row) {
+				var_dump($row->user); //(AO)
+			}
+
+			foreach ($this->db->query("SELECT * FROM user WHERE `name`='$nama_analis'")->result() as $row) {
+				var_dump($row->email); //(analis)
+			}
+			
+			foreach ($this->db->query("SELECT * FROM user WHERE kantor='$kantor' AND role_id=4")->result() as $row) {
+				var_dump($row->email); //(kabag)
+			}
+			
+			foreach ($this->db->query("SELECT * FROM user WHERE kantor='$kantor' AND role_id=7")->result() as $row) {
+				var_dump($row->email); //(kacab)
+			}
+			
+			foreach ($this->db->query("SELECT * FROM user WHERE role_id=8")->result() as $row) {
+				var_dump($row->email); //(dirut)
+			}
+		}
+	}
 }
+
