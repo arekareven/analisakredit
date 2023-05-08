@@ -14,7 +14,7 @@ class Analisa extends CI_Controller
 
     public function index()
     {
-        $data['title'] = 'Analis';
+        $data['title'] = 'ANALIS';
         $data['user'] = $this->db->get_where('user', ['email' =>
         $this->session->userdata('email')])->row_array();
         $data['query'] = $this->m_analisa->tampil_data();
@@ -128,29 +128,26 @@ class Analisa extends CI_Controller
 	
 	public function update_resume()
 	{
+		$id_resume = $this->input->post('id_resume');
 		$id_pengajuan = $this->input->post('id_pengajuan');
 		$analis = $this->input->post('analis');
-		$kabag = $this->input->post('kabag');
-		$kacab = $this->input->post('kacab');
-		$dirut = $this->input->post('dirut');
+		// $kabag = $this->input->post('kabag');
+		// $kacab = $this->input->post('kacab');
+		// $dirut = $this->input->post('dirut');
 
-        $query = $this->m_analisa->cek_id($id_pengajuan)->num_rows();
+        $query = $this->m_analisa->cek_id($id_resume)->num_rows();
         if (empty($query))
-            $this->m_analisa->store_resume($id_pengajuan,$analis,$kabag,$kacab,$dirut);
+            $this->m_analisa->store_resume($id_pengajuan,$analis);
         else
-            $this->m_analisa->update_resume($id_pengajuan,$analis,$kabag,$kacab,$dirut);
-		// var_dump($analis,$kabag,$kacab,$dirut);
-		// die;
-
-		// $this->m_analisa->update_resume($id_pengajuan,$analis,$kabag,$kacab,$dirut);
+            $this->m_analisa->update_resume($id_resume,$analis);
 	}
-
-	public function zoom_meeting()
-	{
 		
-        $id_pengajuan = $this->input->post('id_pengajuanz');
-
-		$this->m_analisa->createMeeting($id_pengajuan);
+	function get_resume()
+	{
+		// $id_resume = $this->input->get('id');
+		$id_resume = $this->input->post('id_resume');
+		$data = $this->m_analisa->get_resume_by_kode($id_resume);
+		echo json_encode($data);
 	}
 
 }

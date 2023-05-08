@@ -14,7 +14,7 @@ use \Firebase\JWT\JWT;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-class M_kabag extends CI_Model
+class M_dirut extends CI_Model
 {
 
     public function __construct()
@@ -26,32 +26,27 @@ class M_kabag extends CI_Model
 
     public function tampil_data()
     {
-		
+        
 		$data = $this->db->get_where('user', ['email' =>
         $this->session->userdata('email')])->row_array();
         $kantor = $data['kantor'];
-        // $list = $this->db->query("SELECT * FROM pengajuan WHERE kantor='$kantor'");
-		// $resume = $this->db->query("SELECT * FROM `resume` WHERE analis IS NOT NULL");
+
 		$lb = $this->db->query("SELECT * FROM pengajuan 
 		JOIN `resume` ON pengajuan.id_pengajuan=resume.id_pengajuan
-		WHERE pengajuan.kantor='$kantor' AND resume.analis IS NOT NULL AND pengajuan.plafond>=50000000");
+		WHERE pengajuan.kantor='$kantor' AND resume.analis IS NOT NULL AND pengajuan.plafond>=10000000");
 		return $lb;
-        // return $this->db->query("SELECT * FROM pengajuan WHERE kantor='$kantor' AND `status`='Layak'");
-        /*
-        return $this->db->query("SELECT * FROM analisis WHERE nama='$a' AND status='Ditinjau'");
-        */
     }
-		
+			
     function cek_id($id_resume)
 	{
 		$query = array('id_resume' => $id_resume);
 		return $this->db->get_where('resume', $query);
 	}
 	
-	public function update_resume($id_resume,$kabag)
+	public function update_resume($id_resume,$dirut)
 	{
-		$this->db->query("UPDATE `resume` SET kabag='$kabag' WHERE id_resume='$id_resume'");
-		redirect('kabag');
+		$this->db->query("UPDATE `resume` SET dirut='$dirut' WHERE id_resume='$id_resume'");
+		redirect('dirut');
 	}
 	   	
 	function get_resume_by_kode($id_resume)
@@ -93,6 +88,7 @@ class M_kabag extends CI_Model
 	//function to create meeting
 	public function createMeeting($id_pengajuan)
 	{
+
 		$data_zoom = array();
 		$data_zoom['topic'] 		= 'Komite a/n';
 		$data_zoom['start_date'] 	= $this->input->post('waktu');
@@ -205,33 +201,13 @@ class M_kabag extends CI_Model
         $mail->Subject = 'Info Meeting Komite | LAS Ekadharma'; //subject email
 
         // Add a recipient
-				
-		$id_pengajuan = $this->input->post('id_pengajuan');
-		foreach ($this->db->query("SELECT * FROM pengajuan WHERE id_pengajuan=$id_pengajuan")->result() as $row) {
-			
-			$id_lb = $row->id_lb;
-			$nama_analis = $row->nama_analis;
-			$kantor = $row->kantor;
+		foreach ($this->db->query("SELECT * FROM anggota_komite")->result() as $row) {
+			$mail->addAddress($row->email_anggota_komite); //email tujuan pengiriman email
+		}
 
-			foreach ($this->db->query("SELECT * FROM latar_belakang WHERE id_lb=$id_lb")->result() as $row) {
-				$mail->addAddress($row->user); //(AO)
-			}
-
-			foreach ($this->db->query("SELECT * FROM user WHERE `name`='$nama_analis'")->result() as $row) {
-				$mail->addAddress($row->email); //(analis)
-			}
-			
-			foreach ($this->db->query("SELECT * FROM user WHERE kantor='$kantor' AND role_id=4")->result() as $row) {
-				$mail->addAddress($row->email); //(kabag)
-			}
-			
-			foreach ($this->db->query("SELECT * FROM user WHERE kantor='$kantor' AND role_id=7")->result() as $row) {
-				$mail->addAddress($row->email); //(kacab)
-			}
-			
-			foreach ($this->db->query("SELECT * FROM user WHERE role_id=8")->result() as $row) {
-				$mail->addAddress($row->email); //(dirut)
-			}
+		$id_lb    = $this->input->post('id_lb');
+		foreach ($this->db->query("SELECT * FROM latar_belakang WHERE id_lb=$id_lb")->result() as $row) {
+			$mail->addAddress($row->user); //email tujuan pengiriman email
 		}
 
         // Set email format to HTML
@@ -255,4 +231,3 @@ class M_kabag extends CI_Model
         }
 	}
 }
-

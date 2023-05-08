@@ -1812,6 +1812,7 @@
                 </div>
                 <form action="<?= base_url('analisa/update_resume'); ?>" method="post" id="form_resume">
                     <div class="modal-body">                       
+                        <input type="hidden" class="form-control" id="id_resume" name="id_resume">
                         <input type="hidden" class="form-control" id="id_pengajuan" name="id_pengajuan">
 						<div class="form-group">
 							<label for="analis">Analis</label>
@@ -1819,15 +1820,15 @@
 						</div>
 						<div class="form-group">
 							<label for="kabag">Kepala Bagian Kredit</label>
-							<textarea class="form-control" id="kabag" name="kabag" rows="3"></textarea>
+							<textarea readonly class="form-control" id="kabag" name="kabag" rows="3"></textarea>
 						</div>
 						<div class="form-group">
 							<label for="kacab">Kepala Cabang</label>
-							<textarea class="form-control" id="kacab" name="kacab" rows="3"></textarea>
+							<textarea readonly class="form-control" id="kacab" name="kacab" rows="3"></textarea>
 						</div>
 						<div class="form-group">
 							<label for="dirut">Direktur Utama</label>
-							<textarea class="form-control" id="dirut" name="dirut" rows="3"></textarea>
+							<textarea readonly class="form-control" id="dirut" name="dirut" rows="3"></textarea>
 						</div>
                     </div>
                     <div class="modal-footer">
@@ -1938,15 +1939,20 @@
 				var id = $(this).attr('data');
 				$.ajax({
 					type: "GET",
-					url: "<?php echo base_url('analisa/get_pengajuan') ?>",
+					url: "<?php echo base_url('analisa/get_resume') ?>",
 					dataType: "JSON",
 					data: {
 						id: id
 					},
 					success: function(data) {
-						$.each(data, function(id_pengajuan, catatan) {
+						$.each(data, function(id_resume ,id_pengajuan, analis) {
 							$('#resume').modal('show');
+							$('[name="id_resume"]').val(data.id_resume);
 							$('[name="id_pengajuan"]').val(data.id_pengajuan);
+							$('[name="analis"]').val(data.analis);
+							$('[name="kabag"]').val(data.kabag);
+							$('[name="kacab"]').val(data.kacab);
+							$('[name="dirut"]').val(data.dirut);
 						});
 					}
 				});

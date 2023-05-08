@@ -65,14 +65,6 @@ class M_analisa extends CI_Model
         $a = $user['name'];
         return $this->db->query("SELECT * FROM pengajuan WHERE nama_analis='$a' ORDER BY id_lb DESC");
     }
-
-    public function tampil_data_monitoring()
-    {
-        $user = $this->db->get_where('user', ['email' =>
-        $this->session->userdata('email')])->row_array();
-        $a = $user['name'];
-        return $this->db->query("SELECT * FROM pengajuan WHERE nama_analis='$a' && status='Diajukan'")->num_rows();
-    }
    	
 	function get_pengajuan_by_kode($id_pengajuan)
 	{
@@ -188,144 +180,59 @@ class M_analisa extends CI_Model
 
 
 	
-    function cek_id($id_pengajuan)
+    function cek_id($id_resume)
 	{
-		$query = array('id_pengajuan' => $id_pengajuan);
+		$query = array('id_resume' => $id_resume);
 		return $this->db->get_where('resume', $query);
 	}
 	
-	public function store_resume($id_pengajuan,$analis,$kabag,$kacab,$dirut)
+	public function store_resume($id_pengajuan,$analis)
 	{
 
 		$data = array(
 
 			'id_pengajuan'	    	=> $id_pengajuan,
-			'analis'	    	=> $analis,
-			'kabag'	    => $kabag,
-			'kacab'	    => $kacab,
-			'dirut'	    => $dirut,
+			'analis'	    	=> $analis
+			// 'kabag'	    => $kabag,
+			// 'kacab'	    => $kacab,
+			// 'dirut'	    => $dirut,
 		);
 		$this->db->insert('resume', $data);
 		redirect('analisa');
 	}
 	
-	public function update_resume($id_pengajuan,$analis,$kabag,$kacab,$dirut)
+	public function update_resume($id_resume,$analis)
 	{
-
-		// var_dump($analis,$kabag,$kacab,$dirut);
-		// die;
-		$this->db->query("UPDATE pengajuan SET analis='$analis' kabag='$kabag' kacab='$kacab' dirut='$dirut' WHERE id_pengajuan='$id_pengajuan'");
+		$this->db->query("UPDATE `resume` SET analis='$analis' WHERE id_resume='$id_resume'");
 		redirect('analisa');
 	}
-
-
-
-//-----------------MENGAKSES ZOOM API TO MAKE MEETING---------------------
-	private $zoom_api_key = 'x9RDcJdxRk2pIHI-Pb-shw';
-	private $zoom_api_secret = 'AFSpEctqZCncDejPSqCc3Qzs29a8jEYoZQYQ';	
-	
-	//function to generate JWT
-	private function generateJWTKey() 
+	   	
+	function get_resume_by_kode($id_resume)
 	{
-		$key = $this->zoom_api_key;
-		$secret = $this->zoom_api_secret;
-		$token = array(
-			"iss" => $key,
-			"exp" => time() + 3600 //60 seconds as suggested
-		);
-		return JWT::encode( $token, $secret );
-	}	
-	
-	//function to create meeting
-	public function createMeeting($id_pengajuan)
-	{
-		
-		$data_zoom = array();
-		$data_zoom['topic'] 		= 'Komite a/n';
-		$data_zoom['start_date'] 	= $this->input->post('waktu');
-		$data_zoom['duration'] 		= 60;
-		$data_zoom['type'] 			= 2;
-		$data_zoom['password'] 		= "12345";
-
-		$post_time  = $data_zoom['start_date'];
-		$start_time = gmdate("Y-m-d\TH:i:s", strtotime($post_time));
-
-		$createMeetingArray = array();
-		if (!empty($data_zoom['alternative_host_ids'])) {
-			if (count($data_zoom['alternative_host_ids']) > 1) {
-			$alternative_host_ids = implode(",", $data_zoom['alternative_host_ids']);
-			} else {
-			$alternative_host_ids = $data_zoom['alternative_host_ids'][0];
+		$hsl = $this->db->query("SELECT * FROM `resume` WHERE id_resume='$id_resume'");
+		if ($hsl->num_rows() > 0) {
+			foreach ($hsl->result() as $data) {
+				$hasil = array(
+					'id_resume'      => $data->id_resume,
+					'id_pengajuan'      => $data->id_pengajuan,
+					'analis'      => $data->analis,
+					'kabag'      => $data->kabag,
+					'kacab'      => $data->kacab,
+					'dirut'      => $data->dirut
+				);
 			}
+		}else{
+			$hasil = 'Data dengan id ini kosong';
 		}
-
-		$createMeetingArray['topic']      = $data_zoom['topic'];
-		$createMeetingArray['agenda']     = !empty($data_zoom['agenda']) ? $data_zoom['agenda'] : "";
-		$createMeetingArray['type']       = !empty($data_zoom['type']) ? $data_zoom['type'] : 2; //Scheduled
-		$createMeetingArray['start_time'] = $start_time;
-		$createMeetingArray['timezone']   = 'Asia/Jakarta';
-		$createMeetingArray['password']   = !empty($data_zoom['password']) ? $data_zoom['password'] : "";
-		$createMeetingArray['duration']   = !empty($data_zoom['duration']) ? $data_zoom['duration'] : 60;
-
-		$createMeetingArray['settings']   = array(
-            		'join_before_host'  => !empty($data_zoom['join_before_host']) ? true : false,
-            		'host_video'        => !empty($data_zoom['option_host_video']) ? true : false,
-            		'participant_video' => !empty($data_zoom['option_participants_video']) ? true : false,
-            		'mute_upon_entry'   => !empty($data_zoom['option_mute_participants']) ? true : false,
-            		'enforce_login'     => !empty($data_zoom['option_enforce_login']) ? true : false,
-            		'auto_recording'    => !empty($data_zoom['option_auto_recording']) ? $data_zoom['option_auto_recording'] : "none",
-            		'alternative_hosts' => isset($alternative_host_ids) ? $alternative_host_ids : ""
-        	);
-
-		return $this->sendRequest($createMeetingArray);
-	}	
-	
-	//function to send request
-	protected function sendRequest($data_zoom)
-	{
-		//Enter_Your_Email
-		$request_url = "https://api.zoom.us/v2/users/test.app.eka@gmail.com/meetings";
-		
-		$headers = array(
-			"authorization: Bearer ".$this->generateJWTKey(),
-			"content-type: application/json",
-			"Accept: application/json",
-		);
-		
-		$postFields = json_encode($data_zoom);
-		
-			$ch = curl_init();
-			curl_setopt_array($ch, array(
-				CURLOPT_URL => $request_url,
-			CURLOPT_RETURNTRANSFER => true,
-			CURLOPT_ENCODING => "",
-			CURLOPT_MAXREDIRS => 10,
-			CURLOPT_TIMEOUT => 30,
-			CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-			CURLOPT_CUSTOMREQUEST => "POST",
-			CURLOPT_POSTFIELDS => $postFields,
-			CURLOPT_HTTPHEADER => $headers,
-			));
-
-			$response = curl_exec($ch);
-			$err = curl_error($ch);
-			curl_close($ch);
-			if (!$response) {
-				return $err;
-		}
-//
-		$id_pengajuan    = $this->input->post('id_pengajuanz');
-		$link     = json_decode($response)->join_url;
-		$waktu	= $data_zoom['start_time'];
-
-		$data = array(
-			'link_zoom'    => $link,
-			'waktu_zoom'		=> $waktu
-		);
-		
-		$this->db->where('id_pengajuan', $id_pengajuan);
-		$this->db->update('pengajuan', $data,);
-//
+		return $hasil;
 	}
+
+    public function tampil_data_monitoring()
+    {
+        $user = $this->db->get_where('user', ['email' =>
+        $this->session->userdata('email')])->row_array();
+        $a = $user['name'];
+        return $this->db->query("SELECT * FROM pengajuan WHERE nama_analis='$a' && status='Diajukan'")->num_rows();
+    }
 
 }

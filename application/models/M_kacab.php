@@ -26,11 +26,48 @@ class M_kacab extends CI_Model
 
     public function tampil_data()
     {
-        return $this->db->query("SELECT * FROM pengajuan WHERE `status`='Layak'");
-        /*
-        return $this->db->query("SELECT * FROM analisis WHERE nama='$a' AND status='Ditinjau'");
-        */
+        
+		$data = $this->db->get_where('user', ['email' =>
+        $this->session->userdata('email')])->row_array();
+        $kantor = $data['kantor'];
+
+		$lb = $this->db->query("SELECT * FROM pengajuan 
+		JOIN `resume` ON pengajuan.id_pengajuan=resume.id_pengajuan
+		WHERE pengajuan.kantor='$kantor' AND resume.analis IS NOT NULL AND pengajuan.plafond>=10000000");
+		return $lb;
     }
+			
+    function cek_id($id_resume)
+	{
+		$query = array('id_resume' => $id_resume);
+		return $this->db->get_where('resume', $query);
+	}
+	
+	public function update_resume($id_resume,$kacab)
+	{
+		$this->db->query("UPDATE `resume` SET kacab='$kacab' WHERE id_resume='$id_resume'");
+		redirect('kacab');
+	}
+	   	
+	function get_resume_by_kode($id_resume)
+	{
+		$hsl = $this->db->query("SELECT * FROM `resume` WHERE id_resume='$id_resume'");
+		if ($hsl->num_rows() > 0) {
+			foreach ($hsl->result() as $data) {
+				$hasil = array(
+					'id_resume'      => $data->id_resume,
+					'id_pengajuan'      => $data->id_pengajuan,
+					'analis'      => $data->analis,
+					'kabag'      => $data->kabag,
+					'kacab'      => $data->kacab,
+					'dirut'      => $data->dirut
+				);
+			}
+		}else{
+			$hasil = 'Data dengan id ini kosong';
+		}
+		return $hasil;
+	}
     
 //-----------------MENGAKSES ZOOM API TO MAKE MEETING---------------------
 	private $zoom_api_key = 'x9RDcJdxRk2pIHI-Pb-shw';

@@ -15,41 +15,38 @@
                         <tr>
                             <th scope="col">Nama AO</th>
                             <th scope="col">Nama Debitur</th>
-                            <th scope="col">Plafond</th>
-                            <th scope="col">Lihat</th>
-                            <th scope="col">Buat Zoom</th>
+                            <th scope="col">Status</th>
                             <th scope="col">Zoom</th>
-                            <th scope="col">Jadwal</th>
+                            <th scope="col">Buat Zoom</th>
                         </tr>
                     </thead>
                     <tbody id="show_data">
                         <?php
                         foreach ($query->result() as $row) {//ambil data dari DB pengajuan 
-    
-                        echo 
-                        "<tr>
-                            <td>" . $row->nama_ao . "</td>
-                            <td>" . $row->name_debitur . "</td>                     
-                            <td>" .number_format($row->plafond) . "</td>                        
-                            <td>
-                                <h5>
-                                <a href='pdf_all?id_lb=".$row->id_lb."' target='_blank' class='btn btn-success btn-circle' title='Hasil Analisa'><i class='fas fa-eye'></i></a>
-                                <a href='pdf_scoring?id_lb=".$row->id_lb."' target='_blank' class='btn btn-warning btn-circle' title='Hasil Scoring'><i class='far fa-clipboard'></i></a>
-                                </h5>
-                            </td>                 
-                            <td>
-                                <h5>
-                                <a href='#' class='btn btn-primary btn-circle' data-toggle='modal' data-target='#zoomModal' title='Zoom Meeting' onClick=\"AddDataZoom('" . $row->id_pengajuan . "','" . $row->id_lb . "')\"><i class='fas fa-video'></i></a>
-                                </h5>
-                            </td>              
-                            <td>
-                                <h6>
-                                <a href='".$row->link_zoom."' target='_blank'>Meeting</a>
-                                </h6>
-                            </td>           
-                            <td>".date('d-m-Y H:i',strtotime($row->waktu_zoom))."</td>                           					
-                        </tr>";
-                            }
+							if (!isset($row->waktu_zoom)){
+								$waktuZoom = 'Belum Ada';
+							}else{
+								$waktuZoom = date('d-m-Y H:i',strtotime($row->waktu_zoom));
+							}
+							
+							echo 
+							"<tr>
+								<td>" . $row->nama_ao . "</td>
+								<td>
+									<a href='pdf_all?id_lb=".$row->id_lb."' target='_blank'>" . $row->name_debitur . "</a>
+								</td>         
+								<td>
+									<a href='pdf_scoring?id_lb=".$row->id_lb."' target='_blank'>" . $row->status . "</a>
+								</td>              
+								<td>
+									<a href='".$row->link_zoom."' target='_blank'>".$waktuZoom."</a>
+								</td>           
+								<td>
+									<a href='#' class='btn btn-primary btn-circle' data-toggle='modal' data-target='#zoomModal' title='Zoom Meeting' onClick=\"AddDataZoom('" . $row->id_pengajuan . "','" . $row->id_lb . "')\"><i class='fas fa-video'></i></a>
+									<a href='javascript:;' class='btn btn-info btn-circle item_resume' title='Resume' data='" . $row->id_pengajuan . "'><i class='fas fa-paperclip'></i></a>
+								</td>                           					
+							</tr>";
+								}
                         ?>
                     </tbody>
                 </table>
@@ -86,7 +83,48 @@
             </div>
         </div>
     </div>
+		
+    <!-- Modal resume-->
+    <div class="modal fade" id="resume" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5>Resume</h5>
+                    <button id="close_pengajuan" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="<?= base_url('kacab/update_resume'); ?>" method="post" id="form_resume">
+                    <div class="modal-body">                       
+                        <input type="hidden" class="form-control" id="id_resume" name="id_resume">
+                        <input type="hidden" class="form-control" id="id_pengajuan" name="id_pengajuan">
+						<div class="form-group">
+							<label for="analis">Analis</label>
+							<textarea readonly class="form-control" id="analis" name="analis" rows="3"></textarea>
+						</div>
+						<div class="form-group">
+							<label for="kabag">Kepala Bagian Kredit</label>
+							<textarea readonly class="form-control" id="kabag" name="kabag" rows="3"></textarea>
+						</div>
+						<div class="form-group">
+							<label for="kacab">Kepala Cabang</label>
+							<textarea class="form-control" id="kacab" name="kacab" rows="3"></textarea>
+						</div>
+						<div class="form-group">
+							<label for="dirut">Direktur Utama</label>
+							<textarea readonly class="form-control" id="dirut" name="dirut" rows="3"></textarea>
+						</div>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="close_pengajuan" type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                        <button type="submit" class="btn btn-primary">Simpan</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
+	<!-- js zoom -->
     <script type="text/javascript">
         
         $(document).ready(function() {
@@ -95,7 +133,7 @@
             $('#btn_zoom').on('click', function() {
                 var condition = $('#zoom').serialize();
                 $.ajax({
-                        url: "<?php echo base_url(); ?>kabag/zoom_meeting",
+                        url: "<?php echo base_url(); ?>kacab/zoom_meeting",
                         type: "POST",
                         data: condition,
                         dataType: "JSON",
@@ -117,6 +155,43 @@
         }
 
     </script>
+		
+	<script type="text/javascript">
+			
+		//resume
+		$(document).ready(function() {
+															
+			$('#close_resume').on('click', function() {
+				document.getElementById("resume").reset();
+			})
+		
+			//GET UPDATE resume
+			$('#show_data').on('click', '.item_resume', function() {
+				var id = $(this).attr('data');
+				$.ajax({
+					type: "GET",
+					url: "<?php echo base_url('kacab/get_resume') ?>",
+					dataType: "JSON",
+					data: {
+						id: id
+					},
+					success: function(data) {
+						$.each(data, function(id_resume ,id_pengajuan,anali, kabag, kacab, dirut) {
+							$('#resume').modal('show');
+							$('[name="id_resume"]').val(data.id_resume);
+							$('[name="id_pengajuan"]').val(data.id_pengajuan);
+							$('[name="analis"]').val(data.analis);
+							$('[name="kabag"]').val(data.kabag);
+							$('[name="kacab"]').val(data.kacab);
+							$('[name="dirut"]').val(data.dirut);
+						});
+					}
+				});
+				return false;
+			});
+
+		});
+	</script>
     
 
 </div>
