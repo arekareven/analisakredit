@@ -42,13 +42,4 @@ class Kabag extends CI_Controller
 		echo json_encode($data);
 	}
 
-
-    //---
-
-	public function zoom_meeting()
-	{
-        $id_pengajuan = $this->input->post('id_pengajuan');
-		
-		$this->m_kabag->createMeeting($id_pengajuan);
-	}
 }

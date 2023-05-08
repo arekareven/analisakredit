@@ -17,7 +17,7 @@
                             <th scope="col">Nama Debitur</th>
                             <th scope="col">Status</th>
                             <th scope="col">Zoom</th>
-                            <th scope="col">Buat Zoom</th>
+                            <th scope="col">Resume</th>
                         </tr>
                     </thead>
                     <tbody id="show_data">
@@ -42,7 +42,6 @@
                                 <a href='".$row->link_zoom."' target='_blank'>".$waktuZoom."</a>
                             </td>           
                             <td>
-                                <a href='#' class='btn btn-primary btn-circle' data-toggle='modal' data-target='#zoomModal' title='Zoom Meeting' onClick=\"AddDataZoom('" . $row->id_pengajuan . "','" . $row->id_lb . "')\"><i class='fas fa-video'></i></a>
 								<a href='javascript:;' class='btn btn-info btn-circle item_resume' title='Resume' data='" . $row->id_pengajuan . "'><i class='fas fa-paperclip'></i></a>
                             </td>                           					
                         </tr>";

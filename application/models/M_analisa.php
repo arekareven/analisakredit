@@ -227,12 +227,4 @@ class M_analisa extends CI_Model
 		return $hasil;
 	}
 
-    public function tampil_data_monitoring()
-    {
-        $user = $this->db->get_where('user', ['email' =>
-        $this->session->userdata('email')])->row_array();
-        $a = $user['name'];
-        return $this->db->query("SELECT * FROM pengajuan WHERE nama_analis='$a' && status='Diajukan'")->num_rows();
-    }
-
 }

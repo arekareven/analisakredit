@@ -27,21 +27,6 @@ class Analisa extends CI_Controller
 		
     }
 
-    public function monitoring()
-    {
-        $data['title'] = 'Analis';
-        $data['user'] = $this->db->get_where('user', ['email' =>
-        $this->session->userdata('email')])->row_array();
-        $data['query'] = $this->m_analisa->tampil_data_monitoring();
-
-        $this->load->view('templates/header', $data);
-        $this->load->view('templates/sidebar', $data);
-        $this->load->view('templates/topbar', $data);
-        $this->load->view('kredit/monitoring', $data);
-        $this->load->view('templates/footer');
-		
-    }
-
     //---Pengajuan
 
 	public function add_pengajuan()
