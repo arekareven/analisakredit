@@ -226,5 +226,4 @@ class M_analisa extends CI_Model
 		}
 		return $hasil;
 	}
-
 }

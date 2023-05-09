@@ -39,7 +39,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form method="post" action="<?php echo base_url('kredit/add_latar_belakang'); ?>">
+                <form id="form_lb" method="post" action="<?php echo base_url('kredit/add_latar_belakang'); ?>">
                     <div class="modal-body">
                         <div class="col-md-8 mb-3">
                             <input type="hidden" id="id_lb" name="id_lb">
@@ -301,7 +301,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Input Data</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <button type="button" id="close_lb" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -760,6 +760,10 @@
 				});
 				return false;
 			});
+			
+            $('#close_lb').on('click', function() {
+                document.getElementById("form_lb").reset();
+            })
         });
 
     </script>
