@@ -21,8 +21,8 @@
                         <a class="nav-link" id="v-pills-collateralk-tab" data-toggle="pill" href="#v-pills-collateralk" role="tab" aria-controls="v-pills-collateralk" aria-selected="false">Collateral Kendaraan</a>
                         <a class="nav-link" id="v-pills-usulan-tab" data-toggle="pill" href="#v-pills-usulan" role="tab" aria-controls="v-pills-usulan" aria-selected="false">Usulan</a>
                         <a class="nav-link" id="v-pills-print-tab" data-toggle="pill" href="#v-pills-print" role="tab" aria-controls="v-pills-print" aria-selected="false">Cetak</a>
-                        <a class="nav-link" id="v-pills-upload-tab" data-toggle="pill" href="#v-pills-upload" role="tab" aria-controls="v-pills-upload" aria-selected="false">Upload</a>
                         <a class="nav-link" id="v-pills-pengajuan-tab" data-toggle="pill" href="#v-pills-pengajuan" role="tab" aria-controls="v-pills-pengajuan" aria-selected="false">Pengajuan</a>
+                        <a class="nav-link" id="v-pills-upload-tab" data-toggle="pill" href="#v-pills-upload" role="tab" aria-controls="v-pills-upload" aria-selected="false">Upload</a>
                     </div>
                 </div>
                 <div class="col-9">
@@ -4199,7 +4199,7 @@
 							$file = data[i].file;
                             html += '<tr>' +
                                 '<td>' + $file + '</td>' +
-                                '<td><a href=./upload/file/kredit/'+ $file +' target="_blank" class="badge badge-info">Buka</a></td>' +
+                                '<td><button href=./upload/file/kredit/'+ $file +' target="_blank" class="btn btn-info">Buka</button></td>' +
                                 '</tr>';
                         }
                         $('#show_data_upload').html(html);

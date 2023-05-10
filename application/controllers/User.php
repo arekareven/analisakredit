@@ -40,6 +40,7 @@ class User extends CI_Controller
 		} else {
 			$name = $this->input->post('name');
 			$email = $this->input->post('email');
+			$kantor = $this->input->post('kantor');
 
 			// cek jika ada gambar yang akan diupload
 			$upload_image = $_FILES['image']['name'];
@@ -63,6 +64,7 @@ class User extends CI_Controller
 			}
 
 			$this->db->set('name', $name);
+			$this->db->set('kantor', $kantor);
 			$this->db->where('email', $email);
 			$this->db->update('user');
 

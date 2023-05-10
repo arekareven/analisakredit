@@ -22,6 +22,21 @@
 					</div>
 				</div>
 				<div class="form-group row">
+					<label for="name" class="col-sm-2 col-form-label">Kode Kantor</label>
+					<div class="col-sm-10">
+                            <select class="form-control" aria-label="Default select example" id="kantor" name="kantor">
+                                <option value="<?= $user['kantor']; ?>"><?= $user['kantor']; ?></option>
+                                <option value="KCU">KCU</option>
+                                <option value="KCMDN">KCMDN</option>
+                                <option value="KCPNG">KCPNG</option>
+                                <option value="KCNGJ">KCNGJ</option>
+                                <option value="KCTRG">KCTRG</option>
+                                <option value="KCNGW">KCNGW</option>
+                            </select>
+						<!-- <?= form_error('name', '<small class="text-danger pl-3">','</small>'); ?> -->
+					</div>
+				</div>
+				<div class="form-group row">
 					<div class="col-sm-2">Picture</div>
 					<div class="col-sm-10">
 						<div class="row">

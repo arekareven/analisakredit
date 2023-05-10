@@ -28,7 +28,6 @@ class Analisa extends CI_Controller
     }
 
     //---Pengajuan
-
 	public function add_pengajuan()
 	{
 		$id_pengajuan = $this->input->post('id_pengajuan');
@@ -50,8 +49,6 @@ class Analisa extends CI_Controller
 	}
 
 	//---
-
-	
 	public function add_scoring()
 	{
 		$id_pengajuan = $this->input->post('id_pengajuan');
@@ -136,7 +133,6 @@ class Analisa extends CI_Controller
 	}
 
 	// Upload file
-	
 	public function upload()
 	{
 		$id_lb = $this->input->post('id_lb');
