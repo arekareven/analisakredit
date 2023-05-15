@@ -74,7 +74,7 @@ class M_dirut extends CI_Model
 	private $zoom_api_secret = 'AFSpEctqZCncDejPSqCc3Qzs29a8jEYoZQYQ';	
 
 	//function to generate JWT
-	private function generateJWTKey() 
+	public function generateJWTKey() 
 	{
 		$key = $this->zoom_api_key;
 		$secret = $this->zoom_api_secret;
@@ -82,7 +82,8 @@ class M_dirut extends CI_Model
 			"iss" => $key,
 			"exp" => time() + 3600 //60 seconds as suggested
 		);
-		return JWT::encode( $token, $secret );
+		die(var_dump(JWT::encode( $token, $secret )));
+		// return JWT::encode( $token, $secret );
 	}	
 
 	//function to create meeting
@@ -162,7 +163,8 @@ class M_dirut extends CI_Model
 			if (!$response) {
 				return $err;
 		}
-//
+
+	//input tanggal dan link zoom ke database
 		$id_pengajuan    = $this->input->post('id_pengajuan');
 		$link     = json_decode($response)->join_url;
 		$waktu	= $data_zoom['start_time'];

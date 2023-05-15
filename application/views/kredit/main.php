@@ -22,7 +22,7 @@
                         <a class="nav-link" id="v-pills-usulan-tab" data-toggle="pill" href="#v-pills-usulan" role="tab" aria-controls="v-pills-usulan" aria-selected="false">Usulan</a>
                         <a class="nav-link" id="v-pills-print-tab" data-toggle="pill" href="#v-pills-print" role="tab" aria-controls="v-pills-print" aria-selected="false">Cetak</a>
                         <a class="nav-link" id="v-pills-pengajuan-tab" data-toggle="pill" href="#v-pills-pengajuan" role="tab" aria-controls="v-pills-pengajuan" aria-selected="false">Pengajuan</a>
-                        <a class="nav-link" id="v-pills-upload-tab" data-toggle="pill" href="#v-pills-upload" role="tab" aria-controls="v-pills-upload" aria-selected="false">Upload</a>
+                        <!-- <a class="nav-link" id="v-pills-upload-tab" data-toggle="pill" href="#v-pills-upload" role="tab" aria-controls="v-pills-upload" aria-selected="false">Upload</a> -->
                     </div>
                 </div>
                 <div class="col-9">
@@ -1441,40 +1441,201 @@
                         </div>
                         <div class="tab-pane fade" id="v-pills-print" role="tabpanel" aria-labelledby="v-pills-print-tab">
                             <div class="modal-body">
-                                <div class="row">			
-                                    <div class="col-md-3 mb-3">
-                                        <a href="pdf_lb?id_lb=<?php echo $id_lb; ?>" class="btn btn-primary" target="_blank">1. Latar Belakang</i></a>
-                                    </div>
-                                    <div class="col-md-3 mb-3">
-                                        <a href="pdf_char?id_lb=<?php echo $id_lb; ?>" class="btn btn-primary" target="_blank">2. Character</i></a>
-                                    </div>
-                                    <div class="col-md-3 mb-3">
-                                        <a href="capacity/templateword?id_lb=<?php echo $id_lb; ?>" class="btn btn-primary">3. Capacity</i></a>
-                                    </div>
-                                    <div class="col-md-3 mb-3">
-                                        <a href="pdf_capiseb?id_lb=<?php echo $id_lb; ?>" class="btn btn-primary" target="_blank">4. Capital</i></a>
-                                    </div>
-                                    <div class="col-md-3 mb-3">
-                                        <a href="pdf_capiset?id_lb=<?php echo $id_lb; ?>" class="btn btn-primary" target="_blank">5. Capital Setelah</i></a>
-                                    </div>
-                                    <div class="col-md-3 mb-3">
-                                        <a href="pdf_cashlain?id_lb=<?php echo $id_lb; ?>" class="btn btn-primary" target="_blank">6. Keuangan Lain</i></a>
-                                    </div>
-                                    <div class="col-md-3 mb-3">
-                                        <a href="pdf_coe?id_lb=<?php echo $id_lb; ?>" class="btn btn-primary" target="_blank">7. Condition</i></a>
-                                    </div>
-                                    <div class="col-md-3 mb-3">
-                                        <a href="pdf_collateral?id_lb=<?php echo $id_lb; ?>" class="btn btn-primary" target="_blank">8. Collateral</i></a>
-                                    </div>
-                                    <div class="col-md-3 mb-3">
-										<a href="pdf_usulan?id_lb=<?php echo $id_lb; ?>" class="btn btn-primary" target="_blank">9. Usulan</i></a>
-                                    </div>
-                                    <div class="col-md-3 mb-3">
-                                        <a href="pdf_disposisi?id_lb=<?php echo $id_lb; ?>" class="btn btn-primary" target="_blank">10. Disposisi</i></a>
-                                    </div>
-                                    <div class="col-md-3 mb-3">
-                                        <a href="pdf_all?id_lb=<?php echo $id_lb; ?>" class="btn btn-primary" target="_blank">All</i></a>
-                                    </div>
+                                <div class="row">	
+									
+									<!-- 1 -->
+									<div class="col-xl-4 col-md-6 mb-4">
+										<div class="card border-left-primary shadow h-100 py-2">
+											<div class="card-body">
+												<div class="row no-gutters align-items-center">
+													<div class="col mr-2">
+														<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+															1</div>
+														<div class="h5 mb-0 font-weight-bold text-primary-800">
+															<a href="pdf_lb?id_lb=<?php echo $id_lb; ?>" target="_blank">Latar Belakang</i></a>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<!-- 2 -->
+									<div class="col-xl-4 col-md-6 mb-4">
+										<div class="card border-left-success shadow h-100 py-2">
+											<div class="card-body">
+												<div class="row no-gutters align-items-center">
+													<div class="col mr-2">
+														<div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+															2</div>
+														<div class="h5 mb-0 font-weight-bold text-gray-800">
+															<a href="pdf_char?id_lb=<?php echo $id_lb; ?>" target="_blank">Character</i></a>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<!-- 3 -->
+									<div class="col-xl-4 col-md-6 mb-4">
+										<div class="card border-left-info shadow h-100 py-2">
+											<div class="card-body">
+												<div class="row no-gutters align-items-center">
+													<div class="col mr-2">
+														<div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+															3
+														</div>
+														<div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
+															<a href="capacity/templateword?id_lb=<?php echo $id_lb; ?>">Capacity</i></a>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<!-- 4 -->
+									<div class="col-xl-4 col-md-6 mb-4">
+										<div class="card border-left-warning shadow h-100 py-2">
+											<div class="card-body">
+												<div class="row no-gutters align-items-center">
+													<div class="col mr-2">
+														<div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+															4</div>
+														<div class="h5 mb-0 font-weight-bold text-gray-800">
+															<a href="pdf_capiseb?id_lb=<?php echo $id_lb; ?>" target="_blank">Capital Sebelum</i></a>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>	
+
+									<!-- 5 -->
+									<div class="col-xl-4 col-md-6 mb-4">
+										<div class="card border-left-primary shadow h-100 py-2">
+											<div class="card-body">
+												<div class="row no-gutters align-items-center">
+													<div class="col mr-2">
+														<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+															5</div>
+														<div class="h5 mb-0 font-weight-bold text-gray-800">
+															<a href="pdf_capiset?id_lb=<?php echo $id_lb; ?>" target="_blank">Capital Setelah</i></a>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<!-- 6 -->
+									<div class="col-xl-4 col-md-6 mb-4">
+										<div class="card border-left-success shadow h-100 py-2">
+											<div class="card-body">
+												<div class="row no-gutters align-items-center">
+													<div class="col mr-2">
+														<div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+															6</div>
+														<div class="h5 mb-0 font-weight-bold text-gray-800">
+															<a href="pdf_cashlain?id_lb=<?php echo $id_lb; ?>" target="_blank">Keuangan Lain</i></a>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<!-- 7 -->
+									<div class="col-xl-4 col-md-6 mb-4">
+										<div class="card border-left-info shadow h-100 py-2">
+											<div class="card-body">
+												<div class="row no-gutters align-items-center">
+													<div class="col mr-2">
+														<div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+															7
+														</div>
+														<div class="row no-gutters align-items-center">
+															<div class="col-auto">
+																<div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
+																	<a href="pdf_coe?id_lb=<?php echo $id_lb; ?>" target="_blank">Condition</i></a>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<!-- 8 -->
+									<div class="col-xl-4 col-md-6 mb-4">
+										<div class="card border-left-warning shadow h-100 py-2">
+											<div class="card-body">
+												<div class="row no-gutters align-items-center">
+													<div class="col mr-2">
+														<div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+															8</div>
+														<div class="h5 mb-0 font-weight-bold text-gray-800">
+															<a href="pdf_collateral?id_lb=<?php echo $id_lb; ?>" target="_blank">Collateral</i></a>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>	
+
+									<!-- 9 -->
+									<div class="col-xl-4 col-md-6 mb-4">
+										<div class="card border-left-primary shadow h-100 py-2">
+											<div class="card-body">
+												<div class="row no-gutters align-items-center">
+													<div class="col mr-2">
+														<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+															9</div>
+														<div class="h5 mb-0 font-weight-bold text-gray-800">
+															<a href="pdf_usulan?id_lb=<?php echo $id_lb; ?>" target="_blank">Usulan</i></a>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<!-- 10 -->
+									<div class="col-xl-4 col-md-6 mb-4">
+										<div class="card border-left-success shadow h-100 py-2">
+											<div class="card-body">
+												<div class="row no-gutters align-items-center">
+													<div class="col mr-2">
+														<div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+															10</div>
+														<div class="h5 mb-0 font-weight-bold text-gray-800">
+															<a href="pdf_disposisi?id_lb=<?php echo $id_lb; ?>" target="_blank">Disposisi</i></a>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<!-- 11 -->
+									<div class="col-xl-4 col-md-6 mb-4">
+										<div class="card border-left-warning shadow h-100 py-2">
+											<div class="card-body">
+												<div class="row no-gutters align-items-center">
+													<div class="col mr-2">
+														<div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+															11</div>
+														<div class="h5 mb-0 font-weight-bold text-gray-800">
+															<a href="pdf_all?id_lb=<?php echo $id_lb; ?>" target="_blank">Cetak Semua</i></a>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+                                    
                                 </div>
                             </div>
                         </div>

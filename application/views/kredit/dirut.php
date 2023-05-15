@@ -142,8 +142,8 @@
                         }
                     }),
 				    document.getElementById("zoom").reset();    
-                    $('#zoomModal').modal('hide');
-                    window.location.reload();
+                    // $('#zoomModal').modal('hide');
+                    // window.location.reload();
                     
             })
 

@@ -47,7 +47,8 @@ class Dirut extends CI_Controller
 
 	public function zoom_meeting()
 	{
-        $id_pengajuan = $this->input->post('id_pengajuan');
-		$this->m_dirut->createMeeting($id_pengajuan);
+        // $id_pengajuan = $this->input->post('id_pengajuan');
+		// $this->m_dirut->createMeeting($id_pengajuan);
+		$this->m_dirut->generateJWTKey();
 	}
 }
