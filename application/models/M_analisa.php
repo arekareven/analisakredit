@@ -75,7 +75,7 @@ class M_analisa extends CI_Model
 					'id_pengajuan'      => $data->id_pengajuan,
 					'name_debitur'      => $data->name_debitur,
 					'plafon'      => $data->plafond,
-					'catatan'      => $data->catatan,
+					// 'catatan'      => $data->catatan,
 					'itk_nilai'      => $data->itk_nilai,
 					'mu_nilai'      => $data->mu_nilai,
 					'kd_nilai'      => $data->kd_nilai,

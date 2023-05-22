@@ -1,7 +1,5 @@
-<!-- Begin Page Content -->
-<div class="container-fluid">
+<!-- <div class="container-fluid">
 
-    <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
 
     <div class="row">
@@ -26,7 +24,43 @@
     </div>
 
 </div>
-<!-- /.container-fluid -->
 
+</div> -->
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.js"></script>
+
+<div class="container">
+    <!-- <h1>Kalender Komite</h1> -->
+    <div class="row" style="width:100%">
+       <div class="col-md-12">
+           <div id="calendar"></div>
+       </div>
+    </div>
 </div>
-<!-- End of Main Content -->
+
+<script type="text/javascript">
+   
+    var events = <?php echo json_encode($data) ?>;
+    
+    var date = new Date()
+    var d    = date.getDate(),
+        m    = date.getMonth(),
+        y    = date.getFullYear()
+           
+    $('#calendar').fullCalendar({
+      header    : {
+        left  : 'prev,next today',
+        center: 'title',
+        right : 'month,agendaWeek,agendaDay'
+      },
+      buttonText: {
+        today: 'Hari ini',
+        month: 'Bulan',
+        week : 'Minggu',
+        day  : 'Hari'
+      },
+      events    : events
+    })
+</script>

@@ -4278,7 +4278,7 @@
                         for (i = 0; i < data.length; i++) {	
 							if (data[i].waktu_zoom=!null){
                             	$waktuZoom = "Belum Ada";								
-								$linkZoom = "Tidak ada";
+								$linkZoom = "main?id_lb="+id_lb;
 							}else{
 								$waktuZoom = new Date(data[i].waktu_zoom);
 								$linkZoom = data[i].link_zoom;

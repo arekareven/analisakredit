@@ -58,6 +58,8 @@
 <!-- Page level custom scripts -->
 <script src="<?= base_url('assets/'); ?>js/demo/datatables-demo.js"></script>
 
+<!-- <script src="<?php echo base_url('assets/js/jquery.min.js'); ?>"></script> -->
+
 <script>
     $('.custom-file-input').on('change', function() {
         let fileName = $(this).val().split('\\').pop();

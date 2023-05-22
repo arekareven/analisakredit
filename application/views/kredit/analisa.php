@@ -17,7 +17,7 @@
                             <th scope="col">Nama Debitur</th>
                             <th scope="col">Status</th>
                             <th scope="col">Zoom</th>
-                            <th scope="col">Skoring</th>
+                            <th scope="col">Input</th>
                         </tr>
                     </thead>
                     <tbody id="show_data">
@@ -30,6 +30,22 @@
 								$waktuZoom = date('d-m-Y H:i',strtotime($row->waktu_zoom));							
 								$linkZoom = $row->link_zoom;
 							}
+
+							
+							switch ($row->status) {
+								case "Diajukan":
+									$badge = "info";
+									break;
+								case "Tidak layak":
+									$badge = "danger";
+									break;
+								case "Layak dgn catatan":
+									$badge = "warning";
+									break;
+								default:
+									$badge = "sucess";
+									break;
+							}
 		
 							echo 
 							"<tr>
@@ -38,7 +54,7 @@
 									<a href='pdf_all?id_lb=".$row->id_lb."' target='_blank'>". $row->name_debitur ."</a>
 								</td>                     
 								<td>
-									<a href='pdf_scoring?id_lb=".$row->id_lb."' target='_blank'>".$row->status ."</a>
+									<a href='pdf_scoring?id_lb=".$row->id_lb."' class='badge badge-".$badge." target='_blank'>".$row->status ."</a>
 								</td>               
 								<td>
 									<a href='".$linkZoom."' target='_blank'>".$waktuZoom."</a>
