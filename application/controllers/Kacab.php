@@ -25,6 +25,36 @@ class Kacab extends CI_Controller
         $this->load->view('kredit/kacab', $data);
         $this->load->view('templates/footer');
     }
+	public function kalender()
+	{
+		$data['title'] = 'Kalender';
+		$data['user'] = $this->db->get_where('user', ['email' =>
+		$this->session->userdata('email')])->row_array();
+
+		$name = $this->db->get_where('user', ['email' =>
+        $this->session->userdata('email')])->row_array();
+        $a = $name['kantor'];
+		// die(var_dump($a));
+		
+		
+		$data['result'] = $this->db->query("SELECT * FROM pengajuan WHERE kantor='$a'")->result();	
+		// die(var_dump($data['result']));
+		
+		// $data['result'] = $this->db->get("pengajuan")->result();	
+
+		foreach ($data['result'] as $key => $value) {
+			$data['data'][$key]['title'] = "Komite ".$value->name_debitur;
+			$data['data'][$key]['start'] = $value->waktu_zoom;
+			$data['data'][$key]['backgroundColor'] = "#00a65a";
+		}
+		
+
+		$this->load->view('templates/header', $data);
+		$this->load->view('templates/sidebar', $data);
+		$this->load->view('templates/topbar', $data);
+		$this->load->view('kredit/calendar', $data);
+		$this->load->view('templates/footer');
+	}
 			
 	public function update_resume()
 	{

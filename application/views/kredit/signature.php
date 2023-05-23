@@ -19,12 +19,10 @@
     </head>
     <body>
         <div class="container">
-			<br>
-			<h2>Membuat Signature Pad jQuery - www.ayongoding.com</h2>
 	    	<div class="row">
 	    		<div class="col-md-6">
 					<hr>
-			    	<h4>Signature Pad</h4>
+			    	<h4>Tanda Tangan</h4>
 			    	<div class="text-right">
 				    	<button type="button" class="btn btn-default btn-sm" id="undo"><i class="fa fa-undo"></i> Undo</button>
 						<button type="button" class="btn btn-danger btn-sm" id="clear"><i class="fa fa-eraser"></i> Clear</button>

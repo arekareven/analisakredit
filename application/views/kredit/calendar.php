@@ -1,24 +1,15 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title></title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.js"></script>
-</head>
-<body>
-  
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.js"></script>
+
 <div class="container">
-    <h1>Codeigniter Fullcalendar example - ItSolutionStuff.com</h1>
     <div class="row" style="width:100%">
        <div class="col-md-12">
            <div id="calendar"></div>
        </div>
     </div>
 </div>
-   
+
 <script type="text/javascript">
    
     var events = <?php echo json_encode($data) ?>;
@@ -35,14 +26,62 @@
         right : 'month,agendaWeek,agendaDay'
       },
       buttonText: {
-        today: 'today',
-        month: 'month',
-        week : 'week',
-        day  : 'day'
+        today: 'Hari ini',
+        month: 'Bulan',
+        week : 'Minggu',
+        day  : 'Hari'
       },
       events    : events
     })
-</script>
-   
-</body>
-</html>
+</script> -->
+
+
+	<script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.7/index.global.min.js'></script>
+	<script>
+
+		var events = <?php echo json_encode($data) ?>;
+				
+		var date = new Date()
+		var d    = date.getDate(),
+				m    = date.getMonth(),
+				y    = date.getFullYear()
+
+		document.addEventListener('DOMContentLoaded', function() {
+			var calendarEl = document.getElementById('calendar');
+			var calendar = new FullCalendar.Calendar(calendarEl, {
+				initialView: 'dayGridMonth',
+				headerToolbar: {
+					left: 'prev,next,today',
+					center: 'title',
+					right: 'dayGridMonth,timeGridWeek,timeGridDay' // user can switch between the two
+				},
+				buttonText: {
+					today: 'Hari ini',
+					month: 'Bulan',
+					week : 'Minggu',
+					day  : 'Hari'
+				},
+				
+				events    : events,
+				eventClick: function(info) {
+					alert('Komite atas nama ' + info.event.title);
+
+					// if (info.event.url) {
+					// 		window.open(info.event.url);
+					// 	}
+				}
+
+			});
+			calendar.setOption('locale', 'id');
+			calendar.render();
+		});
+
+	</script>
+
+	<div class="container">
+    <div class="row" style="width:100%">
+       <div class="col-md-12">
+           <div id="calendar"></div>
+       </div>
+    </div>
+	</div>

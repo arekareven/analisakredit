@@ -1360,53 +1360,53 @@
                                                     </div>
                                                     <div class="col-md-3 mb-4">
                                                         <label for="provisi" class="form-label">Provisi (%)</label>
-                                                        <input type="text" class="form-control" id="provisi" name="provisi" placeholder="Contoh : 0.5">
+                                                        <input type="number" class="form-control" id="provisi" name="provisi" placeholder="Contoh : 0.5">
                                                     </div>
                                                     <div class="col-md-3 mb-4">
                                                         <label for="administrasi" class="form-label">Administrasi (%)</label>
-                                                        <input type="text" class="form-control" id="administrasi" name="administrasi" placeholder="Contoh : 0.75">
+                                                        <input type="number" class="form-control" id="administrasi" name="administrasi" placeholder="Contoh : 0.75">
                                                     </div>
                                                 </div>       
                                                 <div class="row">
                                                     <div class="col-md-4 mb-4">
                                                         <label for="asuransi" class="form-label">Asuransi</label>
-                                                        <input type="text" class="form-control" id="asuransi" name="asuransi">
+                                                        <input type="number" class="form-control" id="asuransi" name="asuransi">
                                                     </div>
                                                     <div class="col-md-4 mb-4">
                                                         <label for="materai" class="form-label">Materai</label>
-                                                        <input type="text" class="form-control" id="materai" name="materai">
+                                                        <input type="number" class="form-control" id="materai" name="materai">
                                                     </div>
                                                     <div class="col-md-4 mb-4">
                                                         <label for="apht" class="form-label">APHT</label>
-                                                        <input type="text" class="form-control" id="apht" name="apht">
+                                                        <input type="number" class="form-control" id="apht" name="apht">
                                                     </div>
                                                 </div> 
                                                 <div class="row">
                                                     <div class="col-md-4 mb-4">
                                                         <label for="skmht" class="form-label">SKMHT</label>
-                                                        <input type="text" class="form-control" id="skmht" name="skmht">
+                                                        <input type="number" class="form-control" id="skmht" name="skmht">
                                                     </div>                                   
                                                     <div class="col-md-4 mb-4">
                                                         <label for="titipan" class="form-label">Biaya SKMHT ke APHT</label>
-                                                        <input type="text" class="form-control" id="titipan" name="titipan">
+                                                        <input type="number" class="form-control" id="titipan" name="titipan">
                                                     </div>
                                                     <div class="col-md-4 mb-4">
                                                         <label for="fiduciare" class="form-label">Fiduciare Didaftarkan</label>
-                                                        <input type="text" class="form-control" id="fiduciare" name="fiduciare">
+                                                        <input type="number" class="form-control" id="fiduciare" name="fiduciare">
                                                     </div>
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-md-4 mb-4">
                                                         <label for="legalisasi" class="form-label">Legalisasi</label>
-                                                        <input type="text" class="form-control" id="legalisasi" name="legalisasi">
+                                                        <input type="number" class="form-control" id="legalisasi" name="legalisasi">
                                                     </div>
                                                     <div class="col-md-4 mb-4">
                                                         <label for="roya" class="form-label">Roya</label>
-                                                        <input type="text" class="form-control" id="roya" name="roya">
+                                                        <input type="number" class="form-control" id="roya" name="roya">
                                                     </div>
                                                     <div class="col-md-4 mb-4">
                                                         <label for="lainnya" class="form-label">Lain -lain</label>
-                                                        <input type="text" class="form-control" id="lainnya" name="lainnya">
+                                                        <input type="number" class="form-control" id="lainnya" name="lainnya">
                                                     </div>
                                                 </div>
                                                 <div class="row">
@@ -1699,7 +1699,7 @@
 								</div>
                             </form>
 							<div id="reload">
-								<table class="table table-sm" id="dataPengajuan">
+								<table class="table table-borderless" id="dataPengajuan">
 									<thead class="thead-dark">
 										<tr>
 											<th scope="col">Analis</th>
