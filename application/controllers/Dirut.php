@@ -34,8 +34,9 @@ class Dirut extends CI_Controller
 		$data['result'] = $this->db->get("pengajuan")->result();
 
 		foreach ($data['result'] as $key => $value) {
-			$data['data'][$key]['title'] = "Komite ".$value->name_debitur;
+			$data['data'][$key]['title'] = $value->name_debitur;
 			$data['data'][$key]['start'] = $value->waktu_zoom;
+			$data['data'][$key]['url'] = $value->link_zoom;
 			$data['data'][$key]['backgroundColor'] = "#00a65a";
 		}
 		
@@ -67,8 +68,25 @@ class Dirut extends CI_Controller
 
 	public function zoom_meeting()
 	{
-        // $id_pengajuan = $this->input->post('id_pengajuan');
-		// $this->m_dirut->createMeeting($id_pengajuan);
-		$this->m_dirut->generateJWTKey();
+		//input tanggal dan link zoom ke database
+		$id_pengajuan = $this->input->post('id_pengajuan');
+		$zoom    = $this->input->post('jenis');
+		$waktu    = $this->input->post('waktu');
+		if($zoom == 0){
+			$data = array(
+				'link_zoom'    => "Offline",
+				'waktu_zoom'		=> $waktu
+			);
+			
+			$this->db->where('id_pengajuan', $id_pengajuan);
+			$this->db->update('pengajuan', $data);
+			// die(var_dump('berhasil hore hore'));
+		}else {
+			// die(var_dump('lalalala'));
+			$this->m_dirut->createMeeting($id_pengajuan);
+
+		}
+
+		// $this->m_dirut->generateJWTKey();
 	}
 }

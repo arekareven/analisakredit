@@ -329,7 +329,8 @@
                     </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
+    </div>
+	<!-- /.modal -->
 
     <!-- Modal edit-->
     <div class="modal fade" id="edit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -604,7 +605,6 @@
             document.getElementById('idt2').value = idt;
         }
     </script>
-	
 
     <script type="text/javascript">
         function EditData(id_lb, tgl_analisa, tgl_permohonan, plafon, jangka_waktu, sifat_kredit, $suku_bunga, jenis_permohonan, tujuan_permohonan, ket_penggunaan, nama_debitur, status_kawin, ttl_nasabah, ktp, alamat_ktp_nasabah, domisili_nasabah, hp_nasabah, status_tt, pekerjaan_nasabah, tanggungan, pendidikan, jenis_kelamin, masa_laku, telp_kantor, lama_tinggal, nama_pasangan, ttl_pasangan, alamat_ktp_pasangan, domisili_pasangan, pekerjaan_pasangan, hp_pasangan, nama_keluarga, hubungan_keluarga, alamat_keluarga, hp_keluarga) {

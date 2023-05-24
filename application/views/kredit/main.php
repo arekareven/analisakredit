@@ -1704,7 +1704,7 @@
 										<tr>
 											<th scope="col">Analis</th>
 											<th scope="col">Status</th>
-											<th scope="col">Link Zoom</th>
+											<th scope="col">Komite</th>
 										</tr>
 									</thead>
 									<tbody id="show_data_pengajuan">
@@ -4276,12 +4276,16 @@
                         var html = '';
                         var i;
                         for (i = 0; i < data.length; i++) {	
-							if (data[i].waktu_zoom=!null){
+							if (data[i].waktu_zoom==null){
                             	$waktuZoom = "Belum Ada";								
-								$linkZoom = "main?id_lb="+id_lb;
+								$linkZoom = "#";
 							}else{
-								$waktuZoom = new Date(data[i].waktu_zoom);
+								// $waktuZoom = new Date(data[i].waktu_zoom);
+								$waktuZoom = data[i].waktu_zoom;
 								$linkZoom = data[i].link_zoom;
+								if($linkZoom = "Offline"){
+									$linkZoom = "#"
+								}
 							}
 
 							switch (data[i].status) {
@@ -4651,263 +4655,6 @@
 
 
     </script>
-		
-	<!-- Modal edit latar belakang-->
-	<div class="modal fade" id="editlb" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog modal-lg">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Latar Belakang</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>    
-					</button>
-				</div>
-				<form id="form_lb">
-					<div class="modal-body">
-						<div class="col-md-8 mb-3">
-							<label for="tgl_permohonan" class="form-label">Tgl Permohonan</label>
-							<input type="date" class="form-control" id="tgl_permohonan" name="tgl_permohonan">
-						</div>
-						<div class="col-md-8 mb-5">
-							<label for="tgl_analisa" class="form-label">Tgl Analisa</label>
-							<input type="date" class="form-control" id="tgl_analisa" name="tgl_analisa">
-						</div>
-						<div class="col-md-12 mb-2">
-							<h4>1. Data Permohonan</h4>
-							<hr>
-						</div>
-						<div class="col-md-8 mb-3">
-							<label for="plafon" class="form-label">Plafond yang dimohon</label>
-							<input type="hidden" class="form-control" id="id_lb" name="id_lb">
-							<input type="number" class="form-control" id="plafon" name="plafon">
-						</div>
-						<div class="col-md-8 mb-3">
-							<label for="jangka_waktu" class="form-label">Jangka Waktu (Bulan)</label>
-							<input type="text" class="form-control" id="jangka_waktu" name="jangka_waktu">
-						</div>
-						<div class="col-md-8 mb-3">
-							<label for="sifat_kredit" class="form-label">Sifat Kredit</label>
-							<select class="form-control" aria-label="Default select example" id="sifat_kredit" name="sifat_kredit">
-								<option value="Pokok bunga tiap bulan">Pokok bunga tiap bulan</option>
-								<option value="Pokok tiap 3 bulan bunga tiap bulan">Pokok tiap 3 bulan bunga tiap bulan</option>
-								<option value="Pokok tiap 4 bulan bunga tiap bulan">Pokok tiap 4 bulan bunga tiap bulan</option>
-								<option value="Pokok tiap 6 bulan bunga tiap bulan">Pokok tiap 6 bulan bunga tiap bulan</option>
-								<option value="Pokok tiap 12 bulan bunga tiap bulan">Pokok tiap 12 bulan bunga tiap bulan</option>
-								<option value="Pokok terakhir bunga tiap bulan">Pokok terakhir bunga tiap bulan</option>
-								<option value="Pokok bunga terakhir">Pokok bunga terakhir</option>
-								<option value="Musiman">Musiman</option>
-								<option value="Anuitas">Anuitas</option>
-								<option value="Efektif">Efektif</option>
-							</select>
-						</div>
-						<div class="col-md-8 mb-3">
-							<label for="suku_bunga" class="form-label">Suku Bunga</label>
-							<input type="text" class="form-control" id="suku_bunga" name="suku_bunga">
-						</div>
-						<div class="col-md-8 mb-3">
-							<label for="musiman" class="form-label">Musiman (Bulan)</label>
-							<input type="text" class="form-control" id="musiman" name="musiman"">
-						</div>
-						<div class="col-md-8 mb-3">
-							<label for="jenis_permohonan" class="form-label">Jenis Permohonan</label>
-							<select class="form-control" aria-label="Default select example" id="jenis_permohonan" name="jenis_permohonan">
-								<option value="Baru">Baru</option>
-								<option value="Ulangan">Ulangan</option>
-								<option value="Top Up">Top Up / Perpanjangan</option>
-								<option value="Restrukturisasi">Restrukturisasi</option>
-							</select>
-						</div>
-						<div class="col-md-8 mb-3">
-							<label for="tujuan_permohonan" class="form-label">Tujuan Penggunaan</label>
-							<select class="form-control" aria-label="Default select example" id="tujuan_permohonan" name="tujuan_permohonan">
-								<option value="Modal Kerja">Modal Kerja</option>
-								<option value="Investasi">Investasi</option>
-								<option value="Konsumtif">Konsumtif</option>
-							</select>
-						</div>
-						<div class="col-md-12 mb-5">
-							<label for="ket_penggunaan" class="form-label">Keterangan Penggunaan</label>
-							<textarea class="form-control" id="ket_penggunaan" name="ket_penggunaan"></textarea>
-						</div>
-						<div class="col-md-12 mb-2">
-							<h4>2. Data Diri Nasabah</h4>
-							<hr>
-						</div>
-						<div class="col-md-8 mb-3">
-							<label for="nama_debitur" class="form-label">Nama Debitur</label>
-							<input type="text" class="form-control" id="nama_debitur" name="nama_debitur">
-						</div>
-						<div class="col-md-8 mb-3">
-							<label for="status_kawin" class="form-label">Status Perkawinan</label>
-							<select class="form-control" aria-label="Default select example" id="status_kawin" name="status_kawin">
-								<option value="Tidak Menikah">Tidak Menikah</option>
-								<option value="Menikah">Menikah</option>
-								<option value="Duda">Duda</option>
-								<option value="Janda">Janda</option>
-							</select>
-						</div>
-						<div class="col-md-8 mb-3">
-							<label for="ttl_nasabah" class="form-label">Tempat, tgl lahir</label>
-							<input type="text" class="form-control" id="ttl_nasabah" name="ttl_nasabah">
-						</div>
-						<div class="col-md-8 mb-3">
-							<label for="ktp" class="form-label">No. KTP</label>
-							<input type="text" class="form-control" id="ktp" name="ktp">
-						</div>
-						<div class="col-md-12 mb-3">
-							<label for="alamat_ktp_nasabah" class="form-label">Alamat Sesuai KTP</label>
-							<textarea class="form-control" id="alamat_ktp_nasabah" name="alamat_ktp_nasabah"></textarea>
-						</div>
-						<div class="col-md-12 mb-3">
-							<label for="domisili_nasabah" class="form-label">Alamat Sesuai Domisili</label>
-							<textarea class="form-control" id="domisili_nasabah" name="domisili_nasabah"></textarea>
-						</div>
-						<div class="col-md-8 mb-3">
-							<label for="hp_nasabah" class="form-label">No. Tlp</label>
-							<input type="text" class="form-control" id="hp_nasabah" name="hp_nasabah">
-						</div>
-						<div class="col-md-8 mb-3">
-							<label for="status_tt" class="form-label">Status Tempat Tinggal</label>
-							<select class="form-control" aria-label="Default select example" id="status_tt" name="status_tt">
-								<option value="Milik Sendiri">Milik Sendiri</option>
-								<option value="Milik Keluarga/Ortu">Milik Keluarga/Ortu</option>
-								<option value="Instansi">Instansi</option>
-								<option value="Kontrak">Kontrak</option>
-								<option value="Kredit">Kredit</option>
-							</select>
-						</div>
-						<div class="col-md-8 mb-3">
-							<label for="pekerjaan_nasabah" class="form-label">Pekerjaan</label>
-							<input type="text" class="form-control" id="pekerjaan_nasabah" name="pekerjaan_nasabah">
-						</div>
-						<div class="col-md-8 mb-3">
-							<label for="tanggungan" class="form-label">Tanggungan (Orang)</label>
-							<input type="text" class="form-control" id="tanggungan" name="tanggungan">
-						</div>
-						<div class="col-md-8 mb-3">
-							<label for="pendidikan" class="form-label">Pendidikan</label>
-							<select class="form-control" aria-label="Default select example" id="pendidikan" name="pendidikan">
-								<option value="SD">SD</option>
-								<option value="SMP">SMP</option>
-								<option value="SMA">SMA</option>
-								<option value="Diploma">Diploma</option>
-								<option value="S1">S1</option>
-								<option value="S2">S2</option>
-								<option value="S3">S3</option>
-							</select>
-						</div>
-						<div class="col-md-8 mb-3">
-							<label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
-							<select class="form-control" aria-label="Default select example" id="jenis_kelamin" name="jenis_kelamin">
-								<option value="Laki-laki">Laki-laki</option>
-								<option value="Perempuan">Perempuan</option>
-							</select>
-						</div>
-						<div class="col-md-8 mb-3">
-							<label for="masa_laku" class="form-label">Masa Laku</label>
-							<input type="text" class="form-control" id="masa_laku" name="masa_laku" value="Seumur Hidup">
-						</div>
-						<div class="col-md-8 mb-3">
-							<label for="telp_kantor" class="form-label">No. Tlp Kantor</label>
-							<input type="text" class="form-control" id="telp_kantor" name="telp_kantor">
-						</div>
-						<div class="col-md-8 mb-5">
-							<label for="lama_tinggal" class="form-label">Lama Tinggal (Tahun)</label>
-							<input type="text" class="form-control" id="lama_tinggal" name="lama_tinggal">
-						</div>
-						<div class="col-md-12 mb-2">
-							<h4>3. Data Suami/Istri</h4>
-							<hr>
-						</div>
-						<div class="col-md-8 mb-3">
-							<label for="nama_pasangan" class="form-label">Nama Istri/Suami</label>
-							<input type="text" class="form-control" id="nama_pasangan" name="nama_pasangan">
-						</div>
-						<div class="col-md-8 mb-3">
-							<label for="ttl_pasangan" class="form-label">Tempat, tgl lahir</label>
-							<input type="text" class="form-control" id="ttl_pasangan" name="ttl_pasangan">
-						</div>
-						<div class="col-md-12 mb-3">
-							<label for="alamat_ktp_pasangan" class="form-label">Alamat Sesuai KTP</label>
-							<textarea class="form-control" id="alamat_ktp_pasangan" name="alamat_ktp_pasangan"></textarea>
-						</div>
-						<div class="col-md-12 mb-3">
-							<label for="domisili_pasangan" class="form-label">Alamat Sesuai Domisili</label>
-							<textarea class="form-control" id="domisili_pasangan" name="domisili_pasangan"></textarea>
-						</div>
-						<div class="col-md-8 mb-3">
-							<label for="pekerjaan_pasangan" class="form-label">Profesi Istri/Suami</label>
-							<input type="text" class="form-control" id="pekerjaan_pasangan" name="pekerjaan_pasangan">
-						</div>
-						<div class="col-md-8 mb-5">
-							<label for="hp_pasangan" class="form-label">No. Tlp</label>
-							<input type="text" class="form-control" id="hp_pasangan" name="hp_pasangan">
-						</div>
-						<div class="col-md-12 mb-2">
-							<h4>4. Data Emergency Contact</h4>
-							<hr>
-						</div>
-						<div class="col-md-8 mb-3">
-							<label for="nama_keluarga" class="form-label">Nama Lengkap</label>
-							<input type="text" class="form-control" id="nama_keluarga" name="nama_keluarga">
-						</div>
-						<div class="col-md-8 mb-3">
-							<label for="hubungan_keluarga" class="form-label">Hubungan Keluarga</label>
-							<select class="form-control" aria-label="Default select example" id="hubungan_keluarga" name="hubungan_keluarga">
-								<option value="Anak Kandung">Anak Kandung</option>
-								<option value="Saudara Kandung">Saudara Kandung</option>
-								<option value="Orang Tua">Orang Tua</option>
-								<option value="Saudara Tidak Sekandung">Saudara Tidak Sekandung</option>
-								<option value="Rekan Kerja">Rekan Kerja</option>
-								<option value="Tetangga">Tetangga</option>
-							</select>
-						</div>
-						<div class="col-md-12 mb-3">
-							<label for="alamat_keluarga" class="form-label">Alamat Rumah</label>
-							<textarea class="form-control" id="alamat_keluarga" name="alamat_keluarga"></textarea>
-						</div>
-						<div class="col-md-8 mb-5">
-							<label for="hp_keluarga" class="form-label">No. Tlp/Hp</label>
-							<input type="text" class="form-control" id="hp_keluarga" name="hp_keluarga">
-						</div>
-
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-						<button type="btn_edit_lb" class="btn btn-primary">Simpan</button>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
-	<!--END MODAL EDIT-->
-
-	<!--MODAL HAPUS latar belakangn-->
-	<div class="modal fade" id="deletelb" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h4 class="modal-title" id="exampleModalLabel">Hapus Data</h4>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">X</span></button>
-				</div>
-				<form class="form-horizontal">
-					<div class="modal-body">
-
-						<input type="hidden" name="kode_lb" id="textkode_lb" value="">
-						<div class="alert alert-warning">
-							<p>Apakah Anda yakin mau menghapus data ini?</p>
-						</div>
-
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
-						<button class="btn btn-danger" id="btn_hapus_lb">Hapus</button>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
-	<!--END MODAL HAPUS-->
 
 	<!-- Modal edit riwayat pinjaman-->
 	<div class="modal fade" id="editrp" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -5269,7 +5016,7 @@
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
-				<form id="form_capi">
+				<form id="form_capi" class="was-validated">
 					<div class="modal-body">
 						<div class="col-md-12 mb-3">
 							<h5>Aktiva lancar</h5>
@@ -5279,79 +5026,79 @@
 							<div class="col-sm-6">
 								<input type="hidden" class="form-control" id="id_lb2" name="id_lb">
 								<input type="hidden" class="form-control" id="id_capi2" name="id_capi">
-								<input type="number" class="form-control" id="kas2" name="kas">
+								<input type="number" class="form-control" id="kas2" name="kas" required>
 							</div>
 						</div>
 						<div class="form-group row">
 							<label for="tabungan" class="col-sm-6 col-form-label">Tabungan</label>
 							<div class="col-sm-6">
-								<input type="number" class="form-control" id="tabungan2" name="tabungan">
+								<input type="number" class="form-control" id="tabungan2" name="tabungan" required>
 							</div>
 						</div>
 						<div class="form-group row">
 							<label for="deposito" class="col-sm-6 col-form-label">Deposito</label>
 							<div class="col-sm-6">
-								<input type="number" class="form-control" id="deposito2" name="deposito">
+								<input type="number" class="form-control" id="deposito2" name="deposito" required>
 							</div>
 						</div>
 						<div class="form-group row">
 							<label for="piutang" class="col-sm-6 col-form-label">Piutang</label>
 							<div class="col-sm-6">
-								<input type="number" class="form-control" id="piutang2" name="piutang">
+								<input type="number" class="form-control" id="piutang2" name="piutang" required>
 							</div>
 						</div>
 						<div class="form-group row">
 							<label for="peralatan" class="col-sm-6 col-form-label">Peralatan</label>
 							<div class="col-sm-6">
-								<input type="number" class="form-control" id="peralatan2" name="peralatan">
+								<input type="number" class="form-control" id="peralatan2" name="peralatan" required>
 							</div>
 						</div>
 						<div class="form-group row">
 							<label for="barang" class="col-sm-6 col-form-label">Persediaan Barang Usaha 1</label>
 							<div class="col-sm-6">
-								<input type="number" class="form-control" id="barangdua" name="barang">
+								<input type="number" class="form-control" id="barangdua" name="barang" required>
 							</div>
 						</div>
 						<div class="form-group row">
 							<label for="barang2" class="col-sm-6 col-form-label">Persediaan Barang Usaha 2</label>
 							<div class="col-sm-6">
-								<input type="number" class="form-control" id="barang22" name="barang2">
+								<input type="number" class="form-control" id="barang22" name="barang2" required>
 							</div>
 						</div>
 						<div class="form-group row">
 							<label for="barang3" class="col-sm-6 col-form-label">Persediaan Barang Usaha 3</label>
 							<div class="col-sm-6">
-								<input type="number" class="form-control" id="barang32" name="barang3">
+								<input type="number" class="form-control" id="barang32" name="barang3" required>
 							</div>
 						</div>
 						<div class="form-group row">
 							<label for="sewa" class="col-sm-6 col-form-label">Sewa Dibayar Dimuka</label>
 							<div class="col-sm-6">
-								<input type="number" class="form-control" id="sewa2" name="sewa">
+								<input type="number" class="form-control" id="sewa2" name="sewa" required>
 							</div>
 						</div>
 						<div class="form-group row">
 							<label for="lahan" class="col-sm-6 col-form-label">Lahan Garap</label>
 							<div class="col-sm-6">
-								<input type="number" class="form-control" id="lahan2" name="lahan">
+								<input type="number" class="form-control" id="lahan2" name="lahan" required>
 							</div>
 						</div>
 						<div class="form-group row">
 							<label for="gedung" class="col-sm-6 col-form-label">Gedung / Ruko</label>
 							<div class="col-sm-6">
-								<input type="number" class="form-control" id="gedung2" name="gedung">
+								<input type="number" class="form-control" id="gedung2" name="gedung" required>
 							</div>
 						</div>
 						<div class="form-group row">
 							<label for="operasional" class="col-sm-6 col-form-label">Kendaraan Operasional</label>
 							<div class="col-sm-6">
-								<input type="number" class="form-control" id="operasional2" name="operasional">
+								<input type="number" class="form-control" id="operasional2" name="operasional" required>
 							</div>
 						</div>
 						<div class="form-group row mb-5">
 							<label for="lain" class="col-sm-6 col-form-label">Lain-lain</label>
 							<div class="col-sm-6">
-								<input type="number" class="form-control" id="laindua" name="lain">
+								<input type="number" class="form-control" id="laindua" name="lain" required>
 							</div>
 						</div>
 						<div class="col-md-12 mb-3">
@@ -5360,31 +5107,31 @@
 						<div class="form-group row">
 							<label for="tanah" class="col-sm-6 col-form-label">Tanah</label>
 							<div class="col-sm-6">
-								<input type="number" class="form-control" id="tanah2" name="tanah">
+								<input type="number" class="form-control" id="tanah2" name="tanah" required>
 							</div>
 						</div>
 						<div class="form-group row">
 							<label for="bangunan" class="col-sm-6 col-form-label">Bangunan</label>
 							<div class="col-sm-6">
-								<input type="number" class="form-control" id="bangunan2" name="bangunan">
+								<input type="number" class="form-control" id="bangunan2" name="bangunan" required>
 							</div>
 						</div>
 						<div class="form-group row">
 							<label for="kendaraan" class="col-sm-6 col-form-label">Kendaraan</label>
 							<div class="col-sm-6">
-								<input type="number" class="form-control" id="kendaraan2" name="kendaraan">
+								<input type="number" class="form-control" id="kendaraan2" name="kendaraan" required>
 							</div>
 						</div>
 						<div class="form-group row">
 							<label for="inventaris" class="col-sm-6 col-form-label">Inventaris</label>
 							<div class="col-sm-6">
-								<input type="number" class="form-control" id="inventaris2" name="inventaris">
+								<input type="number" class="form-control" id="inventaris2" name="inventaris" required>
 							</div>
 						</div>
 						<div class="form-group row mb-5">
 							<label for="lain2" class="col-sm-6 col-form-label">Lain-lain</label>
 							<div class="col-sm-6">
-								<input type="number" class="form-control" id="lain22" name="lain2">
+								<input type="number" class="form-control" id="lain22" name="lain2" required>
 							</div>
 						</div>
 						<div class="col-md-12 mb-3">
@@ -5393,25 +5140,25 @@
 						<div class="form-group row">
 							<label for="hutang_jpk" class="col-sm-6 col-form-label">Hutang Jangka Pendek</label>
 							<div class="col-sm-6">
-								<input type="number" class="form-control" id="hutang_jpk2" name="hutang_jpk">
+								<input type="number" class="form-control" id="hutang_jpk2" name="hutang_jpk" required>
 							</div>
 						</div>
 						<div class="form-group row">
 							<label for="hutang_jpg" class="col-sm-6 col-form-label">Hutang Jangka Panjang</label>
 							<div class="col-sm-6">
-								<input type="number" class="form-control" id="hutang_jpg2" name="hutang_jpg">
+								<input type="number" class="form-control" id="hutang_jpg2" name="hutang_jpg" required>
 							</div>
 						</div>
 						<div class="form-group row">
 							<label for="hutang_lain" class="col-sm-6 col-form-label">Hutang Lain</label>
 							<div class="col-sm-6">
-								<input type="number" class="form-control" id="hutang_lain2" name="hutang_lain">
+								<input type="number" class="form-control" id="hutang_lain2" name="hutang_lain" required>
 							</div>
 						</div>
 						<div class="form-group row">
 							<label for="hutang_dagang" class="col-sm-6 col-form-label">Hutang Dagang</label>
 							<div class="col-sm-6">
-								<input type="number" class="form-control" id="hutang_dagang2" name="hutang_dagang">
+								<input type="number" class="form-control" id="hutang_dagang2" name="hutang_dagang" required>
 							</div>
 						</div>
 					</div>

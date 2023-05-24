@@ -31,9 +31,13 @@ class M_dirut extends CI_Model
         $this->session->userdata('email')])->row_array();
         $kantor = $data['kantor'];
 
+		// $lb = $this->db->query("SELECT * FROM pengajuan 
+		// JOIN `resume` ON pengajuan.id_pengajuan=resume.id_pengajuan
+		// WHERE pengajuan.kantor='$kantor' AND resume.kacab IS NOT NULL AND pengajuan.plafond>=10000000");
+
 		$lb = $this->db->query("SELECT * FROM pengajuan 
 		JOIN `resume` ON pengajuan.id_pengajuan=resume.id_pengajuan
-		WHERE pengajuan.kantor='$kantor' AND resume.analis IS NOT NULL AND pengajuan.plafond>=10000000");
+		WHERE resume.kacab IS NOT NULL AND pengajuan.plafond>=100000000");
 		return $lb;
     }
 			
@@ -82,8 +86,8 @@ class M_dirut extends CI_Model
 			"iss" => $key,
 			"exp" => time() + 3600 //60 seconds as suggested
 		);
-		die(var_dump(JWT::encode( $token, $secret )));
-		// return JWT::encode( $token, $secret );
+		// die(var_dump(JWT::encode( $token, $secret )));
+		return JWT::encode( $token, $secret );
 	}	
 
 	//function to create meeting

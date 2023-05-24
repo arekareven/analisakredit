@@ -18,6 +18,17 @@ class Kredit extends CI_Controller
 		$data=$this->m_kredit->rw_list($id_lb);
 		echo json_encode($data);
 	}
+	
+	public function add_rw()
+	{
+		$id_rp = $this->input->post('id_rp');
+
+		$query = $this->m_kredit->cek_id_rw($id_rp)->num_rows();
+		if (empty($query))
+			$this->m_kredit->add_data_rw($id_rp);
+		else
+			$this->m_kredit->edit_data_rw($id_rp);
+	}
         
 	function get_rp(){
 		$id_rp=$this->input->get('id');
@@ -55,16 +66,6 @@ class Kredit extends CI_Controller
 			$this->m_kredit->edit_data($id_lb);
 	}
 
-	public function add_rw()
-	{
-		$id_rp = $this->input->post('id_rp');
-
-		$query = $this->m_kredit->cek_id_rw($id_rp)->num_rows();
-		if (empty($query))
-			$this->m_kredit->add_data_rw($id_rp);
-		else
-			$this->m_kredit->edit_data_rw($id_rp);
-	}
 
 	public function to_rp()
 	{
@@ -72,11 +73,6 @@ class Kredit extends CI_Controller
 		redirect('main?id_lb=' . $id_lb);
 	}
 
-	// public function next()
-	// {
-	// 	$id_lb = $_GET['id_lb'];
-	// 	redirect('test/edit?id_lb=' . $id_lb);
-	// }
 
 	public function cetak()
 	{

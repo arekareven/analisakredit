@@ -24,11 +24,13 @@
                         <?php
                         foreach ($query->result() as $row) {//ambil data dari DB latar_belakang, file 
 							if (!isset($row->waktu_zoom)){
-								$waktuZoom = "Belum Ada";								
-								$linkZoom = "analisa/index";
+								$waktuZoom = 'Belum Ada';
+								$linkZoom = '#';
 							}else{
-								$waktuZoom = date('d-m-Y H:i',strtotime($row->waktu_zoom));							
-								$linkZoom = $row->link_zoom;
+								if($row->link_zoom = 'Offline'){
+									$linkZoom = '#';
+								}
+								$waktuZoom = date('d-m-Y H:i',strtotime($row->waktu_zoom));
 							}
 							
 							switch ($row->status) {

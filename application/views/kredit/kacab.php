@@ -25,7 +25,11 @@
                         foreach ($query->result() as $row) {//ambil data dari DB pengajuan 
 							if (!isset($row->waktu_zoom)){
 								$waktuZoom = 'Belum Ada';
+								$linkZoom = '#';
 							}else{
+								if($row->link_zoom = 'Offline'){
+									$linkZoom = '#';
+								}
 								$waktuZoom = date('d-m-Y H:i',strtotime($row->waktu_zoom));
 							}
 							
@@ -39,7 +43,7 @@
 									<a href='pdf_scoring?id_lb=".$row->id_lb."' target='_blank'>" . $row->status . "</a>
 								</td>              
 								<td>
-									<a href='".$row->link_zoom."' target='_blank'>".$waktuZoom."</a>
+									<a href='".$link_zoom."' target='_blank'>".$waktuZoom."</a>
 								</td>           
 								<td>
 									<a href='javascript:;' class='btn btn-info btn-circle item_resume' title='Resume' data='" . $row->id_pengajuan . "'><i class='fas fa-paperclip'></i></a>

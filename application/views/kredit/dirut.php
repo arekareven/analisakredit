@@ -17,7 +17,7 @@
                             <th scope="col">Nama Debitur</th>
                             <th scope="col">Status</th>
                             <th scope="col">Zoom</th>
-                            <th scope="col">Buat Zoom</th>
+                            <th scope="col">Komite</th>
                         </tr>
                     </thead>
                     <tbody id="show_data">
@@ -25,7 +25,11 @@
                         foreach ($query->result() as $row) {//ambil data dari DB pengajuan 
 							if (!isset($row->waktu_zoom)){
 								$waktuZoom = 'Belum Ada';
+								$linkZoom = '#';
 							}else{
+								if($row->link_zoom = 'Offline'){
+									$linkZoom = '#';
+								}
 								$waktuZoom = date('d-m-Y H:i',strtotime($row->waktu_zoom));
 							}
 							
@@ -39,7 +43,7 @@
 									<a href='pdf_scoring?id_lb=".$row->id_lb."' target='_blank'>" . $row->status . "</a>
 								</td>              
 								<td>
-									<a href='".$row->link_zoom."' target='_blank'>".$waktuZoom."</a>
+									<a href='".$linkZoom."' target='_blank'>".$waktuZoom."</a>
 								</td>           
 								<td>
 									<a href='#' class='btn btn-primary btn-circle' data-toggle='modal' data-target='#zoomModal' title='Zoom Meeting' onClick=\"AddDataZoom('" . $row->id_pengajuan . "','" . $row->id_lb . "')\"><i class='fas fa-video'></i></a>
@@ -60,13 +64,44 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5>Zoom</h5>
+                    <h5>Komite</h5>
                     <button id="close_pengajuan" type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <form id="zoom">
                     <div class="modal-body">
+						<div class="col-md-8 mb-3">
+							<p>Pilih jenis komite</p>
+							<div id="group">
+							</div>
+							<p id="output"></p>
+						</div>
+						<script>
+							const sizes = ['zoom', 'offline'];
+
+							// generate the radio groups        
+							const group = document.querySelector("#group");
+							group.innerHTML = sizes.map((size) => `<div>
+									<input type="radio" name="size" value="${size}" id="${size}">
+									<label for="${size}">${size}</label>
+								</div>`).join(' ');
+							
+							// add an event listener for the change event
+							const radioButtons = document.querySelectorAll('input[name="size"]');
+							for(const radioButton of radioButtons){
+								radioButton.addEventListener('change', showSelected);
+							}        
+							
+							function showSelected(e) {
+								console.log(e);
+								if (this.value == 'zoom') {
+									document.querySelector('#output').innerHTML = `<input type="hidden" class="form-control" id="jenis" name="jenis" value="1">`;
+								} else{
+									document.querySelector('#output').innerHTML = `<input type="hidden" class="form-control" id="jenis" name="jenis" value="0">`;
+								}
+							}
+						</script>
                         <div class="form-group row">
                             <label for="waktu" class="col-sm-2 col-form-label">Waktu</label>
                             <div class="col-sm-10">

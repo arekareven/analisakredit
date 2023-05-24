@@ -45,6 +45,7 @@ class Kacab extends CI_Controller
 		foreach ($data['result'] as $key => $value) {
 			$data['data'][$key]['title'] = "Komite ".$value->name_debitur;
 			$data['data'][$key]['start'] = $value->waktu_zoom;
+			$data['data'][$key]['url'] = $value->link_zoom;
 			$data['data'][$key]['backgroundColor'] = "#00a65a";
 		}
 		

@@ -23,20 +23,20 @@ class M_analisa extends CI_Model
 		$id_lb			= $this->input->post('id_lb');
 		$analis			= $this->input->post('analis');
 		$nama_ao		= $this->input->post('nama_ao');
-		$kantor		= $this->input->post('kantor');
-		$name_debitur		= $this->input->post('nama_debitur');
+		$kantor			= $this->input->post('kantor');
+		$name_debitur	= $this->input->post('nama_debitur');
 		$plafond		= $this->input->post('plafond');
-		$status      		= $this->input->post('status');
+		$status      	= $this->input->post('status');
 
 		$x = array(
 
 			'id_lb'	    	=> $id_lb,
-			'nama_analis'	    	=> $analis,
+			'nama_analis'	=> $analis,
 			'nama_ao'	    => $nama_ao,
 			'kantor'	    => $kantor,
-			'name_debitur'	    => $name_debitur,
+			'name_debitur'	=> $name_debitur,
 			'plafond'	    => $plafond,
-			'status'	    	=> $status,
+			'status'	   	=> $status,
 		);
 		$this->db->insert('pengajuan', $x);
 	}

@@ -43,8 +43,8 @@
 				
 		var date = new Date()
 		var d    = date.getDate(),
-				m    = date.getMonth(),
-				y    = date.getFullYear()
+			m    = date.getMonth(),
+			y    = date.getFullYear()
 
 		document.addEventListener('DOMContentLoaded', function() {
 			var calendarEl = document.getElementById('calendar');
@@ -64,11 +64,9 @@
 				
 				events    : events,
 				eventClick: function(info) {
-					alert('Komite atas nama ' + info.event.title);
+					info.jsEvent.preventDefault();
+					alert('Komite atas nama ' + info.event.title + ' ' + info.event.url );
 
-					// if (info.event.url) {
-					// 		window.open(info.event.url);
-					// 	}
 				}
 
 			});
