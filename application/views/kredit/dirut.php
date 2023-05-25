@@ -16,8 +16,8 @@
                             <th scope="col">Nama AO</th>
                             <th scope="col">Nama Debitur</th>
                             <th scope="col">Status</th>
-                            <th scope="col">Zoom</th>
                             <th scope="col">Komite</th>
+                            <th scope="col">Resume</th>
                         </tr>
                     </thead>
                     <tbody id="show_data">

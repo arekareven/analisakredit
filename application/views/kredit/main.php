@@ -1742,9 +1742,9 @@
                         var i;
                         for (i = 0; i < data.length; i++) {
                             html += '<tr>' +
-                                '<td>' + data[i].plafond + '</td>' +
+                                '<td>' + new Intl.NumberFormat().format(data[i].plafond) + '</td>' +
                                 '<td>' + data[i].status + '</td>' +
-                                '<td>' + data[i].saldo + '</td>' +
+                                '<td>' + new Intl.NumberFormat().format(data[i].saldo) + '</td>' +
                                 '<td style="text-align:right;">' +
                                 '<a href="javascript:;" class="btn btn-warning btn-sm item_edit_rp" data="' + data[i].id_rp + '"><i class="fas fa-edit"></i></a>' + ' ' +
                                 '<a href="javascript:;" class="btn btn-danger btn-sm item_hapus_rp" data="' + data[i].id_rp + '"><i class="fas fa-trash"></i></a>' +
@@ -2245,9 +2245,9 @@
 						var i;
 						for (i = 0; i < data.length; i++) {
 							html += '<tr>' +
-								'<td>' + data[i].kas + '</td>' +
-								'<td>' + data[i].tanah + '</td>' +
-								'<td>' + data[i].hutang_jpk + '</td>' +
+								'<td>' + new Intl.NumberFormat().format(data[i].kas) + '</td>' +
+								'<td>' + new Intl.NumberFormat().format(data[i].tanah) + '</td>' +
+								'<td>' + new Intl.NumberFormat().format(data[i].hutang_jpk) + '</td>' +
 								'<td style="text-align:right;">' +
 								'<a href="javascript:;" class="btn btn-warning btn-xs item_edit_capi" data="' + data[i].id_capi + '"><i class="fas fa-edit"></i></a>' + ' ' +
 								'<a href="javascript:;" class="btn btn-danger btn-xs item_hapus_capi" data="' + data[i].id_capi + '"><i class="fas fa-trash"></i></a>' +
@@ -2438,7 +2438,7 @@
 						for (i = 0; i < data.length; i++) {
 							html += '<tr>' +
 								'<td>' + data[i].keterangan + '</td>' +
-								'<td>' + data[i].saldo + '</td>' +
+								'<td>' + new Intl.NumberFormat().format(data[i].saldo) + '</td>' +
 								'<td>' + data[i].jenis + '</td>' +
 								'<td style="text-align:right;">' +
 								'<a href="javascript:;" class="btn btn-warning btn-xs item_edit_cashawpend" data="' + data[i].id_cf + '"><i class="fas fa-edit"></i></a>' + ' ' +
@@ -2584,7 +2584,7 @@
 						for (i = 0; i < data.length; i++) {
 							html += '<tr>' +
 								'<td>' + data[i].keterangan + '</td>' +
-								'<td>' + data[i].saldo + '</td>' +
+								'<td>' + new Intl.NumberFormat().format(data[i].saldo) + '</td>' +
 								'<td>' + data[i].jenis + '</td>' +
 								'<td style="text-align:right;">' +
 								'<a href="javascript:;" class="btn btn-warning btn-xs item_edit_cashawpeng" data="' + data[i].id_cf + '"><i class="fas fa-edit"></i></a>' + ' ' +
@@ -2730,7 +2730,7 @@
 						for (i = 0; i < data.length; i++) {
 							html += '<tr>' +
 								'<td>' + data[i].keterangan + '</td>' +
-								'<td>' + data[i].saldo + '</td>' +
+								'<td>' + new Intl.NumberFormat().format(data[i].saldo) + '</td>' +
 								'<td>' + data[i].jenis + '</td>' +
 								'<td style="text-align:right;">' +
 								'<a href="javascript:;" class="btn btn-warning btn-xs item_edit_cashsetpend" data="' + data[i].id_cf + '"><i class="fas fa-edit"></i></a>' + ' ' +
@@ -2876,7 +2876,7 @@
 						for (i = 0; i < data.length; i++) {
 							html += '<tr>' +
 								'<td>' + data[i].keterangan + '</td>' +
-								'<td>' + data[i].saldo + '</td>' +
+								'<td>' + new Intl.NumberFormat().format(data[i].saldo) + '</td>' +
 								'<td>' + data[i].jenis + '</td>' +
 								'<td style="text-align:right;">' +
 								'<a href="javascript:;" class="btn btn-warning btn-xs item_edit_cashsetpeng" data="' + data[i].id_cf + '"><i class="fas fa-edit"></i></a>' + ' ' +
@@ -3022,7 +3022,7 @@
 						for (i = 0; i < data.length; i++) {
 							html += '<tr>' +
 								'<td>' + data[i].keterangan + '</td>' +
-								'<td>' + data[i].saldo + '</td>' +
+								'<td>' + new Intl.NumberFormat().format(data[i].saldo) + '</td>' +
 								'<td>' + data[i].jenis + '</td>' +
 								'<td style="text-align:right;">' +
 								'<a href="javascript:;" class="btn btn-warning btn-xs item_edit_cashsethut" data="' + data[i].id_cf + '"><i class="fas fa-edit"></i></a>' + ' ' +
@@ -3168,7 +3168,7 @@
 						for (i = 0; i < data.length; i++) {
 							html += '<tr>' +
 								'<td>' + data[i].keterangan + '</td>' +
-								'<td>' + data[i].saldo + '</td>' +
+								'<td>' + new Intl.NumberFormat().format(data[i].saldo) + '</td>' +
 								'<td>' + data[i].jenis + '</td>' +
 								'<td style="text-align:right;">' +
 								'<a href="javascript:;" class="btn btn-warning btn-xs item_edit_cashpendlain" data="' + data[i].id_cf + '"><i class="fas fa-edit"></i></a>' + ' ' +
@@ -3314,7 +3314,7 @@
 						for (i = 0; i < data.length; i++) {
 							html += '<tr>' +
 								'<td>' + data[i].keterangan + '</td>' +
-								'<td>' + data[i].saldo + '</td>' +
+								'<td>' + new Intl.NumberFormat().format(data[i].saldo) + '</td>' +
 								'<td>' + data[i].jenis + '</td>' +
 								'<td style="text-align:right;">' +
 								'<a href="javascript:;" class="btn btn-warning btn-xs item_edit_cashpenglain" data="' + data[i].id_cf + '"><i class="fas fa-edit"></i></a>' + ' ' +

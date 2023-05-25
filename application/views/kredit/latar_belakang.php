@@ -17,7 +17,7 @@
 					<thead class="thead-dark">
 						<tr>
 							<th scope="col">Nama</th>
-							<th scope="col">Plafond</th>
+							<th scope="col">Plafondd</th>
 							<th scope="col">Tgl</th>
 							<th scope="col">Aksi</th>
 						</tr>
@@ -322,11 +322,11 @@
 							<div class="col-md-8 mb-3">
 								<label for="plafon" class="form-label">Plafond yang dimohon</label>
 								<input type="hidden" class="form-control" id="id_lb2" name="id_lb">
-								<input type="text" class="form-control" id="plafon2" name="plafon">
+								<input type="number" class="form-control" id="plafon2" name="plafon">
 							</div>
 							<div class="col-md-8 mb-3">
 								<label for="jangka_waktu" class="form-label">Jangka Waktu (Bulan)</label>
-								<input type="text" class="form-control" id="jangka_waktu2" name="jangka_waktu">
+								<input type="number" class="form-control" id="jangka_waktu2" name="jangka_waktu">
 							</div>
 							<div class="col-md-8 mb-3">
 								<label for="sifat_kredit" class="form-label">Sifat Kredit</label>
@@ -349,7 +349,7 @@
 							</div>
 							<div class="col-md-8 mb-3">
 								<label for="musiman" class="form-label">Musiman (Bulan)</label>
-								<input type="text" class="form-control" id="musiman2" name="musiman"">
+								<input type="number" class="form-control" id="musiman2" name="musiman"">
 							</div>
 							<div class="col-md-8 mb-3">
 								<label for="jenis_permohonan" class="form-label">Jenis Permohonan</label>
@@ -395,7 +395,7 @@
 							</div>
 							<div class="col-md-8 mb-3">
 								<label for="ktp" class="form-label">No. KTP</label>
-								<input type="text" class="form-control" id="ktp2" name="ktp">
+								<input type="number" class="form-control" id="ktp2" name="ktp">
 							</div>
 							<div class="col-md-12 mb-3">
 								<label for="alamat_ktp_nasabah" class="form-label">Alamat Sesuai KTP</label>
@@ -425,7 +425,7 @@
 							</div>
 							<div class="col-md-8 mb-3">
 								<label for="tanggungan" class="form-label">Tanggungan (Orang)</label>
-								<input type="text" class="form-control" id="tanggungan2" name="tanggungan">
+								<input type="number" class="form-control" id="tanggungan2" name="tanggungan">
 							</div>
 							<div class="col-md-8 mb-3">
 								<label for="pendidikan" class="form-label">Pendidikan</label>
@@ -456,7 +456,7 @@
 							</div>
 							<div class="col-md-8 mb-5">
 								<label for="lama_tinggal" class="form-label">Lama Tinggal (Tahun)</label>
-								<input type="text" class="form-control" id="lama_tinggal2" name="lama_tinggal">
+								<input type="number" class="form-control" id="lama_tinggal2" name="lama_tinggal">
 							</div>
 							<div class="col-md-12 mb-2">
 								<h4>3. Data Suami/Istri</h4>
@@ -574,7 +574,7 @@
                         for (i = 0; i < data.length; i++) {
                             html += '<tr>'+
 									'<td>' + data[i].nama_debitur + '</td>'+
-									'<td>' + 'Rp. ' + data[i].plafon + '</td>'+
+									'<td>' + 'Rp. ' + new Intl.NumberFormat().format(data[i].plafon) + '</td>'+
 									'<td>' + data[i].tgl_permohonan + '</td>'+                     
 									'<td>'+
 									'<a href="javascript:;" class="btn btn-warning btn-circle item_edit_latar_belakang" data="' + data[i].id_lb + '"><i class="fas fa-edit"></i></a>' + ' ' +

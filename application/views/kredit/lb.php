@@ -560,51 +560,6 @@
             </div>
         </div>
     </div>
-    
-    <script type="text/javascript">
-        function EditData(id_lb, cif_bank, tgl_analisa, tgl_permohonan, plafon, jangka_waktu, sifat_kredit, $suku_bunga, jenis_permohonan, tujuan_permohonan, ket_penggunaan, nama_debitur, status_kawin, ttl_nasabah, ktp, alamat_ktp_nasabah, domisili_nasabah, hp_nasabah, status_tt, pekerjaan_nasabah, tanggungan, pendidikan, jenis_kelamin, masa_laku, telp_kantor, lama_tinggal, nama_pasangan, ttl_pasangan, alamat_ktp_pasangan, domisili_pasangan, pekerjaan_pasangan, hp_pasangan, nama_keluarga, hubungan_keluarga, alamat_keluarga, hp_keluarga) {
-            document.getElementById('id_lb').value = id_lb;
-            document.getElementById('cif_bank').value = cif_bank;
-            document.getElementById('tgl_analisa').value = tgl_analisa;
-            document.getElementById('tgl_permohonan').value = tgl_permohonan;
-            document.getElementById('plafon').value = plafon;
-            document.getElementById('jangka_waktu').value = jangka_waktu;
-            document.getElementById('sifat_kredit').value = sifat_kredit;
-            document.getElementById('suku_bunga').value = suku_bunga;
-            document.getElementById('jenis_permohonan').value = jenis_permohonan;
-            document.getElementById('tujuan_permohonan').value = tujuan_permohonan;
-            document.getElementById('ket_penggunaan').value = ket_penggunaan;
-            document.getElementById('nama_debitur').value = nama_debitur;
-            document.getElementById('status_kawin').value = status_kawin;
-            document.getElementById('ttl_nasabah').value = ttl_nasabah;
-            document.getElementById('ktp').value = ktp;
-            document.getElementById('alamat_ktp_nasabah').value = alamat_ktp_nasabah;
-            document.getElementById('domisili_nasabah').value = domisili_nasabah;
-            document.getElementById('hp_nasabah').value = hp_nasabah;
-            document.getElementById('status_tt').value = status_tt;
-            document.getElementById('pekerjaan_nasabah').value = pekerjaan_nasabah;
-            document.getElementById('tanggungan').value = tanggungan;
-            document.getElementById('pendidikan').value = pendidikan;
-            document.getElementById('jenis_kelamin').value = jenis_kelamin;
-            document.getElementById('masa_laku').value = masa_laku;
-            document.getElementById('telp_kantor').value = telp_kantor;
-            document.getElementById('lama_tinggal').value = lama_tinggal;
-            document.getElementById('nama_pasangan').value = nama_pasangan;
-            document.getElementById('ttl_pasangan').value = ttl_pasangan;
-            document.getElementById('alamat_ktp_pasangan').value = alamat_ktp_pasangan;
-            document.getElementById('domisili_pasangan').value = domisili_pasangan;
-            document.getElementById('pekerjaan_pasangan').value = pekerjaan_pasangan;
-            document.getElementById('hp_pasangan').value = hp_pasangan;
-            document.getElementById('nama_keluarga').value = nama_keluarga;
-            document.getElementById('hubungan_keluarga').value = hubungan_keluarga;
-            document.getElementById('alamat_keluarga').value = alamat_keluarga;
-            document.getElementById('hp_keluarga').value = hp_keluarga;
-        }
-
-        function HapusData(idt) {
-            document.getElementById('idt2').value = idt;
-        }
-    </script>
 
     <script type="text/javascript">
         function EditData(id_lb, tgl_analisa, tgl_permohonan, plafon, jangka_waktu, sifat_kredit, $suku_bunga, jenis_permohonan, tujuan_permohonan, ket_penggunaan, nama_debitur, status_kawin, ttl_nasabah, ktp, alamat_ktp_nasabah, domisili_nasabah, hp_nasabah, status_tt, pekerjaan_nasabah, tanggungan, pendidikan, jenis_kelamin, masa_laku, telp_kantor, lama_tinggal, nama_pasangan, ttl_pasangan, alamat_ktp_pasangan, domisili_pasangan, pekerjaan_pasangan, hp_pasangan, nama_keluarga, hubungan_keluarga, alamat_keluarga, hp_keluarga) {
