@@ -54,16 +54,22 @@ class Pdf_usulan extends CI_Controller
 			$pdf->Cell(5, 5.5, ':', 0, 1, '');
 			if($data->tujuan_permohonan == "Konsumtif"){
 				$pdf->Cell(69, 5.5, 'Hutang Rp. ' . number_format($data->total_hutang) . ' atau ' . number_format($this->persenKonsumtif(), 2)  . ' % dari Total Aset Rp. ' . number_format($data->total_aset), 0, 1, '');
+				$pdf->SetFont('Times', 'B', 12);
 				$pdf->Cell(69, 5.5, $this->statusKonsumtif(), 1, 1, 'C');
+				$pdf->SetFont('Times', '', 12);
 			}else{
 				$pdf->Cell(69, 5.5, 'Hutang Rp. ' . number_format($data->total_hutang) . ' atau ' . number_format($this->persen1(), 2)  . ' % dari Aset Produktif Rp. ' . number_format($data->total_al), 0, 1, '');
+				$pdf->SetFont('Times', 'B', 12);
 				$pdf->Cell(69, 5.5, $this->status1(), 1, 1, 'C');
+				$pdf->SetFont('Times', '', 12);
 			}
 			$pdf->Cell(69, 5.5, '<= 50 % Layak', 0, 0, '');
 			$pdf->Cell(5, 5.5, ' > 50 % Tidak Layak', 0, 0, '');
 			$pdf->Cell(69, 5.5, '', 0, 1, '');
 			$pdf->Cell(69, 5.5, 'Total Angsuran Pinjaman Rp. ' . number_format($this->angsuran()) . ' atau ' . number_format($this->persen2(), 2)  . ' % dari Laba Operasional/Pendapatan Rp. ' . number_format($this->labaRugi()), 0, 1, '');
+			$pdf->SetFont('Times', 'B', 12);
 			$pdf->Cell(69, 5.5, $this->status2(), 1, 1, 'C');
+			$pdf->SetFont('Times', '', 12);
 			$pdf->Cell(69, 5.5, '<= 60 % Layak', 0, 0, '');
 			$pdf->Cell(5, 5.5, ' > 60 % Tidak Layak', 0, 0, '');
 			$pdf->Cell(69, 5.5, '', 0, 1, '');
@@ -95,7 +101,8 @@ class Pdf_usulan extends CI_Controller
 			$pdf->Cell(0, 5.5, $data->bunga, 0, 1);
 			$pdf->Cell(69, 5.5, 'Tanggal Realisasi', 0, 0, '');
 			$pdf->Cell(5, 5.5, ':', 0, 0, '');
-			$pdf->Cell(0, 5.5, date('d-m-Y', strtotime($data->realisasi)), 0, 1);
+			$pdf->Cell(5, 5.5, '', 0, 1, '');
+			// $pdf->Cell(0, 5.5, date('d-m-Y', strtotime($data->realisasi)), 0, 1);
 			/*
             $pdf->Cell(69, 5.5, 'Angsuran', 0, 0, '');
             $pdf->Cell(5, 5.5, ':', 0, 0, '');

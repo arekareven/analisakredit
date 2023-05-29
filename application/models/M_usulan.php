@@ -24,7 +24,7 @@ class M_usulan extends CI_Model
         $capital         = $this->input->post('capital');
         $coe         = $this->input->post('coe');
         $collateral   = $this->input->post('collateral');
-        $realisasi     = $this->input->post('realisasi');
+        // $realisasi     = $this->input->post('realisasi');
         $notaris     = $this->input->post('notaris');
         $plafond   = $this->input->post('plafond');
         $waktu       = $this->input->post('waktu');
@@ -65,7 +65,7 @@ class M_usulan extends CI_Model
             'capital'        => $capital,
             'coe'        => $coe,
             'collateral'  => $collateral,
-            'realisasi'    => $realisasi,
+            // 'realisasi'    => $realisasi,
             'notaris'    => $notaris,
             'plafond'  => $plafond,
             'waktu'      => $waktu,
@@ -264,7 +264,7 @@ class M_usulan extends CI_Model
         $capital         = $this->input->post('capital');
         $coe         = $this->input->post('coe');
         $collateral   = $this->input->post('collateral');
-        $realisasi     = $this->input->post('realisasi');
+        // $realisasi     = $this->input->post('realisasi');
         $notaris     = $this->input->post('notaris');
         $plafond     = $this->input->post('plafondu');
         $waktu     = $this->input->post('waktu');
@@ -289,7 +289,7 @@ class M_usulan extends CI_Model
             'capital'        => $capital,
             'coe'        => $coe,
             'collateral'  => $collateral,
-            'realisasi'    => $realisasi,
+            // 'realisasi'    => $realisasi,
             'notaris'    => $notaris,
             'plafond'    => $plafond,
             'waktu'    => $waktu,

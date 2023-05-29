@@ -31,10 +31,13 @@ class M_kacab extends CI_Model
         $this->session->userdata('email')])->row_array();
         $kantor = $data['kantor'];
 
-		$lb = $this->db->query("SELECT * FROM pengajuan 
-		JOIN `resume` ON pengajuan.id_pengajuan=resume.id_pengajuan
-		WHERE pengajuan.kantor='$kantor' AND resume.analis IS NOT NULL AND pengajuan.plafond>=10000000");
+		$lb = $this->db->query("SELECT * FROM pengajuan WHERE kantor='$kantor'");//kcu 150 kc 100
 		return $lb;
+
+		// $lb = $this->db->query("SELECT * FROM pengajuan 
+		// JOIN `resume` ON pengajuan.id_pengajuan=resume.id_pengajuan
+		// WHERE pengajuan.kantor='$kantor' AND resume.analis IS NOT NULL AND pengajuan.plafond>=10000000");//kcu 150 kc 100
+		// return $lb;
     }
 			
     function cek_id($id_resume)

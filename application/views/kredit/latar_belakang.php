@@ -17,7 +17,7 @@
 					<thead class="thead-dark">
 						<tr>
 							<th scope="col">Nama</th>
-							<th scope="col">Plafondd</th>
+							<th scope="col">Plafond</th>
 							<th scope="col">Tgl</th>
 							<th scope="col">Aksi</th>
 						</tr>

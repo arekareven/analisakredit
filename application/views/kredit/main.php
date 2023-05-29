@@ -1069,29 +1069,29 @@
                                     <div class="row">
                                         <div class="col-md-4 mb-4">
                                             <label for="luas_t" class="form-label">Luas Tanah (M2)</label>
-                                            <input type="text" class="form-control" id="luas_t" name="luas_t" required>
+                                            <input type="number" class="form-control" id="luas_t" name="luas_t" required>
                                         </div>
                                         <div class="col-md-4 mb-4">
                                             <label for="luas_b" class="form-label">Luas Bangunan (M2)</label>
-                                            <input type="text" class="form-control" id="luas_b" name="luas_b" required>
+                                            <input type="number" class="form-control" id="luas_b" name="luas_b" required>
                                         </div>
                                         <div class="col-md-4 mb-4">
                                             <label for="harga_t2" class="form-label">Harga Tanah Pasar (Rp.)</label>
-                                            <input type="text" class="form-control" id="harga_t2" name="harga_t2" required placeholder="Harga per Meter">
+                                            <input type="number" class="form-control" id="harga_t2" name="harga_t2" required placeholder="Harga per Meter">
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-4 mb-4">
                                             <label for="harga_b2" class="form-label">Harga Bangunan Pasar (Rp.)</label>
-                                            <input type="text" class="form-control" id="harga_b2" name="harga_b2" required placeholder="Harga per Meter">
+                                            <input type="number" class="form-control" id="harga_b2" name="harga_b2" required placeholder="Harga per Meter">
                                         </div>
                                         <div class="col-md-4 mb-4">
                                             <label for="harga_t" class="form-label">Harga Tanah SPPT (Rp.)</label>
-                                            <input type="text" class="form-control" id="harga_t" name="harga_t" required placeholder="Harga per Meter">
+                                            <input type="number" class="form-control" id="harga_t" name="harga_t" required placeholder="Harga per Meter">
                                         </div>
                                         <div class="col-md-4 mb-4">
                                             <label for="harga_b" class="form-label">Harga Bangunan SPPT (Rp.)</label>
-                                            <input type="text" class="form-control" id="harga_b" name="harga_b" required placeholder="Harga per Meter">
+                                            <input type="number" class="form-control" id="harga_b" name="harga_b" required placeholder="Harga per Meter">
                                         </div>
                                     </div>
                                     <div class="row">
@@ -1340,23 +1340,23 @@
                                                         <label for="collateral" class="form-label">Collateral</label>
                                                         <input type="text" class="form-control" id="collateral" name="collateral">
                                                     </div>
-                                                    <div class="col-md-4 mb-4">
+                                                    <!-- <div class="col-md-4 mb-4">
                                                         <label for="realisasi" class="form-label">Tanggal Ralisasi</label>
-                                                        <input type="date" class="form-control" id="realisasi" name="realisasi">
-                                                    </div>
+                                                        <input type="date" class="form-control" id="realisasi" name="realisasi" readonly>
+                                                    </div> -->
                                                     <div class="col-md-5 mb-4">
                                                         <label for="plafond" class="form-label">Plafond</label>
                                                         <input type="number" class="form-control" id="plafond" name="plafond">
                                                     </div>
+													<div class="col-md-4 mb-4">
+														<label for="waktu" class="form-label">Jangka Waktu (Bln)</label>
+														<input type="number" class="form-control" id="waktu" name="waktu">
+													</div>
                                                 </div>
                                                 <div class="row">
-                                                    <div class="col-md-3 mb-4">
-                                                        <label for="waktu" class="form-label">Jangka Waktu (Bln)</label>
-                                                        <input type="number" class="form-control" id="waktu" name="waktu">
-                                                    </div>
-                                                    <div class="col-md-3 mb-4">
+                                                    <div class="col-md-6 mb-4">
                                                         <label for="bunga" class="form-label">Bunga</label>
-                                                        <input type="text" class="form-control" id="bunga" name="bunga">
+                                                        <input type="text" class="form-control" id="bunga" name="bunga" placeholder="Contoh : 12% flat pertahun">
                                                     </div>
                                                     <div class="col-md-3 mb-4">
                                                         <label for="provisi" class="form-label">Provisi (%)</label>
@@ -4299,9 +4299,10 @@
 									$badge = "warning";
 									break;
 								default:
-									$badge = "sucess";
+									$badge = "success";
 									break;
 							}
+							
 							$test = "sscs";		
                             html += '<tr>' +
                                 '<td>' + data[i].nama_analis + '</td>' +
@@ -6311,21 +6312,21 @@
 								<label for="collateral" class="form-label">Collateral</label>
 								<input type="text" class="form-control" id="collateral2" name="collateral">
 							</div>
-							<div class="col-md-4 mb-4">
+							<!-- <div class="col-md-4 mb-4">
 								<label for="realisasi" class="form-label">Tanggal Ralisasi</label>
-								<input type="date" class="form-control" id="realisasi2" name="realisasi">
-							</div>
+								<input type="date" class="form-control" id="realisasi2" name="realisasi" readonly>
+							</div> -->
                             <div class="col-md-5 mb-4">
                                 <label for="plafond" class="form-label">Plafond</label>
                                 <input type="number" class="form-control" id="plafonddua" name="plafond">
                             </div>
+							<div class="col-md-4 mb-4">
+								<label for="waktu" class="form-label">Jangka Waktu (Bln)</label>
+								<input type="number" class="form-control" id="waktu2" name="waktu">
+							</div>
 						</div>
                         <div class="row">
-                            <div class="col-md-3 mb-4">
-                                <label for="waktu" class="form-label">Jangka Waktu (Bln)</label>
-                                <input type="number" class="form-control" id="waktu2" name="waktu">
-                            </div>
-                            <div class="col-md-3 mb-4">
+                            <div class="col-md-6 mb-4">
                                 <label for="bunga" class="form-label">Bunga</label>
                                 <input type="text" class="form-control" id="bunga2" name="bunga">
                             </div>

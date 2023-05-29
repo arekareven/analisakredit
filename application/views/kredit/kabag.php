@@ -27,10 +27,27 @@
 								$waktuZoom = 'Belum Ada';
 								$linkZoom = '#';
 							}else{
-								if($row->link_zoom = 'Offline'){
+								if($row->link_zoom == 'Offline'){
 									$linkZoom = '#';
+								}else{
+									$linkZoom = $row->link_zoom;
 								}
 								$waktuZoom = date('d-m-Y H:i',strtotime($row->waktu_zoom));
+							}
+														
+							switch ($row->status) {
+								case "Diajukan":
+									$badge = "info";
+									break;
+								case "Tidak layak":
+									$badge = "danger";
+									break;
+								case "Layak dgn catatan":
+									$badge = "warning";
+									break;
+								default:
+									$badge = "success";
+									break;
 							}
                         
                         echo 
@@ -40,17 +57,17 @@
                                 <a href='pdf_all?id_lb=".$row->id_lb."' target='_blank'>" . $row->name_debitur . "</a>
                             </td>         
                             <td>
-                                <a href='pdf_scoring?id_lb=".$row->id_lb."' target='_blank'>" . $row->status . "</a>
+                                <a href='pdf_scoring?id_lb=".$row->id_lb."' class='badge badge-".$badge."' target='_blank'>" . $row->status . "</a>
                             </td>              
                             <td>
-                                <a href='".$link_zoom."' target='_blank'>".$waktuZoom."</a>
+                                <a href='".$linkZoom."' target='_blank'>".$waktuZoom."</a>
                             </td>           
                             <td>
-								<a href='javascript:;' class='btn btn-info btn-circle item_resume' title='Resume' data='" . $row->id_pengajuan . "'><i class='fas fa-paperclip'></i></a>
                             </td>                           					
-                        </tr>";
-                            }
+							</tr>";
+						}
                         ?>
+						<!-- <a href='javascript:;' class='btn btn-info btn-circle item_resume' title='Resume' data='" . $row->id_pengajuan . "'><i class='fas fa-paperclip'></i></a> -->
                     </tbody>
                 </table>
             </div>
