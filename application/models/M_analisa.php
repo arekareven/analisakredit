@@ -28,7 +28,7 @@ class M_analisa extends CI_Model
 		$plafond		= $this->input->post('plafond');
 		$status      	= $this->input->post('status');
 
-		$x = array(
+		$pengajuan = array(
 
 			'id_lb'	    	=> $id_lb,
 			'nama_analis'	=> $analis,
@@ -38,7 +38,17 @@ class M_analisa extends CI_Model
 			'plafond'	    => $plafond,
 			'status'	   	=> $status,
 		);
-		$this->db->insert('pengajuan', $x);
+		$resume_analis = array(
+
+			'id_lb'	    	=> $id_lb
+		);
+		$resume = array(
+
+			'id_lb'	    	=> $id_lb
+		);
+		$this->db->insert('pengajuan', $pengajuan);
+		$this->db->insert('resume_analis', $resume_analis);
+		$this->db->insert('resume', $resume);
 	}
     
 	function pengajuan_list($id_lb)
@@ -185,39 +195,62 @@ class M_analisa extends CI_Model
 		return $this->db->get_where('resume', $query);
 	}
 	
-	public function store_resume($id_pengajuan,$analis)
+	public function update_resume($id_resume)
 	{
+		// $data = [		
+		// "administrasi" => $this->input->post('administrasi'),
+		// "provisi" => $this->input->post('provisi')];
+		// die(var_dump($data));
 
-		$data = array(
-
-			'id_pengajuan'	    	=> $id_pengajuan,
-			'analis'	    	=> $analis
-			// 'kabag'	    => $kabag,
-			// 'kacab'	    => $kacab,
-			// 'dirut'	    => $dirut,
-		);
-		$this->db->insert('resume', $data);
-		redirect('analisa');
-	}
-	
-	public function update_resume($id_resume,$analis)
-	{
-		$this->db->query("UPDATE `resume` SET analis='$analis' WHERE id_resume='$id_resume'");
+		$data = [
+            "tgl_survey_ulang" => $this->input->post('tgl_survey_ulang'),
+            "tgl_resume" => $this->input->post('tgl_resume'),
+            "tujuan_penggunaan" => $this->input->post('tujuan_penggunaan'),
+            "survey_character" => $this->input->post('survey_character'),
+            "survey_capacity" => $this->input->post('survey_capacity'),
+            "survey_capital" => $this->input->post('survey_capital'),
+            "survey_cashflow" => $this->input->post('survey_cashflow'),
+            "survey_coe" => $this->input->post('survey_coe'),
+            "survey_collateral" => $this->input->post('survey_collateral'),
+            "rekom_plafond" => $this->input->post('rekom_plafond'),
+            "rekom_jangka_waktu" => $this->input->post('rekom_jangka_waktu'),
+            "rekom_bunga" => $this->input->post('rekom_bunga'),
+            "administrasi" => $this->input->post('administrasi'),
+            "provisi" => $this->input->post('provisi'),
+            "rekom_sistem_angsuran" => $this->input->post('rekom_sistem_angsuran'),
+            "rekom_pengikatan" => $this->input->post('rekom_pengikatan'),
+            "kesimpulan" => $this->input->post('kesimpulan')
+		];
+		$this->db->where('id_resume_analis', $id_resume);
+        $this->db->update('resume_analis', $data);
 		redirect('analisa');
 	}
 	   	
-	function get_resume_by_kode($id_resume)
+	function get_resume_by_kode($id_lb)
 	{
-		$hsl = $this->db->query("SELECT * FROM `resume` WHERE id_resume='$id_resume'");
+		$hsl = $this->db->query("SELECT * FROM resume_analis WHERE id_lb='$id_lb'");
 		if ($hsl->num_rows() > 0) {
 			foreach ($hsl->result() as $data) {
 				$hasil = array(
-					'id_resume'      => $data->id_resume,
-					'id_pengajuan'      => $data->id_pengajuan,
-					'analis'      => $data->analis,
-					'kabag'      => $data->kabag,
-					'kacab'      => $data->kacab,
-					'dirut'      => $data->dirut
+					'id_resume_analis'      => $data->id_resume_analis,
+					'id_lb'      => $data->id_lb,
+					'tgl_survey_ulang' => $data->tgl_survey_ulang,
+					'tgl_resume' => $data->tgl_resume,
+					'tujuan_penggunaan' => $data->tujuan_penggunaan,
+					'survey_character' => $data->survey_character,
+					'survey_capacity' => $data->survey_capacity,
+					'survey_capital' => $data->survey_capital,
+					'survey_cashflow' => $data->survey_cashflow,
+					'survey_coe' => $data->survey_coe,
+					'survey_collateral' => $data->survey_collateral,
+					'rekom_plafond' => $data->rekom_plafond,
+					'rekom_jangka_waktu' => $data->rekom_jangka_waktu,
+					'rekom_bunga' => $data->rekom_bunga,
+					'administrasi' => $data->administrasi,
+					'provisi' => $data->provisi,
+					'rekom_sistem_angsuran' => $data->rekom_sistem_angsuran,
+					'rekom_pengikatan' => $data->rekom_pengikatan,
+					'kesimpulan' => $data->kesimpulan
 				);
 			}
 		}else{

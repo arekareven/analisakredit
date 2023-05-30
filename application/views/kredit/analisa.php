@@ -17,7 +17,7 @@
                             <th scope="col">Nama Debitur</th>
                             <th scope="col">Status</th>
                             <th scope="col">Komite</th>
-                            <th scope="col">Input</th>
+                            <th scope="col">Scoring & Resume</th>
                         </tr>
                     </thead>
                     <tbody id="show_data">
@@ -63,12 +63,12 @@
 									<a href='".$linkZoom."' target='_blank'>".$waktuZoom."</a>
 								</td>	 
 								<td>
-									<a href='javascript:;' class='btn btn-warning btn-circle item_edit' title='Edit Scoring' data='" . $row->id_pengajuan . "'><i class='fas fa-edit'></i></a>
+									<a href='javascript:;' class='btn btn-warning btn-circle item_edit' title='Edit Scoring' data='" . $row->id_pengajuan . "'><i class='fas fa-percent'></i></a>
+									<a href='javascript:;' class='btn btn-info btn-circle item_resume' title='Resume' data='" . $row->id_lb . "'><i class='far fa-file'></i></a>
 									</td>                        					
 									</tr>";
 								}
 								?>
-								<!-- <a href='javascript:;' class='btn btn-info btn-circle item_resume' title='Resume' data='" . $row->id_pengajuan . "'><i class='fas fa-paperclip'></i></a> -->
                     </tbody>
                 </table>
             </div>
@@ -1824,35 +1824,141 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5>Resume</h5>
+                    <h5>Resume Analis</h5>
                     <button id="close_pengajuan" type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <form action="<?= base_url('analisa/update_resume'); ?>" method="post" id="form_resume">
                     <div class="modal-body">                       
-                        <input type="hidden" class="form-control" id="id_resume" name="id_resume">
-                        <input type="hidden" class="form-control" id="id_pengajuan" name="id_pengajuan">
-						<div class="form-group">
-							<label for="analis">Analis</label>
-							<textarea class="form-control" id="analis" name="analis" rows="3"></textarea>
+                        <input type="hidden" class="form-control" id="id_resume_analis" name="id_resume_analis">
+                        <input type="hidden" class="form-control" id="id_lb" name="id_lb">
+						<div class="row">
+							<div class="col-3">
+								<div class="nav flex-column nav-tabs" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+									<button class="nav-link active" id="v-pills-home-tab" data-toggle="tab" data-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">1</button>
+									<button class="nav-link" id="v-pills-profile-tab" data-toggle="tab" data-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">2</button>
+									<button class="nav-link" id="v-pills-messages-tab" data-toggle="tab" data-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">3</button>
+									<button class="nav-link" id="v-pills-settings-tab" data-toggle="tab" data-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">4</button>
+								</div>
+							</div>
+							<div class="col-9">
+								<div class="tab-content" id="v-pills-tabContent">
+									<div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+										<div class="col-md-8 mb-3">
+											<label for="tgl_survey_ulang" class="form-label">Tgl survey ulang</label>
+											<input type="date" class="form-control" id="tgl_survey_ulang" name="tgl_survey_ulang">
+										</div>
+										<div class="col-md-8 mb-3">
+											<label for="tgl_resume" class="form-label">Tgl resume dibuat</label>
+											<input type="date" class="form-control" id="tgl_resume" name="tgl_resume">
+										</div>
+										<div class="col-md-8 mb-3">
+											<label for="tujuan_penggunaan" class="form-label">Tujuan Penggunaan</label>
+											<select class="form-control" aria-label="Default select example" id="tujuan_penggunaan" name="tujuan_penggunaan">
+												<option value="Sektor Jasa">Sektor Jasa</option>
+												<option value="Sektor Perdagangan">Sektor Perdagangan</option>
+												<option value="Sektor Pertanian">Sektor Pertanian</option>
+												<option value="Sektor Konsumtif">Sektor Konsumtif</option>
+												<option value="Relaksasi Covid - 19">Relaksasi Covid - 19</option>
+												<option value="Sektor Industri">Sektor Industri</option>
+												<option value="Restrukturisasi">Restrukturisasi</option>
+												<option value="Investasi">Investasi</option>
+											</select>
+										</div>
+									</div>
+									<div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+										<div class="col-md-12 mb-3">
+											<label for="survey_character" class="form-label">Hasil survey character</label>
+											<textarea class="form-control" id="survey_character" name="survey_character"></textarea>
+										</div>
+										<div class="col-md-12 mb-3">
+											<label for="survey_capacity" class="form-label">Hasil survey capacity</label>
+											<textarea class="form-control" id="survey_capacity" name="survey_capacity"></textarea>
+										</div>
+										<div class="col-md-12 mb-3">
+											<label for="survey_capital" class="form-label">Hasil survey capital</label>
+											<textarea class="form-control" id="survey_capital" name="survey_capital"></textarea>
+										</div>
+										<div class="col-md-12 mb-3">
+											<label for="survey_cashflow" class="form-label">Hasil survey cashflow</label>
+											<textarea class="form-control" id="survey_cashflow" name="survey_cashflow"></textarea>
+										</div>
+										<div class="col-md-12 mb-3">
+											<label for="survey_coe" class="form-label">Hasil survey condition of economy</label>
+											<textarea class="form-control" id="survey_coe" name="survey_coe"></textarea>
+										</div>
+										<div class="col-md-12 mb-3">
+											<label for="survey_collateral" class="form-label">Hasil survey collateral</label>
+											<textarea class="form-control" id="survey_collateral" name="survey_collateral"></textarea>
+										</div>
+									</div>
+									<div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+										<div class="col-md-8 mb-3">
+											<label for="rekom_plafond" class="form-label">Rekomendasi plafond</label>
+											<input type="number" class="form-control" id="rekom_plafond" name="rekom_plafond">
+										</div>
+										<div class="col-md-8 mb-3">
+											<label for="rekom_jangka_waktu" class="form-label">Rekomendasi jangka waktu(bulan)</label>
+											<input type="number" class="form-control" id="rekom_jangka_waktu" name="rekom_jangka_waktu">
+										</div>
+										<div class="col-md-8 mb-3">
+											<label for="rekom_bunga" class="form-label">Rekomendasi bunga</label>
+											<input type="number" class="form-control" id="rekom_bunga" name="rekom_bunga" placeholder="18 % Flate Rate / Tahun">
+										</div>
+										<div class="col-md-8 mb-3">
+											<label for="administrasi" class="form-label">Administrasi(%)</label>
+											<input type="number" class="form-control" id="administrasi" name="administrasi" step="0.1" min="0" max="10">
+										</div>
+										<div class="col-md-8 mb-3">
+											<label for="provisi" class="form-label">Provisi(%)</label>
+											<input type="number" class="form-control" id="provisi" name="provisi" step="0.1" min="0" max="10">
+										</div>
+									</div>
+									<div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+										<div class="col-md-8 mb-3">
+											<label for="rekom_sistem_angsuran" class="form-label">Rekomendasi sistem angsuran</label>
+											<select class="form-control" aria-label="Default select example" id="rekom_sistem_angsuran" name="rekom_sistem_angsuran">
+												<option value="Pokok bunga tiap bulan">Pokok bunga tiap bulan</option>
+												<option value="Pokok tiap 3 bulan bunga tiap bulan">Pokok tiap 3 bulan bunga tiap bulan</option>
+												<option value="Pokok tiap 4 bulan bunga tiap bulan">Pokok tiap 4 bulan bunga tiap bulan</option>
+												<option value="Pokok tiap 6 bulan bunga tiap bulan">Pokok tiap 6 bulan bunga tiap bulan</option>
+												<option value="Pokok tiap 12 bulan bunga tiap bulan">Pokok tiap 12 bulan bunga tiap bulan</option>
+												<option value="Pokok terakhir bunga tiap bulan">Pokok terakhir bunga tiap bulan</option>
+												<option value="Pokok bunga terakhir">Pokok bunga terakhir</option>
+												<option value="Musiman">Musiman</option>
+												<option value="Anuitas">Anuitas</option>
+												<option value="Efektif">Efektif</option>
+											</select>
+										</div>
+										<div class="col-md-8 mb-3">
+											<label for="rekom_pengikatan" class="form-label">Rekomendasi pengikatan</label>
+											<input type="text" class="form-control" id="rekom_pengikatan" name="rekom_pengikatan">
+										</div>
+										<div class="col-md-8 mb-3">
+											<label for="kesimpulan" class="form-label">Kesimpulan</label>
+											<select class="form-control" aria-label="Default select example" id="kesimpulan" name="kesimpulan">
+												<option value="LAYAK">LAYAK</option>
+												<option value="TIDAK LAYAK">TIDAK LAYAK</option>
+												<option value="LAYAK DENGAN CATATAN">LAYAK DENGAN CATATAN</option>
+											</select>
+										</div>
+										<!-- <div class="col-md-8 mb-3">
+											<label for="ktp" class="form-label">Fasilitas</label>
+											<input type="text" class="form-control" id="ktp" name="ktp">
+										</div> -->
+										<!-- <div class="col-md-8 mb-3">
+											<label for="ktp" class="form-label">Tempat</label>
+											<input type="text" class="form-control" id="ktp" name="ktp">
+										</div> -->
+										<div class="modal-footer">
+											<button id="close_pengajuan" type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+											<button type="submit" class="btn btn-primary">Simpan</button>
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
-						<div class="form-group">
-							<label for="kabag">Kepala Bagian Kredit</label>
-							<textarea readonly class="form-control" id="kabag" name="kabag" rows="3"></textarea>
-						</div>
-						<div class="form-group">
-							<label for="kacab">Kepala Cabang</label>
-							<textarea readonly class="form-control" id="kacab" name="kacab" rows="3"></textarea>
-						</div>
-						<div class="form-group">
-							<label for="dirut">Direktur Utama</label>
-							<textarea readonly class="form-control" id="dirut" name="dirut" rows="3"></textarea>
-						</div>
-                    </div>
-                    <div class="modal-footer">
-                        <button id="close_pengajuan" type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                        <button type="submit" class="btn btn-primary">Simpan</button>
                     </div>
                 </form>
             </div>
@@ -1964,14 +2070,27 @@
 						id: id
 					},
 					success: function(data) {
-						$.each(data, function(id_resume ,id_pengajuan, analis) {
+						$.each(data, function(id_resume ,id_lb) {
 							$('#resume').modal('show');
-							$('[name="id_resume"]').val(data.id_resume);
-							$('[name="id_pengajuan"]').val(data.id_pengajuan);
-							$('[name="analis"]').val(data.analis);
-							$('[name="kabag"]').val(data.kabag);
-							$('[name="kacab"]').val(data.kacab);
-							$('[name="dirut"]').val(data.dirut);
+							$('[name="id_resume_analis"]').val(data.id_resume_analis);
+							$('[name="id_lb"]').val(data.id_lb);
+							$('[name="tgl_survey_ulang"]').val(data.tgl_survey_ulang);
+							$('[name="tgl_resume"]').val(data.tgl_resume);
+							$('[name="tujuan_penggunaan"]').val(data.tujuan_penggunaan);
+							$('[name="survey_character"]').val(data.survey_character);
+							$('[name="survey_capacity"]').val(data.survey_capacity);
+							$('[name="survey_capital"]').val(data.survey_capital);
+							$('[name="survey_cashflow"]').val(data.survey_cashflow);
+							$('[name="survey_coe"]').val(data.survey_coe);
+							$('[name="survey_collateral"]').val(data.survey_collateral);
+							$('[name="rekom_plafond"]').val(data.rekom_plafond);
+							$('[name="rekom_jangka_waktu"]').val(data.rekom_jangka_waktu);
+							$('[name="rekom_bunga"]').val(data.rekom_bunga);
+							$('[name="administrasi"]').val(data.administrasi);
+							$('[name="provisi"]').val(data.provisi);
+							$('[name="rekom_sistem_angsuran"]').val(data.rekom_sistem_angsuran);
+							$('[name="rekom_pengikatan"]').val(data.rekom_pengikatan);
+							$('[name="kesimpulan"]').val(data.kesimpulan);
 						});
 					}
 				});

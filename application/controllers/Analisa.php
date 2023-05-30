@@ -142,25 +142,17 @@ class Analisa extends CI_Controller
 	
 	public function update_resume()
 	{
-		$id_resume = $this->input->post('id_resume');
-		$id_pengajuan = $this->input->post('id_pengajuan');
-		$analis = $this->input->post('analis');
-		// $kabag = $this->input->post('kabag');
-		// $kacab = $this->input->post('kacab');
-		// $dirut = $this->input->post('dirut');
+		$id_resume_analis = $this->input->post('id_resume_analis');
 
-        $query = $this->m_analisa->cek_id($id_resume)->num_rows();
-        if (empty($query))
-            $this->m_analisa->store_resume($id_pengajuan,$analis);
-        else
-            $this->m_analisa->update_resume($id_resume,$analis);
+		$this->m_analisa->update_resume($id_resume_analis);
 	}
 		
 	function get_resume()
 	{
 		// $id_resume = $this->input->get('id');
-		$id_resume = $this->input->post('id_resume');
-		$data = $this->m_analisa->get_resume_by_kode($id_resume);
+		$id_lb = $this->input->get('id');
+		// die(var_dump($id_lb));
+		$data = $this->m_analisa->get_resume_by_kode($id_lb);
 		echo json_encode($data);
 	}
 

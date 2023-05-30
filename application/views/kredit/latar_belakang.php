@@ -575,7 +575,7 @@
                             html += '<tr>'+
 									'<td>' + data[i].nama_debitur + '</td>'+
 									'<td>' + 'Rp. ' + new Intl.NumberFormat().format(data[i].plafon) + '</td>'+
-									'<td>' + data[i].tgl_permohonan + '</td>'+                     
+									'<td>' + new Date(data[i].tgl_permohonan).toLocaleDateString('es-CL') + '</td>'+                     
 									'<td>'+
 									'<a href="javascript:;" class="btn btn-warning btn-circle item_edit_latar_belakang" data="' + data[i].id_lb + '"><i class="fas fa-edit"></i></a>' + ' ' +
 									'<a href="javascript:;" class="btn btn-danger btn-circle item_hapus_latar_belakang" data="' + data[i].id_lb + '"><i class="fas fa-trash"></i></a>' + ' ' +

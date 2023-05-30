@@ -20,6 +20,8 @@ class Pdf_scoring extends CI_Controller
                                         ON pengajuan.nama_analis=user.name
                                         JOIN latar_belakang 
                                         ON usulan.id_lb=latar_belakang.id_lb
+                                        JOIN resume_analis 
+                                        ON usulan.id_lb=resume_analis.id_lb
                                         WHERE usulan.id_lb='$id_lb'")->result();
 
 		$pdf = new FPDF('P', 'mm', 'A4');
@@ -47,10 +49,10 @@ class Pdf_scoring extends CI_Controller
 			$pdf->Cell(0, 5.5, $resume->email, 0, 1);
 			$pdf->Cell(69, 5.5, 'Tanggal Selesai di Analisa AO', 0, 0, '');
 			$pdf->Cell(5, 5.5, ':', 0, 0, '');
-			$pdf->Cell(0, 5.5, '**/**/****', 0, 1);
+			$pdf->Cell(0, 5.5, date("d-m-Y", strtotime($resume->tgl_analisa)), 0, 1);
 			$pdf->Cell(69, 5.5, 'Tanggal Survey Ulang', 0, 0, '');
 			$pdf->Cell(5, 5.5, ':', 0, 0, '');
-			$pdf->Cell(0, 5.5, '**/**/****', 0, 1);
+			$pdf->Cell(0, 5.5, date("d-m-Y", strtotime($resume->tgl_survey_ulang)), 0, 1);
 			
 			$pdf->SetFont('Times', 'B', 12);
 			$pdf->SetFillColor(220,220,220);
@@ -79,7 +81,7 @@ class Pdf_scoring extends CI_Controller
 			$pdf->Cell(0, 5.5, 'Rp. '.number_format($resume->plafond), 0, 1);
 			$pdf->Cell(69, 5.5, 'Tujuan Penggunaan Dana', 0, 0, '');
 			$pdf->Cell(5, 5.5, ':', 0, 0, '');
-			$pdf->Cell(0, 5.5, $resume->tujuan_permohonan, 0, 1);
+			$pdf->Cell(0, 5.5, $resume->tujuan_penggunaan, 0, 1);
 			
 			$pdf->SetFont('Times', 'B', 12);
 			$pdf->SetFillColor(220,220,220);
@@ -87,22 +89,22 @@ class Pdf_scoring extends CI_Controller
 			$pdf->SetFont('Times', '', 12);
 			$pdf->Cell(69, 5.5, 'Character / Karakter', 0, 0, '');
 			$pdf->Cell(5, 5.5, ':', 0, 0, '');
-			$pdf->Cell(0, 5.5, $resume->character.'/**********************', 0, 1);
+			$pdf->Cell(0, 5.5, $resume->survey_character, 0, 1);
 			$pdf->Cell(69, 5.5, 'Capacity', 0, 0, '');
 			$pdf->Cell(5, 5.5, ':', 0, 0, '');
-			$pdf->Cell(0, 5.5, $resume->capacity.'/***********************', 0, 1);
+			$pdf->Cell(0, 5.5, $resume->survey_capacity, 0, 1);
 			$pdf->Cell(69, 5.5, 'Capital / Kondisi Usaha', 0, 0, '');
 			$pdf->Cell(5, 5.5, ':', 0, 0, '');
-			$pdf->Cell(0, 5.5, $resume->capital.'/********************', 0, 1);
+			$pdf->Cell(0, 5.5, $resume->survey_capital, 0, 1);
 			$pdf->Cell(69, 5.5, 'Cash Flow', 0, 0, '');
 			$pdf->Cell(5, 5.5, ':', 0, 0, '');
-			$pdf->Cell(0, 5.5, '$resume->cashflow/****************', 0, 1);
+			$pdf->Cell(0, 5.5, $resume->survey_cashflow, 0, 1);
 			$pdf->Cell(69, 5.5, 'Condition Of Economy', 0, 0, '');
 			$pdf->Cell(5, 5.5, ':', 0, 0, '');
-			$pdf->Cell(0, 5.5, $resume->coe.'/*******************', 0, 1);
+			$pdf->Cell(0, 5.5, $resume->survey_coe, 0, 1);
 			$pdf->Cell(69, 5.5, 'Collateral', 0, 0, '');
 			$pdf->Cell(5, 5.5, ':', 0, 0, '');
-			$pdf->Cell(0, 5.5, $resume->collateral.'/*******************', 0, 1);
+			$pdf->Cell(0, 5.5, $resume->survey_collateral, 0, 1);
 			
 			$pdf->SetFont('Times', 'B', 12);
 			$pdf->SetFillColor(220,220,220);
@@ -110,29 +112,29 @@ class Pdf_scoring extends CI_Controller
 			$pdf->SetFont('Times', '', 12);
 			$pdf->Cell(69, 5.5, 'Rekomendasi Plafond', 0, 0, '');
 			$pdf->Cell(5, 5.5, ':', 0, 0, '');
-			$pdf->Cell(0, 5.5, 'Rp. '.'********', 0, 1);
+			$pdf->Cell(0, 5.5, 'Rp. '.number_format($resume->rekom_plafond), 0, 1);
 			$pdf->Cell(69, 5.5, 'Usulan AO', 0, 0, '');
 			$pdf->Cell(5, 5.5, ':', 0, 0, '');
 			$pdf->Cell(0, 5.5, 'Rp. '.number_format($resume->plafond), 0, 1);
 			$pdf->Cell(69, 5.5, 'Jangka Waktu', 0, 0, '');
 			$pdf->Cell(5, 5.5, ':', 0, 0, '');
-			$pdf->Cell(0, 5.5, '**'.' Bulan', 0, 1);
+			$pdf->Cell(0, 5.5, $resume->rekom_jangka_waktu.' Bulan', 0, 1);
 			$pdf->Cell(69, 5.5, 'Bunga', 0, 0, '');
 			$pdf->Cell(5, 5.5, ':', 0, 0, '');
-			$pdf->Cell(0, 5.5, '** % flat pertahun', 0, 1);
+			$pdf->Cell(0, 5.5, $resume->rekom_bunga, 0, 1);
 			$pdf->Cell(69, 5.5, 'Sistem Angsuran', 0, 0, '');
 			$pdf->Cell(5, 5.5, ':', 0, 0, '');
-			$pdf->Cell(0, 5.5, 'Flat ***', 0, 1);
+			$pdf->Cell(0, 5.5, $resume->rekom_sistem_angsuran, 0, 1);
 			$pdf->Cell(69, 5.5, 'Pengikatan', 0, 0, '');
 			$pdf->Cell(5, 5.5, ':', 0, 0, '');
-			$pdf->Cell(0, 5.5, 'SKMHT ***', 0, 1);
+			$pdf->Cell(0, 5.5, $resume->rekom_pengikatan, 0, 1);
 			
 			$pdf->SetFont('Times', 'B', 12);
 			$pdf->SetFillColor(220,220,220);
-			$pdf->Cell(190,8,'Kesimpulan **** untuk disetujui sebagai fasilitas ******',0,1,'',true);
+			$pdf->Cell(190,8,'Kesimpulan '.$resume->kesimpulan.' untuk disetujui sebagai fasilitas Kredit '.$resume->tujuan_penggunaan,0,1,'',true);
 			$pdf->Cell(180, 5.5, '', 0, 1, '');
 			$pdf->SetFont('Times', '', 12);
-			$pdf->Cell(180, 5.5, 'Tempat, dd/mm/yyyy', 0, 1, 'R');
+			$pdf->Cell(180, 5.5, 'Magetan, '.date("d/m/Y", strtotime($resume->tgl_resume)), 0, 1, 'R');
 			$pdf->Cell(180, 5.5, 'Disurvey Ulang Oleh', 0, 1, 'R');
 			$pdf->Cell(180, 5.5, '', 0, 1, '');
 			$pdf->Cell(180, 5.5, '', 0, 1, '');
