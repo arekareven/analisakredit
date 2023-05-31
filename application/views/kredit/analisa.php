@@ -1840,6 +1840,7 @@
 									<button class="nav-link" id="v-pills-profile-tab" data-toggle="tab" data-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">2</button>
 									<button class="nav-link" id="v-pills-messages-tab" data-toggle="tab" data-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">3</button>
 									<button class="nav-link" id="v-pills-settings-tab" data-toggle="tab" data-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">4</button>
+									<button class="nav-link" id="v-pills-catatan-tab" data-toggle="tab" data-target="#v-pills-catatan" type="button" role="tab" aria-controls="v-pills-catatan" aria-selected="false">5</button>
 								</div>
 							</div>
 							<div class="col-9">
@@ -1865,6 +1866,10 @@
 												<option value="Restrukturisasi">Restrukturisasi</option>
 												<option value="Investasi">Investasi</option>
 											</select>
+										</div>
+										<div class="col-md-8 mb-3">
+											<label for="rekom_jangka_waktu" class="form-label">Rekomendasi jangka waktu(bulan)</label>
+											<input type="number" class="form-control" id="rekom_jangka_waktu" name="rekom_jangka_waktu">
 										</div>
 									</div>
 									<div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
@@ -1894,17 +1899,13 @@
 										</div>
 									</div>
 									<div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
-										<div class="col-md-8 mb-3">
-											<label for="rekom_plafond" class="form-label">Rekomendasi plafond</label>
-											<input type="number" class="form-control" id="rekom_plafond" name="rekom_plafond">
-										</div>
-										<div class="col-md-8 mb-3">
-											<label for="rekom_jangka_waktu" class="form-label">Rekomendasi jangka waktu(bulan)</label>
-											<input type="number" class="form-control" id="rekom_jangka_waktu" name="rekom_jangka_waktu">
+										<div class="col-md-12 mb-3">
+											<label for="agunan" class="form-label">Agunan</label>
+											<input type="text" class="form-control" id="agunan" name="agunan">
 										</div>
 										<div class="col-md-8 mb-3">
 											<label for="rekom_bunga" class="form-label">Rekomendasi bunga</label>
-											<input type="number" class="form-control" id="rekom_bunga" name="rekom_bunga" placeholder="18 % Flate Rate / Tahun">
+											<input type="text" class="form-control" id="rekom_bunga" name="rekom_bunga" placeholder="18 % Flate Rate / Tahun">
 										</div>
 										<div class="col-md-8 mb-3">
 											<label for="administrasi" class="form-label">Administrasi(%)</label>
@@ -1916,7 +1917,10 @@
 										</div>
 									</div>
 									<div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
-										<div class="col-md-8 mb-3">
+											<div class="col-md-8 mb-3">
+												<label for="rekom_plafond" class="form-label">Rekomendasi plafond</label>
+												<input type="number" class="form-control" id="rekom_plafond" name="rekom_plafond">
+											</div><div class="col-md-8 mb-3">
 											<label for="rekom_sistem_angsuran" class="form-label">Rekomendasi sistem angsuran</label>
 											<select class="form-control" aria-label="Default select example" id="rekom_sistem_angsuran" name="rekom_sistem_angsuran">
 												<option value="Pokok bunga tiap bulan">Pokok bunga tiap bulan</option>
@@ -1951,6 +1955,28 @@
 											<label for="ktp" class="form-label">Tempat</label>
 											<input type="text" class="form-control" id="ktp" name="ktp">
 										</div> -->
+									</div>
+									<div class="tab-pane fade" id="v-pills-catatan" role="tabpanel" aria-labelledby="v-pills-catatan-tab">
+										<div class="col-md-12 mb-3">
+											<label for="catatan1" class="form-label">Catatan 1</label>
+											<textarea class="form-control" id="catatan1" name="catatan1"></textarea>
+										</div>
+										<div class="col-md-12 mb-3">
+											<label for="catatan2" class="form-label">Catatan 2</label>
+											<textarea class="form-control" id="catatan2" name="catatan2"></textarea>
+										</div>
+										<div class="col-md-12 mb-3">
+											<label for="catatan3" class="form-label">Catatan 3</label>
+											<textarea class="form-control" id="catatan3" name="catatan3"></textarea>
+										</div>
+										<div class="col-md-12 mb-3">
+											<label for="catatan4" class="form-label">Catatan 4</label>
+											<textarea class="form-control" id="catatan4" name="catatan4"></textarea>
+										</div>
+										<div class="col-md-12 mb-3">
+											<label for="catatan5" class="form-label">Catatan 5</label>
+											<textarea class="form-control" id="catatan5" name="catatan5"></textarea>
+										</div>
 										<div class="modal-footer">
 											<button id="close_pengajuan" type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
 											<button type="submit" class="btn btn-primary">Simpan</button>
@@ -2083,6 +2109,7 @@
 							$('[name="survey_cashflow"]').val(data.survey_cashflow);
 							$('[name="survey_coe"]').val(data.survey_coe);
 							$('[name="survey_collateral"]').val(data.survey_collateral);
+							$('[name="agunan"]').val(data.agunan);
 							$('[name="rekom_plafond"]').val(data.rekom_plafond);
 							$('[name="rekom_jangka_waktu"]').val(data.rekom_jangka_waktu);
 							$('[name="rekom_bunga"]').val(data.rekom_bunga);
@@ -2091,6 +2118,11 @@
 							$('[name="rekom_sistem_angsuran"]').val(data.rekom_sistem_angsuran);
 							$('[name="rekom_pengikatan"]').val(data.rekom_pengikatan);
 							$('[name="kesimpulan"]').val(data.kesimpulan);
+							$('[name="catatan1"]').val(data.catatan1);
+							$('[name="catatan2"]').val(data.catatan2);
+							$('[name="catatan3"]').val(data.catatan3);
+							$('[name="catatan4"]').val(data.catatan4);
+							$('[name="catatan5"]').val(data.catatan5);
 						});
 					}
 				});

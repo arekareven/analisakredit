@@ -212,6 +212,7 @@ class M_analisa extends CI_Model
             "survey_cashflow" => $this->input->post('survey_cashflow'),
             "survey_coe" => $this->input->post('survey_coe'),
             "survey_collateral" => $this->input->post('survey_collateral'),
+            "agunan" => $this->input->post('agunan'),
             "rekom_plafond" => $this->input->post('rekom_plafond'),
             "rekom_jangka_waktu" => $this->input->post('rekom_jangka_waktu'),
             "rekom_bunga" => $this->input->post('rekom_bunga'),
@@ -219,7 +220,12 @@ class M_analisa extends CI_Model
             "provisi" => $this->input->post('provisi'),
             "rekom_sistem_angsuran" => $this->input->post('rekom_sistem_angsuran'),
             "rekom_pengikatan" => $this->input->post('rekom_pengikatan'),
-            "kesimpulan" => $this->input->post('kesimpulan')
+            "kesimpulan" => $this->input->post('kesimpulan'),
+            "catatan1" => $this->input->post('catatan1'),
+            "catatan2" => $this->input->post('catatan2'),
+            "catatan3" => $this->input->post('catatan3'),
+            "catatan4" => $this->input->post('catatan4'),
+            "catatan5" => $this->input->post('catatan5'),
 		];
 		$this->db->where('id_resume_analis', $id_resume);
         $this->db->update('resume_analis', $data);
@@ -243,6 +249,7 @@ class M_analisa extends CI_Model
 					'survey_cashflow' => $data->survey_cashflow,
 					'survey_coe' => $data->survey_coe,
 					'survey_collateral' => $data->survey_collateral,
+					'agunan' => $data->agunan,
 					'rekom_plafond' => $data->rekom_plafond,
 					'rekom_jangka_waktu' => $data->rekom_jangka_waktu,
 					'rekom_bunga' => $data->rekom_bunga,
@@ -250,7 +257,12 @@ class M_analisa extends CI_Model
 					'provisi' => $data->provisi,
 					'rekom_sistem_angsuran' => $data->rekom_sistem_angsuran,
 					'rekom_pengikatan' => $data->rekom_pengikatan,
-					'kesimpulan' => $data->kesimpulan
+					'kesimpulan' => $data->kesimpulan,
+					'catatan1' => $data->catatan1,
+					'catatan2' => $data->catatan2,
+					'catatan3' => $data->catatan3,
+					'catatan4' => $data->catatan4,
+					'catatan5' => $data->catatan5,
 				);
 			}
 		}else{

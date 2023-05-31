@@ -11,8 +11,6 @@ class Pdf_scoring extends CI_Controller
 
 	function index()
 	{
-
-		
 		$id_lb = $_GET['id_lb'];
 		$resume = $this->db->query("SELECT * FROM usulan JOIN pengajuan 
                                         ON usulan.id_lb=pengajuan.id_lb
@@ -23,6 +21,10 @@ class Pdf_scoring extends CI_Controller
                                         JOIN resume_analis 
                                         ON usulan.id_lb=resume_analis.id_lb
                                         WHERE usulan.id_lb='$id_lb'")->result();
+
+		// foreach($resume as $resume){
+		// 	die(print_r($resume));
+		// }
 
 		$pdf = new FPDF('P', 'mm', 'A4');
 		$pdf->SetAutoPageBreak(false);
@@ -78,7 +80,7 @@ class Pdf_scoring extends CI_Controller
 			$pdf->Cell(0, 5.5, $resume->jangka_waktu.' Bulan', 0, 1);
 			$pdf->Cell(69, 5.5, 'Usulan AO', 0, 0, '');
 			$pdf->Cell(5, 5.5, ':', 0, 0, '');
-			$pdf->Cell(0, 5.5, 'Rp. '.number_format($resume->plafond), 0, 1);
+			$pdf->Cell(0, 5.5, 'Rp. '.number_format($resume->plafond_usulan), 0, 1);
 			$pdf->Cell(69, 5.5, 'Tujuan Penggunaan Dana', 0, 0, '');
 			$pdf->Cell(5, 5.5, ':', 0, 0, '');
 			$pdf->Cell(0, 5.5, $resume->tujuan_penggunaan, 0, 1);
@@ -89,22 +91,28 @@ class Pdf_scoring extends CI_Controller
 			$pdf->SetFont('Times', '', 12);
 			$pdf->Cell(69, 5.5, 'Character / Karakter', 0, 0, '');
 			$pdf->Cell(5, 5.5, ':', 0, 0, '');
-			$pdf->Cell(0, 5.5, $resume->survey_character, 0, 1);
+			$pdf->MultiCell(0, 5.5, $resume->survey_character, 0, 1);
 			$pdf->Cell(69, 5.5, 'Capacity', 0, 0, '');
 			$pdf->Cell(5, 5.5, ':', 0, 0, '');
-			$pdf->Cell(0, 5.5, $resume->survey_capacity, 0, 1);
+			$pdf->MultiCell(0, 5.5, $resume->survey_capacity, 0, 1);
 			$pdf->Cell(69, 5.5, 'Capital / Kondisi Usaha', 0, 0, '');
 			$pdf->Cell(5, 5.5, ':', 0, 0, '');
-			$pdf->Cell(0, 5.5, $resume->survey_capital, 0, 1);
+			$pdf->MultiCell(0, 5.5, $resume->survey_capital, 0, 1);
 			$pdf->Cell(69, 5.5, 'Cash Flow', 0, 0, '');
 			$pdf->Cell(5, 5.5, ':', 0, 0, '');
-			$pdf->Cell(0, 5.5, $resume->survey_cashflow, 0, 1);
+			$pdf->MultiCell(0, 5.5, $resume->survey_cashflow, 0, 1);
 			$pdf->Cell(69, 5.5, 'Condition Of Economy', 0, 0, '');
 			$pdf->Cell(5, 5.5, ':', 0, 0, '');
-			$pdf->Cell(0, 5.5, $resume->survey_coe, 0, 1);
+			$pdf->MultiCell(0, 5.5, $resume->survey_coe, 0, 1);
 			$pdf->Cell(69, 5.5, 'Collateral', 0, 0, '');
 			$pdf->Cell(5, 5.5, ':', 0, 0, '');
-			$pdf->Cell(0, 5.5, $resume->survey_collateral, 0, 1);
+			$pdf->MultiCell(0, 5.5, $resume->survey_collateral, 0, 1);
+			$pdf->Cell(69, 5.5, '', 0, 0, '');
+			$pdf->Cell(5, 5.5, '', 0, 0, '');
+			$pdf->Cell(69, 5.5, 'Agunan / Jaminan berupa :', 0, 1, '');
+			$pdf->Cell(69, 5.5, '', 0, 0, '');
+			$pdf->Cell(5, 5.5, '', 0, 0, '');
+			$pdf->MultiCell(0, 5.5, $resume->agunan, 0, 1, '');
 			
 			$pdf->SetFont('Times', 'B', 12);
 			$pdf->SetFillColor(220,220,220);
@@ -115,13 +123,13 @@ class Pdf_scoring extends CI_Controller
 			$pdf->Cell(0, 5.5, 'Rp. '.number_format($resume->rekom_plafond), 0, 1);
 			$pdf->Cell(69, 5.5, 'Usulan AO', 0, 0, '');
 			$pdf->Cell(5, 5.5, ':', 0, 0, '');
-			$pdf->Cell(0, 5.5, 'Rp. '.number_format($resume->plafond), 0, 1);
+			$pdf->Cell(0, 5.5, 'Rp. '.number_format($resume->plafond_usulan), 0, 1);
 			$pdf->Cell(69, 5.5, 'Jangka Waktu', 0, 0, '');
 			$pdf->Cell(5, 5.5, ':', 0, 0, '');
 			$pdf->Cell(0, 5.5, $resume->rekom_jangka_waktu.' Bulan', 0, 1);
 			$pdf->Cell(69, 5.5, 'Bunga', 0, 0, '');
 			$pdf->Cell(5, 5.5, ':', 0, 0, '');
-			$pdf->Cell(0, 5.5, $resume->rekom_bunga, 0, 1);
+			$pdf->Cell(0, 5.5, $resume->rekom_bunga.' / Prov : '.$resume->provisi.' % / Adm : '.$resume->administrasi.' %', 0, 1);
 			$pdf->Cell(69, 5.5, 'Sistem Angsuran', 0, 0, '');
 			$pdf->Cell(5, 5.5, ':', 0, 0, '');
 			$pdf->Cell(0, 5.5, $resume->rekom_sistem_angsuran, 0, 1);
@@ -143,9 +151,15 @@ class Pdf_scoring extends CI_Controller
 			$pdf->Cell(60, 5.5, '('.$resume->nama_analis.')', 0, 1, 'C');
 			$pdf->Cell(69, 5.5, 'CATATAN', 0, 1, '');
 			$pdf->Cell(5, 5.5, '1. ', 0, 0, '');
-			$pdf->Cell(0, 5.5, 'saasdas', 0, 1);
+			$pdf->MultiCell(0, 5.5, $resume->catatan1, 0, 1);
 			$pdf->Cell(5, 5.5, '2. ', 0, 0, '');
-			$pdf->Cell(0, 5.5, 'saasdas', 0, 1);
+			$pdf->MultiCell(0, 5.5, $resume->catatan2, 0, 1);
+			$pdf->Cell(5, 5.5, '3. ', 0, 0, '');
+			$pdf->MultiCell(0, 5.5, $resume->catatan3, 0, 1);
+			$pdf->Cell(5, 5.5, '4. ', 0, 0, '');
+			$pdf->MultiCell(0, 5.5, $resume->catatan4, 0, 1);
+			$pdf->Cell(5, 5.5, '5. ', 0, 0, '');
+			$pdf->MultiCell(0, 5.5, $resume->catatan5, 0, 1);
 		}
 
 		// $pdf->Output('Scoring', 'I');

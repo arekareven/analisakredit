@@ -1346,7 +1346,7 @@
                                                     </div> -->
                                                     <div class="col-md-5 mb-4">
                                                         <label for="plafond" class="form-label">Plafond</label>
-                                                        <input type="number" class="form-control" id="plafond" name="plafond">
+                                                        <input type="number" class="form-control" id="plafond_usulan" name="plafond_usulan">
                                                     </div>
 													<div class="col-md-4 mb-4">
 														<label for="waktu" class="form-label">Jangka Waktu (Bln)</label>
@@ -1360,11 +1360,11 @@
                                                     </div>
                                                     <div class="col-md-3 mb-4">
                                                         <label for="provisi" class="form-label">Provisi (%)</label>
-                                                        <input type="number" class="form-control" id="provisi" name="provisi" placeholder="Contoh : 0.5">
+                                                        <input type="number" class="form-control" id="provisi" name="provisi" placeholder="Contoh : 0.5" step="0.1" min="0" max="10">
                                                     </div>
                                                     <div class="col-md-3 mb-4">
                                                         <label for="administrasi" class="form-label">Administrasi (%)</label>
-                                                        <input type="number" class="form-control" id="administrasi" name="administrasi" placeholder="Contoh : 0.75">
+                                                        <input type="number" class="form-control" id="administrasi" name="administrasi" placeholder="Contoh : 0.75" step="0.1" min="0" max="10">
                                                     </div>
                                                 </div>       
                                                 <div class="row">
@@ -4133,7 +4133,7 @@
 					},
 					success: function(data) {
 						$.each(data, function(id_usulan, id_lb, character, capacity, capital,
-							coe, collateral, realisasi, notaris, plafond,waktu,bunga,provisi,administrasi,
+							coe, collateral, notaris, plafond_usulan,waktu,bunga,provisi,administrasi,
                             asuransi,materai,apht,skmht,titipan,fiduciare,legalisasi,roya,lainnya) {
 							$('#editusul').modal('show');
 							$('[name="id_usulan"]').val(data.id_usulan);
@@ -4143,9 +4143,9 @@
 							$('[name="capital"]').val(data.capital);
 							$('[name="coe"]').val(data.coe);
 							$('[name="collateral"]').val(data.collateral);
-							$('[name="realisasi"]').val(data.realisasi);
+							// $('[name="realisasi"]').val(data.realisasi);
 							$('[name="notaris"]').val(data.notaris);
-							$('[name="plafond"]').val(data.plafond);
+							$('[name="plafond_usulan"]').val(data.plafond_usulan);
 							$('[name="waktu"]').val(data.waktu);
 							$('[name="bunga"]').val(data.bunga);
 							$('[name="provisi"]').val(data.provisi);
@@ -4174,9 +4174,9 @@
 				var capital = $('#capital2').val();
 				var coe = $('#coe2').val();
 				var collateral = $('#collateral2').val();
-				var realisasi = $('#realisasi2').val();
+				// var realisasi = $('#realisasi2').val();
 				var notaris = $('#notaris2').val();
-				var plafond = $('#plafonddua').val();
+				var plafond_usulan = $('#plafonddua').val();
 				var waktu = $('#waktu2').val();
 				var bunga = $('#bunga2').val();
 				var provisi = $('#provisi2').val();
@@ -4202,9 +4202,9 @@
 						capital: capital,
 						coe: coe,
 						collateral: collateral,
-						realisasi: realisasi,
+						// realisasi: realisasi,
 						notaris: notaris,
-						plafond: plafond,
+						plafond_usulan: plafond_usulan,
 						waktu: waktu,
 						bunga: bunga,
 						provisi: provisi,
@@ -6318,7 +6318,7 @@
 							</div> -->
                             <div class="col-md-5 mb-4">
                                 <label for="plafond" class="form-label">Plafond</label>
-                                <input type="number" class="form-control" id="plafonddua" name="plafond">
+                                <input type="number" class="form-control" id="plafonddua" name="plafond_usulan">
                             </div>
 							<div class="col-md-4 mb-4">
 								<label for="waktu" class="form-label">Jangka Waktu (Bln)</label>
@@ -6332,11 +6332,11 @@
                             </div>
                             <div class="col-md-3 mb-4">
                                 <label for="provisi" class="form-label">Provisi (%)</label>
-                                <input type="text" class="form-control" id="provisi2" name="provisi" placeholder="Contoh : 0.5">
+                                <input type="number" class="form-control" id="provisi2" name="provisi" placeholder="Contoh : 0.5" step="0.1" min="0" max="10">
                             </div>
                             <div class="col-md-3 mb-4">
                                 <label for="administrasi" class="form-label">Administrasi (%)</label>
-                                <input type="text" class="form-control" id="administrasi2" name="administrasi" placeholder="Contoh : 0.75">
+                                <input type="number" class="form-control" id="administrasi2" name="administrasi" placeholder="Contoh : 0.75" step="0.1" min="0" max="10">
                             </div>
                         </div>          
                         <hr>  

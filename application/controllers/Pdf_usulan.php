@@ -31,8 +31,8 @@ class Pdf_usulan extends CI_Controller
                                         WHERE usulan.id_lb='$id_lb'");
 		foreach ($lb->result() as $data) {
 			
-			$provisi = $data->plafond * ($data->provisi / 100);
-			$administrasi = $data->plafond * ($data->administrasi / 100);
+			$provisi = $data->plafond_usulan * ($data->provisi / 100);
+			$administrasi = $data->plafond_usulan * ($data->administrasi / 100);
 			$biaya = $provisi + $administrasi + $data->asuransi + $data->materai + $data->apht + $data->skmht
 			+ $data->titipan + $data->fiduciare + $data->legalisasi + $data->roya + $data->lainnya;
 			
@@ -83,7 +83,7 @@ class Pdf_usulan extends CI_Controller
 			$pdf->Cell(79, 5.5, 'Sehingga kami mengusulkan sebagai berikut :', 0, 1, '');
 			$pdf->Cell(69, 5.5, 'Plafond', 0, 0, '');
 			$pdf->Cell(5, 5.5, ':', 0, 0, '');
-			$pdf->Cell(0, 5.5, 'Rp. ' . number_format($data->plafond), 0, 1);
+			$pdf->Cell(0, 5.5, 'Rp. ' . number_format($data->plafond_usulan), 0, 1);
 			$pdf->Cell(69, 5.5, 'Jenis Angsuran', 0, 0, '');
 			$pdf->Cell(5, 5.5, ':', 0, 0, '');
 			$pdf->Cell(0, 5.5, $data->sifat_kredit, 0, 1);

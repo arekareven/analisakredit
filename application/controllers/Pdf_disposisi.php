@@ -15,7 +15,7 @@ class Pdf_disposisi extends CI_Controller
         $lb = $this->db->query("SELECT * FROM usulan WHERE id_lb='$id_lb'");
 
         foreach ($lb->result() as $data) {
-			$plafon = intval($data->plafond);
+			$plafon = intval($data->plafond_usulan);
 			if($plafon < 100000000){
 				$this->disposisi1();
 			}elseif($plafon >= 100000000){
@@ -36,6 +36,7 @@ class Pdf_disposisi extends CI_Controller
         foreach ($nama->result() as $data) {
 			$name = $data->name;
 			$analis = $data->nama_analis;
+			// die(print_r($data));
 		}
 		
 		$kabag = $this->db->query("SELECT * FROM user WHERE role_id=4 AND kantor='$data->kantor'")->result();

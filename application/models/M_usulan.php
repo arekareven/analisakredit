@@ -26,7 +26,7 @@ class M_usulan extends CI_Model
         $collateral   = $this->input->post('collateral');
         // $realisasi     = $this->input->post('realisasi');
         $notaris     = $this->input->post('notaris');
-        $plafond   = $this->input->post('plafond');
+        $plafond_usulan   = $this->input->post('plafond_usulan');
         $waktu       = $this->input->post('waktu');
         $bunga           = $this->input->post('bunga');
         $provisi     = $this->input->post('provisi');
@@ -67,7 +67,7 @@ class M_usulan extends CI_Model
             'collateral'  => $collateral,
             // 'realisasi'    => $realisasi,
             'notaris'    => $notaris,
-            'plafond'  => $plafond,
+            'plafond_usulan'  => $plafond_usulan,
             'waktu'      => $waktu,
             'bunga'          => $bunga,
             'provisi'    => $provisi,
@@ -117,9 +117,8 @@ class M_usulan extends CI_Model
 					'capital' => $data->capital,
 					'coe' => $data->coe,
 					'collateral' => $data->collateral,
-					'realisasi' => $data->realisasi,
 					'notaris' => $data->notaris,
-					'plafond' => $data->plafond,
+					'plafond_usulan' => $data->plafond_usulan,
 					'waktu' => $data->waktu,
 					'bunga' => $data->bunga,
 					'provisi' => $data->provisi,
@@ -140,7 +139,7 @@ class M_usulan extends CI_Model
 	}
 
 	public function update_usul($id_usulan, $character, $capacity, $capital,
-	 							$coe, $collateral, $realisasi, $notaris, $plafond, 
+	 							$coe, $collateral, $notaris, $plafond_usulan, 
 								$waktu, $bunga, $provisi, $administrasi, $asuransi, 
 								$materai, $apht, $skmht, $titipan, $fiduciare, 
 								$legalisasi, $roya, $lainnya)
@@ -150,9 +149,8 @@ class M_usulan extends CI_Model
 													capital='$capital',
 													coe='$coe',
 													collateral='$collateral',
-													realisasi='$realisasi',
 													notaris='$notaris',
-													plafond='$plafond',
+													plafond_usulan='$plafond_usulan',
 													waktu='$waktu',
 													bunga='$bunga',
 													provisi='$provisi',
