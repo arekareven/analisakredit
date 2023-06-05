@@ -1930,9 +1930,6 @@
 												<option value="Pokok tiap 12 bulan bunga tiap bulan">Pokok tiap 12 bulan bunga tiap bulan</option>
 												<option value="Pokok terakhir bunga tiap bulan">Pokok terakhir bunga tiap bulan</option>
 												<option value="Pokok bunga terakhir">Pokok bunga terakhir</option>
-												<option value="Musiman">Musiman</option>
-												<option value="Anuitas">Anuitas</option>
-												<option value="Efektif">Efektif</option>
 											</select>
 										</div>
 										<div class="col-md-8 mb-3">

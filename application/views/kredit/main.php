@@ -4279,13 +4279,20 @@
 							if (data[i].waktu_zoom==null){
                             	$waktuZoom = "Belum Ada";								
 								$linkZoom = "#";
+							// }else{
+							// 	// $waktuZoom = new Date(data[i].waktu_zoom);
+							// 	$waktuZoom = data[i].waktu_zoom;
+							// 	$linkZoom = data[i].link_zoom;
+							// 	if($linkZoom = "Offline"){
+							// 		$linkZoom = "#"
+							// 	}
 							}else{
-								// $waktuZoom = new Date(data[i].waktu_zoom);
-								$waktuZoom = data[i].waktu_zoom;
-								$linkZoom = data[i].link_zoom;
-								if($linkZoom = "Offline"){
-									$linkZoom = "#"
+								if(data[i].link_zoom == 'Offline'){
+									$linkZoom = '#';
+								}else{
+									$linkZoom = data[i].link_zoom;
 								}
+								$waktuZoom = data[i].waktu_zoom;
 							}
 
 							switch (data[i].status) {

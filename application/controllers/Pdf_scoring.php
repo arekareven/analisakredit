@@ -27,7 +27,7 @@ class Pdf_scoring extends CI_Controller
 		// }
 
 		$pdf = new FPDF('P', 'mm', 'A4');
-		$pdf->SetAutoPageBreak(false);
+		$pdf->SetAutoPageBreak(true);
 		// membuat halaman baru
 		$pdf->AddPage();
 		// margin

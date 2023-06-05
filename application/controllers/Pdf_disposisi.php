@@ -31,6 +31,7 @@ class Pdf_disposisi extends CI_Controller
         $nama = $this->db->query("SELECT * FROM latar_belakang 
                                         JOIN user ON latar_belakang.user=user.email
                                         JOIN pengajuan ON latar_belakang.id_lb=pengajuan.id_lb
+										JOIN `resume` ON latar_belakang.id_lb=resume.id_lb
                                         WHERE latar_belakang.id_lb='$id_lb'");
 										
         foreach ($nama->result() as $data) {
@@ -67,9 +68,16 @@ class Pdf_disposisi extends CI_Controller
 		$pdf->Rect(10,167,190,38);
 
 		
-		if($data->status == 'Layak'){
+		// if($data->analis == 'Layak'){
 
-			$pdf->Image('assets/ttd/ttd-hasan.png', 130, 182, 70);//kCU
+		// 	$pdf->Image('assets/ttd/ttd-hasan.png', 130, 182, 70);//kCU
+		// 	$pdf->Image('assets/ttd/ttd-hasan.png', 130, 143, 70);//kabag
+		// 	$pdf->Image('assets/ttd/ttd-hasan.png', 130, 105, 70);//analis
+		// }
+
+				
+		$ttd_kabag = $this->db->query("SELECT * FROM `resume` WHERE id_lb=$id_lb AND kacab LIKE '%ACC%'")->result();
+		if(isset($ttd_kabag)){
 			$pdf->Image('assets/ttd/ttd-hasan.png', 130, 143, 70);//kabag
 		}
 

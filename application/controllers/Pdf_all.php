@@ -315,7 +315,7 @@ class Pdf_all extends CI_Controller
             $pdf->Cell(0, 5.5, 'KEWAJIBAN', 0, 1, '');
             $pdf->Line(10, 50, 205, 50);
             $pdf->Line(110, 50, 110, 194);
-            $pdf->Cell(100, 5.5, 'Aktiva Lancar', 0, 0, '');
+            $pdf->Cell(100, 5.5, 'Aktiva Produktif', 0, 0, '');
             $pdf->Cell(49, 5.5, 'Hutang', 0, 1, '');
             $pdf->SetFont('Times', '', 12);
             $pdf->Cell(44, 5.5, 'Kas', 0, 0, '');
@@ -393,11 +393,11 @@ class Pdf_all extends CI_Controller
             $pdf->Cell(10, 5.5, 'Rp.', 0, 0, '');
             $pdf->Cell(46, 5.5, number_format($data->lain), 0, 1);
             $pdf->SetFont('Times', 'B', 12);
-            $pdf->Cell(60, 7, 'Jumlah Aktiva Lancar', 0, 0, '');
+            $pdf->Cell(60, 7, 'Jumlah Aktiva Produktif', 0, 0, '');
             $pdf->Cell(10, 5.5, 'Rp.', 0, 0, '');
             $pdf->Cell(46, 5.5, number_format($this->aktivaLancar()), 0, 1);
             $pdf->SetFont('Times', '', 12);
-            $pdf->Cell(44, 7, 'Aktiva Tetap', 0, 1, '');
+            $pdf->Cell(44, 7, 'Aktiva Lainnya', 0, 1, '');
             $pdf->Cell(44, 5.5, 'Tanah', 0, 0, '');
             $pdf->Cell(10, 5.5, 'Rp.', 0, 0, '');
             $pdf->Cell(46, 5.5, number_format($data->tanah), 0, 1);
@@ -414,7 +414,7 @@ class Pdf_all extends CI_Controller
             $pdf->Cell(10, 5.5, 'Rp.', 0, 0, '');
             $pdf->Cell(46, 5.5, number_format($data->lain2), 0, 1);
             $pdf->SetFont('Times', 'B', 12);
-            $pdf->Cell(60, 5.5, 'Jumlah Aktiva Tetap', 0, 0, '');
+            $pdf->Cell(60, 5.5, 'Jumlah Aktiva Lainnya', 0, 0, '');
             $pdf->Cell(10, 5.5, 'Rp.', 0, 0, '');
             $pdf->Cell(30, 5.5, number_format($this->aktivaTetap()), 0, 0);
             $pdf->Line(10, 173, 60, 173);
@@ -721,7 +721,7 @@ class Pdf_all extends CI_Controller
             $pdf->Cell(0, 5.5, 'KEWAJIBAN', 0, 1, '');
             $pdf->Line(10, 50, 205, 50);
             $pdf->Line(110, 50, 110, 194);
-            $pdf->Cell(100, 5.5, 'Aktiva Lancar', 0, 0, '');
+			$pdf->Cell(100, 5.5, 'Aktiva Produktif', 0, 0, '');
             $pdf->Cell(49, 5.5, 'Hutang', 0, 1, '');
             $pdf->SetFont('Times', '', 12);
             $pdf->Cell(44, 5.5, 'Kas', 0, 0, '');
@@ -799,11 +799,11 @@ class Pdf_all extends CI_Controller
             $pdf->Cell(10, 5.5, 'Rp.', 0, 0, '');
             $pdf->Cell(46, 5.5, number_format($data->lain + $this->Lain_cs()), 0, 1);
             $pdf->SetFont('Times', 'B', 12);
-            $pdf->Cell(60, 7, 'Jumlah Aktiva Lancar', 0, 0, '');
+			$pdf->Cell(60, 7, 'Jumlah Aktiva Produktif', 0, 0, '');
             $pdf->Cell(10, 5.5, 'Rp.', 0, 0, '');
             $pdf->Cell(46, 5.5, number_format($this->aktivaLancar_cs()), 0, 1);
             $pdf->SetFont('Times', '', 12);
-            $pdf->Cell(44, 7, 'Aktiva Tetap', 0, 1, '');
+			$pdf->Cell(44, 7, 'Aktiva Lainnya', 0, 1, '');
             $pdf->Cell(44, 5.5, 'Tanah', 0, 0, '');
             $pdf->Cell(10, 5.5, 'Rp.', 0, 0, '');
             $pdf->Cell(46, 5.5, number_format($data->tanah + $this->tanah_cs()), 0, 1);
@@ -820,7 +820,7 @@ class Pdf_all extends CI_Controller
             $pdf->Cell(10, 5.5, 'Rp.', 0, 0, '');
             $pdf->Cell(46, 5.5, number_format($data->lain2 + $this->lain2_cs()), 0, 1);
             $pdf->SetFont('Times', 'B', 12);
-            $pdf->Cell(60, 5.5, 'Jumlah Aktiva Tetap', 0, 0, '');
+			$pdf->Cell(60, 5.5, 'Jumlah Aktiva Lainnya', 0, 0, '');
             $pdf->Cell(10, 5.5, 'Rp.', 0, 0, '');
             $pdf->Cell(30, 5.5, number_format($this->aktivaTetap_cs()), 0, 0);
             $pdf->Line(10, 173, 60, 173);
@@ -1613,10 +1613,9 @@ class Pdf_all extends CI_Controller
 				$pdf->Cell(100, 5.5, $data->oleh, 1, 0, 'L');
 				$pdf->Cell(80, 5.5, $data->sebagai, 1, 1, 'L');
 			}
-            
 			
+			$pdf->Output('LAS', 'I');
         }
-		$pdf->Output('LAS', 'I');
 
     }
 

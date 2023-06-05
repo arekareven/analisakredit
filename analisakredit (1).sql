@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 31 Jan 2023 pada 09.21
+-- Waktu pembuatan: 05 Jun 2023 pada 07.50
 -- Versi server: 10.4.25-MariaDB
--- Versi PHP: 7.4.30
+-- Versi PHP: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,46 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `analisakredit`
 --
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `analis`
---
-
-CREATE TABLE `analis` (
-  `nama` varchar(50) NOT NULL,
-  `email` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `analis`
---
-
-INSERT INTO `analis` (`nama`, `email`) VALUES
-('Mahfud Ansori', ''),
-('Sonny Wahyu Sampurno', ''),
-('Vera Fernanda', 'vera@gmail.com');
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `anggota_komite`
---
-
-CREATE TABLE `anggota_komite` (
-  `id_anggota_komite` tinyint(4) NOT NULL,
-  `nama_anggota_komite` varchar(50) NOT NULL,
-  `email_anggota_komite` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data untuk tabel `anggota_komite`
---
-
-INSERT INTO `anggota_komite` (`id_anggota_komite`, `nama_anggota_komite`, `email_anggota_komite`) VALUES
-(1, 'test', 'kadi.hore@gmail.com'),
-(2, 'test 2', 'renaalecuy@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -190,8 +150,8 @@ INSERT INTO `capacity` (`id_cap`, `id_lb`, `nama_usaha`, `sektor`, `bidang`, `al
 --
 
 CREATE TABLE `capital_a` (
-  `id_capi` int(10) NOT NULL,
-  `id_lb` int(10) NOT NULL,
+  `id_capi` int(11) NOT NULL,
+  `id_lb` int(11) NOT NULL,
   `kas` varchar(50) DEFAULT NULL,
   `tabungan` varchar(50) DEFAULT NULL,
   `deposito` varchar(50) DEFAULT NULL,
@@ -287,7 +247,8 @@ INSERT INTO `capital_a` (`id_capi`, `id_lb`, `kas`, `tabungan`, `deposito`, `piu
 (94, 112, '30000000', '15000000', '1000000', '10000000', '10000000', '30000000', '0', '0', '0', '400000000', '80000000', '100000000', '30000000', '706000000', '200000000', '400000000', '50000000', '0', '20000000', '670000000', '1376000000', '0', '0', '168560825', '0', '168560825', '15383857', '522055318', '670000000', '1376000000'),
 (95, 113, '40000000', '10000000', '0', '855000000', '250000000', '60000000', '200000000', '180000000', '0', '3000000000', '800000000', '700000000', '0', '6095000000', '1000000000', '1200000000', '450000000', '0', '0', '2650000000', '8745000000', '0', '0', '2752257947', '0', '2752257947', '220489513', '3122252540', '2650000000', '8745000000'),
 (96, 91, '2150000', '0', '0', '0', '17850000', '75000000', '0', '0', '0', '0', '700000000', '65000000', '0', '860000000', '0', '366500000', '15000000', '0', '0', '381500000', '1241500000', '0', '0', '416270503', '0', '416270503', '4870000', '438859497', '381500000', '1241500000'),
-(97, 114, '10000000', '0', '0', '0', '75000000', '0', '0', '0', '0', '0', '0', '95000000', '0', '180000000', '250000000', '55000000', '50000000', '0', '0', '355000000', '535000000', '0', '166697732', '0', '0', '166697732', '15750000', '-2447732', '355000000', '535000000');
+(97, 114, '10000000', '0', '0', '0', '75000000', '0', '0', '0', '0', '0', '0', '95000000', '0', '180000000', '250000000', '55000000', '50000000', '0', '0', '355000000', '535000000', '0', '166697732', '0', '0', '166697732', '15750000', '-2447732', '355000000', '535000000'),
+(98, 22, '2500000', '0', '0', '5000000', '7500000', '20000000', '0', '0', '0', '75000000', '25000000', '0', '0', '135000000', '100000000', '125000000', '25000000', '0', '0', '250000000', '385000000', '0', '0', '0', '0', '0', '8000000', '127000000', '250000000', '385000000');
 
 -- --------------------------------------------------------
 
@@ -296,8 +257,8 @@ INSERT INTO `capital_a` (`id_capi`, `id_lb`, `kas`, `tabungan`, `deposito`, `piu
 --
 
 CREATE TABLE `capital_b` (
-  `id_capi` int(10) NOT NULL,
-  `id_lb` int(10) NOT NULL,
+  `id_capi` int(11) NOT NULL,
+  `id_lb` int(11) NOT NULL,
   `kas` varchar(50) DEFAULT NULL,
   `tabungan` varchar(50) DEFAULT NULL,
   `deposito` varchar(50) DEFAULT NULL,
@@ -408,8 +369,8 @@ INSERT INTO `capital_b` (`id_capi`, `id_lb`, `kas`, `tabungan`, `deposito`, `piu
 --
 
 CREATE TABLE `capital_cache` (
-  `id_capi` int(10) NOT NULL,
-  `id_lb` int(10) NOT NULL,
+  `id_capi` int(11) NOT NULL,
+  `id_lb` int(11) NOT NULL,
   `kas` varchar(50) DEFAULT NULL,
   `tabungan` varchar(50) DEFAULT NULL,
   `deposito` varchar(50) DEFAULT NULL,
@@ -452,9 +413,9 @@ INSERT INTO `capital_cache` (`id_capi`, `id_lb`, `kas`, `tabungan`, `deposito`, 
 (28, 25, '217475000', '30000000', '0', '1200000000', '100000000', '350000000', '150000000', '0', '0', '500000000', '300000000', '325000000', '100000000', '3272475000', '500000000', '700000000', '80000000', '0', '0', '1280000000', '4552475000', '150000000', '0', '999941289', '0', '1149941289', '17475000', '2105058711', '1280000000', '4552475000', '16125000'),
 (29, 11, '100000000', '100000000', '0', '0', '20000000', '0', '0', '0', '0', '0', '0', '10000000', '5000000', '235000000', '150000000', '150000000', '150000000', '0', '5000000', '455000000', '590000000', '0', '199000000', '0', '0', '199000000', '96868999', '-60868999', '455000000', '590000000', '1000000'),
 (30, 46, '7332500', '2500000', '0', '5000000', '8000000', '224000000', '0', '0', '0', '0', '340000000', '8000000', '0', '594832500', '0', '0', '120000000', '0', '0', '120000000', '714832500', '40000000', '0', '94902889', '0', '134902889', '9542000', '457597111', '120000000', '714832500', '5309500'),
-(31, 47, '125655000', '0', '0', '35000000', '400000000', '0', '20000000', '0', '0', '0', '0', '385000000', '0', '965655000', '782000000', '150000000', '10000000', '0', '0', '942000000', '1907655000', '104795718', '300000000', '95254050', '0', '500049768', '54125000', '449950232', '942000000', '1907655000', '15220000'),
+(31, 47, '310000000', '0', '0', '35000000', '400000000', '0', '20000000', '0', '0', '0', '0', '385000000', '0', '1150000000', '782000000', '150000000', '10000000', '0', '0', '942000000', '1792000000', '104795718', '500000000', '80034050', '0', '684829768', '43625000', '440545232', '942000000', '1792000000', '15220000'),
 (32, 48, '4597496', '5000000', '0', '0', '30000000', '10000000', '0', '0', '18426050', '0', '7500000', '0', '0', '75523546', '50000000', '150000000', '15000000', '0', '0', '215000000', '290523546', '0', '154830998', '0', '0', '154830998', '10500000', '-82904948', '215000000', '290523546', '4402504'),
-(33, 49, '5752145747', '125000000', '0', '100000000', '4000000000', '179407505', '54445100', '24500000', '300000000', '800000000', '200000000', '200000000', '10000000', '11745498352', '5000000000', '3000000000', '1250000000', '50000000', '0', '9300000000', '21045498352', '0', '2000000000', '5128705155', '0', '7128705155', '202352605', '4516971345', '9300000000', '21045498352', '102530753'),
+(33, 49, '2140000000', '125000000', '0', '100000000', '4000000000', '179407505', '54445100', '24500000', '300000000', '800000000', '200000000', '200000000', '10000000', '8133352605', '5000000000', '3000000000', '1250000000', '50000000', '0', '9300000000', '18945676500', '0', '2000000000', '5069952179', '0', '7069952179', '202352605', '4407950479', '9300000000', '18945676500', '102530753'),
 (34, 50, '76945100', '50000000', '0', '0', '150000000', '20000000', '10000000', '0', '0', '600000000', '100000000', '20000000', '5000000', '1031945100', '1400000000', '100000000', '18000000', '0', '0', '1518000000', '2549945100', '372660873', '0', '0', '0', '372660873', '50945100', '632339127', '1518000000', '2549945100', '24000000'),
 (35, 53, '1241713378', '200000000', '0', '200000000', '4500000000', '3583451000', '122225500', '65000000', '500000000', '800000000', '600000000', '200000000', '100000000', '12112389878', '5000000000', '3000000000', '1250000000', '50000000', '0', '9300000000', '21412389878', '0', '900000000', '5501366028', '0', '6401366028', '202352605', '5589310472', '9300000000', '21412389878', '80639227'),
 (36, 52, '16585802.723525', '0', '0', '15000000', '0', '44000000', '0', '0', '0', '0', '530000000', '145000000', '0', '750585802.72353', '0', '0', '113000000', '145000000', '0', '258000000', '1008585802.7235', '0', '100000000', '285581302', '0', '385581302', '27900002.723525', '354168698', '258000000', '1008585802.7235', '13614200'),
@@ -507,7 +468,8 @@ INSERT INTO `capital_cache` (`id_capi`, `id_lb`, `kas`, `tabungan`, `deposito`, 
 (83, 112, '81439175', '15000000', '1000000', '10000000', '10000000', '30000000', '0', '0', '0', '400000000', '80000000', '100000000', '30000000', '757439175', '200000000', '400000000', '50000000', '0', '20000000', '670000000', '1376000000', '0', '0', '-4301017', '220000000', '215698983', '28080000', '522055318', '670000000', '1376000000', '10718017'),
 (84, 113, '340000000', '10000000', '0', '855000000', '250000000', '60000000', '200000000', '180000000', '0', '3000000000', '800000000', '700000000', '0', '6395000000', '1000000000', '1200000000', '450000000', '0', '0', '2650000000', '8745000000', '0', '300000000', '2667664120.8833', '0', '2967664120.8833', '315200000', '3122252540', '2650000000', '8745000000', '84593826.116667'),
 (85, 91, '2150000', '0', '0', '0', '17850000', '175000000', '0', '0', '0', '0', '700000000', '65000000', '0', '960000000', '0', '366500000', '15000000', '0', '0', '381500000', '1341500000', '0', '100000000', '416270503', '0', '516270503', '21175500', '437193497', '381500000', '1341500000', '12689500'),
-(86, 114, '110000000', '0', '0', '0', '75000000', '0', '0', '0', '0', '0', '0', '95000000', '0', '280000000', '250000000', '55000000', '50000000', '0', '0', '355000000', '535000000', '100000000', '165947732', '0', '0', '265947732', '20000000', '-2447732', '355000000', '535000000', '750000');
+(86, 114, '110000000', '0', '0', '0', '75000000', '0', '0', '0', '0', '0', '0', '95000000', '0', '280000000', '250000000', '55000000', '50000000', '0', '0', '355000000', '535000000', '100000000', '165947732', '0', '0', '265947732', '20000000', '-2447732', '355000000', '535000000', '750000'),
+(87, 22, '22500000', '0', '0', '5000000', '7500000', '29000000', '0', '0', '0', '75000000', '30000000', '0', '0', '169000000', '100000000', '125000000', '25000000', '0', '0', '250000000', '385000000', '25000000', '0', '0', '0', '25000000', '10500000', '127000000', '250000000', '385000000', '0');
 
 -- --------------------------------------------------------
 
@@ -3795,39 +3757,12 @@ INSERT INTO `condition` (`id_con`, `id_lb`, `kekuatan`, `kelemahan`, `peluang`, 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `dummy`
---
-
-CREATE TABLE `dummy` (
-  `id_cf` int(11) NOT NULL,
-  `id_lb` int(11) NOT NULL,
-  `dari` int(11) DEFAULT NULL,
-  `untuk` int(11) DEFAULT NULL,
-  `keterangan` varchar(128) DEFAULT NULL,
-  `pemasukan` varchar(20) DEFAULT NULL,
-  `pengeluaran` varchar(20) DEFAULT NULL,
-  `saldo` varchar(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `dummy`
---
-
-INSERT INTO `dummy` (`id_cf`, `id_lb`, `dari`, `untuk`, `keterangan`, `pemasukan`, `pengeluaran`, `saldo`) VALUES
-(1, 7, 1, 1, 'Pendapatan usaha daging ayam pedaging', '270000000', NULL, '5'),
-(3, 7, 2, 1, 'Pendapatan usaha jasa travel', '42000000', NULL, '5'),
-(4, 7, 1, 2, 'Pembelian stok dagangan ayam pedaging', NULL, '12000', '5'),
-(5, 7, 1, 2, 'Susut bobot', NULL, '3000', '5');
-
--- --------------------------------------------------------
-
---
 -- Struktur dari tabel `karakter`
 --
 
 CREATE TABLE `karakter` (
-  `id_char` int(10) NOT NULL,
-  `id_lb` int(10) NOT NULL,
+  `id_char` int(11) NOT NULL,
+  `id_lb` int(11) NOT NULL,
   `info_pribadi` text DEFAULT NULL,
   `info_perilaku` varchar(128) DEFAULT NULL,
   `info_keluarga` varchar(128) DEFAULT NULL,
@@ -3933,7 +3868,7 @@ INSERT INTO `karakter` (`id_char`, `id_lb`, `info_pribadi`, `info_perilaku`, `in
 --
 
 CREATE TABLE `latar_belakang` (
-  `id_lb` int(10) NOT NULL,
+  `id_lb` int(11) NOT NULL,
   `cif_bank` varchar(10) DEFAULT NULL,
   `tgl_analisa` date DEFAULT NULL,
   `tgl_permohonan` date DEFAULT NULL,
@@ -3941,7 +3876,7 @@ CREATE TABLE `latar_belakang` (
   `jangka_waktu` varchar(10) DEFAULT NULL,
   `sifat_kredit` varchar(50) DEFAULT NULL,
   `suku_bunga` varchar(50) DEFAULT NULL,
-  `musiman` tinyint(4) NOT NULL,
+  `musiman` tinyint(4) DEFAULT NULL,
   `jenis_permohonan` varchar(20) DEFAULT NULL,
   `tujuan_permohonan` varchar(20) DEFAULT NULL,
   `ket_penggunaan` varchar(50) DEFAULT NULL,
@@ -3979,7 +3914,7 @@ CREATE TABLE `latar_belakang` (
 --
 
 INSERT INTO `latar_belakang` (`id_lb`, `cif_bank`, `tgl_analisa`, `tgl_permohonan`, `plafon`, `jangka_waktu`, `sifat_kredit`, `suku_bunga`, `musiman`, `jenis_permohonan`, `tujuan_permohonan`, `ket_penggunaan`, `nama_debitur`, `status_kawin`, `ttl_nasabah`, `ktp`, `alamat_ktp_nasabah`, `domisili_nasabah`, `hp_nasabah`, `status_tt`, `pekerjaan_nasabah`, `tanggungan`, `pendidikan`, `jenis_kelamin`, `masa_laku`, `telp_kantor`, `lama_tinggal`, `nama_pasangan`, `ttl_pasangan`, `alamat_ktp_pasangan`, `domisili_pasangan`, `pekerjaan_pasangan`, `hp_pasangan`, `nama_keluarga`, `hubungan_keluarga`, `alamat_keluarga`, `hp_keluarga`, `user`, `analis`) VALUES
-(11, '00001', '2022-06-28', '2022-06-12', '450000000', '600', 'Pokok bunga tiap bulan', '20 % Flate per tahun', 0, 'Baru', 'Modal Kerja', 'Pembelian tanah luas 2.270 m2', 'RANDY WIJAYA KUSUMA', 'Tidak Menikah', 'Ngawi, 20-07-1994', '3521032007940002', 'Desa Soco RT 05 RW 02 Kec. Jogorogo Kab. Ngawi', 'Perumahan Arya Mandiri 2 Blok C No. 2 RT 05 RW 06 Plesungan Gondangrejo Kab. Karanganyar Jawa Tengah.', '08131049959', 'Milik Sendiri', 'Wiraswasta', '3', 'SMA', 'Laki-laki', 'Seumur Hidup', '0', '2', 'IZZATUL NAJMI ALMANARAH', 'Blitar, 28-11-1997', 'Desa Soco RT 05 RW 02 Kec. Jogorogo Kab. Ngawi', 'Perumahan Arya Mandiri 2 Blok C No. 2 RT 05 RW 06 Plesungan Gondangrejo Kab. Karanganyar Jawa Tengah.', 'Ibu Rumah Tangga', '08131049959', 'ERNING YULI ASTUTIK', 'Anak Kandung', 'Desa Soco RT 05 RW 02 Kec. Jogorogo Kab. Ngawi', '0895704310022', 'fatia@gmail.com', 'Vera Fernanda'),
+(11, '00001', '2022-06-11', '2022-06-01', '45400444', '22', 'Pokok tiap 12 bulan bunga tiap bulan', '20 % Flate per tahun', 0, 'Baru', 'Modal Kerja', 'Pembelian tanah luas 2.270 m2', 'RANDY WIJAYA KUSUMA', 'Tidak Menikah', 'Ngawi, 20-07-1994', ' 352103200794000', 'Desa Soco RT 05 RW 02 Kec. Jogorogo Kab. Ngawi', 'Perumahan Arya Mandiri 2 Blok C No. 2 RT 05 RW 06 Plesungan Gondangrejo Kab. Karanganyar Jawa Tengah.', '08131049959', 'Milik Sendiri', 'Wiraswasta', '3', 'SMA', 'Laki-laki', 'Seumur Hidup', '0', '2', 'IZZATUL NAJMI ALMANARAH', 'Blitar, 28-11-1997', 'Desa Soco RT 05 RW 02 Kec. Jogorogo Kab. Ngawi', 'Perumahan Arya Mandiri 2 Blok C No. 2 RT 05 RW 06 Plesungan Gondangrejo Kab. Karanganyar Jawa Tengah.', 'Ibu Rumah Tangga', '08131049959', 'ERNING YULI ASTUTIK', 'Anak Kandung', 'Desa Soco RT 05 RW 02 Kec. Jogorogo Kab. Ngawi', '089', 'fatia@gmail.com', 'Vera Fernanda'),
 (17, '00002', '2022-06-09', '2022-06-09', '250000000', '24', 'Pokok bunga tiap bulan', '18', 0, 'Baru', 'Modal Kerja', 'Tambah modal usaha dagang beras', 'KASDI', 'Menikah', 'Magetan, 20-07-1965', '3520042007650001', 'Desa Sawojajar RT 09 RW 02 Kecamatan Takeran Kabupaten Magetan', 'Desa Sawojajar RT 09 RW 02 Kecamatan Takeran Kabupaten Magetan', '081359950159', 'Milik Sendiri', 'Perdagangan ( Beras )', '2', 'SMA', 'Laki-laki', 'Seumur Hidup', '0', '25', 'YAYUK EKAWATI', 'Magetan, 08-12-1973', 'Desa Sawojajar RT 09 RW 02 Kecamatan Takeran Kabupaten Magetan', 'Desa Sawojajar RT 09 RW 02 Kecamatan Takeran Kabupaten Magetan', 'Wiraswasta', '0', 'Wahyu', 'Rekan Kerja', 'Desa Sawojajar RT 09 RW 02 Kecamatan Takeran Kabupaten Magetan', '085735301218', 'arisanaaa82@gmail.com', 'Vera Fernanda'),
 (22, '00002', '2022-06-10', '2022-06-10', '25000000', '24', 'Pokok bunga tiap bulan', '18 % flat /tahun', 0, 'Baru', 'Modal Kerja', 'Tambah modal dagang pracangan', 'supriyati', 'Menikah', 'Magetan,08-09-1981', '3520034507860002', 'Desa Nguri RT01 RW 03, Kec.Lembeyan Kab.Magetan', 'Desa Nguri RT01 RW 03, Kec.Lembeyan Kab.Magetan', '08133577044', 'Milik Sendiri', 'Wiraswasta', '2', 'SMA', 'Laki-laki', 'Seumur Hidup', '0', '10', 'Suhadi prayitno', 'Magetan,05-02-1975', 'Desa Nguri RT01 RW 03, Kec.Lembeyan Kab.Magetan', 'Desa Nguri RT01 RW 03, Kec.Lembeyan Kab.Magetan', 'Wiraswasta', '0812345678', 'Suparmi', 'Tetangga', 'Desa Nguri RT01 RW 03, Kec.Lembeyan Kab.Magetan', '08523443221', 'arie29895@gmail.com', 'Vera Fernanda'),
 (23, '00002', '2022-06-03', '2022-05-25', '200000000', '36', 'Pokok bunga tiap bulan', '12 %', 0, 'Ulangan', 'Konsumsi', 'Digunakan untuk pembelian mobil Avanza tahun 2012', 'Isran', 'Menikah', 'Magetan, 05-02-1967', '3520050502670001', 'Ds. Tulung Rt 003 Rw 005 Kec. Kawedanan Kab.Magetan', 'Ds. Tulung Rt 003 Rw 005 Kec. Kawedanan Kab.Magetan', '081217531170', 'Milik Sendiri', 'PNS ( BPN Magetan )', '4', 'S1', 'Laki-laki', 'Seumur Hidup', '0351895097', '23', 'Dwi Hastutik', 'Pacitan, 13-11-1970', 'Ds. Tulung Rt 003 Rw 005 Kec. Kawedanan Kab.Magetan', 'Ds. Tulung Rt 003 Rw 005 Kec. Kawedanan Kab.Magetan', 'Wiraswasta', '085641012220', 'Pauji', 'Saudara Kandung', 'Surabaya', '0815007871', 'mahfutansori@gmail.com', ''),
@@ -4062,42 +3997,6 @@ INSERT INTO `latar_belakang` (`id_lb`, `cif_bank`, `tgl_analisa`, `tgl_permohona
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `notaris`
---
-
-CREATE TABLE `notaris` (
-  `notaris` varchar(50) NOT NULL,
-  `provisi` varchar(20) NOT NULL,
-  `administrasi` varchar(20) NOT NULL,
-  `asuransi` varchar(20) NOT NULL,
-  `materai` varchar(20) NOT NULL,
-  `apht` varchar(20) NOT NULL,
-  `skmht` varchar(20) NOT NULL,
-  `titipan` varchar(20) NOT NULL,
-  `fiduciare` varchar(20) NOT NULL,
-  `legalisasi` varchar(20) NOT NULL,
-  `lain` varchar(20) NOT NULL,
-  `roya` varchar(20) NOT NULL,
-  `proses` varchar(20) NOT NULL,
-  `sertifikat` varchar(20) NOT NULL,
-  `akta` varchar(20) NOT NULL,
-  `pendaftaran` varchar(20) NOT NULL,
-  `plotting` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `notaris`
---
-
-INSERT INTO `notaris` (`notaris`, `provisi`, `administrasi`, `asuransi`, `materai`, `apht`, `skmht`, `titipan`, `fiduciare`, `legalisasi`, `lain`, `roya`, `proses`, `sertifikat`, `akta`, `pendaftaran`, `plotting`) VALUES
-('Bambang Riyanto, SH. M.Kn.', '5250000', '5250000', '0', '10000', '1920000', '100000', '0', '1270000', '500000', '0', '0', '400000', '150000', '400000', '50000', '0'),
-('Dhenis Prabowo sakti, SH, M.Kn', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''),
-('Eka Sari Sulistyowati, SH. M.Kn.', '1150000', '1150000', '0', '18000', '1920000', '100000', '0', '0', '500000', '0', '1000000', '280000', '250000', '1000000', '400000', '0'),
-('Lutvi Syanti Dewi, SH. M.Kn', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '');
-
--- --------------------------------------------------------
-
---
 -- Struktur dari tabel `pengajuan`
 --
 
@@ -4109,7 +4008,7 @@ CREATE TABLE `pengajuan` (
   `name_debitur` varchar(50) DEFAULT NULL,
   `plafond` varchar(50) DEFAULT NULL,
   `id_lb` int(11) NOT NULL,
-  `catatan` text DEFAULT DEFAULT NULL,
+  `file` text DEFAULT NULL,
   `status` varchar(50) DEFAULT NULL,
   `link_zoom` varchar(200) NOT NULL,
   `waktu_zoom` datetime DEFAULT NULL,
@@ -4161,9 +4060,8 @@ CREATE TABLE `pengajuan` (
 -- Dumping data untuk tabel `pengajuan`
 --
 
-INSERT INTO `pengajuan` (`id_pengajuan`, `nama_analis`, `nama_ao`, `kantor`, `name_debitur`, `plafond`, `id_lb`, `catatan`, `status`, `link_zoom`, `waktu_zoom`, `itk_nilai`, `mu_nilai`, `kd_nilai`, `kk_nilai`, `as_nilai`, `ak_nilai`, `t_nilai`, `hpt_nilai`, `tk_nilai`, `jumlah`, `pengUsa_nilai`, `admUsa_nilai`, `legal_nilai`, `tujUsa_nilai`, `tingPer_nilai`, `harPro_nilai`, `sisPem_nilai`, `sisDis_nilai`, `kemBb_nilai`, `carP_nilai`, `prosP_nilai`, `mesP_nilai`, `tenK_nilai`, `damSm_nilai`, `damEk_nilai`, `dampEma_nilai`, `damLi_nilai`, `kemBa_nilai`, `pemLa_nilai`, `jumlah_capa`, `sumDs_nilai`, `sumDk_nilai`, `sumDl_nilai`, `jumlah_capi`, `UsYd_nilai`, `serT_nilai`, `bpkb_nilai`, `market_nilai`, `jumlah_coll`, `kebP_nilai`, `ekoG_nilai`, `jumlah_cond`) VALUES
-(15, 'Analis Ekadharma', 'Aris', 'KCU', 'SUKERI', '550000000', 67, '', 'Layak', 'https://us05web.zoom.us/j/89496733615?pwd=eEFFUkg1NExWNVpCa3BvbFdVMFFMUT09', '2022-12-08 11:30:00', 5, 5, 5, 5, 5, 5, 5, 5, 5, 45, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 95, 5, 5, 5, 15, 5, 5, 5, 5, 20, 5, 5, 10),
-(17, 'Analis Ekadharma', 'Fatia Larasati', 'KCU', 'RANDY WIJAYA KUSUMA', '450000000', 11, '', 'Layak dgn catatan', '', NULL, 2, 2, 2, 2, 2, 2, 2, 2, 2, 18, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 38, 2, 2, 2, 6, 2, 2, 2, 2, 8, 2, 2, 4);
+INSERT INTO `pengajuan` (`id_pengajuan`, `nama_analis`, `nama_ao`, `kantor`, `name_debitur`, `plafond`, `id_lb`, `file`, `status`, `link_zoom`, `waktu_zoom`, `itk_nilai`, `mu_nilai`, `kd_nilai`, `kk_nilai`, `as_nilai`, `ak_nilai`, `t_nilai`, `hpt_nilai`, `tk_nilai`, `jumlah`, `pengUsa_nilai`, `admUsa_nilai`, `legal_nilai`, `tujUsa_nilai`, `tingPer_nilai`, `harPro_nilai`, `sisPem_nilai`, `sisDis_nilai`, `kemBb_nilai`, `carP_nilai`, `prosP_nilai`, `mesP_nilai`, `tenK_nilai`, `damSm_nilai`, `damEk_nilai`, `dampEma_nilai`, `damLi_nilai`, `kemBa_nilai`, `pemLa_nilai`, `jumlah_capa`, `sumDs_nilai`, `sumDk_nilai`, `sumDl_nilai`, `jumlah_capi`, `UsYd_nilai`, `serT_nilai`, `bpkb_nilai`, `market_nilai`, `jumlah_coll`, `kebP_nilai`, `ekoG_nilai`, `jumlah_cond`) VALUES
+(26, 'Analis Ekadharma', 'Fatia Larasati', 'KCU', 'RANDY WIJAYA KUSUMA', '11111111111', 11, NULL, 'Layak', '', NULL, 5, 3, 2, 4, 2, 4, 2, 4, 3, 29, 5, 5, 4, 3, 4, 3, 5, 4, 5, 5, 4, 2, 4, 4, 3, 4, 4, 5, 5, 78, 3, 4, 4, 11, 5, 5, 5, 4, 19, 3, 2, 5);
 
 -- --------------------------------------------------------
 
@@ -4394,6 +4292,70 @@ INSERT INTO `realisasi` (`id_real`, `id_lb`, `oleh`, `sebagai`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `resume`
+--
+
+CREATE TABLE `resume` (
+  `id_resume` int(11) NOT NULL,
+  `id_lb` int(11) NOT NULL,
+  `analis` varchar(255) DEFAULT NULL,
+  `kabag` varchar(255) DEFAULT NULL,
+  `kacab` varchar(255) DEFAULT NULL,
+  `dirut` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `resume`
+--
+
+INSERT INTO `resume` (`id_resume`, `id_lb`, `analis`, `kabag`, `kacab`, `dirut`) VALUES
+(1, 11, 'ACC, dengan catatan sebgai berikut', 'ACC, dengan catatan sebgai berikut', 'tidak, dengan catatan sebgai berikut', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `resume_analis`
+--
+
+CREATE TABLE `resume_analis` (
+  `id_resume_analis` int(11) NOT NULL,
+  `id_lb` int(11) NOT NULL,
+  `tgl_survey_ulang` date DEFAULT NULL,
+  `tgl_resume` date DEFAULT NULL,
+  `survey_character` varchar(255) DEFAULT NULL,
+  `survey_capacity` varchar(255) DEFAULT NULL,
+  `survey_capital` varchar(255) DEFAULT NULL,
+  `survey_cashflow` varchar(255) DEFAULT NULL,
+  `survey_coe` varchar(255) DEFAULT NULL,
+  `survey_collateral` varchar(255) DEFAULT NULL,
+  `rekom_plafond` varchar(255) DEFAULT NULL,
+  `rekom_jangka_waktu` varchar(255) DEFAULT NULL,
+  `rekom_bunga` varchar(255) DEFAULT NULL,
+  `rekom_sistem_angsuran` varchar(255) DEFAULT NULL,
+  `rekom_pengikatan` varchar(255) DEFAULT NULL,
+  `kesimpulan` varchar(255) DEFAULT NULL,
+  `agunan` varchar(255) DEFAULT NULL,
+  `tempat` varchar(255) DEFAULT NULL,
+  `tujuan_penggunaan` varchar(255) DEFAULT NULL,
+  `administrasi` varchar(255) DEFAULT NULL,
+  `provisi` varchar(255) DEFAULT NULL,
+  `catatan1` varchar(255) DEFAULT NULL,
+  `catatan2` varchar(255) DEFAULT NULL,
+  `catatan3` varchar(255) DEFAULT NULL,
+  `catatan4` varchar(255) DEFAULT NULL,
+  `catatan5` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `resume_analis`
+--
+
+INSERT INTO `resume_analis` (`id_resume_analis`, `id_lb`, `tgl_survey_ulang`, `tgl_resume`, `survey_character`, `survey_capacity`, `survey_capital`, `survey_cashflow`, `survey_coe`, `survey_collateral`, `rekom_plafond`, `rekom_jangka_waktu`, `rekom_bunga`, `rekom_sistem_angsuran`, `rekom_pengikatan`, `kesimpulan`, `agunan`, `tempat`, `tujuan_penggunaan`, `administrasi`, `provisi`, `catatan1`, `catatan2`, `catatan3`, `catatan4`, `catatan5`) VALUES
+(1, 11, '2023-05-07', '2023-05-07', 'character', 'capacity', 'capital', 'cashflow', 'coe', 'collateral', '700000', '7', '17 % Flat / Tahun', 'Efektif', 'INTERN', 'LAYAK DENGAN CATATAN', 'HOnda beat snsakjn smas asmasca  snasmnd askdmaskdmasknasmc nsa sanasnkl', NULL, 'Relaksasi Covid - 19', '0.5', '0.5', 'satu', 'dua', 'tiga', 'empat', 'lima');
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `riwayat_pinjaman`
 --
 
@@ -4548,7 +4510,7 @@ CREATE TABLE `user` (
   `image` varchar(128) NOT NULL,
   `password` varchar(256) NOT NULL,
   `role_id` int(11) NOT NULL,
-  `is_active` int(1) NOT NULL,
+  `is_active` int(11) NOT NULL,
   `date_created` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -4557,13 +4519,13 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `name`, `email`, `kantor`, `image`, `password`, `role_id`, `is_active`, `date_created`) VALUES
-(5, 'Fatia Larasati', 'fatia@gmail.com', 'KCU', 'art-2436545__340.jpg', '$2y$10$iHy9BJuSIDxiVVs53HWea.CdVTWGxQVvjIn403kpBdfISGRWn.PUS', 2, 1, 1644812162),
+(5, 'Fatia Larasati', 'fatia@gmail.com', 'KC', 'art-2436545__340.jpg', '$2y$10$iHy9BJuSIDxiVVs53HWea.CdVTWGxQVvjIn403kpBdfISGRWn.PUS', 2, 1, 1644812162),
 (6, 'hasantiro', 'admin@gmail.com', '', 'download.png', '$2y$10$6NxAuuzqcTQZwQVMhilsnOV0Mpm43owg7aPh4l.rs/i6OD7Kaf1Mu', 1, 1, 1644812241),
-(7, 'Analis Ekadharma', 'analis@gmail.com', '', 'WhatsApp_Image_2022-03-03_at_20_50_06-removebg-preview.png', '$2y$10$bXYTFnU2i0r26LY9/zD4ReNI2a8dVV./nHC0g6Y0nwf95i7vp96Iy', 3, 1, 1646887061),
+(7, 'Analis Ekadharma', 'analis@gmail.com', 'KCU', 'WhatsApp_Image_2022-03-03_at_20_50_06-removebg-preview.png', '$2y$10$bXYTFnU2i0r26LY9/zD4ReNI2a8dVV./nHC0g6Y0nwf95i7vp96Iy', 3, 1, 1646887061),
 (8, 'Kepala Bagian Kredit', 'kabag@gmail.com', 'KCU', 'default.jpg', '$2y$10$708AN740PJjWkPPMCKybm.7tsdt3vTi5WSkC9jRsPRwmjuepb2VMW', 4, 1, 1647315996),
 (9, 'Test', 'test@gmail.com', '', 'default.jpg', '$2y$10$OfDZBPorrEJ12sYTrMxGMu3T9hfG.KbDrahwm8fdDTIR7lwIK0LMC', 5, 1, 1648089117),
 (10, 'User1', 'user1@gmail.com', '', 'default.jpg', '$2y$10$9gs/E/aBKGtWHC2u3NEva.jtx8PyDifgMqOKl6UhV3NXREZjmBBmu', 2, 1, 1654236926),
-(11, 'Aris', 'arisanaaa82@gmail.com', '', 'default.jpg', '$2y$10$H/gXPCLBdzxO1kk4.yh3ieBKoGJNLVq5A9VDf.dumBo6EttOEazCi', 2, 1, 1654759518),
+(11, 'Aris', 'arisanaaa82@gmail.com', 'KCNGW', 'default.jpg', '$2y$10$H/gXPCLBdzxO1kk4.yh3ieBKoGJNLVq5A9VDf.dumBo6EttOEazCi', 2, 1, 1654759518),
 (12, 'SRI HANDAJANI', 'handajanisri8@gmail.com', '', 'default.jpg', '$2y$10$TPjK3aVUSDpqegBQ/1jQQuZn3pg8DUdXxFjBgi.fbIqvj1zfFt.oa', 2, 1, 1654759611),
 (13, 'Bowo', 'arie29895@gmail.com', '', 'default.jpg', '$2y$10$.CQv1zCNGSw4J98vQztZH.JIFFFLjLlavHoLckMxmLEvuvz2qUFFK', 2, 1, 1654761390),
 (14, 'mahfut ansori', 'mahfutansori@gmail.com', '', 'default.jpg', '$2y$10$bW20nNgN1dn7dI0G5eDwaeA0AWBJESD8yHfY./unUFbhw.dvJinS2', 2, 1, 1654830559),
@@ -4577,7 +4539,7 @@ INSERT INTO `user` (`id`, `name`, `email`, `kantor`, `image`, `password`, `role_
 (22, 'Taufik Dian Murseto', 'taufikdianmurseto97@gmail.com', '', 'default.jpg', '$2y$10$fPxT3r2VjfyLFcw/zwKRB.Rih4MxABHvyU8qjEfgvEKXUcU00qIXe', 2, 1, 1654833392),
 (23, 'kamis', 'testkamis@gmail.com', '', 'default.jpg', '$2y$10$gtx4GWHc4S9O8fG8fklicez5LzfO8mnSjzrSgYdpZ/VOLAbR23zlO', 2, 1, 1656558420),
 (24, 'CHANDRA DESTIAN PRABAYU', 'chandradestian97@gmail.com', '', 'default.jpg', '$2y$10$JC5k8EE9Al2wGV/VZUxTiulRCWe3GHtm2cEh3s4JANebRitJTS9d.', 2, 1, 1656560743),
-(25, 'hanif muslim alamsyah', 'hanifmuslim74@gmail.com', '', 'default.jpg', '$2y$10$dCrfCii80L1Smi3LR1nSPu2ngBzup5Zd6iUj9vPFOoCH3LV0rp9Fq', 2, 1, 1656560748),
+(25, 'hanif muslim alamsyah', 'hanifmuslim74@gmail.com', 'KCNGW', 'default.jpg', '$2y$10$iHy9BJuSIDxiVVs53HWea.CdVTWGxQVvjIn403kpBdfISGRWn.PUS', 3, 1, 1656560748),
 (26, 'KUN EKWAN JUNIANTO', 'kunekwan2106@gmail.com', '', 'default.jpg', '$2y$10$EcLqKBNeFXCLq0ywMcUB9usO0S.n9Mm4XpTLOr92psWALA4jkLbVy', 2, 1, 1656572670),
 (27, 'Wanda Miftakhul Jannah', 'wmz_zanna@yahoo.co.id', '', 'default.jpg', '$2y$10$jCEp3dbSffYBm/PYRzEIkOt97hv8lN8qtXNtoey1V7mLi9ev0upL2', 2, 1, 1657250075),
 (28, 'MUHAMMAD DWI HARDIANTO', 'dwihardianto93@gmail.com', '', 'IMG-20211105-WA0004.jpg', '$2y$10$Ly/OUGXTrQ.KYKSF1zy3vuO8LWz3uxo47C8lYcQyVyb/CjwpCa4qO', 2, 1, 1657250114),
@@ -4615,7 +4577,8 @@ INSERT INTO `user` (`id`, `name`, `email`, `kantor`, `image`, `password`, `role_
 (61, 'suprapto', 'gandiprapto750@gmail.com', '', 'default.jpg', '$2y$10$E8JkdeVzPrCFeCGfZrlmferMujiUNTt2CcMBUY8jMFfIsWC9eOsli', 2, 1, 1661158392),
 (62, 'fanny permana', 'fanymikopermana@gmail.c0m', '', 'default.jpg', '$2y$10$nf6dVVGTN4.Bw94KXmnMzuHw4wf6rxOGUSa.EU5tdRFIMG.9KOY3i', 2, 1, 1661841508),
 (63, 'Admin Mineka', 'mineka@gmail.com', '', 'default.jpg', '$2y$10$tqLClLHqvj86EnPNsDUqIOTYOhzFxjik2gLIwpBc46jU86zM0az9i', 6, 1, 1667355529),
-(64, 'Kepala Cabang', 'kacab@gmail.com', '', 'default.jpg', '$2y$10$5/KGcljKMk94/EU.LQouI./z42xmCCnqWtVH0yI9MHTNev6/5FfDu', 7, 1, 1670574315);
+(64, 'Kepala Cabang', 'kacab@gmail.com', 'KCU', 'default.jpg', '$2y$10$5/KGcljKMk94/EU.LQouI./z42xmCCnqWtVH0yI9MHTNev6/5FfDu', 7, 1, 1670574315),
+(66, 'Direktur Utama', 'dwiatmodjo@bank-ekadharma.com', 'KCU', 'default.jpg', '$2y$10$qiqq2pGy4D67wTN5vl5Bpeo61ZmsqJ8LvaWviUHg3qf.tSXzBFD0y', 8, 1, 1683209977);
 
 -- --------------------------------------------------------
 
@@ -4648,7 +4611,9 @@ INSERT INTO `user_access_menu` (`id`, `role_id`, `menu_id`) VALUES
 (22, 6, 9),
 (23, 6, 2),
 (24, 7, 2),
-(25, 7, 7);
+(25, 7, 10),
+(26, 8, 2),
+(27, 8, 11);
 
 -- --------------------------------------------------------
 
@@ -4671,10 +4636,13 @@ INSERT INTO `user_menu` (`id`, `menu`) VALUES
 (3, 'Menu'),
 (4, 'Analisa Kredit'),
 (5, 'Analisis'),
-(6, 'Review'),
-(7, 'LAS'),
+(6, 'Analis'),
+(7, 'Kabag'),
 (8, 'Tester'),
-(9, 'Mineka');
+(9, 'Mineka'),
+(10, 'Kacab'),
+(11, 'Dirut'),
+(12, 'Komite');
 
 -- --------------------------------------------------------
 
@@ -4698,7 +4666,8 @@ INSERT INTO `user_role` (`id`, `role`) VALUES
 (4, 'Kabag'),
 (5, 'Tester'),
 (6, 'Mineka'),
-(7, 'kacab');
+(7, 'kacab'),
+(8, 'Dirut');
 
 -- --------------------------------------------------------
 
@@ -4712,7 +4681,7 @@ CREATE TABLE `user_sub_menu` (
   `title` varchar(128) NOT NULL,
   `url` varchar(128) NOT NULL,
   `icon` varchar(128) NOT NULL,
-  `is_active` int(1) NOT NULL
+  `is_active` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -4729,8 +4698,8 @@ INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_active
 (7, 2, 'Change Password', 'user/changepassword', 'fas fa-fw fa-lock-open', 1),
 (8, 4, 'Latar Belakang', 'kredit/lb', 'fas fa-fw fa-id-card', 1),
 (13, 5, 'Daftar Kredit', 'analisis', 'fas fa-fw fa-file-word', 1),
-(14, 6, 'Daftar Analisa', 'analisa', 'fas fa-fw fa-paperclip', 1),
-(15, 7, 'Daftar Analisa', 'kabag', 'fas fa-fw fa-paperclip', 1),
+(14, 6, 'Daftar Analisa Analis', 'analisa', 'fas fa-fw fa-paperclip', 1),
+(15, 7, 'Daftar Analisa Kabag', 'kabag', 'fas fa-fw fa-paperclip', 1),
 (16, 4, 'Character', 'character?id_lb=', 'fas fa-fw fa-person-booth', 0),
 (17, 4, 'Capacity', 'capacity?id_lb=', 'fas fa-fw fa-warehouse', 0),
 (18, 4, 'Capital Sebelum Kredit', 'capital?id_lb=', 'fas fa-fw fa-money-bill', 0),
@@ -4741,7 +4710,15 @@ INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_active
 (23, 1, 'User', 'admin/user', 'fas fa-fw fa-file-word', 1),
 (24, 8, 'Testing', 'dummy', 'fas fa-fw fa-vial', 1),
 (25, 4, 'Edit', 'test/edit?id_lb=', 'fas fa-fw fa-paperclip', 0),
-(26, 9, 'Daftar Agunan', 'agunan', 'fas fa-fw fa-file-word', 1);
+(26, 9, 'Daftar Agunan', 'agunan', 'fas fa-fw fa-file-word', 1),
+(27, 6, 'Monitoring', 'analisa/monitoring', 'fas fa-fw fa-file-word', 0),
+(28, 10, 'Daftar Analisa Kacab', 'kacab', 'fas fa-fw fa-paperclip', 1),
+(29, 11, 'Daftar Analisa Dirut', 'dirut', 'fas fa-fw fa-paperclip', 1),
+(30, 4, 'Kalender Komite', 'kredit/kalender', 'fas fa-fw fa-calendar', 1),
+(31, 6, 'Kalender Komite', 'analisa/kalender', 'fas fa-fw fa-calendar', 1),
+(32, 7, 'Kalender Komite', 'kabag/kalender', 'fas fa-fw fa-calendar', 1),
+(33, 10, 'Kalender Komite', 'kacab/kalender', 'fas fa-fw fa-calendar', 1),
+(34, 11, 'Kalender Komite', 'dirut/kalender', 'fas fa-fw fa-calendar', 1);
 
 -- --------------------------------------------------------
 
@@ -4759,7 +4736,7 @@ CREATE TABLE `usulan` (
   `kel_angsuran` varchar(10) DEFAULT NULL,
   `coe` varchar(10) DEFAULT NULL,
   `collateral` varchar(10) DEFAULT NULL,
-  `plafond` varchar(20) DEFAULT NULL,
+  `plafond_usulan` varchar(20) DEFAULT NULL,
   `sifat` varchar(128) DEFAULT NULL,
   `jenis` varchar(50) DEFAULT NULL,
   `tujuan` varchar(128) DEFAULT NULL,
@@ -4796,8 +4773,8 @@ CREATE TABLE `usulan` (
 -- Dumping data untuk tabel `usulan`
 --
 
-INSERT INTO `usulan` (`id_usulan`, `id_lb`, `character`, `capacity`, `capital`, `kel_hutang`, `kel_angsuran`, `coe`, `collateral`, `plafond`, `sifat`, `jenis`, `tujuan`, `sektor`, `waktu`, `bunga`, `angsuran`, `denda`, `realisasi`, `tanggungan`, `likuidasi`, `lainnya`, `jaminan`, `notaris`, `provisi`, `administrasi`, `asuransi`, `materai`, `apht`, `skmht`, `titipan`, `fiduciare`, `legalisasi`, `lain`, `roya`, `proses`, `sertifikat`, `akta`, `pendaftaran`, `plotting`) VALUES
-(5, 11, 'xBaik', 'xBaik', 'xBaik', NULL, NULL, 'xBaik', 'xBaik', '50000001', NULL, NULL, NULL, NULL, '24', '14', NULL, NULL, '2022-06-02', NULL, NULL, '10000', NULL, 'Hasan Riyanto, SH. M.Kn.', '2', '1', '0', '10000', '1920000', '100000', '0', '1270000', '500000', NULL, '0', NULL, NULL, NULL, NULL, NULL),
+INSERT INTO `usulan` (`id_usulan`, `id_lb`, `character`, `capacity`, `capital`, `kel_hutang`, `kel_angsuran`, `coe`, `collateral`, `plafond_usulan`, `sifat`, `jenis`, `tujuan`, `sektor`, `waktu`, `bunga`, `angsuran`, `denda`, `realisasi`, `tanggungan`, `likuidasi`, `lainnya`, `jaminan`, `notaris`, `provisi`, `administrasi`, `asuransi`, `materai`, `apht`, `skmht`, `titipan`, `fiduciare`, `legalisasi`, `lain`, `roya`, `proses`, `sertifikat`, `akta`, `pendaftaran`, `plotting`) VALUES
+(5, 11, 'xBaik', 'xBaik', 'xBaik', NULL, NULL, 'xBaik', 'xBaik', '50000002', NULL, NULL, NULL, NULL, '24', '14 % anuitas', NULL, NULL, '0000-00-00', NULL, NULL, '10000', NULL, 'Hasan Riyanto, SH. M.Kn.', '0.5', '0.9', '0', '10000', '1920000', '100000', '0', '1270000', '500000', NULL, '0', NULL, NULL, NULL, NULL, NULL),
 (6, 22, 'Baik', 'Baik', 'Baik', NULL, NULL, 'Baik', 'Mencukupi', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00', NULL, NULL, NULL, NULL, 'Bambang Riyanto, SH. M.Kn.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (7, 17, 'Baik', 'Mecukupi', 'Mencukupi', NULL, NULL, 'bagus', 'Mendukung', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2022-06-13', NULL, NULL, NULL, NULL, 'Bambang Riyanto, SH. M.Kn.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (9, 26, 'BAIK', 'BAIK', 'LAYAK', NULL, NULL, 'BAIK', 'LAYAK', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00', NULL, NULL, NULL, NULL, 'Bambang Riyanto, SH. M.Kn.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -4865,18 +4842,6 @@ INSERT INTO `usulan` (`id_usulan`, `id_lb`, `character`, `capacity`, `capital`, 
 --
 -- Indexes for dumped tables
 --
-
---
--- Indeks untuk tabel `analis`
---
-ALTER TABLE `analis`
-  ADD PRIMARY KEY (`nama`);
-
---
--- Indeks untuk tabel `anggota_komite`
---
-ALTER TABLE `anggota_komite`
-  ADD PRIMARY KEY (`id_anggota_komite`);
 
 --
 -- Indeks untuk tabel `capacity`
@@ -4949,12 +4914,6 @@ ALTER TABLE `condition`
   ADD KEY `id_lb` (`id_lb`);
 
 --
--- Indeks untuk tabel `dummy`
---
-ALTER TABLE `dummy`
-  ADD PRIMARY KEY (`id_cf`);
-
---
 -- Indeks untuk tabel `karakter`
 --
 ALTER TABLE `karakter`
@@ -4966,12 +4925,6 @@ ALTER TABLE `karakter`
 --
 ALTER TABLE `latar_belakang`
   ADD PRIMARY KEY (`id_lb`);
-
---
--- Indeks untuk tabel `notaris`
---
-ALTER TABLE `notaris`
-  ADD PRIMARY KEY (`notaris`);
 
 --
 -- Indeks untuk tabel `pengajuan`
@@ -4992,6 +4945,18 @@ ALTER TABLE `perkiraan`
 ALTER TABLE `realisasi`
   ADD PRIMARY KEY (`id_real`),
   ADD KEY `id_lb` (`id_lb`);
+
+--
+-- Indeks untuk tabel `resume`
+--
+ALTER TABLE `resume`
+  ADD PRIMARY KEY (`id_resume`);
+
+--
+-- Indeks untuk tabel `resume_analis`
+--
+ALTER TABLE `resume_analis`
+  ADD PRIMARY KEY (`id_resume_analis`);
 
 --
 -- Indeks untuk tabel `riwayat_pinjaman`
@@ -5042,34 +5007,28 @@ ALTER TABLE `usulan`
 --
 
 --
--- AUTO_INCREMENT untuk tabel `anggota_komite`
---
-ALTER TABLE `anggota_komite`
-  MODIFY `id_anggota_komite` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
 -- AUTO_INCREMENT untuk tabel `capacity`
 --
 ALTER TABLE `capacity`
-  MODIFY `id_cap` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
+  MODIFY `id_cap` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
 
 --
 -- AUTO_INCREMENT untuk tabel `capital_a`
 --
 ALTER TABLE `capital_a`
-  MODIFY `id_capi` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
+  MODIFY `id_capi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99;
 
 --
 -- AUTO_INCREMENT untuk tabel `capital_b`
 --
 ALTER TABLE `capital_b`
-  MODIFY `id_capi` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
+  MODIFY `id_capi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
 
 --
 -- AUTO_INCREMENT untuk tabel `capital_cache`
 --
 ALTER TABLE `capital_cache`
-  MODIFY `id_capi` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
+  MODIFY `id_capi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
 
 --
 -- AUTO_INCREMENT untuk tabel `cashflow_a`
@@ -5108,28 +5067,22 @@ ALTER TABLE `condition`
   MODIFY `id_con` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
 
 --
--- AUTO_INCREMENT untuk tabel `dummy`
---
-ALTER TABLE `dummy`
-  MODIFY `id_cf` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
 -- AUTO_INCREMENT untuk tabel `karakter`
 --
 ALTER TABLE `karakter`
-  MODIFY `id_char` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
+  MODIFY `id_char` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
 
 --
 -- AUTO_INCREMENT untuk tabel `latar_belakang`
 --
 ALTER TABLE `latar_belakang`
-  MODIFY `id_lb` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=115;
+  MODIFY `id_lb` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=115;
 
 --
 -- AUTO_INCREMENT untuk tabel `pengajuan`
 --
 ALTER TABLE `pengajuan`
-  MODIFY `id_pengajuan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_pengajuan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT untuk tabel `realisasi`
@@ -5138,40 +5091,52 @@ ALTER TABLE `realisasi`
   MODIFY `id_real` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=139;
 
 --
+-- AUTO_INCREMENT untuk tabel `resume`
+--
+ALTER TABLE `resume`
+  MODIFY `id_resume` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT untuk tabel `resume_analis`
+--
+ALTER TABLE `resume_analis`
+  MODIFY `id_resume_analis` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT untuk tabel `riwayat_pinjaman`
 --
 ALTER TABLE `riwayat_pinjaman`
-  MODIFY `id_rp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=179;
+  MODIFY `id_rp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=183;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
 
 --
 -- AUTO_INCREMENT untuk tabel `user_access_menu`
 --
 ALTER TABLE `user_access_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT untuk tabel `user_menu`
 --
 ALTER TABLE `user_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT untuk tabel `user_role`
 --
 ALTER TABLE `user_role`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT untuk tabel `user_sub_menu`
 --
 ALTER TABLE `user_sub_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT untuk tabel `usulan`
