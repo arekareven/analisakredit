@@ -17,7 +17,7 @@
                             <th scope="col">Nama Debitur</th>
                             <th scope="col">Status</th>
                             <th scope="col">Komite</th>
-                            <th scope="col">Resume</th>
+                            <th scope="col">ACC</th>
                         </tr>
                     </thead>
                     <tbody id="show_data">
@@ -45,6 +45,12 @@
 								case "Layak dgn catatan":
 									$badge = "warning";
 									break;
+								case "Ditolak oleh Kabag":
+									$badge = "danger";
+									break;
+								case "ACC oleh Kabag":
+									$badge = "success";
+									break;
 								default:
 									$badge = "success";
 									break;
@@ -63,11 +69,11 @@
                                 <a href='".$linkZoom."' target='_blank'>".$waktuZoom."</a>
                             </td>           
                             <td>
+								<a href='javascript:;' class='btn btn-success btn-sm item_resume' title='Resume' data='" . $row->id_lb . "'><i class='fas fa-user-check'></i></a>
                             </td>                           					
 							</tr>";
 						}
                         ?>
-						<!-- <a href='javascript:;' class='btn btn-info btn-circle item_resume' title='Resume' data='" . $row->id_pengajuan . "'><i class='fas fa-paperclip'></i></a> -->
                     </tbody>
                 </table>
             </div>
@@ -106,7 +112,7 @@
 	
     <!-- Modal resume-->
     <div class="modal fade" id="resume" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5>Resume</h5>
@@ -116,23 +122,17 @@
                 </div>
                 <form action="<?= base_url('kabag/update_resume'); ?>" method="post" id="form_resume">
                     <div class="modal-body">                       
-                        <input type="hidden" class="form-control" id="id_resume" name="id_resume">
-                        <input type="hidden" class="form-control" id="id_pengajuan" name="id_pengajuan">
-						<div class="form-group">
-							<label for="analis">Analis</label>
-							<textarea readonly class="form-control" id="analis" name="analis" rows="3"></textarea>
+                        <input type="hidden" class="form-control" id="id_lb" name="id_lb">
+                        <input type="hidden" class="form-control" id="analis" name="analis" value=<?php echo $row->nama_analis ?>>
+						<div class="col-md-5 mb-3">
+						<select class="form-control" aria-label="Default select example" id="kabag" name="kabag">
+							<option value="ACC oleh Kabag">ACC</option>
+							<option value="Ditolak oleh Kabag">Tolak</option>
+						</select>
 						</div>
-						<div class="form-group">
-							<label for="kabag">Kepala Bagian Kredit</label>
-							<textarea class="form-control" id="kabag" name="kabag" rows="3"></textarea>
-						</div>
-						<div class="form-group">
-							<label for="kacab">Kepala Cabang</label>
-							<textarea readonly class="form-control" id="kacab" name="kacab" rows="3"></textarea>
-						</div>
-						<div class="form-group">
-							<label for="dirut">Direktur Utama</label>
-							<textarea readonly class="form-control" id="dirut" name="dirut" rows="3"></textarea>
+						<div class="col-md-12 mb-3">
+							<label for="uraian_kabag">Uraian</label>
+							<textarea readonly class="form-control" id="uraian_kabag" name="uraian_kabag" rows="3"></textarea>
 						</div>
                     </div>
                     <div class="modal-footer">
@@ -197,14 +197,11 @@
 						id: id
 					},
 					success: function(data) {
-						$.each(data, function(id_resume ,id_pengajuan,anali, kabag, kacab, dirut) {
+						$.each(data, function(id_resume ,id_lb, kabag) {
 							$('#resume').modal('show');
 							$('[name="id_resume"]').val(data.id_resume);
-							$('[name="id_pengajuan"]').val(data.id_pengajuan);
-							$('[name="analis"]').val(data.analis);
+							$('[name="id_lb"]').val(data.id_lb);
 							$('[name="kabag"]').val(data.kabag);
-							$('[name="kacab"]').val(data.kacab);
-							$('[name="dirut"]').val(data.dirut);
 						});
 					}
 				});

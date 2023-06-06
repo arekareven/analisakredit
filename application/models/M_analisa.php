@@ -5,7 +5,13 @@ require_once('assets/php-jwt-master/src/ExpiredException.php');
 require_once('assets/php-jwt-master/src/SignatureInvalidException.php');
 require_once('assets/php-jwt-master/src/JWT.php');
 
-use \Firebase\JWT\JWT;
+
+require APPPATH.'libraries/phpmailer/src/Exception.php';
+require APPPATH.'libraries/phpmailer/src/PHPMailer.php';
+require APPPATH.'libraries/phpmailer/src/SMTP.php';
+
+use PHPMailer\PHPMailer\PHPMailer;
+
 
 class M_analisa extends CI_Model
 {
@@ -38,17 +44,21 @@ class M_analisa extends CI_Model
 			'plafond'	    => $plafond,
 			'status'	   	=> $status,
 		);
+
 		$resume_analis = array(
 
 			'id_lb'	    	=> $id_lb
 		);
+
 		$resume = array(
 
 			'id_lb'	    	=> $id_lb
 		);
+
 		$this->db->insert('pengajuan', $pengajuan);
 		$this->db->insert('resume_analis', $resume_analis);
 		$this->db->insert('resume', $resume);
+		$this->sendEmail($nama_ao,$name_debitur,$plafond,$kantor);
 	}
     
 	function pengajuan_list($id_lb)
@@ -269,5 +279,57 @@ class M_analisa extends CI_Model
 			$hasil = 'Data dengan id ini kosong';
 		}
 		return $hasil;
+	}
+
+	//kirim email ketika pengajuan,dikirimkan ke kabag
+	private function sendEmail($nama_ao,$name_debitur,$plafond,$kantor)
+	{
+		// PHPMailer object
+        $response = false;
+        $mail = new PHPMailer();
+
+        // SMTP configuration
+        $mail->isSMTP();
+        $mail->Host     = 'smtp.gmail.com';
+        $mail->SMTPAuth = true;
+        $mail->Username = 'test.app.eka@gmail.com'; // user email anda
+        $mail->Password = 'lbjvdzngxujqolli'; // diisi dengan App Password yang sudah di generate
+        $mail->SMTPSecure = 'ssl';
+        $mail->Port     = 465;
+
+        $mail->setFrom('test.app.eka@gmail.com', 'LAS'); // user email anda
+        $mail->addReplyTo('test.app.eka@gmail.com', ''); //user email anda
+
+        // Email subject
+        $mail->Subject = 'Info Pengajuan Analisa | LAS Ekadharma'; //subject email
+
+        // Add a recipient
+		if($kantor == 'KCU'){
+			foreach ($this->db->query("SELECT * FROM user WHERE kantor='$kantor' AND role_id=4")->result() as $row) {
+				$mail->addAddress($row->email); //(kabag)
+			}
+		}else{
+			foreach ($this->db->query("SELECT * FROM user WHERE kantor='$kantor' AND role_id=7")->result() as $row) {
+				$mail->addAddress($row->email); //(kacab)
+			}
+		}
+
+        // Set email format to HTML
+        $mail->isHTML(true);
+
+        // Email body content
+        $mailContent = "<p>AO ".$nama_ao." telah mengajukan analisa kredit a/n ".$name_debitur." dengan plafon Rp. ".number_format($plafond)."</b></p>
+		<p>Mohon untuk segera di cek di aplikasi LAS bit.ly/analisa_kredit agar bisa ditindak lanjut oleh analis</b></p>
+		<p>Terimakasih, Semangat Pagi !!!</b></p>
+		<p>Email ini terkirim otomatis, harap untuk tidak membalas email ini.</b></p>";
+        $mail->Body = $mailContent;
+
+        // Send email
+        if(!$mail->send()){
+            echo 'Message could not be sent.';
+            echo 'Mailer Error: ' . $mail->ErrorInfo;
+        }else{
+            echo 'Message has been sent';
+        }
 	}
 }

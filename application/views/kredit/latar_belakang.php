@@ -13,12 +13,13 @@
     <div class="card shadow mb-4">
         <div class="card-body">
 			<div id="reload">
-				<table class="table table-bordered" id="dataLb">
+				<table class="table table-sm" id="dataLb">
 					<thead class="thead-dark">
 						<tr>
 							<th scope="col">Nama</th>
 							<th scope="col">Plafond</th>
 							<th scope="col">Tgl</th>
+							<th scope="col">Status</th>
 							<th scope="col">Aksi</th>
 						</tr>
 					</thead>
@@ -572,14 +573,43 @@
                         var html = '';
                         var i;
                         for (i = 0; i < data.length; i++) {
+
+							if(data[i].status != null){
+								switch (data[i].status) {
+									case "Diajukan":
+										$badge = "info";
+										break;
+									case "Tidak layak":
+										$badge = "danger";
+										break;
+									case "Layak dgn catatan":
+										$badge = "warning";
+										break;
+									case "Ditolak oleh Kabag":
+										$badge = "danger";
+										break;
+									case "ACC oleh Kabag":
+										$badge = "success";
+										break;
+									default:
+										$badge = "success";
+										break;
+								}
+							}else{
+								data[i].status = "Belum Diajukan";
+								$badge = "info";
+							}
+
+
                             html += '<tr>'+
 									'<td>' + data[i].nama_debitur + '</td>'+
 									'<td>' + 'Rp. ' + new Intl.NumberFormat().format(data[i].plafon) + '</td>'+
 									'<td>' + new Date(data[i].tgl_permohonan).toLocaleDateString('es-CL') + '</td>'+                     
+									'<td><span class="badge badge-'+$badge+'">' + data[i].status + '</span></td>'+
 									'<td>'+
-									'<a href="javascript:;" class="btn btn-warning btn-circle item_edit_latar_belakang" data="' + data[i].id_lb + '"><i class="fas fa-edit"></i></a>' + ' ' +
-									'<a href="javascript:;" class="btn btn-danger btn-circle item_hapus_latar_belakang" data="' + data[i].id_lb + '"><i class="fas fa-trash"></i></a>' + ' ' +
-									'<a href="to_rp?id_lb=' + data[i].id_lb + '" class="btn btn-success btn-circle"><i class="fas fa-arrow-right"></i></a>' +
+									'<a href="javascript:;" class="btn btn-warning btn-sm item_edit_latar_belakang" data="' + data[i].id_lb + '"><i class="fas fa-edit"></i></a>' + ' ' +
+									'<a href="javascript:;" class="btn btn-danger btn-sm item_hapus_latar_belakang" data="' + data[i].id_lb + '"><i class="fas fa-trash"></i></a>' + ' ' +
+									'<a href="to_rp?id_lb=' + data[i].id_lb + '" class="btn btn-success btn-sm"><i class="fas fa-arrow-right"></i></a>' +
 									'</td>'+					
 								'</tr>';
                         }

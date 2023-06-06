@@ -1699,7 +1699,7 @@
 								</div>
                             </form>
 							<div id="reload">
-								<table class="table table-borderless" id="dataPengajuan">
+								<table class="table table-sm" id="dataPengajuan">
 									<thead class="thead-dark">
 										<tr>
 											<th scope="col">Analis</th>
@@ -1897,8 +1897,8 @@
 								'<td>' + data[i].info_perilaku + '</td>' +
 								'<td>' + data[i].info_keluarga + '</td>' +
 								'<td style="text-align:right;">' +
-								'<a href="javascript:;" class="btn btn-warning btn-xs item_edit_char" data="' + data[i].id_char + '"><i class="fas fa-edit"></i></a>' + ' ' +
-								'<a href="javascript:;" class="btn btn-danger btn-xs item_hapus_char" data="' + data[i].id_char + '"><i class="fas fa-trash"></i></a>' +
+								'<a href="javascript:;" class="btn btn-warning btn-sm item_edit_char" data="' + data[i].id_char + '"><i class="fas fa-edit"></i></a>' + ' ' +
+								'<a href="javascript:;" class="btn btn-danger btn-sm item_hapus_char" data="' + data[i].id_char + '"><i class="fas fa-trash"></i></a>' +
 								'</td>' +
 								'</tr>';
 						}
@@ -2060,8 +2060,8 @@
 								'<td>' + data[i].sektor + '</td>' +
 								'<td>' + data[i].tgl_mulai + '</td>' +
 								'<td style="text-align:right;">' +
-								'<a href="javascript:;" class="btn btn-warning btn-xs item_edit_capa" data="' + data[i].id_cap + '"><i class="fas fa-edit"></i></a>' + ' ' +
-								'<a href="javascript:;" class="btn btn-danger btn-xs item_hapus_capa" data="' + data[i].id_cap + '"><i class="fas fa-trash"></i></a>' +
+								'<a href="javascript:;" class="btn btn-warning btn-sm item_edit_capa" data="' + data[i].id_cap + '"><i class="fas fa-edit"></i></a>' + ' ' +
+								'<a href="javascript:;" class="btn btn-danger btn-sm item_hapus_capa" data="' + data[i].id_cap + '"><i class="fas fa-trash"></i></a>' +
 								'</td>' +
 								'</tr>';
 						}
@@ -2249,8 +2249,8 @@
 								'<td>' + new Intl.NumberFormat().format(data[i].tanah) + '</td>' +
 								'<td>' + new Intl.NumberFormat().format(data[i].hutang_jpk) + '</td>' +
 								'<td style="text-align:right;">' +
-								'<a href="javascript:;" class="btn btn-warning btn-xs item_edit_capi" data="' + data[i].id_capi + '"><i class="fas fa-edit"></i></a>' + ' ' +
-								'<a href="javascript:;" class="btn btn-danger btn-xs item_hapus_capi" data="' + data[i].id_capi + '"><i class="fas fa-trash"></i></a>' +
+								'<a href="javascript:;" class="btn btn-warning btn-sm item_edit_capi" data="' + data[i].id_capi + '"><i class="fas fa-edit"></i></a>' + ' ' +
+								'<a href="javascript:;" class="btn btn-danger btn-sm item_hapus_capi" data="' + data[i].id_capi + '"><i class="fas fa-trash"></i></a>' +
 								'</td>' +
 								'</tr>';
 						}
@@ -2441,8 +2441,8 @@
 								'<td>' + new Intl.NumberFormat().format(data[i].saldo) + '</td>' +
 								'<td>' + data[i].jenis + '</td>' +
 								'<td style="text-align:right;">' +
-								'<a href="javascript:;" class="btn btn-warning btn-xs item_edit_cashawpend" data="' + data[i].id_cf + '"><i class="fas fa-edit"></i></a>' + ' ' +
-								'<a href="javascript:;" class="btn btn-danger btn-xs item_hapus_cashawpend" data="' + data[i].kode + '"><i class="fas fa-trash"></i></a>' +
+								'<a href="javascript:;" class="btn btn-warning btn-sm item_edit_cashawpend" data="' + data[i].id_cf + '"><i class="fas fa-edit"></i></a>' + ' ' +
+								'<a href="javascript:;" class="btn btn-danger btn-sm item_hapus_cashawpend" data="' + data[i].kode + '"><i class="fas fa-trash"></i></a>' +
 								'</td>' +
 								'</tr>';
 						}
@@ -2587,8 +2587,8 @@
 								'<td>' + new Intl.NumberFormat().format(data[i].saldo) + '</td>' +
 								'<td>' + data[i].jenis + '</td>' +
 								'<td style="text-align:right;">' +
-								'<a href="javascript:;" class="btn btn-warning btn-xs item_edit_cashawpeng" data="' + data[i].id_cf + '"><i class="fas fa-edit"></i></a>' + ' ' +
-								'<a href="javascript:;" class="btn btn-danger btn-xs item_hapus_cashawpeng" data="' + data[i].kode + '"><i class="fas fa-trash"></i></a>' +
+								'<a href="javascript:;" class="btn btn-warning btn-sm item_edit_cashawpeng" data="' + data[i].id_cf + '"><i class="fas fa-edit"></i></a>' + ' ' +
+								'<a href="javascript:;" class="btn btn-danger btn-sm item_hapus_cashawpeng" data="' + data[i].kode + '"><i class="fas fa-trash"></i></a>' +
 								'</td>' +
 								'</tr>';
 						}
@@ -2733,8 +2733,8 @@
 								'<td>' + new Intl.NumberFormat().format(data[i].saldo) + '</td>' +
 								'<td>' + data[i].jenis + '</td>' +
 								'<td style="text-align:right;">' +
-								'<a href="javascript:;" class="btn btn-warning btn-xs item_edit_cashsetpend" data="' + data[i].id_cf + '"><i class="fas fa-edit"></i></a>' + ' ' +
-								'<a href="javascript:;" class="btn btn-danger btn-xs item_hapus_cashsetpend" data="' + data[i].kode + '"><i class="fas fa-trash"></i></a>' +
+								'<a href="javascript:;" class="btn btn-warning btn-sm item_edit_cashsetpend" data="' + data[i].id_cf + '"><i class="fas fa-edit"></i></a>' + ' ' +
+								'<a href="javascript:;" class="btn btn-danger btn-sm item_hapus_cashsetpend" data="' + data[i].kode + '"><i class="fas fa-trash"></i></a>' +
 								'</td>' +
 								'</tr>';
 						}
@@ -2879,8 +2879,8 @@
 								'<td>' + new Intl.NumberFormat().format(data[i].saldo) + '</td>' +
 								'<td>' + data[i].jenis + '</td>' +
 								'<td style="text-align:right;">' +
-								'<a href="javascript:;" class="btn btn-warning btn-xs item_edit_cashsetpeng" data="' + data[i].id_cf + '"><i class="fas fa-edit"></i></a>' + ' ' +
-								'<a href="javascript:;" class="btn btn-danger btn-xs item_hapus_cashsetpeng" data="' + data[i].kode + '"><i class="fas fa-trash"></i></a>' +
+								'<a href="javascript:;" class="btn btn-warning btn-sm item_edit_cashsetpeng" data="' + data[i].id_cf + '"><i class="fas fa-edit"></i></a>' + ' ' +
+								'<a href="javascript:;" class="btn btn-danger btn-sm item_hapus_cashsetpeng" data="' + data[i].kode + '"><i class="fas fa-trash"></i></a>' +
 								'</td>' +
 								'</tr>';
 						}
@@ -3025,8 +3025,8 @@
 								'<td>' + new Intl.NumberFormat().format(data[i].saldo) + '</td>' +
 								'<td>' + data[i].jenis + '</td>' +
 								'<td style="text-align:right;">' +
-								'<a href="javascript:;" class="btn btn-warning btn-xs item_edit_cashsethut" data="' + data[i].id_cf + '"><i class="fas fa-edit"></i></a>' + ' ' +
-								'<a href="javascript:;" class="btn btn-danger btn-xs item_hapus_cashsethut" data="' + data[i].kode + '"><i class="fas fa-trash"></i></a>' +
+								'<a href="javascript:;" class="btn btn-warning btn-sm item_edit_cashsethut" data="' + data[i].id_cf + '"><i class="fas fa-edit"></i></a>' + ' ' +
+								'<a href="javascript:;" class="btn btn-danger btn-sm item_hapus_cashsethut" data="' + data[i].kode + '"><i class="fas fa-trash"></i></a>' +
 								'</td>' +
 								'</tr>';
 						}
@@ -3171,8 +3171,8 @@
 								'<td>' + new Intl.NumberFormat().format(data[i].saldo) + '</td>' +
 								'<td>' + data[i].jenis + '</td>' +
 								'<td style="text-align:right;">' +
-								'<a href="javascript:;" class="btn btn-warning btn-xs item_edit_cashpendlain" data="' + data[i].id_cf + '"><i class="fas fa-edit"></i></a>' + ' ' +
-								'<a href="javascript:;" class="btn btn-danger btn-xs item_hapus_cashpendlain" data="' + data[i].kode + '"><i class="fas fa-trash"></i></a>' +
+								'<a href="javascript:;" class="btn btn-warning btn-sm item_edit_cashpendlain" data="' + data[i].id_cf + '"><i class="fas fa-edit"></i></a>' + ' ' +
+								'<a href="javascript:;" class="btn btn-danger btn-sm item_hapus_cashpendlain" data="' + data[i].kode + '"><i class="fas fa-trash"></i></a>' +
 								'</td>' +
 								'</tr>';
 						}
@@ -3317,8 +3317,8 @@
 								'<td>' + new Intl.NumberFormat().format(data[i].saldo) + '</td>' +
 								'<td>' + data[i].jenis + '</td>' +
 								'<td style="text-align:right;">' +
-								'<a href="javascript:;" class="btn btn-warning btn-xs item_edit_cashpenglain" data="' + data[i].id_cf + '"><i class="fas fa-edit"></i></a>' + ' ' +
-								'<a href="javascript:;" class="btn btn-danger btn-xs item_hapus_cashpenglain" data="' + data[i].kode + '"><i class="fas fa-trash"></i></a>' +
+								'<a href="javascript:;" class="btn btn-warning btn-sm item_edit_cashpenglain" data="' + data[i].id_cf + '"><i class="fas fa-edit"></i></a>' + ' ' +
+								'<a href="javascript:;" class="btn btn-danger btn-sm item_hapus_cashpenglain" data="' + data[i].kode + '"><i class="fas fa-trash"></i></a>' +
 								'</td>' +
 								'</tr>';
 						}
@@ -3463,8 +3463,8 @@
 								'<td>' + data[i].kelemahan + '</td>' +
 								'<td>' + data[i].peluang + '</td>' +
 								'<td style="text-align:right;">' +
-								'<a href="javascript:;" class="btn btn-warning btn-xs item_edit_con" data="' + data[i].id_con + '"><i class="fas fa-edit"></i></a>' + ' ' +
-								'<a href="javascript:;" class="btn btn-danger btn-xs item_hapus_con" data="' + data[i].id_con + '"><i class="fas fa-trash"></i></a>' +
+								'<a href="javascript:;" class="btn btn-warning btn-sm item_edit_con" data="' + data[i].id_con + '"><i class="fas fa-edit"></i></a>' + ' ' +
+								'<a href="javascript:;" class="btn btn-danger btn-sm item_hapus_con" data="' + data[i].id_con + '"><i class="fas fa-trash"></i></a>' +
 								'</td>' +
 								'</tr>';
 						}
@@ -3599,8 +3599,8 @@
 								'<td>' + data[i].nama + '</td>' +
 								'<td>' + data[i].no_shm + '</td>' +
 								'<td style="text-align:right;">' +
-								'<a href="javascript:;" class="btn btn-warning btn-xs item_edit_colta" data="' + data[i].id_col2 + '"><i class="fas fa-edit"></i></a>' + ' ' +
-								'<a href="javascript:;" class="btn btn-danger btn-xs item_hapus_colta" data="' + data[i].id_col2 + '"><i class="fas fa-trash"></i></a>' +
+								'<a href="javascript:;" class="btn btn-warning btn-sm item_edit_colta" data="' + data[i].id_col2 + '"><i class="fas fa-edit"></i></a>' + ' ' +
+								'<a href="javascript:;" class="btn btn-danger btn-sm item_hapus_colta" data="' + data[i].id_col2 + '"><i class="fas fa-trash"></i></a>' +
 								'</td>' +
 								'</tr>';
 						}
@@ -3782,8 +3782,8 @@
 								'<td>' + data[i].nama_stnk + '</td>' +
 								'<td>' + data[i].type + '</td>' +
 								'<td style="text-align:right;">' +
-								'<a href="javascript:;" class="btn btn-warning btn-xs item_edit_colken" data="' + data[i].id_col + '"><i class="fas fa-edit"></i></a>' + ' ' +
-								'<a href="javascript:;" class="btn btn-danger btn-xs item_hapus_colken" data="' + data[i].id_col + '"><i class="fas fa-trash"></i></a>' +
+								'<a href="javascript:;" class="btn btn-warning btn-sm item_edit_colken" data="' + data[i].id_col + '"><i class="fas fa-edit"></i></a>' + ' ' +
+								'<a href="javascript:;" class="btn btn-danger btn-sm item_hapus_colken" data="' + data[i].id_col + '"><i class="fas fa-trash"></i></a>' +
 								'</td>' +
 								'</tr>';
 						}
@@ -3958,8 +3958,8 @@
 								'<td>' + data[i].oleh + '</td>' +
 								'<td>' + data[i].sebagai + '</td>' +
 								'<td style="text-align:right;">' +
-								'<a href="javascript:;" class="btn btn-warning btn-xs item_edit_real" data="' + data[i].id_real + '"><i class="fas fa-edit"></i></a>' + ' ' +
-								'<a href="javascript:;" class="btn btn-danger btn-xs item_hapus_real" data="' + data[i].id_real + '"><i class="fas fa-trash"></i></a>' +
+								'<a href="javascript:;" class="btn btn-warning btn-sm item_edit_real" data="' + data[i].id_real + '"><i class="fas fa-edit"></i></a>' + ' ' +
+								'<a href="javascript:;" class="btn btn-danger btn-sm item_hapus_real" data="' + data[i].id_real + '"><i class="fas fa-trash"></i></a>' +
 								'</td>' +
 								'</tr>';
 						}
@@ -4090,8 +4090,8 @@
 								'<td>' + data[i].capacity + '</td>' +
 								'<td>' + data[i].capital + '</td>' +
 								'<td style="text-align:right;">' +
-								'<a href="javascript:;" class="btn btn-warning btn-xs item_edit_usul" data="' + data[i].id_usulan + '"><i class="fas fa-edit"></i></a>' + ' ' +
-								'<a href="javascript:;" class="btn btn-danger btn-xs item_hapus_usul" data="' + data[i].id_usulan + '"><i class="fas fa-trash"></i></a>' +
+								'<a href="javascript:;" class="btn btn-warning btn-sm item_edit_usul" data="' + data[i].id_usulan + '"><i class="fas fa-edit"></i></a>' + ' ' +
+								'<a href="javascript:;" class="btn btn-danger btn-sm item_hapus_usul" data="' + data[i].id_usulan + '"><i class="fas fa-trash"></i></a>' +
 								'</td>' +
 								'</tr>';
 						}
@@ -4304,6 +4304,12 @@
 									break;
 								case "Layak dgn catatan":
 									$badge = "warning";
+									break;
+								case "Ditolak oleh Kabag":
+									$badge = "danger";
+									break;
+								case "ACC oleh Kabag":
+									$badge = "success";
 									break;
 								default:
 									$badge = "success";

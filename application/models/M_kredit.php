@@ -10,7 +10,12 @@ class M_kredit extends CI_Model
 	}
 
 	function show_latar_belakang($user){
-		$hasil=$this->db->query("SELECT * FROM latar_belakang WHERE user='$user'");
+		//awalnya from latar_belakang join pengajuan LEFT JOIN tapi id_lb gak tampil
+		//karena id_lb ngambil dari pengajuan
+		$hasil=$this->db->query("SELECT * FROM pengajuan
+											RIGHT JOIN latar_belakang
+											ON latar_belakang.id_lb=pengajuan.id_lb 
+											WHERE latar_belakang.user='$user'");
 		return $hasil->result();
 	}
         
@@ -58,6 +63,7 @@ class M_kredit extends CI_Model
 					);
 			}
 		}
+		// die(var_dump($hasil));
 		return $hasil;
 	}
 		

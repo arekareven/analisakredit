@@ -38,15 +38,33 @@
 							switch ($row->status) {
 								case "Diajukan":
 									$badge = "info";
+									$item_edit = "item_edit";
+									$item_resume = "item_resume";
 									break;
 								case "Tidak layak":
 									$badge = "danger";
+									$item_edit = "item_edit";
+									$item_resume = "item_resume";
 									break;
 								case "Layak dgn catatan":
 									$badge = "warning";
+									$item_edit = "item_edit";
+									$item_resume = "item_resume";
+									break;
+								case "Ditolak oleh Kabag":
+									$badge = "danger";
+									$item_edit = "";
+									$item_resume = "";
+									break;
+								case "ACC oleh Kabag":
+									$badge = "success";
+									$item_edit = "item_edit";
+									$item_resume = "item_resume";
 									break;
 								default:
 									$badge = "success";
+									$item_edit = "item_edit";
+									$item_resume = "item_resume";
 									break;
 							}
 		
@@ -63,8 +81,8 @@
 									<a href='".$linkZoom."' target='_blank'>".$waktuZoom."</a>
 								</td>	 
 								<td>
-									<a href='javascript:;' class='btn btn-warning btn-circle item_edit' title='Edit Scoring' data='" . $row->id_pengajuan . "'><i class='fas fa-percent'></i></a>
-									<a href='javascript:;' class='btn btn-info btn-circle item_resume' title='Resume' data='" . $row->id_lb . "'><i class='far fa-file'></i></a>
+									<a href='javascript:;' class='btn btn-warning btn-sm ".$item_edit."' title='Edit Scoring' data='" . $row->id_pengajuan . "'><i class='fas fa-percent'></i></a>
+									<a href='javascript:;' class='btn btn-info btn-sm ".$item_resume."' title='Resume' data='" . $row->id_lb . "'><i class='far fa-file'></i></a>
 									</td>                        					
 									</tr>";
 								}
@@ -77,7 +95,7 @@
 
     <!-- Modal skoring-->
     <div class="modal fade" id="scoring" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5>SKORING</h5>

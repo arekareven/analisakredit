@@ -59,18 +59,19 @@ class Kabag extends CI_Controller
 		
 	public function update_resume()
 	{
-		$id_resume = $this->input->post('id_resume');
-		$id_pengajuan = $this->input->post('id_pengajuan');
+		$id_lb = $this->input->post('id_lb');
+		// $id_pengajuan = $this->input->post('id_pengajuan');
 		$kabag = $this->input->post('kabag');
+		$analis = $this->input->post('analis');
 
-		$this->m_kabag->update_resume($id_resume,$kabag);
+		$this->m_kabag->update_resume($id_lb,$kabag,$analis);
 	}
 		
 	function get_resume()
 	{
-		// $id_resume = $this->input->get('id');
-		$id_resume = $this->input->post('id_resume');
-		$data = $this->m_kabag->get_resume_by_kode($id_resume);
+		$id_lb = $this->input->get('id');
+		// $id_resume = $this->input->post('id_resume');
+		$data = $this->m_kabag->get_resume_by_kode($id_lb);
 		echo json_encode($data);
 	}
 

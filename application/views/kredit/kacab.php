@@ -45,6 +45,12 @@
 								case "Layak dgn catatan":
 									$badge = "warning";
 									break;
+								case "Ditolak oleh Kabag":
+									$badge = "danger";
+									break;
+								case "ACC oleh Kabag":
+									$badge = "success";
+									break;
 								default:
 									$badge = "success";
 									break;
