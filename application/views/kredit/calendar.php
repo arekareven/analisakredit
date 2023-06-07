@@ -79,7 +79,8 @@
 	<div class="container">
     <div class="row" style="width:100%">
        <div class="col-md-12">
-           <div id="calendar"></div>
+           <div id="calendar">
+		   </div>
        </div>
     </div>
 	</div>
