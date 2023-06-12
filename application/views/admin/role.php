@@ -31,8 +31,8 @@
                                         <td><?= $r['role']; ?></td>
                                         <td>
                                             <a href="<?= base_url('admin/roleaccess/') . $r['id']; ?>" class="badge badge-warning">access</a>
-                                            <a href="" class="badge badge-success">edit</a>
-                                            <a href="" class="badge badge-danger">delete</a>
+                                            <a href="#" data-toggle="modal" data-target="#modalEditRole" class="badge badge-success">edit</a>
+                                            <a href="<?= base_url('admin/delete_role/') . $r['id']; ?>" class="badge badge-danger">delete</a>
                                         </td>
                                     </tr>
                                     <?php $i++; ?>
@@ -53,7 +53,7 @@
 </div>
 <!-- End of Main Content -->
 
-<!-- Modal add menu -->
+<!-- Modal add role -->
 <div class="modal fade" id="modalNewRole" tabindex="-1" aria-labelledby="modalNewRoleLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -61,11 +61,37 @@
                 <h5 class="modal-title" id="modalNewRoleLabel">Add New Role</h5>
                 <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="<?= base_url('admin/role'); ?>" method="POST">
+            <form action="<?= base_url('admin/add_role'); ?>" method="POST">
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="formGroupExampleInput" class="form-label">Role name</label>
+                        <input type="hidden" class="form-control" id="id" name="id">
                         <input type="text" class="form-control" id="role" name="role" placeholder="Role Name">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Add</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modal edit role -->
+<div class="modal fade" id="modalEditRole" tabindex="-1" aria-labelledby="modalEditRoleLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalEditRoleLabel">Edit Role</h5>
+                <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="<?= base_url('admin/edit_role'); ?>" method="POST">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="formGroupExampleInput" class="form-label">Role name</label>
+                        <input type="text" class="form-control" id="id" name="id">
+                        <input type="text" class="form-control" id="role_edit" name="role_edit">
                     </div>
                 </div>
                 <div class="modal-footer">

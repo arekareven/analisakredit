@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col-lg-6">
 
-            <?= $this->session->flashdata('message'); ?>
+            <?= $this->session->flashdata('update'); ?>
 
             <h5>Role : <?= $role['role']; ?></h5>
 

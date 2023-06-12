@@ -39,6 +39,11 @@ class Admin extends CI_Controller
 		$this->load->view('templates/footer');
 	}
 
+	public function add_role()
+	{
+		$this->m_admin->add_role();
+	}
+
 	public function user()
 	{
 		$data['title'] = 'User';
@@ -90,11 +95,12 @@ class Admin extends CI_Controller
 			$this->db->delete('user_access_menu', $data);
 		}
 
-		$this->session->set_flashdata('message', '<div class="alert alert-success"
+		$this->session->set_flashdata('update', '<div class="alert alert-success"
 		role="alert">Access Changed!</div>');
 	}
 
-	public function edit_role()
+	//untuk user
+	public function edit_user_role()
 	{
 		$id = $this->input->post('id');
 		$this->m_admin->ubah_data($id);

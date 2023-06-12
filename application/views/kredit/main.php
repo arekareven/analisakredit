@@ -4279,13 +4279,6 @@
 							if (data[i].waktu_zoom==null){
                             	$waktuZoom = "Belum Ada";								
 								$linkZoom = "#";
-							// }else{
-							// 	// $waktuZoom = new Date(data[i].waktu_zoom);
-							// 	$waktuZoom = data[i].waktu_zoom;
-							// 	$linkZoom = data[i].link_zoom;
-							// 	if($linkZoom = "Offline"){
-							// 		$linkZoom = "#"
-							// 	}
 							}else{
 								if(data[i].link_zoom == 'Offline'){
 									$linkZoom = '#';
@@ -4305,10 +4298,10 @@
 								case "Layak dgn catatan":
 									$badge = "warning";
 									break;
-								case "Ditolak oleh Kabag":
+								case "Ditolak":
 									$badge = "danger";
 									break;
-								case "ACC oleh Kabag":
+								case "Diteruskan ke Analis":
 									$badge = "success";
 									break;
 								default:
@@ -4346,7 +4339,6 @@
                             console.log(data)
                         }
                     }),
-                    
 				    tampil_data_pengajuan();
                     document.getElementById("pengajuan").reset();
                 }

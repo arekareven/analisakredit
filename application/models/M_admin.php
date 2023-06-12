@@ -10,32 +10,21 @@ class M_admin extends CI_Model
         $this->load->helper(array('url'));
     }
 
+	public function add_role(){
+		
+        $role	= $this->input->post('role');
+		
+		$data = array(
+			'role'	    	=> $role
+		);
+
+		$this->db->insert('user_role', $data);
+		redirect('admin/role');
+	}
+
     public function tampil_data()
     {
         return $this->db->query("SELECT * FROM user");
-    }
-
-    function edit_data($data)
-    {
-
-        $id_analisis                = $this->input->post('id_analisis');
-        $nama    = $this->input->post('nama');
-
-        $kondisi = array('id_analisis' => $id_analisis);
-
-        $data = array(
-            'nama'    => $nama
-        );
-
-        $this->db->update('analisis', $data, $kondisi);
-        redirect('analisis');
-    }
-
-    function hapus_data($id_analisis)
-    {
-        $this->db->where(array('id_analisis' => $id_analisis));
-        $this->db->delete('analisis');
-        redirect('analisis');
     }
 
     function ubah_data($data)

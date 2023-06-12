@@ -56,21 +56,19 @@ class Kacab extends CI_Controller
 		$this->load->view('kredit/calendar', $data);
 		$this->load->view('templates/footer');
 	}
-			
+		
 	public function update_resume()
 	{
-		$id_resume = $this->input->post('id_resume');
-		$id_pengajuan = $this->input->post('id_pengajuan');
+		$id_lb = $this->input->post('id_lb');
 		$kacab = $this->input->post('kacab');
 
-		$this->m_kacab->update_resume($id_resume,$kacab);
+		$this->m_kacab->update_resume($id_lb,$kacab);
 	}
 		
 	function get_resume()
 	{
-		// $id_resume = $this->input->get('id');
-		$id_resume = $this->input->post('id_resume');
-		$data = $this->m_kacab->get_resume_by_kode($id_resume);
+		$id_lb = $this->input->get('id');
+		$data = $this->m_kacab->get_resume_by_kode($id_lb);
 		echo json_encode($data);
 	}
 

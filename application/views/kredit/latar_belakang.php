@@ -585,10 +585,10 @@
 									case "Layak dgn catatan":
 										$badge = "warning";
 										break;
-									case "Ditolak oleh Kabag":
+									case "Ditolak":
 										$badge = "danger";
 										break;
-									case "ACC oleh Kabag":
+									case "Diteruskan ke Analis":
 										$badge = "success";
 										break;
 									default:

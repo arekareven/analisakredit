@@ -33,25 +33,14 @@ class M_kabag extends CI_Model
 
 		$lb = $this->db->query("SELECT * FROM pengajuan WHERE kantor='$kantor'");
 		return $lb;
-
-		// $lb = $this->db->query("SELECT * FROM pengajuan 
-		// JOIN `resume` ON pengajuan.id_pengajuan=resume.id_pengajuan
-		// WHERE pengajuan.kantor='$kantor'");
-		// WHERE pengajuan.kantor='$kantor' AND resume.analis IS NOT NULL AND pengajuan.plafond>=50000000");
-		// return $lb;
-    }
 		
-    function cek_id($id_resume)
-	{
-		$query = array('id_resume' => $id_resume);
-		return $this->db->get_where('resume', $query);
-	}
+    }
 	
-	public function update_resume($id_lb,$kabag,$analis)
+	public function update_resume($id_lb,$kabag)
 	{
-		if($kabag == 'ACC oleh Kabag'){
+		if($kabag == 'Diteruskan ke Analis'){
 			$this->db->query("UPDATE pengajuan SET `status`='$kabag' WHERE id_lb='$id_lb'");
-			$this->sendEmail($id_lb,$analis);
+			$this->sendEmail($id_lb);
 		}else{
 			$this->db->query("UPDATE pengajuan SET `status`='$kabag' WHERE id_lb='$id_lb'");
 		}
@@ -79,8 +68,8 @@ class M_kabag extends CI_Model
 		return $hasil;
 	}
 
-	//kirim email ketika pengajuan,dikirimkan ke kabag
-	private function sendEmail($id_lb,$analis)
+	//kirim email ketika pengajuan,dikirimkan ke analis
+	private function sendEmail($id_lb)
 	{
 		// PHPMailer object
 		$response = false;
@@ -102,8 +91,15 @@ class M_kabag extends CI_Model
 		$mail->Subject = 'Info ACC dari Kabag | LAS Ekadharma'; //subject email
 
 		// Add a recipient
-		foreach ($this->db->query("SELECT * FROM user WHERE `name`='$analis' AND role_id=3")->result() as $row) {
-			$mail->addAddress($row->email); //(analis)
+		$id_lb = $this->input->post('id_lb');
+		foreach ($this->db->query("SELECT * FROM pengajuan WHERE id_lb=$id_lb")->result() as $row) {
+
+			$nama_analis = $row->nama_analis;
+
+			foreach ($this->db->query("SELECT * FROM user WHERE `name`='$nama_analis'")->result() as $row) {
+				$mail->addAddress($row->email); //(analis)
+			}
+			
 		}
 
 		// Set email format to HTML

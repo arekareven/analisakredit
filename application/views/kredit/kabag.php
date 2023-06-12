@@ -45,10 +45,10 @@
 								case "Layak dgn catatan":
 									$badge = "warning";
 									break;
-								case "Ditolak oleh Kabag":
+								case "Ditolak":
 									$badge = "danger";
 									break;
-								case "ACC oleh Kabag":
+								case "Diteruskan ke Analis":
 									$badge = "success";
 									break;
 								default:
@@ -79,36 +79,6 @@
             </div>
         </div>
     </div>
-
-    
-    <!-- Modal zoom-->
-    <div class="modal fade" id="zoomModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5>Zoom</h5>
-                    <button id="close_pengajuan" type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <form id="zoom">
-                    <div class="modal-body">
-                        <div class="form-group row">
-                            <label for="waktu" class="col-sm-2 col-form-label">Waktu</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="id_pengajuan" name="id_pengajuan">
-                                <input type="text" class="form-control" id="id_lb" name="id_lb">
-                                <input type="datetime-local" class="form-control" id="waktu" name="waktu"></input>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" id="btn_zoom" class="btn btn-primary">Simpan</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
 	
     <!-- Modal resume-->
     <div class="modal fade" id="resume" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -123,12 +93,11 @@
                 <form action="<?= base_url('kabag/update_resume'); ?>" method="post" id="form_resume">
                     <div class="modal-body">                       
                         <input type="hidden" class="form-control" id="id_lb" name="id_lb">
-                        <input type="hidden" class="form-control" id="analis" name="analis" value=<?php echo $row->nama_analis ?>>
 						<div class="col-md-5 mb-3">
-						<select class="form-control" aria-label="Default select example" id="kabag" name="kabag">
-							<option value="ACC oleh Kabag">ACC</option>
-							<option value="Ditolak oleh Kabag">Tolak</option>
-						</select>
+							<select class="form-control" aria-label="Default select example" id="kabag" name="kabag">
+								<option value="Diteruskan ke Analis">Lanjut Survey</option>
+								<option value="Ditolak">Tolak</option>
+							</select>
 						</div>
 						<div class="col-md-12 mb-3">
 							<label for="uraian_kabag">Uraian</label>
@@ -143,38 +112,6 @@
             </div>
         </div>
     </div>
-
-	<!-- js zoom -->
-    <script type="text/javascript">
-        
-        $(document).ready(function() {
-
-			//simpan zoom
-            $('#btn_zoom').on('click', function() {
-                var condition = $('#zoom').serialize();
-                $.ajax({
-                        url: "<?php echo base_url(); ?>kabag/zoom_meeting",
-                        type: "POST",
-                        data: condition,
-                        dataType: "JSON",
-                        success: function(data) {
-                            console.log(data)
-                        }
-                    }),
-				    document.getElementById("zoom").reset();    
-                    $('#zoomModal').modal('hide');
-                    window.location.reload();
-                    
-            })
-
-        });
-
-        function AddDataZoom(id_pengajuan,id_lb) {
-            document.getElementById('id_pengajuan').value = id_pengajuan;
-            document.getElementById('id_lb').value = id_lb;
-        }
-
-    </script>
 	
 	<!-- js resume -->
 	<script type="text/javascript">
