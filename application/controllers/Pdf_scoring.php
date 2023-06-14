@@ -1121,10 +1121,19 @@ class Pdf_scoring extends CI_Controller
 						break;
 					}
 
+					
+
+					$collateral = $this->db->query("SELECT * FROM collateral WHERE id_lb='$id_lb'")->result();
+					$collateral_tanah = $this->db->query("SELECT * FROM collateral_tanah WHERE id_lb='$id_lb'")->result();
+
 					$pdf->SetFont('Times', '', 11);
 					$pdf->Cell(8,6,'',0,0,'C');
 					$pdf->Cell(35,6,'',0,0,'C');
-					$pdf->Cell(67,6,'- Sumber dana lainnya',0,0);
+					if($collateral != null && $collateral_tanah != null){
+						$pdf->Cell(67,6,'- SHM',0,0);
+					}else{
+						$pdf->Cell(67,6,'- Kondisi Jaminan',0,0);
+					}
 					$pdf->Cell(15,6,$data->serT_nilai,0,0,'C');
 					$pdf->Cell(15,6,'',0,0,'C');
 					$pdf->Cell(15,6,'',0,0,'C');
@@ -1150,7 +1159,13 @@ class Pdf_scoring extends CI_Controller
 
 					$pdf->Cell(8,6,'',0,0,'C');
 					$pdf->Cell(35,6,'',0,0,'C');
-					$pdf->Cell(67,6,'- BPKB',0,0);
+					if($collateral != null && $collateral_tanah == null){
+						$pdf->Cell(67,6,'- BPKB',0,0);
+					}elseif($collateral == null && $collateral_tanah != null){
+						$pdf->Cell(67,6,'- SHM',0,0);
+					}else{
+						$pdf->Cell(67,6,'- BPKB',0,0);
+					}
 					$pdf->Cell(15,6,$data->bpkb_nilai,0,0,'C');
 					$pdf->Cell(15,6,'',0,0,'C');
 					$pdf->Cell(15,6,'',0,0,'C');

@@ -28,8 +28,9 @@ class Pdf_usulan extends CI_Controller
                                         ON usulan.id_lb=cashflow_b.id_lb
                                         JOIN capital_b 
                                         ON usulan.id_lb=capital_b.id_lb
-                                        WHERE usulan.id_lb='$id_lb'");
-		foreach ($lb->result() as $data) {
+                                        WHERE usulan.id_lb='$id_lb'")->result();
+		// die(print_r($lb[0]));			
+		foreach ($lb as $data) {
 			if($data->lainnya != null){
 			
 				$provisi = $data->plafond_usulan * ($data->provisi / 100);

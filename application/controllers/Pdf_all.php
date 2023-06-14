@@ -16,8 +16,6 @@ class Pdf_all extends CI_Controller
         $pdf->AddPage();
         // margin
         $pdf->SetMargins(10, 10, 10);
-        // setting jenis font yang akan digunakan
-        $pdf->SetFont('Times', 'B', 12);
         // mencetak string 
         $id_lb = $_GET['id_lb'];
 
@@ -1463,20 +1461,17 @@ class Pdf_all extends CI_Controller
         }
 
         //USULAN
+        $id_lb = $_GET['id_lb'];
 		$pdf->AddPage();
-		$lb = $this->db->query("SELECT * FROM usulan JOIN latar_belakang 
-                                        ON usulan.id_lb=latar_belakang.id_lb
-                                        JOIN cashflow_b 
-                                        ON usulan.id_lb=cashflow_b.id_lb
-                                        JOIN capital_b 
-                                        ON usulan.id_lb=capital_b.id_lb
-                                        WHERE usulan.id_lb='$id_lb'");
-		foreach ($lb->result() as $data) {
-			
+		$dbusulan = $this->db->query("SELECT * FROM usulan JOIN latar_belakang ON usulan.id_lb=latar_belakang.id_lb
+                                        JOIN cashflow_b ON usulan.id_lb=cashflow_b.id_lb
+                                        JOIN capital_b ON usulan.id_lb=capital_b.id_lb
+                                        WHERE usulan.id_lb='$id_lb'")->result();
+		// die(print_r($dbusulan[0]));										
+		foreach ($dbusulan as $data) {
 			$provisi = $data->plafond_usulan * ($data->provisi / 100);
 			$administrasi = $data->plafond_usulan * ($data->administrasi / 100);
-			$biaya = $provisi + $administrasi + $data->asuransi + $data->materai + $data->apht + $data->skmht
-			+ $data->titipan + $data->fiduciare + $data->legalisasi + $data->roya + $data->lainnya;
+			$biaya = $provisi + $administrasi + $data->asuransi + $data->materai + $data->apht + $data->skmht + $data->titipan + $data->fiduciare + $data->legalisasi + $data->roya + $data->lainnya;
 			
 			$pdf->SetFont('Times', 'B', 12);
 			$pdf->Cell(79, 5.5, '7. USULAN KREDIT', 0, 1, '');
@@ -1544,12 +1539,6 @@ class Pdf_all extends CI_Controller
 			$pdf->Cell(69, 5.5, 'Tanggal Realisasi', 0, 0, '');
 			$pdf->Cell(5, 5.5, ':', 0, 0, '');
 			$pdf->Cell(5, 5.5, '', 0, 1, '');
-			// $pdf->Cell(0, 5.5, date('d-m-Y', strtotime($data->realisasi)), 0, 1);
-			/*
-            $pdf->Cell(69, 5.5, 'Angsuran', 0, 0, '');
-            $pdf->Cell(5, 5.5, ':', 0, 0, '');
-            $pdf->Cell(0, 5.5, 'Rp. ' . number_format($data->angsuran), 0, 1);
-            */
 			$pdf->Cell(69, 5.5, 'Notaris', 0, 0, '');
 			$pdf->Cell(5, 5.5, ':', 0, 0, '');
 			$pdf->Cell(0, 5.5, $data->notaris, 0, 1);
@@ -1613,9 +1602,16 @@ class Pdf_all extends CI_Controller
 				$pdf->Cell(100, 5.5, $data->oleh, 1, 0, 'L');
 				$pdf->Cell(80, 5.5, $data->sebagai, 1, 1, 'L');
 			}
-			
-			$pdf->Output('LAS', 'I');
+			break;
         }
+		
+        //Jaminan
+		$pdf->AddPage();
+		$jaminan = $this->db->get_where('pengajuan', array('id_lb' => $id_lb))->result();
+		foreach ($jaminan as $data) {
+		$pdf->Image('./upload/file/jaminan/'.$data->file, 60, 30, 90, 0, 'PNG');
+		$pdf->Output( 'I','all.pdf');
+		}
 
     }
 

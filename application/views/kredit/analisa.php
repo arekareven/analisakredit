@@ -1525,11 +1525,11 @@
 										<option value="0">BPKB</option>
 										<option value="1">SHM</option>
 										<option value="2">BPKB+SHM</option>
-										<option value="3">KTPG</option>
+										<!-- <option value="3">KTPG</option> -->
 									</select>
 									<br>
 									<div id="result">
-										
+										<!-- data -->
 									</div>
 								</div>
 								<script>
@@ -1570,6 +1570,22 @@
 														<td></td>
 														<td></td>
 														<td id="UsYd_keterangan"></td>
+													</tr>
+													<tr>    
+														<td>Kondisi Jaminan</td>
+														<td>
+															<select class="custom-select" id="serT_nilai" name="serT_nilai" onchange="math_coll()">
+																<option></option>
+																<option>1</option>
+																<option>2</option>
+																<option>3</option>
+																<option>4</option>
+																<option>5</option>
+															</select>
+														</td>
+														<td></td>
+														<td></td>
+														<td id="serT_keterangan"></td>
 													</tr>
 													<tr>
 														<td>BPKB</td>
@@ -1643,7 +1659,7 @@
 														<td id="UsYd_keterangan"></td>
 													</tr>
 													<tr>    
-														<td>Sertipikat tanah</td>
+														<td>Kondisi Jaminan</td>
 														<td>
 															<select class="custom-select" id="serT_nilai" name="serT_nilai" onchange="math_coll()">
 																<option></option>
@@ -1658,6 +1674,22 @@
 														<td></td>
 														<td id="serT_keterangan"></td>
 													</tr>
+													<tr>
+														<td>SHM</td>
+														<td>
+															<select class="custom-select" id="bpkb_nilai" name="bpkb_nilai" onchange="math_coll()">
+																<option></option>
+																<option>1</option>
+																<option>2</option>
+																<option>3</option>
+																<option>4</option>
+																<option>5</option>
+															</select>
+														</td>
+														<td ></td>
+														<td ></td>
+														<td id="bpkb_keterangan"></td>
+													</tr> 
 													<tr>
 														<td>Marketable</td>
 														<td>
@@ -1714,7 +1746,7 @@
 														<td id="UsYd_keterangan"></td>
 													</tr>
 													<tr>    
-														<td>Sertipikat tanah</td>
+														<td>SHM</td>
 														<td>
 															<select class="custom-select" id="serT_nilai" name="serT_nilai" onchange="math_coll()">
 																<option></option>
@@ -1858,6 +1890,118 @@
 													</tr>
 												</tbody>
 											</table>`;
+										}
+									}
+
+									$('#UsYd_nilai').on('change', function(){
+									const selectedPackage = $('#UsYd_nilai').val();
+									switch(selectedPackage) {
+										case "1":
+											$('#UsYd_keterangan').text("Kurang");
+											break;
+										case "2":
+											$('#UsYd_keterangan').text("Sedang");
+											break;
+										case "3":
+											$('#UsYd_keterangan').text("Cukup");
+											break;
+										case "4":
+											$('#UsYd_keterangan').text("Baik");
+											break;
+										case "5":
+											$('#UsYd_keterangan').text("Sangat Baik");
+											break;
+										default:
+											$('#UsYd_keterangan').text("Mohon Isi Nilai");
+										}
+									});
+
+									$('#serT_nilai').on('change', function(){
+									const selectedPackage = $('#serT_nilai').val();
+									switch(selectedPackage) {
+										case "1":
+											$('#serT_keterangan').text("Kurang");
+											break;
+										case "2":
+											$('#serT_keterangan').text("Sedang");
+											break;
+										case "3":
+											$('#serT_keterangan').text("Cukup");
+											break;
+										case "4":
+											$('#serT_keterangan').text("Baik");
+											break;
+										case "5":
+											$('#serT_keterangan').text("Sangat Baik");
+											break;
+										default:
+											$('#serT_keterangan').text("Mohon Isi Nilai");
+										}
+									});
+
+									$('#bpkb_nilai').on('change', function(){
+									const selectedPackage = $('#bpkb_nilai').val();
+									switch(selectedPackage) {
+										case "1":
+											$('#bpkb_keterangan').text("Kurang");
+											break;
+										case "2":
+											$('#bpkb_keterangan').text("Sedang");
+											break;
+										case "3":
+											$('#bpkb_keterangan').text("Cukup");
+											break;
+										case "4":
+											$('#bpkb_keterangan').text("Baik");
+											break;
+										case "5":
+											$('#bpkb_keterangan').text("Sangat Baik");
+											break;
+										default:
+											$('#bpkb_keterangan').text("Mohon Isi Nilai");
+										}
+									});
+									
+									$('#market_nilai').on('change', function(){
+									const selectedPackage = $('#market_nilai').val();
+									switch(selectedPackage) {
+										case "1":
+											$('#market_keterangan').text("Kurang");
+											break;
+										case "2":
+											$('#market_keterangan').text("Sedang");
+											break;
+										case "3":
+											$('#market_keterangan').text("Cukup");
+											break;
+										case "4":
+											$('#market_keterangan').text("Baik");
+											break;
+										case "5":
+											$('#market_keterangan').text("Sangat Baik");
+											break;
+										default:
+											$('#market_keterangan').text("Mohon Isi Nilai");
+										}
+									});
+									
+									function math_coll() {
+										var a = parseInt(document.getElementById("UsYd_nilai").value);
+										var b = parseInt(document.getElementById("serT_nilai").value);
+										var c = parseInt(document.getElementById("bpkb_nilai").value);
+										var d = parseInt(document.getElementById("market_nilai").value);
+										if(a && b && c && d){
+											var jml = a+b+c+d;
+											var score = jml*0.2;
+											document.getElementById("jumlah_coll").innerHTML= jml;
+											document.getElementById("score_coll").innerHTML= score.toFixed(1);
+											if(score<=1){
+												document.getElementById("kelayakan_coll").innerHTML= "Tidak Layak";
+											}if(score >1 && score <=2){
+												document.getElementById("kelayakan_coll").innerHTML= "Layak Dengan Catatan";
+											}if(score > 2){
+												document.getElementById("kelayakan_coll").innerHTML= "Layak";
+											}
 										}
 									}
 								</script>
@@ -2451,7 +2595,7 @@
 <!-- End of Main Content -->
 
 
-<script>
+<!-- <script>
     $('#UsYd_nilai').on('change', function(){
     const selectedPackage = $('#UsYd_nilai').val();
     switch(selectedPackage) {
@@ -2563,4 +2707,4 @@
             }
         }
     }
-</script>
+</script> -->

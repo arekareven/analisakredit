@@ -20,9 +20,9 @@
                         <a class="nav-link" id="v-pills-collateralt-tab" data-toggle="pill" href="#v-pills-collateralt" role="tab" aria-controls="v-pills-collateralt" aria-selected="false">Collateral Tanah</a>
                         <a class="nav-link" id="v-pills-collateralk-tab" data-toggle="pill" href="#v-pills-collateralk" role="tab" aria-controls="v-pills-collateralk" aria-selected="false">Collateral Kendaraan</a>
                         <a class="nav-link" id="v-pills-usulan-tab" data-toggle="pill" href="#v-pills-usulan" role="tab" aria-controls="v-pills-usulan" aria-selected="false">Usulan</a>
+                        <a class="nav-link" id="v-pills-upload-tab" data-toggle="pill" href="#v-pills-upload" role="tab" aria-controls="v-pills-upload" aria-selected="false">Upload Jaminan</a>
                         <a class="nav-link" id="v-pills-print-tab" data-toggle="pill" href="#v-pills-print" role="tab" aria-controls="v-pills-print" aria-selected="false">Cetak</a>
                         <a class="nav-link" id="v-pills-pengajuan-tab" data-toggle="pill" href="#v-pills-pengajuan" role="tab" aria-controls="v-pills-pengajuan" aria-selected="false">Pengajuan</a>
-                        <!-- <a class="nav-link" id="v-pills-upload-tab" data-toggle="pill" href="#v-pills-upload" role="tab" aria-controls="v-pills-upload" aria-selected="false">Upload</a> -->
                     </div>
                 </div>
                 <div class="col-9">
@@ -1439,6 +1439,34 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="tab-pane fade" id="v-pills-upload" role="tabpanel" aria-labelledby="v-pills-upload-tab">
+							<form id="upload" class="box" method="post" action="<?php echo base_url('upload_jaminan/upload'); ?>" enctype="multipart/form-data">
+                                <div class="form-group">
+                                    <div class="row">
+										<div class="form-group">
+											<label for="upload">Upload Berkas</label>
+                                        	<input type="hidden" class="form-control" id="id_lb" name="id_lb" value="<?php echo $id_lb; ?>">
+											<input type="file" class="form-control-file" id="upload" name="upload" accept="image/png, image/jpeg, image/jpg, image/gif">
+										</div>
+                                    </div>
+                                </div>
+								<div class="modal-footer">
+									<button type="submit" id="btn_upload" class="btn btn-success">Upload</button>
+								</div>
+                            </form>
+							<div id="reload">
+								<table class="table table-sm" id="dataUpload">
+									<thead class="thead-dark">
+										<tr>
+											<th scope="col">Nama File</th>
+											<th scope="col">Link</th>
+										</tr>
+									</thead>
+									<tbody id="show_data_upload">
+									</tbody>
+								</table>
+							</div>
+                        </div>
                         <div class="tab-pane fade" id="v-pills-print" role="tabpanel" aria-labelledby="v-pills-print-tab">
                             <div class="modal-body">
                                 <div class="row">	
@@ -1638,34 +1666,6 @@
                                     
                                 </div>
                             </div>
-                        </div>
-                        <div class="tab-pane fade" id="v-pills-upload" role="tabpanel" aria-labelledby="v-pills-upload-tab">
-							<form id="upload" class="box" method="post" action="<?php echo base_url('analisa/upload'); ?>">
-                                <div class="form-group">
-                                    <div class="row">
-										<div class="form-group">
-											<label for="upload">Upload Berkas</label>
-                                        	<input type="hidden" class="form-control" id="id_lb" name="id_lb" value="<?php echo $id_lb; ?>">
-											<input type="file" class="form-control-file" id="upload" name="upload">
-										</div>
-                                    </div>
-                                </div>
-								<div class="modal-footer">
-									<button type="submit" id="btn_upload" class="btn btn-success">Upload</button>
-								</div>
-                            </form>
-							<div id="reload">
-								<table class="table table-sm" id="dataUpload">
-									<thead class="thead-dark">
-										<tr>
-											<th scope="col">Nama File</th>
-											<th scope="col">Link</th>
-										</tr>
-									</thead>
-									<tbody id="show_data_upload">
-									</tbody>
-								</table>
-							</div>
                         </div>
                         <div class="tab-pane fade" id="v-pills-pengajuan" role="tabpanel" aria-labelledby="v-pills-pengajuan-tab">
                             <form id="pengajuan" class="box">
@@ -4370,7 +4370,7 @@
 							$file = data[i].file;
                             html += '<tr>' +
                                 '<td>' + $file + '</td>' +
-                                '<td><button href=./upload/file/kredit/'+ $file +' target="_blank" class="btn btn-info">Buka</button></td>' +
+                                '<td><a href=./upload/file/jaminan/'+ $file +' class="btn btn-success btn-sm" target="_blank"><i class="far fa-image"></i></a></td>' +
                                 '</tr>';
                         }
                         $('#show_data_upload').html(html);

@@ -167,7 +167,7 @@ class Analisa extends CI_Controller
 
 				$file_name = 'file-'.$id_lb;
 				$config['upload_path']          = FCPATH.'/upload/file/kredit/';
-				$config['allowed_types']        = 'pdf|doc|docx';
+				$config['allowed_types']        = 'jpg|png';
 				$config['file_name']            = $file_name;
 				$config['overwrite']            = true;
 				$config['max_size']             = 1024; // 1MB
@@ -175,7 +175,7 @@ class Analisa extends CI_Controller
 				$this->load->library('upload', $config);
 
 				if ($this->upload->do_upload('upload')) {
-					if ($file_lama != '') {
+					if ($file_lama != null) {
 						unlink(FCPATH . '/upload/file/kredit/' . $file_lama);
 					}
 					$new_file = $this->upload->data('file_name');
