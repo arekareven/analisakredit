@@ -62,8 +62,12 @@ class Analisa extends CI_Controller
     //---Pengajuan
 	public function add_pengajuan()
 	{
-		$id_pengajuan = $this->input->post('id_pengajuan');
-		$this->m_analisa->add_data_pengajuan($id_pengajuan);
+		$id_lb = $this->input->post('id_lb');
+        $query = $this->m_analisa->cek_pengajuan($id_lb)->num_rows();
+        if (empty($query))
+			$this->m_analisa->add_data_pengajuan($id_lb);
+        else
+            $this->m_analisa->ganti_analis($id_lb);
 	}
 
     function data_pengajuan(){

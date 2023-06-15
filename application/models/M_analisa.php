@@ -24,7 +24,7 @@ class M_analisa extends CI_Model
     }
 
     //-----
-	public function add_data_pengajuan($x)
+	public function add_data_pengajuan($id_lb)
 	{
 		$id_lb			= $this->input->post('id_lb');
 		$analis			= $this->input->post('analis');
@@ -59,6 +59,28 @@ class M_analisa extends CI_Model
 		$this->db->insert('resume_analis', $resume_analis);
 		$this->db->insert('resume', $resume);
 		$this->sendEmail($nama_ao,$name_debitur,$plafond,$kantor);
+	}
+
+    function cek_pengajuan($id_lb)
+	{
+		$query = array('id_lb' => $id_lb);
+		return $this->db->get_where('pengajuan', $query);
+	}
+
+	function ganti_analis($id_lb){
+		
+        $id_lb          = $this->input->post('id_lb');
+        $analis          = $this->input->post('analis');
+
+		$kondisi = array('id_lb' => $id_lb );
+
+		
+        $data = array(
+            'nama_analis'        => $analis,
+		);
+		
+        $this->db->update('pengajuan', $data, $kondisi);
+        redirect('main?id_lb='.$id_lb);
 	}
     
 	function pengajuan_list($id_lb)
