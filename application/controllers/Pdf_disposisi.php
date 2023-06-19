@@ -13,38 +13,41 @@ class Pdf_disposisi extends CI_Controller
 	{
 		$id_lb = $_GET['id_lb'];
         $lb = $this->db->query("SELECT * FROM usulan WHERE id_lb='$id_lb'");
+        $nama = $this->db->query("SELECT * FROM latar_belakang 
+                                        JOIN user ON latar_belakang.user=user.email
+                                        WHERE latar_belakang.id_lb='$id_lb'")->result();
+								
+        foreach ($nama as $data) {
+			$name = $data->name;
+			$kantor = $data->kantor;
+			// $analis = $data->nama_analis;
+		}
+		
+		$kacabquery = $this->db->query("SELECT * FROM user WHERE role_id=7 AND kantor='$kantor'")->result();
+		foreach($kacabquery as $datakacab){
+			$kacab = $datakacab->name;
+		}
+		
+		$dirutquery = $this->db->query("SELECT * FROM user WHERE role_id=8")->result();
+		foreach($dirutquery as $datadirut){
+			$dirut = $datadirut->name;
+		}
+				
+		// die(var_dump($name,$kacab));
 
         foreach ($lb->result() as $data) {
 			$plafon = intval($data->plafond_usulan);
 			if($plafon < 100000000){
-				$this->disposisi1();
+				$this->disposisi1($name,$kacab,$kantor);
 			}elseif($plafon >= 100000000){
-				$this->disposisi2();
+				$this->disposisi2($name,$kacab,$kantor,$dirut);
 			}
 		}
 
 	}
 
-	function disposisi1()
+	function disposisi1($name,$kacab,$kantor)
 	{
-        $id_lb = $_GET['id_lb'];
-        $nama = $this->db->query("SELECT * FROM latar_belakang 
-                                        JOIN user ON latar_belakang.user=user.email
-                                        JOIN pengajuan ON latar_belakang.id_lb=pengajuan.id_lb
-										JOIN `resume` ON latar_belakang.id_lb=resume.id_lb
-                                        WHERE latar_belakang.id_lb='$id_lb'");
-										
-        foreach ($nama->result() as $data) {
-			$name = $data->name;
-			$analis = $data->nama_analis;
-			// die(print_r($data));
-		}
-
-		$kacab = $this->db->query("SELECT * FROM user WHERE role_id=7 AND kantor='$data->kantor'")->result();
-		foreach($kacab as $datakacab){
-			$kacab = $datakacab->name;
-		}
-
 
 		$pdf = new FPDF('P', 'mm', 'A4');
 		$pdf->SetAutoPageBreak(false);
@@ -114,11 +117,12 @@ class Pdf_disposisi extends CI_Controller
 		$pdf->Cell(140, 15, '', 0, 1, '');
 		$pdf->Cell(140, 2, '', 0, 0, '');
 		$pdf->SetFont('Times', 'B', 12);
-		$pdf->Cell(30, 0, '('.$analis.')', 0, 1, 'C');
+		$pdf->Cell(30, 0, '(.............................)', 0, 1, 'C');
+		// $pdf->Cell(30, 0, '('.$analis.')', 0, 1, 'C');
 		
-		if($data->kantor == 'KCU'){
+		if($kantor == 'KCU'){
 					
-			$kabag = $this->db->query("SELECT * FROM user WHERE role_id=4 AND kantor='$data->kantor'")->result();
+			$kabag = $this->db->query("SELECT * FROM user WHERE role_id=4 AND kantor='$kantor'")->result();
 			foreach($kabag as $datakabag){
 				$kabag = $datakabag->name;
 				//4
@@ -145,7 +149,7 @@ class Pdf_disposisi extends CI_Controller
 		$pdf->Cell(5, 2, '', 0, 0, '');
 		$pdf->Cell(10, 4, '......................................................................................................................................................................', 0, 1, '');
 		$pdf->Cell(135, 2, '', 0, 0, '');
-		switch($data->kantor) {
+		switch($kantor) {
 			case "KCU":
 				$kantor ="Kepala Cabang Utama";
 				break;
@@ -174,29 +178,8 @@ class Pdf_disposisi extends CI_Controller
 		$pdf->Output('Disposisi', 'I');
 	}
 
-	function disposisi2()
+	function disposisi2($name,$kacab,$kantor,$dirut)
 	{
-        $id_lb = $_GET['id_lb'];
-        $nama = $this->db->query("SELECT * FROM latar_belakang 
-                                        JOIN user ON latar_belakang.user=user.email
-                                        JOIN pengajuan ON latar_belakang.id_lb=pengajuan.id_lb
-										JOIN `resume` ON latar_belakang.id_lb=resume.id_lb
-                                        WHERE latar_belakang.id_lb='$id_lb'");
-										
-        foreach ($nama->result() as $data) {
-			$name = $data->name;
-			$analis = $data->nama_analis;
-		}
-
-		$kacab = $this->db->query("SELECT * FROM user WHERE role_id=7 AND kantor='$data->kantor'")->result();
-		foreach($kacab as $datakacab){
-			$kacab = $datakacab->name;
-		}
-
-		$dirut = $this->db->query("SELECT * FROM user WHERE role_id=8 AND kantor='$data->kantor'")->result();
-		foreach($dirut as $datadirut){
-			$dirut = $datadirut->name;
-		}
 
 		//----Tanda tangan digital----
 		//$lokasi_ttd_kabag = "assets/ttd/test.png";
@@ -217,6 +200,7 @@ class Pdf_disposisi extends CI_Controller
 		$pdf->Rect(10,91,190,38);
 		$pdf->Rect(10,129,190,38);
 		$pdf->Rect(10,167,190,38);
+		$pdf->Rect(10,205,190,38);
 
 		
 		// if($data->analis == 'Layak'){
@@ -270,11 +254,11 @@ class Pdf_disposisi extends CI_Controller
 		$pdf->Cell(140, 15, '', 0, 1, '');
 		$pdf->Cell(140, 2, '', 0, 0, '');
 		$pdf->SetFont('Times', 'B', 12);
-		$pdf->Cell(30, 0, '('.$analis.')', 0, 1, 'C');
+		$pdf->Cell(30, 0, '(.............................)', 0, 1, 'C');
 		
-		if($data->kantor == 'KCU'){
+		if($kantor == 'KCU'){
 					
-			$kabag = $this->db->query("SELECT * FROM user WHERE role_id=4 AND kantor='$data->kantor'")->result();
+			$kabag = $this->db->query("SELECT * FROM user WHERE role_id=4 AND kantor='$kantor'")->result();
 			foreach($kabag as $datakabag){
 				$kabag = $datakabag->name;
 				//4
@@ -301,7 +285,7 @@ class Pdf_disposisi extends CI_Controller
 		$pdf->Cell(5, 2, '', 0, 0, '');
 		$pdf->Cell(10, 4, '......................................................................................................................................................................', 0, 1, '');
 		$pdf->Cell(135, 2, '', 0, 0, '');
-		switch($data->kantor) {
+		switch($kantor) {
 			case "KCU":
 				$kantor ="Kepala Cabang Utama";
 				break;
