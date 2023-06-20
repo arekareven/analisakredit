@@ -25,6 +25,7 @@ class Dirut extends CI_Controller
         $this->load->view('kredit/dirut', $data);
         $this->load->view('templates/footer');
     }
+	
 	public function kalender()
 	{
 		$data['title'] = 'Kalender';

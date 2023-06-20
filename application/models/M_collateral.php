@@ -495,4 +495,5 @@ class M_collateral extends CI_Model
         $this->db->insert('collateral', $data);
         redirect('collateral/templateword?id_lb=' . $id_lb);
     }
+
 }

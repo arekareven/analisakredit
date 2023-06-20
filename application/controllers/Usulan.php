@@ -146,6 +146,12 @@ class Usulan extends CI_Controller
 		$id_lb = $this->input->post('id_lb');
 		$this->m_usulan->hapus_data($idt, $id_lb);
 	}
+		
+    function data_jaminan(){
+        $id_lb=$this->input->post('id_lb');
+		$data=$this->m_usulan->jaminan_list($id_lb);
+		echo json_encode($data);
+	}
 
 
 

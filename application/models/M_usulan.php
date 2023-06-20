@@ -347,6 +347,12 @@ class M_usulan extends CI_Model
 		$this->db->delete('realisasi');
 		redirect('test/edit?id_lb=' . $id_lb);
 	}
+		    
+	function jaminan_list($id_lb)
+	{
+		$hasil=$this->db->query("SELECT * FROM usulan WHERE id_lb='$id_lb'");
+		return $hasil->result();
+	}
 
     /*
     public function add_analis($data)

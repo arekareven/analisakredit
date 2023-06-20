@@ -155,7 +155,7 @@
                         <div class="col-md-8 mb-3">
                             <label for="status_kawin" class="form-label">Status Perkawinan</label>
                             <select class="form-control" aria-label="Default select example" id="status_kawin" name="status_kawin">
-                                <option value="Belum Menikah">Belum Menikah</option>
+                                <option value="Lajang">Lajang</option>
                                 <option value="Menikah">Menikah</option>
                                 <option value="Duda">Duda</option>
                                 <option value="Janda">Janda</option>
@@ -384,7 +384,7 @@
 							<div class="col-md-8 mb-3">
 								<label for="status_kawin" class="form-label">Status Perkawinan</label>
 								<select class="form-control" aria-label="Default select example" id="status_kawin2" name="status_kawin">
-									<option value="Tidak Menikah">Tidak Menikah</option>
+									<option value="Lajang">Lajang</option>
 									<option value="Menikah">Menikah</option>
 									<option value="Duda">Duda</option>
 									<option value="Janda">Janda</option>

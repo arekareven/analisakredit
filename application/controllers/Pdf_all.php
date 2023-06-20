@@ -1609,7 +1609,7 @@ class Pdf_all extends CI_Controller
 		$pdf->AddPage();
 		$jaminan = $this->db->get_where('pengajuan', array('id_lb' => $id_lb))->result();
 		foreach ($jaminan as $data) {
-		$pdf->Image('./upload/file/jaminan/'.$data->file, 60, 30, 90, 0, 'PNG');
+		$pdf->Image('./upload/file/jaminan/'.$data->file, 15, 25, 180, 250);
 		$pdf->Output( 'I','all.pdf');
 		}
 

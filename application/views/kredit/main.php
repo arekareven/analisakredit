@@ -1,3 +1,9 @@
+<!-- <div class="row">
+	<div class="col-lg-10">			
+		<?= $this->session->flashdata('success_upload_gambar'); ?>
+	</div>
+</div> -->
+
 <!-- Test case 1-->
 <div class="container-fluid">
 	<!-- <?= $user['name']; ?> -->
@@ -1440,19 +1446,15 @@
                             </div>
                         </div>
                         <div class="tab-pane fade" id="v-pills-upload" role="tabpanel" aria-labelledby="v-pills-upload-tab">
-							<form id="upload" class="box" method="post" action="<?php echo base_url('upload_jaminan/upload'); ?>" enctype="multipart/form-data">
+							<form id="upload" class="box" enctype="multipart/form-data">
                                 <div class="form-group">
                                     <div class="row">
-										<!-- <div class="form-group">
-											<label for="upload">Upload Berkas</label>
-                                        	<input type="hidden" class="form-control" id="id_lb" name="id_lb" value="<?php echo $id_lb; ?>">
-											<input type="file" class="form-control-file" id="upload" name="upload" accept="image/png, image/jpeg, image/jpg, image/gif">
-										</div> -->
 										<div class="form-group">
 											<div class="custom-file">
 												<input type="hidden" class="form-control" id="id_lb" name="id_lb" value="<?php echo $id_lb; ?>">
-												<input type="file" class="custom-file-input" id="file" name="userfile">
+												<input type="file" class="custom-file-input" id="file" name="userfile" accept="image/png, image/jpeg, image/jpg">
 												<label class="custom-file-label" for="file">Choose file</label>
+												<p>** Ukuran gambar maksimal 2MB dan potrait</p>
 											</div>
 										</div>										
                                     </div>
@@ -4363,7 +4365,7 @@
                 var id_lb = <?php echo $id_lb; ?>;
                 $.ajax({
                     type: 'POST',
-                    url: '<?php echo base_url() ?>analisa/data_pengajuan',
+                    url: '<?php echo base_url() ?>usulan/data_jaminan',
                     async: true,
                     dataType: 'json',
                     data: {
@@ -4385,6 +4387,24 @@
 
                 });
             }
+
+			//simpan upload
+            $('#btn_upload').on('click', function() {
+                var upload = $('#upload').serialize(); 
+
+                    $.ajax({
+                        url: "<?php echo base_url(); ?>upload_jaminan/upload",
+                        type: "POST",
+                        data: upload,
+                        dataType: "JSON",
+                        success: function(data) {
+                            console.log(data)
+                        }
+                    }),
+				    tampil_data_upload();
+                    document.getElementById("upload").reset();
+                }
+            )
  
         });
 
